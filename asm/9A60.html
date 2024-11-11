@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Game status buffer entry at 9A60</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-g">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Game status buffer</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9A59.html">9A59</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9a60">Map</a></td>
+<td class="next">
+Next: <a href="9A6F.html">9A6F</a>
+</td>
+</tr>
+</table>
+<div class="description">9A60: User-Defined Keys</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">UserDefinedKeys_Fire</td>
+<td class="address-1"><span id="9a60"></span>9A60</td>
+<td class="instruction">DEFB $7F,$02</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="2">Port Number</th>
+<th colspan="5" rowspan="1">Bit</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">2</th>
+<th colspan="1" rowspan="1">3</th>
+<th colspan="1" rowspan="1">4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">7F</td>
+<td class="centre" colspan="1" rowspan="1">SPACE</td>
+<td class="centre" colspan="1" rowspan="1">FULL-STOP</td>
+<td class="centre" colspan="1" rowspan="1">M</td>
+<td class="centre" colspan="1" rowspan="1">N</td>
+<td class="centre" colspan="1" rowspan="1">B</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9a62"></span>9A62</td>
+<td class="instruction">DEFB $4D</td>
+<td class="comment-1" rowspan="1">"&#77;".</td>
+</tr>
+<tr>
+<td class="asm-label">UserDefinedKeys_Up</td>
+<td class="address-1"><span id="9a63"></span>9A63</td>
+<td class="instruction">DEFB $FB,$01</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="2">Port Number</th>
+<th colspan="5" rowspan="1">Bit</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">2</th>
+<th colspan="1" rowspan="1">3</th>
+<th colspan="1" rowspan="1">4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FB</td>
+<td class="centre" colspan="1" rowspan="1">Q</td>
+<td class="centre" colspan="1" rowspan="1">W</td>
+<td class="centre" colspan="1" rowspan="1">E</td>
+<td class="centre" colspan="1" rowspan="1">R</td>
+<td class="centre" colspan="1" rowspan="1">T</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9a65"></span>9A65</td>
+<td class="instruction">DEFB $51</td>
+<td class="comment-1" rowspan="1">"&#81;".</td>
+</tr>
+<tr>
+<td class="asm-label">UserDefinedKeys_Down</td>
+<td class="address-1"><span id="9a66"></span>9A66</td>
+<td class="instruction">DEFB $FD,$01</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="2">Port Number</th>
+<th colspan="5" rowspan="1">Bit</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">2</th>
+<th colspan="1" rowspan="1">3</th>
+<th colspan="1" rowspan="1">4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FD</td>
+<td class="centre" colspan="1" rowspan="1">A</td>
+<td class="centre" colspan="1" rowspan="1">S</td>
+<td class="centre" colspan="1" rowspan="1">D</td>
+<td class="centre" colspan="1" rowspan="1">F</td>
+<td class="centre" colspan="1" rowspan="1">G</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9a68"></span>9A68</td>
+<td class="instruction">DEFB $41</td>
+<td class="comment-1" rowspan="1">"&#65;".</td>
+</tr>
+<tr>
+<td class="asm-label">UserDefinedKeys_Left</td>
+<td class="address-1"><span id="9a69"></span>9A69</td>
+<td class="instruction">DEFB $DF,$02</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="2">Port Number</th>
+<th colspan="5" rowspan="1">Bit</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">2</th>
+<th colspan="1" rowspan="1">3</th>
+<th colspan="1" rowspan="1">4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">DF</td>
+<td class="centre" colspan="1" rowspan="1">P</td>
+<td class="centre" colspan="1" rowspan="1">O</td>
+<td class="centre" colspan="1" rowspan="1">I</td>
+<td class="centre" colspan="1" rowspan="1">U</td>
+<td class="centre" colspan="1" rowspan="1">Y</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9a6b"></span>9A6B</td>
+<td class="instruction">DEFB $4F</td>
+<td class="comment-1" rowspan="1">"&#79;".</td>
+</tr>
+<tr>
+<td class="asm-label">UserDefinedKeys_Right</td>
+<td class="address-1"><span id="9a6c"></span>9A6C</td>
+<td class="instruction">DEFB $DF,$01</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="2">Port Number</th>
+<th colspan="5" rowspan="1">Bit</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">0</th>
+<th colspan="1" rowspan="1">1</th>
+<th colspan="1" rowspan="1">2</th>
+<th colspan="1" rowspan="1">3</th>
+<th colspan="1" rowspan="1">4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">DF</td>
+<td class="centre" colspan="1" rowspan="1">P</td>
+<td class="centre" colspan="1" rowspan="1">O</td>
+<td class="centre" colspan="1" rowspan="1">I</td>
+<td class="centre" colspan="1" rowspan="1">U</td>
+<td class="centre" colspan="1" rowspan="1">Y</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9a6e"></span>9A6E</td>
+<td class="instruction">DEFB $50</td>
+<td class="comment-1" rowspan="1">"&#80;".</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9A59.html">9A59</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9a60">Map</a></td>
+<td class="next">
+Next: <a href="9A6F.html">9A6F</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/9A60.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

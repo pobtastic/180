@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 43197</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43182.html">43182</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43197">Map</a></td>
+<td class="next">
+Next: <a href="43212.html">43212</a>
+</td>
+</tr>
+</table>
+<div class="description">43197: Calculate Dart Board Address</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="37459.html">37459</a>, <a href="37602.html">37602</a>, <a href="42155.html">42155</a>, <a href="42196.html">42196</a>, <a href="42326.html">42326</a>, <a href="42868.html">42868</a> and <a href="46970.html">46970</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">Source Y position</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">Source X position</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Dart Board buffer location</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CalculateDartBoardAddress</td>
+<td class="address-2"><span id="43197"></span>43197</td>
+<td class="instruction">LD A,%00000111</td>
+<td class="comment-1" rowspan="2">Mask out the bottom 3 bits of the Y position.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43199"></span>43199</td>
+<td class="instruction">AND D</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43200"></span>43200</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="3">Rotate the bits right three positions.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43201"></span>43201</td>
+<td class="instruction">RRCA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43202"></span>43202</td>
+<td class="instruction">RRCA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43203"></span>43203</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">Combine with the X position.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43204"></span>43204</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=low byte of the dart board buffer address.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43205"></span>43205</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="2">Mask out bits 3-4 of the Y position.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43206"></span>43206</td>
+<td class="instruction">AND %00011000</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43208"></span>43208</td>
+<td class="instruction">OR %01100000</td>
+<td class="comment-1" rowspan="1">Add the dart board buffer memory base address (24576).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43210"></span>43210</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=high byte of the dart board buffer address.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43211"></span>43211</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43182.html">43182</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43197">Map</a></td>
+<td class="next">
+Next: <a href="43212.html">43212</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/43197.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

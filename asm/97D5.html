@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 97D5</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="978B.html">978B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#97d5">Map</a></td>
+<td class="next">
+Next: <a href="97F0.html">97F0</a>
+</td>
+</tr>
+</table>
+<div class="description">97D5: Control Code 00: Clear Screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_ClearScreen</td>
+<td class="address-2"><span id="97d5"></span>97D5</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97d6"></span>97D6</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97d7"></span>97D7</td>
+<td class="instruction">LD HL,($F81C)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="F81C.html">F81C</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97da"></span>97DA</td>
+<td class="instruction">LD A,($F81E)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F81C.html#f81e">F81E</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97dd"></span>97DD</td>
+<td class="instruction">LD BC,$02FF</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=02FF.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97e0"></span>97E0</td>
+<td class="instruction">CALL <a href="97F0.html">Helper_Copier</a></td>
+<td class="comment-1" rowspan="1">Call <a href="97F0.html">Helper_Copier</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97e3"></span>97E3</td>
+<td class="instruction">LD HL,($F82B)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="F829.html#f82b">F82B</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97e6"></span>97E6</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97e7"></span>97E7</td>
+<td class="instruction">LD BC,$17FF</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=17FF.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97ea"></span>97EA</td>
+<td class="instruction">CALL <a href="97F0.html">Helper_Copier</a></td>
+<td class="comment-1" rowspan="1">Call <a href="97F0.html">Helper_Copier</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97ed"></span>97ED</td>
+<td class="instruction">JP <a href="9960.html">$9960</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9960.html">9960</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="978B.html">978B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#97d5">Map</a></td>
+<td class="next">
+Next: <a href="97F0.html">97F0</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/97D5.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 94F0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="94E6.html">94E6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#94f0">Map</a></td>
+<td class="next">
+Next: <a href="94F8.html">94F8</a>
+</td>
+</tr>
+</table>
+<div class="description">94F0: Back To BASIC</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">BackToBasic</td>
+<td class="address-2"><span id="94f0"></span>94F0</td>
+<td class="instruction">LD B,$32</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> of 32.</td>
+</tr>
+<tr>
+<td class="asm-label">BackToBasic_Loop</td>
+<td class="address-2"><span id="94f2"></span>94F2</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="94f3"></span>94F3</td>
+<td class="instruction">DJNZ <a href="94F0.html#94f2">BackToBasic_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease halt counter by one and loop back to <a href="94F0.html#94f2">BackToBasic_Loop</a> until the counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="94f5"></span>94F5</td>
+<td class="instruction">JP $0000</td>
+<td class="comment-1" rowspan="1">Jump to <a rel="noopener nofollow" href="https://skoolkit.ca/disassemblies/rom/hex/asm/0000.html">START</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="94E6.html">94E6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#94f0">Map</a></td>
+<td class="next">
+Next: <a href="94F8.html">94F8</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/94F0.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

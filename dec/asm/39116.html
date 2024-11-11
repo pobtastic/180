@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 39116</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39107.html">39107</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39116">Map</a></td>
+<td class="next">
+Next: <a href="39171.html">39171</a>
+</td>
+</tr>
+</table>
+<div class="description">39116: Control Code 2:</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_02</td>
+<td class="address-2"><span id="39116"></span>39116</td>
+<td class="instruction">LD A,16</td>
+<td class="comment-1" rowspan="4">INK: 
+
+
+WHITE.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39118"></span>39118</td>
+<td class="instruction">CALL <a href="38710.html">PrintCharacter</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39121"></span>39121</td>
+<td class="instruction">LD A,7</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39123"></span>39123</td>
+<td class="instruction">CALL <a href="38710.html">PrintCharacter</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39126"></span>39126</td>
+<td class="instruction">LD A,17</td>
+<td class="comment-1" rowspan="2">PAPER: ...</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39128"></span>39128</td>
+<td class="instruction">CALL <a href="38710.html">PrintCharacter</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39131"></span>39131</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set border to 
+
+
+BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39132"></span>39132</td>
+<td class="instruction">OUT (254),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39134"></span>39134</td>
+<td class="instruction">LD (63511),A</td>
+<td class="comment-1" rowspan="1">Write 0 to *<a href="63510.html#63511">63511</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39137"></span>39137</td>
+<td class="instruction">CALL <a href="38710.html">PrintCharacter</a></td>
+<td class="comment-1" rowspan="1">... PAPER: 
+
+
+BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39140"></span>39140</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="63512.html">63512</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39143"></span>39143</td>
+<td class="instruction">LD (63512),HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39146"></span>39146</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="63510.html">63510</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39147"></span>39147</td>
+<td class="instruction">LD (63510),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39150"></span>39150</td>
+<td class="instruction">LD HL,16384</td>
+<td class="comment-1" rowspan="2">Write 16384 to *<a href="63529.html#63531">63531</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39153"></span>39153</td>
+<td class="instruction">LD (63531),HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39156"></span>39156</td>
+<td class="instruction">LD HL,36213</td>
+<td class="comment-1" rowspan="2">Write <a href="36213.html">CustomFont</a> to *<a href="63514.html">Font_Pointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39159"></span>39159</td>
+<td class="instruction">LD (63514),HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39162"></span>39162</td>
+<td class="instruction">LD HL,22528</td>
+<td class="comment-1" rowspan="2">Write 22528 to *<a href="63516.html">63516</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39165"></span>39165</td>
+<td class="instruction">LD (63516),HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39168"></span>39168</td>
+<td class="instruction">JP <a href="39259.html#39261">39261</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39259.html#39261">39261</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39107.html">39107</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39116">Map</a></td>
+<td class="next">
+Next: <a href="39171.html">39171</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/39116.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

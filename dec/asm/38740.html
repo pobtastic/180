@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 38740</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38710.html">38710</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38740">Map</a></td>
+<td class="next">
+Next: <a href="38774.html">38774</a>
+</td>
+</tr>
+</table>
+<div class="description">38740: Controller: Character Printing</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38710.html">PrintCharacter</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Controller_CharacterPrinting</td>
+<td class="address-2"><span id="38740"></span>38740</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=the character to print (from the stack).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38741"></span>38741</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Keep a copy of the character to print on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38742"></span>38742</td>
+<td class="instruction">CP 32</td>
+<td class="comment-1" rowspan="2">Jump to <a href="38795.html">Handler_ASCIICharacter</a> if the character is a "normal" ASCII character (32 or higher).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38744"></span>38744</td>
+<td class="instruction">JP NC,<a href="38795.html">Handler_ASCIICharacter</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="38747"></span>
+<div class="comments">
+<div class="paragraph">
+Else this is a control character.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38747"></span>38747</td>
+<td class="instruction">LD (63508),A</td>
+<td class="comment-1" rowspan="1">Write the control code to *<a href="63508.html">Buffer_ControlCode</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38750"></span>38750</td>
+<td class="instruction">LD HL,39269</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39269.html">Table_ControlCodes</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38753"></span>38753</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="2">Add <span class="register">A</span> to <span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38754"></span>38754</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38755"></span>38755</td>
+<td class="instruction">JR NC,<a href="38740.html#38758">CharacterPrinting_NoCarry</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="38740.html#38758">CharacterPrinting_NoCarry</a> if there's no carry.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38757"></span>38757</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Handle the carry.</td>
+</tr>
+<tr>
+<td class="asm-label">CharacterPrinting_NoCarry</td>
+<td class="address-2"><span id="38758"></span>38758</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Write *<span class="register">HL</span> to *<a href="63509.html">Buffer_Counter</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38759"></span>38759</td>
+<td class="instruction">LD (63509),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38762"></span>38762</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="38774.html">Handler_ControlCode</a> if <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38763"></span>38763</td>
+<td class="instruction">JR Z,<a href="38774.html">Handler_ControlCode</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="38765"></span>
+<div class="comments">
+<div class="paragraph">
+Reset the buffer pointer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38765"></span>38765</td>
+<td class="instruction">LD HL,63500</td>
+<td class="comment-1" rowspan="2">Write <a href="63500.html">63500</a> to *<a href="63498.html">Buffer_Pointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38768"></span>38768</td>
+<td class="instruction">LD (63498),HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38771"></span>38771</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">AF</span> and <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38772"></span>38772</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38773"></span>38773</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38710.html">38710</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38740">Map</a></td>
+<td class="next">
+Next: <a href="38774.html">38774</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/38740.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

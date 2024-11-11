@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 38334</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38313.html">38313</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38334">Map</a></td>
+<td class="next">
+Next: <a href="38354.html">38354</a>
+</td>
+</tr>
+</table>
+<div class="description">38334: Routine at 95BE</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38334"></span>38334</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="63509.html">Buffer_Counter</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38335"></span>38335</td>
+<td class="instruction">LD (63509),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38338"></span>38338</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Disable interrupts.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38339"></span>38339</td>
+<td class="instruction">LD SP,(63527)</td>
+<td class="comment-1" rowspan="1"><span class="register">SP</span>=*<a href="63527.html">Initial_StackPointer</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38343"></span>38343</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38344"></span>38344</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38345"></span>38345</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38346"></span>38346</td>
+<td class="instruction">LD IY,23610</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a rel="noopener nofollow" href="https://skoolkit.ca/disassemblies/rom/hex/asm/5C3A.html">ERR_NR</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38350"></span>38350</td>
+<td class="instruction">IM 1</td>
+<td class="comment-1" rowspan="1">Set interrupt mode 1.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38352"></span>38352</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38353"></span>38353</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38313.html">38313</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38334">Map</a></td>
+<td class="next">
+Next: <a href="38354.html">38354</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/38334.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

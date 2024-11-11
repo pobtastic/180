@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 47376</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47349.html">47349</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47376">Map</a></td>
+<td class="next">
+Next: <a href="47407.html">47407</a>
+</td>
+</tr>
+</table>
+<div class="description">47376: Print Throwing Dart Frame</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="47073.html">Animation_ThrowingDart</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_ThrowingDart_Frame</td>
+<td class="address-2"><span id="47376"></span>47376</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="8">Halt operation (suspend CPU until the next interrupt) eight times.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47377"></span>47377</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47378"></span>47378</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47379"></span>47379</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47380"></span>47380</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47381"></span>47381</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47382"></span>47382</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47383"></span>47383</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47384"></span>47384</td>
+<td class="instruction">LD B,24</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> of 24 for the height of the graphic.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47386"></span>47386</td>
+<td class="instruction">LD HL,16627</td>
+<td class="comment-1" rowspan="1">Set the target screen buffer location in <span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Print_ThrowingDart_Frame_Loop</td>
+<td class="address-2"><span id="47389"></span>47389</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash the height counter and screen buffer location on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47390"></span>47390</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47391"></span>47391</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47392"></span>47392</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="3">Copy 3 bytes of data from the graphic to the screen buffer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47394"></span>47394</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47396"></span>47396</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47398"></span>47398</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47399"></span>47399</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the screen buffer location from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47400"></span>47400</td>
+<td class="instruction">CALL <a href="43212.html">43212</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43212.html">43212</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47403"></span>47403</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the height counter from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47404"></span>47404</td>
+<td class="instruction">DJNZ <a href="47376.html#47389">Print_ThrowingDart_Frame_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="47376.html#47389">Print_ThrowingDart_Frame_Loop</a> until the frame has been displayed in full.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="47406"></span>47406</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47349.html">47349</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47376">Map</a></td>
+<td class="next">
+Next: <a href="47407.html">47407</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/47376.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

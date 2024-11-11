@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at B92F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B910.html">B910</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b92f">Map</a></td>
+<td class="next">
+Next: <a href="B965.html">B965</a>
+</td>
+</tr>
+</table>
+<div class="description">B92F: Routine at B92F</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="B7E1.html">Animation_ThrowingDart</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="b92f"></span>B92F</td>
+<td class="instruction">LD B,$02</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=02.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b931"></span>B931</td>
+<td class="instruction">LD DE,$C71C</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C71C.html">Graphics_Dart</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="b934"></span>B934</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b935"></span>B935</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b936"></span>B936</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b937"></span>B937</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b938"></span>B938</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b939"></span>B939</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b93a"></span>B93A</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b93b"></span>B93B</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b93c"></span>B93C</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b93d"></span>B93D</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b93e"></span>B93E</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b93f"></span>B93F</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b940"></span>B940</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b941"></span>B941</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b942"></span>B942</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b943"></span>B943</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b944"></span>B944</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b945"></span>B945</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b946"></span>B946</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b947"></span>B947</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b948"></span>B948</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b949"></span>B949</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b94a"></span>B94A</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b94b"></span>B94B</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b94c"></span>B94C</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b94d"></span>B94D</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b94e"></span>B94E</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b94f"></span>B94F</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b950"></span>B950</td>
+<td class="instruction">DJNZ <a href="B92F.html#b934">$B934</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B92F.html#b934">B934</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b952"></span>B952</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b953"></span>B953</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b954"></span>B954</td>
+<td class="instruction">LD B,$02</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=02.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="b956"></span>B956</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b957"></span>B957</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b958"></span>B958</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b959"></span>B959</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b95a"></span>B95A</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b95b"></span>B95B</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b95c"></span>B95C</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b95d"></span>B95D</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b95e"></span>B95E</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b95f"></span>B95F</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b960"></span>B960</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b961"></span>B961</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b962"></span>B962</td>
+<td class="instruction">DJNZ <a href="B92F.html#b956">$B956</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B92F.html#b956">B956</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b964"></span>B964</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B910.html">B910</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b92f">Map</a></td>
+<td class="next">
+Next: <a href="B965.html">B965</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/B92F.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

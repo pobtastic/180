@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 91C5</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="91B6.html">91B6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#91c5">Map</a></td>
+<td class="next">
+Next: <a href="91DD.html">91DD</a>
+</td>
+</tr>
+</table>
+<div class="description">91C5: Print Key</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="9569.html">RedefineKey</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_Key</td>
+<td class="address-2"><span id="91c5"></span>91C5</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91c6"></span>91C6</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91c9"></span>91C9</td>
+<td class="instruction">DEFM $07</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91ca"></span>91CA</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91cb"></span>91CB</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91cc"></span>91CC</td>
+<td class="instruction">CP $0D</td>
+<td class="comment-1" rowspan="2">Jump to <a href="91F3.html">Print_Enter</a> if <span class="register">A</span> is equal to 0D.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91ce"></span>91CE</td>
+<td class="instruction">JR Z,<a href="91F3.html">Print_Enter</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91d0"></span>91D0</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="91FE.html">Print_Space</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91d2"></span>91D2</td>
+<td class="instruction">JR Z,<a href="91FE.html">Print_Space</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91d4"></span>91D4</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="2">Jump to <a href="9209.html">Print_ASCII_Space</a> if <span class="register">A</span> is greater than 04.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91d6"></span>91D6</td>
+<td class="instruction">JP NC,<a href="9209.html">Print_ASCII_Space</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91d9"></span>91D9</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="2">Jump to <a href="91E9.html">Print_CapsLock</a> if <span class="register">A</span> is equal to 01.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="91db"></span>91DB</td>
+<td class="instruction">JR Z,<a href="91E9.html">Print_CapsLock</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+Continue on to <a href="91DD.html">Print_SymbolShift</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="91B6.html">91B6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#91c5">Map</a></td>
+<td class="next">
+Next: <a href="91DD.html">91DD</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/91C5.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

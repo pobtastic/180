@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 44418</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44380.html">44380</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44418">Map</a></td>
+<td class="next">
+Next: <a href="44548.html">44548</a>
+</td>
+</tr>
+</table>
+<div class="description">44418: Routine at AD82</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="44283.html">44283</a> and <a href="44380.html">44380</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44418"></span>44418</td>
+<td class="instruction">CP 83</td>
+<td class="comment-1" rowspan="2">Jump to <a href="44418.html#44439">44439</a> if <span class="register">A</span> is equal to 83.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44420"></span>44420</td>
+<td class="instruction">JR Z,<a href="44418.html#44439">44439</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44422"></span>44422</td>
+<td class="instruction">CP 68</td>
+<td class="comment-1" rowspan="2">Jump to <a href="44418.html#44461">44461</a> if <span class="register">A</span> is equal to 68.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44424"></span>44424</td>
+<td class="instruction">JR Z,<a href="44418.html#44461">44461</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44426"></span>44426</td>
+<td class="instruction">CP 84</td>
+<td class="comment-1" rowspan="2">Jump to <a href="44418.html#44483">44483</a> if <span class="register">A</span> is equal to 84.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44428"></span>44428</td>
+<td class="instruction">JR Z,<a href="44418.html#44483">44483</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44430"></span>44430</td>
+<td class="instruction">CP 77</td>
+<td class="comment-1" rowspan="2">Jump to <a href="44418.html#44505">44505</a> if <span class="register">A</span> is equal to 77.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44432"></span>44432</td>
+<td class="instruction">JR Z,<a href="44418.html#44505">44505</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44434"></span>44434</td>
+<td class="instruction">CP 66</td>
+<td class="comment-1" rowspan="2">Jump to <a href="44418.html#44526">44526</a> if <span class="register">A</span> is equal to 66.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44436"></span>44436</td>
+<td class="instruction">JR Z,<a href="44418.html#44526">44526</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44438"></span>44438</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44439"></span>44439</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="44418.html#44450">44451</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44440"></span>44440</td>
+<td class="instruction">LD (44451),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44443"></span>44443</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<a href="44418.html#44450">44452</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44444"></span>44444</td>
+<td class="instruction">LD (44452),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44447"></span>44447</td>
+<td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44450"></span>44450</td>
+<td class="instruction">DEFB 22,22,0</td>
+<td class="comment-1" rowspan="1">PRINT AT: 22, 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44453"></span>44453</td>
+<td class="instruction">DEFM "SINGLE"</td>
+<td class="comment-1" rowspan="1">"SINGLE".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44459"></span>44459</td>
+<td class="instruction">DEFB 255</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44460"></span>44460</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44461"></span>44461</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="44418.html#44472">44473</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44462"></span>44462</td>
+<td class="instruction">LD (44473),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44465"></span>44465</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<a href="44418.html#44472">44474</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44466"></span>44466</td>
+<td class="instruction">LD (44474),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44469"></span>44469</td>
+<td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44472"></span>44472</td>
+<td class="instruction">DEFB 22,22,0</td>
+<td class="comment-1" rowspan="1">PRINT AT: 22, 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44475"></span>44475</td>
+<td class="instruction">DEFM "DOUBLE"</td>
+<td class="comment-1" rowspan="1">"DOUBLE".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44481"></span>44481</td>
+<td class="instruction">DEFB 255</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44482"></span>44482</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44483"></span>44483</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="44418.html#44494">44495</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44484"></span>44484</td>
+<td class="instruction">LD (44495),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44487"></span>44487</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<a href="44418.html#44494">44496</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44488"></span>44488</td>
+<td class="instruction">LD (44496),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44491"></span>44491</td>
+<td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44494"></span>44494</td>
+<td class="instruction">DEFB 22,22,0</td>
+<td class="comment-1" rowspan="1">PRINT AT: 22, 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44497"></span>44497</td>
+<td class="instruction">DEFM "TREBLE"</td>
+<td class="comment-1" rowspan="1">"TREBLE".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44503"></span>44503</td>
+<td class="instruction">DEFB 255</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44504"></span>44504</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44505"></span>44505</td>
+<td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44508"></span>44508</td>
+<td class="instruction">DEFB 22,23,16</td>
+<td class="comment-1" rowspan="1">PRINT AT: 23, 16.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44511"></span>44511</td>
+<td class="instruction">DEFM " MISSED BOARD"</td>
+<td class="comment-1" rowspan="1">" MISSED BOARD".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44524"></span>44524</td>
+<td class="instruction">DEFB 255</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44525"></span>44525</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44526"></span>44526</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="44418.html#44537">44538</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44527"></span>44527</td>
+<td class="instruction">LD (44538),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44530"></span>44530</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<a href="44418.html#44537">44539</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44531"></span>44531</td>
+<td class="instruction">LD (44539),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44534"></span>44534</td>
+<td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44537"></span>44537</td>
+<td class="instruction">DEFB 22,22,0</td>
+<td class="comment-1" rowspan="1">PRINT AT: 22, 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44540"></span>44540</td>
+<td class="instruction">DEFM "BULL  "</td>
+<td class="comment-1" rowspan="1">"BULL&#160;&#160;".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44546"></span>44546</td>
+<td class="instruction">DEFB 255</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44547"></span>44547</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44380.html">44380</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44418">Map</a></td>
+<td class="next">
+Next: <a href="44548.html">44548</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/44418.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

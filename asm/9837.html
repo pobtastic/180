@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 9837</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9821.html">9821</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9837">Map</a></td>
+<td class="next">
+Next: <a href="984B.html">984B</a>
+</td>
+</tr>
+</table>
+<div class="description">9837: Routine at 9837</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="9837"></span>9837</td>
+<td class="instruction">LD HL,$F81E</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="F81C.html#f81e">F81E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="983a"></span>983A</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="983b"></span>983B</td>
+<td class="instruction">AND %11111000</td>
+<td class="comment-1" rowspan="1">Keep only bits 3-7.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="983d"></span>983D</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="983e"></span>983E</td>
+<td class="instruction">LD A,($F80C)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="9957.html">ControlCode_05</a> if *<a href="F80C.html">F80C</a> is greater than 08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9841"></span>9841</td>
+<td class="instruction">CP $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9843"></span>9843</td>
+<td class="instruction">JP NC,<a href="9957.html">ControlCode_05</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="9846"></span>9846</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9847"></span>9847</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9848"></span>9848</td>
+<td class="instruction">JP <a href="995B.html#995d">$995D</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="995B.html#995d">995D</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9821.html">9821</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9837">Map</a></td>
+<td class="next">
+Next: <a href="984B.html">984B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/9837.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 39210</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39171.html">39171</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39210">Map</a></td>
+<td class="next">
+Next: <a href="39234.html">39234</a>
+</td>
+</tr>
+</table>
+<div class="description">39210: Control Code 8:</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_08</td>
+<td class="address-2"><span id="39210"></span>39210</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39211"></span>39211</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=0.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39213"></span>39213</td>
+<td class="instruction">LD B,20</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=20.</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_08_0</td>
+<td class="address-2"><span id="39215"></span>39215</td>
+<td class="instruction">LD HL,20</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=0020.</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_08_1</td>
+<td class="address-2"><span id="39218"></span>39218</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39219"></span>39219</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="3">Jump to <a href="39210.html#39218">ControlCode_08_1</a> until <span class="register">HL</span> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39220"></span>39220</td>
+<td class="instruction">OR L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39221"></span>39221</td>
+<td class="instruction">JR NZ,<a href="39210.html#39218">ControlCode_08_1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39223"></span>39223</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">Load <span class="register">C</span> into <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39224"></span>39224</td>
+<td class="instruction">XOR %00010000</td>
+<td class="comment-1" rowspan="1">Flip the speaker bit.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39226"></span>39226</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">Store the result back to <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39227"></span>39227</td>
+<td class="instruction">OUT (254),A</td>
+<td class="comment-1" rowspan="1">Send <span class="register">A</span> to the speaker.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39229"></span>39229</td>
+<td class="instruction">DJNZ <a href="39210.html#39215">ControlCode_08_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="39210.html#39215">ControlCode_08_0</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39231"></span>39231</td>
+<td class="instruction">JP <a href="39264.html#39265">39265</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39264.html#39265">39265</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39171.html">39171</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39210">Map</a></td>
+<td class="next">
+Next: <a href="39234.html">39234</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/39210.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at AE04</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="AD82.html">AD82</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ae04">Map</a></td>
+<td class="next">
+Next: <a href="AE17.html">AE17</a>
+</td>
+</tr>
+</table>
+<div class="description">AE04: Routine at AE04</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="9D42.html">9D42</a>, <a href="A15C.html">Messaging_YouWin</a>, <a href="A8F8.html">A8F8</a>, <a href="A9E5.html">A9E5</a>, <a href="AA0A.html">AA0A</a>, <a href="AA5A.html">AA5A</a>, <a href="AA7B.html">AA7B</a>, <a href="AAA8.html">Print_CurrentPlayerID</a>, <a href="AB2E.html">Messaging_DartNumber</a>, <a href="AD3B.html">Messaging_Bust</a> and <a href="B16B.html">B16B</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ae04"></span>AE04</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="ae06"></span>AE06</td>
+<td class="instruction">LD HL,$FFFF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="ae09"></span>AE09</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae0a"></span>AE0A</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae0b"></span>AE0B</td>
+<td class="instruction">OR L</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae0c"></span>AE0C</td>
+<td class="instruction">JR NZ,<a href="AE04.html#ae09">$AE09</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae0e"></span>AE0E</td>
+<td class="instruction">LD A,($F821)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae11"></span>AE11</td>
+<td class="instruction">BIT 4,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae13"></span>AE13</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae14"></span>AE14</td>
+<td class="instruction">DJNZ <a href="AE04.html#ae06">$AE06</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae16"></span>AE16</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="AD82.html">AD82</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ae04">Map</a></td>
+<td class="next">
+Next: <a href="AE17.html">AE17</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/AE04.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

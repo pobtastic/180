@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 38099</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38072.html">38072</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38099">Map</a></td>
+<td class="next">
+Next: <a href="38118.html">38118</a>
+</td>
+</tr>
+</table>
+<div class="description">38099: Routine at 94D3</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="37695.html">MainMenu</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38099"></span>38099</td>
+<td class="instruction">CALL <a href="38495.html">38495</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38495.html">38495</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38102"></span>38102</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38103"></span>38103</td>
+<td class="instruction">JR NZ,<a href="38099.html#38099">38099</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="38099.html">38099</a> if <span class="register">HL</span> is not equal to <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38105"></span>38105</td>
+<td class="instruction">LD B,50</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=50.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38107"></span>38107</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38108"></span>38108</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38109"></span>38109</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=byte from port 254.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38111"></span>38111</td>
+<td class="instruction">OR %11100000</td>
+<td class="comment-1" rowspan="1">Set bits 5-7.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38113"></span>38113</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38114"></span>38114</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">A</span> is not equal to <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38115"></span>38115</td>
+<td class="instruction">DJNZ <a href="38099.html#38107">38107</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="38099.html#38107">38107</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38117"></span>38117</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38072.html">38072</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38099">Map</a></td>
+<td class="next">
+Next: <a href="38118.html">38118</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/38099.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

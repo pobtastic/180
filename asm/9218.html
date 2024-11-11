@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 9218</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9211.html">9211</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9218">Map</a></td>
+<td class="next">
+Next: <a href="9253.html">9253</a>
+</td>
+</tr>
+</table>
+<div class="description">9218: Messaging: Header/ Footer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="933F.html">MainMenu</a> and <a href="94F8.html">Messaging_RedefineKeys</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Messaging_HeaderFooter</td>
+<td class="address-2"><span id="9218"></span>9218</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="9736.html">PrintCharacter</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="921b"></span>921B</td>
+<td class="instruction">DEFB $16,$01,$05</td>
+<td class="comment-1" rowspan="1">PRINT AT: 01, 05.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="921e"></span>921E</td>
+<td class="instruction">DEFM "ONE HUNDRED AND EIGHTY"</td>
+<td class="comment-1" rowspan="1"><img alt="one-hundred-and-eighty" src="../images/font/one-hundred-and-eighty.png" />.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9234"></span>9234</td>
+<td class="instruction">DEFB $16,$17,$05</td>
+<td class="comment-1" rowspan="1">PRINT AT: 17, 05.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9237"></span>9237</td>
+<td class="instruction">DEFM "&gt;"</td>
+<td class="comment-1" rowspan="1"><img alt="copyright" src="../images/font/copyright.png" />.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9238"></span>9238</td>
+<td class="instruction">DEFB $16,$17,$06</td>
+<td class="comment-1" rowspan="1">PRINT AT: 17, 06.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="923b"></span>923B</td>
+<td class="instruction">DEFM "1986 MASTERTRONIC LTD."</td>
+<td class="comment-1" rowspan="1"><img alt="mastertronic" src="../images/font/mastertronic.png" />.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9251"></span>9251</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9252"></span>9252</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9211.html">9211</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9218">Map</a></td>
+<td class="next">
+Next: <a href="9253.html">9253</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/9218.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

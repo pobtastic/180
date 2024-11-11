@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at B7E1</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B7A0.html">B7A0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b7e1">Map</a></td>
+<td class="next">
+Next: <a href="B83D.html">B83D</a>
+</td>
+</tr>
+</table>
+<div class="description">B7E1: Animation: Throwing Dart</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="AB2E.html">Messaging_DartNumber</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Animation_ThrowingDart</td>
+<td class="address-2"><span id="b7e1"></span>B7E1</td>
+<td class="instruction">LD E,$04</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=04.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7e3"></span>B7E3</td>
+<td class="instruction">CALL <a href="A875.html">$A875</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A875.html">A875</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7e6"></span>B7E6</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="2">Call <a href="B83D.html">B83D</a> if <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7e7"></span>B7E7</td>
+<td class="instruction">CALL Z,<a href="B83D.html">$B83D</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="b7ea"></span>
+<div class="comments">
+<div class="paragraph">
+First show the playing "lining up" the shot...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7ea"></span>B7EA</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the number of times to loop the animation.</td>
+</tr>
+<tr>
+<td class="asm-label">Aiming_Loop</td>
+<td class="address-2"><span id="b7ec"></span>B7EC</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Stash the animation loop counter on the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="b7ed"></span>
+<div class="comments">
+<div class="paragraph">
+Frame 01.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7ed"></span>B7ED</td>
+<td class="instruction">LD DE,$C644</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C644.html">Graphics_Throwing_01</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7f0"></span>B7F0</td>
+<td class="instruction">CALL <a href="B910.html">Print_ThrowingDart_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B910.html">Print_ThrowingDart_Frame</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="b7f3"></span>
+<div class="comments">
+<div class="paragraph">
+Frame 02.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7f3"></span>B7F3</td>
+<td class="instruction">LD DE,$C68C</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C644.html#c68c">Graphics_Throwing_02</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7f6"></span>B7F6</td>
+<td class="instruction">CALL <a href="B910.html">Print_ThrowingDart_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B910.html">Print_ThrowingDart_Frame</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="b7f9"></span>
+<div class="comments">
+<div class="paragraph">
+Frame 03.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7f9"></span>B7F9</td>
+<td class="instruction">LD DE,$C6D4</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C644.html#c6d4">Graphics_Throwing_03</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7fc"></span>B7FC</td>
+<td class="instruction">CALL <a href="B910.html">Print_ThrowingDart_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B910.html">Print_ThrowingDart_Frame</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="b7ff"></span>
+<div class="comments">
+<div class="paragraph">
+Frame 02.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b7ff"></span>B7FF</td>
+<td class="instruction">LD DE,$C68C</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C644.html#c68c">Graphics_Throwing_02</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b802"></span>B802</td>
+<td class="instruction">CALL <a href="B910.html">Print_ThrowingDart_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B910.html">Print_ThrowingDart_Frame</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b805"></span>B805</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the animation loop counter from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b806"></span>B806</td>
+<td class="instruction">DJNZ <a href="B7E1.html#b7ec">Aiming_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the animation loop counter by one and loop back to <a href="B7E1.html#b7ec">Aiming_Loop</a> until the counter is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="b808"></span>
+<div class="comments">
+<div class="paragraph">
+Show the last frame (frame 01 again).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b808"></span>B808</td>
+<td class="instruction">LD DE,$C644</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C644.html">Graphics_Throwing_01</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b80b"></span>B80B</td>
+<td class="instruction">CALL <a href="B910.html">Print_ThrowingDart_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B910.html">Print_ThrowingDart_Frame</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b80e"></span>B80E</td>
+<td class="instruction">LD B,$12</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=12.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b810"></span>B810</td>
+<td class="instruction">LD HL,$40F2</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=40F2 (screen buffer location).</td>
+</tr>
+<tr>
+<td class="asm-label">Animation_ThrowingDart_0</td>
+<td class="address-2"><span id="b813"></span>B813</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b814"></span>B814</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b815"></span>B815</td>
+<td class="instruction">CALL <a href="B92F.html">$B92F</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B92F.html">B92F</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b818"></span>B818</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">HL</span> and <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b819"></span>B819</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b81a"></span>B81A</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b81b"></span>B81B</td>
+<td class="instruction">DJNZ <a href="B7E1.html#b813">Animation_ThrowingDart_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B7E1.html#b813">Animation_ThrowingDart_0</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b81d"></span>B81D</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b81e"></span>B81E</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=03.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b820"></span>B820</td>
+<td class="instruction">LD DE,$C71C</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C71C.html">Graphics_Dart</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Animation_ThrowingDart_1</td>
+<td class="address-2"><span id="b823"></span>B823</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b824"></span>B824</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b825"></span>B825</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b826"></span>B826</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b827"></span>B827</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b828"></span>B828</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b829"></span>B829</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b82a"></span>B82A</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b82b"></span>B82B</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b82c"></span>B82C</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b82d"></span>B82D</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b82e"></span>B82E</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b82f"></span>B82F</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b830"></span>B830</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b831"></span>B831</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b832"></span>B832</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b833"></span>B833</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b834"></span>B834</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b835"></span>B835</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b836"></span>B836</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b837"></span>B837</td>
+<td class="instruction">DJNZ <a href="B7E1.html#b823">Animation_ThrowingDart_1</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B7E1.html#b823">Animation_ThrowingDart_1</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b839"></span>B839</td>
+<td class="instruction">CALL <a href="A8EA.html">$A8EA</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A8EA.html">A8EA</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b83c"></span>B83C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B7A0.html">B7A0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b7e1">Map</a></td>
+<td class="next">
+Next: <a href="B83D.html">B83D</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/B7E1.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

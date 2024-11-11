@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 43106</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43089.html">43089</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43106">Map</a></td>
+<td class="next">
+Next: <a href="43119.html">43119</a>
+</td>
+</tr>
+</table>
+<div class="description">43106: Calculate Attribute Buffer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="37459.html">37459</a>, <a href="37602.html">37602</a>, <a href="37966.html">MainMenu_ColourDartPointer</a>, <a href="38072.html">ClearDartPointerAttributes</a> and <a href="45616.html">45616</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">H</td>
+<td class="register-desc">Source Y position</td>
+</tr>
+<tr>
+<td class="register">L</td>
+<td class="register-desc">Source X position</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Attribute buffer location</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43106"></span>
+<div class="comments">
+<div class="paragraph">
+Example inputs/ outputs: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">X Position</th>
+<th colspan="1" rowspan="1">Y Position</th>
+<th colspan="1" rowspan="1">Output</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">22528</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">22560</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1">22592</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">22536</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">22568</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1">22600</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">22544</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">22576</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1">22608</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">24</td>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">22552</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">24</td>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">22584</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">24</td>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1">22616</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">32</td>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">22560</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">32</td>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1">22592</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">32</td>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1">22624</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CalculateAttributeBuffer</td>
+<td class="address-2"><span id="43106"></span>43106</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">Store the X position in <span class="register">A</span> for now.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43107"></span>43107</td>
+<td class="instruction">LD L,H</td>
+<td class="comment-1" rowspan="1">Move the Y position into <span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43108"></span>43108</td>
+<td class="instruction">LD H,3</td>
+<td class="comment-1" rowspan="1">Set the high byte of <span class="register">HL</span> to 3.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43110"></span>43110</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="2">Multiply <span class="register">HL</span> by 4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43111"></span>43111</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43112"></span>
+<div class="comments">
+<div class="paragraph">
+Small correction.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43112"></span>43112</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43113"></span>43113</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="3">Multiply <span class="register">HL</span> by 8.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43114"></span>43114</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43115"></span>43115</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43116"></span>43116</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="2">Add the original X position for the low byte of the attribute buffer memory location.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43117"></span>43117</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43118"></span>43118</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43089.html">43089</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43106">Map</a></td>
+<td class="next">
+Next: <a href="43119.html">43119</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/43106.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

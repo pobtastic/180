@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 46970</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46945.html">46945</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46970">Map</a></td>
+<td class="next">
+Next: <a href="47008.html">47008</a>
+</td>
+</tr>
+</table>
+<div class="description">46970: Routine at B77A</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="40258.html">40258</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46970"></span>46970</td>
+<td class="instruction">LD DE,(39619)</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="39619.html">39619</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46974"></span>46974</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=8.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46976"></span>46976</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="3">Jump to <a href="46970.html#47004">47004</a> if <span class="register">D</span> is less than 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46977"></span>46977</td>
+<td class="instruction">CP 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46979"></span>46979</td>
+<td class="instruction">JR C,<a href="46970.html#47004">47004</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46981"></span>46981</td>
+<td class="instruction">CP 24</td>
+<td class="comment-1" rowspan="2">Jump to <a href="46970.html#47004">47004</a> if <span class="register">D</span> is greater than or equal to 24.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46983"></span>46983</td>
+<td class="instruction">JR NC,<a href="46970.html#47004">47004</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46985"></span>46985</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="3">Stash <span class="register">BC</span>, <span class="register">DE</span> and <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46986"></span>46986</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46987"></span>46987</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46988"></span>46988</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46989"></span>46989</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46990"></span>46990</td>
+<td class="instruction">CALL <a href="43182.html">CalculateScreenBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43182.html">CalculateScreenBuffer</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46993"></span>46993</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46994"></span>46994</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46995"></span>46995</td>
+<td class="instruction">CALL <a href="43197.html">CalculateDartBoardAddress</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43197.html">CalculateDartBoardAddress</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46998"></span>46998</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46999"></span>46999</td>
+<td class="instruction">CALL <a href="47008.html">47008</a></td>
+<td class="comment-1" rowspan="1">Call <a href="47008.html">47008</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47002"></span>47002</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47003"></span>47003</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47004"></span>47004</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47005"></span>47005</td>
+<td class="instruction">DJNZ <a href="46970.html#46976">46976</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="46970.html#46976">46976</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47007"></span>47007</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46945.html">46945</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46970">Map</a></td>
+<td class="next">
+Next: <a href="47008.html">47008</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/46970.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

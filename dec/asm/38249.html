@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 38249</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38136.html">38136</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38249">Map</a></td>
+<td class="next">
+Next: <a href="38313.html">38313</a>
+</td>
+</tr>
+</table>
+<div class="description">38249: Redefine Key</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38136.html">Messaging_RedefineKeys</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">RedefineKey</td>
+<td class="address-2"><span id="38249"></span>38249</td>
+<td class="instruction">CALL <a href="38536.html">38536</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38536.html">38536</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38252"></span>38252</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="38249.html">RedefineKey</a> if <span class="register">A</span> is not equal to zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38253"></span>38253</td>
+<td class="instruction">JR NZ,<a href="38249.html#38249">RedefineKey</a></td>
+</tr>
+<tr>
+<td class="asm-label">RedefineKey_0</td>
+<td class="address-2"><span id="38255"></span>38255</td>
+<td class="instruction">CALL <a href="38536.html">38536</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38536.html">38536</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38258"></span>38258</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="38249.html#38255">RedefineKey_0</a> if <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38259"></span>38259</td>
+<td class="instruction">JR Z,<a href="38249.html#38255">RedefineKey_0</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38261"></span>38261</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="3">Jump to <a href="38249.html#38272">RedefineKey_1</a> if <span class="register">C</span> is less than 4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38262"></span>38262</td>
+<td class="instruction">CP 4</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38264"></span>38264</td>
+<td class="instruction">JR C,<a href="38249.html#38272">RedefineKey_1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38266"></span>38266</td>
+<td class="instruction">LD A,(63588)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="38249.html">RedefineKey</a> if *<a href="63529.html#63588">63588</a> is not equal to zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38269"></span>38269</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38270"></span>38270</td>
+<td class="instruction">JR NZ,<a href="38249.html#38249">RedefineKey</a></td>
+</tr>
+<tr>
+<td class="asm-label">RedefineKey_1</td>
+<td class="address-2"><span id="38272"></span>38272</td>
+<td class="instruction">LD HL,39513</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39513.html">39513</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38275"></span>38275</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=8.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38277"></span>38277</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="3">Jump to <a href="38249.html">RedefineKey</a> if <span class="register">C</span> is equal to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">RedefineKey_2</td>
+<td class="address-2"><span id="38278"></span>38278</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38279"></span>38279</td>
+<td class="instruction">JR Z,<a href="38249.html#38249">RedefineKey</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38281"></span>38281</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="3">Increment <span class="register">HL</span> by three.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38282"></span>38282</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38283"></span>38283</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38284"></span>38284</td>
+<td class="instruction">DJNZ <a href="38249.html#38278">RedefineKey_2</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="38249.html#38278">RedefineKey_2</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38286"></span>38286</td>
+<td class="instruction">LD (IX+0),E</td>
+<td class="comment-1" rowspan="1">Write <span class="register">E</span> to *<span class="register">IX</span>+0.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38289"></span>38289</td>
+<td class="instruction">LD (IX+1),D</td>
+<td class="comment-1" rowspan="1">Write <span class="register">D</span> to *<span class="register">IX</span>+1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38292"></span>38292</td>
+<td class="instruction">LD (IX+2),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">IX</span>+2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38295"></span>38295</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="3">Increment <span class="register">IX</span> by three.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38297"></span>38297</td>
+<td class="instruction">INC IX</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38299"></span>38299</td>
+<td class="instruction">INC IX</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38301"></span>38301</td>
+<td class="instruction">CALL <a href="37317.html">Print_Key</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37317.html">Print_Key</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38304"></span>38304</td>
+<td class="instruction">LD HL,63512</td>
+<td class="comment-1" rowspan="2">Write 18 to *<a href="63512.html">63512</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38307"></span>38307</td>
+<td class="instruction">LD (HL),18</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38309"></span>38309</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="3">Increment *<a href="63512.html#63513">63513</a> by two.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38310"></span>38310</td>
+<td class="instruction">INC (HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38311"></span>38311</td>
+<td class="instruction">INC (HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38312"></span>38312</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38136.html">38136</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38249">Map</a></td>
+<td class="next">
+Next: <a href="38313.html">38313</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/38249.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

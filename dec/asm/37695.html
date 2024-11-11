@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 37695</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37637.html">37637</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#37695">Map</a></td>
+<td class="next">
+Next: <a href="37966.html">37966</a>
+</td>
+</tr>
+</table>
+<div class="description">37695: Main Menu</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="37251.html">GameEntryPoint</a>, <a href="41308.html">Messaging_YouWin</a>, <a href="43256.html">43256</a> and <a href="45419.html">45419</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">MainMenu</td>
+<td class="address-2"><span id="37695"></span>37695</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="3">Write 0 to; <ul class="">
+<li>*<a href="39711.html#39723">39723</a></li>
+<li>*<a href="39604.html#39607">39607</a></li>
+</ul></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37696"></span>37696</td>
+<td class="instruction">LD (39723),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37699"></span>37699</td>
+<td class="instruction">LD (39607),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37702"></span>37702</td>
+<td class="instruction">CALL <a href="51998.html">51998</a></td>
+<td class="comment-1" rowspan="1">Call <a href="51998.html">51998</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37705"></span>
+<div class="comments">
+<div class="paragraph">
+Zero the displayed score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37705"></span>37705</td>
+<td class="instruction">LD HL,37294</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="37281.html#37291">37294</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37708"></span>37708</td>
+<td class="instruction">LD DE,37295</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="37281.html#37291">37295</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37711"></span>37711</td>
+<td class="instruction">LD BC,5</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0005.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37714"></span>37714</td>
+<td class="instruction">LD (HL),48</td>
+<td class="comment-1" rowspan="1">Write "&#48;" to the first digit in <a href="37281.html#37291">Messaging_Score</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37716"></span>37716</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy the zero to the next five digits.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37718"></span>
+<div class="comments">
+<div class="paragraph">
+SIM(start=$9356,stop=$93D1) <table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="main-menu-1" src="../../images/scr/main-menu-1.png" /></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+Print the menu options.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37718"></span>37718</td>
+<td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37721"></span>37721</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">CLEAR SCREEN.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37722"></span>37722</td>
+<td class="instruction">DEFB 16,0</td>
+<td class="comment-1" rowspan="1">INK: 
+
+
+BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37724"></span>37724</td>
+<td class="instruction">DEFB 17,0</td>
+<td class="comment-1" rowspan="1">PAPER: 
+
+
+BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37726"></span>37726</td>
+<td class="instruction">DEFB 22,5,7</td>
+<td class="comment-1" rowspan="1">PRINT AT: 5, 7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37729"></span>37729</td>
+<td class="instruction">DEFM "1 KEYBOARD"</td>
+<td class="comment-1" rowspan="1"><img alt="1-keyboard" src="../../images/font/1-keyboard.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37739"></span>37739</td>
+<td class="instruction">DEFB 22,7,7</td>
+<td class="comment-1" rowspan="1">PRINT AT: 7, 7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37742"></span>37742</td>
+<td class="instruction">DEFM "2 KEMPSTON JOYSTICK"</td>
+<td class="comment-1" rowspan="1"><img alt="2-kempston-joystick" src="../../images/font/2-kempston-joystick.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37761"></span>37761</td>
+<td class="instruction">DEFB 22,9,7</td>
+<td class="comment-1" rowspan="1">PRINT AT: 9, 7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37764"></span>37764</td>
+<td class="instruction">DEFM "3 INTERFACE TWO "</td>
+<td class="comment-1" rowspan="1"><img alt="3-interface-two" src="../../images/font/3-interface-two.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37780"></span>37780</td>
+<td class="instruction">DEFB 22,11,7</td>
+<td class="comment-1" rowspan="1">PRINT AT: 11, 7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37783"></span>37783</td>
+<td class="instruction">DEFM "4 CURSOR JOYSTICK "</td>
+<td class="comment-1" rowspan="1"><img alt="4-cursor-joystick" src="../../images/font/4-cursor-joystick.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37801"></span>37801</td>
+<td class="instruction">DEFB 22,13,7</td>
+<td class="comment-1" rowspan="1">PRINT AT: 13, 7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37804"></span>37804</td>
+<td class="instruction">DEFM "5 REDEFINE KEYS"</td>
+<td class="comment-1" rowspan="1"><img alt="5-redefine-keys" src="../../images/font/5-redefine-keys.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37819"></span>37819</td>
+<td class="instruction">DEFB 22,18,7</td>
+<td class="comment-1" rowspan="1">PRINT AT: 18, 7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37822"></span>37822</td>
+<td class="instruction">DEFM "0 START GAME"</td>
+<td class="comment-1" rowspan="1"><img alt="0-start-game" src="../../images/font/0-start-game.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37834"></span>37834</td>
+<td class="instruction">DEFB 255</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37835"></span>
+<div class="comments">
+<div class="paragraph">
+Display the header and footer messaging.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37835"></span>37835</td>
+<td class="instruction">CALL <a href="37400.html">Messaging_HeaderFooter</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37400.html">Messaging_HeaderFooter</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37838"></span>37838</td>
+<td class="instruction">CALL <a href="37302.html">SetAttributeBuffer_WhiteInk</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37302.html">SetAttributeBuffer_WhiteInk</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37841"></span>37841</td>
+<td class="instruction">LD HL,1281</td>
+<td class="comment-1" rowspan="1">Set the initial position of the dart pointer to <span class="register">HL</span> (1281).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37844"></span>37844</td>
+<td class="instruction">LD B,4</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the width of the dart pointer.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37846"></span>
+<div class="comments">
+<div class="paragraph">
+Clear the attributes of all possible positions of the dart pointer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ClearDartPointerAttributePositions</td>
+<td class="address-2"><span id="37846"></span>37846</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash the dart width counter and dart co-ordinates on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37847"></span>37847</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37848"></span>37848</td>
+<td class="instruction">CALL <a href="38072.html">ClearDartPointerAttributes</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38072.html">ClearDartPointerAttributes</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37851"></span>37851</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the dart co-ordinates from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37852"></span>37852</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="2">Move down two rows (the height of the dart pointer).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37853"></span>37853</td>
+<td class="instruction">INC H</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37854"></span>37854</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the dart width counter from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37855"></span>37855</td>
+<td class="instruction">DJNZ <a href="37695.html#37846">ClearDartPointerAttributePositions</a></td>
+<td class="comment-1" rowspan="1">Decrease the dart width counter by one and loop back to <a href="37695.html#37846">ClearDartPointerAttributePositions</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37857"></span>37857</td>
+<td class="instruction">LD DE,1280</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=1280.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37860"></span>37860</td>
+<td class="instruction">LD B,4</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=4.</td>
+</tr>
+<tr>
+<td class="asm-label">MainMenu_0</td>
+<td class="address-2"><span id="37862"></span>37862</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37863"></span>37863</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37864"></span>37864</td>
+<td class="instruction">CALL <a href="37637.html">MainMenu_PrintDartPointer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37637.html">MainMenu_PrintDartPointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37867"></span>37867</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37868"></span>37868</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37869"></span>37869</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">D</span> by two.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37870"></span>37870</td>
+<td class="instruction">INC D</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37871"></span>37871</td>
+<td class="instruction">DJNZ <a href="37695.html#37862">MainMenu_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="37695.html#37862">MainMenu_0</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label">MainMenu_1</td>
+<td class="address-2"><span id="37873"></span>37873</td>
+<td class="instruction">CALL <a href="37966.html">MainMenu_ColourDartPointer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37966.html">MainMenu_ColourDartPointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37876"></span>37876</td>
+<td class="instruction">CALL <a href="38495.html">38495</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38495.html">38495</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37879"></span>37879</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37880"></span>37880</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37881"></span>37881</td>
+<td class="instruction">JR Z,<a href="37695.html#37873">MainMenu_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="37695.html#37873">MainMenu_1</a> if <span class="register">D</span> is equal to 4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37883"></span>37883</td>
+<td class="instruction">CP 48</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37929">MainMenu_3</a> if <span class="register">A</span> is not equal to 48.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37885"></span>37885</td>
+<td class="instruction">JR NZ,<a href="37695.html#37929">MainMenu_3</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37887"></span>37887</td>
+<td class="instruction">CALL <a href="39234.html">39234</a></td>
+<td class="comment-1" rowspan="1">Call <a href="39234.html">39234</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37890"></span>37890</td>
+<td class="instruction">LD A,(39414)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="39414.html">DartPointer_Position</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37893"></span>37893</td>
+<td class="instruction">LD (39413),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="39413.html">39413</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37896"></span>37896</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37897"></span>37897</td>
+<td class="instruction">ADD A,5</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=5.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37899"></span>37899</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37900"></span>37900</td>
+<td class="instruction">LD E,1</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37902"></span>37902</td>
+<td class="instruction">LD B,62</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=62.</td>
+</tr>
+<tr>
+<td class="asm-label">MainMenu_2</td>
+<td class="address-2"><span id="37904"></span>37904</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37905"></span>37905</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37906"></span>37906</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37907"></span>37907</td>
+<td class="instruction">CALL <a href="37637.html">MainMenu_PrintDartPointer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37637.html">MainMenu_PrintDartPointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37910"></span>37910</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37911"></span>37911</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37912"></span>37912</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37913"></span>37913</td>
+<td class="instruction">CALL <a href="37966.html#37975">MainMenu_ColourDartPointer_0</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37966.html#37975">MainMenu_ColourDartPointer_0</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37916"></span>37916</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37917"></span>37917</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37918"></span>37918</td>
+<td class="instruction">CALL <a href="37459.html">37459</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37459.html">37459</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37921"></span>37921</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37922"></span>37922</td>
+<td class="instruction">INC E</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37923"></span>37923</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37924"></span>37924</td>
+<td class="instruction">DJNZ <a href="37695.html#37904">MainMenu_2</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="37695.html#37904">MainMenu_2</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37926"></span>37926</td>
+<td class="instruction">JP <a href="38118.html">38118</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="38118.html">38118</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">MainMenu_3</td>
+<td class="address-2"><span id="37929"></span>37929</td>
+<td class="instruction">CP 54</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">MainMenu_1</a> if <span class="register">A</span> is greater than 54.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37931"></span>37931</td>
+<td class="instruction">JP NC,<a href="37695.html#37873">MainMenu_1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37934"></span>37934</td>
+<td class="instruction">CP 48</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">MainMenu_1</a> if <span class="register">A</span> is less than 48.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37936"></span>37936</td>
+<td class="instruction">JP C,<a href="37695.html#37873">MainMenu_1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37939"></span>37939</td>
+<td class="instruction">SUB 49</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=49.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37941"></span>37941</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37942"></span>37942</td>
+<td class="instruction">CALL <a href="38063.html">ClearCurrentDartPointerAttributes</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38063.html">ClearCurrentDartPointerAttributes</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37945"></span>37945</td>
+<td class="instruction">CALL <a href="39234.html">39234</a></td>
+<td class="comment-1" rowspan="1">Call <a href="39234.html">39234</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37948"></span>37948</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37949"></span>37949</td>
+<td class="instruction">LD (39414),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="39414.html">DartPointer_Position</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37952"></span>37952</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">MainMenu_1</a> if <span class="register">A</span> is not equal to 4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37954"></span>37954</td>
+<td class="instruction">JP NZ,<a href="37695.html#37873">MainMenu_1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37957"></span>37957</td>
+<td class="instruction">CALL <a href="38136.html">Messaging_RedefineKeys</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38136.html">Messaging_RedefineKeys</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37960"></span>37960</td>
+<td class="instruction">CALL <a href="38099.html">38099</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38099.html">38099</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37963"></span>37963</td>
+<td class="instruction">JP <a href="37695.html#37695">MainMenu</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="37695.html">MainMenu</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37637.html">37637</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#37695">Map</a></td>
+<td class="next">
+Next: <a href="37966.html">37966</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/37695.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

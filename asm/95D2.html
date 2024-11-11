@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 95D2</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="95BE.html">95BE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#95d2">Map</a></td>
+<td class="next">
+Next: <a href="95ED.html">95ED</a>
+</td>
+</tr>
+</table>
+<div class="description">95D2: Create Interrupt Byte Jump Table</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="95A9.html">95A9</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CreateInterruptByteJumpTable</td>
+<td class="address-2"><span id="95d2"></span>95D2</td>
+<td class="instruction">LD HL,$FE00</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="FE00.html">InterruptLowOrderByteJumpTable</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95d5"></span>95D5</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="2"><span class="register">I</span>=FE.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95d6"></span>95D6</td>
+<td class="instruction">LD I,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95d8"></span>95D8</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=FD.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="95d9"></span>
+<div class="comments">
+<div class="paragraph">
+Write FD from <a href="FE00.html">InterruptLowOrderByteJumpTable</a> for 0100 bytes. All will become clear soon...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CreateInterruptByteJumpTable_Loop</td>
+<td class="address-2"><span id="95d9"></span>95D9</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95da"></span>95DA</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95db"></span>95DB</td>
+<td class="instruction">JR NZ,<a href="95D2.html#95d9">CreateInterruptByteJumpTable_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="95D2.html#95d9">CreateInterruptByteJumpTable_Loop</a> if <span class="register">L</span> is not equal to 00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95dd"></span>95DD</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95de"></span>95DE</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="95df"></span>
+<div class="comments">
+<div class="paragraph">
+Write <code>JP <a href="95ED.html">InterruptRoutine</a></code> to *<a href="FDFD.html">AliasInterruptRedirect</a>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95df"></span>95DF</td>
+<td class="instruction">LD A,$C3</td>
+<td class="comment-1" rowspan="2">Write <code>JP</code> (C3) to *<a href="FDFD.html">AliasInterruptRedirect</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95e1"></span>95E1</td>
+<td class="instruction">LD ($FDFD),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95e4"></span>95E4</td>
+<td class="instruction">LD HL,$95ED</td>
+<td class="comment-1" rowspan="2">Write <a href="95ED.html">InterruptRoutine</a> to *<a href="FDFD.html">FDFE</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95e7"></span>95E7</td>
+<td class="instruction">LD ($FDFE),HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95ea"></span>95EA</td>
+<td class="instruction">IM 2</td>
+<td class="comment-1" rowspan="1">Set interrupt mode 02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="95ec"></span>95EC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="95BE.html">95BE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#95d2">Map</a></td>
+<td class="next">
+Next: <a href="95ED.html">95ED</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/95D2.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

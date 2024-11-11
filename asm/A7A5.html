@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at A7A5</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="A774.html">A774</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#a7a5">Map</a></td>
+<td class="next">
+Next: <a href="A7F8.html">A7F8</a>
+</td>
+</tr>
+</table>
+<div class="description">A7A5: Print Play Area</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="9D33.html">9D33</a>, <a href="A15C.html">Messaging_YouWin</a>, <a href="AA0A.html">AA0A</a>, <a href="AA5A.html">AA5A</a>, <a href="AA7B.html">AA7B</a> and <a href="AADC.html">AADC</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Print_PlayArea</td>
+<td class="address-2"><span id="a7a5"></span>A7A5</td>
+<td class="instruction">LD HL,$6000</td>
+<td class="comment-1" rowspan="4">Copy 1800 bytes of data from *<a href="6000.html">DartBoard</a> to <a href="4000.html">Loading</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7a8"></span>A7A8</td>
+<td class="instruction">LD DE,$4000</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7ab"></span>A7AB</td>
+<td class="instruction">LD BC,$1800</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7ae"></span>A7AE</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7b0"></span>A7B0</td>
+<td class="instruction">LD B,$18</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=18.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7b2"></span>A7B2</td>
+<td class="instruction">LD HL,$5800</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=5800 (screen buffer location).</td>
+</tr>
+<tr>
+<td class="asm-label">Print_PlayArea_Loop</td>
+<td class="address-2"><span id="a7b5"></span>A7B5</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7b6"></span>A7B6</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7b7"></span>A7B7</td>
+<td class="instruction">LD BC,$0008</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0008.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7ba"></span>A7BA</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">H</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7bb"></span>A7BB</td>
+<td class="instruction">LD E,L</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7bc"></span>A7BC</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7bd"></span>A7BD</td>
+<td class="instruction">LD (HL),$47</td>
+<td class="comment-1" rowspan="1">Write INK:
+WHITE,
+PAPER:
+BLACK
+(BRIGHT)
+ to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7bf"></span>A7BF</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">LDIR.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7c1"></span>A7C1</td>
+<td class="instruction">LD BC,$0017</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0017.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7c4"></span>A7C4</td>
+<td class="instruction">LD (HL),$70</td>
+<td class="comment-1" rowspan="1">Write INK:
+BLACK,
+PAPER:
+YELLOW
+(BRIGHT)
+ to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7c6"></span>A7C6</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">LDIR.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7c8"></span>A7C8</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=0020.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7cb"></span>A7CB</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7cc"></span>A7CC</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7cd"></span>A7CD</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7ce"></span>A7CE</td>
+<td class="instruction">DJNZ <a href="A7A5.html#a7b5">Print_PlayArea_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A7A5.html#a7b5">Print_PlayArea_Loop</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7d0"></span>A7D0</td>
+<td class="instruction">LD A,($9AB7)</td>
+<td class="comment-1" rowspan="3">Return if *<a href="9AB4.html#9ab7">9AB7</a> is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7d3"></span>A7D3</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7d4"></span>A7D4</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7d5"></span>A7D5</td>
+<td class="instruction">LD A,($9AA6)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9A6F.html#9aa6">9AA6</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7d8"></span>A7D8</td>
+<td class="instruction">ADD A,$30</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=30.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7da"></span>A7DA</td>
+<td class="instruction">LD ($A7F1),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="A7A5.html#a7f1">A7F1</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7dd"></span>A7DD</td>
+<td class="instruction">LD A,($9AA7)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9A6F.html#9aa7">9AA7</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7e0"></span>A7E0</td>
+<td class="instruction">ADD A,$30</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=30.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7e2"></span>A7E2</td>
+<td class="instruction">LD ($A7F5),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="A7A5.html#a7f5">A7F5</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7e5"></span>A7E5</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7e8"></span>A7E8</td>
+<td class="instruction">DEFB $11,$00</td>
+<td class="comment-1" rowspan="1">PAPER: 
+
+
+BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7ea"></span>A7EA</td>
+<td class="instruction">DEFB $10,$06</td>
+<td class="comment-1" rowspan="1">INK: 
+
+
+YELLOW.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7ec"></span>A7EC</td>
+<td class="instruction">DEFB $12,$01</td>
+<td class="comment-1" rowspan="1">FLASH: ON.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7ee"></span>A7EE</td>
+<td class="instruction">DEFB $16,$01,$01</td>
+<td class="comment-1" rowspan="1">PRINT AT: 01, 01.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7f1"></span>A7F1</td>
+<td class="instruction">DEFM " "</td>
+<td class="comment-1" rowspan="1">" ".</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7f2"></span>A7F2</td>
+<td class="instruction">DEFB $16,$16,$01</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 01.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7f5"></span>A7F5</td>
+<td class="instruction">DEFM " "</td>
+<td class="comment-1" rowspan="1">" ".</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7f6"></span>A7F6</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a7f7"></span>A7F7</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="A774.html">A774</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#a7a5">Map</a></td>
+<td class="next">
+Next: <a href="A7F8.html">A7F8</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/A7A5.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

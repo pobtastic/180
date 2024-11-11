@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at AD82</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="AD5C.html">AD5C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ad82">Map</a></td>
+<td class="next">
+Next: <a href="AE04.html">AE04</a>
+</td>
+</tr>
+</table>
+<div class="description">AD82: Routine at AD82</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="ACFB.html">ACFB</a> and <a href="AD5C.html">AD5C</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ad82"></span>AD82</td>
+<td class="instruction">CP $53</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD82.html#ad97">AD97</a> if <span class="register">A</span> is equal to 53.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad84"></span>AD84</td>
+<td class="instruction">JR Z,<a href="AD82.html#ad97">$AD97</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad86"></span>AD86</td>
+<td class="instruction">CP $44</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD82.html#adad">ADAD</a> if <span class="register">A</span> is equal to 44.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad88"></span>AD88</td>
+<td class="instruction">JR Z,<a href="AD82.html#adad">$ADAD</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad8a"></span>AD8A</td>
+<td class="instruction">CP $54</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD82.html#adc3">ADC3</a> if <span class="register">A</span> is equal to 54.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad8c"></span>AD8C</td>
+<td class="instruction">JR Z,<a href="AD82.html#adc3">$ADC3</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad8e"></span>AD8E</td>
+<td class="instruction">CP $4D</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD82.html#add9">ADD9</a> if <span class="register">A</span> is equal to 4D.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad90"></span>AD90</td>
+<td class="instruction">JR Z,<a href="AD82.html#add9">$ADD9</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad92"></span>AD92</td>
+<td class="instruction">CP $42</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD82.html#adee">ADEE</a> if <span class="register">A</span> is equal to 42.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad94"></span>AD94</td>
+<td class="instruction">JR Z,<a href="AD82.html#adee">$ADEE</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad96"></span>AD96</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ad97"></span>AD97</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="AD82.html#ada2">ADA3</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad98"></span>AD98</td>
+<td class="instruction">LD ($ADA3),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad9b"></span>AD9B</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<a href="AD82.html#ada2">ADA4</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad9c"></span>AD9C</td>
+<td class="instruction">LD ($ADA4),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad9f"></span>AD9F</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ada2"></span>ADA2</td>
+<td class="instruction">DEFB $16,$16,$00</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ada5"></span>ADA5</td>
+<td class="instruction">DEFM "SINGLE"</td>
+<td class="comment-1" rowspan="1">"SINGLE".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adab"></span>ADAB</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adac"></span>ADAC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="adad"></span>ADAD</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="AD82.html#adb8">ADB9</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adae"></span>ADAE</td>
+<td class="instruction">LD ($ADB9),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adb1"></span>ADB1</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<a href="AD82.html#adb8">ADBA</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adb2"></span>ADB2</td>
+<td class="instruction">LD ($ADBA),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adb5"></span>ADB5</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adb8"></span>ADB8</td>
+<td class="instruction">DEFB $16,$16,$00</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adbb"></span>ADBB</td>
+<td class="instruction">DEFM "DOUBLE"</td>
+<td class="comment-1" rowspan="1">"DOUBLE".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adc1"></span>ADC1</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adc2"></span>ADC2</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="adc3"></span>ADC3</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="AD82.html#adce">ADCF</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adc4"></span>ADC4</td>
+<td class="instruction">LD ($ADCF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adc7"></span>ADC7</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<a href="AD82.html#adce">ADD0</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adc8"></span>ADC8</td>
+<td class="instruction">LD ($ADD0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adcb"></span>ADCB</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adce"></span>ADCE</td>
+<td class="instruction">DEFB $16,$16,$00</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="add1"></span>ADD1</td>
+<td class="instruction">DEFM "TREBLE"</td>
+<td class="comment-1" rowspan="1">"TREBLE".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="add7"></span>ADD7</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="add8"></span>ADD8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="add9"></span>ADD9</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="addc"></span>ADDC</td>
+<td class="instruction">DEFB $16,$17,$10</td>
+<td class="comment-1" rowspan="1">PRINT AT: 17, 10.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="addf"></span>ADDF</td>
+<td class="instruction">DEFM " MISSED BOARD"</td>
+<td class="comment-1" rowspan="1">" MISSED BOARD".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adec"></span>ADEC</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="aded"></span>ADED</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="adee"></span>ADEE</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="AD82.html#adf9">ADFA</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adef"></span>ADEF</td>
+<td class="instruction">LD ($ADFA),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adf2"></span>ADF2</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<a href="AD82.html#adf9">ADFB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adf3"></span>ADF3</td>
+<td class="instruction">LD ($ADFB),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adf6"></span>ADF6</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adf9"></span>ADF9</td>
+<td class="instruction">DEFB $16,$16,$00</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="adfc"></span>ADFC</td>
+<td class="instruction">DEFM "BULL  "</td>
+<td class="comment-1" rowspan="1">"BULL&#160;&#160;".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae02"></span>AE02</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ae03"></span>AE03</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="AD5C.html">AD5C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ad82">Map</a></td>
+<td class="next">
+Next: <a href="AE04.html">AE04</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/AD82.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

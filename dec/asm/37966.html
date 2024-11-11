@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 37966</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37695.html">37695</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#37966">Map</a></td>
+<td class="next">
+Next: <a href="38063.html">38063</a>
+</td>
+</tr>
+</table>
+<div class="description">37966: Main Menu: Colour Dart Pointer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="37695.html">MainMenu</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37966"></span>
+<div class="comments">
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="dart-pointer-colour" src="../../images/scr/dart-pointer-colour.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">MainMenu_ColourDartPointer</td>
+<td class="address-2"><span id="37966"></span>37966</td>
+<td class="instruction">LD A,(39414)</td>
+<td class="comment-1" rowspan="1">Fetch *<a href="39414.html">DartPointer_Position</a> and store it in <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37969"></span>37969</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1">Double the value as the entries have spacing between them.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37970"></span>37970</td>
+<td class="instruction">ADD A,5</td>
+<td class="comment-1" rowspan="1">Add 5 as the entries start five rows from the top of the screen.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37972"></span>37972</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">Store the result in <span class="register">H</span> as the Y co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37973"></span>37973</td>
+<td class="instruction">LD L,1</td>
+<td class="comment-1" rowspan="1">Store 1 in <span class="register">L</span> as the X co-ordinate.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37975"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="37695.html">MainMenu</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">MainMenu_ColourDartPointer_0</td>
+<td class="address-2"><span id="37975"></span>37975</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3">Return if <span class="register">L</span> is greater than 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37976"></span>37976</td>
+<td class="instruction">CP 32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37978"></span>37978</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37979"></span>37979</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash the dart attribute co-ordinates on the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37980"></span>
+<div class="comments">
+<div class="paragraph">
+First colour the flight.
+</div>
+<div class="paragraph">
+Convert the co-ordinates to an actual attribute buffer memory location.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37980"></span>37980</td>
+<td class="instruction">CALL <a href="43106.html">CalculateAttributeBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43106.html">CalculateAttributeBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37983"></span>37983</td>
+<td class="instruction">LD B,69</td>
+<td class="comment-1" rowspan="1">Set the flight colour of INK:
+CYAN,
+PAPER:
+BLACK
+(BRIGHT)
+ in <span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37985"></span>37985</td>
+<td class="instruction">LD DE,32</td>
+<td class="comment-1" rowspan="1">Set one row length of 0032 in <span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37988"></span>37988</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+CYAN,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37989"></span>37989</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Move down one row.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37990"></span>37990</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+CYAN,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37991"></span>37991</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the dart attribute co-ordinates from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37992"></span>37992</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Move right one character block.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37993"></span>37993</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3">Return if <span class="register">L</span> is greater than 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37994"></span>37994</td>
+<td class="instruction">CP 32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37996"></span>37996</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37997"></span>37997</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash the dart attribute co-ordinates on the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37998"></span>
+<div class="comments">
+<div class="paragraph">
+Now the shaft.
+</div>
+<div class="paragraph">
+Again, convert the co-ordinates to an actual attribute buffer memory location.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37998"></span>37998</td>
+<td class="instruction">CALL <a href="43106.html">CalculateAttributeBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43106.html">CalculateAttributeBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38001"></span>38001</td>
+<td class="instruction">LD B,69</td>
+<td class="comment-1" rowspan="1">Set the shaft colour of INK:
+CYAN,
+PAPER:
+BLACK
+(BRIGHT)
+ in <span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38003"></span>38003</td>
+<td class="instruction">LD DE,32</td>
+<td class="comment-1" rowspan="1">Set one row length of 0032 in <span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38006"></span>38006</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+CYAN,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38007"></span>38007</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Move down one row.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38008"></span>38008</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+CYAN,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38009"></span>38009</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the dart attribute co-ordinates from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38010"></span>38010</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Move right one character block.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38011"></span>38011</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3">Return if <span class="register">L</span> is greater than 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38012"></span>38012</td>
+<td class="instruction">CP 32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38014"></span>38014</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38015"></span>38015</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash the dart attribute co-ordinates on the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="38016"></span>
+<div class="comments">
+<div class="paragraph">
+Move onto the barrel.
+</div>
+<div class="paragraph">
+Convert the co-ordinates to an actual attribute buffer memory location.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38016"></span>38016</td>
+<td class="instruction">CALL <a href="43106.html">CalculateAttributeBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43106.html">CalculateAttributeBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38019"></span>38019</td>
+<td class="instruction">LD B,70</td>
+<td class="comment-1" rowspan="1">Set the barrel colour of INK:
+YELLOW,
+PAPER:
+BLACK
+(BRIGHT)
+ in <span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38021"></span>38021</td>
+<td class="instruction">LD DE,32</td>
+<td class="comment-1" rowspan="1">Set one row length of 0032 in <span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38024"></span>38024</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+YELLOW,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38025"></span>38025</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Move down one row.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38026"></span>38026</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+YELLOW,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38027"></span>38027</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the dart attribute co-ordinates from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38028"></span>38028</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Move right one character block.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38029"></span>38029</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3">Return if <span class="register">L</span> is greater than 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38030"></span>38030</td>
+<td class="instruction">CP 32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38032"></span>38032</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38033"></span>38033</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash the dart attribute co-ordinates on the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="38034"></span>
+<div class="comments">
+<div class="paragraph">
+Continue on with the barrel.
+</div>
+<div class="paragraph">
+Convert the co-ordinates to an actual attribute buffer memory location.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38034"></span>38034</td>
+<td class="instruction">CALL <a href="43106.html">CalculateAttributeBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43106.html">CalculateAttributeBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38037"></span>38037</td>
+<td class="instruction">LD B,70</td>
+<td class="comment-1" rowspan="1">Set the barrel colour of INK:
+YELLOW,
+PAPER:
+BLACK
+(BRIGHT)
+ in <span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38039"></span>38039</td>
+<td class="instruction">LD DE,32</td>
+<td class="comment-1" rowspan="1">Set one row length of 0032 in <span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38042"></span>38042</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+YELLOW,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38043"></span>38043</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Move down one row.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38044"></span>38044</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+YELLOW,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38045"></span>38045</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the dart attribute co-ordinates from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38046"></span>38046</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Move right one character block.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38047"></span>38047</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3">Return if <span class="register">L</span> is greater than 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38048"></span>38048</td>
+<td class="instruction">CP 32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38050"></span>38050</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="38051"></span>
+<div class="comments">
+<div class="paragraph">
+Lastly, colour the point.
+</div>
+<div class="paragraph">
+Convert the co-ordinates to an actual attribute buffer memory location.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38051"></span>38051</td>
+<td class="instruction">CALL <a href="43106.html">CalculateAttributeBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43106.html">CalculateAttributeBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38054"></span>38054</td>
+<td class="instruction">LD B,71</td>
+<td class="comment-1" rowspan="1">Set the barrel colour of INK:
+WHITE,
+PAPER:
+BLACK
+(BRIGHT)
+ in <span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38056"></span>38056</td>
+<td class="instruction">LD DE,32</td>
+<td class="comment-1" rowspan="1">Set one row length of 0032 in <span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38059"></span>38059</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+WHITE,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38060"></span>38060</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Move down one row.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38061"></span>38061</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write INK:
+WHITE,
+PAPER:
+BLACK
+(BRIGHT)
+ to the attribute buffer pointer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38062"></span>38062</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37695.html">37695</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#37966">Map</a></td>
+<td class="next">
+Next: <a href="38063.html">38063</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/37966.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

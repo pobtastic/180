@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 38381</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38354.html">38354</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38381">Map</a></td>
+<td class="next">
+Next: <a href="38453.html">38453</a>
+</td>
+</tr>
+</table>
+<div class="description">38381: Interrupt Routine</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="65021.html">AliasInterruptRedirect</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">InterruptRoutine</td>
+<td class="address-2"><span id="38381"></span>38381</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="5">Stash <span class="register">AF</span>, <span class="register">BC</span>, <span class="register">DE</span>, <span class="register">HL</span> and <span class="register">IX</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38382"></span>38382</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38383"></span>38383</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38384"></span>38384</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38385"></span>38385</td>
+<td class="instruction">PUSH IX</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38387"></span>38387</td>
+<td class="instruction">CALL <a href="52168.html#52215">52215</a></td>
+<td class="comment-1" rowspan="1">Call <a href="52168.html#52215">52215</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38390"></span>38390</td>
+<td class="instruction">LD A,(39723)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="38381.html#38438">InterruptRoutine_1</a> if *<a href="39711.html#39723">39723</a> is equal to 195.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38393"></span>38393</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38394"></span>38394</td>
+<td class="instruction">JR Z,<a href="38381.html#38438">InterruptRoutine_1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38396"></span>38396</td>
+<td class="instruction">LD HL,39605</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39604.html#39605">39605</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38399"></span>38399</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38400"></span>38400</td>
+<td class="instruction">JR NZ,<a href="38381.html#38438">InterruptRoutine_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="38381.html#38438">InterruptRoutine_1</a> if *<span class="register">HL</span> is not equal to 195.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38402"></span>38402</td>
+<td class="instruction">LD (HL),50</td>
+<td class="comment-1" rowspan="1">Write 50 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38404"></span>38404</td>
+<td class="instruction">LD HL,41869</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=41869.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38407"></span>38407</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38408"></span>38408</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="38381.html#38435">InterruptRoutine_0</a> if *<span class="register">HL</span> is not equal to 47.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38409"></span>38409</td>
+<td class="instruction">CP 47</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38411"></span>38411</td>
+<td class="instruction">JR NZ,<a href="38381.html#38435">InterruptRoutine_0</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38413"></span>38413</td>
+<td class="instruction">LD (HL),57</td>
+<td class="comment-1" rowspan="1">Write 57 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38415"></span>38415</td>
+<td class="instruction">LD HL,41868</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="41856.html#41859">41868</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38418"></span>38418</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38419"></span>38419</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="38381.html#38435">InterruptRoutine_0</a> if *<span class="register">L</span> is not equal to 47.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38420"></span>38420</td>
+<td class="instruction">CP 47</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38422"></span>38422</td>
+<td class="instruction">JR NZ,<a href="38381.html#38435">InterruptRoutine_0</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38424"></span>38424</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="2">Write 1 to *39722.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38426"></span>38426</td>
+<td class="instruction">LD (39722),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38429"></span>38429</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="2">Write 0 to *39723.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38430"></span>38430</td>
+<td class="instruction">LD (39723),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38433"></span>38433</td>
+<td class="instruction">JR <a href="38381.html#38438">InterruptRoutine_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="38381.html#38438">InterruptRoutine_1</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">InterruptRoutine_0</td>
+<td class="address-2"><span id="38435"></span>38435</td>
+<td class="instruction">CALL <a href="41856.html">41856</a></td>
+<td class="comment-1" rowspan="1">Call <a href="41856.html">41856</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">InterruptRoutine_1</td>
+<td class="address-2"><span id="38438"></span>38438</td>
+<td class="instruction">CALL <a href="39415.html">39415</a></td>
+<td class="comment-1" rowspan="1">Call <a href="39415.html">39415</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38441"></span>38441</td>
+<td class="instruction">LD (63521),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="63516.html#63521">63521</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38444"></span>38444</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="5">Restore <span class="register">IX</span>, <span class="register">HL</span>, <span class="register">DE</span>, <span class="register">BC</span> and <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38446"></span>38446</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38447"></span>38447</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38448"></span>38448</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38449"></span>38449</td>
+<td class="instruction">POP AF</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38450"></span>38450</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38451"></span>38451</td>
+<td class="instruction">RETI</td>
+<td class="comment-1" rowspan="1">Return from the interrupt routine.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38354.html">38354</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38381">Map</a></td>
+<td class="next">
+Next: <a href="38453.html">38453</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/38381.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

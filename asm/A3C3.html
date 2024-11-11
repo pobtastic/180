@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at A3C3</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="A3A4.html">A3A4</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#a3c3">Map</a></td>
+<td class="next">
+Next: <a href="A41E.html">A41E</a>
+</td>
+</tr>
+</table>
+<div class="description">A3C3: Messaging: Print Player Current Total</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="A3A4.html">A3A4</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Messaging_PrintPlayerCurrentTotal</td>
+<td class="address-2"><span id="a3c3"></span>A3C3</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3c6"></span>A3C6</td>
+<td class="instruction">DEFB $16,$13,$01</td>
+<td class="comment-1" rowspan="1">PRINT AT: 13, 01.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3c9"></span>A3C9</td>
+<td class="instruction">DEFM "PLAYER"</td>
+<td class="comment-1" rowspan="1"><img alt="player" src="../images/font/player.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3cf"></span>A3CF</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="a3d0"></span>
+<div class="comments">
+<div class="paragraph">
+Who is currently playing?
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3d0"></span>A3D0</td>
+<td class="instruction">LD A,($9AB8)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="A3C3.html#a3f3">PrintPlayerTwo_CurrentTotal</a> if *<a href="9AB8.html">ActivePlayer</a> is player two.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3d3"></span>A3D3</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3d4"></span>A3D4</td>
+<td class="instruction">JR Z,<a href="A3C3.html#a3f3">PrintPlayerTwo_CurrentTotal</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="a3d6"></span>
+<div class="comments">
+<div class="paragraph">
+Handle 1UP:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3d6"></span>A3D6</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3d9"></span>A3D9</td>
+<td class="instruction">DEFB $16,$14,$03</td>
+<td class="comment-1" rowspan="1">PRINT AT: 14, 03.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3dc"></span>A3DC</td>
+<td class="instruction">DEFM "ONE"</td>
+<td class="comment-1" rowspan="1"><img alt="one" src="../images/font/one.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3df"></span>A3DF</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3e0"></span>A3E0</td>
+<td class="instruction">LD HL,($9AB2)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9AB0.html#9ab2">1UP_Total</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3e3"></span>A3E3</td>
+<td class="instruction">LD DE,$ACF6</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="ACD9.html#acf6">Current_Total</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3e6"></span>A3E6</td>
+<td class="instruction">CALL <a href="AEF0.html">$AEF0</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AEF0.html">AEF0</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3e9"></span>A3E9</td>
+<td class="instruction">LD HL,$ACF6</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="ACD9.html#acf6">Current_Total</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3ec"></span>A3EC</td>
+<td class="instruction">CALL <a href="A3C3.html#a410">PrintCurrentTotal</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A3C3.html#a410">PrintCurrentTotal</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3ef"></span>A3EF</td>
+<td class="instruction">CALL <a href="AC9D.html">FlashCurrentTotal</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AC9D.html">FlashCurrentTotal</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3f2"></span>A3F2</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="a3f3"></span>
+<div class="comments">
+<div class="paragraph">
+Handle 2UP:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintPlayerTwo_CurrentTotal</td>
+<td class="address-2"><span id="a3f3"></span>A3F3</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3f6"></span>A3F6</td>
+<td class="instruction">DEFB $16,$14,$03</td>
+<td class="comment-1" rowspan="1">PRINT AT: 14, 03.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3f9"></span>A3F9</td>
+<td class="instruction">DEFM "TWO"</td>
+<td class="comment-1" rowspan="1"><img alt="two" src="../images/font/two.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3fc"></span>A3FC</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a3fd"></span>A3FD</td>
+<td class="instruction">LD HL,($9AB0)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9AB0.html">2UP_Total</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a400"></span>A400</td>
+<td class="instruction">LD DE,$ACF6</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="ACD9.html#acf6">Current_Total</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a403"></span>A403</td>
+<td class="instruction">CALL <a href="AEF0.html">$AEF0</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AEF0.html">AEF0</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a406"></span>A406</td>
+<td class="instruction">LD HL,$ACF6</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="ACD9.html#acf6">Current_Total</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a409"></span>A409</td>
+<td class="instruction">CALL <a href="A3C3.html#a410">PrintCurrentTotal</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A3C3.html#a410">PrintCurrentTotal</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a40c"></span>A40C</td>
+<td class="instruction">CALL <a href="AC9D.html">FlashCurrentTotal</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AC9D.html">FlashCurrentTotal</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a40f"></span>A40F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="a410"></span>
+<div class="comments">
+<div class="paragraph">
+Convert the total to a printable string, and display it.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintCurrentTotal</td>
+<td class="address-2"><span id="a410"></span>A410</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the 03 digits of a total value.</td>
+</tr>
+<tr>
+<td class="asm-label">PrintCurrentTotal_Loop</td>
+<td class="address-2"><span id="a412"></span>A412</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a413"></span>A413</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A3C3.html#a41a">PrintCurrentTotal_Next</a> if <span class="register">A</span> is an ASCII "space" (20).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a415"></span>A415</td>
+<td class="instruction">JR Z,<a href="A3C3.html#a41a">PrintCurrentTotal_Next</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a417"></span>A417</td>
+<td class="instruction">ADD A,$30</td>
+<td class="comment-1" rowspan="1">Add 30 (ASCII "&#48;") to <span class="register">A</span> to "convert" it to ASCII.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a419"></span>A419</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">PrintCurrentTotal_Next</td>
+<td class="address-2"><span id="a41a"></span>A41A</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a41b"></span>A41B</td>
+<td class="instruction">DJNZ <a href="A3C3.html#a412">PrintCurrentTotal_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A3C3.html#a412">PrintCurrentTotal_Loop</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="a41d"></span>A41D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="A3A4.html">A3A4</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#a3c3">Map</a></td>
+<td class="next">
+Next: <a href="A41E.html">A41E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/A3C3.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

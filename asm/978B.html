@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 978B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9776.html">9776</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#978b">Map</a></td>
+<td class="next">
+Next: <a href="97D5.html">97D5</a>
+</td>
+</tr>
+</table>
+<div class="description">978B: Handler: ASCII Character</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="9754.html">Controller_CharacterPrinting</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_ASCIICharacter</td>
+<td class="address-2"><span id="978b"></span>978B</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="978c"></span>978C</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="978d"></span>978D</td>
+<td class="instruction">SUB $20</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=20.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="978f"></span>978F</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="2">Create an offset in <span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9790"></span>9790</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9792"></span>9792</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="3"><span class="register">HL</span>*=08.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9793"></span>9793</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9794"></span>9794</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9795"></span>9795</td>
+<td class="instruction">LD DE,($F81A)</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=*<a href="F81A.html">Font_Pointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9799"></span>9799</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="979a"></span>979A</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="979b"></span>979B</td>
+<td class="instruction">LD A,($F819)</td>
+<td class="comment-1" rowspan="2">Multiply *<a href="F818.html#f819">F819</a> by 02 and store the result in <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="979e"></span>979E</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="979f"></span>979F</td>
+<td class="instruction">LD HL,$99C5</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="99C5.html">99C5</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97a2"></span>97A2</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="2"><span class="register">L</span>+=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97a3"></span>97A3</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97a4"></span>97A4</td>
+<td class="instruction">JR NC,<a href="978B.html#97a7">ASCIICharacter_NoCarry</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="978B.html#97a7">ASCIICharacter_NoCarry</a> if there's no carry.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97a6"></span>97A6</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Handle carry.</td>
+</tr>
+<tr>
+<td class="asm-label">ASCIICharacter_NoCarry</td>
+<td class="address-2"><span id="97a7"></span>97A7</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97a8"></span>97A8</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97a9"></span>97A9</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97aa"></span>97AA</td>
+<td class="instruction">LD A,($F818)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F818.html">F818</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97ad"></span>97AD</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97ae"></span>97AE</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97af"></span>97AF</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97b0"></span>97B0</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2"><span class="register">DE</span>=<span class="register">HL</span> (using the stack).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97b1"></span>97B1</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97b2"></span>97B2</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97b3"></span>97B3</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97b4"></span>97B4</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_ASCIICharacter_0</td>
+<td class="address-2"><span id="97b6"></span>97B6</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Write *<span class="register">HL</span> to *<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97b7"></span>97B7</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97b8"></span>97B8</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97b9"></span>97B9</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97ba"></span>97BA</td>
+<td class="instruction">DJNZ <a href="978B.html#97b6">Handler_ASCIICharacter_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="978B.html#97b6">Handler_ASCIICharacter_0</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97bc"></span>97BC</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97bd"></span>97BD</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97be"></span>97BE</td>
+<td class="instruction">RRA</td>
+<td class="comment-1" rowspan="3">RRA.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97bf"></span>97BF</td>
+<td class="instruction">RRA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97c0"></span>97C0</td>
+<td class="instruction">RRA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97c1"></span>97C1</td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97c3"></span>97C3</td>
+<td class="instruction">ADD A,(IY+$1D)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=*<span class="register">IY</span>+1D.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97c6"></span>97C6</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97c7"></span>97C7</td>
+<td class="instruction">LD A,($F81E)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F81C.html#f81e">F81E</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97ca"></span>97CA</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97cb"></span>97CB</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97cc"></span>97CC</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97cd"></span>97CD</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97ce"></span>97CE</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97cf"></span>97CF</td>
+<td class="instruction">LD HL,$F818</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="F818.html">F818</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="97d2"></span>97D2</td>
+<td class="instruction">JP <a href="9818.html">$9818</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9818.html">9818</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9776.html">9776</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#978b">Map</a></td>
+<td class="next">
+Next: <a href="97D5.html">97D5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/978B.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

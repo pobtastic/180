@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at AD5C</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="AD3B.html">AD3B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ad5c">Map</a></td>
+<td class="next">
+Next: <a href="AD82.html">AD82</a>
+</td>
+</tr>
+</table>
+<div class="description">AD5C: Routine at AD5C</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="AB2E.html">Messaging_DartNumber</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ad5c"></span>AD5C</td>
+<td class="instruction">LD HL,$AD75</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad5f"></span>AD5F</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad60"></span>AD60</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad61"></span>AD61</td>
+<td class="instruction">LD (HL),$20</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad63"></span>AD63</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad66"></span>AD66</td>
+<td class="instruction">DEFB $10,$05</td>
+<td class="comment-1" rowspan="1">INK: 
+
+
+CYAN.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad68"></span>AD68</td>
+<td class="instruction">DEFB $11,$00</td>
+<td class="comment-1" rowspan="1">PAPER: 
+
+
+BLACK.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad6a"></span>AD6A</td>
+<td class="instruction">DEFB $12,$01</td>
+<td class="comment-1" rowspan="1">FLASH: ON.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad6c"></span>AD6C</td>
+<td class="instruction">DEFB $16,$17,$10</td>
+<td class="comment-1" rowspan="1">PRINT AT: 17, 10.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad6f"></span>AD6F</td>
+<td class="instruction">DEFM "GOT"</td>
+<td class="comment-1" rowspan="1"><img alt="got" src="../images/font/got.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad72"></span>AD72</td>
+<td class="instruction">DEFB $16,$17,$1A</td>
+<td class="comment-1" rowspan="1">PRINT AT: 17, 1A.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad75"></span>AD75</td>
+<td class="instruction">DEFM "   "</td>
+<td class="comment-1" rowspan="1">"&#160;&#160;&#160;".</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad78"></span>AD78</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad79"></span>AD79</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad7a"></span>AD7A</td>
+<td class="instruction">LD C,$14</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad7c"></span>AD7C</td>
+<td class="instruction">LD B,$17</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad7e"></span>AD7E</td>
+<td class="instruction">CALL <a href="AD82.html">$AD82</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ad81"></span>AD81</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="AD3B.html">AD3B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ad5c">Map</a></td>
+<td class="next">
+Next: <a href="AD82.html">AD82</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/AD5C.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

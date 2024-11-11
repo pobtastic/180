@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at B640</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B5BA.html">B5BA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b640">Map</a></td>
+<td class="next">
+Next: <a href="B6C2.html">B6C2</a>
+</td>
+</tr>
+</table>
+<div class="description">B640: Semi Finals</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="AA5A.html">AA5A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SemiFinals</td>
+<td class="address-2"><span id="b640"></span>B640</td>
+<td class="instruction">LD HL,($9B23)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b643"></span>B643</td>
+<td class="instruction">LD DE,$B179</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b646"></span>B646</td>
+<td class="instruction">LD BC,$0010</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b649"></span>B649</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b64b"></span>B64B</td>
+<td class="instruction">LD HL,($9B23)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b64e"></span>B64E</td>
+<td class="instruction">LD DE,$B687</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b651"></span>B651</td>
+<td class="instruction">LD BC,$0010</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b654"></span>B654</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b656"></span>B656</td>
+<td class="instruction">CALL <a href="B230.html#b548">$B548</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b659"></span>B659</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b65c"></span>B65C</td>
+<td class="instruction">DEFB $10,$07</td>
+<td class="comment-1" rowspan="1">INK: 
+
+
+WHITE.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b65e"></span>B65E</td>
+<td class="instruction">DEFB $11,$04</td>
+<td class="comment-1" rowspan="1">PAPER: 
+
+
+GREEN.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b660"></span>B660</td>
+<td class="instruction">DEFB $12,$01</td>
+<td class="comment-1" rowspan="1">FLASH: ON.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b662"></span>B662</td>
+<td class="instruction">DEFB $16,$05,$0E</td>
+<td class="comment-1" rowspan="1">PRINT AT: 05, 0E.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b665"></span>B665</td>
+<td class="instruction">DEFM "SEMI FINALS"</td>
+<td class="comment-1" rowspan="1">"SEMI FINALS".</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b670"></span>B670</td>
+<td class="instruction">DEFB $16,$08,$0D</td>
+<td class="comment-1" rowspan="1">PRINT AT: 08, 0D.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b673"></span>B673</td>
+<td class="instruction">DEFB $10,$00</td>
+<td class="comment-1" rowspan="1">INK: 
+
+
+BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b675"></span>B675</td>
+<td class="instruction">DEFM "YOUR OPPONENT"</td>
+<td class="comment-1" rowspan="1">"YOUR OPPONENT".</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b682"></span>B682</td>
+<td class="instruction">DEFB $16,$12,$0C</td>
+<td class="comment-1" rowspan="1">PRINT AT: 12, 0C.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b685"></span>B685</td>
+<td class="instruction">DEFB $10,$07</td>
+<td class="comment-1" rowspan="1">INK: 
+
+
+WHITE.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b687"></span>B687</td>
+<td class="instruction">DEFM "0000000000000000"</td>
+<td class="comment-1" rowspan="1">"0000000000000000".</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b697"></span>B697</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b698"></span>B698</td>
+<td class="instruction">LD HL,($9B23)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b69b"></span>B69B</td>
+<td class="instruction">LD DE,$0011</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b69e"></span>B69E</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b69f"></span>B69F</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6a0"></span>B6A0</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6a1"></span>B6A1</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6a2"></span>B6A2</td>
+<td class="instruction">LD ($9AAB),BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6a6"></span>B6A6</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6a7"></span>B6A7</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6a8"></span>B6A8</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6a9"></span>B6A9</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6aa"></span>B6AA</td>
+<td class="instruction">LD ($9AAE),BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6ae"></span>B6AE</td>
+<td class="instruction">LD BC,($9AAB)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6b2"></span>B6B2</td>
+<td class="instruction">LD DE,$0A10</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6b5"></span>B6B5</td>
+<td class="instruction">CALL <a href="B742.html">$B742</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6b8"></span>B6B8</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6ba"></span>B6BA</td>
+<td class="instruction">LD ($9AB4),A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6bd"></span>B6BD</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6be"></span>B6BE</td>
+<td class="instruction">CALL $CAEB</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="b6c1"></span>B6C1</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B5BA.html">B5BA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b640">Map</a></td>
+<td class="next">
+Next: <a href="B6C2.html">B6C2</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/B640.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 9776</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9754.html">9754</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9776">Map</a></td>
+<td class="next">
+Next: <a href="978B.html">978B</a>
+</td>
+</tr>
+</table>
+<div class="description">9776: Handler: Control Code</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="9736.html">PrintCharacter</a> and <a href="9754.html">Controller_CharacterPrinting</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_ControlCode</td>
+<td class="address-2"><span id="9776"></span>9776</td>
+<td class="instruction">LD A,($F814)</td>
+<td class="comment-1" rowspan="1">Retrieve *<a href="F814.html">Buffer_ControlCode</a> and store it in <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9779"></span>9779</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1">Multiply it by 02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="977a"></span>977A</td>
+<td class="instruction">LD HL,$9985</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9985.html">JumpTable_ControlCodes</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="977d"></span>977D</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="2">Calculate the offset.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="977e"></span>977E</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="977f"></span>977F</td>
+<td class="instruction">JR NC,<a href="9776.html#9782">ControlCode_NoCarry</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9776.html#9782">ControlCode_NoCarry</a> if there's no carry.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9781"></span>9781</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Handle the carry.</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_NoCarry</td>
+<td class="address-2"><span id="9782"></span>9782</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Get the referenced address from the jump table.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9783"></span>9783</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9784"></span>9784</td>
+<td class="instruction">LD H,(HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9785"></span>9785</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9786"></span>9786</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash the handler address on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9787"></span>9787</td>
+<td class="instruction">LD HL,$F818</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="F818.html">F818</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="978a"></span>978A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9754.html">9754</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9776">Map</a></td>
+<td class="next">
+Next: <a href="978B.html">978B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/9776.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

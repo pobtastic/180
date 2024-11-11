@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at AA5A</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="AA0A.html">AA0A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#aa5a">Map</a></td>
+<td class="next">
+Next: <a href="AA7B.html">AA7B</a>
+</td>
+</tr>
+</table>
+<div class="description">AA5A: Routine at AA5A</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="aa5a"></span>AA5A</td>
+<td class="instruction">LD HL,$9AA6</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa5d"></span>AA5D</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa5e"></span>AA5E</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa5f"></span>AA5F</td>
+<td class="instruction">CP $02</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa61"></span>AA61</td>
+<td class="instruction">JR NZ,<a href="AADC.html">$AADC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa63"></span>AA63</td>
+<td class="instruction">XOR A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa64"></span>AA64</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa65"></span>AA65</td>
+<td class="instruction">LD HL,$9AA7</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa68"></span>AA68</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa69"></span>AA69</td>
+<td class="instruction">CALL <a href="A7A5.html">Print_PlayArea</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa6c"></span>AA6C</td>
+<td class="instruction">CALL <a href="B640.html">SemiFinals</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa6f"></span>AA6F</td>
+<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa72"></span>AA72</td>
+<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa75"></span>AA75</td>
+<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="aa78"></span>AA78</td>
+<td class="instruction">JP <a href="AADC.html">$AADC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="AA0A.html">AA0A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#aa5a">Map</a></td>
+<td class="next">
+Next: <a href="AA7B.html">AA7B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/AA5A.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 38063</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37966.html">37966</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38063">Map</a></td>
+<td class="next">
+Next: <a href="38072.html">38072</a>
+</td>
+</tr>
+</table>
+<div class="description">38063: Clear Current Dart Pointer Attributes</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="37695.html">MainMenu</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ClearCurrentDartPointerAttributes</td>
+<td class="address-2"><span id="38063"></span>38063</td>
+<td class="instruction">LD A,(39414)</td>
+<td class="comment-1" rowspan="1">Fetch *<a href="39414.html">DartPointer_Position</a> and store it in <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38066"></span>38066</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1">Double the value as the entries have spacing between them.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38067"></span>38067</td>
+<td class="instruction">ADD A,5</td>
+<td class="comment-1" rowspan="1">Add 5 as the entries start five rows from the top of the screen.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38069"></span>38069</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">Store the result in <span class="register">H</span> as the Y co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="38070"></span>38070</td>
+<td class="instruction">LD L,1</td>
+<td class="comment-1" rowspan="1">Store 1 in <span class="register">L</span> as the X co-ordinate.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+Continue on to <a href="38072.html">ClearDartPointerAttributes</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37966.html">37966</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38063">Map</a></td>
+<td class="next">
+Next: <a href="38072.html">38072</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/38063.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

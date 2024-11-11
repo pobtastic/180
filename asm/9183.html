@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 9183</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="8F65.html">8F65</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9183">Map</a></td>
+<td class="next">
+Next: <a href="91A1.html">91A1</a>
+</td>
+</tr>
+</table>
+<div class="description">9183: Game Entry Point</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="8D72.html">GameEntryPointAlias</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">GameEntryPoint</td>
+<td class="address-2"><span id="9183"></span>9183</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="3">Write 00 to; <ul class="">
+<li>*<a href="99F5.html">99F5</a></li>
+<li>*<a href="99F6.html">DartPointer_Position</a></li>
+</ul></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9184"></span>9184</td>
+<td class="instruction">LD ($99F5),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9187"></span>9187</td>
+<td class="instruction">LD ($99F6),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="918a"></span>918A</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Disable interrupts.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="918b"></span>918B</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="918c"></span>918C</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="918d"></span>918D</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="918e"></span>918E</td>
+<td class="instruction">LD ($F827),SP</td>
+<td class="comment-1" rowspan="1">Write <span class="register">SP</span> to *<a href="F827.html">Initial_StackPointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9192"></span>9192</td>
+<td class="instruction">CALL <a href="95A9.html">$95A9</a></td>
+<td class="comment-1" rowspan="1">Call <a href="95A9.html">95A9</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="9195"></span>
+<div class="comments">
+<div class="paragraph">
+Clear the screen buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9195"></span>9195</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9198"></span>9198</td>
+<td class="instruction">DEFM $01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="9199"></span>9199</td>
+<td class="instruction">DEFM $00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="919a"></span>919A</td>
+<td class="instruction">DEFM $1A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="919b"></span>919B</td>
+<td class="instruction">DEFM "u"</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="919c"></span>919C</td>
+<td class="instruction">DEFM $8D</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="919d"></span>919D</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="919e"></span>919E</td>
+<td class="instruction">JP <a href="933F.html">MainMenu</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="933F.html">MainMenu</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="8F65.html">8F65</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9183">Map</a></td>
+<td class="next">
+Next: <a href="91A1.html">91A1</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/9183.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

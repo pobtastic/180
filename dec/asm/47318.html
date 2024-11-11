@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 47318</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47217.html">47217</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47318">Map</a></td>
+<td class="next">
+Next: <a href="47349.html">47349</a>
+</td>
+</tr>
+</table>
+<div class="description">47318: Routine at B8D6</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="47217.html">47217</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47318"></span>47318</td>
+<td class="instruction">LD HL,18601</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=18601 (screen buffer location).</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47321"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="43822.html">Messaging_DartNumber</a> and <a href="47217.html">47217</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47321"></span>47321</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47322"></span>47322</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47323"></span>47323</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47324"></span>47324</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47325"></span>47325</td>
+<td class="instruction">LD B,24</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=24.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47327"></span>47327</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47328"></span>47328</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47329"></span>47329</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47330"></span>47330</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47332"></span>47332</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47334"></span>47334</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47336"></span>47336</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47338"></span>47338</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1">No operation.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47339"></span>47339</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1">No operation.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47340"></span>47340</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47341"></span>47341</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47342"></span>47342</td>
+<td class="instruction">CALL <a href="43212.html">43212</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43212.html">43212</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47345"></span>47345</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47346"></span>47346</td>
+<td class="instruction">DJNZ <a href="47318.html#47327">47327</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="47318.html#47327">47327</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47348"></span>47348</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47217.html">47217</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47318">Map</a></td>
+<td class="next">
+Next: <a href="47349.html">47349</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/47318.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

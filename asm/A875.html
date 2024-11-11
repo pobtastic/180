@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at A875</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="A873.html">A873</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#a875">Map</a></td>
+<td class="next">
+Next: <a href="A8AE.html">A8AE</a>
+</td>
+</tr>
+</table>
+<div class="description">A875: Routine at A875</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="AB2E.html">Messaging_DartNumber</a>, <a href="B230.html">B230</a> and <a href="B7E1.html">Animation_ThrowingDart</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a875"></span>A875</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">HL</span> and <span class="register">BC</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a876"></span>A876</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a877"></span>A877</td>
+<td class="instruction">LD C,E</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">E</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a878"></span>A878</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a87a"></span>A87A</td>
+<td class="instruction">LD DE,($A871)</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="A871.html">A871</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a87e"></span>A87E</td>
+<td class="instruction">LD HL,($A873)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="A873.html">A873</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a881"></span>A881</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a882"></span>A882</td>
+<td class="instruction">AND %01001000</td>
+<td class="comment-1" rowspan="1">Keep only bits 3, 6.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a884"></span>A884</td>
+<td class="instruction">ADD A,$38</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=38.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a886"></span>A886</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="2">RLA.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a887"></span>A887</td>
+<td class="instruction">RLA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a888"></span>A888</td>
+<td class="instruction">RL H</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">H</span> left.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a88a"></span>A88A</td>
+<td class="instruction">RL L</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">L</span> left.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a88c"></span>A88C</td>
+<td class="instruction">RL D</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">D</span> left.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a88e"></span>A88E</td>
+<td class="instruction">RL E</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">E</span> left.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a890"></span>A890</td>
+<td class="instruction">DJNZ <a href="A875.html#a881">$A881</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A875.html#a881">A881</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a892"></span>A892</td>
+<td class="instruction">LD ($A871),DE</td>
+<td class="comment-1" rowspan="1">Write <span class="register">DE</span> to *<a href="A871.html">A871</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a896"></span>A896</td>
+<td class="instruction">LD ($A873),HL</td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="A873.html">A873</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a899"></span>A899</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a89a"></span>A89A</td>
+<td class="instruction">LD E,C</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a89b"></span>A89B</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a89d"></span>A89D</td>
+<td class="instruction">LD HL,$0000</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=0000.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a8a0"></span>A8A0</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a8a2"></span>A8A2</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a8a3"></span>A8A3</td>
+<td class="instruction">RLC A</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> left (with carry).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a8a5"></span>A8A5</td>
+<td class="instruction">JR NC,<a href="A875.html#a8a8">$A8A8</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A875.html#a8a8">A8A8</a> if the result is greater than or equal to 08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a8a7"></span>A8A7</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a8a8"></span>A8A8</td>
+<td class="instruction">DJNZ <a href="A875.html#a8a2">$A8A2</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A875.html#a8a2">A8A2</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a8aa"></span>A8AA</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a8ab"></span>A8AB</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a8ac"></span>A8AC</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a8ad"></span>A8AD</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="A873.html">A873</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#a875">Map</a></td>
+<td class="next">
+Next: <a href="A8AE.html">A8AE</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/A875.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 44548</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44418.html">44418</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44548">Map</a></td>
+<td class="next">
+Next: <a href="44567.html">44567</a>
+</td>
+</tr>
+</table>
+<div class="description">44548: Routine at AE04</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="40258.html">40258</a>, <a href="41308.html">Messaging_YouWin</a>, <a href="43256.html">43256</a>, <a href="43493.html">43493</a>, <a href="43530.html">43530</a>, <a href="43610.html">43610</a>, <a href="43643.html">43643</a>, <a href="43688.html">Print_CurrentPlayerID</a>, <a href="43822.html">Messaging_DartNumber</a>, <a href="44347.html">Messaging_Bust</a> and <a href="45419.html">45419</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44548"></span>44548</td>
+<td class="instruction">LD B,3</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="44550"></span>44550</td>
+<td class="instruction">LD HL,65535</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="44553"></span>44553</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44554"></span>44554</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44555"></span>44555</td>
+<td class="instruction">OR L</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44556"></span>44556</td>
+<td class="instruction">JR NZ,<a href="44548.html#44553">44553</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44558"></span>44558</td>
+<td class="instruction">LD A,(63521)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44561"></span>44561</td>
+<td class="instruction">BIT 4,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44563"></span>44563</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44564"></span>44564</td>
+<td class="instruction">DJNZ <a href="44548.html#44550">44550</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="44566"></span>44566</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44418.html">44418</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44548">Map</a></td>
+<td class="next">
+Next: <a href="44567.html">44567</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/44548.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

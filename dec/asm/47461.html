@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 47461</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47407.html">47407</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47461">Map</a></td>
+<td class="next">
+Next: <a href="47492.html">47492</a>
+</td>
+</tr>
+</table>
+<div class="description">47461: Routine at B965</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="47165.html">47165</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47461"></span>47461</td>
+<td class="instruction">LD B,16</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=16.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47463"></span>47463</td>
+<td class="instruction">LD DE,51796</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="51700.html#51796">51796</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47466"></span>47466</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47467"></span>47467</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47468"></span>47468</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47469"></span>47469</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47470"></span>47470</td>
+<td class="instruction">CALL <a href="43212.html">43212</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43212.html">43212</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47473"></span>47473</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47474"></span>47474</td>
+<td class="instruction">DJNZ <a href="47461.html#47466">47466</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="47461.html#47466">47466</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47476"></span>47476</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47477"></span>47477</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47478"></span>47478</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47479"></span>47479</td>
+<td class="instruction">CALL <a href="43227.html">43227</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43227.html">43227</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47482"></span>47482</td>
+<td class="instruction">LD B,16</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=16.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47484"></span>47484</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47485"></span>47485</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47486"></span>47486</td>
+<td class="instruction">CALL <a href="43227.html">43227</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43227.html">43227</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47489"></span>47489</td>
+<td class="instruction">DJNZ <a href="47461.html#47484">47484</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="47461.html#47484">47484</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47491"></span>47491</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47407.html">47407</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47461">Map</a></td>
+<td class="next">
+Next: <a href="47492.html">47492</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/47461.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

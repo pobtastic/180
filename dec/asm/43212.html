@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 43212</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43197.html">43197</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43212">Map</a></td>
+<td class="next">
+Next: <a href="43227.html">43227</a>
+</td>
+</tr>
+</table>
+<div class="description">43212: Routine at A8CC</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="37637.html">MainMenu_PrintDartPointer</a>, <a href="38453.html">38453</a>, <a href="39171.html">ControlCode_03</a>, <a href="44567.html">44567</a>, <a href="45616.html">45616</a>, <a href="46914.html">46914</a>, <a href="46945.html">46945</a>, <a href="47217.html">47217</a>, <a href="47318.html">47318</a>, <a href="47349.html">47349</a>, <a href="47376.html">Print_ThrowingDart_Frame</a> and <a href="47461.html">47461</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43212"></span>43212</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43213"></span>43213</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43214"></span>43214</td>
+<td class="instruction">AND %00000111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43216"></span>43216</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">A</span> is not equal to 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43217"></span>43217</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3"><span class="register">L</span>+=32.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43218"></span>43218</td>
+<td class="instruction">ADD A,32</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43220"></span>43220</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43221"></span>43221</td>
+<td class="instruction">RET C</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">L</span> is less than 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43222"></span>43222</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="3"><span class="register">H</span>-=8.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43223"></span>43223</td>
+<td class="instruction">SUB 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43225"></span>43225</td>
+<td class="instruction">LD H,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43226"></span>43226</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43197.html">43197</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43212">Map</a></td>
+<td class="next">
+Next: <a href="43227.html">43227</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/43212.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

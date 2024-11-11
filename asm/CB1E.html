@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at CB1E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="C9F4.html">C9F4</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#cb1e">Map</a></td>
+<td class="next">
+Next: <a href="CB6B.html">CB6B</a>
+</td>
+</tr>
+</table>
+<div class="description">CB1E: Routine at CB1E</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="933F.html">MainMenu</a>, <a href="A15C.html">Messaging_YouWin</a> and <a href="AADC.html">AADC</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="cb1e"></span>CB1E</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb1f"></span>CB1F</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="CBC8.html#d009">D009</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb20"></span>CB20</td>
+<td class="instruction">LD ($D009),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb23"></span>CB23</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb24"></span>CB24</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb25"></span>CB25</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb26"></span>CB26</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb27"></span>CB27</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb28"></span>CB28</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb29"></span>CB29</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb2b"></span>CB2B</td>
+<td class="instruction">LD HL,$D00A</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D00A.html">D00A</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb2e"></span>CB2E</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb2f"></span>CB2F</td>
+<td class="instruction">LD IX,$CB6B</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span>=<a href="CB6B.html">CB6B</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb33"></span>CB33</td>
+<td class="instruction">LD C,$1F</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=1F.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb35"></span>CB35</td>
+<td class="instruction">LD A,$03</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=03.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="cb37"></span>CB37</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb38"></span>CB38</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb39"></span>CB39</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb3a"></span>CB3A</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb3b"></span>CB3B</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb3c"></span>CB3C</td>
+<td class="instruction">LD (IX+$10),$01</td>
+<td class="comment-1" rowspan="1">Write 01 to *<span class="register">IX</span>+10.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb40"></span>CB40</td>
+<td class="instruction">LD (IX+$00),B</td>
+<td class="comment-1" rowspan="1">Write <span class="register">B</span> to *<span class="register">IX</span>+00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb43"></span>CB43</td>
+<td class="instruction">LD (IX+$1D),B</td>
+<td class="comment-1" rowspan="1">Write <span class="register">B</span> to *<span class="register">IX</span>+1D.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb46"></span>CB46</td>
+<td class="instruction">LD (IX+$03),E</td>
+<td class="comment-1" rowspan="1">Write <span class="register">E</span> to *<span class="register">IX</span>+03.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb49"></span>CB49</td>
+<td class="instruction">LD (IX+$04),D</td>
+<td class="comment-1" rowspan="1">Write <span class="register">D</span> to *<span class="register">IX</span>+04.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb4c"></span>CB4C</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb4d"></span>CB4D</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb4e"></span>CB4E</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb4f"></span>CB4F</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb50"></span>CB50</td>
+<td class="instruction">LD (IX+$05),$02</td>
+<td class="comment-1" rowspan="1">Write 02 to *<span class="register">IX</span>+05.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb54"></span>CB54</td>
+<td class="instruction">LD (IX+$06),B</td>
+<td class="comment-1" rowspan="1">Write <span class="register">B</span> to *<span class="register">IX</span>+06.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb57"></span>CB57</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb58"></span>CB58</td>
+<td class="instruction">LD (IX+$01),E</td>
+<td class="comment-1" rowspan="1">Write <span class="register">E</span> to *<span class="register">IX</span>+01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb5b"></span>CB5B</td>
+<td class="instruction">LD (IX+$02),D</td>
+<td class="comment-1" rowspan="1">Write <span class="register">D</span> to *<span class="register">IX</span>+02.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb5e"></span>CB5E</td>
+<td class="instruction">ADD IX,BC</td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span>+=<span class="register">BC</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb60"></span>CB60</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb61"></span>CB61</td>
+<td class="instruction">JR NZ,<a href="CB1E.html#cb37">$CB37</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="CB1E.html#cb37">CB37</a> if <span class="register">A</span> is not equal to 03.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb63"></span>CB63</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb64"></span>CB64</td>
+<td class="instruction">LD ($CC84),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="CBC8.html#cc84">CC84</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb67"></span>CB67</td>
+<td class="instruction">LD ($D009),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="CBC8.html#d009">D009</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cb6a"></span>CB6A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="C9F4.html">C9F4</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#cb1e">Map</a></td>
+<td class="next">
+Next: <a href="CB6B.html">CB6B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/CB1E.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

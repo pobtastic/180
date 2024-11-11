@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 38313</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38249.html">38249</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38313">Map</a></td>
+<td class="next">
+Next: <a href="38334.html">38334</a>
+</td>
+</tr>
+</table>
+<div class="description">38313: Routine at 95A9</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="37251.html">GameEntryPoint</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38313"></span>38313</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Disable interrupts.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38314"></span>38314</td>
+<td class="instruction">LD IY,63488</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="63488.html">63488</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38318"></span>38318</td>
+<td class="instruction">RES 7,(IY+37)</td>
+<td class="comment-1" rowspan="1">Reset bit 7 of *<span class="register">IY</span>+37.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38322"></span>38322</td>
+<td class="instruction">CALL <a href="38354.html">CreateInterruptByteJumpTable</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38354.html">CreateInterruptByteJumpTable</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38325"></span>38325</td>
+<td class="instruction">CALL <a href="38453.html">38453</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38453.html">38453</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38328"></span>38328</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38329"></span>38329</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="63509.html">Buffer_Counter</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38330"></span>38330</td>
+<td class="instruction">LD (63509),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38333"></span>38333</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38249.html">38249</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38313">Map</a></td>
+<td class="next">
+Next: <a href="38334.html">38334</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/38313.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

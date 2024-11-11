@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 43740</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43688.html">43688</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43740">Map</a></td>
+<td class="next">
+Next: <a href="43822.html">43822</a>
+</td>
+</tr>
+</table>
+<div class="description">43740: Routine at AADC</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="43530.html">43530</a>, <a href="43610.html">43610</a>, <a href="43643.html">43643</a>, <a href="43675.html">43675</a> and <a href="45419.html">45419</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43740"></span>43740</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43741"></span>43741</td>
+<td class="instruction">CALL <a href="51998.html">51998</a></td>
+<td class="comment-1" rowspan="1">Call <a href="51998.html">51998</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43744"></span>43744</td>
+<td class="instruction">CALL <a href="52168.html#52322">52322</a></td>
+<td class="comment-1" rowspan="1">Call <a href="52168.html#52322">52322</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43747"></span>43747</td>
+<td class="instruction">CALL <a href="42917.html">Print_PlayArea</a></td>
+<td class="comment-1" rowspan="1">Call <a href="42917.html">Print_PlayArea</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43750"></span>43750</td>
+<td class="instruction">LD HL,501</td>
+<td class="comment-1" rowspan="5">Write 501 to; <ul class="">
+<li>*<a href="45616.html#46090">46090</a></li>
+<li>*<a href="39711.html">Score</a></li>
+<li>*<a href="39600.html">2UP_Total</a></li>
+<li>*<a href="39600.html#39602">1UP_Total</a></li>
+</ul></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43753"></span>43753</td>
+<td class="instruction">LD (46090),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43756"></span>43756</td>
+<td class="instruction">LD (39711),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43759"></span>43759</td>
+<td class="instruction">LD (39600),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43762"></span>43762</td>
+<td class="instruction">LD (39602),HL</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43765"></span>
+<div class="comments">
+<div class="paragraph">
+Update the copy of the "current total".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43765"></span>43765</td>
+<td class="instruction">LD HL,44278</td>
+<td class="comment-1" rowspan="2">Write "&#53;" to *<a href="44249.html#44278">Current_Total</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43768"></span>43768</td>
+<td class="instruction">LD (HL),53</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43770"></span>43770</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Write "&#48;" to *<a href="44249.html#44278">44279</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43771"></span>43771</td>
+<td class="instruction">LD (HL),48</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43773"></span>43773</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Write "&#49;" to *<a href="44249.html#44278">44280</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43774"></span>43774</td>
+<td class="instruction">LD (HL),49</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43776"></span>43776</td>
+<td class="instruction">CALL <a href="41892.html">41892</a></td>
+<td class="comment-1" rowspan="1">Call <a href="41892.html">41892</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43779"></span>43779</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="5">Write 0 to; <ul class="">
+<li>*<a href="45616.html#46102">46102</a></li>
+<li>*<a href="39619.html#39695">39695</a></li>
+<li>*<a href="39535.html#39597">39597</a></li>
+<li>*<a href="39535.html#39593">39593</a></li>
+</ul></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43780"></span>43780</td>
+<td class="instruction">LD (46102),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43783"></span>43783</td>
+<td class="instruction">LD (39695),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43786"></span>43786</td>
+<td class="instruction">LD (39597),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43789"></span>43789</td>
+<td class="instruction">LD (39593),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43792"></span>43792</td>
+<td class="instruction">LD HL,513</td>
+<td class="comment-1" rowspan="2">Write 513 to *<a href="44873.html#44893">44893</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43795"></span>43795</td>
+<td class="instruction">LD (44893),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43798"></span>43798</td>
+<td class="instruction">LD HL,(39711)</td>
+<td class="comment-1" rowspan="2">Write *<a href="39711.html">Score</a> to *<a href="44873.html">44873</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43801"></span>43801</td>
+<td class="instruction">LD (44873),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43804"></span>43804</td>
+<td class="instruction">CALL <a href="44567.html">44567</a></td>
+<td class="comment-1" rowspan="1">Call <a href="44567.html">44567</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43807"></span>43807</td>
+<td class="instruction">LD HL,1281</td>
+<td class="comment-1" rowspan="2">Write 1281 to *<a href="44873.html#44893">44893</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43810"></span>43810</td>
+<td class="instruction">LD (44893),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43813"></span>43813</td>
+<td class="instruction">LD HL,501</td>
+<td class="comment-1" rowspan="2">Write 501 to *<a href="45616.html#46090">46090</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43816"></span>43816</td>
+<td class="instruction">LD (46090),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43819"></span>43819</td>
+<td class="instruction">JP <a href="40258.html">40258</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="40258.html">40258</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43688.html">43688</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43740">Map</a></td>
+<td class="next">
+Next: <a href="43822.html">43822</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/43740.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

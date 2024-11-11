@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at B7A0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B77A.html">B77A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b7a0">Map</a></td>
+<td class="next">
+Next: <a href="B7E1.html">B7E1</a>
+</td>
+</tr>
+</table>
+<div class="description">B7A0: Routine at B7A0</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="B77A.html">B77A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="b7a0"></span>B7A0</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="b7a2"></span>B7A2</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the shadow <span class="register">AF</span> register with the <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7a3"></span>B7A3</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7a4"></span>B7A4</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7a5"></span>B7A5</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="3">Stash <span class="register">BC</span>, <span class="register">HL</span> and <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7a6"></span>B7A6</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7a7"></span>B7A7</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7a8"></span>B7A8</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7a9"></span>B7A9</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="B7A0.html#b7d9">B7D9</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7ab"></span>B7AB</td>
+<td class="instruction">JR Z,<a href="B7A0.html#b7d9">$B7D9</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7ad"></span>B7AD</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7af"></span>B7AF</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7b0"></span>B7B0</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="B7A0.html#b7d9">B7D9</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7b2"></span>B7B2</td>
+<td class="instruction">JR Z,<a href="B7A0.html#b7d9">$B7D9</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7b4"></span>B7B4</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7b6"></span>B7B6</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7b7"></span>B7B7</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="B7A0.html#b7d9">B7D9</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7b9"></span>B7B9</td>
+<td class="instruction">JR Z,<a href="B7A0.html#b7d9">$B7D9</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7bb"></span>B7BB</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7bd"></span>B7BD</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7be"></span>B7BE</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="B7A0.html#b7d9">B7D9</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7c0"></span>B7C0</td>
+<td class="instruction">JR Z,<a href="B7A0.html#b7d9">$B7D9</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7c2"></span>B7C2</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7c4"></span>B7C4</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7c5"></span>B7C5</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="B7A0.html#b7d9">B7D9</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7c7"></span>B7C7</td>
+<td class="instruction">JR Z,<a href="B7A0.html#b7d9">$B7D9</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7c9"></span>B7C9</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7cb"></span>B7CB</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7cc"></span>B7CC</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="B7A0.html#b7d9">B7D9</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7ce"></span>B7CE</td>
+<td class="instruction">JR Z,<a href="B7A0.html#b7d9">$B7D9</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7d0"></span>B7D0</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7d2"></span>B7D2</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7d3"></span>B7D3</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="B7A0.html#b7d9">B7D9</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7d5"></span>B7D5</td>
+<td class="instruction">JR Z,<a href="B7A0.html#b7d9">$B7D9</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7d7"></span>B7D7</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">LDI.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="b7d9"></span>B7D9</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7da"></span>B7DA</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7db"></span>B7DB</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7dc"></span>B7DC</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7dd"></span>B7DD</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7de"></span>B7DE</td>
+<td class="instruction">DJNZ <a href="B7A0.html#b7a2">$B7A2</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B7A0.html#b7a2">B7A2</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b7e0"></span>B7E0</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B77A.html">B77A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b7a0">Map</a></td>
+<td class="next">
+Next: <a href="B7E1.html">B7E1</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/B7A0.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>
