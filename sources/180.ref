@@ -1,0 +1,77 @@
+;
+; SkoolKit ref file for 180
+;
+; To build the HTML disassembly, run these commands:
+;   tap2sna.py @180.t2s
+;   sna2skool.py -H -c sources/180.ctl 180.z80 > sources/180.skool
+;   skool2html.py -H sources/180.skool -T dark
+
+[Config]
+Expand=#INCLUDE(Expand)
+RefFiles=bases.ref;analytics.ref;changelog.ref;data.ref;pokes.ref;sound.ref
+GameDir=180
+
+[Game]
+Game=180
+Logo=#SCR$02,$0B,$02,$0A,$03,$4000,$5800(/images/logo)
+Copyright=&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.
+Repository=https://github.com/pobtastic/180/
+LinkInternalOperands=1
+AddressAnchor={address#IF({base}==16)(:04x)}
+
+[Titles]
+GameStatusBuffer=Game Status Buffer
+
+[Paths]
+Sound=sound/sounds.html
+
+[Page:Sound]
+SectionPrefix=Audio
+
+[PageHeaders]
+GameIndex=The complete<>RAM disassembly (work in progress)
+
+[Index:DataTables:Data Tables And Buffers]
+GameStatusBuffer
+
+[Expand]
+#DEF(#COLOUR(id)
+  #LET(ink=$id&$07)#IF({ink}>=$00)(INK:
+    #MAP({ink})(
+      UNKNOWN,
+      0:BLACK,
+      1:BLUE,
+      2:RED,
+      3:MAGENTA,
+      4:GREEN,
+      5:CYAN,
+      6:YELLOW,
+      7:WHITE)),
+  #LET(paper=$id>>$03&$07)#IF({paper}>=$00)(PAPER:
+    #MAP({paper})(
+      UNKNOWN,
+      0:BLACK,
+      1:BLUE,
+      2:RED,
+      3:MAGENTA,
+      4:GREEN,
+      5:CYAN,
+      6:YELLOW,
+      7:WHITE))
+  #LET(bright=$id&$40)#IF({bright}>$00)((BRIGHT))
+  #LET(flash=$id&$80)#IF({flash}>$00)(FLASH: ON))
+
+#DEF(#INK(id)
+  #LET(bright=$id&$40)
+  #LET(flash=$id&$80)
+  #LET(ink=$id&$07)#IF({ink}>=$00)(
+    #MAP({ink})(
+      UNKNOWN,
+      0:BLACK,
+      1:BLUE,
+      2:RED,
+      3:MAGENTA,
+      4:GREEN,
+      5:CYAN,
+      6:YELLOW,
+      7:WHITE))#IF({bright}>$00)( (BRIGHT))#IF({flash}>$00)( (FLASH: ON)))

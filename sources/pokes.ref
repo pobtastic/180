@@ -1,0 +1,8 @@
+; Copyright 2024 Paul Maddern (paul@arcadegeek.co.uk)
+
+[Poke:1UP Target Only 401]
+In a single player game you start at 401, the computer still starts at 501.
+
+<div>
+  <code>POKE #R$AAE6(#N$AAE7),#N$91</code>
+</div>

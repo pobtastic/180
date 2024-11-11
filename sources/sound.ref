@@ -1,0 +1,9 @@
+; Copyright 2024 Paul Maddern (paul@arcadegeek.co.uk)
+
+[Audio:tick:Tick]
+
+#AUDIO(tick.wav)(#INCLUDE(Tick))
+
+[Audio:Two]
+
+#AUDIO(two.wav)(#INCLUDE(Two))

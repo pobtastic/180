@@ -1,0 +1,16 @@
+; tap2sna.py file for 180. Run
+;
+;   $ tap2sna.py @180.t2s
+;
+; to create a Z80 snapshot.
+
+https://worldofspectrum.net/pub/sinclair/games/123/180_2.tzx.zip
+180.z80
+
+--tape-name "180 (MAD).tzx"
+--tape-sum b4e21c88e1c336edd464cb4ca5db8aa7
+;--start 0x8D72
+--start 0x9195
+
+; from tape block #5 to address 16384.
+;--ram load=5,$4000 ;  6914 bytes ; Loading SCREEN$
