@@ -1415,11 +1415,10 @@ c$9183 XOR A         ; {Write #N$00 to; #LIST
  $9192 CALL $95A9    ; Call #R$95A9.
 ; Clear the screen buffer.
  $9195 CALL $964C    ; Call #R$964C.
- $9198 DEFM $01      ;
- $9199 DEFM $00      ;
- $919A DEFM $1A      ;
- $919B DEFM "u"      ;
- $919C DEFM $8D      ;
+ $9198 DEFB $01      ; #R$98CC.
+ $9199 DEFB $00      ; #R$97D5(CLEAR SCREEN).
+ $919A DEFB $1A      ; {#R$98A8.
+ $919B DEFW $8D75    ; }
  $919D DEFB $FF      ; Terminator.
  $919E JP $933F      ; Jump to #R$933F.
 
@@ -1724,7 +1723,7 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
 ; .
 ; Print the menu options.
  $9356 CALL $964C                 ; Call #R$964C.
- $9359 DEFB $00                   ; CLEAR SCREEN.
+ $9359 DEFB $00                   ; #R$97D5(CLEAR SCREEN).
  $935A DEFB $10,$00               ; INK: #INK(#PEEK(#PC+$01)).
  $935C DEFB $11,$00               ; PAPER: #INK(#PEEK(#PC+$01)).
  $935E DEFB $16,$05,$07           ; PRINT AT: #N(#PEEK(#PC+$01)),
@@ -1785,8 +1784,8 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
  $93FB CP $30                     ; {Jump to #R$9429 if #REGa is not equal to
  $93FD JR NZ,$9429                ; #N$30.}
  $93FF CALL $9942                 ; Call #R$9942.
- $9402 LD A,($99F6)               ; #REGa=*#R$99F6.
- $9405 LD ($99F5),A               ; Write #REGa to *#R$99F5.
+ $9402 LD A,($99F6)               ; {Write *#R$99F6 to *#R$99F5.
+ $9405 LD ($99F5),A               ; }
  $9408 ADD A,A                    ; #REGa+=#REGa.
  $9409 ADD A,$05                  ; #REGa+=#N$05.
  $940B LD D,A                     ; #REGd=#REGa.
@@ -2019,7 +2018,7 @@ c$94F0 LD B,$32      ; Set a counter in #REGb of #N$32.
 c$94F8 XOR A                ; {Write #N$00 to *#R$99F6.
  $94F9 LD ($99F6),A         ; }
  $94FC CALL $964C           ; Call #R$964C.
- $94FF DEFB $00             ; CLEAR SCREEN.
+ $94FF DEFB $00             ; #R$97D5(CLEAR SCREEN).
  $9500 DEFB $10,$03         ; INK: #INK(#PEEK(#PC+$01)).
  $9502 DEFB $11,$00         ; PAPER: #INK(#PEEK(#PC+$01)).
  $9504 DEFB $16,$04,$0A     ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
@@ -2243,15 +2242,15 @@ c$9658 HALT          ; Halt operation (suspend CPU until the next interrupt).
 ; Used by the routines at #R$9211, #R$933F, #R$94D3 and #R$A8F8.
 c$965F HALT            ; Halt operation (suspend CPU until the next interrupt).
  $9660 CALL $9688      ; Call #R$9688.
- $9663 RET Z           ; Return if #REGbc is equal to #REGc.
+ $9663 RET Z           ; Return if #REGa is zero.
 ; This entry point is used by the routine at #R$B230.
 *$9664 CP (IY+$65)     ; Compare #REGa with *#REGiy+#N$65.
  $9667 JR Z,$967C      ; Jump to #R$967C if #REGbc is equal to #REGc.
  $9669 OR A            ; Set the bits from #REGa.
  $966A JR NZ,$966F     ; Jump to #R$966F if #REGbc is not equal to #REGa.
  $966C LD ($F865),A    ; Write #REGa to *#R$F865.
-*$966F CP $04          ; Compare #REGa with #N$04.
- $9671 JR C,$965F      ; Jump to #R$965F if #REGa is less than #N$04.
+*$966F CP $04          ; {Jump to #R$965F if #REGa is less than #N$04.
+ $9671 JR C,$965F      ; }
  $9673 LD ($F865),A    ; Write #REGa to *#R$F865.
  $9676 LD (IY+$66),$0F ; Write #N$0F to *#REGiy+#N$66.
  $967A OR A            ; Set the bits from #REGa.
@@ -2301,18 +2300,18 @@ c$9688 PUSH BC         ; {Stash #REGbc and #REGhl on the stack.
  $96CF OR A            ; Set the bits from #REGa.
  $96D0 JR NZ,$96F0     ; Jump to #R$96F0 if #REGhl is not equal to #REGa.
  $96D2 INC IX          ; Increment #REGix by one.
- $96D4 LD A,$05        ; #REGa=#N$05.
- $96D6 ADD A,L         ; #REGa+=#REGl.
- $96D7 LD L,A          ; #REGl=#REGa.
+ $96D4 LD A,$05        ; {#REGl+=#N$05.
+ $96D6 ADD A,L         ;
+ $96D7 LD L,A          ; }
  $96D8 JR NC,$96DB     ; Jump to #R$96DB if #REGhl is greater than or equal to
                        ; #REGa.
  $96DA INC H           ; Increment #REGh by one.
 *$96DB RLC B           ; Rotate #REGb left (with carry).
  $96DD JR C,$96CC      ; Jump to #R$96CC if #REGh is less than #REGa.
- $96DF LD A,($F864)    ; #REGa=*#R$F864.
- $96E2 CP A            ; Compare #REGa with #REGa.
- $96E3 POP IX          ; Restore #REGix from the stack.
- $96E5 POP HL          ; {Restore #REGhl and #REGbc from the stack.
+ $96DF LD A,($F864)    ; {Compare *#R$F864 with itself for the return.
+ $96E2 CP A            ; }
+ $96E3 POP IX          ; {Restore #REGix, #REGhl and #REGbc from the stack.
+ $96E5 POP HL          ;
  $96E6 POP BC          ; }
  $96E7 RET             ; Return.
 
@@ -2510,33 +2509,35 @@ c$97F0 LD D,H        ; {Copy #REGhl into #REGde.
 ; Routine at 97F7
 ;
 ; Used by the routine at #R$9818.
-c$97F7 LD A,($F817)  ;
- $97FA LD (HL),A     ;
-
-; Control Code #N$0B:
-@label=ControlCode_11
-c$97FB INC HL        ;
- $97FC INC (HL)      ;
- $97FD LD A,(HL)     ;
- $97FE CP $18        ;
- $9800 JP C,$995D    ;
- $9803 DEC (HL)      ;
- $9804 JP $995D      ;
-
-; Control Code #N$0C:
-@label=ControlCode_12
-c$9807 INC HL        ;
- $9808 DEC (HL)      ;
- $9809 JP P,$995D    ;
- $980C INC (HL)      ;
- $980D JP $995D      ;
+c$97F7 LD A,($F817)  ; {Write *#R$F817 to *#REGhl.
+ $97FA LD (HL),A     ; }
 
 ; Control Code #N$0A:
 @label=ControlCode_10
-c$9810 DEC (HL)      ;
- $9811 JP P,$995D    ;
- $9814 INC (HL)      ;
- $9815 JP $995D      ;
+c$97FB INC HL        ; Increment #REGhl by one.
+ $97FC INC (HL)      ; Increment *#REGhl by one.
+ $97FD LD A,(HL)     ; {Jump to #R$995D if *#REGhl is less than #N$18.
+ $97FE CP $18        ;
+ $9800 JP C,$995D    ; }
+ $9803 DEC (HL)      ; Decrease *#REGhl by one.
+ $9804 JP $995D      ; Jump to #R$995D.
+
+; Control Code #N$0B:
+@label=ControlCode_11
+c$9807 INC HL        ; Increment #REGhl by one.
+ $9808 DEC (HL)      ; Decrease *#REGhl by one.
+ $9809 JP P,$995D    ; Jump to #R$995D if *#REGhl is greater than or equal to
+                     ; #N$00.
+ $980C INC (HL)      ; Increment *#REGhl by one.
+ $980D JP $995D      ; Jump to #R$995D.
+
+; Control Code #N$09:
+@label=ControlCode_09
+c$9810 DEC (HL)      ; Decrease *#REGhl by one.
+ $9811 JP P,$995D    ; Jump to #R$995D if *#REGhl is greater than or equal to
+                     ; #N$00.
+ $9814 INC (HL)      ; Increment *#REGhl by one.
+ $9815 JP $995D      ; Jump to #R$995D.
 
 ; Routine at 9818
 ;
@@ -2574,35 +2575,36 @@ c$9837 LD HL,$F81E   ; #REGhl=#R$F81E.
  $9848 JP $995D      ; Jump to #R$995D.
 
 ; Routine at 984B
-c$984B LD HL,$F81E   ;
- $984E LD A,(HL)     ;
- $984F AND $C7       ;
- $9851 LD (HL),A     ;
- $9852 LD A,($F80C)  ;
- $9855 CP $08        ;
- $9857 JP NC,$9957   ;
- $985A ADD A,A       ;
+c$984B LD HL,$F81E   ; #REGhl=#R$F81E.
+ $984E LD A,(HL)     ; #REGa=*#REGhl.
+ $984F AND %11000111 ; Keep only bits 0-2, 6-7.
+ $9851 LD (HL),A     ; Write #REGa to *#REGhl.
+ $9852 LD A,($F80C)  ; #REGa=*#R$F80C.
+ $9855 CP $08        ; {Jump to #R$9957 if #REGa is greater than #N$08.
+ $9857 JP NC,$9957   ; }
+ $985A ADD A,A       ; {Multiply #REGa by #N$08.
  $985B ADD A,A       ;
- $985C ADD A,A       ;
- $985D OR (HL)       ;
- $985E LD (HL),A     ;
- $985F JP $995D      ;
+ $985C ADD A,A       ; }
+ $985D OR (HL)       ; Set the bits from *#REGhl.
+ $985E LD (HL),A     ; Write #REGa to *#REGhl.
+ $985F JP $995D      ; Jump to #R$995D.
 
 ; Routine at 9862
-c$9862 LD A,($F80D)  ;
- $9865 CP $20        ;
- $9867 JP NC,$9957   ;
- $986A LD (HL),A     ;
- $986B INC HL        ;
- $986C LD A,($F80C)  ;
- $986F CP $19        ;
- $9871 JP NC,$9957   ;
- $9874 LD (HL),A     ;
- $9875 JP $995D      ;
+c$9862 LD A,($F80D)  ; #REGa=*#R$F80D.
+ $9865 CP $20        ; {Jump to #R$9957 if #REGa is greater than #N$20.
+ $9867 JP NC,$9957   ; }
+ $986A LD (HL),A     ; Write #REGa to *#REGhl.
+ $986B INC HL        ; Increment #REGhl by one.
+ $986C LD A,($F80C)  ; #REGa=*#R$F80C.
+ $986F CP $19        ; {Jump to #R$9957 if #REGa is greater than #N$19.
+ $9871 JP NC,$9957   ; }
+ $9874 LD (HL),A     ; Write #REGa to *#REGhl.
+ $9875 JP $995D      ; Jump to #R$995D.
 
-; Control Code #N$04:
-@label=ControlCode_04
+; Control Code #N$03: Repeater
+@label=ControlCode_Repeater
 c$9878 LD HL,($F80C) ; #REGhl=*#R$F80C.
+@label=Repeater_Loop
 *$987B LD A,H        ; #REGa=#REGh.
  $987C CALL $9736    ; Call #R$9736.
  $987F DEC L         ; Decrease #REGl by one.
@@ -2633,8 +2635,8 @@ c$98A8 LD HL,($F80C) ; {Write *#R$F80C to *#R$F81A.
  $98AB LD ($F81A),HL ; }
  $98AE JP $995D      ; Jump to #R$995D.
 
-; Control Code #N$0D:
-@label=ControlCode_13
+; Control Code #N$0C:
+@label=ControlCode_12
 c$98B1 PUSH BC       ; Stash #REGbc on the stack.
  $98B2 LD HL,$F816   ; #REGhl=#R$F816.
  $98B5 LD B,(HL)     ; #REGb=*#REGhl.
@@ -2652,8 +2654,8 @@ c$98C3 LD A,($F80C)  ; {Write *#R$F80C to *#R$F816.
  $98C6 LD ($F816),A  ; }
  $98C9 JP $995D      ; Jump to #R$995D.
 
-; Control Code #N$02:
-@label=ControlCode_02
+; Control Code #N$01:
+@label=ControlCode_01
 c$98CC LD A,$10      ; {INK: #INK$07.
  $98CE CALL $9736    ;
  $98D1 LD A,$07      ;
@@ -2664,7 +2666,7 @@ c$98CC LD A,$10      ; {INK: #INK$07.
  $98DC OUT ($FE),A   ; }
  $98DE LD ($F817),A  ; Write #N$00 to *#R$F817.
  $98E1 CALL $9736    ; ... PAPER: #INK$00.
- $98E4 LD HL,$0000   ; {Write #N$0000 to *#R$F818.
+ $98E4 LD HL,$0000   ; {Write #N($0000,$04,$04) to *#R$F818.
  $98E7 LD ($F818),HL ; }
  $98EA XOR A         ; {Write #N$00 to *#R$F816.
  $98EB LD ($F816),A  ; }
@@ -2676,8 +2678,8 @@ c$98CC LD A,$10      ; {INK: #INK$07.
  $98FD LD ($F81C),HL ; }
  $9900 JP $995D      ; Jump to #R$995D.
 
-; Control Code #N$03:
-@label=ControlCode_03
+; Control Code #N$02:
+@label=ControlCode_02
 c$9903 PUSH DE       ; {Stash #REGde and #REGbc on the stack.
  $9904 PUSH BC       ; }
  $9905 LD HL,$5800   ; #REGhl=#N$5800 (attribute buffer location).
@@ -2700,8 +2702,8 @@ c$9903 PUSH DE       ; {Stash #REGde and #REGbc on the stack.
                      ; counter is zero.
  $9927 JP $995B      ; Jump to #R$995B.
 
-; Control Code #N$08:
-@label=ControlCode_08
+; Control Code #N$07:
+@label=ControlCode_07
 c$992A PUSH BC       ; Stash #REGbc on the stack.
  $992B LD C,$00      ; #REGc=#N$00.
  $992D LD B,$14      ; #REGb=#N$14.
@@ -2736,11 +2738,11 @@ c$9942 LD C,$00      ; #REGc=#N$00.
                      ; counter is zero.
  $9956 RET           ; Return.
 
-; Control Code #N$05:
+; Control Code #N$04:
 ;
 ; Used by the routines at #R$9821, #R$9837, #R$984B, #R$9862, #R$9885 and
 ; #R$9893.
-@label=ControlCode_05
+@label=ControlCode_04
 c$9957 RET           ; Return.
 
 ; Unused
@@ -2777,38 +2779,38 @@ g$9965 DEFB $00,$00,$00,$02,$00,$00,$00,$00
 
 ; Jump Table: Control Codes
 @label=JumpTable_ControlCodes
-g$9985 DEFW $97D5
- $9987 DEFW $98CC
- $9989 DEFW $9903
- $998B DEFW $9878
- $998D DEFW $9957
- $998F DEFW $9957
- $9991 DEFW $9957
- $9993 DEFW $992A
- $9995 DEFW $9810
- $9997 DEFW $9818
- $9999 DEFW $97FB
- $999B DEFW $9807
- $999D DEFW $98B1
- $999F DEFW $97F7
- $99A1 DEFW $9957
- $99A3 DEFW $9957
- $99A5 DEFW $9837
- $99A7 DEFW $984B
- $99A9 DEFW $9821
- $99AB DEFW $9885
- $99AD DEFW $9893
- $99AF DEFW $9957
- $99B1 DEFW $9862
- $99B3 DEFW $9957
- $99B5 DEFW $98C3
- $99B7 DEFW $989F
- $99B9 DEFW $98A8
- $99BB DEFW $9957
- $99BD DEFW $9957
- $99BF DEFW $9957
- $99C1 DEFW $9957
- $99C3 DEFW $9957
+g$9985 DEFW $97D5    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $9987 DEFW $98CC    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $9989 DEFW $9903    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $998B DEFW $9878    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $998D DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $998F DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $9991 DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $9993 DEFW $992A    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $9995 DEFW $9810    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $9997 DEFW $9818    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $9999 DEFW $97FB    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $999B DEFW $9807    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $999D DEFW $98B1    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $999F DEFW $97F7    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99A1 DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99A3 DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99A5 DEFW $9837    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99A7 DEFW $984B    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99A9 DEFW $9821    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99AB DEFW $9885    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99AD DEFW $9893    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99AF DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99B1 DEFW $9862    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99B3 DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99B5 DEFW $98C3    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99B7 DEFW $989F    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99B9 DEFW $98A8    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99BB DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99BD DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99BF DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99C1 DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+ $99C3 DEFW $9957    ; #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
 
 ; Data block at 99C5
 w$99C5 DEFW $4000
@@ -2836,8 +2838,16 @@ w$99C5 DEFW $4000
  $99F1 DEFW $50C0
  $99F3 DEFW $50E0
 
-; Data block at 99F5
-b$99F5 DEFB $00
+; Control Type
+;
+; #TABLE(default,centre) { =h Byte | =h Meaning }
+; { #N$00 | 1 Keyboard }
+; { #N$01 | 2 Kempston Joystick }
+; { #N$02 | 3 Interface Two }
+; { #N$03 | 4 Cursor Joystick }
+; TABLE#
+@label=ControlType
+g$99F5 DEFB $00
 
 ; Dart Pointer Position
 ;
@@ -9125,7 +9135,8 @@ b$F800 DEFB $00,$00,$00,$00,$00,$00,$00
 g$F80A DEFW $0000
 
 ; Game status buffer entry at F80C
-g$F80C DEFW $0000
+g$F80C DEFB $00
+ $F80D DEFB $00
 
 ; Data block at F80E
 b$F80E DEFB $00,$00,$00,$00,$00,$00
@@ -9150,8 +9161,12 @@ g$F818 DEFB $00
 @label=Font_Pointer
 g$F81A DEFW $0000
 
-; Data block at F81C
-b$F81C DEFB $00,$00
+; Print: Attribute Buffer Pointer
+;
+; Pointer to the attribute buffer location of where the characters will
+; be printed.
+@label=PrintAttributeBuffer_Pointer
+g$F81C DEFW $0000
  $F81E DEFB $00,$00,$00
  $F821 DEFB $00,$00,$00,$00,$00,$00
 
@@ -9164,14 +9179,22 @@ g$F827 DEFW $5FE6
 
 ; Data block at F829
 b$F829 DEFB $00,$00
- $F82B DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $F833 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $F83B DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $F843 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $F84B DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $F853 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $F85B DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $F863 DEFB $00
+
+; Print: Screen Buffer Pointer
+;
+; Pointer to the screen buffer location of where the characters will be
+; printed.
+@label=PrintScreenBuffer_Pointer
+g$F82B DEFW $0000
+
+; Data block at F82D
+b$F82D DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $F835 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $F83D DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $F845 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $F84D DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $F855 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $F85D DEFB $00,$00,$00,$00,$00,$00,$00
  $F864 DEFB $00
  $F865 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $F86D DEFB $00,$00,$00,$00,$00,$00,$00,$00

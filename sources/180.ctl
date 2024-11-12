@@ -47,8 +47,11 @@ c $9183 Game Entry Point
   $9192,$03 Call #R$95A9.
 N $9195 Clear the screen buffer.
   $9195,$03 Call #R$964C.
-T $9198,$01
-L $9198,$01,$05
+B $9198,$01 #R$98CC.
+B $9199,$01 #R$97D5(CLEAR SCREEN).
+B $919A,$01
+W $919B,$02
+M $919A,$03 #R$98A8.
 B $919D,$01 Terminator.
   $919E,$03 Jump to #R$933F.
 
@@ -282,7 +285,7 @@ N $9356 #PUSHS SIM(start=$9356,stop=$93D1)
 . UDGTABLE# #POPS
 N $9356 Print the menu options.
   $9356,$03 Call #R$964C.
-B $9359,$01 CLEAR SCREEN.
+B $9359,$01 #R$97D5(CLEAR SCREEN).
 B $935A,$02 INK: #INK(#PEEK(#PC+$01)).
 B $935C,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $935E,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
@@ -326,8 +329,7 @@ N $93D6 Clear the attributes of all possible positions of the dart pointer.
   $93F9,$02 Jump to #R$93F1 if #REGd is equal to #N$04.
   $93FB,$04 Jump to #R$9429 if #REGa is not equal to #N$30.
   $93FF,$03 Call #R$9942.
-  $9402,$03 #REGa=*#R$99F6.
-  $9405,$03 Write #REGa to *#R$99F5.
+  $9402,$06 Write *#R$99F6 to *#R$99F5.
   $9408,$01 #REGa+=#REGa.
   $9409,$02 #REGa+=#N$05.
   $940B,$01 #REGd=#REGa.
@@ -496,7 +498,7 @@ N $94F8 #PUSHS #SIM(start=$94F8,stop=$953A)
 . UDGTABLE# #POPS
   $94F8,$04 Write #N$00 to *#R$99F6.
   $94FC,$03 Call #R$964C.
-B $94FF,$01 CLEAR SCREEN.
+B $94FF,$01 #R$97D5(CLEAR SCREEN).
 B $9500,$02 INK: #INK(#PEEK(#PC+$01)).
 B $9502,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $9504,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
@@ -658,14 +660,13 @@ c $9658
 c $965F
   $965F,$01 Halt operation (suspend CPU until the next interrupt).
   $9660,$03 Call #R$9688.
-  $9663,$01 Return if #REGbc is equal to #REGc.
+  $9663,$01 Return if #REGa is zero.
   $9664,$03 Compare #REGa with *#REGiy+#N$65.
   $9667,$02 Jump to #R$967C if #REGbc is equal to #REGc.
   $9669,$01 Set the bits from #REGa.
   $966A,$02 Jump to #R$966F if #REGbc is not equal to #REGa.
   $966C,$03 Write #REGa to *#R$F865.
-  $966F,$02 Compare #REGa with #N$04.
-  $9671,$02 Jump to #R$965F if #REGa is less than #N$04.
+  $966F,$04 Jump to #R$965F if #REGa is less than #N$04.
   $9673,$03 Write #REGa to *#R$F865.
   $9676,$04 Write #N$0F to *#REGiy+#N$66.
   $967A,$01 Set the bits from #REGa.
@@ -711,17 +712,13 @@ c $9688
   $96CF,$01 Set the bits from #REGa.
   $96D0,$02 Jump to #R$96F0 if #REGhl is not equal to #REGa.
   $96D2,$02 Increment #REGix by one.
-  $96D4,$02 #REGa=#N$05.
-  $96D6,$01 #REGa+=#REGl.
-  $96D7,$01 #REGl=#REGa.
+  $96D4,$04 #REGl+=#N$05.
   $96D8,$02 Jump to #R$96DB if #REGhl is greater than or equal to #REGa.
   $96DA,$01 Increment #REGh by one.
   $96DB,$02 Rotate #REGb left (with carry).
   $96DD,$02 Jump to #R$96CC if #REGh is less than #REGa.
-  $96DF,$03 #REGa=*#R$F864.
-  $96E2,$01 Compare #REGa with #REGa.
-  $96E3,$02 Restore #REGix from the stack.
-  $96E5,$02 Restore #REGhl and #REGbc from the stack.
+  $96DF,$04 Compare *#R$F864 with itself for the return.
+  $96E3,$04 Restore #REGix, #REGhl and #REGbc from the stack.
   $96E7,$01 Return.
 
 b $96E8
@@ -853,15 +850,30 @@ R $97F0 A Value to copy
   $97F6,$01 Return.
 
 c $97F7
+  $97F7,$04 Write *#R$F817 to *#REGhl.
 
-c $97FB Control Code #N$0B:
-@ $97FB label=ControlCode_11
+c $97FB Control Code #N$0A:
+@ $97FB label=ControlCode_10
+  $97FB,$01 Increment #REGhl by one.
+  $97FC,$01 Increment *#REGhl by one.
+  $97FD,$06 Jump to #R$995D if *#REGhl is less than #N$18.
+  $9803,$01 Decrease *#REGhl by one.
+  $9804,$03 Jump to #R$995D.
 
-c $9807 Control Code #N$0C:
-@ $9807 label=ControlCode_12
+c $9807 Control Code #N$0B:
+@ $9807 label=ControlCode_11
+  $9807,$01 Increment #REGhl by one.
+  $9808,$01 Decrease *#REGhl by one.
+  $9809,$03 Jump to #R$995D if *#REGhl is greater than or equal to #N$00.
+  $980C,$01 Increment *#REGhl by one.
+  $980D,$03 Jump to #R$995D.
 
-c $9810 Control Code #N$0A:
-@ $9810 label=ControlCode_10
+c $9810 Control Code #N$09:
+@ $9810 label=ControlCode_09
+  $9810,$01 Decrease *#REGhl by one.
+  $9811,$03 Jump to #R$995D if *#REGhl is greater than or equal to #N$00.
+  $9814,$01 Increment *#REGhl by one.
+  $9815,$03 Jump to #R$995D.
 
 c $9818
   $9818,$01 Increment *#REGhl by one.
@@ -890,12 +902,31 @@ c $9837
   $9848,$03 Jump to #R$995D.
 
 c $984B
+  $984B,$03 #REGhl=#R$F81E.
+  $984E,$01 #REGa=*#REGhl.
+  $984F,$02,b$01 Keep only bits 0-2, 6-7.
+  $9851,$01 Write #REGa to *#REGhl.
+  $9852,$03 #REGa=*#R$F80C.
+  $9855,$05 Jump to #R$9957 if #REGa is greater than #N$08.
+  $985A,$03 Multiply #REGa by #N$08.
+  $985D,$01 Set the bits from *#REGhl.
+  $985E,$01 Write #REGa to *#REGhl.
+  $985F,$03 Jump to #R$995D.
 
 c $9862
+  $9862,$03 #REGa=*#R$F80D.
+  $9865,$05 Jump to #R$9957 if #REGa is greater than #N$20.
+  $986A,$01 Write #REGa to *#REGhl.
+  $986B,$01 Increment #REGhl by one.
+  $986C,$03 #REGa=*#R$F80C.
+  $986F,$05 Jump to #R$9957 if #REGa is greater than #N$19.
+  $9874,$01 Write #REGa to *#REGhl.
+  $9875,$03 Jump to #R$995D.
 
-c $9878 Control Code #N$04:
-@ $9878 label=ControlCode_04
+c $9878 Control Code #N$03: Repeater
+@ $9878 label=ControlCode_Repeater
   $9878,$03 #REGhl=*#R$F80C.
+@ $987B label=Repeater_Loop
   $987B,$01 #REGa=#REGh.
   $987C,$03 Call #R$9736.
   $987F,$01 Decrease #REGl by one.
@@ -920,8 +951,8 @@ c $98A8
   $98A8,$06 Write *#R$F80C to *#R$F81A.
   $98AE,$03 Jump to #R$995D.
 
-c $98B1 Control Code #N$0D:
-@ $98B1 label=ControlCode_13
+c $98B1 Control Code #N$0C:
+@ $98B1 label=ControlCode_12
   $98B1,$01 Stash #REGbc on the stack.
   $98B2,$03 #REGhl=#R$F816.
   $98B5,$01 #REGb=*#REGhl.
@@ -938,22 +969,22 @@ c $98C3
   $98C3,$06 Write *#R$F80C to *#R$F816.
   $98C9,$03 Jump to #R$995D.
 
-c $98CC Control Code #N$02:
-@ $98CC label=ControlCode_02
+c $98CC Control Code #N$01:
+@ $98CC label=ControlCode_01
   $98CC,$0A INK: #INK$07.
   $98D6,$05 PAPER: ...
   $98DB,$03 Set border to #INK$00.
   $98DE,$03 Write #N$00 to *#R$F817.
   $98E1,$03 ... PAPER: #INK$00.
-  $98E4,$06 Write #N$0000 to *#R$F818.
+  $98E4,$06 Write #N($0000,$04,$04) to *#R$F818.
   $98EA,$04 Write #N$00 to *#R$F816.
   $98EE,$06 Write #N$4000 to *#R$F82B.
   $98F4,$06 Write #R$8D75 to *#R$F81A.
   $98FA,$06 Write #N$5800 to *#R$F81C.
   $9900,$03 Jump to #R$995D.
 
-c $9903 Control Code #N$03:
-@ $9903 label=ControlCode_03
+c $9903 Control Code #N$02:
+@ $9903 label=ControlCode_02
   $9903,$02 Stash #REGde and #REGbc on the stack.
   $9905,$03 #REGhl=#N$5800 (attribute buffer location).
   $9908,$03 #REGde=#N$5801.
@@ -974,8 +1005,8 @@ c $9903 Control Code #N$03:
   $9925,$02 Decrease counter by one and loop back to #R$9918 until counter is zero.
   $9927,$03 Jump to #R$995B.
 
-c $992A Control Code #N$08:
-@ $992A label=ControlCode_08
+c $992A Control Code #N$07:
+@ $992A label=ControlCode_07
   $992A,$01 Stash #REGbc on the stack.
   $992B,$02 #REGc=#N$00.
   $992D,$02 #REGb=#N$14.
@@ -1002,8 +1033,8 @@ c $9942
   $9954,$02 Decrease counter by one and loop back to #R$9946 until counter is zero.
   $9956,$01 Return.
 
-c $9957 Control Code #N$05:
-@ $9957 label=ControlCode_05
+c $9957 Control Code #N$04:
+@ $9957 label=ControlCode_04
   $9957,$01 Return.
 
 u $9958
@@ -1025,11 +1056,20 @@ B $9965,$20
 
 g $9985 Jump Table: Control Codes
 @ $9985 label=JumpTable_ControlCodes
-W $9985
+W $9985,$02 #N((#PC-$9985)/$02): #R(#PEEK(#PC)+#PEEK(#PC+$01)*$100).
+L $9985,$02,$20
 
 w $99C5
 
-b $99F5
+g $99F5 Control Type
+@ $99F5 label=ControlType
+D $99F5 #TABLE(default,centre) { =h Byte | =h Meaning }
+. { #N$00 | 1 Keyboard }
+. { #N$01 | 2 Kempston Joystick }
+. { #N$02 | 3 Interface Two }
+. { #N$03 | 4 Cursor Joystick }
+. TABLE#
+B $99F5,$01
 
 g $99F6 Dart Pointer Position
 @ $99F6 label=DartPointer_Position
@@ -2403,7 +2443,7 @@ g $F80A Buffer Pointer
 W $F80A,$02
 
 g $F80C
-W $F80C,$02
+B $F80C,$02,$01
 
 b $F80E
 
@@ -2426,7 +2466,12 @@ g $F81A Font Pointer
 @ $F81A label=Font_Pointer
 W $F81A,$02
 
-b $F81C
+g $F81C Print: Attribute Buffer Pointer
+@ $F81C label=PrintAttributeBuffer_Pointer
+D $F81C Pointer to the attribute buffer location of where the characters will
+. be printed.
+W $F81C,$02
+
   $F81E
   $F821
 
@@ -2437,7 +2482,14 @@ D $F827 Holds the initial value of the stack pointer.
 W $F827,$02
 
 b $F829
-  $F82B
+
+g $F82B Print: Screen Buffer Pointer
+@ $F82B label=PrintScreenBuffer_Pointer
+D $F82B Pointer to the screen buffer location of where the characters will be
+. printed.
+W $F82B,$02
+
+b $F82D
   $F864
   $F865
 
