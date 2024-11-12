@@ -44,67 +44,64 @@ Next: <a href="9862.html">9862</a>
 <tr>
 <td class="address-2"><span id="984b"></span>984B</td>
 <td class="instruction">LD HL,$F81E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="F81C.html#f81e">F81E</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="984e"></span>984E</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="984f"></span>984F</td>
-<td class="instruction">AND $C7</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %11000111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-2, 6-7.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9851"></span>9851</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9852"></span>9852</td>
 <td class="instruction">LD A,($F80C)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F80C.html">F80C</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9855"></span>9855</td>
 <td class="instruction">CP $08</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="9957.html">ControlCode_04</a> if <span class="register">A</span> is greater than 08.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9857"></span>9857</td>
-<td class="instruction">JP NC,<a href="9957.html">ControlCode_05</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JP NC,<a href="9957.html">ControlCode_04</a></td>
 </tr>
 <tr>
 <td class="address-1"><span id="985a"></span>985A</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Multiply <span class="register">A</span> by 08.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="985b"></span>985B</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="985c"></span>985C</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="985d"></span>985D</td>
 <td class="instruction">OR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="985e"></span>985E</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="985f"></span>985F</td>
 <td class="instruction">JP <a href="995B.html#995d">$995D</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="995B.html#995d">995D</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

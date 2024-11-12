@@ -33,7 +33,7 @@ Next: <a href="9942.html">9942</a>
 </td>
 </tr>
 </table>
-<div class="description">992A: Control Code 08:</div>
+<div class="description">992A: Control Code 07:</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,7 +42,7 @@ Next: <a href="9942.html">9942</a>
 </td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_08</td>
+<td class="asm-label">ControlCode_07</td>
 <td class="address-2"><span id="992a"></span>992A</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
@@ -60,13 +60,13 @@ Next: <a href="9942.html">9942</a>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=14.</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_08_0</td>
+<td class="asm-label">ControlCode_07_0</td>
 <td class="address-2"><span id="992f"></span>992F</td>
 <td class="instruction">LD HL,$0014</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=0014.</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_08_1</td>
+<td class="asm-label">ControlCode_07_1</td>
 <td class="address-2"><span id="9932"></span>9932</td>
 <td class="instruction">DEC HL</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
@@ -75,7 +75,7 @@ Next: <a href="9942.html">9942</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9933"></span>9933</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="3">Jump to <a href="992A.html#9932">ControlCode_08_1</a> until <span class="register">HL</span> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="992A.html#9932">ControlCode_07_1</a> until <span class="register">HL</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -85,7 +85,7 @@ Next: <a href="9942.html">9942</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9935"></span>9935</td>
-<td class="instruction">JR NZ,<a href="992A.html#9932">ControlCode_08_1</a></td>
+<td class="instruction">JR NZ,<a href="992A.html#9932">ControlCode_07_1</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -114,8 +114,8 @@ Next: <a href="9942.html">9942</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="993d"></span>993D</td>
-<td class="instruction">DJNZ <a href="992A.html#992f">ControlCode_08_0</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="992A.html#992f">ControlCode_08_0</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="992A.html#992f">ControlCode_07_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="992A.html#992f">ControlCode_07_0</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

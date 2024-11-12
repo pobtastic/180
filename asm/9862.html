@@ -44,52 +44,50 @@ Next: <a href="9878.html">9878</a>
 <tr>
 <td class="address-2"><span id="9862"></span>9862</td>
 <td class="instruction">LD A,($F80D)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F80C.html#f80d">F80D</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9865"></span>9865</td>
 <td class="instruction">CP $20</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="9957.html">ControlCode_04</a> if <span class="register">A</span> is greater than 20.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9867"></span>9867</td>
-<td class="instruction">JP NC,<a href="9957.html">ControlCode_05</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JP NC,<a href="9957.html">ControlCode_04</a></td>
 </tr>
 <tr>
 <td class="address-1"><span id="986a"></span>986A</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="986b"></span>986B</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="986c"></span>986C</td>
 <td class="instruction">LD A,($F80C)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F80C.html">F80C</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="986f"></span>986F</td>
 <td class="instruction">CP $19</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="9957.html">ControlCode_04</a> if <span class="register">A</span> is greater than 19.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9871"></span>9871</td>
-<td class="instruction">JP NC,<a href="9957.html">ControlCode_05</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JP NC,<a href="9957.html">ControlCode_04</a></td>
 </tr>
 <tr>
 <td class="address-1"><span id="9874"></span>9874</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9875"></span>9875</td>
 <td class="instruction">JP <a href="995B.html#995d">$995D</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="995B.html#995d">995D</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

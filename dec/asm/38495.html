@@ -57,7 +57,7 @@ Used by the routines at <a href="37393.html">37393</a>, <a href="37695.html">Mai
 <tr>
 <td class="address-1"><span id="38499"></span>38499</td>
 <td class="instruction">RET Z</td>
-<td class="comment-1" rowspan="1">Return if <span class="register">BC</span> is equal to <span class="register">C</span>.</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -92,22 +92,21 @@ This entry point is used by the routine at <a href="45616.html">45616</a>.
 <tr>
 <td class="address-1"><span id="38508"></span>38508</td>
 <td class="instruction">LD (63589),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="63529.html#63589">63589</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="63533.html#63589">63589</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="38511"></span>38511</td>
 <td class="instruction">CP 4</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 4.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="38495.html">38495</a> if <span class="register">A</span> is less than 4.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="38513"></span>38513</td>
 <td class="instruction">JR C,<a href="38495.html#38495">38495</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="38495.html">38495</a> if <span class="register">A</span> is less than 4.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="38515"></span>38515</td>
 <td class="instruction">LD (63589),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="63529.html#63589">63589</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="63533.html#63589">63589</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="38518"></span>38518</td>

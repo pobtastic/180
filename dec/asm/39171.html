@@ -33,7 +33,7 @@ Next: <a href="39210.html">39210</a>
 </td>
 </tr>
 </table>
-<div class="description">39171: Control Code 3:</div>
+<div class="description">39171: Control Code 2:</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,7 +42,7 @@ Next: <a href="39210.html">39210</a>
 </td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_03</td>
+<td class="asm-label">ControlCode_02</td>
 <td class="address-2"><span id="39171"></span>39171</td>
 <td class="instruction">PUSH DE</td>
 <td class="comment-1" rowspan="2">Stash <span class="register">DE</span> and <span class="register">BC</span> on the stack.</td>
@@ -101,7 +101,7 @@ Next: <a href="39210.html">39210</a>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=16384.</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_03_0</td>
+<td class="asm-label">ControlCode_02_0</td>
 <td class="address-2"><span id="39192"></span>39192</td>
 <td class="instruction">LD C,L</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">L</span>.</td>
@@ -113,7 +113,7 @@ Next: <a href="39210.html">39210</a>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=32.</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_03_1</td>
+<td class="asm-label">ControlCode_02_1</td>
 <td class="address-2"><span id="39195"></span>39195</td>
 <td class="instruction">LD (HL),0</td>
 <td class="comment-1" rowspan="1">Write 0 to *<span class="register">HL</span>.</td>
@@ -133,8 +133,8 @@ Next: <a href="39210.html">39210</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39199"></span>39199</td>
-<td class="instruction">JR NZ,<a href="39171.html#39195">ControlCode_03_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="39171.html#39195">ControlCode_03_1</a> if <span class="register">A</span> is not equal to 32.</td>
+<td class="instruction">JR NZ,<a href="39171.html#39195">ControlCode_02_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39171.html#39195">ControlCode_02_1</a> if <span class="register">A</span> is not equal to 32.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -151,8 +151,8 @@ Next: <a href="39210.html">39210</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39205"></span>39205</td>
-<td class="instruction">DJNZ <a href="39171.html#39192">ControlCode_03_0</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="39171.html#39192">ControlCode_03_0</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="39171.html#39192">ControlCode_02_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="39171.html#39192">ControlCode_02_0</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

@@ -33,7 +33,7 @@ Next: <a href="9885.html">9885</a>
 </td>
 </tr>
 </table>
-<div class="description">9878: Control Code 04:</div>
+<div class="description">9878: Control Code 03: Repeater</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,13 +42,13 @@ Next: <a href="9885.html">9885</a>
 </td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_04</td>
+<td class="asm-label">ControlCode_Repeater</td>
 <td class="address-2"><span id="9878"></span>9878</td>
 <td class="instruction">LD HL,($F80C)</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="F80C.html">F80C</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_04_0</td>
+<td class="asm-label">Repeater_Loop</td>
 <td class="address-2"><span id="987b"></span>987B</td>
 <td class="instruction">LD A,H</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
@@ -68,8 +68,8 @@ Next: <a href="9885.html">9885</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9880"></span>9880</td>
-<td class="instruction">JR NZ,<a href="9878.html#987b">ControlCode_04_0</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="9878.html#987b">ControlCode_04_0</a> until <span class="register">L</span> is zero.</td>
+<td class="instruction">JR NZ,<a href="9878.html#987b">Repeater_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9878.html#987b">Repeater_Loop</a> until <span class="register">L</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

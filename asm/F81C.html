@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>180: Data at F81C</title>
+<title>180: Game status buffer entry at F81C</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="../skoolkit.css" />
 <link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
@@ -15,11 +15,11 @@ gtag('js', new Date());
 gtag('config', 'G-75RERFCHBG');
 </script>
 </head>
-<body class="Asm-b">
+<body class="Asm-g">
 <table class="header">
 <tr>
 <td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
-<td class="page-header">Data</td>
+<td class="page-header">Game status buffer</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -33,25 +33,31 @@ Next: <a href="F827.html">F827</a>
 </td>
 </tr>
 </table>
-<div class="description">F81C: Data block at F81C</div>
+<div class="description">F81C: Print: Attribute Buffer Pointer</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+Pointer to the attribute buffer location of where the characters will be printed.
+</div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">PrintAttributeBuffer_Pointer</td>
 <td class="address-1"><span id="f81c"></span>F81C</td>
-<td class="instruction">DEFB $00,$00</td>
+<td class="instruction">DEFW $0000</td>
 <td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f81e"></span>F81E</td>
 <td class="instruction">DEFB $00,$00,$00</td>
 <td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f821"></span>F821</td>
 <td class="instruction">DEFB $00,$00,$00,$00,$00,$00</td>
 <td class="comment-0" rowspan="1"></td>

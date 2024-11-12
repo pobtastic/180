@@ -49,7 +49,7 @@ Used by the routine at <a href="8D72.html">GameEntryPointAlias</a>.
 <td class="address-2"><span id="9183"></span>9183</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 00 to; <ul class="">
-<li>*<a href="99F5.html">99F5</a></li>
+<li>*<a href="99F5.html">ControlType</a></li>
 <li>*<a href="99F6.html">DartPointer_Position</a></li>
 </ul></td>
 </tr>
@@ -118,32 +118,25 @@ Clear the screen buffer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9198"></span>9198</td>
-<td class="instruction">DEFM $01</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DEFB $01</td>
+<td class="comment-1" rowspan="1"><a href="98CC.html">ControlCode_01</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9199"></span>9199</td>
-<td class="instruction">DEFM $00</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1"><a href="97D5.html">CLEAR SCREEN</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="919a"></span>919A</td>
-<td class="instruction">DEFM $1A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DEFB $1A</td>
+<td class="comment-1" rowspan="2"><a href="98A8.html">98A8</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="919b"></span>919B</td>
-<td class="instruction">DEFM "u"</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="919c"></span>919C</td>
-<td class="instruction">DEFM $8D</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DEFW <a href="8D75.html">CustomFont</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>

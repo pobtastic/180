@@ -33,7 +33,7 @@ Next: <a href="9807.html">9807</a>
 </td>
 </tr>
 </table>
-<div class="description">97FB: Control Code 0B:</div>
+<div class="description">97FB: Control Code 0A:</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,46 +42,44 @@ Next: <a href="9807.html">9807</a>
 </td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_11</td>
+<td class="asm-label">ControlCode_10</td>
 <td class="address-2"><span id="97fb"></span>97FB</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="97fc"></span>97FC</td>
 <td class="instruction">INC (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="97fd"></span>97FD</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="995B.html#995d">995D</a> if *<span class="register">HL</span> is less than 18.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="97fe"></span>97FE</td>
 <td class="instruction">CP $18</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9800"></span>9800</td>
 <td class="instruction">JP C,<a href="995B.html#995d">$995D</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9803"></span>9803</td>
 <td class="instruction">DEC (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9804"></span>9804</td>
 <td class="instruction">JP <a href="995B.html#995d">$995D</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="995B.html#995d">995D</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

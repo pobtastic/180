@@ -221,17 +221,15 @@ Used by the routines at <a href="9569.html">RedefineKey</a> and <a href="965F.ht
 <tr>
 <td class="address-1"><span id="96d4"></span>96D4</td>
 <td class="instruction">LD A,$05</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=05.</td>
+<td class="comment-1" rowspan="3"><span class="register">L</span>+=05.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96d6"></span>96D6</td>
 <td class="instruction">ADD A,L</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">L</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96d7"></span>96D7</td>
 <td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96d8"></span>96D8</td>
@@ -256,22 +254,20 @@ Used by the routines at <a href="9569.html">RedefineKey</a> and <a href="965F.ht
 <tr>
 <td class="address-1"><span id="96df"></span>96DF</td>
 <td class="instruction">LD A,($F864)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F829.html#f864">F864</a>.</td>
+<td class="comment-1" rowspan="2">Compare *<a href="F82D.html#f864">F864</a> with itself for the return.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96e2"></span>96E2</td>
 <td class="instruction">CP A</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with <span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96e3"></span>96E3</td>
 <td class="instruction">POP IX</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">IX</span> from the stack.</td>
+<td class="comment-1" rowspan="3">Restore <span class="register">IX</span>, <span class="register">HL</span> and <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96e5"></span>96E5</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="2">Restore <span class="register">HL</span> and <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96e6"></span>96E6</td>
