@@ -34,6 +34,9 @@ GameIndex=The complete<>RAM disassembly (work in progress)
 [Index:DataTables:Data Tables And Buffers]
 GameStatusBuffer
 
+[Index:Graphics:Graphics And Sounds]
+Sound
+
 [Expand]
 #DEF(#COLOUR(id)
   #LET(ink=$id&$07)#IF({ink}>=$00)(INK:

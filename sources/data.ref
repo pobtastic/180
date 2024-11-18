@@ -1,8 +1,7 @@
 ; Copyright 2024 Paul Maddern (paul@arcadegeek.co.uk)
 
-
 [Tick]
  [564]*19
 
-[Two]
+[Menu]
  [304]*59

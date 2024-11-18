@@ -4,6 +4,6 @@
 
 #AUDIO(tick.wav)(#INCLUDE(Tick))
 
-[Audio:Two]
+[Audio:menu:Menu]
 
-#AUDIO(two.wav)(#INCLUDE(Two))
+#AUDIO(menu.wav)(#INCLUDE(Menu))

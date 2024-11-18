@@ -21,6 +21,14 @@ D $6000 Used by the routine at #R$A7A5.
 
 b $7800
 
+b $7B00
+
+b $7C87
+
+b $7D00
+
+b $8320
+
 c $8D72 Game Entry Point Alias
 @ $8D72 label=GameEntryPointAlias
   $8D72,$03 Jump to #R$9183.
@@ -32,6 +40,15 @@ S $8D75,$80
 L $8DF5,$08,$2E
 
 b $8F65
+b $8FA6
+b $8FC5
+b $9000
+b $903B
+b $906A
+b $90A7
+b $90D8
+b $9101
+b $914A
 
 c $9183 Game Entry Point
 @ $9183 label=GameEntryPoint
@@ -132,6 +149,10 @@ c $9211
 
 c $9218 Messaging: Header/ Footer
 @ $9218 label=Messaging_HeaderFooter
+N $9218 #PUSHS #SIM(start=$9218,stop=$9252)
+. #UDGTABLE(default)
+.   { #SCR$01(header-footer) }
+. UDGTABLE# #POPS
   $9218,$03 Call #R$9736.
 B $921B,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $921E,$16 #FONT#(:(#STR(#PC,$04,$16)))$8D75,attr=$47(one-hundred-and-eighty).
@@ -230,6 +251,7 @@ c $92E2
 
 c $9305 Main Menu: Print Dart Pointer
 @ $9305 label=MainMenu_PrintDartPointer
+R $9305 DE The co-ordinates of the dart
   $9305,$04 Return if #REGe is greater than #N$20.
   $9309,$01 Stash #REGde on the stack.
   $930A,$03 Call #R$A8AE.
@@ -272,6 +294,10 @@ c $933F Main Menu
 . { *#R$9B2B }
 . { *#R$9AB7 }
 . LIST#
+N $933F #PUSHS #POKES$91C1,$00#SIM(start=$933F,stop=$93F4)
+. #UDGTABLE(default)
+.   { #SCR$02(main-menu) }
+. UDGTABLE# #POPS
   $9346,$03 Call #R$CB1E.
 N $9349 Zero the displayed score.
   $9349,$03 #REGhl=#R$91AB(#N$91AE).
@@ -279,11 +305,12 @@ N $9349 Zero the displayed score.
   $934F,$03 #REGbc=#N($0005,$04,$04).
   $9352,$02 Write "#CHR$30" to the first digit in #R$91AB.
   $9354,$02 Copy the zero to the next five digits.
-N $9356 #PUSHS SIM(start=$9356,stop=$93D1)
+N $9356 Print the menu options.
+N $9356 #PUSHS #POKES$91C1,$00#SIM(start=$9356,stop=$93CB)
 . #UDGTABLE(default)
 .   { #SCR$02(main-menu-1) }
 . UDGTABLE# #POPS
-N $9356 Print the menu options.
+. Note; the bright white doesn't happen until later.
   $9356,$03 Call #R$964C.
 B $9359,$01 #R$97D5(CLEAR SCREEN).
 B $935A,$02 INK: #INK(#PEEK(#PC+$01)).
@@ -302,8 +329,18 @@ B $93BB,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $93BE,$0C #FONT#(:(#STR(#PC,$04,$0C)))$8D75,attr=$47(0-start-game)
 B $93CA,$01 Terminator.
 N $93CB Display the header and footer messaging.
+N $93CB #PUSHS #POKES$91C1,$00#SIM(start=$9356,stop=$93CE)
+. #UDGTABLE(default)
+.   { #SCR$02(main-menu-2) }
+. UDGTABLE# #POPS
   $93CB,$03 Call #R$9218.
+N $93CE Set the bright white colouring.
+N $93CE #PUSHS #POKES$91C1,$00#SIM(start=$9356,stop=$93D1)
+. #UDGTABLE(default)
+.   { #SCR$02(main-menu-3) }
+. UDGTABLE# #POPS
   $93CE,$03 Call #R$91B6.
+N $93D1 Now begin setting up the dart pointer.
   $93D1,$03 Set the initial position of the dart pointer to #REGhl (#N$0501).
   $93D4,$02 Set a counter in #REGb for the width of the dart pointer.
 N $93D6 Clear the attributes of all possible positions of the dart pointer.
@@ -314,25 +351,30 @@ N $93D6 Clear the attributes of all possible positions of the dart pointer.
   $93DC,$02 Move down two rows (the height of the dart pointer).
   $93DE,$01 Restore the dart width counter from the stack.
   $93DF,$02 Decrease the dart width counter by one and loop back to #R$93D6
-. until counter is zero.
-  $93E1,$03 #REGde=#N$0500.
-  $93E4,$02 #REGb=#N$04.
-  $93E6,$02 Stash #REGbc and #REGde on the stack.
+. until the counter is zero.
+N $93E1 Initialise the dart pointer.
+  $93E1,$03 Set the initial position of the dart pointer to #REGde (#N$0500).
+  $93E4,$02 Set a counter in #REGb for the width of the dart pointer.
+@ $93E6 label=DrawDartPointer_Loop
+  $93E6,$02 Stash the dart width counter and dart co-ordinates on the stack.
   $93E8,$03 Call #R$9305.
-  $93EB,$02 Restore #REGde and #REGbc from the stack.
+  $93EB,$02 Restore the dart co-ordinates and dart width counter from the stack.
   $93ED,$02 Increment #REGd by two.
-  $93EF,$02 Decrease counter by one and loop back to #R$93E6 until counter is zero.
+  $93EF,$02 Decrease the dart width counte by one and loop back to #R$93E6
+. until the counter is zero.
+@ $93F1 label=ColourDartPointerAttributes_Loop
   $93F1,$03 Call #R$944E.
   $93F4,$03 Call #R$965F.
   $93F7,$01 Stash #REGaf on the stack.
   $93F8,$01 Restore #REGaf from the stack.
   $93F9,$02 Jump to #R$93F1 if #REGd is equal to #N$04.
-  $93FB,$04 Jump to #R$9429 if #REGa is not equal to #N$30.
+N $93FB Has the player hit "Start Game"?
+  $93FB,$04 Jump to #R$9429 if "0" was not pressed (ASCII #N$30 is "0").
+N $93FF A game was started...
   $93FF,$03 Call #R$9942.
+N $9402 Consolidate the selected configs.
   $9402,$06 Write *#R$99F6 to *#R$99F5.
-  $9408,$01 #REGa+=#REGa.
-  $9409,$02 #REGa+=#N$05.
-  $940B,$01 #REGd=#REGa.
+  $9408,$04 #REGd=#N$05+(#REGa*#N$02).
   $940C,$02 #REGe=#N$01.
   $940E,$02 #REGb=#N$3E.
   $9410,$02 Stash #REGbc and #REGde on the stack.
@@ -350,8 +392,8 @@ N $93D6 Clear the attributes of all possible positions of the dart pointer.
   $9423,$01 Restore #REGbc from the stack.
   $9424,$02 Decrease counter by one and loop back to #R$9410 until counter is zero.
   $9426,$03 Jump to #R$94E6.
-  $9429,$05 Jump to #R$93F1 if #REGa is greater than #N$36.
-  $942E,$05 Jump to #R$93F1 if #REGa is less than #N$30.
+  $9429,$05 Jump to #R$93F1 if #REGa is greater than (ASCII #N$36 is "6").
+  $942E,$05 Jump to #R$93F1 if #REGa is less than (ASCII #N$30 is "0").
   $9433,$02 #REGa-=#N$31.
   $9435,$01 Stash #REGaf on the stack.
   $9436,$03 Call #R$94AF.
@@ -450,7 +492,7 @@ E $94AF Continue on to #R$94B8.
 
 c $94B8 Clear Dart Pointer Attributes
 @ $94B8 label=ClearDartPointerAttributes
-R $94B8 HL The co-ordinates of the dart.
+R $94B8 HL The co-ordinates of the dart
   $94B8,$03 Call #R$A862.
   $94BB,$0A Write #COLOUR$00 to #N$04 character blocks in this attribute row.
 N $94C5 Move down one row, and back #N$04 character blocks (the width of the
@@ -459,18 +501,24 @@ N $94C5 Move down one row, and back #N$04 character blocks (the width of the
   $94C9,$09 Write #COLOUR$00 to #N$04 character blocks in this attribute row.
   $94D2,$01 Return.
 
-c $94D3
+c $94D3 Press Any Key To Continue
+@ $94D3 label=Debounce_CheckKeys
+N $94D3 Read from the keyboard- returns #N$00 when no keys are being pressed.
   $94D3,$03 Call #R$965F.
-  $94D6,$01 Set the bits from #REGa.
-  $94D7,$02 Jump to #R$94D3 if #REGhl is not equal to #REGa.
-  $94D9,$02 #REGb=#N$32.
+  $94D6,$03 Jump back to #R$94D3 if any keys are still being pressed.
+N $94D9 After the frame delay, return regardless of key presses.
+  $94D9,$02 Set a timeout counter in #REGb of #N$32.
+@ $94DB label=Debounce_Loop
   $94DB,$01 Halt operation (suspend CPU until the next interrupt).
-  $94DC,$01 #REGa=#N$00.
-  $94DD,$02 #REGa=byte from port #N$FE.
+  $94DC,$01 Reset the flags.
+  $94DD,$02 Read from the keyboard port.
+N $94DF Mask off the unused bits.
   $94DF,$02,b$01 Set bits 5-7.
-  $94E1,$01 Increment #REGa by one.
-  $94E2,$01 Return if #REGa is not equal to #REGa.
-  $94E3,$02 Decrease counter by one and loop back to #R$94DB until counter is zero.
+N $94E1 If no keys are being pressed, #REGa will become #N$00.
+  $94E1,$01 Increment the value by one.
+  $94E2,$01 Return if any key has been pressed.
+  $94E3,$02 Decrease the timeout counter by one and loop back to #R$94DB until
+. the timeout counter is zero.
   $94E5,$01 Return.
 
 c $94E6
@@ -609,7 +657,7 @@ c $95ED Interrupt Routine
   $95FF,$01 Decrease *#REGhl by one.
   $9600,$02 Jump to #R$9626 if *#REGhl is not equal to #N$C3.
   $9602,$02 Write #N$32 to *#REGhl.
-  $9604,$03 #REGhl=#N$A38D.
+  $9604,$03 #REGhl=#R$A38C(#N$A38D).
   $9607,$01 Decrease *#REGhl by one.
   $9608,$05 Jump to #R$9623 if *#REGhl is not equal to #N$2F.
   $960D,$02 Write #N$39 to *#REGhl.
@@ -1020,17 +1068,23 @@ c $992A Control Code #N$07:
   $993D,$02 Decrease counter by one and loop back to #R$992F until counter is zero.
   $993F,$03 Jump to #R$9961.
 
-c $9942
-  $9942,$02 #REGc=#N$00.
-  $9944,$02 #REGb=#N$3C.
-  $9946,$03 #REGhl=#N($000A,$04,$04).
-  $9949,$01 Decrease #REGhl by one.
-  $994A,$04 Jump to #R$9949 until #REGhl is zero.
-  $994E,$01 Load #REGc into #REGa.
+c $9942 Sound: Menu Tick
+@ $9942 label=Sound_MenuTick
+N $9942 #HTML(#AUDIO(menu.wav)(#INCLUDE(Menu)))
+  $9942,$02 Set initial speaker state in #REGc to OFF.
+  $9944,$02 Set the repeat loop counter in #REGb to #N$3C.
+@ $9946 label=MenuTick_OuterLoop
+  $9946,$03 Set the delay loop in #REGhl to #N($000A,$04,$04).
+@ $9949 label=MenuTick_DelayLoop
+  $9949,$01 Decrease the delay loop by one.
+  $994A,$04 Jump back to #R$9949 until the delay loop is zero.
+  $994E,$01 Load the current speaker state into #REGa.
   $994F,$02,b$01 Flip the speaker bit.
   $9951,$01 Store the result back to #REGc.
-  $9952,$02 Send #REGa to the speaker.
-  $9954,$02 Decrease counter by one and loop back to #R$9946 until counter is zero.
+M $994E,$04 Flip the current speaker state.
+  $9952,$02 Send it to the speaker.
+  $9954,$02 Decrease the repeat loop counter by one and loop back to #R$9946
+. until the repeat loop counter is zero.
   $9956,$01 Return.
 
 c $9957 Control Code #N$04:
@@ -1084,6 +1138,91 @@ D $99F6 Holds the number of the menu selection the dart points at in the main
 B $99F6,$01
 
 c $99F7
+  $99F7,$02 #REGc=#N$00.
+  $99F9,$03 #REGhl=#R$9A6F.
+  $99FC,$01 Stash #REGhl on the stack.
+  $99FD,$03 #REGa=*#R$99F5.
+  $9A00,$01 Decrease #REGa by one.
+  $9A01,$01 Return if *#R$99F5 was set to "keyboard" (#N$00).
+  $9A02,$01 Multiply #REGa by #N$02.
+  $9A03,$05 #REGhl=#R$9A10+#REGa.
+  $9A08,$02 Jump to #R$9A0B if #REGa is greater than or equal to #N$00.
+  $9A0A,$01 Increment #REGh by one.
+  $9A0B,$01 #REGa=*#REGhl.
+  $9A0C,$01 Increment #REGhl by one.
+  $9A0D,$01 #REGh=*#REGhl.
+  $9A0E,$01 #REGl=#REGa.
+  $9A0F,$01 Jump to the address held in *#REGhl.
+
+g $9A10 Jump Table: Control Methods
+@ $9A10 label=JumpTable_ControlMethods
+W $9A10,$02
+L $9A10,$02,$03
+
+c $9A16 Control Method: Kempston Joystick
+@ $9A16 label=ControlMethod_Kempston
+R $9A16 O:C Control byte
+  $9A16,$01 #REGa=#N$00.
+  $9A17,$02 #REGa=byte from port #N$1F.
+  $9A19,$02,b$01 Keep only bits 0-4.
+  $9A1B,$01 Store the result in #REGc.
+  $9A1C,$01 Return.
+
+c $9A1D Control Method: Interface Two
+@ $9A1D label=ControlMethod_InterfaceTwo
+R $9A1D O:B
+R $9A1D O:C Control byte
+R $9A1D O:HL Pointer to Key Map
+  $9A1D,$01 Restore #REGhl from the stack.
+  $9A1E,$03 Call #R$9A6F.
+  $9A21,$02,b$01 Keep only bits 5-7.
+  $9A23,$01 Store the result in #REGc.
+  $9A24,$03 #REGhl=#R$9A2B.
+  $9A27,$02 #REGb=#N$08.
+  $9A29,$02 Jump to #R$9A74.
+
+g $9A2B Key Map: Interface Two
+@ $9A2B label=KeyMap_InterfaceTwo
+N $9A2B #MAP((#PC-$9A2B)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+B $9A2B,$01
+B $9A2C,b$01
+M $9A2B,$02 #TABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,r2 Port Number | =h,c5 Bit }
+. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+. { #N$EF | 0 | 9 | 8 | 7 | 6 }
+. TABLE#
+B $9A2D,$01 "#CHR(#PEEK(#PC))".
+L $9A2B,$03,$05
+
+c $9A3A Control Method: Cursor Joystick
+@ $9A3A label=ControlMethod_Cursor
+R $9A3A O:B
+R $9A3A O:C Control byte
+R $9A3A O:HL Pointer to Key Map
+  $9A3A,$01 Restore #REGhl from the stack.
+  $9A3B,$03 Call #R$9A6F.
+  $9A3E,$02,b$01 Keep only bits 5-7.
+  $9A40,$01 Store the result in #REGc.
+  $9A41,$03 #REGhl=#R$9A48.
+  $9A44,$02 #REGb=#N$08.
+  $9A46,$02 Jump to #R$9A74.
+
+g $9A48 Key Map: Cursor Joystick
+@ $9A48 label=KeyMap_Cursor
+N $9A48 #MAP((#PC-$9A48)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+B $9A48,$01
+B $9A49,b$01
+M $9A48,$02 #TABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,r2 Port Number | =h,c5 Bit }
+. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+. #IF(#PEEK(#PC)==$EF)(
+. { #N$EF | 0 | 9 | 8 | 7 | 6 },
+. { #N$F7 | 1 | 2 | 3 | 4 | 5 })
+. TABLE#
+B $9A4A,$01 "#CHR(#PEEK(#PC))".
+L $9A48,$03,$05
+
+b $9A57
 
 b $9A59
 
@@ -1124,9 +1263,46 @@ B $9A6C,$02 #TABLE(default,centre,centre,centre,centre,centre,centre)
 . TABLE#
 B $9A6E,$01 "#CHR(#PEEK(#PC))".
 
-b $9A6F
-  $9A6F
-  $9A72,$01
+c $9A6F
+  $9A6F,$02 #REGb=#N$01.
+  $9A71,$03 #REGhl=#R$9A57.
+  $9A74,$01 #REGa=*#REGhl.
+  $9A75,$01 Increment #REGhl by one.
+  $9A76,$02 #REGa=byte from port #N$FE.
+  $9A78,$01 Merge the bits from *#REGhl.
+  $9A79,$02 Increment #REGhl by two.
+  $9A7B,$02 Jump to #R$9A7E if #REGhl is not equal to *#REGhl.
+  $9A7D,$01 Set the carry flag.
+  $9A7E,$02 Rotate #REGb left.
+  $9A80,$02 Jump to #R$9A74 if #REGhl is greater than or equal to *#REGhl.
+  $9A82,$01 #REGa=#REGb.
+  $9A83,$01 Set the bits from #REGc.
+  $9A84,$01 #REGc=#REGa.
+  $9A85,$01 Return.
+
+c $9A86
+  $9A86,$01 #REGa=#REGb.
+  $9A87,$03 #REGhl=#R$91AB(#N$91AE).
+  $9A8A,$01 #REGa+=#REGl.
+  $9A8B,$01 #REGl=#REGa.
+  $9A8C,$02 Jump to #R$9A8F if ?? is greater than or equal to #N$00.
+  $9A8E,$01 Increment #REGh by one.
+  $9A8F,$01 #REGa=*#REGhl.
+  $9A90,$01 #REGa+=#REGc.
+  $9A91,$02 Compare #REGa with #N$3A.
+  $9A93,$02 Jump to #R$9A99 if #REGa is greater than or equal to #N$3A.
+  $9A95,$01 Write #REGa to *#REGhl.
+  $9A96,$03 Jump to #R$91A1.
+  $9A99,$02 #REGa-=#N$0A.
+  $9A9B,$01 Write #REGa to *#REGhl.
+  $9A9C,$01 Decrease #REGb by one.
+  $9A9D,$02 #REGc=#N$01.
+  $9A9F,$01 #REGa=#REGb.
+  $9AA0,$01 Increment #REGa by one.
+  $9AA1,$03 Jump to #R$91A1 if #REGa is equal to #N$01.
+  $9AA4,$02 Jump to #R$9A86.
+
+b $9AA6
   $9AA6,$01
   $9AA7,$01
   $9AA9,$01
@@ -1159,14 +1335,58 @@ W $9AB9,$02
 g $9AC3
 W $9AC3,$02
 
+g $9AC5
+
   $9B0F
+
+g $9B10
+B $9B10,$01
+
+g $9B11
+B $9B11,$01
+
+g $9B12
+B $9B12,$01
+
+g $9B13
+W $9B13,$02
+
+g $9B15
+W $9B15,$02
+
+g $9B17
+W $9B17,$02
+
+g $9B19
+W $9B19,$02
+
+g $9B1B
 
 g $9B1F Score?
 @ $9B1F label=Score
 B $9B1F,$02
 
+g $9B23
+W $9B23,$02
+
+g $9B25
+  $9B26
+  $9B27
+
+  $9B2A
   $9B2B
+  $9B2C
+  $9B2D
   $9B2F
+
+g $9C55
+W $9C55,$02
+
+g $9C9F
+W $9C9F,$02
+
+g $9CE9
+W $9CE9,$02
 
 c $9D33
   $9D33,$03 Call #R$A7A5.
@@ -1232,15 +1452,32 @@ B $A24B,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $A24E,$17 #FONT#(:(#STR(#PC,$04,$17)))$8D75,attr=$47(professionally)
 B $A265,$01 Terminator.
 
-c $A380
+c $A380 Messaging: Around The Clock Timer
+@ $A380 label=Messaging_AroundTheClock_Timer
+N $A380 Print the current timer value.
   $A380,$03 Call #R$964C.
 B $A383,$02 INK: #INK(#PEEK(#PC+$01)).
 B $A385,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $A387,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $A389,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
+@ $A38C label=AroundTheClock_Timer
 T $A38C,$02 "#STR#(#PC,$04,$02)".
 B $A38E,$01 Terminator.
-
+N $A38F Note; this is identical to #R$9942.
+  $A38F,$02 Set initial speaker state in #REGc to OFF.
+  $A391,$02 Set the repeat loop counter in #REGb to #N$3C.
+@ $A393 label=AroundTheClock_Timer_OuterLoop
+  $A393,$03 Set the delay loop in #REGhl to #N($000A,$04,$04).
+@ $A396 label=AroundTheClock_Timer_DelayLoop
+  $A396,$01 Decrease the delay loop by one.
+  $A397,$04 Jump back to #R$A396 until the delay loop is zero.
+  $A39B,$01 Load the current speaker state into #REGa.
+  $A39C,$02,b$01 Flip the speaker bit.
+  $A39E,$01 Store the result back to #REGc.
+M $A39B,$04 Flip the current speaker state.
+  $A39F,$02 Send it to the speaker.
+  $A3A1,$02 Decrease the repeat loop counter by one and loop back to #R$A393
+. until the repeat loop counter is zero.
   $A3A3,$01 Return.
 
 c $A3A4
@@ -1292,48 +1529,580 @@ N $A410 Convert the total to a printable string, and display it.
   $A41D,$01 Return.
 
 c $A41E
+  $A41E,$03 #REGa=*#R$9B2D.
+  $A421,$02 Return if *#R$9B2D is zero.
+  $A423,$03 Write #REGa to *#R$AF49.
+  $A426,$04 Write #N$00 to *#R$AF4A.
+  $A42A,$06 Write #N$0500 to *#R$AF5D.
+  $A430,$03 Call #R$AE17.
+  $A433,$01 Return.
 
 c $A434
+  $A434,$03 #REGbc=#N$FFFF.
+  $A437,$01 Decrease #REGbc by one.
+  $A438,$01 #REGa=#REGb.
+  $A439,$01 Set the bits from #REGc.
+  $A43A,$02 Jump to #R$A437 if #REGbc is not equal to #REGc.
+  $A43C,$06 Write #R$A8AE to *#R$A4F1(#N$A4F2).
+  $A442,$03 #REGhl=#R$9CE9.
+  $A445,$01 #REGe=*#REGhl.
+  $A446,$01 Increment #REGhl by one.
+  $A447,$01 #REGd=*#REGhl.
+  $A448,$01 Increment #REGhl by one.
+  $A449,$02 Increment #REGd by two.
+  $A44B,$03 Call #R$A4D4.
+  $A44E,$06 Write #R$A8BD to *#R$A4F1(#N$A4F2).
+  $A454,$03 #REGhl=#R$9CE9.
+  $A457,$01 #REGe=*#REGhl.
+  $A458,$01 Increment #REGhl by one.
+  $A459,$01 #REGd=*#REGhl.
+  $A45A,$01 Increment #REGhl by one.
+  $A45B,$02 Increment #REGd by two.
+  $A45D,$03 Call #R$A4D4.
+  $A460,$01 Return.
 
 c $A461
+  $A461,$03 Call #R$A50E.
+  $A464,$03 #REGhl=*#R$9B15.
+  $A467,$03 Call #R$A58F.
+  $A46A,$02 #REGa=#N$37.
+  $A46C,$03 Write #REGa to *#R$A61D.
+  $A46F,$03 Call #R$A613.
+  $A472,$03 Call #R$A5E1.
+  $A475,$03 Call #R$A652.
+  $A478,$03 #REGhl=*#R$9B13.
+  $A47B,$03 Call #R$A58F.
+  $A47E,$02 #REGa=#N$A7.
+  $A480,$03 Write #REGa to *#R$A61D.
+  $A483,$03 Call #R$A613.
+  $A486,$03 Call #R$A5E1.
+  $A489,$03 Call #R$A69C.
+  $A48C,$01 Halt operation (suspend CPU until the next interrupt).
+  $A48D,$03 Call #R$A6E6.
+  $A490,$01 Return.
 
 c $A491
+  $A491,$03 Call #R$A532.
+  $A494,$03 #REGhl=*#R$9B19.
+  $A497,$03 Call #R$A5B2.
+  $A49A,$03 Call #R$A682.
+  $A49D,$03 #REGhl=*#R$9B17.
+  $A4A0,$03 Call #R$A5B2.
+  $A4A3,$03 Call #R$A6CC.
+  $A4A6,$01 Halt operation (suspend CPU until the next interrupt).
+  $A4A7,$03 Call #R$A73A.
+  $A4AA,$01 Return.
 
 c $A4AB
+  $A4AB,$02 #REGb=#N$03.
+  $A4AD,$03 Stash #REGbc, #REGhl and #REGde on the stack.
+  $A4B0,$03 Call #R$A4BE.
+  $A4B3,$02 Restore #REGde and #REGhl from the stack.
+  $A4B5,$03 #REGbc=#N($0018,$04,$04).
+  $A4B8,$01 #REGhl+=#REGbc.
+  $A4B9,$01 Increment #REGd by one.
+  $A4BA,$01 Restore #REGbc from the stack.
+  $A4BB,$02 Decrease counter by one and loop back to #R$A4AD until counter is zero.
+  $A4BD,$01 Return.
+  $A4BE,$01 Stash #REGhl on the stack.
+  $A4BF,$03 Call #R$A8BD.
+  $A4C2,$01 Exchange the #REGde and #REGhl registers.
+  $A4C3,$01 Restore #REGhl from the stack.
+  $A4C4,$01 Exchange the #REGde and #REGhl registers.
+  $A4C5,$02 #REGb=#N$08.
+  $A4C7,$02 Stash #REGbc and #REGhl on the stack.
+  $A4C9,$03 #REGbc=#N($0003,$04,$04).
+  $A4CC,$02 LDIR.
+  $A4CE,$01 Restore #REGhl from the stack.
+  $A4CF,$01 Increment #REGh by one.
+  $A4D0,$01 Restore #REGbc from the stack.
+  $A4D1,$02 Decrease counter by one and loop back to #R$A4C7 until counter is zero.
+  $A4D3,$01 Return.
 
 c $A4D4
+  $A4D4,$02 #REGb=#N$03.
+  $A4D6,$03 Stash #REGbc, #REGhl and #REGde on the stack.
+  $A4D9,$01 #REGa=#REGd.
+  $A4DA,$04 Jump to #R$A4E5 if #REGa is less than #N$00.
+  $A4DE,$04 Jump to #R$A4E5 if #REGa is greater than or equal to #N$18.
+  $A4E2,$03 Call #R$A4F0.
+  $A4E5,$02 Restore #REGde and #REGhl from the stack.
+  $A4E7,$04 #REGhl+=#N($0018,$04,$04).
+  $A4EB,$01 Increment #REGd by one.
+  $A4EC,$01 Restore #REGbc from the stack.
+  $A4ED,$02 Decrease counter by one and loop back to #R$A4D6 until counter is zero.
+  $A4EF,$01 Return.
+
+  $A4F0,$01 Stash #REGhl on the stack.
+  $A4F1,$03 Call #R$A8BD.
+  $A4F4,$01 Exchange the #REGde and #REGhl registers.
+  $A4F5,$01 Restore #REGhl from the stack.
+  $A4F6,$02 #REGb=#N$08.
+  $A4F8,$02 Stash #REGbc and #REGde on the stack.
+  $A4FA,$03 #REGbc=#N($0003,$04,$04).
+  $A4FD,$02 LDIR.
+  $A4FF,$01 Restore #REGde from the stack.
+  $A500,$01 Increment #REGd by one.
+  $A501,$01 Restore #REGbc from the stack.
+  $A502,$02 Decrease counter by one and loop back to #R$A4F8 until counter is zero.
+  $A504,$01 Return.
 
 c $A505
+  $A505,$08 Write #N$02 to; #LIST { *#R$9B26 } { *#R$9B27 } LIST#
+  $A50D,$01 Return.
 
 c $A50E
+  $A50E,$04 #REGde=*#R$9AC3.
+  $A512,$01 Decrease #REGd by one.
+  $A513,$03 #REGhl=#R$7800.
+  $A516,$02 #REGb=#N$0A.
+  $A518,$03 Stash #REGbc, #REGhl and #REGde on the stack.
+  $A51B,$01 #REGa=#REGd.
+  $A51C,$04 Jump to #R$A527 if #REGa is less than #N$00.
+  $A520,$04 Jump to #R$A527 if #REGa is greater than or equal to #N$18.
+  $A524,$03 Call #R$A556.
+  $A527,$02 Restore #REGde and #REGhl from the stack.
+  $A529,$04 #REGhl+=#N($0040,$04,$04).
+  $A52D,$01 Increment #REGd by one.
+  $A52E,$01 Restore #REGbc from the stack.
+  $A52F,$02 Decrease counter by one and loop back to #R$A518 until counter is zero.
+  $A531,$01 Return.
 
 c $A532
+  $A532,$04 #REGde=*#R$9AC5.
+  $A536,$01 Decrease #REGe by one.
+  $A537,$03 #REGhl=#R$7800.
+  $A53A,$02 #REGb=#N$05.
+  $A53C,$03 Stash #REGbc, #REGhl and #REGde on the stack.
+  $A53F,$01 #REGa=#REGd.
+  $A540,$04 Jump to #R$A54B if #REGa is less than #N$00.
+  $A544,$04 Jump to #R$A54B if #REGa is greater than or equal to #N$18.
+  $A548,$03 Call #R$A578.
+  $A54B,$02 Restore #REGde and #REGhl from the stack.
+  $A54D,$04 #REGhl+=#N($0018,$04,$04).
+  $A551,$01 Increment #REGd by one.
+  $A552,$01 Restore #REGbc from the stack.
+  $A553,$02 Decrease counter by one and loop back to #R$A53C until counter is zero.
+  $A555,$01 Return.
 
 c $A556
+  $A556,$01 Stash #REGhl on the stack.
+  $A557,$03 Call #R$A8BD.
+  $A55A,$01 Exchange the #REGde and #REGhl registers.
+  $A55B,$01 Restore #REGhl from the stack.
+  $A55C,$01 Decrease #REGe by one.
+  $A55D,$01 Exchange the #REGde and #REGhl registers.
+  $A55E,$02 #REGb=#N$08.
+  $A560,$02 Stash #REGbc and #REGhl on the stack.
+  $A562,$02 LDI.
+  $A564,$02 LDI.
+  $A566,$02 LDI.
+  $A568,$02 LDI.
+  $A56A,$02 LDI.
+  $A56C,$02 LDI.
+  $A56E,$02 LDI.
+  $A570,$02 LDI.
+  $A572,$01 Restore #REGhl from the stack.
+  $A573,$01 Increment #REGh by one.
+  $A574,$01 Restore #REGbc from the stack.
+  $A575,$02 Decrease counter by one and loop back to #R$A560 until counter is zero.
+  $A577,$01 Return.
+
+c $A578
+  $A578,$01 Stash #REGhl on the stack.
+  $A579,$03 Call #R$A8BD.
+  $A57C,$01 Exchange the #REGde and #REGhl registers.
+  $A57D,$01 Restore #REGhl from the stack.
+  $A57E,$01 Exchange the #REGde and #REGhl registers.
+  $A57F,$02 #REGb=#N$08.
+  $A581,$02 Stash #REGbc and #REGhl on the stack.
+  $A583,$02 LDI.
+  $A585,$02 LDI.
+  $A587,$02 LDI.
+  $A589,$01 Restore #REGhl from the stack.
+  $A58A,$01 Increment #REGh by one.
+  $A58B,$01 Restore #REGbc from the stack.
+  $A58C,$02 Decrease counter by one and loop back to #R$A581 until counter is zero.
+  $A58E,$01 Return.
 
 c $A58F
+  $A58F,$03 #REGde=#R$7B00.
+  $A592,$02 #REGa=#N$38.
+  $A594,$02 LDI.
+  $A596,$02 LDI.
+  $A598,$02 LDI.
+  $A59A,$02 LDI.
+  $A59C,$02 LDI.
+  $A59E,$02 LDI.
+  $A5A0,$02 LDI.
+  $A5A2,$01 Decrease #REGa by one.
+  $A5A3,$02 Jump to #R$A594 if #REGa is not equal to #N$38.
+  $A5A5,$01 Decrease #REGhl by one.
+  $A5A6,$01 #REGa=*#REGhl.
+  $A5A7,$01 Increment #REGhl by one.
+  $A5A8,$01 #REGh=#REGd.
+  $A5A9,$01 #REGl=#REGe.
+  $A5AA,$03 #REGbc=#N($0037,$04,$04).
+  $A5AD,$01 Write #REGa to *#REGhl.
+  $A5AE,$01 Increment #REGde by one.
+  $A5AF,$02 LDIR.
+  $A5B1,$01 Return.
 
 c $A5B2
+  $A5B2,$02 Test bit 7 of *#REGhl.
+  $A5B4,$02 #REGa=#N$FF.
+  $A5B6,$01 Stash #REGhl on the stack.
+  $A5B7,$02 Jump to #R$A5BA if #REGde is not equal to #N$FF.
+  $A5B9,$01 #REGa=#N$00.
+  $A5BA,$03 #REGhl=#R$7B00.
+  $A5BD,$03 #REGde=#R$7B00(#N$7B00+#N$01).
+  $A5C0,$01 Write #REGa to *#REGhl.
+  $A5C1,$03 #REGbc=#N($0078,$04,$04).
+  $A5C4,$02 LDIR.
+  $A5C6,$03 #REGde=#R$7B00.
+  $A5C9,$03 #REGa=*#R$9B12.
+  $A5CC,$01 #REGl=#REGa.
+  $A5CD,$01 #REGa+=#REGa.
+  $A5CE,$01 #REGa+=#REGl.
+  $A5CF,$01 #REGl=#REGa.
+  $A5D0,$02 #REGh=#N$00.
+  $A5D2,$01 #REGhl+=#REGde.
+  $A5D3,$01 Exchange the #REGde and #REGhl registers.
+  $A5D4,$01 Restore #REGhl from the stack.
+  $A5D5,$02 #REGa=#N$10.
+  $A5D7,$02 LDI.
+  $A5D9,$02 LDI.
+  $A5DB,$02 LDI.
+  $A5DD,$01 Decrease #REGa by one.
+  $A5DE,$02 Jump to #R$A5D7 if #REGa is not equal to #N$10.
+  $A5E0,$01 Return.
 
 c $A5E1
+  $A5E1,$03 #REGa=*#R$9B11.
+  $A5E4,$02 Return if *#R$9B11 is zero.
+  $A5E6,$03 #REGhl=#R$7B00.
+  $A5E9,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $A5EA,$01 #REGa=*#REGhl.
+  $A5EB,$03 #REGde=#R$7C87.
+  $A5EE,$01 Exchange the shadow #REGaf register with the #REGaf register.
+  $A5EF,$01 #REGh=#REGd.
+  $A5F0,$01 #REGl=#REGe.
+  $A5F1,$01 #REGc=#REGa.
+  $A5F2,$01 #REGa+=#REGa.
+  $A5F3,$01 #REGa+=#REGa.
+  $A5F4,$01 #REGa+=#REGa.
+  $A5F5,$01 #REGa-=#REGc.
+  $A5F6,$01 #REGc=#REGa.
+  $A5F7,$02 #REGb=#N$00.
+  $A5F9,$01 #REGhl+=#REGbc.
+  $A5FA,$01 Exchange the #REGde and #REGhl registers.
+  $A5FB,$03 #REGbc=#N($0188,$04,$04).
+  $A5FE,$02 LDDR.
+  $A600,$03 #REGa=*#R$9B11.
+  $A603,$01 #REGb=#REGa.
+  $A604,$01 Exchange the shadow #REGaf register with the #REGaf register.
+  $A605,$03 #REGhl=#R$7B00.
+  $A608,$01 Stash #REGbc on the stack.
+  $A609,$02 #REGb=#N$07.
+  $A60B,$01 Write #REGa to *#REGhl.
+  $A60C,$01 Increment #REGhl by one.
+  $A60D,$02 Decrease counter by one and loop back to #R$A60B until counter is zero.
+  $A60F,$01 Restore #REGbc from the stack.
+  $A610,$02 Decrease counter by one and loop back to #R$A608 until counter is zero.
+  $A612,$01 Return.
 
 c $A613
+  $A613,$03 #REGa=*#R$9B10.
+  $A616,$02 Return if *#R$9B10 is zero.
+  $A618,$03 #REGhl=#R$7B00.
+  $A61B,$02 #REGb=#N$40.
+  $A61D,$01 Set flags.
+  $A61E,$02 Rotate *#REGhl right.
+  $A620,$01 Increment #REGl by one.
+  $A621,$02 Rotate *#REGhl right.
+  $A623,$01 Increment #REGl by one.
+  $A624,$02 Rotate *#REGhl right.
+  $A626,$01 Increment #REGl by one.
+  $A627,$02 Rotate *#REGhl right.
+  $A629,$01 Increment #REGhl by one.
+  $A62A,$02 Rotate *#REGhl right.
+  $A62C,$01 Increment #REGl by one.
+  $A62D,$02 Rotate *#REGhl right.
+  $A62F,$01 Increment #REGl by one.
+  $A630,$02 Rotate *#REGhl right.
+  $A632,$01 Increment #REGl by one.
+  $A633,$02 Decrease counter by one and loop back to #R$A61D until counter is zero.
+  $A635,$01 Decrease #REGa by one.
+  $A636,$02 Jump to #R$A618 if #REGa is not equal to #REGa.
+  $A638,$01 Return.
 
 c $A639
+  $A639,$03 #REGa=*#R$9B10.
+  $A63C,$02 #REGa+=#N$03.
+  $A63E,$01 Stash #REGhl on the stack.
+  $A63F,$02 #REGb=#N$10.
+  $A641,$01 Set flags.
+  $A642,$02 Rotate *#REGhl right.
+  $A644,$01 Increment #REGhl by one.
+  $A645,$02 Rotate *#REGhl right.
+  $A647,$01 Increment #REGhl by one.
+  $A648,$02 Rotate *#REGhl right.
+  $A64A,$01 Increment #REGhl by one.
+  $A64B,$02 Decrease counter by one and loop back to #R$A641 until counter is zero.
+  $A64D,$01 Restore #REGhl from the stack.
+  $A64E,$01 Decrease #REGa by one.
+  $A64F,$02 Jump to #R$A63E if #REGa is not equal to #REGa.
+  $A651,$01 Return.
 
 c $A652
+  $A652,$03 #REGde=#R$7B00.
+  $A655,$03 #REGhl=#R$7840.
+  $A658,$01 Increment #REGl by one.
+  $A659,$02 #REGb=#N$40.
+  $A65B,$01 #REGa=*#REGde.
+  $A65C,$01 Merge the bits from *#REGhl.
+  $A65D,$01 Write #REGa to *#REGhl.
+  $A65E,$01 Increment #REGl by one.
+  $A65F,$01 Increment #REGe by one.
+  $A660,$01 #REGa=*#REGde.
+  $A661,$01 Merge the bits from *#REGhl.
+  $A662,$01 Write #REGa to *#REGhl.
+  $A663,$01 Increment #REGl by one.
+  $A664,$01 Increment #REGe by one.
+  $A665,$01 #REGa=*#REGde.
+  $A666,$01 Merge the bits from *#REGhl.
+  $A667,$01 Write #REGa to *#REGhl.
+  $A668,$01 Increment #REGl by one.
+  $A669,$01 Increment #REGe by one.
+  $A66A,$01 #REGa=*#REGde.
+  $A66B,$01 Merge the bits from *#REGhl.
+  $A66C,$01 Write #REGa to *#REGhl.
+  $A66D,$01 Increment #REGl by one.
+  $A66E,$01 Increment #REGde by one.
+  $A66F,$01 #REGa=*#REGde.
+  $A670,$01 Merge the bits from *#REGhl.
+  $A671,$01 Write #REGa to *#REGhl.
+  $A672,$01 Increment #REGl by one.
+  $A673,$01 Increment #REGe by one.
+  $A674,$01 #REGa=*#REGde.
+  $A675,$01 Merge the bits from *#REGhl.
+  $A676,$01 Write #REGa to *#REGhl.
+  $A677,$01 Increment #REGl by one.
+  $A678,$01 Increment #REGe by one.
+  $A679,$01 #REGa=*#REGde.
+  $A67A,$01 Merge the bits from *#REGhl.
+  $A67B,$01 Write #REGa to *#REGhl.
+  $A67C,$01 Increment #REGhl by one.
+  $A67D,$01 Increment #REGl by one.
+  $A67E,$01 Increment #REGe by one.
+  $A67F,$02 Decrease counter by one and loop back to #R$A65B until counter is zero.
+  $A681,$01 Return.
 
 c $A682
+  $A682,$03 #REGde=#R$7B00.
+  $A685,$03 #REGhl=#R$7800.
+  $A688,$02 #REGb=#N$28.
+  $A68A,$01 #REGa=*#REGde.
+  $A68B,$01 Merge the bits from *#REGhl.
+  $A68C,$01 Write #REGa to *#REGhl.
+  $A68D,$01 Increment #REGl by one.
+  $A68E,$01 Increment #REGe by one.
+  $A68F,$01 #REGa=*#REGde.
+  $A690,$01 Merge the bits from *#REGhl.
+  $A691,$01 Write #REGa to *#REGhl.
+  $A692,$01 Increment #REGl by one.
+  $A693,$01 Increment #REGe by one.
+  $A694,$01 #REGa=*#REGde.
+  $A695,$01 Merge the bits from *#REGhl.
+  $A696,$01 Write #REGa to *#REGhl.
+  $A697,$01 Increment #REGl by one.
+  $A698,$01 Increment #REGe by one.
+  $A699,$02 Decrease counter by one and loop back to #R$A68A until counter is zero.
+  $A69B,$01 Return.
 
 c $A69C
+  $A69C,$03 #REGde=#R$7B00.
+  $A69F,$03 #REGhl=#R$7840.
+  $A6A2,$01 Increment #REGl by one.
+  $A6A3,$02 #REGb=#N$40.
+  $A6A5,$01 #REGa=*#REGde.
+  $A6A6,$01 Set the bits from *#REGhl.
+  $A6A7,$01 Write #REGa to *#REGhl.
+  $A6A8,$01 Increment #REGl by one.
+  $A6A9,$01 Increment #REGe by one.
+  $A6AA,$01 #REGa=*#REGde.
+  $A6AB,$01 Set the bits from *#REGhl.
+  $A6AC,$01 Write #REGa to *#REGhl.
+  $A6AD,$01 Increment #REGl by one.
+  $A6AE,$01 Increment #REGe by one.
+  $A6AF,$01 #REGa=*#REGde.
+  $A6B0,$01 Set the bits from *#REGhl.
+  $A6B1,$01 Write #REGa to *#REGhl.
+  $A6B2,$01 Increment #REGl by one.
+  $A6B3,$01 Increment #REGe by one.
+  $A6B4,$01 #REGa=*#REGde.
+  $A6B5,$01 Set the bits from *#REGhl.
+  $A6B6,$01 Write #REGa to *#REGhl.
+  $A6B7,$01 Increment #REGl by one.
+  $A6B8,$01 Increment #REGde by one.
+  $A6B9,$01 #REGa=*#REGde.
+  $A6BA,$01 Set the bits from *#REGhl.
+  $A6BB,$01 Write #REGa to *#REGhl.
+  $A6BC,$01 Increment #REGl by one.
+  $A6BD,$01 Increment #REGe by one.
+  $A6BE,$01 #REGa=*#REGde.
+  $A6BF,$01 Set the bits from *#REGhl.
+  $A6C0,$01 Write #REGa to *#REGhl.
+  $A6C1,$01 Increment #REGl by one.
+  $A6C2,$01 Increment #REGe by one.
+  $A6C3,$01 #REGa=*#REGde.
+  $A6C4,$01 Set the bits from *#REGhl.
+  $A6C5,$01 Write #REGa to *#REGhl.
+  $A6C6,$01 Increment #REGhl by one.
+  $A6C7,$01 Increment #REGl by one.
+  $A6C8,$01 Increment #REGe by one.
+  $A6C9,$02 Decrease counter by one and loop back to #R$A6A5 until counter is zero.
+  $A6CB,$01 Return.
 
 c $A6CC
+  $A6CC,$03 #REGde=#R$7B00.
+  $A6CF,$03 #REGhl=#R$7800.
+  $A6D2,$02 #REGb=#N$28.
+  $A6D4,$01 #REGa=*#REGde.
+  $A6D5,$01 Set the bits from *#REGhl.
+  $A6D6,$01 Write #REGa to *#REGhl.
+  $A6D7,$01 Increment #REGl by one.
+  $A6D8,$01 Increment #REGe by one.
+  $A6D9,$01 #REGa=*#REGde.
+  $A6DA,$01 Set the bits from *#REGhl.
+  $A6DB,$01 Write #REGa to *#REGhl.
+  $A6DC,$01 Increment #REGl by one.
+  $A6DD,$01 Increment #REGe by one.
+  $A6DE,$01 #REGa=*#REGde.
+  $A6DF,$01 Set the bits from *#REGhl.
+  $A6E0,$01 Write #REGa to *#REGhl.
+  $A6E1,$01 Increment #REGl by one.
+  $A6E2,$01 Increment #REGe by one.
+  $A6E3,$02 Decrease counter by one and loop back to #R$A6D4 until counter is zero.
+  $A6E5,$01 Return.
 
 c $A6E6
+  $A6E6,$04 #REGde=*#R$9AC3.
+  $A6EA,$01 Decrease #REGd by one.
+  $A6EB,$03 #REGhl=#R$7800.
+  $A6EE,$02 #REGb=#N$0A.
+  $A6F0,$03 Stash #REGbc, #REGhl and #REGde on the stack.
+  $A6F3,$01 #REGa=#REGd.
+  $A6F4,$02 Compare #REGa with #N$00.
+  $A6F6,$02 Jump to #R$A709 if #REGa is less than #N$00.
+  $A6F8,$02 Compare #REGa with #N$18.
+  $A6FA,$02 Jump to #R$A709 if #REGa is greater than or equal to #N$18.
+  $A6FC,$01 #REGa=#REGe.
+  $A6FD,$02 Compare #REGa with #N$19.
+  $A6FF,$02 #REGa=#N$08.
+  $A701,$02 Jump to #R$A706 if #REGa is less than #N$08.
+  $A703,$02 #REGa=#N$21.
+  $A705,$01 #REGa-=#REGe.
+  $A706,$03 Call #R$A714.
+  $A709,$02 Restore #REGde and #REGhl from the stack.
+  $A70B,$03 #REGbc=#N($0040,$04,$04).
+  $A70E,$01 #REGhl+=#REGbc.
+  $A70F,$01 Increment #REGd by one.
+  $A710,$01 Restore #REGbc from the stack.
+  $A711,$02 Decrease counter by one and loop back to #R$A6F0 until counter is zero.
+  $A713,$01 Return.
+  $A714,$01 Stash #REGhl on the stack.
+  $A715,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $A716,$03 Call #R$A8AE.
+  $A719,$01 Exchange the shadow #REGaf register with the #REGaf register.
+  $A71A,$01 Exchange the #REGde and #REGhl registers.
+  $A71B,$01 Restore #REGhl from the stack.
+  $A71C,$01 Decrease #REGe by one.
+  $A71D,$02 #REGb=#N$08.
+  $A71F,$02 Stash #REGbc and #REGde on the stack.
+  $A721,$01 #REGc=#REGa.
+  $A722,$02 #REGb=#N$00.
+  $A724,$02 LDIR.
+  $A726,$02 Compare #REGa with #N$08.
+  $A728,$02 Jump to #R$A734 if #REGa is equal to #N$08.
+  $A72A,$01 Stash #REGaf on the stack.
+  $A72B,$01 #REGc=#REGa.
+  $A72C,$02 #REGa=#N$08.
+  $A72E,$01 #REGa-=#REGc.
+  $A72F,$02 #REGb=#N$00.
+  $A731,$01 #REGc=#REGa.
+  $A732,$01 Restore #REGaf from the stack.
+  $A733,$01 #REGhl+=#REGbc.
+  $A734,$01 Restore #REGde from the stack.
+  $A735,$01 Increment #REGd by one.
+  $A736,$01 Restore #REGbc from the stack.
+  $A737,$02 Decrease counter by one and loop back to #R$A71F until counter is zero.
+  $A739,$01 Return.
 
 c $A73A
+  $A73A,$04 #REGde=*#R$9AC5.
+  $A73E,$03 #REGhl=#R$7800.
+  $A741,$02 #REGb=#N$05.
+  $A743,$03 Stash #REGbc, #REGhl and #REGde on the stack.
+  $A746,$01 #REGa=#REGd.
+  $A747,$02 Compare #REGa with #N$00.
+  $A749,$02 Jump to #R$A752 if #REGa is less than #N$00.
+  $A74B,$02 Compare #REGa with #N$18.
+  $A74D,$02 Jump to #R$A752 if #REGa is greater than or equal to #N$18.
+  $A74F,$03 Call #R$A75D.
+  $A752,$02 Restore #REGde and #REGhl from the stack.
+  $A754,$03 #REGbc=#N($0018,$04,$04).
+  $A757,$01 #REGhl+=#REGbc.
+  $A758,$01 Increment #REGd by one.
+  $A759,$01 Restore #REGbc from the stack.
+  $A75A,$02 Decrease counter by one and loop back to #R$A743 until counter is zero.
+  $A75C,$01 Return.
+  $A75D,$01 Stash #REGhl on the stack.
+  $A75E,$03 Call #R$A8AE.
+  $A761,$01 Exchange the #REGde and #REGhl registers.
+  $A762,$01 Restore #REGhl from the stack.
+  $A763,$01 Decrease #REGe by one.
+  $A764,$02 #REGb=#N$08.
+  $A766,$02 Stash #REGbc and #REGde on the stack.
+  $A768,$02 LDI.
+  $A76A,$02 LDI.
+  $A76C,$02 LDI.
+  $A76E,$01 Restore #REGde from the stack.
+  $A76F,$01 Increment #REGd by one.
+  $A770,$01 Restore #REGbc from the stack.
+  $A771,$02 Decrease counter by one and loop back to #R$A766 until counter is zero.
+  $A773,$01 Return.
 
 c $A774
+  $A774,$03 Stash #REGbc, #REGhl and #REGde on the stack.
+  $A777,$01 #REGa=#REGd.
+  $A778,$02 Compare #REGa with #N$00.
+  $A77A,$02 Jump to #R$A783 if #REGa is less than #N$00.
+  $A77C,$02 Compare #REGa with #N$18.
+  $A77E,$02 Jump to #R$A783 if #REGa is greater than or equal to #N$18.
+  $A780,$03 Call #R$A78E.
+  $A783,$02 Restore #REGde and #REGhl from the stack.
+  $A785,$03 #REGbc=#N($0018,$04,$04).
+  $A788,$01 #REGhl+=#REGbc.
+  $A789,$01 Increment #REGd by one.
+  $A78A,$01 Restore #REGbc from the stack.
+  $A78B,$02 Decrease counter by one and loop back to #R$A774 until counter is zero.
+  $A78D,$01 Return.
+  $A78E,$01 Stash #REGhl on the stack.
+  $A78F,$03 Call #R$A8BD.
+  $A792,$01 Exchange the #REGde and #REGhl registers.
+  $A793,$01 Restore #REGhl from the stack.
+  $A794,$01 Decrease #REGe by one.
+  $A795,$02 #REGb=#N$08.
+  $A797,$02 Stash #REGbc and #REGde on the stack.
+  $A799,$02 LDI.
+  $A79B,$02 LDI.
+  $A79D,$02 LDI.
+  $A79F,$01 Restore #REGde from the stack.
+  $A7A0,$01 Increment #REGd by one.
+  $A7A1,$01 Restore #REGbc from the stack.
+  $A7A2,$02 Decrease counter by one and loop back to #R$A797 until counter is zero.
+  $A7A4,$01 Return.
 
 c $A7A5 Print Play Area
 @ $A7A5 label=Print_PlayArea
@@ -1375,10 +2144,54 @@ B $A7F6,$01 Terminator.
   $A7F7,$01 Return.
 
 c $A7F8
+  $A7F8,$03 #REGhl=#R$9CE9.
+  $A7FB,$01 #REGe=*#REGhl.
+  $A7FC,$01 Increment #REGhl by one.
+  $A7FD,$01 #REGd=*#REGhl.
+  $A7FE,$01 Increment #REGhl by one.
+  $A7FF,$02 Increment #REGd by two.
+  $A801,$03 Call #R$A4D4.
+  $A804,$03 #REGhl=#R$9C9F.
+  $A807,$01 #REGe=*#REGhl.
+  $A808,$01 Increment #REGhl by one.
+  $A809,$01 #REGd=*#REGhl.
+  $A80A,$01 Increment #REGhl by one.
+  $A80B,$02 Increment #REGd by two.
+  $A80D,$03 Call #R$A4D4.
+  $A810,$03 #REGhl=#R$9C55.
+  $A813,$01 #REGe=*#REGhl.
+  $A814,$01 Increment #REGhl by one.
+  $A815,$01 #REGd=*#REGhl.
+  $A816,$01 Increment #REGhl by one.
+  $A817,$02 Increment #REGd by two.
+  $A819,$03 Call #R$A4D4.
+  $A81C,$03 #REGhl=#R$9C55.
+  $A81F,$02 Write "#CHR$32" to *#REGhl.
+  $A821,$01 Increment #REGhl by one.
+  $A822,$02 Write "#CHR$32" to *#REGhl.
+  $A824,$03 #REGhl=#R$9C9F.
+  $A827,$02 Write "#CHR$32" to *#REGhl.
+  $A829,$01 Increment #REGhl by one.
+  $A82A,$02 Write "#CHR$32" to *#REGhl.
+  $A82C,$03 #REGhl=#R$9CE9.
+  $A82F,$02 Write "#CHR$32" to *#REGhl.
+  $A831,$01 Increment #REGhl by one.
+  $A832,$02 Write "#CHR$32" to *#REGhl.
+  $A834,$01 Return.
 
 c $A835
+  $A835,$06 Write #N$0A0A to *#R$9AC3.
+  $A83B,$04 Write #N$00 to *#R$9B10.
+  $A83F,$05 Write #N$02 to *#R$9B25.
+  $A844,$06 Write #R$7D00 to *#R$9B13.
+  $A84A,$06 Write #R$8320 to *#R$9B15.
+  $A850,$01 Return.
 
 c $A851
+  $A851,$04 Write #N$00 to *#R$9B12.
+  $A855,$06 Write #R$D2A0 to *#R$9B17.
+  $A85B,$06 Write #R$D330 to *#R$9B19.
+  $A861,$01 Return.
 
 c $A862 Calculate Attribute Buffer
 @ $A862 label=CalculateAttributeBuffer
@@ -1497,48 +2310,105 @@ c $A8DB
 
 c $A8EA
 
-c $A8F8
+c $A8F8 Start Menu
+@ $A8F8 label=StartMenu
+N $A8F8 #PUSHS #SIM(start=$9D33,stop=$A95F)
+. #UDGTABLE(default)
+.   { #SCR$02(start-menu-1) }
+. UDGTABLE# #POPS
+  $A8F8,$0A Write #N$00 to; #LIST
+. { *#R$9B2A }
+. { *#R$9B2C }
+. { *#R$9B2B }
+. LIST#
+  $A902,$06 Write #N$0501 to *#R$AF5D.
+  $A908,$05 Write #N$14 to *#R$9B2D.
+  $A90D,$06 Write #N$01F5 to *#R$9B1F.
+  $A913,$03 Call #R$A9C2.
   $A916,$03 Call #R$964C.
 B $A919,$02 INK: #INK(#PEEK(#PC+$01)).
 B $A91B,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $A91D,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $A91F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A922,$01 "#STR#(#PC,$04,$01)".
+T $A922,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(1)
 B $A923,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A926,$04 "#STR#(#PC,$04,$04)".
+T $A926,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(tune)
 B $A92A,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A92D,$02 "#STR#(#PC,$04,$02)".
+T $A92D,$02 #FONT#(:(#STR(#PC,$04,$02)))$8D75,attr=$47(up)
 B $A92F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A932,$01 "#STR#(#PC,$04,$01)".
+T $A932,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(2)
 B $A933,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A936,$04 "#STR#(#PC,$04,$04)".
+T $A936,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(game)
 B $A93A,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A93D,$02 "#STR#(#PC,$04,$02)".
+T $A93D,$02 #FONT#(:(#STR(#PC,$04,$02)))$8D75,attr=$47(on)
 B $A93F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A942,$01 "#STR#(#PC,$04,$01)".
+T $A942,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(3)
 B $A943,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A946,$03 "#STR#(#PC,$04,$03)".
+T $A946,$03 #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(two)
 B $A949,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A94C,$06 "#STR#(#PC,$04,$06)".
+T $A94C,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(player)
 B $A952,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A955,$01 "#STR#(#PC,$04,$01)".
+T $A955,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(4)
 B $A956,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A959,$05 "#STR#(#PC,$04,$05)".
+T $A959,$05 #FONT#(:(#STR(#PC,$04,$05)))$8D75,attr=$47(oops)
 B $A95E,$01 Terminator.
+  $A95F,$03 Call #R$AE04.
+@ $A962 label=StartMenu_InputLoop
+  $A962,$03 Call #R$965F.
+  $A965,$04 Jump to #R$A97A if the player has pressed "#CHR$31".
+  $A969,$05 Jump to #R$AA3B if the player has pressed "#CHR$32".
+  $A96E,$05 Jump to #R$AA9B if the player has pressed "#CHR$33".
+  $A973,$05 Jump back to #R$933F if the player has pressed "#CHR$34".
+  $A978,$02 Jump to #R$A962.
 
+c $A97A SubGame: Around The Clock
+@ $A97A label=AroundTheClock
+N $A97A #PUSHS #SIM(start=$9D33,stop=$A95F)#SIM(start=$A97D,stop=$A9AA)
+. #UDGTABLE(default)
+.   { #SCR$02(around-the-clock) }
+. UDGTABLE# #POPS
+  $A97A,$03 Call #R$9942.
+  $A97D,$03 Call #R$A9C2.
   $A980,$03 Call #R$964C.
 B $A983,$02 INK: #INK(#PEEK(#PC+$01)).
 B $A985,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $A987,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $A989,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A98C,$06 "#STR#(#PC,$04,$06)".
+T $A98C,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(around)
 B $A992,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A995,$04 "#STR#(#PC,$04,$04)".
+T $A995,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(the)
 B $A999,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A99C,$06 "#STR#(#PC,$04,$06)".
+T $A99C,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(clock)
 B $A9A2,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A9A5,$04 "#STR#(#PC,$04,$04)".
+T $A9A5,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(time)
 B $A9A9,$01 Terminator.
+N $A9AA Set the countdown timer.
+  $A9AA,$08 Write "#CHR$39#CHR$39" to *#R$A38C.
+  $A9B2,$05 Write "#CHR$32" to *#R$9AB5.
+  $A9B7,$08 Write #N$01 to; #LIST { *#R$9B2C } { *#R$9B2B } LIST#
+  $A9BF,$03 Jump to #R$9D42.
+
+c $A9C2
+  $A9C2,$03 #REGde=#N$0101.
+  $A9C5,$02 #REGb=#N$16.
+  $A9C7,$02 Stash #REGde and #REGbc on the stack.
+  $A9C9,$03 Call #R$A8AE.
+  $A9CC,$02 #REGb=#N$08.
+  $A9CE,$02 Stash #REGbc and #REGhl on the stack.
+  $A9D0,$03 #REGbc=#N($0005,$04,$04).
+  $A9D3,$01 Stash #REGhl on the stack.
+  $A9D4,$01 Restore #REGde from the stack.
+  $A9D5,$01 Increment #REGde by one.
+  $A9D6,$02 Write #N$00 to *#REGhl.
+  $A9D8,$02 LDIR.
+  $A9DA,$01 Restore #REGhl from the stack.
+  $A9DB,$01 Increment #REGh by one.
+  $A9DC,$01 Restore #REGbc from the stack.
+  $A9DD,$02 Decrease counter by one and loop back to #R$A9CE until counter is zero.
+  $A9DF,$02 Restore #REGbc and #REGde from the stack.
+  $A9E1,$01 Increment #REGd by one.
+  $A9E2,$02 Decrease counter by one and loop back to #R$A9C7 until counter is zero.
+  $A9E4,$01 Return.
 
 c $A9E5
   $A9E5,$03 Call #R$964C.
@@ -1574,6 +2444,8 @@ B $AA31,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $AA34,$03 #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(on!)
 B $AA37,$01 Terminator.
   $AA38,$03 Call #R$AE04.
+N $AA3B The entrypoint for a one-player game.
+@ $AA3B label=Game_OnePlayer
   $AA3B,$05 Write #N$00 to *#R$9AA7.
   $AA40,$05 Write #N$00 to *#R$9AA6.
   $AA45,$03 Call #R$B517.
@@ -1588,7 +2460,8 @@ c $AA5A
 
 c $AA7B
 
-c $AA9B
+c $AA9B Two Player Game
+@ $AA9B label=Game_TwoPlayer
   $AA9B,$08 Write #N$01 to; #LIST
 . { *#R$9AB7 }
 . { *#R$9AB8 }
@@ -1603,7 +2476,7 @@ B $AAAB,$02 INK: #INK(#PEEK(#PC+$01)).
 B $AAAD,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $AAAF,$01
 B $AAB0,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AAB3,$06 "#STR#(#PC,$04,$06)".
+T $AAB3,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(player)
 B $AAB9,$01 Terminator.
 N $AABA Flip the current player ID.
   $AABA,$08 Toggle *#R$9AB8 to switch from 1UP to 2UP/ 2UP to 1UP.
@@ -1611,7 +2484,7 @@ N $AABA Flip the current player ID.
 N $AAC4 Print "2" (For Player 2).
   $AAC4,$03 Call #R$964C.
 B $AAC7,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AACA,$01 "#STR#(#PC,$04,$01)".
+T $AACA,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(2)
 B $AACB,$01 Terminator.
   $AACC,$03 Call #R$AE04.
   $AACF,$01 Return.
@@ -1619,7 +2492,7 @@ N $AAD0 Print "1" (For Player 1).
 @ $AAD0 label=Print_1
   $AAD0,$03 Call #R$964C.
 B $AAD3,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AAD6,$01 "#STR#(#PC,$04,$01)".
+T $AAD6,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(1)
 B $AAD7,$01 Terminator.
   $AAD8,$03 Call #R$AE04.
   $AADB,$01 Return.
@@ -1875,14 +2748,94 @@ T $ADFC,$06 "#STR#(#PC,$04,$06)".
 B $AE02,$01 Terminator.
   $AE03,$01 Return.
 
-c $AE04
+c $AE04 Long Pause
+@ $AE04 label=LongPause
+  $AE04,$02 Set a repeat counter in #REGb for #N$03 loops.
+@ $AE06 label=LongPause_RepeatLoop
+  $AE06,$03 Set a delay counter in #REGhl to #N$FFFF.
+. We count down from this value to zero three times.
+@ $AE09 label=LongPause_DelayLoop
+  $AE09,$01 Decrease the delay counter by one.
+  $AE0A,$04 Jump back to #R$AE09 until the delay counter is zero.
+  $AE0E,$06 Return if bit 4 of *#R$F821 is set.
+  $AE14,$02 Decrease the repeat counter by one and loop back to #R$AE06 until
+. the repeat counter is zero.
+  $AE16,$01 Return.
 
 c $AE17
+  $AE17,$03 #REGde=#R$AF51.
+  $AE1A,$03 #REGhl=#R$AF49.
+  $AE1D,$02 #REGb=#N$04.
+  $AE1F,$01 Stash #REGbc on the stack.
+  $AE20,$01 #REGb=#REGh.
+  $AE21,$01 #REGc=#REGl.
+  $AE22,$01 Stash #REGde on the stack.
+  $AE23,$01 #REGe=*#REGhl.
+  $AE24,$01 Increment #REGhl by one.
+  $AE25,$01 #REGd=*#REGhl.
+  $AE26,$01 Exchange the #REGde and #REGhl registers.
+  $AE27,$01 Restore #REGde from the stack.
+  $AE28,$03 Call #R$AEF0.
+  $AE2B,$01 #REGh=#REGb.
+  $AE2C,$01 #REGl=#REGc.
+  $AE2D,$03 Increment #REGde by three.
+  $AE30,$02 Increment #REGhl by two.
+  $AE32,$01 Restore #REGbc from the stack.
+  $AE33,$02 Decrease counter by one and loop back to #R$AE1F until counter is zero.
+  $AE35,$03 #REGde=#R$AF51.
+  $AE38,$03 Call #R$AE3C.
+  $AE3B,$01 Return.
+
+c $AE3C
+  $AE3C,$03 #REGhl=*#R$AF5D.
+  $AE3F,$02 Stash #REGhl and #REGbc on the stack.
+  $AE41,$02 #REGb=#N$03.
+  $AE43,$02 Stash #REGbc and #REGde on the stack.
+  $AE45,$01 #REGa=*#REGde.
+  $AE46,$04 Jump to #R$AE5B if #REGa is equal to #N$20.
+  $AE4A,$01 Multiply #REGa by #N$02.
+  $AE4B,$03 #REGhl=#R$AF5F.
+  $AE4E,$03 Create an offset in #REGde.
+  $AE51,$01 #REGhl+=#REGde.
+  $AE52,$03 Fetch the address at *#REGhl and load it into #REGde.
+  $AE55,$03 #REGix=#REGde (using the stack).
+  $AE58,$03 Call #R$AE6E.
+  $AE5B,$01 Restore #REGde from the stack.
+  $AE5C,$01 Increment #REGde by one.
+  $AE5D,$03 #REGhl=*#R$AF5D.
+  $AE60,$02 Increment #REGl by two.
+  $AE62,$03 Write #REGhl to *#R$AF5D.
+  $AE65,$01 Restore #REGbc from the stack.
+  $AE66,$02 Decrease counter by one and loop back to #R$AE43 until counter is zero.
+  $AE68,$02 Restore #REGbc and #REGhl from the stack.
+  $AE6A,$03 Write #REGhl to *#R$AF5D.
+  $AE6D,$01 Return.
+
+c $AE6E
+
+c $AEA3
+
+c $AEAF
+
+c $AEC3
+
+c $AECC
+
+c $AEE5
 
 c $AEF0
 
-b $AF49
-  $AF5D
+g $AF49
+B $AF49,$04,$01
+g $AF51
+B $AF51,$04,$01
+
+g $AF5D
+W $AF5D,$02
+
+g $AF5F
+W $AF5F,$02
+L $AF5F,$02,$0A
 
 b $AF73 Graphics: Dart Pointer
 @ $AF73 label=Graphics_DartPointer
@@ -1917,6 +2870,95 @@ B $B229,$01 Terminator.
   $B22D,$03 Jump to #R$933F.
 
 c $B230
+
+b $B40A
+
+b $B416
+b $B417
+
+b $B484
+
+c $B517
+  $B517,$02 #REGe=#N$06.
+  $B519,$03 Call #R$A875.
+  $B51C,$03 #REGhl=#R$B484.
+  $B51F,$03 #REGde=#N($0015,$04,$04).
+  $B522,$01 #REGc=#REGa.
+  $B523,$01 Set flags.
+  $B524,$01 #REGb=#REGa.
+  $B525,$02 Jump to #R$B52A if #REGa is zero.
+  $B527,$01 #REGhl+=#REGde.
+  $B528,$02 Decrease counter by one and loop back to #R$B527 until counter is zero.
+  $B52A,$03 Write #REGhl to *#R$9B21.
+  $B52D,$01 Stash #REGbc on the stack.
+  $B52E,$02 #REGe=#N$06.
+  $B530,$03 Call #R$A875.
+  $B533,$01 Restore #REGbc from the stack.
+  $B534,$03 Jump to #R$B52D if #REGa is equal to #REGc.
+  $B537,$03 #REGhl=#R$B484.
+  $B53A,$03 #REGde=#N($0015,$04,$04).
+  $B53D,$01 Set flags.
+  $B53E,$01 #REGb=#REGa.
+  $B53F,$02 Jump to #R$B544 if #REGa is zero.
+  $B541,$01 #REGhl+=#REGde.
+  $B542,$02 Decrease counter by one and loop back to #R$B541 until counter is zero.
+  $B544,$03 Write #REGhl to *#R$9B23.
+  $B547,$01 Return.
+
+c $B548
+  $B548,$03 #REGde=#N$040A.
+  $B54B,$03 Call #R$A8AE.
+  $B54E,$02 #REGb=#N$80.
+  $B550,$02 Stash #REGbc and #REGhl on the stack.
+  $B552,$03 #REGbc=#N($0012,$04,$04).
+  $B555,$01 Stash #REGhl on the stack.
+  $B556,$01 Restore #REGde from the stack.
+  $B557,$02 Write #N$00 to *#REGhl.
+  $B559,$01 Increment #REGde by one.
+  $B55A,$02 LDIR.
+  $B55C,$01 Restore #REGhl from the stack.
+  $B55D,$03 Call #R$A8CC.
+  $B560,$01 Restore #REGbc from the stack.
+  $B561,$02 Decrease counter by one and loop back to #R$B550 until counter is zero.
+  $B563,$03 #REGhl=#N($040A,$04,$04).
+  $B566,$03 #REGbc=#N($1013,$04,$04).
+  $B569,$02 #REGa=#N$60.
+  $B56B,$03 Call #R$B5A6.
+  $B56E,$03 #REGhl=#N($0A10,$04,$04).
+  $B571,$03 #REGbc=#N($0706,$04,$04).
+  $B574,$02 #REGa=#N$47.
+  $B576,$03 Call #R$B5A6.
+  $B579,$03 #REGhl=#N($051D,$04,$04).
+  $B57C,$03 #REGbc=#N($1001,$04,$04).
+  $B57F,$02 #REGa=#N$30.
+  $B581,$03 Call #R$B5A6.
+  $B584,$03 #REGhl=#N($140B,$04,$04).
+  $B587,$03 #REGbc=#N($0113,$04,$04).
+  $B58A,$02 #REGa=#N$30.
+  $B58C,$03 Call #R$B5A6.
+  $B58F,$03 #REGhl=#N($1111,$04,$04).
+  $B592,$03 #REGbc=#N($0106,$04,$04).
+  $B595,$02 #REGa=#N$20.
+  $B597,$03 Call #R$B5A6.
+  $B59A,$03 #REGhl=#N($0B16,$04,$04).
+  $B59D,$03 #REGbc=#N($0701,$04,$04).
+  $B5A0,$02 #REGa=#N$20.
+  $B5A2,$03 Call #R$B5A6.
+  $B5A5,$01 Return.
+
+c $B5A6
+  $B5A6,$04 Stash #REGbc, #REGhl, #REGaf and #REGbc on the stack.
+  $B5AA,$03 Call #R$A862.
+  $B5AD,$02 Restore #REGbc and #REGaf from the stack.
+  $B5AF,$01 #REGb=#REGc.
+  $B5B0,$01 Write #REGa to *#REGhl.
+  $B5B1,$01 Increment #REGhl by one.
+  $B5B2,$02 Decrease counter by one and loop back to #R$B5B0 until counter is zero.
+  $B5B4,$01 Restore #REGhl from the stack.
+  $B5B5,$01 Increment #REGh by one.
+  $B5B6,$01 Restore #REGbc from the stack.
+  $B5B7,$02 Decrease counter by one and loop back to #R$B5A6 until counter is zero.
+  $B5B9,$01 Return.
 
 c $B5BA Quarter Finals
 @ $B5BA label=QuarterFinals
@@ -2427,7 +3469,17 @@ b $CB6B
 
 c $CBC8
 
+c $CBF7
+
+c $CC62
+
+c $CC84
+
 b $D00A
+
+b $D2A0
+
+b $D330
 
 b $DD00 Graphics: Pub Scene
 D $DD00 #UDGTABLE { =h Pub Scene } { #SCR$02,$00,$00,$20,$18,$DD00,$F500(pub-scene) } UDGTABLE#

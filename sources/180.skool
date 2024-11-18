@@ -683,7 +683,9 @@ b$7800 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7AE8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7AF0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7AF8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7B00 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+
+; Data block at 7B00
+b$7B00 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7B08 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7B10 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7B18 DEFB $00,$00,$00,$00,$00,$00,$00,$00
@@ -731,23 +733,28 @@ b$7800 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7C68 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7C70 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7C78 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7C80 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7C88 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7C90 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7C98 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CA0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CA8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CB0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CB8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CC0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CC8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CD0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CD8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CE0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CE8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CF0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7CF8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $7D00 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7C80 DEFB $00,$00,$00,$00,$00,$00,$00
+
+; Data block at 7C87
+b$7C87 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7C8F DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7C97 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7C9F DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CA7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CAF DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CB7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CBF DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CC7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CCF DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CD7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CDF DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CE7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CEF DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CF7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $7CFF DEFB $00
+
+; Data block at 7D00
+b$7D00 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $7D08 DEFB $00,$0F,$00,$00,$00,$00,$00,$00
  $7D10 DEFB $30,$80,$00,$00,$00,$00,$00,$43
  $7D18 DEFB $40,$00,$00,$00,$00,$00,$F0,$20
@@ -943,7 +950,9 @@ b$7800 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $8308 DEFB $C0,$00,$00,$00,$00,$07,$FC,$00
  $8310 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $8318 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $8320 DEFB $FF,$FF,$E0,$7F,$FF,$FF,$FF,$FF
+
+; Data block at 8320
+b$8320 DEFB $FF,$FF,$E0,$7F,$FF,$FF,$FF,$FF
  $8328 DEFB $FF,$80,$3F,$FF,$FF,$FF,$FF,$FF
  $8330 DEFB $00,$1F,$FF,$FF,$FF,$FF,$FE,$00
  $8338 DEFB $0F,$FF,$FF,$FF,$FF,$F8,$00,$0F
@@ -1338,66 +1347,90 @@ b$8F65 DEFB $20,$07,$01,$06,$02,$05,$02,$04
  $8F8D DEFB $0D,$0B,$0C,$0B,$0B,$0C,$0A,$0C
  $8F95 DEFB $09,$0C,$08,$0C,$07,$0C,$06,$0C
  $8F9D DEFB $05,$0B,$04,$0B,$03,$0A,$02,$09
- $8FA5 DEFB $01,$0F,$07,$02,$08,$01,$08,$02
- $8FAD DEFB $08,$03,$08,$04,$08,$05,$07,$06
- $8FB5 DEFB $07,$07,$07,$08,$07,$09,$07,$0A
- $8FBD DEFB $06,$0B,$06,$0C,$06,$0D,$06,$0E
- $8FC5 DEFB $1D,$02,$04,$02,$03,$03,$02,$04
+ $8FA5 DEFB $01
+
+; Data block at 8FA6
+b$8FA6 DEFB $0F,$07,$02,$08,$01,$08,$02,$08
+ $8FAE DEFB $03,$08,$04,$08,$05,$07,$06,$07
+ $8FB6 DEFB $07,$07,$08,$07,$09,$07,$0A,$06
+ $8FBE DEFB $0B,$06,$0C,$06,$0D,$06,$0E
+
+; Data block at 8FC5
+b$8FC5 DEFB $1D,$02,$04,$02,$03,$03,$02,$04
  $8FCD DEFB $01,$05,$01,$06,$01,$07,$01,$08
  $8FD5 DEFB $01,$0A,$02,$0B,$03,$0B,$04,$0B
  $8FDD DEFB $05,$0A,$06,$09,$07,$08,$08,$07
  $8FE5 DEFB $09,$06,$0A,$05,$0B,$04,$0C,$03
  $8FED DEFB $0D,$03,$0E,$04,$0E,$05,$0E,$06
  $8FF5 DEFB $0E,$07,$0E,$09,$0D,$0A,$0D,$0B
- $8FFD DEFB $0D,$0C,$0D,$1D,$02,$04,$02,$03
- $9005 DEFB $03,$02,$04,$01,$05,$01,$06,$01
- $900D DEFB $07,$01,$08,$01,$0A,$02,$0B,$03
- $9015 DEFB $0B,$04,$0B,$05,$0A,$06,$09,$07
- $901D DEFB $0B,$08,$0C,$09,$0C,$0A,$0C,$0B
- $9025 DEFB $0C,$0C,$0B,$0D,$0A,$0E,$09,$0E
- $902D DEFB $08,$0E,$07,$0E,$06,$0E,$05,$0E
- $9035 DEFB $04,$0E,$03,$0D,$02,$0C,$17,$08
- $903D DEFB $01,$07,$03,$06,$05,$05,$07,$04
- $9045 DEFB $09,$03,$0B,$03,$0B,$04,$0B,$05
- $904D DEFB $0B,$06,$0B,$07,$0B,$08,$0B,$09
- $9055 DEFB $0A,$0A,$0A,$0B,$0A,$0C,$0A,$0D
- $905D DEFB $0A,$0A,$07,$09,$09,$09,$0A,$08
- $9065 DEFB $0B,$08,$0C,$07,$0E,$1E,$0B,$01
- $906D DEFB $0A,$01,$09,$01,$08,$01,$07,$01
- $9075 DEFB $06,$01,$05,$01,$04,$02,$03,$03
- $907D DEFB $02,$04,$02,$05,$03,$05,$04,$05
- $9085 DEFB $06,$05,$07,$05,$08,$05,$09,$05
- $908D DEFB $0B,$06,$0C,$08,$0C,$09,$0C,$0A
- $9095 DEFB $0C,$0B,$0B,$0D,$09,$0E,$08,$0E
- $909D DEFB $07,$0E,$06,$0E,$05,$0E,$03,$0D
- $90A5 DEFB $02,$0C,$18,$08,$01,$07,$01,$06
- $90AD DEFB $01,$04,$02,$03,$04,$02,$06,$02
- $90B5 DEFB $07,$02,$09,$02,$0A,$03,$0C,$04
- $90BD DEFB $0D,$05,$0E,$06,$0E,$07,$0E,$08
- $90C5 DEFB $0E,$09,$0D,$0A,$0C,$0B,$0A,$0A
- $90CD DEFB $08,$09,$07,$07,$06,$06,$06,$04
- $90D5 DEFB $07,$03,$08,$14,$03,$01,$04,$01
- $90DD DEFB $06,$02,$07,$02,$08,$02,$0A,$01
- $90E5 DEFB $0B,$01,$0C,$01,$0B,$03,$0B,$04
- $90ED DEFB $0A,$05,$0A,$06,$09,$07,$09,$08
- $90F5 DEFB $08,$09,$08,$0A,$07,$0B,$07,$0C
- $90FD DEFB $06,$0D,$06,$0E,$24,$08,$01,$07
- $9105 DEFB $01,$06,$01,$05,$01,$04,$02,$03
- $910D DEFB $03,$03,$04,$04,$05,$05,$06,$06
- $9115 DEFB $07,$07,$07,$08,$07,$09,$08,$0A
- $911D DEFB $08,$0B,$09,$0C,$0B,$0C,$0C,$0B
- $9125 DEFB $0D,$09,$0E,$08,$0E,$07,$0E,$06
- $912D DEFB $0E,$05,$0E,$03,$0D,$02,$0C,$02
- $9135 DEFB $0B,$03,$09,$04,$09,$06,$07,$07
- $913D DEFB $07,$08,$07,$0A,$05,$0B,$04,$0B
- $9145 DEFB $03,$0A,$02,$09,$01,$1C,$09,$02
- $914D DEFB $07,$01,$06,$01,$05,$01,$04,$02
- $9155 DEFB $03,$03,$03,$04,$03,$05,$04,$06
- $915D DEFB $05,$07,$06,$07,$07,$07,$08,$07
- $9165 DEFB $09,$06,$0A,$05,$0A,$04,$0B,$02
- $916D DEFB $0B,$01,$0B,$01,$0B,$02,$0A,$04
- $9175 DEFB $0A,$05,$09,$07,$09,$08,$08,$0A
- $917D DEFB $08,$0B,$07,$0D,$07,$0E
+ $8FFD DEFB $0D,$0C,$0D
+
+; Data block at 9000
+b$9000 DEFB $1D,$02,$04,$02,$03,$03,$02,$04
+ $9008 DEFB $01,$05,$01,$06,$01,$07,$01,$08
+ $9010 DEFB $01,$0A,$02,$0B,$03,$0B,$04,$0B
+ $9018 DEFB $05,$0A,$06,$09,$07,$0B,$08,$0C
+ $9020 DEFB $09,$0C,$0A,$0C,$0B,$0C,$0C,$0B
+ $9028 DEFB $0D,$0A,$0E,$09,$0E,$08,$0E,$07
+ $9030 DEFB $0E,$06,$0E,$05,$0E,$04,$0E,$03
+ $9038 DEFB $0D,$02,$0C
+
+; Data block at 903B
+b$903B DEFB $17,$08,$01,$07,$03,$06,$05,$05
+ $9043 DEFB $07,$04,$09,$03,$0B,$03,$0B,$04
+ $904B DEFB $0B,$05,$0B,$06,$0B,$07,$0B,$08
+ $9053 DEFB $0B,$09,$0A,$0A,$0A,$0B,$0A,$0C
+ $905B DEFB $0A,$0D,$0A,$0A,$07,$09,$09,$09
+ $9063 DEFB $0A,$08,$0B,$08,$0C,$07,$0E
+
+; Data block at 906A
+b$906A DEFB $1E,$0B,$01,$0A,$01,$09,$01,$08
+ $9072 DEFB $01,$07,$01,$06,$01,$05,$01,$04
+ $907A DEFB $02,$03,$03,$02,$04,$02,$05,$03
+ $9082 DEFB $05,$04,$05,$06,$05,$07,$05,$08
+ $908A DEFB $05,$09,$05,$0B,$06,$0C,$08,$0C
+ $9092 DEFB $09,$0C,$0A,$0C,$0B,$0B,$0D,$09
+ $909A DEFB $0E,$08,$0E,$07,$0E,$06,$0E,$05
+ $90A2 DEFB $0E,$03,$0D,$02,$0C
+
+; Data block at 90A7
+b$90A7 DEFB $18,$08,$01,$07,$01,$06,$01,$04
+ $90AF DEFB $02,$03,$04,$02,$06,$02,$07,$02
+ $90B7 DEFB $09,$02,$0A,$03,$0C,$04,$0D,$05
+ $90BF DEFB $0E,$06,$0E,$07,$0E,$08,$0E,$09
+ $90C7 DEFB $0D,$0A,$0C,$0B,$0A,$0A,$08,$09
+ $90CF DEFB $07,$07,$06,$06,$06,$04,$07,$03
+ $90D7 DEFB $08
+
+; Data block at 90D8
+b$90D8 DEFB $14,$03,$01,$04,$01,$06,$02,$07
+ $90E0 DEFB $02,$08,$02,$0A,$01,$0B,$01,$0C
+ $90E8 DEFB $01,$0B,$03,$0B,$04,$0A,$05,$0A
+ $90F0 DEFB $06,$09,$07,$09,$08,$08,$09,$08
+ $90F8 DEFB $0A,$07,$0B,$07,$0C,$06,$0D,$06
+ $9100 DEFB $0E
+
+; Data block at 9101
+b$9101 DEFB $24,$08,$01,$07,$01,$06,$01,$05
+ $9109 DEFB $01,$04,$02,$03,$03,$03,$04,$04
+ $9111 DEFB $05,$05,$06,$06,$07,$07,$07,$08
+ $9119 DEFB $07,$09,$08,$0A,$08,$0B,$09,$0C
+ $9121 DEFB $0B,$0C,$0C,$0B,$0D,$09,$0E,$08
+ $9129 DEFB $0E,$07,$0E,$06,$0E,$05,$0E,$03
+ $9131 DEFB $0D,$02,$0C,$02,$0B,$03,$09,$04
+ $9139 DEFB $09,$06,$07,$07,$07,$08,$07,$0A
+ $9141 DEFB $05,$0B,$04,$0B,$03,$0A,$02,$09
+ $9149 DEFB $01
+
+; Data block at 914A
+b$914A DEFB $1C,$09,$02,$07,$01,$06,$01,$05
+ $9152 DEFB $01,$04,$02,$03,$03,$03,$04,$03
+ $915A DEFB $05,$04,$06,$05,$07,$06,$07,$07
+ $9162 DEFB $07,$08,$07,$09,$06,$0A,$05,$0A
+ $916A DEFB $04,$0B,$02,$0B,$01,$0B,$01,$0B
+ $9172 DEFB $02,$0A,$04,$0A,$05,$09,$07,$09
+ $917A DEFB $08,$08,$0A,$08,$0B,$07,$0D,$07
+ $9182 DEFB $0E
 
 ; Game Entry Point
 ;
@@ -1423,6 +1456,8 @@ c$9183 XOR A         ; {Write #N$00 to; #LIST
  $919E JP $933F      ; Jump to #R$933F.
 
 ; Print Score
+;
+; Used by the routine at #R$9A86.
 @label=Print_Score
 c$91A1 CALL $964C       ; Call #R$964C.
  $91A4 DEFB $16,$00,$00 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
@@ -1520,6 +1555,13 @@ c$9211 CALL $965F    ; Call #R$965F.
 ; Messaging: Header/ Footer
 ;
 ; Used by the routines at #R$933F and #R$94F8.
+;
+; .
+;
+; #PUSHS #SIM(start=$9218,stop=$9252)
+; #UDGTABLE(default)
+;   { #SCR$01(header-footer) }
+; UDGTABLE# #POPS
 @label=Messaging_HeaderFooter
 c$9218 CALL $964C                    ; Call #R$9736.
  $921B DEFB $16,$01,$05              ; PRINT AT: #N(#PEEK(#PC+$01)),
@@ -1657,6 +1699,8 @@ c$92E2 PUSH DE       ; Stash #REGde on the stack.
 ; Main Menu: Print Dart Pointer
 ;
 ; Used by the routine at #R$933F.
+;
+; DE The co-ordinates of the dart
 @label=MainMenu_PrintDartPointer
 c$9305 LD A,E        ; {Return if #REGe is greater than #N$20.
  $9306 CP $20        ;
@@ -1703,6 +1747,13 @@ c$9305 LD A,E        ; {Return if #REGe is greater than #N$20.
 ; Main Menu
 ;
 ; Used by the routines at #R$9183, #R$A15C, #R$A8F8 and #R$B16B.
+;
+; .
+;
+; #PUSHS #POKES$91C1,$00#SIM(start=$933F,stop=$93F4)
+; #UDGTABLE(default)
+;   { #SCR$02(main-menu) }
+; UDGTABLE# #POPS
 @label=MainMenu
 c$933F XOR A                      ; {Write #N$00 to; #LIST
  $9340 LD ($9B2B),A               ; { *#R$9B2B }
@@ -1716,12 +1767,13 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
  $9352 LD (HL),$30                ; Write "#CHR$30" to the first digit in
                                   ; #R$91AB.
  $9354 LDIR                       ; Copy the zero to the next five digits.
-; #PUSHS SIM(start=$9356,stop=$93D1)
+; Print the menu options.
+; .
+; #PUSHS #POKES$91C1,$00#SIM(start=$9356,stop=$93CB)
 ; #UDGTABLE(default)
 ;   { #SCR$02(main-menu-1) }
 ; UDGTABLE# #POPS
-; .
-; Print the menu options.
+; Note; the bright white doesn't happen until later.
  $9356 CALL $964C                 ; Call #R$964C.
  $9359 DEFB $00                   ; #R$97D5(CLEAR SCREEN).
  $935A DEFB $10,$00               ; INK: #INK(#PEEK(#PC+$01)).
@@ -1746,8 +1798,20 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
  $93BE DEFM "0 START GAME"        ; #FONT#(:(#STR(#PC,$04,$0C)))$8D75,attr=$47(0-start-game)
  $93CA DEFB $FF                   ; Terminator.
 ; Display the header and footer messaging.
+; .
+; #PUSHS #POKES$91C1,$00#SIM(start=$9356,stop=$93CE)
+; #UDGTABLE(default)
+;   { #SCR$02(main-menu-2) }
+; UDGTABLE# #POPS
  $93CB CALL $9218                 ; Call #R$9218.
+; Set the bright white colouring.
+; .
+; #PUSHS #POKES$91C1,$00#SIM(start=$9356,stop=$93D1)
+; #UDGTABLE(default)
+;   { #SCR$02(main-menu-3) }
+; UDGTABLE# #POPS
  $93CE CALL $91B6                 ; Call #R$91B6.
+; Now begin setting up the dart pointer.
  $93D1 LD HL,$0501                ; Set the initial position of the dart
                                   ; pointer to #REGhl (#N$0501).
  $93D4 LD B,$04                   ; Set a counter in #REGb for the width of the
@@ -1764,31 +1828,39 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
  $93DE POP BC                     ; Restore the dart width counter from the
                                   ; stack.
  $93DF DJNZ $93D6                 ; Decrease the dart width counter by one and loop back to #R$93D6
-                                  ; until counter is zero.
- $93E1 LD DE,$0500                ; #REGde=#N$0500.
- $93E4 LD B,$04                   ; #REGb=#N$04.
-*$93E6 PUSH BC                    ; {Stash #REGbc and #REGde on the stack.
- $93E7 PUSH DE                    ; }
+                                  ; until the counter is zero.
+; Initialise the dart pointer.
+ $93E1 LD DE,$0500                ; Set the initial position of the dart
+                                  ; pointer to #REGde (#N$0500).
+ $93E4 LD B,$04                   ; Set a counter in #REGb for the width of the
+                                  ; dart pointer.
+@label=DrawDartPointer_Loop
+*$93E6 PUSH BC                    ; {Stash the dart width counter and dart
+ $93E7 PUSH DE                    ; co-ordinates on the stack.}
  $93E8 CALL $9305                 ; Call #R$9305.
- $93EB POP DE                     ; {Restore #REGde and #REGbc from the stack.
- $93EC POP BC                     ; }
+ $93EB POP DE                     ; {Restore the dart co-ordinates and dart
+ $93EC POP BC                     ; width counter from the stack.}
  $93ED INC D                      ; {Increment #REGd by two.
  $93EE INC D                      ; }
- $93EF DJNZ $93E6                 ; Decrease counter by one and loop back to
-                                  ; #R$93E6 until counter is zero.
+ $93EF DJNZ $93E6                 ; Decrease the dart width counte by one and loop back to #R$93E6
+                                  ; until the counter is zero.
+@label=ColourDartPointerAttributes_Loop
 *$93F1 CALL $944E                 ; Call #R$944E.
  $93F4 CALL $965F                 ; Call #R$965F.
  $93F7 PUSH AF                    ; Stash #REGaf on the stack.
  $93F8 POP AF                     ; Restore #REGaf from the stack.
  $93F9 JR Z,$93F1                 ; Jump to #R$93F1 if #REGd is equal to #N$04.
- $93FB CP $30                     ; {Jump to #R$9429 if #REGa is not equal to
- $93FD JR NZ,$9429                ; #N$30.}
+; Has the player hit "Start Game"?
+ $93FB CP $30                     ; {Jump to #R$9429 if "0" was not pressed
+ $93FD JR NZ,$9429                ; (ASCII #N$30 is "0").}
+; A game was started...
  $93FF CALL $9942                 ; Call #R$9942.
+; Consolidate the selected configs.
  $9402 LD A,($99F6)               ; {Write *#R$99F6 to *#R$99F5.
  $9405 LD ($99F5),A               ; }
- $9408 ADD A,A                    ; #REGa+=#REGa.
- $9409 ADD A,$05                  ; #REGa+=#N$05.
- $940B LD D,A                     ; #REGd=#REGa.
+ $9408 ADD A,A                    ; {#REGd=#N$05+(#REGa*#N$02).
+ $9409 ADD A,$05                  ;
+ $940B LD D,A                     ; }
  $940C LD E,$01                   ; #REGe=#N$01.
  $940E LD B,$3E                   ; #REGb=#N$3E.
 *$9410 PUSH BC                    ; {Stash #REGbc and #REGde on the stack.
@@ -1810,9 +1882,9 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
                                   ; #R$9410 until counter is zero.
  $9426 JP $94E6                   ; Jump to #R$94E6.
 *$9429 CP $36                     ; {Jump to #R$93F1 if #REGa is greater than
- $942B JP NC,$93F1                ; #N$36.}
+ $942B JP NC,$93F1                ; (ASCII #N$36 is "6").}
  $942E CP $30                     ; {Jump to #R$93F1 if #REGa is less than
- $9430 JP C,$93F1                 ; #N$30.}
+ $9430 JP C,$93F1                 ; (ASCII #N$30 is "0").}
  $9433 SUB $31                    ; #REGa-=#N$31.
  $9435 PUSH AF                    ; Stash #REGaf on the stack.
  $9436 CALL $94AF                 ; Call #R$94AF.
@@ -1939,7 +2011,7 @@ c$94AF LD A,($99F6)  ; Fetch *#R$99F6 and store it in #REGa.
 ;
 ; Used by the routine at #R$933F.
 ;
-; HL The co-ordinates of the dart.
+; HL The co-ordinates of the dart
 @label=ClearDartPointerAttributes
 c$94B8 CALL $A862    ; Call #R$A862.
  $94BB XOR A         ; {Write #COLOUR$00 to #N$04 character blocks in this
@@ -1967,21 +2039,30 @@ c$94B8 CALL $A862    ; Call #R$A862.
  $94D1 LD (HL),A     ; }
  $94D2 RET           ; Return.
 
-; Routine at 94D3
+; Press Any Key To Continue
 ;
 ; Used by the routine at #R$933F.
+;
+; .
+;
+; Read from the keyboard- returns #N$00 when no keys are being pressed.
+@label=Debounce_CheckKeys
 c$94D3 CALL $965F    ; Call #R$965F.
- $94D6 OR A          ; Set the bits from #REGa.
- $94D7 JR NZ,$94D3   ; Jump to #R$94D3 if #REGhl is not equal to #REGa.
- $94D9 LD B,$32      ; #REGb=#N$32.
+ $94D6 OR A          ; {Jump back to #R$94D3 if any keys are still being
+ $94D7 JR NZ,$94D3   ; pressed.}
+; After the frame delay, return regardless of key presses.
+ $94D9 LD B,$32      ; Set a timeout counter in #REGb of #N$32.
+@label=Debounce_Loop
 *$94DB HALT          ; Halt operation (suspend CPU until the next interrupt).
- $94DC XOR A         ; #REGa=#N$00.
- $94DD IN A,($FE)    ; #REGa=byte from port #N$FE.
+ $94DC XOR A         ; Reset the flags.
+ $94DD IN A,($FE)    ; Read from the keyboard port.
+; Mask off the unused bits.
  $94DF OR %11100000  ; Set bits 5-7.
- $94E1 INC A         ; Increment #REGa by one.
- $94E2 RET NZ        ; Return if #REGa is not equal to #REGa.
- $94E3 DJNZ $94DB    ; Decrease counter by one and loop back to #R$94DB until
-                     ; counter is zero.
+; If no keys are being pressed, #REGa will become #N$00.
+ $94E1 INC A         ; Increment the value by one.
+ $94E2 RET NZ        ; Return if any key has been pressed.
+ $94E3 DJNZ $94DB    ; Decrease the timeout counter by one and loop back to #R$94DB until
+                     ; the timeout counter is zero.
  $94E5 RET           ; Return.
 
 ; Routine at 94E6
@@ -2166,7 +2247,7 @@ c$95ED PUSH AF       ; {Stash #REGaf, #REGbc, #REGde, #REGhl and #REGix on the
  $95FF DEC (HL)      ; Decrease *#REGhl by one.
  $9600 JR NZ,$9626   ; Jump to #R$9626 if *#REGhl is not equal to #N$C3.
  $9602 LD (HL),$32   ; Write #N$32 to *#REGhl.
- $9604 LD HL,$A38D   ; #REGhl=#N$A38D.
+ $9604 LD HL,$A38D   ; #REGhl=#R$A38C(#N$A38D).
  $9607 DEC (HL)      ; Decrease *#REGhl by one.
  $9608 LD A,(HL)     ; {Jump to #R$9623 if *#REGhl is not equal to #N$2F.
  $9609 CP $2F        ;
@@ -2215,9 +2296,9 @@ c$9635 LD B,$80      ; #REGb=#N$80.
 ;
 ; Used by the routines at #R$9183, #R$91A1, #R$91C5, #R$91DD, #R$91E9, #R$91F3,
 ; #R$91FE, #R$9218, #R$933F, #R$94F8, #R$98B1, #R$9D42, #R$A15C, #R$A380,
-; #R$A3C3, #R$A7A5, #R$A8F8, #R$A9E5, #R$AA0A, #R$AAA8, #R$AB2E, #R$AC3D,
-; #R$AC52, #R$AC9D, #R$ACB9, #R$ACD9, #R$ACFB, #R$AD3B, #R$AD5C, #R$AD82,
-; #R$B16B, #R$B5BA, #R$B640 and #R$B6C2.
+; #R$A3C3, #R$A7A5, #R$A8F8, #R$A97A, #R$A9E5, #R$AA0A, #R$AAA8, #R$AB2E,
+; #R$AC3D, #R$AC52, #R$AC9D, #R$ACB9, #R$ACD9, #R$ACFB, #R$AD3B, #R$AD5C,
+; #R$AD82, #R$B16B, #R$B5BA, #R$B640 and #R$B6C2.
 @label=PrintString_Loop
 c$964C EX (SP),HL    ; Exchange #REGhl with the address at the top of the
                      ; stack.
@@ -2243,8 +2324,7 @@ c$9658 HALT          ; Halt operation (suspend CPU until the next interrupt).
 c$965F HALT            ; Halt operation (suspend CPU until the next interrupt).
  $9660 CALL $9688      ; Call #R$9688.
  $9663 RET Z           ; Return if #REGa is zero.
-; This entry point is used by the routine at #R$B230.
-*$9664 CP (IY+$65)     ; Compare #REGa with *#REGiy+#N$65.
+ $9664 CP (IY+$65)     ; Compare #REGa with *#REGiy+#N$65.
  $9667 JR Z,$967C      ; Jump to #R$967C if #REGbc is equal to #REGc.
  $9669 OR A            ; Set the bits from #REGa.
  $966A JR NZ,$966F     ; Jump to #R$966F if #REGbc is not equal to #REGa.
@@ -2720,22 +2800,29 @@ c$992A PUSH BC       ; Stash #REGbc on the stack.
                      ; counter is zero.
  $993F JP $9961      ; Jump to #R$9961.
 
-; Routine at 9942
+; Sound: Menu Tick
 ;
-; Used by the routines at #R$933F and #R$A8F8.
-c$9942 LD C,$00      ; #REGc=#N$00.
- $9944 LD B,$3C      ; #REGb=#N$3C.
-*$9946 LD HL,$000A   ; #REGhl=#N($000A,$04,$04).
-*$9949 DEC HL        ; Decrease #REGhl by one.
- $994A LD A,H        ; {Jump to #R$9949 until #REGhl is zero.
+; Used by the routines at #R$933F and #R$A97A.
+;
+; .
+;
+; #HTML(#AUDIO(menu.wav)(#INCLUDE(Menu)))
+@label=Sound_MenuTick
+c$9942 LD C,$00      ; Set initial speaker state in #REGc to OFF.
+ $9944 LD B,$3C      ; Set the repeat loop counter in #REGb to #N$3C.
+@label=MenuTick_OuterLoop
+*$9946 LD HL,$000A   ; Set the delay loop in #REGhl to #N($000A,$04,$04).
+@label=MenuTick_DelayLoop
+*$9949 DEC HL        ; Decrease the delay loop by one.
+ $994A LD A,H        ; {Jump back to #R$9949 until the delay loop is zero.
  $994B OR L          ;
  $994C JR NZ,$9949   ; }
- $994E LD A,C        ; Load #REGc into #REGa.
- $994F XOR %00010000 ; Flip the speaker bit.
- $9951 LD C,A        ; Store the result back to #REGc.
- $9952 OUT ($FE),A   ; Send #REGa to the speaker.
- $9954 DJNZ $9946    ; Decrease counter by one and loop back to #R$9946 until
-                     ; counter is zero.
+ $994E LD A,C        ; {Flip the current speaker state.
+ $994F XOR %00010000 ;
+ $9951 LD C,A        ; }
+ $9952 OUT ($FE),A   ; Send it to the speaker.
+ $9954 DJNZ $9946    ; Decrease the repeat loop counter by one and loop back to #R$9946
+                     ; until the repeat loop counter is zero.
  $9956 RET           ; Return.
 
 ; Control Code #N$04:
@@ -2865,68 +2952,173 @@ g$99F6 DEFB $00
 ; Routine at 99F7
 ;
 ; Used by the routine at #R$95ED.
-c$99F7 LD C,$00      ;
- $99F9 LD HL,$9A6F   ;
- $99FC PUSH HL       ;
- $99FD LD A,($99F5)  ;
- $9A00 DEC A         ;
- $9A01 RET M         ;
- $9A02 ADD A,A       ;
- $9A03 LD HL,$9A10   ;
+c$99F7 LD C,$00      ; #REGc=#N$00.
+ $99F9 LD HL,$9A6F   ; #REGhl=#R$9A6F.
+ $99FC PUSH HL       ; Stash #REGhl on the stack.
+ $99FD LD A,($99F5)  ; #REGa=*#R$99F5.
+ $9A00 DEC A         ; Decrease #REGa by one.
+ $9A01 RET M         ; Return if *#R$99F5 was set to "keyboard" (#N$00).
+ $9A02 ADD A,A       ; Multiply #REGa by #N$02.
+ $9A03 LD HL,$9A10   ; {#REGhl=#R$9A10+#REGa.
  $9A06 ADD A,L       ;
- $9A07 LD L,A        ;
- $9A08 JR NC,$9A0B   ;
- $9A0A INC H         ;
-*$9A0B LD A,(HL)     ;
- $9A0C INC HL        ;
- $9A0D LD H,(HL)     ;
- $9A0E LD L,A        ;
- $9A0F JP (HL)       ;
- $9A10 LD D,$9A      ;
- $9A12 DEC E         ;
- $9A13 SBC A,D       ;
- $9A14 LD A,($AF9A)  ;
- $9A17 IN A,($1F)    ;
- $9A19 AND $1F       ;
- $9A1B LD C,A        ;
- $9A1C RET           ;
- $9A1D POP HL        ;
- $9A1E CALL $9A6F    ;
- $9A21 AND $E0       ;
- $9A23 LD C,A        ;
-*$9A24 LD HL,$9A2B   ;
- $9A27 LD B,$08      ;
- $9A29 JR $9A74      ;
- $9A2B RST $28       ;
- $9A2C LD BC,$EF30   ;
- $9A2F LD (BC),A     ;
- $9A30 ADD HL,SP     ;
- $9A31 RST $28       ;
- $9A32 INC B         ;
- $9A33 JR C,$9A24    ;
- $9A35 DJNZ $9A6D    ;
- $9A37 RST $28       ;
- $9A38 EX AF,AF'     ;
- $9A39 SCF           ;
- $9A3A POP HL        ;
- $9A3B CALL $9A6F    ;
- $9A3E AND $E0       ;
- $9A40 LD C,A        ;
- $9A41 LD HL,$9A48   ;
- $9A44 LD B,$08      ;
- $9A46 JR $9A74      ;
- $9A48 RST $28       ;
- $9A49 LD BC,$EF30   ;
- $9A4C EX AF,AF'     ;
- $9A4D SCF           ;
- $9A4E RST $28       ;
- $9A4F DJNZ $9A87    ;
- $9A51 RST $30       ;
- $9A52 DJNZ $9A89    ;
- $9A54 RST $28       ;
- $9A55 INC B         ;
-*$9A56 JR C,$9A56    ;
- $9A58 LD BC,$7F5F   ;
+ $9A07 LD L,A        ; }
+ $9A08 JR NC,$9A0B   ; Jump to #R$9A0B if #REGa is greater than or equal to
+                     ; #N$00.
+ $9A0A INC H         ; Increment #REGh by one.
+*$9A0B LD A,(HL)     ; #REGa=*#REGhl.
+ $9A0C INC HL        ; Increment #REGhl by one.
+ $9A0D LD H,(HL)     ; #REGh=*#REGhl.
+ $9A0E LD L,A        ; #REGl=#REGa.
+ $9A0F JP (HL)       ; Jump to the address held in *#REGhl.
+
+; Jump Table: Control Methods
+@label=JumpTable_ControlMethods
+g$9A10 DEFW $9A16
+ $9A12 DEFW $9A1D
+ $9A14 DEFW $9A3A
+
+; Control Method: Kempston Joystick
+;
+; .
+;
+; O:C Control byte
+@label=ControlMethod_Kempston
+c$9A16 XOR A         ; #REGa=#N$00.
+ $9A17 IN A,($1F)    ; #REGa=byte from port #N$1F.
+ $9A19 AND %00011111 ; Keep only bits 0-4.
+ $9A1B LD C,A        ; Store the result in #REGc.
+ $9A1C RET           ; Return.
+
+; Control Method: Interface Two
+;
+; .
+;
+; O:B
+; O:C Control byte
+; O:HL Pointer to Key Map
+@label=ControlMethod_InterfaceTwo
+c$9A1D POP HL        ; Restore #REGhl from the stack.
+ $9A1E CALL $9A6F    ; Call #R$9A6F.
+ $9A21 AND %11100000 ; Keep only bits 5-7.
+ $9A23 LD C,A        ; Store the result in #REGc.
+ $9A24 LD HL,$9A2B   ; #REGhl=#R$9A2B.
+ $9A27 LD B,$08      ; #REGb=#N$08.
+ $9A29 JR $9A74      ; Jump to #R$9A74.
+
+; Key Map: Interface Two
+;
+; .
+;
+; .
+;
+; #MAP((#PC-$9A2B)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+@label=KeyMap_InterfaceTwo
+g$9A2B DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A2C DEFB %00000001 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 }
+                      ; TABLE#}
+ $9A2D DEFB $30       ; "#CHR(#PEEK(#PC))".
+; #MAP((#PC-$9A2B)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+ $9A2E DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A2F DEFB %00000010 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 }
+                      ; TABLE#}
+ $9A30 DEFB $39       ; "#CHR(#PEEK(#PC))".
+; #MAP((#PC-$9A2B)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+ $9A31 DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A32 DEFB %00000100 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 }
+                      ; TABLE#}
+ $9A33 DEFB $38       ; "#CHR(#PEEK(#PC))".
+; #MAP((#PC-$9A2B)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+ $9A34 DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A35 DEFB %00010000 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 }
+                      ; TABLE#}
+ $9A36 DEFB $36       ; "#CHR(#PEEK(#PC))".
+; #MAP((#PC-$9A2B)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+ $9A37 DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A38 DEFB %00001000 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 }
+                      ; TABLE#}
+ $9A39 DEFB $37       ; "#CHR(#PEEK(#PC))".
+
+; Control Method: Cursor Joystick
+;
+; .
+;
+; O:B
+; O:C Control byte
+; O:HL Pointer to Key Map
+@label=ControlMethod_Cursor
+c$9A3A POP HL        ; Restore #REGhl from the stack.
+ $9A3B CALL $9A6F    ; Call #R$9A6F.
+ $9A3E AND %11100000 ; Keep only bits 5-7.
+ $9A40 LD C,A        ; Store the result in #REGc.
+ $9A41 LD HL,$9A48   ; #REGhl=#R$9A48.
+ $9A44 LD B,$08      ; #REGb=#N$08.
+ $9A46 JR $9A74      ; Jump to #R$9A74.
+
+; Key Map: Cursor Joystick
+;
+; .
+;
+; .
+;
+; #MAP((#PC-$9A48)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+@label=KeyMap_Cursor
+g$9A48 DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A49 DEFB %00000001 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; #IF(#PEEK(#PC)==$EF)(
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 },
+                      ; { #N$F7 | 1 | 2 | 3 | 4 | 5 })
+                      ; TABLE#}
+ $9A4A DEFB $30       ; "#CHR(#PEEK(#PC))".
+; #MAP((#PC-$9A48)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+ $9A4B DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A4C DEFB %00001000 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; #IF(#PEEK(#PC)==$EF)(
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 },
+                      ; { #N$F7 | 1 | 2 | 3 | 4 | 5 })
+                      ; TABLE#}
+ $9A4D DEFB $37       ; "#CHR(#PEEK(#PC))".
+; #MAP((#PC-$9A48)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+ $9A4E DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A4F DEFB %00010000 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; #IF(#PEEK(#PC)==$EF)(
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 },
+                      ; { #N$F7 | 1 | 2 | 3 | 4 | 5 })
+                      ; TABLE#}
+ $9A50 DEFB $36       ; "#CHR(#PEEK(#PC))".
+; #MAP((#PC-$9A48)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+ $9A51 DEFB $F7       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A52 DEFB %00010000 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; #IF(#PEEK(#PC)==$EF)(
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 },
+                      ; { #N$F7 | 1 | 2 | 3 | 4 | 5 })
+                      ; TABLE#}
+ $9A53 DEFB $35       ; "#CHR(#PEEK(#PC))".
+; #MAP((#PC-$9A48)/$03)(Fire,1:Up,2:Down,3:Left,4:Right).
+ $9A54 DEFB $EF       ; {#TABLE(default,centre,centre,centre,centre,centre,centre)
+ $9A55 DEFB %00000100 ; { =h,r2 Port Number | =h,c5 Bit }
+                      ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                      ; #IF(#PEEK(#PC)==$EF)(
+                      ; { #N$EF | 0 | 9 | 8 | 7 | 6 },
+                      ; { #N$F7 | 1 | 2 | 3 | 4 | 5 })
+                      ; TABLE#}
+ $9A56 DEFB $38       ; "#CHR(#PEEK(#PC))".
+
+; Data block at 9A57
+b$9A57 DEFB $FE,$01
 
 ; Data block at 9A59
 b$9A59 DEFB $5F,$7F,$01,$5F,$FF,$01,$5F
@@ -2968,19 +3160,53 @@ g$9A60 DEFB $7F,$02  ; #TABLE(default,centre,centre,centre,centre,centre,centre)
                      ; TABLE#
  $9A6E DEFB $50      ; "#CHR(#PEEK(#PC))".
 
-; Data block at 9A6F
+; Routine at 9A6F
 ;
-; Used by the routine at #R$99F7.
-b$9A6F DEFB $06,$01,$21
- $9A72 DEFB $57
- $9A73 DEFB $9A,$7E,$23,$DB,$FE,$A6,$23,$23
- $9A7B DEFB $20,$01,$37,$CB,$10,$30,$F2,$78
- $9A83 DEFB $B1,$4F,$C9,$78,$21,$AE,$91,$85
- $9A8B DEFB $6F,$30,$01,$24,$7E,$81,$FE,$3A
- $9A93 DEFB $30,$04,$77,$C3,$A1,$91,$D6,$0A
- $9A9B DEFB $77,$05,$0E,$01,$78,$3C,$CA,$A1
- $9AA3 DEFB $91,$18,$E0
- $9AA6 DEFB $00
+; Used by the routines at #R$9A1D and #R$9A3A.
+c$9A6F LD B,$01      ; #REGb=#N$01.
+ $9A71 LD HL,$9A57   ; #REGhl=#R$9A57.
+; This entry point is used by the routines at #R$9A1D and #R$9A3A.
+*$9A74 LD A,(HL)     ; #REGa=*#REGhl.
+ $9A75 INC HL        ; Increment #REGhl by one.
+ $9A76 IN A,($FE)    ; #REGa=byte from port #N$FE.
+ $9A78 AND (HL)      ; Merge the bits from *#REGhl.
+ $9A79 INC HL        ; {Increment #REGhl by two.
+ $9A7A INC HL        ; }
+ $9A7B JR NZ,$9A7E   ; Jump to #R$9A7E if #REGhl is not equal to *#REGhl.
+ $9A7D SCF           ; Set the carry flag.
+*$9A7E RL B          ; Rotate #REGb left.
+ $9A80 JR NC,$9A74   ; Jump to #R$9A74 if #REGhl is greater than or equal to
+                     ; *#REGhl.
+ $9A82 LD A,B        ; #REGa=#REGb.
+ $9A83 OR C          ; Set the bits from #REGc.
+ $9A84 LD C,A        ; #REGc=#REGa.
+ $9A85 RET           ; Return.
+
+; Routine at 9A86
+c$9A86 LD A,B        ; #REGa=#REGb.
+ $9A87 LD HL,$91AE   ; #REGhl=#R$91AB(#N$91AE).
+ $9A8A ADD A,L       ; #REGa+=#REGl.
+ $9A8B LD L,A        ; #REGl=#REGa.
+ $9A8C JR NC,$9A8F   ; Jump to #R$9A8F if ?? is greater than or equal to #N$00.
+ $9A8E INC H         ; Increment #REGh by one.
+*$9A8F LD A,(HL)     ; #REGa=*#REGhl.
+ $9A90 ADD A,C       ; #REGa+=#REGc.
+ $9A91 CP $3A        ; Compare #REGa with #N$3A.
+ $9A93 JR NC,$9A99   ; Jump to #R$9A99 if #REGa is greater than or equal to
+                     ; #N$3A.
+ $9A95 LD (HL),A     ; Write #REGa to *#REGhl.
+ $9A96 JP $91A1      ; Jump to #R$91A1.
+*$9A99 SUB $0A       ; #REGa-=#N$0A.
+ $9A9B LD (HL),A     ; Write #REGa to *#REGhl.
+ $9A9C DEC B         ; Decrease #REGb by one.
+ $9A9D LD C,$01      ; #REGc=#N$01.
+ $9A9F LD A,B        ; #REGa=#REGb.
+ $9AA0 INC A         ; Increment #REGa by one.
+ $9AA1 JP Z,$91A1    ; Jump to #R$91A1 if #REGa is equal to #N$01.
+ $9AA4 JR $9A86      ; Jump to #R$9A86.
+
+; Data block at 9AA6
+b$9AA6 DEFB $00
  $9AA7 DEFB $00
  $9AA8 DEFB $00
  $9AA9 DEFB $00
@@ -3016,7 +3242,9 @@ g$9AB9 DEFW $0000
 
 ; Game status buffer entry at 9AC3
 g$9AC3 DEFW $0000
- $9AC5 DEFB $00,$00,$00,$00,$7D,$20,$83,$88
+
+; Game status buffer entry at 9AC5
+g$9AC5 DEFB $00,$00,$00,$00,$7D,$20,$83,$88
  $9ACD DEFB $7E,$A8,$84,$10,$80,$30,$86,$98
  $9AD5 DEFB $81,$B8,$87,$10,$80,$30,$86,$88
  $9ADD DEFB $7E,$A8,$84,$46,$06,$F8,$01,$00
@@ -3026,15 +3254,48 @@ g$9AC3 DEFW $0000
  $9AFD DEFB $0B,$03,$11,$02,$0F,$0A,$06,$00
  $9B05 DEFB $00,$00,$02,$02,$02,$01,$01,$01
  $9B0D DEFB $01,$01
- $9B0F DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9B17 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9B0F DEFB $00
+
+; Game status buffer entry at 9B10
+g$9B10 DEFB $00
+
+; Game status buffer entry at 9B11
+g$9B11 DEFB $00
+
+; Game status buffer entry at 9B12
+g$9B12 DEFB $00
+
+; Game status buffer entry at 9B13
+g$9B13 DEFW $0000
+
+; Game status buffer entry at 9B15
+g$9B15 DEFW $0000
+
+; Game status buffer entry at 9B17
+g$9B17 DEFW $0000
+
+; Game status buffer entry at 9B19
+g$9B19 DEFW $0000
+
+; Game status buffer entry at 9B1B
+g$9B1B DEFB $00,$00,$00,$00
 
 ; Score?
 @label=Score
 g$9B1F DEFB $00,$00
- $9B21 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9B29 DEFB $00,$00
- $9B2B DEFB $00,$00,$00,$00
+ $9B21 DEFB $00,$00
+
+; Game status buffer entry at 9B23
+g$9B23 DEFW $0000
+
+; Game status buffer entry at 9B25
+g$9B25 DEFB $00
+ $9B26 DEFB $00
+ $9B27 DEFB $00,$00,$00
+ $9B2A DEFB $00
+ $9B2B DEFB $00
+ $9B2C DEFB $00
+ $9B2D DEFB $00,$00
  $9B2F DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9B37 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9B3F DEFB $00,$00,$00,$00,$00,$00,$00,$00
@@ -3071,7 +3332,10 @@ g$9B1F DEFB $00,$00
  $9C37 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9C3F DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9C47 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9C4F DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9C4F DEFB $00,$00,$00,$00,$00,$00
+
+; Game status buffer entry at 9C55
+g$9C55 DEFW $0000
  $9C57 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9C5F DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9C67 DEFB $00,$00,$00,$00,$00,$00,$00,$00
@@ -3081,25 +3345,30 @@ g$9B1F DEFB $00,$00
  $9C87 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9C8F DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9C97 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9C9F DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CA7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CAF DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CB7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CBF DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CC7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CCF DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CD7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CDF DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CE7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CEF DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CF7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9CFF DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9D07 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9D0F DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9D17 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9D1F DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9D27 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $9D2F DEFB $00,$00,$00,$00
+
+; Game status buffer entry at 9C9F
+g$9C9F DEFW $0000
+ $9CA1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CA9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CB1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CB9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CC1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CC9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CD1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CD9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CE1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+
+; Game status buffer entry at 9CE9
+g$9CE9 DEFW $0000
+ $9CEB DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CF3 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9CFB DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9D03 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9D0B DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9D13 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9D1B DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9D23 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $9D2B DEFB $00,$00,$00,$00,$00,$00,$00,$00
 
 ; Routine at 9D33
 ;
@@ -3112,7 +3381,7 @@ c$9D33 CALL $A7A5    ; Call #R$A7A5.
 
 ; Routine at 9D42
 ;
-; Used by the routines at #R$A8F8 and #R$AADC.
+; Used by the routines at #R$A97A and #R$AADC.
 c$9D42 CALL $CC62       ;
  $9D45 LD A,($9B2C)     ;
  $9D48 AND A            ;
@@ -3681,7 +3950,7 @@ c$A15C CALL $A7F8                     ;
  $A1FB CP $04                         ;
  $A1FD JP Z,$AA5A                     ;
  $A200 CP $02                         ;
-; This entry point is used by the routine at #R$CBC8.
+; This entry point is used by the routine at #R$CC84.
 *$A202 JP Z,$AA7B                     ;
  $A205 CALL $964C                     ;
  $A208 DEFB $11,$00                   ; PAPER: #INK(#PEEK(#PC+$01)).
@@ -3824,28 +4093,38 @@ c$A15C CALL $A7F8                     ;
 *$A37A CALL $A461                     ;
  $A37D JP $9D53                       ;
 
-; Routine at A380
+; Messaging: Around The Clock Timer
 ;
 ; Used by the routine at #R$95ED.
+;
+; .
+;
+; Print the current timer value.
+@label=Messaging_AroundTheClock_Timer
 c$A380 CALL $964C       ; Call #R$964C.
  $A383 DEFB $10,$07     ; INK: #INK(#PEEK(#PC+$01)).
  $A385 DEFB $11,$00     ; PAPER: #INK(#PEEK(#PC+$01)).
  $A387 DEFB $12,$01     ; FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
  $A389 DEFB $16,$0B,$03 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
+@label=AroundTheClock_Timer
  $A38C DEFM "00"        ; "#STR#(#PC,$04,$02)".
  $A38E DEFB $FF         ; Terminator.
- $A38F LD C,$00         ;
- $A391 LD B,$3C         ;
-*$A393 LD HL,$000A      ;
-*$A396 DEC HL           ;
- $A397 LD A,H           ;
+; Note; this is identical to #R$9942.
+ $A38F LD C,$00         ; Set initial speaker state in #REGc to OFF.
+ $A391 LD B,$3C         ; Set the repeat loop counter in #REGb to #N$3C.
+@label=AroundTheClock_Timer_OuterLoop
+*$A393 LD HL,$000A      ; Set the delay loop in #REGhl to #N($000A,$04,$04).
+@label=AroundTheClock_Timer_DelayLoop
+*$A396 DEC HL           ; Decrease the delay loop by one.
+ $A397 LD A,H           ; {Jump back to #R$A396 until the delay loop is zero.
  $A398 OR L             ;
- $A399 JR NZ,$A396      ;
- $A39B LD A,C           ;
- $A39C XOR $10          ;
- $A39E LD C,A           ;
- $A39F OUT ($FE),A      ;
- $A3A1 DJNZ $A393       ;
+ $A399 JR NZ,$A396      ; }
+ $A39B LD A,C           ; {Flip the current speaker state.
+ $A39C XOR %00010000    ;
+ $A39E LD C,A           ; }
+ $A39F OUT ($FE),A      ; Send it to the speaker.
+ $A3A1 DJNZ $A393       ; Decrease the repeat loop counter by one and loop back to #R$A393
+                        ; until the repeat loop counter is zero.
  $A3A3 RET              ; Return.
 
 ; Routine at A3A4
@@ -3921,668 +4200,701 @@ c$A3C3 CALL $964C       ; Call #R$964C.
 ; Routine at A41E
 ;
 ; Used by the routine at #R$9D42.
-c$A41E LD A,($9B2D)  ;
- $A421 AND A         ;
- $A422 RET Z         ;
- $A423 LD ($AF49),A  ;
- $A426 XOR A         ;
- $A427 LD ($AF4A),A  ;
- $A42A LD HL,$0500   ;
- $A42D LD ($AF5D),HL ;
- $A430 CALL $AE17    ;
- $A433 RET           ;
+c$A41E LD A,($9B2D)  ; #REGa=*#R$9B2D.
+ $A421 AND A         ; {Return if *#R$9B2D is zero.
+ $A422 RET Z         ; }
+ $A423 LD ($AF49),A  ; Write #REGa to *#R$AF49.
+ $A426 XOR A         ; {Write #N$00 to *#R$AF4A.
+ $A427 LD ($AF4A),A  ; }
+ $A42A LD HL,$0500   ; {Write #N$0500 to *#R$AF5D.
+ $A42D LD ($AF5D),HL ; }
+ $A430 CALL $AE17    ; Call #R$AE17.
+ $A433 RET           ; Return.
 
 ; Routine at A434
 ;
 ; Used by the routine at #R$9D42.
-c$A434 LD BC,$FFFF   ;
-*$A437 DEC BC        ;
- $A438 LD A,B        ;
- $A439 OR C          ;
- $A43A JR NZ,$A437   ;
- $A43C LD HL,$A8AE   ;
- $A43F LD ($A4F2),HL ;
- $A442 LD HL,$9CE9   ;
- $A445 LD E,(HL)     ;
- $A446 INC HL        ;
- $A447 LD D,(HL)     ;
- $A448 INC HL        ;
- $A449 INC D         ;
- $A44A INC D         ;
- $A44B CALL $A4D4    ;
- $A44E LD HL,$A8BD   ;
- $A451 LD ($A4F2),HL ;
- $A454 LD HL,$9CE9   ;
- $A457 LD E,(HL)     ;
- $A458 INC HL        ;
- $A459 LD D,(HL)     ;
- $A45A INC HL        ;
- $A45B INC D         ;
- $A45C INC D         ;
- $A45D CALL $A4D4    ;
- $A460 RET           ;
+c$A434 LD BC,$FFFF   ; #REGbc=#N$FFFF.
+*$A437 DEC BC        ; Decrease #REGbc by one.
+ $A438 LD A,B        ; #REGa=#REGb.
+ $A439 OR C          ; Set the bits from #REGc.
+ $A43A JR NZ,$A437   ; Jump to #R$A437 if #REGbc is not equal to #REGc.
+ $A43C LD HL,$A8AE   ; {Write #R$A8AE to *#R$A4F1(#N$A4F2).
+ $A43F LD ($A4F2),HL ; }
+ $A442 LD HL,$9CE9   ; #REGhl=#R$9CE9.
+ $A445 LD E,(HL)     ; #REGe=*#REGhl.
+ $A446 INC HL        ; Increment #REGhl by one.
+ $A447 LD D,(HL)     ; #REGd=*#REGhl.
+ $A448 INC HL        ; Increment #REGhl by one.
+ $A449 INC D         ; {Increment #REGd by two.
+ $A44A INC D         ; }
+ $A44B CALL $A4D4    ; Call #R$A4D4.
+ $A44E LD HL,$A8BD   ; {Write #R$A8BD to *#R$A4F1(#N$A4F2).
+ $A451 LD ($A4F2),HL ; }
+ $A454 LD HL,$9CE9   ; #REGhl=#R$9CE9.
+ $A457 LD E,(HL)     ; #REGe=*#REGhl.
+ $A458 INC HL        ; Increment #REGhl by one.
+ $A459 LD D,(HL)     ; #REGd=*#REGhl.
+ $A45A INC HL        ; Increment #REGhl by one.
+ $A45B INC D         ; {Increment #REGd by two.
+ $A45C INC D         ; }
+ $A45D CALL $A4D4    ; Call #R$A4D4.
+ $A460 RET           ; Return.
 
 ; Routine at A461
 ;
 ; Used by the routines at #R$9D42 and #R$A15C.
-c$A461 CALL $A50E    ;
- $A464 LD HL,($9B15) ;
- $A467 CALL $A58F    ;
- $A46A LD A,$37      ;
- $A46C LD ($A61D),A  ;
- $A46F CALL $A613    ;
- $A472 CALL $A5E1    ;
- $A475 CALL $A652    ;
- $A478 LD HL,($9B13) ;
- $A47B CALL $A58F    ;
- $A47E LD A,$A7      ;
- $A480 LD ($A61D),A  ;
- $A483 CALL $A613    ;
- $A486 CALL $A5E1    ;
- $A489 CALL $A69C    ;
- $A48C HALT          ;
- $A48D CALL $A6E6    ;
- $A490 RET           ;
+c$A461 CALL $A50E    ; Call #R$A50E.
+ $A464 LD HL,($9B15) ; #REGhl=*#R$9B15.
+ $A467 CALL $A58F    ; Call #R$A58F.
+ $A46A LD A,$37      ; #REGa=#N$37.
+ $A46C LD ($A61D),A  ; Write #REGa to *#R$A61D.
+ $A46F CALL $A613    ; Call #R$A613.
+ $A472 CALL $A5E1    ; Call #R$A5E1.
+ $A475 CALL $A652    ; Call #R$A652.
+ $A478 LD HL,($9B13) ; #REGhl=*#R$9B13.
+ $A47B CALL $A58F    ; Call #R$A58F.
+ $A47E LD A,$A7      ; #REGa=#N$A7.
+ $A480 LD ($A61D),A  ; Write #REGa to *#R$A61D.
+ $A483 CALL $A613    ; Call #R$A613.
+ $A486 CALL $A5E1    ; Call #R$A5E1.
+ $A489 CALL $A69C    ; Call #R$A69C.
+ $A48C HALT          ; Halt operation (suspend CPU until the next interrupt).
+ $A48D CALL $A6E6    ; Call #R$A6E6.
+ $A490 RET           ; Return.
 
 ; Routine at A491
 ;
 ; Used by the routine at #R$9D42.
-c$A491 CALL $A532    ;
- $A494 LD HL,($9B19) ;
- $A497 CALL $A5B2    ;
- $A49A CALL $A682    ;
- $A49D LD HL,($9B17) ;
- $A4A0 CALL $A5B2    ;
- $A4A3 CALL $A6CC    ;
- $A4A6 HALT          ;
- $A4A7 CALL $A73A    ;
- $A4AA RET           ;
+c$A491 CALL $A532    ; Call #R$A532.
+ $A494 LD HL,($9B19) ; #REGhl=*#R$9B19.
+ $A497 CALL $A5B2    ; Call #R$A5B2.
+ $A49A CALL $A682    ; Call #R$A682.
+ $A49D LD HL,($9B17) ; #REGhl=*#R$9B17.
+ $A4A0 CALL $A5B2    ; Call #R$A5B2.
+ $A4A3 CALL $A6CC    ; Call #R$A6CC.
+ $A4A6 HALT          ; Halt operation (suspend CPU until the next interrupt).
+ $A4A7 CALL $A73A    ; Call #R$A73A.
+ $A4AA RET           ; Return.
 
 ; Routine at A4AB
 ;
 ; Used by the routine at #R$9D42.
-c$A4AB LD B,$03      ;
-*$A4AD PUSH BC       ;
+c$A4AB LD B,$03      ; #REGb=#N$03.
+*$A4AD PUSH BC       ; {Stash #REGbc, #REGhl and #REGde on the stack.
  $A4AE PUSH HL       ;
- $A4AF PUSH DE       ;
- $A4B0 CALL $A4BE    ;
- $A4B3 POP DE        ;
- $A4B4 POP HL        ;
- $A4B5 LD BC,$0018   ;
- $A4B8 ADD HL,BC     ;
- $A4B9 INC D         ;
- $A4BA POP BC        ;
- $A4BB DJNZ $A4AD    ;
- $A4BD RET           ;
-*$A4BE PUSH HL       ;
- $A4BF CALL $A8BD    ;
- $A4C2 EX DE,HL      ;
- $A4C3 POP HL        ;
- $A4C4 EX DE,HL      ;
- $A4C5 LD B,$08      ;
-*$A4C7 PUSH BC       ;
- $A4C8 PUSH HL       ;
- $A4C9 LD BC,$0003   ;
- $A4CC LDIR          ;
- $A4CE POP HL        ;
- $A4CF INC H         ;
- $A4D0 POP BC        ;
- $A4D1 DJNZ $A4C7    ;
- $A4D3 RET           ;
+ $A4AF PUSH DE       ; }
+ $A4B0 CALL $A4BE    ; Call #R$A4BE.
+ $A4B3 POP DE        ; {Restore #REGde and #REGhl from the stack.
+ $A4B4 POP HL        ; }
+ $A4B5 LD BC,$0018   ; #REGbc=#N($0018,$04,$04).
+ $A4B8 ADD HL,BC     ; #REGhl+=#REGbc.
+ $A4B9 INC D         ; Increment #REGd by one.
+ $A4BA POP BC        ; Restore #REGbc from the stack.
+ $A4BB DJNZ $A4AD    ; Decrease counter by one and loop back to #R$A4AD until
+                     ; counter is zero.
+ $A4BD RET           ; Return.
+*$A4BE PUSH HL       ; Stash #REGhl on the stack.
+ $A4BF CALL $A8BD    ; Call #R$A8BD.
+ $A4C2 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A4C3 POP HL        ; Restore #REGhl from the stack.
+ $A4C4 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A4C5 LD B,$08      ; #REGb=#N$08.
+*$A4C7 PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
+ $A4C8 PUSH HL       ; }
+ $A4C9 LD BC,$0003   ; #REGbc=#N($0003,$04,$04).
+ $A4CC LDIR          ; LDIR.
+ $A4CE POP HL        ; Restore #REGhl from the stack.
+ $A4CF INC H         ; Increment #REGh by one.
+ $A4D0 POP BC        ; Restore #REGbc from the stack.
+ $A4D1 DJNZ $A4C7    ; Decrease counter by one and loop back to #R$A4C7 until
+                     ; counter is zero.
+ $A4D3 RET           ; Return.
 
 ; Routine at A4D4
 ;
 ; Used by the routines at #R$A434 and #R$A7F8.
-c$A4D4 LD B,$03      ;
-*$A4D6 PUSH BC       ;
+c$A4D4 LD B,$03      ; #REGb=#N$03.
+*$A4D6 PUSH BC       ; {Stash #REGbc, #REGhl and #REGde on the stack.
  $A4D7 PUSH HL       ;
- $A4D8 PUSH DE       ;
- $A4D9 LD A,D        ;
- $A4DA CP $00        ;
- $A4DC JR C,$A4E5    ;
- $A4DE CP $18        ;
- $A4E0 JR NC,$A4E5   ;
- $A4E2 CALL $A4F0    ;
-*$A4E5 POP DE        ;
- $A4E6 POP HL        ;
- $A4E7 LD BC,$0018   ;
- $A4EA ADD HL,BC     ;
- $A4EB INC D         ;
- $A4EC POP BC        ;
- $A4ED DJNZ $A4D6    ;
- $A4EF RET           ;
-*$A4F0 PUSH HL       ;
- $A4F1 CALL $A8BD    ;
- $A4F4 EX DE,HL      ;
- $A4F5 POP HL        ;
- $A4F6 LD B,$08      ;
-*$A4F8 PUSH BC       ;
- $A4F9 PUSH DE       ;
- $A4FA LD BC,$0003   ;
- $A4FD LDIR          ;
- $A4FF POP DE        ;
- $A500 INC D         ;
- $A501 POP BC        ;
- $A502 DJNZ $A4F8    ;
- $A504 RET           ;
+ $A4D8 PUSH DE       ; }
+ $A4D9 LD A,D        ; #REGa=#REGd.
+ $A4DA CP $00        ; {Jump to #R$A4E5 if #REGa is less than #N$00.
+ $A4DC JR C,$A4E5    ; }
+ $A4DE CP $18        ; {Jump to #R$A4E5 if #REGa is greater than or equal to
+ $A4E0 JR NC,$A4E5   ; #N$18.}
+ $A4E2 CALL $A4F0    ; Call #R$A4F0.
+*$A4E5 POP DE        ; {Restore #REGde and #REGhl from the stack.
+ $A4E6 POP HL        ; }
+ $A4E7 LD BC,$0018   ; {#REGhl+=#N($0018,$04,$04).
+ $A4EA ADD HL,BC     ; }
+ $A4EB INC D         ; Increment #REGd by one.
+ $A4EC POP BC        ; Restore #REGbc from the stack.
+ $A4ED DJNZ $A4D6    ; Decrease counter by one and loop back to #R$A4D6 until
+                     ; counter is zero.
+ $A4EF RET           ; Return.
+*$A4F0 PUSH HL       ; Stash #REGhl on the stack.
+ $A4F1 CALL $A8BD    ; Call #R$A8BD.
+ $A4F4 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A4F5 POP HL        ; Restore #REGhl from the stack.
+ $A4F6 LD B,$08      ; #REGb=#N$08.
+*$A4F8 PUSH BC       ; {Stash #REGbc and #REGde on the stack.
+ $A4F9 PUSH DE       ; }
+ $A4FA LD BC,$0003   ; #REGbc=#N($0003,$04,$04).
+ $A4FD LDIR          ; LDIR.
+ $A4FF POP DE        ; Restore #REGde from the stack.
+ $A500 INC D         ; Increment #REGd by one.
+ $A501 POP BC        ; Restore #REGbc from the stack.
+ $A502 DJNZ $A4F8    ; Decrease counter by one and loop back to #R$A4F8 until
+                     ; counter is zero.
+ $A504 RET           ; Return.
 
 ; Routine at A505
 ;
 ; Used by the routine at #R$9D33.
-c$A505 LD A,$02      ;
+c$A505 LD A,$02      ; {Write #N$02 to; #LIST { *#R$9B26 } { *#R$9B27 } LIST#
  $A507 LD ($9B26),A  ;
- $A50A LD ($9B27),A  ;
- $A50D RET           ;
+ $A50A LD ($9B27),A  ; }
+ $A50D RET           ; Return.
 
 ; Routine at A50E
 ;
 ; Used by the routine at #R$A461.
-c$A50E LD DE,($9AC3) ;
- $A512 DEC D         ;
- $A513 LD HL,$7800   ;
- $A516 LD B,$0A      ;
-*$A518 PUSH BC       ;
+c$A50E LD DE,($9AC3) ; #REGde=*#R$9AC3.
+ $A512 DEC D         ; Decrease #REGd by one.
+ $A513 LD HL,$7800   ; #REGhl=#R$7800.
+ $A516 LD B,$0A      ; #REGb=#N$0A.
+*$A518 PUSH BC       ; {Stash #REGbc, #REGhl and #REGde on the stack.
  $A519 PUSH HL       ;
- $A51A PUSH DE       ;
- $A51B LD A,D        ;
- $A51C CP $00        ;
- $A51E JR C,$A527    ;
- $A520 CP $18        ;
- $A522 JR NC,$A527   ;
- $A524 CALL $A556    ;
-*$A527 POP DE        ;
- $A528 POP HL        ;
- $A529 LD BC,$0040   ;
- $A52C ADD HL,BC     ;
- $A52D INC D         ;
- $A52E POP BC        ;
- $A52F DJNZ $A518    ;
- $A531 RET           ;
+ $A51A PUSH DE       ; }
+ $A51B LD A,D        ; #REGa=#REGd.
+ $A51C CP $00        ; {Jump to #R$A527 if #REGa is less than #N$00.
+ $A51E JR C,$A527    ; }
+ $A520 CP $18        ; {Jump to #R$A527 if #REGa is greater than or equal to
+ $A522 JR NC,$A527   ; #N$18.}
+ $A524 CALL $A556    ; Call #R$A556.
+*$A527 POP DE        ; {Restore #REGde and #REGhl from the stack.
+ $A528 POP HL        ; }
+ $A529 LD BC,$0040   ; {#REGhl+=#N($0040,$04,$04).
+ $A52C ADD HL,BC     ; }
+ $A52D INC D         ; Increment #REGd by one.
+ $A52E POP BC        ; Restore #REGbc from the stack.
+ $A52F DJNZ $A518    ; Decrease counter by one and loop back to #R$A518 until
+                     ; counter is zero.
+ $A531 RET           ; Return.
 
 ; Routine at A532
 ;
 ; Used by the routine at #R$A491.
-c$A532 LD DE,($9AC5) ;
- $A536 DEC E         ;
- $A537 LD HL,$7800   ;
- $A53A LD B,$05      ;
-*$A53C PUSH BC       ;
+c$A532 LD DE,($9AC5) ; #REGde=*#R$9AC5.
+ $A536 DEC E         ; Decrease #REGe by one.
+ $A537 LD HL,$7800   ; #REGhl=#R$7800.
+ $A53A LD B,$05      ; #REGb=#N$05.
+*$A53C PUSH BC       ; {Stash #REGbc, #REGhl and #REGde on the stack.
  $A53D PUSH HL       ;
- $A53E PUSH DE       ;
- $A53F LD A,D        ;
- $A540 CP $00        ;
- $A542 JR C,$A54B    ;
- $A544 CP $18        ;
- $A546 JR NC,$A54B   ;
- $A548 CALL $A578    ;
-*$A54B POP DE        ;
- $A54C POP HL        ;
- $A54D LD BC,$0018   ;
- $A550 ADD HL,BC     ;
- $A551 INC D         ;
- $A552 POP BC        ;
- $A553 DJNZ $A53C    ;
- $A555 RET           ;
+ $A53E PUSH DE       ; }
+ $A53F LD A,D        ; #REGa=#REGd.
+ $A540 CP $00        ; {Jump to #R$A54B if #REGa is less than #N$00.
+ $A542 JR C,$A54B    ; }
+ $A544 CP $18        ; {Jump to #R$A54B if #REGa is greater than or equal to
+ $A546 JR NC,$A54B   ; #N$18.}
+ $A548 CALL $A578    ; Call #R$A578.
+*$A54B POP DE        ; {Restore #REGde and #REGhl from the stack.
+ $A54C POP HL        ; }
+ $A54D LD BC,$0018   ; {#REGhl+=#N($0018,$04,$04).
+ $A550 ADD HL,BC     ; }
+ $A551 INC D         ; Increment #REGd by one.
+ $A552 POP BC        ; Restore #REGbc from the stack.
+ $A553 DJNZ $A53C    ; Decrease counter by one and loop back to #R$A53C until
+                     ; counter is zero.
+ $A555 RET           ; Return.
 
 ; Routine at A556
 ;
 ; Used by the routine at #R$A50E.
-c$A556 PUSH HL       ;
- $A557 CALL $A8BD    ;
- $A55A EX DE,HL      ;
- $A55B POP HL        ;
- $A55C DEC E         ;
- $A55D EX DE,HL      ;
- $A55E LD B,$08      ;
-*$A560 PUSH BC       ;
- $A561 PUSH HL       ;
- $A562 LDI           ;
- $A564 LDI           ;
- $A566 LDI           ;
- $A568 LDI           ;
- $A56A LDI           ;
- $A56C LDI           ;
- $A56E LDI           ;
- $A570 LDI           ;
- $A572 POP HL        ;
- $A573 INC H         ;
- $A574 POP BC        ;
- $A575 DJNZ $A560    ;
- $A577 RET           ;
-; This entry point is used by the routine at #R$A532.
-*$A578 PUSH HL       ;
- $A579 CALL $A8BD    ;
- $A57C EX DE,HL      ;
- $A57D POP HL        ;
- $A57E EX DE,HL      ;
- $A57F LD B,$08      ;
-*$A581 PUSH BC       ;
- $A582 PUSH HL       ;
- $A583 LDI           ;
- $A585 LDI           ;
- $A587 LDI           ;
- $A589 POP HL        ;
- $A58A INC H         ;
- $A58B POP BC        ;
- $A58C DJNZ $A581    ;
- $A58E RET           ;
+c$A556 PUSH HL       ; Stash #REGhl on the stack.
+ $A557 CALL $A8BD    ; Call #R$A8BD.
+ $A55A EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A55B POP HL        ; Restore #REGhl from the stack.
+ $A55C DEC E         ; Decrease #REGe by one.
+ $A55D EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A55E LD B,$08      ; #REGb=#N$08.
+*$A560 PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
+ $A561 PUSH HL       ; }
+ $A562 LDI           ; LDI.
+ $A564 LDI           ; LDI.
+ $A566 LDI           ; LDI.
+ $A568 LDI           ; LDI.
+ $A56A LDI           ; LDI.
+ $A56C LDI           ; LDI.
+ $A56E LDI           ; LDI.
+ $A570 LDI           ; LDI.
+ $A572 POP HL        ; Restore #REGhl from the stack.
+ $A573 INC H         ; Increment #REGh by one.
+ $A574 POP BC        ; Restore #REGbc from the stack.
+ $A575 DJNZ $A560    ; Decrease counter by one and loop back to #R$A560 until
+                     ; counter is zero.
+ $A577 RET           ; Return.
+
+; Routine at A578
+;
+; Used by the routine at #R$A532.
+c$A578 PUSH HL       ; Stash #REGhl on the stack.
+ $A579 CALL $A8BD    ; Call #R$A8BD.
+ $A57C EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A57D POP HL        ; Restore #REGhl from the stack.
+ $A57E EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A57F LD B,$08      ; #REGb=#N$08.
+*$A581 PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
+ $A582 PUSH HL       ; }
+ $A583 LDI           ; LDI.
+ $A585 LDI           ; LDI.
+ $A587 LDI           ; LDI.
+ $A589 POP HL        ; Restore #REGhl from the stack.
+ $A58A INC H         ; Increment #REGh by one.
+ $A58B POP BC        ; Restore #REGbc from the stack.
+ $A58C DJNZ $A581    ; Decrease counter by one and loop back to #R$A581 until
+                     ; counter is zero.
+ $A58E RET           ; Return.
 
 ; Routine at A58F
 ;
 ; Used by the routine at #R$A461.
-c$A58F LD DE,$7B00   ;
- $A592 LD A,$38      ;
-*$A594 LDI           ;
- $A596 LDI           ;
- $A598 LDI           ;
- $A59A LDI           ;
- $A59C LDI           ;
- $A59E LDI           ;
- $A5A0 LDI           ;
- $A5A2 DEC A         ;
- $A5A3 JR NZ,$A594   ;
- $A5A5 DEC HL        ;
- $A5A6 LD A,(HL)     ;
- $A5A7 INC HL        ;
- $A5A8 LD H,D        ;
- $A5A9 LD L,E        ;
- $A5AA LD BC,$0037   ;
- $A5AD LD (HL),A     ;
- $A5AE INC DE        ;
- $A5AF LDIR          ;
- $A5B1 RET           ;
+c$A58F LD DE,$7B00   ; #REGde=#R$7B00.
+ $A592 LD A,$38      ; #REGa=#N$38.
+*$A594 LDI           ; LDI.
+ $A596 LDI           ; LDI.
+ $A598 LDI           ; LDI.
+ $A59A LDI           ; LDI.
+ $A59C LDI           ; LDI.
+ $A59E LDI           ; LDI.
+ $A5A0 LDI           ; LDI.
+ $A5A2 DEC A         ; Decrease #REGa by one.
+ $A5A3 JR NZ,$A594   ; Jump to #R$A594 if #REGa is not equal to #N$38.
+ $A5A5 DEC HL        ; Decrease #REGhl by one.
+ $A5A6 LD A,(HL)     ; #REGa=*#REGhl.
+ $A5A7 INC HL        ; Increment #REGhl by one.
+ $A5A8 LD H,D        ; #REGh=#REGd.
+ $A5A9 LD L,E        ; #REGl=#REGe.
+ $A5AA LD BC,$0037   ; #REGbc=#N($0037,$04,$04).
+ $A5AD LD (HL),A     ; Write #REGa to *#REGhl.
+ $A5AE INC DE        ; Increment #REGde by one.
+ $A5AF LDIR          ; LDIR.
+ $A5B1 RET           ; Return.
 
 ; Routine at A5B2
 ;
 ; Used by the routine at #R$A491.
-c$A5B2 BIT 7,(HL)    ;
- $A5B4 LD A,$FF      ;
- $A5B6 PUSH HL       ;
- $A5B7 JR NZ,$A5BA   ;
- $A5B9 XOR A         ;
-*$A5BA LD HL,$7B00   ;
- $A5BD LD DE,$7B01   ;
- $A5C0 LD (HL),A     ;
- $A5C1 LD BC,$0078   ;
- $A5C4 LDIR          ;
- $A5C6 LD DE,$7B00   ;
- $A5C9 LD A,($9B12)  ;
- $A5CC LD L,A        ;
- $A5CD ADD A,A       ;
- $A5CE ADD A,L       ;
- $A5CF LD L,A        ;
- $A5D0 LD H,$00      ;
- $A5D2 ADD HL,DE     ;
- $A5D3 EX DE,HL      ;
- $A5D4 POP HL        ;
- $A5D5 LD A,$10      ;
-*$A5D7 LDI           ;
- $A5D9 LDI           ;
- $A5DB LDI           ;
- $A5DD DEC A         ;
- $A5DE JR NZ,$A5D7   ;
- $A5E0 RET           ;
+c$A5B2 BIT 7,(HL)    ; Test bit 7 of *#REGhl.
+ $A5B4 LD A,$FF      ; #REGa=#N$FF.
+ $A5B6 PUSH HL       ; Stash #REGhl on the stack.
+ $A5B7 JR NZ,$A5BA   ; Jump to #R$A5BA if #REGde is not equal to #N$FF.
+ $A5B9 XOR A         ; #REGa=#N$00.
+*$A5BA LD HL,$7B00   ; #REGhl=#R$7B00.
+ $A5BD LD DE,$7B01   ; #REGde=#R$7B00(#N$7B00+#N$01).
+ $A5C0 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A5C1 LD BC,$0078   ; #REGbc=#N($0078,$04,$04).
+ $A5C4 LDIR          ; LDIR.
+ $A5C6 LD DE,$7B00   ; #REGde=#R$7B00.
+ $A5C9 LD A,($9B12)  ; #REGa=*#R$9B12.
+ $A5CC LD L,A        ; #REGl=#REGa.
+ $A5CD ADD A,A       ; #REGa+=#REGa.
+ $A5CE ADD A,L       ; #REGa+=#REGl.
+ $A5CF LD L,A        ; #REGl=#REGa.
+ $A5D0 LD H,$00      ; #REGh=#N$00.
+ $A5D2 ADD HL,DE     ; #REGhl+=#REGde.
+ $A5D3 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A5D4 POP HL        ; Restore #REGhl from the stack.
+ $A5D5 LD A,$10      ; #REGa=#N$10.
+*$A5D7 LDI           ; LDI.
+ $A5D9 LDI           ; LDI.
+ $A5DB LDI           ; LDI.
+ $A5DD DEC A         ; Decrease #REGa by one.
+ $A5DE JR NZ,$A5D7   ; Jump to #R$A5D7 if #REGa is not equal to #N$10.
+ $A5E0 RET           ; Return.
 
 ; Routine at A5E1
 ;
 ; Used by the routine at #R$A461.
-c$A5E1 LD A,($9B11)  ;
- $A5E4 AND A         ;
- $A5E5 RET Z         ;
- $A5E6 LD HL,$7B00   ;
- $A5E9 EX AF,AF'     ;
- $A5EA LD A,(HL)     ;
- $A5EB LD DE,$7C87   ;
- $A5EE EX AF,AF'     ;
- $A5EF LD H,D        ;
- $A5F0 LD L,E        ;
- $A5F1 LD C,A        ;
- $A5F2 ADD A,A       ;
- $A5F3 ADD A,A       ;
- $A5F4 ADD A,A       ;
- $A5F5 SUB C         ;
- $A5F6 LD C,A        ;
- $A5F7 LD B,$00      ;
- $A5F9 ADD HL,BC     ;
- $A5FA EX DE,HL      ;
- $A5FB LD BC,$0188   ;
- $A5FE LDDR          ;
- $A600 LD A,($9B11)  ;
- $A603 LD B,A        ;
- $A604 EX AF,AF'     ;
- $A605 LD HL,$7B00   ;
-*$A608 PUSH BC       ;
- $A609 LD B,$07      ;
-*$A60B LD (HL),A     ;
- $A60C INC HL        ;
- $A60D DJNZ $A60B    ;
- $A60F POP BC        ;
- $A610 DJNZ $A608    ;
- $A612 RET           ;
+c$A5E1 LD A,($9B11)  ; #REGa=*#R$9B11.
+ $A5E4 AND A         ; {Return if *#R$9B11 is zero.
+ $A5E5 RET Z         ; }
+ $A5E6 LD HL,$7B00   ; #REGhl=#R$7B00.
+ $A5E9 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
+                     ; register.
+ $A5EA LD A,(HL)     ; #REGa=*#REGhl.
+ $A5EB LD DE,$7C87   ; #REGde=#R$7C87.
+ $A5EE EX AF,AF'     ; Exchange the shadow #REGaf register with the #REGaf
+                     ; register.
+ $A5EF LD H,D        ; #REGh=#REGd.
+ $A5F0 LD L,E        ; #REGl=#REGe.
+ $A5F1 LD C,A        ; #REGc=#REGa.
+ $A5F2 ADD A,A       ; #REGa+=#REGa.
+ $A5F3 ADD A,A       ; #REGa+=#REGa.
+ $A5F4 ADD A,A       ; #REGa+=#REGa.
+ $A5F5 SUB C         ; #REGa-=#REGc.
+ $A5F6 LD C,A        ; #REGc=#REGa.
+ $A5F7 LD B,$00      ; #REGb=#N$00.
+ $A5F9 ADD HL,BC     ; #REGhl+=#REGbc.
+ $A5FA EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A5FB LD BC,$0188   ; #REGbc=#N($0188,$04,$04).
+ $A5FE LDDR          ; LDDR.
+ $A600 LD A,($9B11)  ; #REGa=*#R$9B11.
+ $A603 LD B,A        ; #REGb=#REGa.
+ $A604 EX AF,AF'     ; Exchange the shadow #REGaf register with the #REGaf
+                     ; register.
+ $A605 LD HL,$7B00   ; #REGhl=#R$7B00.
+*$A608 PUSH BC       ; Stash #REGbc on the stack.
+ $A609 LD B,$07      ; #REGb=#N$07.
+*$A60B LD (HL),A     ; Write #REGa to *#REGhl.
+ $A60C INC HL        ; Increment #REGhl by one.
+ $A60D DJNZ $A60B    ; Decrease counter by one and loop back to #R$A60B until
+                     ; counter is zero.
+ $A60F POP BC        ; Restore #REGbc from the stack.
+ $A610 DJNZ $A608    ; Decrease counter by one and loop back to #R$A608 until
+                     ; counter is zero.
+ $A612 RET           ; Return.
 
 ; Routine at A613
 ;
 ; Used by the routine at #R$A461.
-c$A613 LD A,($9B10)  ;
- $A616 AND A         ;
- $A617 RET Z         ;
-*$A618 LD HL,$7B00   ;
- $A61B LD B,$40      ;
-*$A61D AND A         ;
- $A61E RR (HL)       ;
- $A620 INC L         ;
- $A621 RR (HL)       ;
- $A623 INC L         ;
- $A624 RR (HL)       ;
- $A626 INC L         ;
- $A627 RR (HL)       ;
- $A629 INC HL        ;
- $A62A RR (HL)       ;
- $A62C INC L         ;
- $A62D RR (HL)       ;
- $A62F INC L         ;
- $A630 RR (HL)       ;
- $A632 INC L         ;
- $A633 DJNZ $A61D    ;
- $A635 DEC A         ;
- $A636 JR NZ,$A618   ;
- $A638 RET           ;
+c$A613 LD A,($9B10)  ; #REGa=*#R$9B10.
+ $A616 AND A         ; {Return if *#R$9B10 is zero.
+ $A617 RET Z         ; }
+*$A618 LD HL,$7B00   ; #REGhl=#R$7B00.
+ $A61B LD B,$40      ; #REGb=#N$40.
+*$A61D AND A         ; Set flags.
+ $A61E RR (HL)       ; Rotate *#REGhl right.
+ $A620 INC L         ; Increment #REGl by one.
+ $A621 RR (HL)       ; Rotate *#REGhl right.
+ $A623 INC L         ; Increment #REGl by one.
+ $A624 RR (HL)       ; Rotate *#REGhl right.
+ $A626 INC L         ; Increment #REGl by one.
+ $A627 RR (HL)       ; Rotate *#REGhl right.
+ $A629 INC HL        ; Increment #REGhl by one.
+ $A62A RR (HL)       ; Rotate *#REGhl right.
+ $A62C INC L         ; Increment #REGl by one.
+ $A62D RR (HL)       ; Rotate *#REGhl right.
+ $A62F INC L         ; Increment #REGl by one.
+ $A630 RR (HL)       ; Rotate *#REGhl right.
+ $A632 INC L         ; Increment #REGl by one.
+ $A633 DJNZ $A61D    ; Decrease counter by one and loop back to #R$A61D until
+                     ; counter is zero.
+ $A635 DEC A         ; Decrease #REGa by one.
+ $A636 JR NZ,$A618   ; Jump to #R$A618 if #REGa is not equal to #REGa.
+ $A638 RET           ; Return.
 
 ; Routine at A639
 ;
 ; Used by the routine at #R$9D42.
-c$A639 LD A,($9B10)  ;
- $A63C ADD A,$03     ;
-*$A63E PUSH HL       ;
- $A63F LD B,$10      ;
-*$A641 AND A         ;
- $A642 RR (HL)       ;
- $A644 INC HL        ;
- $A645 RR (HL)       ;
- $A647 INC HL        ;
- $A648 RR (HL)       ;
- $A64A INC HL        ;
- $A64B DJNZ $A641    ;
- $A64D POP HL        ;
- $A64E DEC A         ;
- $A64F JR NZ,$A63E   ;
- $A651 RET           ;
+c$A639 LD A,($9B10)  ; #REGa=*#R$9B10.
+ $A63C ADD A,$03     ; #REGa+=#N$03.
+*$A63E PUSH HL       ; Stash #REGhl on the stack.
+ $A63F LD B,$10      ; #REGb=#N$10.
+*$A641 AND A         ; Set flags.
+ $A642 RR (HL)       ; Rotate *#REGhl right.
+ $A644 INC HL        ; Increment #REGhl by one.
+ $A645 RR (HL)       ; Rotate *#REGhl right.
+ $A647 INC HL        ; Increment #REGhl by one.
+ $A648 RR (HL)       ; Rotate *#REGhl right.
+ $A64A INC HL        ; Increment #REGhl by one.
+ $A64B DJNZ $A641    ; Decrease counter by one and loop back to #R$A641 until
+                     ; counter is zero.
+ $A64D POP HL        ; Restore #REGhl from the stack.
+ $A64E DEC A         ; Decrease #REGa by one.
+ $A64F JR NZ,$A63E   ; Jump to #R$A63E if #REGa is not equal to #REGa.
+ $A651 RET           ; Return.
 
 ; Routine at A652
 ;
 ; Used by the routine at #R$A461.
-c$A652 LD DE,$7B00   ;
- $A655 LD HL,$7840   ;
- $A658 INC L         ;
- $A659 LD B,$40      ;
-*$A65B LD A,(DE)     ;
- $A65C AND (HL)      ;
- $A65D LD (HL),A     ;
- $A65E INC L         ;
- $A65F INC E         ;
- $A660 LD A,(DE)     ;
- $A661 AND (HL)      ;
- $A662 LD (HL),A     ;
- $A663 INC L         ;
- $A664 INC E         ;
- $A665 LD A,(DE)     ;
- $A666 AND (HL)      ;
- $A667 LD (HL),A     ;
- $A668 INC L         ;
- $A669 INC E         ;
- $A66A LD A,(DE)     ;
- $A66B AND (HL)      ;
- $A66C LD (HL),A     ;
- $A66D INC L         ;
- $A66E INC DE        ;
- $A66F LD A,(DE)     ;
- $A670 AND (HL)      ;
- $A671 LD (HL),A     ;
- $A672 INC L         ;
- $A673 INC E         ;
- $A674 LD A,(DE)     ;
- $A675 AND (HL)      ;
- $A676 LD (HL),A     ;
- $A677 INC L         ;
- $A678 INC E         ;
- $A679 LD A,(DE)     ;
- $A67A AND (HL)      ;
- $A67B LD (HL),A     ;
- $A67C INC HL        ;
- $A67D INC L         ;
- $A67E INC E         ;
- $A67F DJNZ $A65B    ;
- $A681 RET           ;
+c$A652 LD DE,$7B00   ; #REGde=#R$7B00.
+ $A655 LD HL,$7840   ; #REGhl=#R$7840.
+ $A658 INC L         ; Increment #REGl by one.
+ $A659 LD B,$40      ; #REGb=#N$40.
+*$A65B LD A,(DE)     ; #REGa=*#REGde.
+ $A65C AND (HL)      ; Merge the bits from *#REGhl.
+ $A65D LD (HL),A     ; Write #REGa to *#REGhl.
+ $A65E INC L         ; Increment #REGl by one.
+ $A65F INC E         ; Increment #REGe by one.
+ $A660 LD A,(DE)     ; #REGa=*#REGde.
+ $A661 AND (HL)      ; Merge the bits from *#REGhl.
+ $A662 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A663 INC L         ; Increment #REGl by one.
+ $A664 INC E         ; Increment #REGe by one.
+ $A665 LD A,(DE)     ; #REGa=*#REGde.
+ $A666 AND (HL)      ; Merge the bits from *#REGhl.
+ $A667 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A668 INC L         ; Increment #REGl by one.
+ $A669 INC E         ; Increment #REGe by one.
+ $A66A LD A,(DE)     ; #REGa=*#REGde.
+ $A66B AND (HL)      ; Merge the bits from *#REGhl.
+ $A66C LD (HL),A     ; Write #REGa to *#REGhl.
+ $A66D INC L         ; Increment #REGl by one.
+ $A66E INC DE        ; Increment #REGde by one.
+ $A66F LD A,(DE)     ; #REGa=*#REGde.
+ $A670 AND (HL)      ; Merge the bits from *#REGhl.
+ $A671 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A672 INC L         ; Increment #REGl by one.
+ $A673 INC E         ; Increment #REGe by one.
+ $A674 LD A,(DE)     ; #REGa=*#REGde.
+ $A675 AND (HL)      ; Merge the bits from *#REGhl.
+ $A676 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A677 INC L         ; Increment #REGl by one.
+ $A678 INC E         ; Increment #REGe by one.
+ $A679 LD A,(DE)     ; #REGa=*#REGde.
+ $A67A AND (HL)      ; Merge the bits from *#REGhl.
+ $A67B LD (HL),A     ; Write #REGa to *#REGhl.
+ $A67C INC HL        ; Increment #REGhl by one.
+ $A67D INC L         ; Increment #REGl by one.
+ $A67E INC E         ; Increment #REGe by one.
+ $A67F DJNZ $A65B    ; Decrease counter by one and loop back to #R$A65B until
+                     ; counter is zero.
+ $A681 RET           ; Return.
 
 ; Routine at A682
 ;
 ; Used by the routine at #R$A491.
-c$A682 LD DE,$7B00   ;
- $A685 LD HL,$7800   ;
- $A688 LD B,$28      ;
-*$A68A LD A,(DE)     ;
- $A68B AND (HL)      ;
- $A68C LD (HL),A     ;
- $A68D INC L         ;
- $A68E INC E         ;
- $A68F LD A,(DE)     ;
- $A690 AND (HL)      ;
- $A691 LD (HL),A     ;
- $A692 INC L         ;
- $A693 INC E         ;
- $A694 LD A,(DE)     ;
- $A695 AND (HL)      ;
- $A696 LD (HL),A     ;
- $A697 INC L         ;
- $A698 INC E         ;
- $A699 DJNZ $A68A    ;
- $A69B RET           ;
+c$A682 LD DE,$7B00   ; #REGde=#R$7B00.
+ $A685 LD HL,$7800   ; #REGhl=#R$7800.
+ $A688 LD B,$28      ; #REGb=#N$28.
+*$A68A LD A,(DE)     ; #REGa=*#REGde.
+ $A68B AND (HL)      ; Merge the bits from *#REGhl.
+ $A68C LD (HL),A     ; Write #REGa to *#REGhl.
+ $A68D INC L         ; Increment #REGl by one.
+ $A68E INC E         ; Increment #REGe by one.
+ $A68F LD A,(DE)     ; #REGa=*#REGde.
+ $A690 AND (HL)      ; Merge the bits from *#REGhl.
+ $A691 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A692 INC L         ; Increment #REGl by one.
+ $A693 INC E         ; Increment #REGe by one.
+ $A694 LD A,(DE)     ; #REGa=*#REGde.
+ $A695 AND (HL)      ; Merge the bits from *#REGhl.
+ $A696 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A697 INC L         ; Increment #REGl by one.
+ $A698 INC E         ; Increment #REGe by one.
+ $A699 DJNZ $A68A    ; Decrease counter by one and loop back to #R$A68A until
+                     ; counter is zero.
+ $A69B RET           ; Return.
 
 ; Routine at A69C
 ;
 ; Used by the routine at #R$A461.
-c$A69C LD DE,$7B00   ;
- $A69F LD HL,$7840   ;
- $A6A2 INC L         ;
- $A6A3 LD B,$40      ;
-*$A6A5 LD A,(DE)     ;
- $A6A6 OR (HL)       ;
- $A6A7 LD (HL),A     ;
- $A6A8 INC L         ;
- $A6A9 INC E         ;
- $A6AA LD A,(DE)     ;
- $A6AB OR (HL)       ;
- $A6AC LD (HL),A     ;
- $A6AD INC L         ;
- $A6AE INC E         ;
- $A6AF LD A,(DE)     ;
- $A6B0 OR (HL)       ;
- $A6B1 LD (HL),A     ;
- $A6B2 INC L         ;
- $A6B3 INC E         ;
- $A6B4 LD A,(DE)     ;
- $A6B5 OR (HL)       ;
- $A6B6 LD (HL),A     ;
- $A6B7 INC L         ;
- $A6B8 INC DE        ;
- $A6B9 LD A,(DE)     ;
- $A6BA OR (HL)       ;
- $A6BB LD (HL),A     ;
- $A6BC INC L         ;
- $A6BD INC E         ;
- $A6BE LD A,(DE)     ;
- $A6BF OR (HL)       ;
- $A6C0 LD (HL),A     ;
- $A6C1 INC L         ;
- $A6C2 INC E         ;
- $A6C3 LD A,(DE)     ;
- $A6C4 OR (HL)       ;
- $A6C5 LD (HL),A     ;
- $A6C6 INC HL        ;
- $A6C7 INC L         ;
- $A6C8 INC E         ;
- $A6C9 DJNZ $A6A5    ;
- $A6CB RET           ;
+c$A69C LD DE,$7B00   ; #REGde=#R$7B00.
+ $A69F LD HL,$7840   ; #REGhl=#R$7840.
+ $A6A2 INC L         ; Increment #REGl by one.
+ $A6A3 LD B,$40      ; #REGb=#N$40.
+*$A6A5 LD A,(DE)     ; #REGa=*#REGde.
+ $A6A6 OR (HL)       ; Set the bits from *#REGhl.
+ $A6A7 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6A8 INC L         ; Increment #REGl by one.
+ $A6A9 INC E         ; Increment #REGe by one.
+ $A6AA LD A,(DE)     ; #REGa=*#REGde.
+ $A6AB OR (HL)       ; Set the bits from *#REGhl.
+ $A6AC LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6AD INC L         ; Increment #REGl by one.
+ $A6AE INC E         ; Increment #REGe by one.
+ $A6AF LD A,(DE)     ; #REGa=*#REGde.
+ $A6B0 OR (HL)       ; Set the bits from *#REGhl.
+ $A6B1 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6B2 INC L         ; Increment #REGl by one.
+ $A6B3 INC E         ; Increment #REGe by one.
+ $A6B4 LD A,(DE)     ; #REGa=*#REGde.
+ $A6B5 OR (HL)       ; Set the bits from *#REGhl.
+ $A6B6 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6B7 INC L         ; Increment #REGl by one.
+ $A6B8 INC DE        ; Increment #REGde by one.
+ $A6B9 LD A,(DE)     ; #REGa=*#REGde.
+ $A6BA OR (HL)       ; Set the bits from *#REGhl.
+ $A6BB LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6BC INC L         ; Increment #REGl by one.
+ $A6BD INC E         ; Increment #REGe by one.
+ $A6BE LD A,(DE)     ; #REGa=*#REGde.
+ $A6BF OR (HL)       ; Set the bits from *#REGhl.
+ $A6C0 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6C1 INC L         ; Increment #REGl by one.
+ $A6C2 INC E         ; Increment #REGe by one.
+ $A6C3 LD A,(DE)     ; #REGa=*#REGde.
+ $A6C4 OR (HL)       ; Set the bits from *#REGhl.
+ $A6C5 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6C6 INC HL        ; Increment #REGhl by one.
+ $A6C7 INC L         ; Increment #REGl by one.
+ $A6C8 INC E         ; Increment #REGe by one.
+ $A6C9 DJNZ $A6A5    ; Decrease counter by one and loop back to #R$A6A5 until
+                     ; counter is zero.
+ $A6CB RET           ; Return.
 
 ; Routine at A6CC
 ;
 ; Used by the routine at #R$A491.
-c$A6CC LD DE,$7B00   ;
- $A6CF LD HL,$7800   ;
- $A6D2 LD B,$28      ;
-*$A6D4 LD A,(DE)     ;
- $A6D5 OR (HL)       ;
- $A6D6 LD (HL),A     ;
- $A6D7 INC L         ;
- $A6D8 INC E         ;
- $A6D9 LD A,(DE)     ;
- $A6DA OR (HL)       ;
- $A6DB LD (HL),A     ;
- $A6DC INC L         ;
- $A6DD INC E         ;
- $A6DE LD A,(DE)     ;
- $A6DF OR (HL)       ;
- $A6E0 LD (HL),A     ;
- $A6E1 INC L         ;
- $A6E2 INC E         ;
- $A6E3 DJNZ $A6D4    ;
- $A6E5 RET           ;
+c$A6CC LD DE,$7B00   ; #REGde=#R$7B00.
+ $A6CF LD HL,$7800   ; #REGhl=#R$7800.
+ $A6D2 LD B,$28      ; #REGb=#N$28.
+*$A6D4 LD A,(DE)     ; #REGa=*#REGde.
+ $A6D5 OR (HL)       ; Set the bits from *#REGhl.
+ $A6D6 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6D7 INC L         ; Increment #REGl by one.
+ $A6D8 INC E         ; Increment #REGe by one.
+ $A6D9 LD A,(DE)     ; #REGa=*#REGde.
+ $A6DA OR (HL)       ; Set the bits from *#REGhl.
+ $A6DB LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6DC INC L         ; Increment #REGl by one.
+ $A6DD INC E         ; Increment #REGe by one.
+ $A6DE LD A,(DE)     ; #REGa=*#REGde.
+ $A6DF OR (HL)       ; Set the bits from *#REGhl.
+ $A6E0 LD (HL),A     ; Write #REGa to *#REGhl.
+ $A6E1 INC L         ; Increment #REGl by one.
+ $A6E2 INC E         ; Increment #REGe by one.
+ $A6E3 DJNZ $A6D4    ; Decrease counter by one and loop back to #R$A6D4 until
+                     ; counter is zero.
+ $A6E5 RET           ; Return.
 
 ; Routine at A6E6
 ;
 ; Used by the routine at #R$A461.
-c$A6E6 LD DE,($9AC3) ;
- $A6EA DEC D         ;
- $A6EB LD HL,$7800   ;
- $A6EE LD B,$0A      ;
-*$A6F0 PUSH BC       ;
+c$A6E6 LD DE,($9AC3) ; #REGde=*#R$9AC3.
+ $A6EA DEC D         ; Decrease #REGd by one.
+ $A6EB LD HL,$7800   ; #REGhl=#R$7800.
+ $A6EE LD B,$0A      ; #REGb=#N$0A.
+*$A6F0 PUSH BC       ; {Stash #REGbc, #REGhl and #REGde on the stack.
  $A6F1 PUSH HL       ;
- $A6F2 PUSH DE       ;
- $A6F3 LD A,D        ;
- $A6F4 CP $00        ;
- $A6F6 JR C,$A709    ;
- $A6F8 CP $18        ;
- $A6FA JR NC,$A709   ;
- $A6FC LD A,E        ;
- $A6FD CP $19        ;
- $A6FF LD A,$08      ;
- $A701 JR C,$A706    ;
- $A703 LD A,$21      ;
- $A705 SUB E         ;
-*$A706 CALL $A714    ;
-*$A709 POP DE        ;
- $A70A POP HL        ;
- $A70B LD BC,$0040   ;
- $A70E ADD HL,BC     ;
- $A70F INC D         ;
- $A710 POP BC        ;
- $A711 DJNZ $A6F0    ;
- $A713 RET           ;
-*$A714 PUSH HL       ;
- $A715 EX AF,AF'     ;
- $A716 CALL $A8AE    ;
- $A719 EX AF,AF'     ;
- $A71A EX DE,HL      ;
- $A71B POP HL        ;
- $A71C DEC E         ;
- $A71D LD B,$08      ;
-*$A71F PUSH BC       ;
- $A720 PUSH DE       ;
- $A721 LD C,A        ;
- $A722 LD B,$00      ;
- $A724 LDIR          ;
- $A726 CP $08        ;
- $A728 JR Z,$A734    ;
- $A72A PUSH AF       ;
- $A72B LD C,A        ;
- $A72C LD A,$08      ;
- $A72E SUB C         ;
- $A72F LD B,$00      ;
- $A731 LD C,A        ;
- $A732 POP AF        ;
- $A733 ADD HL,BC     ;
-*$A734 POP DE        ;
- $A735 INC D         ;
- $A736 POP BC        ;
- $A737 DJNZ $A71F    ;
- $A739 RET           ;
+ $A6F2 PUSH DE       ; }
+ $A6F3 LD A,D        ; #REGa=#REGd.
+ $A6F4 CP $00        ; Compare #REGa with #N$00.
+ $A6F6 JR C,$A709    ; Jump to #R$A709 if #REGa is less than #N$00.
+ $A6F8 CP $18        ; Compare #REGa with #N$18.
+ $A6FA JR NC,$A709   ; Jump to #R$A709 if #REGa is greater than or equal to
+                     ; #N$18.
+ $A6FC LD A,E        ; #REGa=#REGe.
+ $A6FD CP $19        ; Compare #REGa with #N$19.
+ $A6FF LD A,$08      ; #REGa=#N$08.
+ $A701 JR C,$A706    ; Jump to #R$A706 if #REGa is less than #N$08.
+ $A703 LD A,$21      ; #REGa=#N$21.
+ $A705 SUB E         ; #REGa-=#REGe.
+*$A706 CALL $A714    ; Call #R$A714.
+*$A709 POP DE        ; {Restore #REGde and #REGhl from the stack.
+ $A70A POP HL        ; }
+ $A70B LD BC,$0040   ; #REGbc=#N($0040,$04,$04).
+ $A70E ADD HL,BC     ; #REGhl+=#REGbc.
+ $A70F INC D         ; Increment #REGd by one.
+ $A710 POP BC        ; Restore #REGbc from the stack.
+ $A711 DJNZ $A6F0    ; Decrease counter by one and loop back to #R$A6F0 until
+                     ; counter is zero.
+ $A713 RET           ; Return.
+*$A714 PUSH HL       ; Stash #REGhl on the stack.
+ $A715 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
+                     ; register.
+ $A716 CALL $A8AE    ; Call #R$A8AE.
+ $A719 EX AF,AF'     ; Exchange the shadow #REGaf register with the #REGaf
+                     ; register.
+ $A71A EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A71B POP HL        ; Restore #REGhl from the stack.
+ $A71C DEC E         ; Decrease #REGe by one.
+ $A71D LD B,$08      ; #REGb=#N$08.
+*$A71F PUSH BC       ; {Stash #REGbc and #REGde on the stack.
+ $A720 PUSH DE       ; }
+ $A721 LD C,A        ; #REGc=#REGa.
+ $A722 LD B,$00      ; #REGb=#N$00.
+ $A724 LDIR          ; LDIR.
+ $A726 CP $08        ; Compare #REGa with #N$08.
+ $A728 JR Z,$A734    ; Jump to #R$A734 if #REGa is equal to #N$08.
+ $A72A PUSH AF       ; Stash #REGaf on the stack.
+ $A72B LD C,A        ; #REGc=#REGa.
+ $A72C LD A,$08      ; #REGa=#N$08.
+ $A72E SUB C         ; #REGa-=#REGc.
+ $A72F LD B,$00      ; #REGb=#N$00.
+ $A731 LD C,A        ; #REGc=#REGa.
+ $A732 POP AF        ; Restore #REGaf from the stack.
+ $A733 ADD HL,BC     ; #REGhl+=#REGbc.
+*$A734 POP DE        ; Restore #REGde from the stack.
+ $A735 INC D         ; Increment #REGd by one.
+ $A736 POP BC        ; Restore #REGbc from the stack.
+ $A737 DJNZ $A71F    ; Decrease counter by one and loop back to #R$A71F until
+                     ; counter is zero.
+ $A739 RET           ; Return.
 
 ; Routine at A73A
 ;
 ; Used by the routine at #R$A491.
-c$A73A LD DE,($9AC5) ;
- $A73E LD HL,$7800   ;
- $A741 LD B,$05      ;
-*$A743 PUSH BC       ;
+c$A73A LD DE,($9AC5) ; #REGde=*#R$9AC5.
+ $A73E LD HL,$7800   ; #REGhl=#R$7800.
+ $A741 LD B,$05      ; #REGb=#N$05.
+*$A743 PUSH BC       ; {Stash #REGbc, #REGhl and #REGde on the stack.
  $A744 PUSH HL       ;
- $A745 PUSH DE       ;
- $A746 LD A,D        ;
- $A747 CP $00        ;
- $A749 JR C,$A752    ;
- $A74B CP $18        ;
- $A74D JR NC,$A752   ;
- $A74F CALL $A75D    ;
-*$A752 POP DE        ;
- $A753 POP HL        ;
- $A754 LD BC,$0018   ;
- $A757 ADD HL,BC     ;
- $A758 INC D         ;
- $A759 POP BC        ;
- $A75A DJNZ $A743    ;
- $A75C RET           ;
-*$A75D PUSH HL       ;
- $A75E CALL $A8AE    ;
- $A761 EX DE,HL      ;
- $A762 POP HL        ;
- $A763 DEC E         ;
- $A764 LD B,$08      ;
-*$A766 PUSH BC       ;
- $A767 PUSH DE       ;
- $A768 LDI           ;
- $A76A LDI           ;
- $A76C LDI           ;
- $A76E POP DE        ;
- $A76F INC D         ;
- $A770 POP BC        ;
- $A771 DJNZ $A766    ;
- $A773 RET           ;
+ $A745 PUSH DE       ; }
+ $A746 LD A,D        ; #REGa=#REGd.
+ $A747 CP $00        ; Compare #REGa with #N$00.
+ $A749 JR C,$A752    ; Jump to #R$A752 if #REGa is less than #N$00.
+ $A74B CP $18        ; Compare #REGa with #N$18.
+ $A74D JR NC,$A752   ; Jump to #R$A752 if #REGa is greater than or equal to
+                     ; #N$18.
+ $A74F CALL $A75D    ; Call #R$A75D.
+*$A752 POP DE        ; {Restore #REGde and #REGhl from the stack.
+ $A753 POP HL        ; }
+ $A754 LD BC,$0018   ; #REGbc=#N($0018,$04,$04).
+ $A757 ADD HL,BC     ; #REGhl+=#REGbc.
+ $A758 INC D         ; Increment #REGd by one.
+ $A759 POP BC        ; Restore #REGbc from the stack.
+ $A75A DJNZ $A743    ; Decrease counter by one and loop back to #R$A743 until
+                     ; counter is zero.
+ $A75C RET           ; Return.
+*$A75D PUSH HL       ; Stash #REGhl on the stack.
+ $A75E CALL $A8AE    ; Call #R$A8AE.
+ $A761 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A762 POP HL        ; Restore #REGhl from the stack.
+ $A763 DEC E         ; Decrease #REGe by one.
+ $A764 LD B,$08      ; #REGb=#N$08.
+*$A766 PUSH BC       ; {Stash #REGbc and #REGde on the stack.
+ $A767 PUSH DE       ; }
+ $A768 LDI           ; LDI.
+ $A76A LDI           ; LDI.
+ $A76C LDI           ; LDI.
+ $A76E POP DE        ; Restore #REGde from the stack.
+ $A76F INC D         ; Increment #REGd by one.
+ $A770 POP BC        ; Restore #REGbc from the stack.
+ $A771 DJNZ $A766    ; Decrease counter by one and loop back to #R$A766 until
+                     ; counter is zero.
+ $A773 RET           ; Return.
 
 ; Routine at A774
 ;
 ; Used by the routine at #R$9D42.
-c$A774 PUSH BC       ;
+c$A774 PUSH BC       ; {Stash #REGbc, #REGhl and #REGde on the stack.
  $A775 PUSH HL       ;
- $A776 PUSH DE       ;
- $A777 LD A,D        ;
- $A778 CP $00        ;
- $A77A JR C,$A783    ;
- $A77C CP $18        ;
- $A77E JR NC,$A783   ;
- $A780 CALL $A78E    ;
-*$A783 POP DE        ;
- $A784 POP HL        ;
- $A785 LD BC,$0018   ;
- $A788 ADD HL,BC     ;
- $A789 INC D         ;
- $A78A POP BC        ;
- $A78B DJNZ $A774    ;
- $A78D RET           ;
-*$A78E PUSH HL       ;
- $A78F CALL $A8BD    ;
- $A792 EX DE,HL      ;
- $A793 POP HL        ;
- $A794 DEC E         ;
- $A795 LD B,$08      ;
-*$A797 PUSH BC       ;
- $A798 PUSH DE       ;
- $A799 LDI           ;
- $A79B LDI           ;
- $A79D LDI           ;
- $A79F POP DE        ;
- $A7A0 INC D         ;
- $A7A1 POP BC        ;
- $A7A2 DJNZ $A797    ;
- $A7A4 RET           ;
+ $A776 PUSH DE       ; }
+ $A777 LD A,D        ; #REGa=#REGd.
+ $A778 CP $00        ; Compare #REGa with #N$00.
+ $A77A JR C,$A783    ; Jump to #R$A783 if #REGa is less than #N$00.
+ $A77C CP $18        ; Compare #REGa with #N$18.
+ $A77E JR NC,$A783   ; Jump to #R$A783 if #REGa is greater than or equal to
+                     ; #N$18.
+ $A780 CALL $A78E    ; Call #R$A78E.
+*$A783 POP DE        ; {Restore #REGde and #REGhl from the stack.
+ $A784 POP HL        ; }
+ $A785 LD BC,$0018   ; #REGbc=#N($0018,$04,$04).
+ $A788 ADD HL,BC     ; #REGhl+=#REGbc.
+ $A789 INC D         ; Increment #REGd by one.
+ $A78A POP BC        ; Restore #REGbc from the stack.
+ $A78B DJNZ $A774    ; Decrease counter by one and loop back to #R$A774 until
+                     ; counter is zero.
+ $A78D RET           ; Return.
+*$A78E PUSH HL       ; Stash #REGhl on the stack.
+ $A78F CALL $A8BD    ; Call #R$A8BD.
+ $A792 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $A793 POP HL        ; Restore #REGhl from the stack.
+ $A794 DEC E         ; Decrease #REGe by one.
+ $A795 LD B,$08      ; #REGb=#N$08.
+*$A797 PUSH BC       ; {Stash #REGbc and #REGde on the stack.
+ $A798 PUSH DE       ; }
+ $A799 LDI           ; LDI.
+ $A79B LDI           ; LDI.
+ $A79D LDI           ; LDI.
+ $A79F POP DE        ; Restore #REGde from the stack.
+ $A7A0 INC D         ; Increment #REGd by one.
+ $A7A1 POP BC        ; Restore #REGbc from the stack.
+ $A7A2 DJNZ $A797    ; Decrease counter by one and loop back to #R$A797 until
+                     ; counter is zero.
+ $A7A4 RET           ; Return.
 
 ; Print Play Area
 ;
@@ -4636,73 +4948,73 @@ c$A7A5 LD HL,$6000      ; {Copy #N$1800 bytes of data from *#R$6000 to #R$4000.
 ; Routine at A7F8
 ;
 ; Used by the routines at #R$9D42 and #R$A15C.
-c$A7F8 LD HL,$9CE9   ;
- $A7FB LD E,(HL)     ;
- $A7FC INC HL        ;
- $A7FD LD D,(HL)     ;
- $A7FE INC HL        ;
- $A7FF INC D         ;
- $A800 INC D         ;
- $A801 CALL $A4D4    ;
- $A804 LD HL,$9C9F   ;
- $A807 LD E,(HL)     ;
- $A808 INC HL        ;
- $A809 LD D,(HL)     ;
- $A80A INC HL        ;
- $A80B INC D         ;
- $A80C INC D         ;
- $A80D CALL $A4D4    ;
- $A810 LD HL,$9C55   ;
- $A813 LD E,(HL)     ;
- $A814 INC HL        ;
- $A815 LD D,(HL)     ;
- $A816 INC HL        ;
- $A817 INC D         ;
- $A818 INC D         ;
- $A819 CALL $A4D4    ;
- $A81C LD HL,$9C55   ;
- $A81F LD (HL),$32   ;
- $A821 INC HL        ;
- $A822 LD (HL),$32   ;
- $A824 LD HL,$9C9F   ;
- $A827 LD (HL),$32   ;
- $A829 INC HL        ;
- $A82A LD (HL),$32   ;
- $A82C LD HL,$9CE9   ;
- $A82F LD (HL),$32   ;
- $A831 INC HL        ;
- $A832 LD (HL),$32   ;
- $A834 RET           ;
+c$A7F8 LD HL,$9CE9   ; #REGhl=#R$9CE9.
+ $A7FB LD E,(HL)     ; #REGe=*#REGhl.
+ $A7FC INC HL        ; Increment #REGhl by one.
+ $A7FD LD D,(HL)     ; #REGd=*#REGhl.
+ $A7FE INC HL        ; Increment #REGhl by one.
+ $A7FF INC D         ; {Increment #REGd by two.
+ $A800 INC D         ; }
+ $A801 CALL $A4D4    ; Call #R$A4D4.
+ $A804 LD HL,$9C9F   ; #REGhl=#R$9C9F.
+ $A807 LD E,(HL)     ; #REGe=*#REGhl.
+ $A808 INC HL        ; Increment #REGhl by one.
+ $A809 LD D,(HL)     ; #REGd=*#REGhl.
+ $A80A INC HL        ; Increment #REGhl by one.
+ $A80B INC D         ; {Increment #REGd by two.
+ $A80C INC D         ; }
+ $A80D CALL $A4D4    ; Call #R$A4D4.
+ $A810 LD HL,$9C55   ; #REGhl=#R$9C55.
+ $A813 LD E,(HL)     ; #REGe=*#REGhl.
+ $A814 INC HL        ; Increment #REGhl by one.
+ $A815 LD D,(HL)     ; #REGd=*#REGhl.
+ $A816 INC HL        ; Increment #REGhl by one.
+ $A817 INC D         ; {Increment #REGd by two.
+ $A818 INC D         ; }
+ $A819 CALL $A4D4    ; Call #R$A4D4.
+ $A81C LD HL,$9C55   ; #REGhl=#R$9C55.
+ $A81F LD (HL),$32   ; Write "#CHR$32" to *#REGhl.
+ $A821 INC HL        ; Increment #REGhl by one.
+ $A822 LD (HL),$32   ; Write "#CHR$32" to *#REGhl.
+ $A824 LD HL,$9C9F   ; #REGhl=#R$9C9F.
+ $A827 LD (HL),$32   ; Write "#CHR$32" to *#REGhl.
+ $A829 INC HL        ; Increment #REGhl by one.
+ $A82A LD (HL),$32   ; Write "#CHR$32" to *#REGhl.
+ $A82C LD HL,$9CE9   ; #REGhl=#R$9CE9.
+ $A82F LD (HL),$32   ; Write "#CHR$32" to *#REGhl.
+ $A831 INC HL        ; Increment #REGhl by one.
+ $A832 LD (HL),$32   ; Write "#CHR$32" to *#REGhl.
+ $A834 RET           ; Return.
 
 ; Routine at A835
 ;
 ; Used by the routine at #R$9D33.
-c$A835 LD HL,$0A0A   ;
- $A838 LD ($9AC3),HL ;
- $A83B XOR A         ;
- $A83C LD ($9B10),A  ;
- $A83F LD A,$02      ;
- $A841 LD ($9B25),A  ;
- $A844 LD HL,$7D00   ;
- $A847 LD ($9B13),HL ;
- $A84A LD HL,$8320   ;
- $A84D LD ($9B15),HL ;
- $A850 RET           ;
+c$A835 LD HL,$0A0A   ; {Write #N$0A0A to *#R$9AC3.
+ $A838 LD ($9AC3),HL ; }
+ $A83B XOR A         ; {Write #N$00 to *#R$9B10.
+ $A83C LD ($9B10),A  ; }
+ $A83F LD A,$02      ; {Write #N$02 to *#R$9B25.
+ $A841 LD ($9B25),A  ; }
+ $A844 LD HL,$7D00   ; {Write #R$7D00 to *#R$9B13.
+ $A847 LD ($9B13),HL ; }
+ $A84A LD HL,$8320   ; {Write #R$8320 to *#R$9B15.
+ $A84D LD ($9B15),HL ; }
+ $A850 RET           ; Return.
 
 ; Routine at A851
 ;
 ; Used by the routine at #R$9D33.
-c$A851 XOR A         ;
- $A852 LD ($9B12),A  ;
- $A855 LD HL,$D2A0   ;
- $A858 LD ($9B17),HL ;
- $A85B LD HL,$D330   ;
- $A85E LD ($9B19),HL ;
- $A861 RET           ;
+c$A851 XOR A         ; {Write #N$00 to *#R$9B12.
+ $A852 LD ($9B12),A  ; }
+ $A855 LD HL,$D2A0   ; {Write #R$D2A0 to *#R$9B17.
+ $A858 LD ($9B17),HL ; }
+ $A85B LD HL,$D330   ; {Write #R$D330 to *#R$9B19.
+ $A85E LD ($9B19),HL ; }
+ $A861 RET           ; Return.
 
 ; Calculate Attribute Buffer
 ;
-; Used by the routines at #R$9253, #R$92E2, #R$944E, #R$94B8 and #R$B230.
+; Used by the routines at #R$9253, #R$92E2, #R$944E, #R$94B8 and #R$B5A6.
 ;
 ;   H Source Y position
 ;   L Source X position
@@ -4742,7 +5054,7 @@ g$A873 DEFW $5254
 
 ; Routine at A875
 ;
-; Used by the routines at #R$AB2E, #R$B230 and #R$B7E1.
+; Used by the routines at #R$AB2E, #R$B230, #R$B517 and #R$B7E1.
 c$A875 PUSH HL       ; {Stash #REGhl and #REGbc on the stack.
  $A876 PUSH BC       ; }
  $A877 LD C,E        ; #REGc=#REGe.
@@ -4781,7 +5093,7 @@ c$A875 PUSH HL       ; {Stash #REGhl and #REGbc on the stack.
 
 ; Calculate Screen Buffer
 ;
-; Used by the routines at #R$9305, #R$A6E6, #R$A73A, #R$A8F8, #R$AE17, #R$B230,
+; Used by the routines at #R$9305, #R$A6E6, #R$A73A, #R$A9C2, #R$AE6E, #R$B548,
 ; #R$B742, #R$B761 and #R$B77A.
 ;
 ;   D Source Y position
@@ -4803,8 +5115,8 @@ c$A8AE LD A,%00000111 ; {Mask out the bottom 3 bits of the Y position.
 
 ; Calculate Dart Board Address
 ;
-; Used by the routines at #R$9253, #R$92E2, #R$A4AB, #R$A4D4, #R$A556, #R$A774
-; and #R$B77A.
+; Used by the routines at #R$9253, #R$92E2, #R$A4AB, #R$A4D4, #R$A556, #R$A578,
+; #R$A774 and #R$B77A.
 ;
 ;   D Source Y position
 ;   E Source X position
@@ -4826,8 +5138,8 @@ c$A8BD LD A,%00000111 ; {Mask out the bottom 3 bits of the Y position.
 
 ; Routine at A8CC
 ;
-; Used by the routines at #R$9305, #R$9635, #R$9903, #R$AE17, #R$B230, #R$B742,
-; #R$B761, #R$B871, #R$B8D6, #R$B8F5, #R$B910 and #R$B965.
+; Used by the routines at #R$9305, #R$9635, #R$9903, #R$AEC3, #R$AECC, #R$B548,
+; #R$B742, #R$B761, #R$B871, #R$B8D6, #R$B8F5, #R$B910 and #R$B965.
 c$A8CC INC H         ; Increment #REGh by one.
  $A8CD LD A,H        ; #REGa=#REGh.
  $A8CE AND %00000111 ; Keep only bits 0-2.
@@ -4870,106 +5182,135 @@ c$A8EA SUB A         ;
  $A8F5 JR NZ,$A8ED   ;
  $A8F7 RET           ;
 
-; Routine at A8F8
+; Start Menu
 ;
 ; Used by the routines at #R$9D33 and #R$A9E5.
-c$A8F8 XOR A            ;
- $A8F9 LD ($9B2A),A     ;
- $A8FC LD ($9B2C),A     ;
- $A8FF LD ($9B2B),A     ;
- $A902 LD HL,$0501      ;
- $A905 LD ($AF5D),HL    ;
- $A908 LD A,$14         ;
- $A90A LD ($9B2D),A     ;
- $A90D LD HL,$01F5      ;
- $A910 LD ($9B1F),HL    ;
- $A913 CALL $A9C2       ;
+;
+; .
+;
+; #PUSHS #SIM(start=$9D33,stop=$A95F)
+; #UDGTABLE(default)
+;   { #SCR$02(start-menu-1) }
+; UDGTABLE# #POPS
+@label=StartMenu
+c$A8F8 XOR A            ; {Write #N$00 to; #LIST
+ $A8F9 LD ($9B2A),A     ; { *#R$9B2A }
+ $A8FC LD ($9B2C),A     ; { *#R$9B2C }
+ $A8FF LD ($9B2B),A     ; { *#R$9B2B }
+                        ; LIST#}
+ $A902 LD HL,$0501      ; {Write #N$0501 to *#R$AF5D.
+ $A905 LD ($AF5D),HL    ; }
+ $A908 LD A,$14         ; {Write #N$14 to *#R$9B2D.
+ $A90A LD ($9B2D),A     ; }
+ $A90D LD HL,$01F5      ; {Write #N$01F5 to *#R$9B1F.
+ $A910 LD ($9B1F),HL    ; }
+ $A913 CALL $A9C2       ; Call #R$A9C2.
  $A916 CALL $964C       ; Call #R$964C.
  $A919 DEFB $10,$07     ; INK: #INK(#PEEK(#PC+$01)).
  $A91B DEFB $11,$00     ; PAPER: #INK(#PEEK(#PC+$01)).
  $A91D DEFB $12,$01     ; FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
  $A91F DEFB $16,$01,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A922 DEFM "1"         ; "#STR#(#PC,$04,$01)".
+ $A922 DEFM "1"         ; #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(1)
  $A923 DEFB $16,$03,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A926 DEFM "TUNE"      ; "#STR#(#PC,$04,$04)".
+ $A926 DEFM "TUNE"      ; #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(tune)
  $A92A DEFB $16,$04,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A92D DEFM "UP"        ; "#STR#(#PC,$04,$02)".
+ $A92D DEFM "UP"        ; #FONT#(:(#STR(#PC,$04,$02)))$8D75,attr=$47(up)
  $A92F DEFB $16,$07,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A932 DEFM "2"         ; "#STR#(#PC,$04,$01)".
+ $A932 DEFM "2"         ; #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(2)
  $A933 DEFB $16,$09,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A936 DEFM "GAME"      ; "#STR#(#PC,$04,$04)".
+ $A936 DEFM "GAME"      ; #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(game)
  $A93A DEFB $16,$0A,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A93D DEFM "ON"        ; "#STR#(#PC,$04,$02)".
+ $A93D DEFM "ON"        ; #FONT#(:(#STR(#PC,$04,$02)))$8D75,attr=$47(on)
  $A93F DEFB $16,$0D,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A942 DEFM "3"         ; "#STR#(#PC,$04,$01)".
+ $A942 DEFM "3"         ; #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(3)
  $A943 DEFB $16,$0F,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A946 DEFM "TWO"       ; "#STR#(#PC,$04,$03)".
+ $A946 DEFM "TWO"       ; #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(two)
  $A949 DEFB $16,$10,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A94C DEFM "PLAYER"    ; "#STR#(#PC,$04,$06)".
+ $A94C DEFM "PLAYER"    ; #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(player)
  $A952 DEFB $16,$13,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A955 DEFM "4"         ; "#STR#(#PC,$04,$01)".
+ $A955 DEFM "4"         ; #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(4)
  $A956 DEFB $16,$15,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A959 DEFM "OOPS["     ; "#STR#(#PC,$04,$05)".
+ $A959 DEFM "OOPS["     ; #FONT#(:(#STR(#PC,$04,$05)))$8D75,attr=$47(oops)
  $A95E DEFB $FF         ; Terminator.
- $A95F CALL $AE04       ;
-*$A962 CALL $965F       ;
- $A965 CP $31           ;
- $A967 JR Z,$A97A       ;
- $A969 CP $32           ;
- $A96B JP Z,$AA3B       ;
- $A96E CP $33           ;
- $A970 JP Z,$AA9B       ;
- $A973 CP $34           ;
- $A975 JP Z,$933F       ;
- $A978 JR $A962         ;
-*$A97A CALL $9942       ;
- $A97D CALL $A9C2       ;
+ $A95F CALL $AE04       ; Call #R$AE04.
+@label=StartMenu_InputLoop
+*$A962 CALL $965F       ; Call #R$965F.
+ $A965 CP $31           ; {Jump to #R$A97A if the player has pressed "#CHR$31".
+ $A967 JR Z,$A97A       ; }
+ $A969 CP $32           ; {Jump to #R$AA3B if the player has pressed "#CHR$32".
+ $A96B JP Z,$AA3B       ; }
+ $A96E CP $33           ; {Jump to #R$AA9B if the player has pressed "#CHR$33".
+ $A970 JP Z,$AA9B       ; }
+ $A973 CP $34           ; {Jump back to #R$933F if the player has pressed
+ $A975 JP Z,$933F       ; "#CHR$34".}
+ $A978 JR $A962         ; Jump to #R$A962.
+
+; SubGame: Around The Clock
+;
+; Used by the routine at #R$A8F8.
+;
+; .
+;
+; #PUSHS #SIM(start=$9D33,stop=$A95F)#SIM(start=$A97D,stop=$A9AA)
+; #UDGTABLE(default)
+;   { #SCR$02(around-the-clock) }
+; UDGTABLE# #POPS
+@label=AroundTheClock
+c$A97A CALL $9942       ; Call #R$9942.
+ $A97D CALL $A9C2       ; Call #R$A9C2.
  $A980 CALL $964C       ; Call #R$964C.
  $A983 DEFB $10,$07     ; INK: #INK(#PEEK(#PC+$01)).
  $A985 DEFB $11,$00     ; PAPER: #INK(#PEEK(#PC+$01)).
  $A987 DEFB $12,$01     ; FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
  $A989 DEFB $16,$01,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A98C DEFM "AROUND"    ; "#STR#(#PC,$04,$06)".
+ $A98C DEFM "AROUND"    ; #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(around)
  $A992 DEFB $16,$02,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A995 DEFM " THE"      ; "#STR#(#PC,$04,$04)".
+ $A995 DEFM " THE"      ; #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(the)
  $A999 DEFB $16,$03,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A99C DEFM "CLOCK["    ; "#STR#(#PC,$04,$06)".
+ $A99C DEFM "CLOCK["    ; #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(clock)
  $A9A2 DEFB $16,$09,$02 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $A9A5 DEFM "TIME"      ; "#STR#(#PC,$04,$04)".
+ $A9A5 DEFM "TIME"      ; #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(time)
  $A9A9 DEFB $FF         ; Terminator.
- $A9AA LD HL,$A38C      ;
+; Set the countdown timer.
+ $A9AA LD HL,$A38C      ; {Write "#CHR$39#CHR$39" to *#R$A38C.
  $A9AD LD (HL),$39      ;
  $A9AF INC HL           ;
- $A9B0 LD (HL),$39      ;
- $A9B2 LD HL,$9AB5      ;
- $A9B5 LD (HL),$32      ;
- $A9B7 LD A,$01         ;
- $A9B9 LD ($9B2C),A     ;
- $A9BC LD ($9B2B),A     ;
- $A9BF JP $9D42         ;
-*$A9C2 LD DE,$0101      ;
- $A9C5 LD B,$16         ;
-*$A9C7 PUSH DE          ;
- $A9C8 PUSH BC          ;
- $A9C9 CALL $A8AE       ;
- $A9CC LD B,$08         ;
-*$A9CE PUSH BC          ;
- $A9CF PUSH HL          ;
- $A9D0 LD BC,$0005      ;
- $A9D3 PUSH HL          ;
- $A9D4 POP DE           ;
- $A9D5 INC DE           ;
- $A9D6 LD (HL),$00      ;
- $A9D8 LDIR             ;
- $A9DA POP HL           ;
- $A9DB INC H            ;
- $A9DC POP BC           ;
- $A9DD DJNZ $A9CE       ;
- $A9DF POP BC           ;
- $A9E0 POP DE           ;
- $A9E1 INC D            ;
- $A9E2 DJNZ $A9C7       ;
- $A9E4 RET              ;
+ $A9B0 LD (HL),$39      ; }
+ $A9B2 LD HL,$9AB5      ; {Write "#CHR$32" to *#R$9AB5.
+ $A9B5 LD (HL),$32      ; }
+ $A9B7 LD A,$01         ; {Write #N$01 to; #LIST { *#R$9B2C } { *#R$9B2B }
+ $A9B9 LD ($9B2C),A     ; LIST#
+ $A9BC LD ($9B2B),A     ; }
+ $A9BF JP $9D42         ; Jump to #R$9D42.
+
+; Routine at A9C2
+;
+; Used by the routines at #R$A8F8 and #R$A97A.
+c$A9C2 LD DE,$0101   ; #REGde=#N$0101.
+ $A9C5 LD B,$16      ; #REGb=#N$16.
+*$A9C7 PUSH DE       ; {Stash #REGde and #REGbc on the stack.
+ $A9C8 PUSH BC       ; }
+ $A9C9 CALL $A8AE    ; Call #R$A8AE.
+ $A9CC LD B,$08      ; #REGb=#N$08.
+*$A9CE PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
+ $A9CF PUSH HL       ; }
+ $A9D0 LD BC,$0005   ; #REGbc=#N($0005,$04,$04).
+ $A9D3 PUSH HL       ; Stash #REGhl on the stack.
+ $A9D4 POP DE        ; Restore #REGde from the stack.
+ $A9D5 INC DE        ; Increment #REGde by one.
+ $A9D6 LD (HL),$00   ; Write #N$00 to *#REGhl.
+ $A9D8 LDIR          ; LDIR.
+ $A9DA POP HL        ; Restore #REGhl from the stack.
+ $A9DB INC H         ; Increment #REGh by one.
+ $A9DC POP BC        ; Restore #REGbc from the stack.
+ $A9DD DJNZ $A9CE    ; Decrease counter by one and loop back to #R$A9CE until
+                     ; counter is zero.
+ $A9DF POP BC        ; {Restore #REGbc and #REGde from the stack.
+ $A9E0 POP DE        ; }
+ $A9E1 INC D         ; Increment #REGd by one.
+ $A9E2 DJNZ $A9C7    ; Decrease counter by one and loop back to #R$A9C7 until
+                     ; counter is zero.
+ $A9E4 RET           ; Return.
 
 ; Routine at A9E5
 ;
@@ -5009,7 +5350,8 @@ c$AA0A XOR A            ; {Write #N$00 to; #LIST
  $AA34 DEFM "ON["       ; #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(on!)
  $AA37 DEFB $FF         ; Terminator.
  $AA38 CALL $AE04       ; Call #R$AE04.
-; This entry point is used by the routine at #R$A8F8.
+; The entrypoint for a one-player game.
+@label=Game_OnePlayer
 *$AA3B LD HL,$9AA7      ; {Write #N$00 to *#R$9AA7.
  $AA3E LD (HL),$00      ; }
  $AA40 LD HL,$9AA6      ; {Write #N$00 to *#R$9AA6.
@@ -5060,9 +5402,10 @@ c$AA7B LD HL,$9AA6   ;
  $AA96 CALL $AE04    ;
  $AA99 JR $AADC      ;
 
-; Routine at AA9B
+; Two Player Game
 ;
 ; Used by the routine at #R$A8F8.
+@label=Game_TwoPlayer
 c$AA9B LD A,$01      ; {Write #N$01 to; #LIST
  $AA9D LD ($9AB7),A  ; { *#R$9AB7 }
  $AAA0 LD ($9AB8),A  ; { *#R$9AB8 }
@@ -5079,7 +5422,7 @@ c$AAA8 CALL $964C       ; Call #R$964C.
  $AAAD DEFB $11,$00     ; PAPER: #INK(#PEEK(#PC+$01)).
  $AAAF DEFB $00         ;
  $AAB0 DEFB $16,$0A,$0D ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $AAB3 DEFM "PLAYER"    ; "#STR#(#PC,$04,$06)".
+ $AAB3 DEFM "PLAYER"    ; #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(player)
  $AAB9 DEFB $FF         ; Terminator.
 ; Flip the current player ID.
  $AABA LD A,($9AB8)     ; {Toggle *#R$9AB8 to switch from 1UP to 2UP/ 2UP to
@@ -5089,7 +5432,7 @@ c$AAA8 CALL $964C       ; Call #R$964C.
 ; Print "2" (For Player 2).
  $AAC4 CALL $964C       ; Call #R$964C.
  $AAC7 DEFB $16,$0A,$14 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $AACA DEFM "2"         ; "#STR#(#PC,$04,$01)".
+ $AACA DEFM "2"         ; #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(2)
  $AACB DEFB $FF         ; Terminator.
  $AACC CALL $AE04       ; Call #R$AE04.
  $AACF RET              ; Return.
@@ -5097,7 +5440,7 @@ c$AAA8 CALL $964C       ; Call #R$964C.
 @label=Print_1
 *$AAD0 CALL $964C       ; Call #R$964C.
  $AAD3 DEFB $16,$0A,$14 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
- $AAD6 DEFM "1"         ; "#STR#(#PC,$04,$01)".
+ $AAD6 DEFM "1"         ; #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(1)
  $AAD7 DEFB $FF         ; Terminator.
  $AAD8 CALL $AE04       ; Call #R$AE04.
  $AADB RET              ; Return.
@@ -5450,83 +5793,98 @@ c$AD82 CP $53               ; {Jump to #R$AD97 if #REGa is equal to #N$53.
  $AE02 DEFB $FF             ; Terminator.
  $AE03 RET                  ; Return.
 
-; Routine at AE04
+; Long Pause
 ;
 ; Used by the routines at #R$9D42, #R$A15C, #R$A8F8, #R$A9E5, #R$AA0A, #R$AA5A,
 ; #R$AA7B, #R$AAA8, #R$AB2E, #R$AD3B and #R$B16B.
-c$AE04 LD B,$03      ;
-*$AE06 LD HL,$FFFF   ;
-*$AE09 DEC HL        ;
- $AE0A LD A,H        ;
+@label=LongPause
+c$AE04 LD B,$03      ; Set a repeat counter in #REGb for #N$03 loops.
+@label=LongPause_RepeatLoop
+*$AE06 LD HL,$FFFF   ; Set a delay counter in #REGhl to #N$FFFF.
+                     ; We count down from this value to zero three times.
+@label=LongPause_DelayLoop
+*$AE09 DEC HL        ; Decrease the delay counter by one.
+ $AE0A LD A,H        ; {Jump back to #R$AE09 until the delay counter is zero.
  $AE0B OR L          ;
- $AE0C JR NZ,$AE09   ;
- $AE0E LD A,($F821)  ;
+ $AE0C JR NZ,$AE09   ; }
+ $AE0E LD A,($F821)  ; {Return if bit 4 of *#R$F821 is set.
  $AE11 BIT 4,A       ;
- $AE13 RET NZ        ;
- $AE14 DJNZ $AE06    ;
- $AE16 RET           ;
+ $AE13 RET NZ        ; }
+ $AE14 DJNZ $AE06    ; Decrease the repeat counter by one and loop back to #R$AE06 until
+                     ; the repeat counter is zero.
+ $AE16 RET           ; Return.
 
 ; Routine at AE17
 ;
 ; Used by the routines at #R$9D42, #R$A15C, #R$A41E and #R$AADC.
-c$AE17 LD DE,$AF51   ;
- $AE1A LD HL,$AF49   ;
- $AE1D LD B,$04      ;
-*$AE1F PUSH BC       ;
- $AE20 LD B,H        ;
- $AE21 LD C,L        ;
- $AE22 PUSH DE       ;
- $AE23 LD E,(HL)     ;
- $AE24 INC HL        ;
- $AE25 LD D,(HL)     ;
- $AE26 EX DE,HL      ;
- $AE27 POP DE        ;
- $AE28 CALL $AEF0    ;
- $AE2B LD H,B        ;
- $AE2C LD L,C        ;
- $AE2D INC DE        ;
+c$AE17 LD DE,$AF51   ; #REGde=#R$AF51.
+ $AE1A LD HL,$AF49   ; #REGhl=#R$AF49.
+ $AE1D LD B,$04      ; #REGb=#N$04.
+*$AE1F PUSH BC       ; Stash #REGbc on the stack.
+ $AE20 LD B,H        ; #REGb=#REGh.
+ $AE21 LD C,L        ; #REGc=#REGl.
+ $AE22 PUSH DE       ; Stash #REGde on the stack.
+ $AE23 LD E,(HL)     ; #REGe=*#REGhl.
+ $AE24 INC HL        ; Increment #REGhl by one.
+ $AE25 LD D,(HL)     ; #REGd=*#REGhl.
+ $AE26 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $AE27 POP DE        ; Restore #REGde from the stack.
+ $AE28 CALL $AEF0    ; Call #R$AEF0.
+ $AE2B LD H,B        ; #REGh=#REGb.
+ $AE2C LD L,C        ; #REGl=#REGc.
+ $AE2D INC DE        ; {Increment #REGde by three.
  $AE2E INC DE        ;
- $AE2F INC DE        ;
- $AE30 INC HL        ;
- $AE31 INC HL        ;
- $AE32 POP BC        ;
- $AE33 DJNZ $AE1F    ;
- $AE35 LD DE,$AF51   ;
- $AE38 CALL $AE3C    ;
- $AE3B RET           ;
-*$AE3C LD HL,($AF5D) ;
- $AE3F PUSH HL       ;
- $AE40 PUSH BC       ;
- $AE41 LD B,$03      ;
-*$AE43 PUSH BC       ;
- $AE44 PUSH DE       ;
- $AE45 LD A,(DE)     ;
- $AE46 CP $20        ;
- $AE48 JR Z,$AE5B    ;
- $AE4A ADD A,A       ;
- $AE4B LD HL,$AF5F   ;
- $AE4E LD E,A        ;
- $AE4F LD D,$00      ;
- $AE51 ADD HL,DE     ;
- $AE52 LD E,(HL)     ;
+ $AE2F INC DE        ; }
+ $AE30 INC HL        ; {Increment #REGhl by two.
+ $AE31 INC HL        ; }
+ $AE32 POP BC        ; Restore #REGbc from the stack.
+ $AE33 DJNZ $AE1F    ; Decrease counter by one and loop back to #R$AE1F until
+                     ; counter is zero.
+ $AE35 LD DE,$AF51   ; #REGde=#R$AF51.
+ $AE38 CALL $AE3C    ; Call #R$AE3C.
+ $AE3B RET           ; Return.
+
+; Routine at AE3C
+;
+; Used by the routine at #R$AE17.
+c$AE3C LD HL,($AF5D) ; #REGhl=*#R$AF5D.
+ $AE3F PUSH HL       ; {Stash #REGhl and #REGbc on the stack.
+ $AE40 PUSH BC       ; }
+ $AE41 LD B,$03      ; #REGb=#N$03.
+*$AE43 PUSH BC       ; {Stash #REGbc and #REGde on the stack.
+ $AE44 PUSH DE       ; }
+ $AE45 LD A,(DE)     ; #REGa=*#REGde.
+ $AE46 CP $20        ; {Jump to #R$AE5B if #REGa is equal to #N$20.
+ $AE48 JR Z,$AE5B    ; }
+ $AE4A ADD A,A       ; Multiply #REGa by #N$02.
+ $AE4B LD HL,$AF5F   ; #REGhl=#R$AF5F.
+ $AE4E LD E,A        ; {Create an offset in #REGde.
+ $AE4F LD D,$00      ; }
+ $AE51 ADD HL,DE     ; #REGhl+=#REGde.
+ $AE52 LD E,(HL)     ; {Fetch the address at *#REGhl and load it into #REGde.
  $AE53 INC HL        ;
- $AE54 LD D,(HL)     ;
- $AE55 PUSH DE       ;
- $AE56 POP IX        ;
- $AE58 CALL $AE6E    ;
-*$AE5B POP DE        ;
- $AE5C INC DE        ;
- $AE5D LD HL,($AF5D) ;
- $AE60 INC L         ;
- $AE61 INC L         ;
- $AE62 LD ($AF5D),HL ;
- $AE65 POP BC        ;
- $AE66 DJNZ $AE43    ;
- $AE68 POP BC        ;
- $AE69 POP HL        ;
- $AE6A LD ($AF5D),HL ;
- $AE6D RET           ;
-*$AE6E PUSH HL       ;
+ $AE54 LD D,(HL)     ; }
+ $AE55 PUSH DE       ; {#REGix=#REGde (using the stack).
+ $AE56 POP IX        ; }
+ $AE58 CALL $AE6E    ; Call #R$AE6E.
+*$AE5B POP DE        ; Restore #REGde from the stack.
+ $AE5C INC DE        ; Increment #REGde by one.
+ $AE5D LD HL,($AF5D) ; #REGhl=*#R$AF5D.
+ $AE60 INC L         ; {Increment #REGl by two.
+ $AE61 INC L         ; }
+ $AE62 LD ($AF5D),HL ; Write #REGhl to *#R$AF5D.
+ $AE65 POP BC        ; Restore #REGbc from the stack.
+ $AE66 DJNZ $AE43    ; Decrease counter by one and loop back to #R$AE43 until
+                     ; counter is zero.
+ $AE68 POP BC        ; {Restore #REGbc and #REGhl from the stack.
+ $AE69 POP HL        ; }
+ $AE6A LD ($AF5D),HL ; Write #REGhl to *#R$AF5D.
+ $AE6D RET           ; Return.
+
+; Routine at AE6E
+;
+; Used by the routine at #R$AE3C.
+c$AE6E PUSH HL       ;
  $AE6F PUSH BC       ;
  $AE70 PUSH DE       ;
  $AE71 LD B,(IX+$00) ;
@@ -5553,12 +5911,20 @@ c$AE17 LD DE,$AF51   ;
  $AEA0 POP BC        ;
  $AEA1 POP HL        ;
  $AEA2 RET           ;
-*$AEA3 LD HL,$8F55   ;
+
+; Routine at AEA3
+;
+; Used by the routine at #R$AE6E.
+c$AEA3 LD HL,$8F55   ;
  $AEA6 LD DE,$8F5D   ;
  $AEA9 LD BC,$0008   ;
  $AEAC LDIR          ;
  $AEAE RET           ;
-*$AEAF AND A         ;
+
+; Routine at AEAF
+;
+; Used by the routine at #R$AE6E.
+c$AEAF AND A         ;
  $AEB0 RET Z         ;
 *$AEB1 LD HL,$8F5D   ;
  $AEB4 LD B,$04      ;
@@ -5571,13 +5937,21 @@ c$AE17 LD DE,$AF51   ;
  $AEBF DEC A         ;
  $AEC0 JR NZ,$AEB1   ;
  $AEC2 RET           ;
-*$AEC3 AND A         ;
+
+; Routine at AEC3
+;
+; Used by the routine at #R$AE6E.
+c$AEC3 AND A         ;
  $AEC4 RET Z         ;
  $AEC5 LD B,A        ;
 *$AEC6 CALL $A8CC    ;
  $AEC9 DJNZ $AEC6    ;
  $AECB RET           ;
-*$AECC LD DE,$8F5D   ;
+
+; Routine at AECC
+;
+; Used by the routine at #R$AE6E.
+c$AECC LD DE,$8F5D   ;
  $AECF CALL $AEE5    ;
  $AED2 CALL $A8CC    ;
  $AED5 CALL $AEE5    ;
@@ -5586,7 +5960,11 @@ c$AE17 LD DE,$AF51   ;
  $AEDE CALL $A8CC    ;
  $AEE1 CALL $AEE5    ;
  $AEE4 RET           ;
-*$AEE5 LD A,(DE)     ;
+
+; Routine at AEE5
+;
+; Used by the routine at #R$AECC.
+c$AEE5 LD A,(DE)     ;
  $AEE6 OR (HL)       ;
  $AEE7 LD (HL),A     ;
  $AEE8 INC L         ;
@@ -5662,13 +6040,34 @@ c$AEF0 PUSH HL       ;
  $AF45 LD ($AF4F),HL ;
  $AF48 RET           ;
 
-; Data block at AF49
-b$AF49 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $AF51 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $AF59 DEFB $00,$00,$00,$00
- $AF5D DEFB $00,$00,$65,$8F,$A6,$8F,$C5,$8F
- $AF65 DEFB $00,$90,$3B,$90,$6A,$90,$A7,$90
- $AF6D DEFB $D8,$90,$01,$91,$4A,$91
+; Game status buffer entry at AF49
+g$AF49 DEFB $00
+ $AF4A DEFB $00
+ $AF4B DEFB $00
+ $AF4C DEFB $00
+ $AF4D DEFB $00,$00,$00,$00
+
+; Game status buffer entry at AF51
+g$AF51 DEFB $00
+ $AF52 DEFB $00
+ $AF53 DEFB $00
+ $AF54 DEFB $00
+ $AF55 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+
+; Game status buffer entry at AF5D
+g$AF5D DEFW $0000
+
+; Game status buffer entry at AF5F
+g$AF5F DEFW $8F65
+ $AF61 DEFW $8FA6
+ $AF63 DEFW $8FC5
+ $AF65 DEFW $9000
+ $AF67 DEFW $903B
+ $AF69 DEFW $906A
+ $AF6B DEFW $90A7
+ $AF6D DEFW $90D8
+ $AF6F DEFW $9101
+ $AF71 DEFW $914A
 
 ; Graphics: Dart Pointer
 ;
@@ -6235,307 +6634,149 @@ c$B230 LD B,C        ;
  $B406 RET Z         ;
  $B407 INC HL        ;
  $B408 JR $B405      ;
- $B40A NOP           ;
- $B40B NOP           ;
- $B40C NOP           ;
- $B40D NOP           ;
- $B40E NOP           ;
- $B40F NOP           ;
- $B410 NOP           ;
- $B411 NOP           ;
- $B412 NOP           ;
- $B413 NOP           ;
- $B414 NOP           ;
- $B415 NOP           ;
- $B416 NOP           ;
- $B417 NOP           ;
- $B418 NOP           ;
- $B419 NOP           ;
- $B41A LD ($1405),A  ;
- $B41D LD BC,$0412   ;
- $B420 DEC C         ;
- $B421 LD B,$0A      ;
- $B423 RRCA          ;
- $B424 LD (BC),A     ;
- $B425 LD DE,$1303   ;
- $B428 RLCA          ;
- $B429 DJNZ $B433    ;
- $B42B DEC BC        ;
- $B42C LD C,$09      ;
- $B42E INC C         ;
- $B42F DEC B         ;
- $B430 INC D         ;
- $B431 DEC SP        ;
- $B432 OR H          ;
-*$B433 LD B,C        ;
- $B434 OR H          ;
- $B435 LD B,A        ;
- $B436 OR H          ;
- $B437 LD C,L        ;
- $B438 OR H          ;
- $B439 LD D,C        ;
- $B43A OR H          ;
- $B43B DEC A         ;
- $B43C LD A,D        ;
- $B43D ADC A,D       ;
- $B43E SBC A,D       ;
- $B43F XOR D         ;
- $B440 CP D          ;
- $B441 INC D         ;
- $B442 OR H          ;
- $B443 CP B          ;
- $B444 CP H          ;
- $B445 RET NZ        ;
- $B446 CALL NZ,$9664 ;
- $B449 AND B         ;
- $B44A XOR D         ;
- $B44B OR H          ;
- $B44C CP (HL)       ;
- $B44D SUB (HL)      ;
- $B44E XOR A         ;
- $B44F LD H,H        ;
- $B450 SUB (HL)      ;
- $B451 LD H,H        ;
- $B452 SUB (HL)      ;
- $B453 LD L,(HL)     ;
- $B454 ADD A,D       ;
- $B455 SUB (HL)      ;
- $B456 AND B         ;
- $B457 OR H          ;
- $B458 CP (HL)       ;
- $B459 LD A,B        ;
- $B45A ADC A,H       ;
- $B45B AND B         ;
- $B45C XOR D         ;
- $B45D CP (HL)       ;
- $B45E RST $00       ;
- $B45F LD B,(HL)     ;
- $B460 LD A,B        ;
- $B461 ADD A,D       ;
- $B462 SUB (HL)      ;
- $B463 AND B         ;
- $B464 CP (HL)       ;
- $B465 LD H,H        ;
- $B466 SUB (HL)      ;
- $B467 LD H,H        ;
- $B468 SUB (HL)      ;
- $B469 JR Z,$B4B6    ;
- $B46B DEC SP        ;
- $B46C OR H          ;
- $B46D LD D,E        ;
- $B46E OR H          ;
- $B46F JR NZ,$B491   ;
- $B471 JR NZ,$B4BD   ;
- $B473 LD B,C        ;
- $B474 LD C,L        ;
- $B475 LD C,L        ;
- $B476 LD E,C        ;
- $B477 JR NZ,$B4C3   ;
- $B479 LD C,C        ;
- $B47A LD C,L        ;
- $B47B JR NZ,$B49D   ;
- $B47D JR NZ,$B49F   ;
- $B47F INC B         ;
- $B480 ADD A,H       ;
- $B481 CP C          ;
- $B482 INC B         ;
- $B483 CALL NZ,$4542 ;
- $B486 LD B,L        ;
- $B487 LD D,D        ;
- $B488 JR NZ,$B4CC   ;
- $B48A LD B,L        ;
- $B48B LD C,H        ;
- $B48C LD C,H        ;
- $B48D LD E,C        ;
- $B48E JR NZ,$B4D2   ;
- $B490 LD C,C        ;
-*$B491 LD C,H        ;
- $B492 LD C,H        ;
- $B493 JR NZ,$B498   ;
- $B495 CALL NC,$4CBA ;
-*$B498 CALL NZ,$4544 ;
- $B49B LD C,H        ;
- $B49C JR NZ,$B4E0   ;
- $B49E LD C,A        ;
-*$B49F LD E,C        ;
- $B4A0 JR NZ,$B4E6   ;
- $B4A2 LD B,L        ;
- $B4A3 LD D,E        ;
- $B4A4 LD C,L        ;
- $B4A5 LD C,A        ;
- $B4A6 LD C,(HL)     ;
- $B4A7 LD B,H        ;
- $B4A8 JR NZ,$B4AE   ;
- $B4AA INC H         ;
- $B4AB CP H          ;
- $B4AC SUB H         ;
- $B4AD CALL NZ,$2020 ;
- $B4B0 JR NZ,$B4FF   ;
- $B4B2 LD B,L        ;
- $B4B3 LD B,A        ;
- $B4B4 LD B,C        ;
- $B4B5 JR NZ,$B504   ;
- $B4B7 LD C,C        ;
- $B4B8 LD B,E        ;
- $B4B9 LD C,E        ;
- $B4BA JR NZ,$B4DC   ;
- $B4BC JR NZ,$B4DE   ;
- $B4BE LD (BC),A     ;
- $B4BF LD (HL),H     ;
- $B4C0 CP L          ;
- $B4C1 CALL C,$20C4  ;
- $B4C4 JR NZ,$B50A   ;
- $B4C6 LD B,L        ;
- $B4C7 LD D,(HL)     ;
- $B4C8 LD C,C        ;
- $B4C9 LD C,A        ;
- $B4CA LD D,L        ;
- $B4CB LD D,E        ;
-*$B4CC JR NZ,$B512   ;
- $B4CE LD B,C        ;
- $B4CF LD D,(HL)     ;
- $B4D0 LD B,L        ;
- $B4D1 JR NZ,$B4F3   ;
- $B4D3 INC BC        ;
- $B4D4 CALL NZ,$24BE ;
- $B4D7 PUSH BC       ;
- $B4D8 LD D,E        ;
- $B4D9 LD D,L        ;
- $B4DA LD D,D        ;
- $B4DB LD B,L        ;
-*$B4DC JR NZ,$B531   ;
-*$B4DE LD C,B        ;
- $B4DF LD C,A        ;
-*$B4E0 LD D,H        ;
- $B4E1 JR NZ,$B536   ;
- $B4E3 LD C,C        ;
- $B4E4 LD B,H        ;
- $B4E5 LD C,(HL)     ;
-*$B4E6 LD B,L        ;
- $B4E7 LD E,C        ;
- $B4E8 LD BC,$C014   ;
- $B4EB LD L,H        ;
- $B4EC PUSH BC       ;
- $B4ED LD C,H        ;
- $B4EE LD C,C        ;
- $B4EF LD C,L        ;
- $B4F0 LD D,B        ;
- $B4F1 JR NZ,$B54A   ;
-*$B4F3 LD D,D        ;
- $B4F4 LD C,C        ;
- $B4F5 LD D,E        ;
- $B4F6 LD D,H        ;
- $B4F7 JR NZ,$B545   ;
- $B4F9 LD B,C        ;
- $B4FA LD D,D        ;
- $B4FB LD D,D        ;
- $B4FC LD E,C        ;
- $B4FD INC B         ;
- $B4FE LD H,H        ;
-*$B4FF POP BC        ;
- $B500 OR H          ;
- $B501 PUSH BC       ;
- $B502 JR NZ,$B524   ;
-*$B504 LD D,H        ;
- $B505 LD B,C        ;
- $B506 LD B,E        ;
- $B507 LD D,H        ;
- $B508 LD C,C        ;
- $B509 LD B,E        ;
-*$B50A LD B,C        ;
- $B50B LD C,H        ;
- $B50C JR NZ,$B562   ;
- $B50E LD B,L        ;
- $B50F LD C,H        ;
- $B510 JR NZ,$B532   ;
-*$B512 LD (BC),A     ;
- $B513 OR H          ;
- $B514 JP NZ,$C5FC   ;
-; This entry point is used by the routine at #R$AA0A.
-*$B517 LD E,$06      ;
- $B519 CALL $A875    ;
- $B51C LD HL,$B484   ;
- $B51F LD DE,$0015   ;
- $B522 LD C,A        ;
- $B523 AND A         ;
-*$B524 LD B,A        ;
- $B525 JR Z,$B52A    ;
-*$B527 ADD HL,DE     ;
- $B528 DJNZ $B527    ;
-*$B52A LD ($9B21),HL ;
-*$B52D PUSH BC       ;
- $B52E LD E,$06      ;
- $B530 CALL $A875    ;
- $B533 POP BC        ;
- $B534 CP C          ;
- $B535 JR Z,$B52D    ;
- $B537 LD HL,$B484   ;
- $B53A LD DE,$0015   ;
- $B53D AND A         ;
- $B53E LD B,A        ;
- $B53F JR Z,$B544    ;
-*$B541 ADD HL,DE     ;
- $B542 DJNZ $B541    ;
-*$B544 LD ($9B23),HL ;
- $B547 RET           ;
-; This entry point is used by the routines at #R$B5BA, #R$B640 and #R$B6C2.
-*$B548 LD DE,$040A   ;
- $B54B CALL $A8AE    ;
- $B54E LD B,$80      ;
-*$B550 PUSH BC       ;
- $B551 PUSH HL       ;
- $B552 LD BC,$0012   ;
- $B555 PUSH HL       ;
- $B556 POP DE        ;
- $B557 LD (HL),$00   ;
- $B559 INC DE        ;
- $B55A LDIR          ;
- $B55C POP HL        ;
- $B55D CALL $A8CC    ;
- $B560 POP BC        ;
- $B561 DJNZ $B550    ;
- $B563 LD HL,$040A   ;
- $B566 LD BC,$1013   ;
- $B569 LD A,$60      ;
- $B56B CALL $B5A6    ;
- $B56E LD HL,$0A10   ;
- $B571 LD BC,$0706   ;
- $B574 LD A,$47      ;
- $B576 CALL $B5A6    ;
- $B579 LD HL,$051D   ;
- $B57C LD BC,$1001   ;
- $B57F LD A,$30      ;
- $B581 CALL $B5A6    ;
- $B584 LD HL,$140B   ;
- $B587 LD BC,$0113   ;
- $B58A LD A,$30      ;
- $B58C CALL $B5A6    ;
- $B58F LD HL,$1111   ;
- $B592 LD BC,$0106   ;
- $B595 LD A,$20      ;
- $B597 CALL $B5A6    ;
- $B59A LD HL,$0B16   ;
- $B59D LD BC,$0701   ;
- $B5A0 LD A,$20      ;
- $B5A2 CALL $B5A6    ;
- $B5A5 RET           ;
-; This entry point is used by the routines at #R$A15C and #R$A3A4.
-*$B5A6 PUSH BC       ;
+
+; Data block at B40A
+b$B40A DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $B412 DEFB $00,$00,$00,$00
+
+; Data block at B416
+b$B416 DEFB $00
+
+; Data block at B417
+b$B417 DEFB $00,$00,$00,$32,$05,$14,$01,$12
+ $B41F DEFB $04,$0D,$06,$0A,$0F,$02,$11,$03
+ $B427 DEFB $13,$07,$10,$08,$0B,$0E,$09,$0C
+ $B42F DEFB $05,$14,$3B,$B4,$41,$B4,$47,$B4
+ $B437 DEFB $4D,$B4,$51,$B4,$3D,$7A,$8A,$9A
+ $B43F DEFB $AA,$BA,$14,$B4,$B8,$BC,$C0,$C4
+ $B447 DEFB $64,$96,$A0,$AA,$B4,$BE,$96,$AF
+ $B44F DEFB $64,$96,$64,$96,$6E,$82,$96,$A0
+ $B457 DEFB $B4,$BE,$78,$8C,$A0,$AA,$BE,$C7
+ $B45F DEFB $46,$78,$82,$96,$A0,$BE,$64,$96
+ $B467 DEFB $64,$96,$28,$4B,$3B,$B4,$53,$B4
+ $B46F DEFB $20,$20,$20,$4A,$41,$4D,$4D,$59
+ $B477 DEFB $20,$4A,$49,$4D,$20,$20,$20,$20
+ $B47F DEFB $04,$84,$B9,$04,$C4
+
+; Data block at B484
+b$B484 DEFB $42,$45,$45,$52,$20,$42,$45,$4C
+ $B48C DEFB $4C,$59,$20,$42,$49,$4C,$4C,$20
+ $B494 DEFB $03,$D4,$BA,$4C,$C4,$44,$45,$4C
+ $B49C DEFB $20,$42,$4F,$59,$20,$44,$45,$53
+ $B4A4 DEFB $4D,$4F,$4E,$44,$20,$04,$24,$BC
+ $B4AC DEFB $94,$C4,$20,$20,$20,$4D,$45,$47
+ $B4B4 DEFB $41,$20,$4D,$49,$43,$4B,$20,$20
+ $B4BC DEFB $20,$20,$02,$74,$BD,$DC,$C4,$20
+ $B4C4 DEFB $20,$44,$45,$56,$49,$4F,$55,$53
+ $B4CC DEFB $20,$44,$41,$56,$45,$20,$20,$03
+ $B4D4 DEFB $C4,$BE,$24,$C5,$53,$55,$52,$45
+ $B4DC DEFB $20,$53,$48,$4F,$54,$20,$53,$49
+ $B4E4 DEFB $44,$4E,$45,$59,$01,$14,$C0,$6C
+ $B4EC DEFB $C5,$4C,$49,$4D,$50,$20,$57,$52
+ $B4F4 DEFB $49,$53,$54,$20,$4C,$41,$52,$52
+ $B4FC DEFB $59,$04,$64,$C1,$B4,$C5,$20,$20
+ $B504 DEFB $54,$41,$43,$54,$49,$43,$41,$4C
+ $B50C DEFB $20,$54,$45,$4C,$20,$20,$02,$B4
+ $B514 DEFB $C2,$FC,$C5
+
+; Routine at B517
+;
+; Used by the routine at #R$AA0A.
+c$B517 LD E,$06      ; #REGe=#N$06.
+ $B519 CALL $A875    ; Call #R$A875.
+ $B51C LD HL,$B484   ; #REGhl=#R$B484.
+ $B51F LD DE,$0015   ; #REGde=#N($0015,$04,$04).
+ $B522 LD C,A        ; #REGc=#REGa.
+ $B523 AND A         ; Set flags.
+ $B524 LD B,A        ; #REGb=#REGa.
+ $B525 JR Z,$B52A    ; Jump to #R$B52A if #REGa is zero.
+*$B527 ADD HL,DE     ; #REGhl+=#REGde.
+ $B528 DJNZ $B527    ; Decrease counter by one and loop back to #R$B527 until
+                     ; counter is zero.
+*$B52A LD ($9B21),HL ; Write #REGhl to *#R$9B21.
+*$B52D PUSH BC       ; Stash #REGbc on the stack.
+ $B52E LD E,$06      ; #REGe=#N$06.
+ $B530 CALL $A875    ; Call #R$A875.
+ $B533 POP BC        ; Restore #REGbc from the stack.
+ $B534 CP C          ; {Jump to #R$B52D if #REGa is equal to #REGc.
+ $B535 JR Z,$B52D    ; }
+ $B537 LD HL,$B484   ; #REGhl=#R$B484.
+ $B53A LD DE,$0015   ; #REGde=#N($0015,$04,$04).
+ $B53D AND A         ; Set flags.
+ $B53E LD B,A        ; #REGb=#REGa.
+ $B53F JR Z,$B544    ; Jump to #R$B544 if #REGa is zero.
+*$B541 ADD HL,DE     ; #REGhl+=#REGde.
+ $B542 DJNZ $B541    ; Decrease counter by one and loop back to #R$B541 until
+                     ; counter is zero.
+*$B544 LD ($9B23),HL ; Write #REGhl to *#R$9B23.
+ $B547 RET           ; Return.
+
+; Routine at B548
+;
+; Used by the routines at #R$B5BA, #R$B640 and #R$B6C2.
+c$B548 LD DE,$040A   ; #REGde=#N$040A.
+ $B54B CALL $A8AE    ; Call #R$A8AE.
+ $B54E LD B,$80      ; #REGb=#N$80.
+*$B550 PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
+ $B551 PUSH HL       ; }
+ $B552 LD BC,$0012   ; #REGbc=#N($0012,$04,$04).
+ $B555 PUSH HL       ; Stash #REGhl on the stack.
+ $B556 POP DE        ; Restore #REGde from the stack.
+ $B557 LD (HL),$00   ; Write #N$00 to *#REGhl.
+ $B559 INC DE        ; Increment #REGde by one.
+ $B55A LDIR          ; LDIR.
+ $B55C POP HL        ; Restore #REGhl from the stack.
+ $B55D CALL $A8CC    ; Call #R$A8CC.
+ $B560 POP BC        ; Restore #REGbc from the stack.
+ $B561 DJNZ $B550    ; Decrease counter by one and loop back to #R$B550 until
+                     ; counter is zero.
+ $B563 LD HL,$040A   ; #REGhl=#N($040A,$04,$04).
+ $B566 LD BC,$1013   ; #REGbc=#N($1013,$04,$04).
+ $B569 LD A,$60      ; #REGa=#N$60.
+ $B56B CALL $B5A6    ; Call #R$B5A6.
+ $B56E LD HL,$0A10   ; #REGhl=#N($0A10,$04,$04).
+ $B571 LD BC,$0706   ; #REGbc=#N($0706,$04,$04).
+ $B574 LD A,$47      ; #REGa=#N$47.
+ $B576 CALL $B5A6    ; Call #R$B5A6.
+ $B579 LD HL,$051D   ; #REGhl=#N($051D,$04,$04).
+ $B57C LD BC,$1001   ; #REGbc=#N($1001,$04,$04).
+ $B57F LD A,$30      ; #REGa=#N$30.
+ $B581 CALL $B5A6    ; Call #R$B5A6.
+ $B584 LD HL,$140B   ; #REGhl=#N($140B,$04,$04).
+ $B587 LD BC,$0113   ; #REGbc=#N($0113,$04,$04).
+ $B58A LD A,$30      ; #REGa=#N$30.
+ $B58C CALL $B5A6    ; Call #R$B5A6.
+ $B58F LD HL,$1111   ; #REGhl=#N($1111,$04,$04).
+ $B592 LD BC,$0106   ; #REGbc=#N($0106,$04,$04).
+ $B595 LD A,$20      ; #REGa=#N$20.
+ $B597 CALL $B5A6    ; Call #R$B5A6.
+ $B59A LD HL,$0B16   ; #REGhl=#N($0B16,$04,$04).
+ $B59D LD BC,$0701   ; #REGbc=#N($0701,$04,$04).
+ $B5A0 LD A,$20      ; #REGa=#N$20.
+ $B5A2 CALL $B5A6    ; Call #R$B5A6.
+ $B5A5 RET           ; Return.
+
+; Routine at B5A6
+;
+; Used by the routines at #R$A15C, #R$A3A4 and #R$B548.
+c$B5A6 PUSH BC       ; {Stash #REGbc, #REGhl, #REGaf and #REGbc on the stack.
  $B5A7 PUSH HL       ;
  $B5A8 PUSH AF       ;
- $B5A9 PUSH BC       ;
- $B5AA CALL $A862    ;
- $B5AD POP BC        ;
- $B5AE POP AF        ;
- $B5AF LD B,C        ;
-*$B5B0 LD (HL),A     ;
- $B5B1 INC HL        ;
- $B5B2 DJNZ $B5B0    ;
- $B5B4 POP HL        ;
- $B5B5 INC H         ;
- $B5B6 POP BC        ;
- $B5B7 DJNZ $B5A6    ;
- $B5B9 RET           ;
+ $B5A9 PUSH BC       ; }
+ $B5AA CALL $A862    ; Call #R$A862.
+ $B5AD POP BC        ; {Restore #REGbc and #REGaf from the stack.
+ $B5AE POP AF        ; }
+ $B5AF LD B,C        ; #REGb=#REGc.
+*$B5B0 LD (HL),A     ; Write #REGa to *#REGhl.
+ $B5B1 INC HL        ; Increment #REGhl by one.
+ $B5B2 DJNZ $B5B0    ; Decrease counter by one and loop back to #R$B5B0 until
+                     ; counter is zero.
+ $B5B4 POP HL        ; Restore #REGhl from the stack.
+ $B5B5 INC H         ; Increment #REGh by one.
+ $B5B6 POP BC        ; Restore #REGbc from the stack.
+ $B5B7 DJNZ $B5A6    ; Decrease counter by one and loop back to #R$B5A6 until
+                     ; counter is zero.
+ $B5B9 RET           ; Return.
 
 ; Quarter Finals
 ;
@@ -7543,7 +7784,7 @@ b$C404 DEFB $FF,$76,$7F,$00,$ED,$80,$01,$DD
  $C5E4 DEFB $00,$7F,$E0,$00,$07,$C0,$00,$27
  $C5EC DEFB $C0,$FF,$BF,$DF,$00,$3F,$80,$FF
  $C5F4 DEFB $9F,$BF,$00,$1F,$00,$FF,$DF,$BF
-*$C5FC DEFB $FF,$9C,$FF,$00,$63,$00,$00,$92
+ $C5FC DEFB $FF,$9C,$FF,$00,$63,$00,$00,$92
  $C604 DEFB $80,$01,$6D,$40,$02,$9C,$A0,$04
  $C60C DEFB $A2,$A0,$15,$3E,$50,$2A,$C0,$A8
  $C614 DEFB $2C,$FF,$68,$26,$63,$BC,$15,$8C
@@ -7858,96 +8099,105 @@ b$CB6B DEFB $00,$00,$00,$00,$00,$00,$00,$00
 ; Routine at CBC8
 ;
 ; Used by the routine at #R$A15C.
-c$CBC8 LD A,$01        ;
- $CBCA LD ($D009),A    ;
- $CBCD RET             ;
- $CBCE LD C,A          ;
- $CBCF ADD A,A         ;
- $CBD0 ADD A,C         ;
- $CBD1 ADD A,A         ;
- $CBD2 LD C,A          ;
- $CBD3 LD B,$00        ;
- $CBD5 LD HL,$D00A     ;
- $CBD8 ADD HL,BC       ;
- $CBD9 LD A,(HL)       ;
- $CBDA LD ($CB6E),A    ;
- $CBDD INC HL          ;
- $CBDE LD A,(HL)       ;
- $CBDF LD ($CB6F),A    ;
- $CBE2 INC HL          ;
- $CBE3 LD A,(HL)       ;
- $CBE4 LD ($CB8D),A    ;
- $CBE7 INC HL          ;
- $CBE8 LD A,(HL)       ;
- $CBE9 LD ($CB8E),A    ;
- $CBEC INC HL          ;
- $CBED LD A,(HL)       ;
- $CBEE LD ($CBAC),A    ;
- $CBF1 INC HL          ;
- $CBF2 LD A,(HL)       ;
- $CBF3 LD ($CBAD),A    ;
- $CBF6 RET             ;
-; This entry point is used by the routine at #R$95ED.
-*$CBF7 LD A,($D009)    ;
- $CBFA AND A           ;
- $CBFB RET Z           ;
- $CBFC LD A,$00        ;
- $CBFE LD ($CC4A),A    ;
- $CC01 LD HL,$CC84     ;
- $CC04 DEC (HL)        ;
- $CC05 JR NZ,$CC22     ;
- $CC07 LD B,(HL)       ;
- $CC08 LD IX,$CB6B     ;
- $CC0C CALL $CD4A      ;
- $CC0F LD IX,$CB8A     ;
- $CC13 CALL $CD4A      ;
- $CC16 LD IX,$CBA9     ;
- $CC1A CALL $CD4A      ;
- $CC1D LD HL,$CC84     ;
- $CC20 LD (HL),$01     ;
-*$CC22 LD IX,$CB6B     ;
- $CC26 CALL $CDEC      ;
- $CC29 LD ($CEFD),HL   ;
- $CC2C LD ($CF05),A    ;
- $CC2F LD IX,$CB8A     ;
- $CC33 CALL $CDEC      ;
- $CC36 LD ($CEFF),HL   ;
- $CC39 LD ($CF06),A    ;
- $CC3C LD IX,$CBA9     ;
- $CC40 CALL $CDEC      ;
- $CC43 LD ($CF01),HL   ;
- $CC46 LD ($CF07),A    ;
- $CC49 LD A,$00        ;
- $CC4B LD ($CF03),A    ;
- $CC4E LD HL,$CF0A     ;
- $CC51 LD A,$0D        ;
- $CC53 LD C,$FD        ;
-*$CC55 LD B,$FF        ;
- $CC57 OUT (C),A       ;
- $CC59 LD B,$BF        ;
- $CC5B OUTD            ;
- $CC5D DEC A           ;
- $CC5E JP P,$CC55      ;
- $CC61 RET             ;
-; This entry point is used by the routines at #R$9D42 and #R$AADC.
-*$CC62 XOR A           ;
- $CC63 LD ($D009),A    ;
-*$CC66 LD C,$FD        ;
- $CC68 LD DE,$0D00     ;
- $CC6B SUB A           ;
-*$CC6C LD B,$FF        ;
- $CC6E OUT (C),D       ;
- $CC70 LD B,$BF        ;
- $CC72 OUT (C),A       ;
- $CC74 DEC D           ;
- $CC75 JP P,$CC6C      ;
- $CC78 LD DE,$073F     ;
- $CC7B LD B,$FF        ;
- $CC7D OUT (C),D       ;
- $CC7F LD B,$BF        ;
- $CC81 OUT (C),E       ;
- $CC83 RET             ;
- $CC84 NOP             ;
+c$CBC8 LD A,$01      ;
+ $CBCA LD ($D009),A  ;
+ $CBCD RET           ;
+ $CBCE LD C,A        ;
+ $CBCF ADD A,A       ;
+ $CBD0 ADD A,C       ;
+ $CBD1 ADD A,A       ;
+ $CBD2 LD C,A        ;
+ $CBD3 LD B,$00      ;
+ $CBD5 LD HL,$D00A   ;
+ $CBD8 ADD HL,BC     ;
+ $CBD9 LD A,(HL)     ;
+ $CBDA LD ($CB6E),A  ;
+ $CBDD INC HL        ;
+ $CBDE LD A,(HL)     ;
+ $CBDF LD ($CB6F),A  ;
+ $CBE2 INC HL        ;
+ $CBE3 LD A,(HL)     ;
+ $CBE4 LD ($CB8D),A  ;
+ $CBE7 INC HL        ;
+ $CBE8 LD A,(HL)     ;
+ $CBE9 LD ($CB8E),A  ;
+ $CBEC INC HL        ;
+ $CBED LD A,(HL)     ;
+ $CBEE LD ($CBAC),A  ;
+ $CBF1 INC HL        ;
+ $CBF2 LD A,(HL)     ;
+ $CBF3 LD ($CBAD),A  ;
+ $CBF6 RET           ;
+
+; Routine at CBF7
+;
+; Used by the routine at #R$95ED.
+c$CBF7 LD A,($D009)  ;
+ $CBFA AND A         ;
+ $CBFB RET Z         ;
+ $CBFC LD A,$00      ;
+ $CBFE LD ($CC4A),A  ;
+ $CC01 LD HL,$CC84   ;
+ $CC04 DEC (HL)      ;
+ $CC05 JR NZ,$CC22   ;
+ $CC07 LD B,(HL)     ;
+ $CC08 LD IX,$CB6B   ;
+ $CC0C CALL $CD4A    ;
+ $CC0F LD IX,$CB8A   ;
+ $CC13 CALL $CD4A    ;
+ $CC16 LD IX,$CBA9   ;
+ $CC1A CALL $CD4A    ;
+ $CC1D LD HL,$CC84   ;
+ $CC20 LD (HL),$01   ;
+*$CC22 LD IX,$CB6B   ;
+ $CC26 CALL $CDEC    ;
+ $CC29 LD ($CEFD),HL ;
+ $CC2C LD ($CF05),A  ;
+ $CC2F LD IX,$CB8A   ;
+ $CC33 CALL $CDEC    ;
+ $CC36 LD ($CEFF),HL ;
+ $CC39 LD ($CF06),A  ;
+ $CC3C LD IX,$CBA9   ;
+ $CC40 CALL $CDEC    ;
+ $CC43 LD ($CF01),HL ;
+ $CC46 LD ($CF07),A  ;
+ $CC49 LD A,$00      ;
+ $CC4B LD ($CF03),A  ;
+ $CC4E LD HL,$CF0A   ;
+ $CC51 LD A,$0D      ;
+ $CC53 LD C,$FD      ;
+*$CC55 LD B,$FF      ;
+ $CC57 OUT (C),A     ;
+ $CC59 LD B,$BF      ;
+ $CC5B OUTD          ;
+ $CC5D DEC A         ;
+ $CC5E JP P,$CC55    ;
+ $CC61 RET           ;
+
+; Routine at CC62
+;
+; Used by the routines at #R$9D42 and #R$AADC.
+c$CC62 XOR A         ;
+ $CC63 LD ($D009),A  ;
+; This entry point is used by the routine at #R$CC84.
+*$CC66 LD C,$FD      ;
+ $CC68 LD DE,$0D00   ;
+ $CC6B SUB A         ;
+*$CC6C LD B,$FF      ;
+ $CC6E OUT (C),D     ;
+ $CC70 LD B,$BF      ;
+ $CC72 OUT (C),A     ;
+ $CC74 DEC D         ;
+ $CC75 JP P,$CC6C    ;
+ $CC78 LD DE,$073F   ;
+ $CC7B LD B,$FF      ;
+ $CC7D OUT (C),D     ;
+ $CC7F LD B,$BF      ;
+ $CC81 OUT (C),E     ;
+ $CC83 RET           ;
+
+; Routine at CC84
+c$CC84 NOP             ;
  $CC85 CP H            ;
  $CC86 AND H           ;
  $CC87 XOR B           ;
@@ -8049,6 +8299,7 @@ c$CBC8 LD A,$01        ;
  $CD41 LD (IX+$13),B   ;
  $CD44 RES 5,(IX+$00)  ;
  $CD48 JR $CD7B        ;
+; This entry point is used by the routine at #R$CBF7.
 *$CD4A DEC (IX+$10)    ;
  $CD4D JR NZ,$CD88     ;
  $CD4F LD (IX+$00),B   ;
@@ -8123,6 +8374,7 @@ c$CBC8 LD A,$01        ;
  $CDE9 LD C,(HL)       ;
  $CDEA ADD HL,BC       ;
  $CDEB JP (HL)         ;
+; This entry point is used by the routine at #R$CBF7.
 *$CDEC LD C,(IX+$00)   ;
  $CDEF BIT 5,C         ;
  $CDF1 JR Z,$CE37      ;
@@ -8568,339 +8820,343 @@ b$D00A DEFB $16,$D0,$30,$D0,$4A,$D0,$64,$D0
  $D282 DEFB $2D,$E7,$C7,$2D,$87,$8A,$88,$02
  $D28A DEFB $04,$82,$DF,$00,$11,$07,$E1,$1F
  $D292 DEFB $E0,$C5,$1F,$C5,$1F,$E1,$C5,$1F
- $D29A DEFB $C1,$2B,$E1,$1F,$E0,$C5,$1F,$C5
- $D2A2 DEFB $1F,$E1,$C5,$1F,$C1,$2B,$E1,$1F
- $D2AA DEFB $E0,$C5,$1F,$C5,$1F,$E1,$C5,$1F
- $D2B2 DEFB $C1,$2B,$E7,$C7,$2B,$87,$8A,$88
- $D2BA DEFB $02,$04,$82,$DF,$00,$11,$07,$E1
- $D2C2 DEFB $1D,$E0,$C5,$1D,$C5,$1D,$E1,$C5
- $D2CA DEFB $1D,$C1,$29,$E1,$1D,$E0,$C5,$1D
- $D2D2 DEFB $C5,$1D,$E1,$C5,$1D,$C1,$29,$E1
- $D2DA DEFB $1D,$E0,$C5,$1D,$C5,$1D,$E1,$C5
- $D2E2 DEFB $1D,$C1,$29,$E7,$C7,$29,$87,$8A
- $D2EA DEFB $88,$02,$04,$82,$DF,$00,$51,$07
- $D2F2 DEFB $E0,$3C,$39,$37,$E1,$3C,$E0,$39
- $D2FA DEFB $E1,$37,$E0,$3C,$39,$37,$E1,$3C
- $D302 DEFB $E0,$39,$E1,$37,$E0,$C8,$3C,$C8
- $D30A DEFB $39,$C8,$37,$E1,$C8,$3C,$E0,$C8
- $D312 DEFB $37,$E1,$C8,$34,$E7,$C8,$30,$87
- $D31A DEFB $8A,$88,$02,$04,$82,$DF,$00,$51
- $D322 DEFB $07,$E0,$31,$2F,$2D,$E1,$31,$E0
- $D32A DEFB $2F,$E1,$2D,$E0,$31,$2F,$2D,$E1
- $D332 DEFB $31,$E0,$2F,$E1,$2D,$E0,$C8,$31
- $D33A DEFB $C8,$2F,$C8,$2D,$E1,$C8,$31,$E0
- $D342 DEFB $C8,$2F,$E1,$C8,$31,$E7,$C8,$2D
- $D34A DEFB $87,$8A,$88,$02,$04,$82,$DF,$00
- $D352 DEFB $71,$05,$E5,$37,$E1,$36,$E5,$37
- $D35A DEFB $E1,$36,$E0,$C8,$37,$C8,$36,$C8
- $D362 DEFB $34,$E1,$C8,$37,$E0,$C8,$36,$E1
- $D36A DEFB $C8,$34,$E7,$C8,$32,$87,$8A,$88
- $D372 DEFB $02,$04,$82,$DF,$00,$71,$05,$E5
- $D37A DEFB $35,$E1,$34,$E5,$35,$E1,$34,$E0
- $D382 DEFB $C8,$35,$C8,$34,$C8,$32,$E1,$C8
- $D38A DEFB $35,$E0,$C8,$34,$E1,$C8,$32,$E7
- $D392 DEFB $C8,$30,$87,$DF,$00,$F1,$01,$EF
- $D39A DEFB $80,$80,$87,$BD,$88,$02,$04,$82
- $D3A2 DEFB $DF,$00,$41,$05,$8A,$E1,$18,$18
- $D3AA DEFB $18,$18,$18,$18,$18,$18,$1F,$1F
- $D3B2 DEFB $1F,$1F,$1F,$1F,$1F,$1F,$18,$18
- $D3BA DEFB $18,$18,$18,$18,$18,$18,$DF,$00
- $D3C2 DEFB $F1,$04,$EF,$18,$87,$88,$02,$04
- $D3CA DEFB $82,$DF,$00,$61,$05,$8A,$E1,$24
- $D3D2 DEFB $24,$EB,$24,$E1,$26,$26,$EB,$26
- $D3DA DEFB $E1,$2B,$2B,$EB,$24,$DF,$00,$F1
- $D3E2 DEFB $05,$EF,$24,$87,$88,$02,$04,$82
- $D3EA DEFB $DF,$00,$61,$05,$8A,$E1,$27,$27
- $D3F2 DEFB $EB,$29,$E1,$2A,$2A,$EB,$2B,$E1
- $D3FA DEFB $2F,$2F,$EB,$30,$DF,$00,$F1,$05
- $D402 DEFB $EF,$C3,$30,$87,$00,$00,$00,$00
- $D40A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D412 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D41A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D422 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D42A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D432 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D43A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D442 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D44A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D452 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D45A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D462 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D46A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D472 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D47A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D482 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D48A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D492 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D49A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D4A2 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D4AA DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D4B2 DEFB $00,$00,$00,$00,$DB,$02,$4D,$00
- $D4BA DEFB $E8,$57,$00,$00,$77,$3E,$F3,$0D
- $D4C2 DEFB $CE,$0B,$EF,$50,$DB,$02,$4D,$00
- $D4CA DEFB $F9,$56,$00,$00,$CE,$0B,$FC,$50
- $D4D2 DEFB $05,$17,$DC,$0A,$DB,$02,$4D,$00
- $D4DA DEFB $DB,$02,$4D,$00,$F1,$5C,$06,$03
- $D4E2 DEFB $07,$5C,$C0,$57,$71,$0E,$F3,$0D
- $D4EA DEFB $DB,$02,$4D,$00,$FF,$FF,$0E,$01
- $D4F2 DEFB $00,$00,$51,$00,$92,$09,$3F,$05
- $D4FA DEFB $76,$1B,$03,$13,$00,$3E,$00,$00
- $D502 DEFB $07,$FE,$00,$07,$F8,$0E,$07,$E0
- $D50A DEFB $01,$FF,$00,$1F,$F0,$3F,$07,$E0
- $D512 DEFB $07,$FC,$00,$7F,$81,$FC,$0F,$00
- $D51A DEFB $7F,$C0,$0F,$E0,$3F,$C1,$E0,$1F
- $D522 DEFB $F8,$07,$F0,$3F,$81,$F0,$0F,$C0
- $D52A DEFB $03,$F0,$1F,$E0,$F8,$1F,$80,$07
- $D532 DEFB $E0,$7F,$81,$F0,$3E,$00,$1F,$81
- $D53A DEFB $FC,$07,$83,$E1,$E1,$F8,$1F,$F0
- $D542 DEFB $10,$7E,$24,$7F,$03,$FC,$00,$0F
- $D54A DEFB $0C,$0F,$81,$FE,$0E,$07,$C2,$0F
- $D552 DEFB $C0,$1F,$83,$03,$C3,$07,$E0,$0F
- $D55A DEFB $87,$03,$C7,$07,$C0,$1F,$80,$0F
- $D562 DEFB $BC,$1F,$F0,$3F,$E0,$3C,$F0,$7F
- $D56A DEFB $E0,$FF,$C0,$FF,$83,$BF,$02,$1E
- $D572 DEFB $2E,$FC,$00,$F8,$01,$F0,$00,$7F
- $D57A DEFB $F0,$FC,$00,$FC,$07,$F0,$7F,$7E
- $D582 DEFB $00,$38,$1F,$F8,$07,$F8,$00,$00
- $D58A DEFB $8F,$E0,$07,$80,$0F,$02,$3F,$80
- $D592 DEFB $7C,$1C,$00,$7F,$FF,$C0,$07,$C0
- $D59A DEFB $87,$C7,$87,$8E,$1C,$3F,$F8,$79
- $D5A2 DEFB $E0,$0F,$C3,$9F,$80,$1E,$F0,$7E
- $D5AA DEFB $03,$F0,$03,$FF,$8F,$83,$FE,$00
- $D5B2 DEFB $7C,$03,$F1,$FF,$C1,$07,$80,$3E
- $D5BA DEFB $2F,$F8,$5F,$E0,$0F,$83,$BF,$06
- $D5C2 DEFB $7C,$0F,$E0,$FF,$C1,$FF,$01,$FC
- $D5CA DEFB $1F,$F0,$7B,$E0,$FB,$07,$FC,$1F
- $D5D2 DEFB $B0,$3E,$83,$FF,$03,$FD,$0D,$20
- $D5DA DEFB $FD,$81,$F6,$03,$C0,$7F,$E0,$FD
- $D5E2 DEFB $01,$F0,$3E,$F0,$7E,$C0,$F8,$1F
- $D5EA DEFB $F8,$3F,$E0,$3C,$07,$FC,$1F,$BC
- $D5F2 DEFB $1E,$07,$BC,$0F,$94,$0F,$83,$DF
- $D5FA DEFB $07,$DE,$0F,$03,$CF,$03,$CB,$0F
- $D602 DEFB $83,$C7,$83,$FF,$03,$03,$C3,$83
- $D60A DEFB $F2,$03,$07,$87,$83,$FE,$06,$0F
- $D612 DEFB $DF,$07,$F8,$0C,$1F,$BE,$0F,$F8
- $D61A DEFB $7C,$3E,$3C,$1F,$F0,$F0,$7C,$78
- $D622 DEFB $7F,$E0,$E0,$F9,$E0,$FF,$81,$C3
- $D62A DEFB $C3,$C3,$9F,$03,$0F,$0F,$07,$1F
- $D632 DEFB $0C,$1F,$00,$1F,$F8,$78,$7F,$F8
- $D63A DEFB $37,$F0,$60,$FF,$E0,$0F,$C0,$87
- $D642 DEFB $87,$83,$0F,$DE,$1F,$FE,$00,$3F
- $D64A DEFB $50,$7F,$F8,$01,$F8,$03,$E0,$FF
- $D652 DEFB $E0,$7E,$00,$07,$FF,$C0,$F8,$00
- $D65A DEFB $FF,$FF,$C0,$E0,$21,$F9,$FF,$C0
- $D662 DEFB $00,$0F,$FC,$7F,$08,$00,$3F,$3C
- $D66A DEFB $FC,$00,$78,$3F,$F9,$FF,$00,$00
- $D672 DEFB $7F,$C7,$FF,$00,$0F,$DF,$FF,$FF
- $D67A DEFB $00,$0F,$E7,$FE,$1F,$80,$1F,$C0
- $D682 DEFB $FF,$03,$80,$07,$E0,$FE,$07,$00
- $D68A DEFB $07,$F0,$FE,$00,$00,$03,$FE,$FE
- $D692 DEFB $78,$00,$01,$FF,$FF,$E0,$00,$00
- $D69A DEFB $7F,$FF,$F8,$00,$00,$7F,$FF,$F8
- $D6A2 DEFB $00,$1C,$1F,$FF,$FC,$00,$3F,$01
- $D6AA DEFB $FF,$80,$00,$00,$00,$7F,$FF,$C0
- $D6B2 DEFB $00,$00,$3F,$FF,$FC,$00,$00,$3F
- $D6BA DEFB $F8,$3F,$E0,$00,$7F,$F0,$7F,$C0
- $D6C2 DEFB $00,$BF,$ED,$BF,$80,$01,$BF,$C0
- $D6CA DEFB $7F,$00,$07,$FC,$49,$FF,$20,$03
- $D6D2 DEFB $FE,$01,$FE,$00,$03,$A2,$D2,$FD
- $D6DA DEFB $87,$80,$27,$C0,$FF,$81,$6F,$06
- $D6E2 DEFB $BC,$1C,$D8,$00,$DD,$59,$4F,$80
- $D6EA DEFB $49,$C1,$FF,$49,$EC,$01,$F4,$9B
- $D6F2 DEFB $CD,$8C,$04,$02,$FE,$87,$FE,$00
- $D6FA DEFB $FF,$E0,$B6,$40,$E0,$FF,$F0,$00
- $D702 DEFB $79,$F1,$80,$1F,$0F,$FF,$F0,$F0
- $D70A DEFB $B0,$C3,$FF,$0E,$04,$1F,$3E,$FB
- $D712 DEFB $E0,$03,$EF,$9C,$3F,$E0,$F9,$C3
- $D71A DEFB $0F,$3E,$1C,$F0,$C3,$C7,$0F,$3C
- $D722 DEFB $71,$E1,$83,$9E,$18,$78,$61,$CF
- $D72A DEFB $84,$3C,$30,$E7,$C0,$1E,$18,$73
- $D732 DEFB $E1,$0F,$1C,$39,$F0,$07,$8C,$1D
- $D73A DEFB $F8,$07,$C4,$0F,$F8,$07,$E0,$0F
- $D742 DEFB $F8,$07,$F4,$0F,$F8,$07,$E0,$0F
- $D74A DEFB $F0,$0F,$C0,$1F,$F0,$0F,$C0,$1F
- $D752 DEFB $F0,$3F,$80,$3F,$E0,$7F,$00,$7F
- $D75A DEFB $C0,$FE,$00,$FF,$03,$FC,$01,$FE
- $D762 DEFB $0F,$F0,$07,$F8,$1F,$E0,$1F,$E0
- $D76A DEFB $7F,$80,$3F,$C1,$FE,$00,$FE,$0F
- $D772 DEFB $F8,$07,$38,$3F,$C0,$3C,$60,$FF
- $D77A DEFB $00,$F1,$83,$FC,$03,$C6,$0F,$F0
- $D782 DEFB $0F,$00,$3F,$C0,$3F,$C0,$FF,$00
- $D78A DEFB $EF,$03,$F8,$03,$B8,$1F,$E0,$1D
- $D792 DEFB $E0,$7F,$00,$77,$03,$FC,$03,$DC
- $D79A DEFB $1F,$E0,$0E,$F0,$7F,$80,$7B,$83
- $D7A2 DEFB $FE,$01,$EE,$07,$F0,$07,$38,$3F
- $D7AA DEFB $C0,$1D,$E0,$BF,$20,$E7,$05,$F8
- $D7B2 DEFB $03,$B8,$27,$C0,$1D,$C0,$3F,$00
- $D7BA DEFB $F7,$04,$F8,$03,$BC,$23,$C0,$1D
- $D7C2 DEFB $E0,$1F,$00,$FF,$00,$F8,$03,$F8
- $D7CA DEFB $07,$C0,$1F,$E0,$3F,$80,$FF,$01
- $D7D2 DEFB $FF,$07,$F0,$0F,$F0,$1F,$80,$7F
- $D7DA DEFB $80,$FE,$07,$F8,$07,$F0,$3F,$C0
- $D7E2 DEFB $3F,$80,$7C,$01,$FC,$03,$EE,$1F
- $D7EA DEFB $E0,$1E,$E1,$CF,$30,$03,$00,$FF
- $D7F2 DEFB $10,$31,$0F,$FC,$01,$E8,$1F,$80
- $D7FA DEFB $3F,$C0,$7F,$00,$FF,$00,$F8,$07
- $D802 DEFB $FC,$01,$E0,$1B,$F8,$00,$00,$4F
- $D80A DEFB $E1,$C0,$00,$7F,$0F,$E0,$0F,$F8
- $D812 DEFB $3F,$E0,$3F,$E0,$1F,$80,$7F,$00
- $D81A DEFB $7F,$00,$FE,$01,$FE,$01,$E0,$0F
- $D822 DEFB $F0,$87,$08,$7B,$83,$38,$03,$FC
- $D82A DEFB $0F,$E0,$1F,$E0,$1F,$80,$7F,$80
- $D832 DEFB $FE,$01,$FE,$03,$F8,$0F,$F8,$1F
- $D83A DEFB $C0,$3F,$C0,$FF,$01,$FE,$07,$F8
- $D842 DEFB $07,$F0,$1F,$E0,$3F,$80,$7F,$01
- $D84A DEFB $FC,$03,$F8,$0F,$F0,$0F,$E0,$1F
- $D852 DEFB $C0,$3F,$80,$7F,$80,$7F,$80,$7F
- $D85A DEFB $01,$FC,$01,$FC,$0F,$F0,$0F,$E0
- $D862 DEFB $3F,$80,$7F,$81,$FE,$01,$F8,$0F
- $D86A DEFB $F0,$0F,$C0,$7F,$80,$7F,$00,$FE
- $D872 DEFB $01,$FC,$03,$F8,$07,$E0,$1F,$C0
- $D87A DEFB $3F,$00,$FE,$01,$FC,$07,$F0,$0F
- $D882 DEFB $F0,$1F,$C0,$7F,$C0,$7F,$00,$FE
- $D88A DEFB $01,$FE,$07,$F8,$0F,$F0,$0F,$C0
- $D892 DEFB $3F,$C0,$FE,$03,$FE,$0F,$F0,$0F
- $D89A DEFB $C0,$7F,$80,$FE,$01,$FE,$03,$FC
- $D8A2 DEFB $0F,$F0,$0F,$F0,$1F,$E0,$3F,$80
- $D8AA DEFB $7F,$81,$FE,$03,$FC,$07,$F0,$1F
- $D8B2 DEFB $C0,$3F,$80,$FF,$80,$7E,$01,$FE
- $D8BA DEFB $01,$FC,$07,$F8,$07,$FC,$03,$FC
- $D8C2 DEFB $03,$F8,$0F,$F0,$07,$E0,$3F,$E0
- $D8CA DEFB $1F,$C0,$F8,$3F,$E0,$FF,$00,$FF
- $D8D2 DEFB $81,$FE,$03,$FC,$03,$FC,$07,$F8
- $D8DA DEFB $0F,$E0,$1F,$F0,$1F,$C0,$3F,$C0
- $D8E2 DEFB $1F,$F0,$FF,$FE,$3F,$FF,$0F,$FC
- $D8EA DEFB $0F,$FC,$1F,$F0,$3F,$E0,$3F,$C0
- $D8F2 DEFB $7F,$80,$FF,$01,$FC,$07,$FC,$07
- $D8FA DEFB $F0,$1F,$C0,$3F,$C0,$7E,$01,$F9
- $D902 DEFB $4F,$5C,$07,$01,$FF,$01,$F8,$03
- $D90A DEFB $F8,$07,$F8,$07,$C0,$3F,$F0,$01
- $D912 DEFB $E1,$7F,$C0,$0F,$F9,$FF,$80,$3F
- $D91A DEFB $F0,$FF,$00,$7F,$C1,$FC,$01,$FF
- $D922 DEFB $00,$F1,$07,$FE,$03,$C4,$3F,$F0
- $D92A DEFB $8F,$00,$FF,$C0,$7C,$03,$FF,$01
- $D932 DEFB $F1,$0F,$FC,$0F,$C0,$3F,$F0,$3E
- $D93A DEFB $00,$7B,$80,$F8,$03,$FE,$07,$E2
- $D942 DEFB $1F,$F8,$1F,$00,$7F,$C0,$FC,$03
- $D94A DEFB $EC,$0F,$E0,$1F,$A0,$7F,$00,$FD
- $D952 DEFB $03,$FC,$03,$F4,$1F,$C0,$1F,$60
- $D95A DEFB $FE,$05,$FA,$07,$F0,$4F,$90,$7F
- $D962 DEFB $00,$FD,$03,$F8,$07,$FE,$0F,$98
- $D96A DEFB $0F,$F8,$0F,$C0,$1F,$E0,$FE,$00
- $D972 DEFB $FF,$07,$F0,$07,$F8,$3F,$C0,$1F
- $D97A DEFB $F3,$FC,$01,$FF,$F3,$C0,$1F,$FF
- $D982 DEFB $0E,$38,$FF,$E0,$0F,$90,$FE,$01
- $D98A DEFB $FB,$07,$C0,$1F,$E0,$FC,$03,$F6
- $D992 DEFB $1F,$80,$3E,$C7,$F8,$E7,$08,$FF
- $D99A DEFB $0E,$E1,$1F,$E1,$DE,$23,$FC,$2B
- $D9A2 DEFB $C0,$3F,$87,$78,$07,$F0,$AF,$00
- $D9AA DEFB $EE,$18,$E1,$1C,$C3,$9C,$23,$98
- $D9B2 DEFB $63,$84,$63,$0C,$E1,$1C,$61,$9C
- $D9BA DEFB $23,$9C,$73,$84,$63,$8C,$71,$9C
- $D9C2 DEFB $61,$9C,$23,$8C,$33,$80,$73,$84
- $D9CA DEFB $F0,$0E,$E1,$9E,$03,$9C,$27,$80
- $D9D2 DEFB $77,$0C,$F0,$1F,$E1,$3C,$03,$FC
- $D9DA DEFB $27,$00,$7F,$00,$FA,$0F,$E0,$3F
- $D9E2 DEFB $81,$FC,$0F,$F0,$1F,$81,$FE,$03
- $D9EA DEFB $E0,$3F,$C0,$7C,$46,$F8,$0F,$98
- $D9F2 DEFB $CF,$31,$FA,$01,$F6,$3F,$50,$3F
- $D9FA DEFB $C6,$77,$03,$FC,$0E,$61,$3F,$C0
- $DA02 DEFB $F6,$73,$F8,$0E,$64,$7F,$80,$F7
- $DA0A DEFB $33,$FF,$0F,$23,$1D,$F1,$F8,$11
- $DA12 DEFB $DC,$CF,$E4,$77,$37,$F9,$99,$DC
- $DA1A DEFB $CE,$23,$73,$3B,$FE,$1E,$C4,$27
- $DA22 DEFB $E0,$BE,$00,$7E,$37,$C6,$67,$03
- $DA2A DEFB $FE,$07,$F0,$0F,$F8,$7F,$00,$FC
- $DA32 DEFB $07,$F0,$1C,$C0,$7C,$07,$F0,$6F
- $DA3A DEFB $00,$7F,$03,$F0,$1F,$C0,$3E,$03
- $DA42 DEFB $FC,$0F,$80,$7F,$80,$FC,$07,$E0
- $DA4A DEFB $0F,$E0,$FC,$03,$D8,$3F,$80,$F0
- $DA52 DEFB $0F,$F0,$1F,$01,$FC,$03,$E0,$3F
- $DA5A DEFB $80,$38,$07,$F0,$0E,$01,$FE,$1F
- $DA62 DEFB $C0,$1F,$C3,$FE,$03,$F8,$7F,$00
- $DA6A DEFB $FF,$07,$E0,$1F,$81,$FE,$01,$F8
- $DA72 DEFB $0F,$E0,$3F,$01,$FE,$07,$F0,$1F
- $DA7A DEFB $C0,$7F,$03,$F8,$03,$F0,$7F,$80
- $DA82 DEFB $3F,$9F,$FE,$00,$FF,$1F,$F0,$0F
- $DA8A DEFB $F3,$FE,$01,$FE,$7F,$F8,$07,$CC
- $DA92 DEFB $FF,$00,$F9,$0F,$F0,$1F,$71,$FE
- $DA9A DEFB $13,$C0,$7F,$80,$FC,$07,$F0,$0F
- $DAA2 DEFB $E0,$FF,$01,$FE,$03,$E0,$1F,$C0
- $DAAA DEFB $7E,$01,$FC,$0F,$C0,$1F,$80,$F8
- $DAB2 DEFB $07,$F0,$3F,$00,$FE,$07,$E0,$1F
- $DABA DEFB $C0,$FE,$03,$F8,$1F,$C0,$3F,$80
- $DAC2 DEFB $F8,$03,$F8,$07,$00,$7E,$0F,$C0
- $DACA DEFB $1F,$01,$F0,$0F,$E0,$3F,$01,$FC
- $DAD2 DEFB $07,$F0,$0F,$C0,$FF,$01,$F8,$1F
- $DADA DEFB $C0,$3F,$03,$F8,$0F,$E0,$7F,$01
- $DAE2 DEFB $F8,$0F,$E0,$3F,$81,$FC,$07,$F0
- $DAEA DEFB $7F,$00,$FA,$0F,$E0,$3F,$C1,$FC
- $DAF2 DEFB $03,$F0,$3F,$80,$7F,$07,$F0,$1F
- $DAFA DEFB $E0,$FE,$01,$F8,$1F,$C0,$3F,$87
- $DB02 DEFB $F8,$0F,$A0,$FF,$01,$F0,$1F,$C0
- $DB0A DEFB $3F,$01,$F8,$07,$F0,$3F,$80,$FC
- $DB12 DEFB $0F,$F0,$1F,$00,$7C,$07,$F0,$1F
- $DB1A DEFB $80,$7F,$07,$F0,$1F,$C0,$7E,$03
- $DB22 DEFB $FC,$0F,$E0,$3F,$C0,$FE,$01,$FF
- $DB2A DEFB $FF,$80,$00,$0F,$FC,$00,$11,$E0
- $DB32 DEFB $07,$FC,$C0,$1F,$FC,$01,$FF,$10
- $DB3A DEFB $27,$FF,$00,$FF,$80,$19,$FF,$8C
- $DB42 DEFB $3F,$C0,$1C,$FB,$CE,$3C,$E1,$0E
- $DB4A DEFB $F9,$87,$1A,$F0,$07,$78,$C7,$1C
- $DB52 DEFB $70,$87,$78,$C7,$1C,$F0,$07,$78
- $DB5A DEFB $47,$9C,$71,$0E,$70,$87,$1C,$61
- $DB62 DEFB $0E,$70,$87,$3C,$E1,$1E,$E1,$87
- $DB6A DEFB $38,$C3,$1D,$E1,$0F,$79,$C2,$3D
- $DB72 DEFB $C3,$8E,$7B,$C2,$3F,$C5,$CF,$73
- $DB7A DEFB $84,$3F,$84,$0E,$F3,$84,$3F,$88
- $DB82 DEFB $CE,$F3,$80,$3F,$A0,$CF,$79,$C0
- $DB8A DEFB $3B,$84,$67,$19,$C2,$19,$C0,$33
- $DB92 DEFB $9C,$E1,$0C,$E3,$19,$8F,$78,$06
- $DB9A DEFB $70,$8C,$63,$CE,$51,$9C,$21,$0C
- $DBA2 DEFB $73,$10,$F7,$B8,$01,$0E,$70,$0F
- $DBAA DEFB $FC,$01,$3D,$EC,$01,$DE,$02,$F9
- $DBB2 DEFB $1E,$F2,$9C,$B5,$2F,$D8,$77,$90
- $DBBA DEFB $07,$F9,$0C,$47,$B8,$86,$39,$08
- $DBC2 DEFB $63,$1E,$C2,$18,$A4,$21,$26,$37
- $DBCA DEFB $BC,$03,$7B,$C6,$04,$3F,$00,$43
- $DBD2 DEFB $FE,$80,$66,$39,$08,$43,$D8,$86
- $DBDA DEFB $F6,$1D,$84,$21,$78,$4A,$78,$8C
- $DBE2 DEFB $E7,$08,$42,$3F,$FC,$23,$F8,$00
- $DBEA DEFB $13,$FC,$07,$44,$3F,$BD,$C0,$33
- $DBF2 DEFB $FC,$C0,$87,$F7,$00,$46,$33,$9C
- $DBFA DEFB $C6,$3F,$F8,$00,$7F,$F8,$07,$31
- $DC02 DEFB $9F,$E0,$21,$9C,$E6,$20,$03,$FF
- $DC0A DEFB $F4,$00,$3F,$FC,$00,$77,$FE,$80
- $DC12 DEFB $01,$FF,$18,$C2,$18,$D6,$F7,$18
- $DC1A DEFB $00,$0F,$F0,$01,$09,$FF,$00,$00
- $DC22 DEFB $CF,$FA,$00,$04,$FF,$79,$08,$C7
- $DC2A DEFB $33,$00,$0F,$C8,$03,$FF,$80,$07
- $DC32 DEFB $FF,$80,$1F,$C4,$3F,$F9,$00,$07
- $DC3A DEFB $FB,$00,$FF,$C0,$0B,$FF,$00,$00
- $DC42 DEFB $FF,$FC,$00,$09,$99,$FE,$40,$11
- $DC4A DEFB $DC,$C6,$7F,$90,$0E,$01,$FF,$FC
- $DC52 DEFB $00,$3F,$F0,$07,$FF,$00,$0D,$FF
- $DC5A DEFB $E1,$18,$00,$0F,$FF,$FE,$01,$F0
- $DC62 DEFB $1F,$EC,$03,$00,$0F,$F8,$00,$FF
- $DC6A DEFB $F8,$00,$7F,$F8,$00,$FF,$E0,$0F
- $DC72 DEFB $C0,$07,$FF,$00,$3F,$F8,$00,$3F
- $DC7A DEFB $F8,$00,$01,$80,$FF,$80,$1F,$F0
- $DC82 DEFB $03,$FE,$00,$0F,$F8,$03,$FF,$80
- $DC8A DEFB $01,$FF,$C0,$3E,$80,$03,$FF,$C0
- $DC92 DEFB $07,$FF,$E6,$3B,$80,$3F,$C0,$00
- $DC9A DEFB $19,$FF,$FC,$03,$FF,$F0,$00,$FF
- $DCA2 DEFB $E0,$03,$FF,$C0,$07,$FC,$07,$F0
- $DCAA DEFB $00,$FF,$C0,$18,$EF,$E0,$1F,$F8
- $DCB2 DEFB $00,$FF,$31,$FF,$E3,$70,$1F,$E0
- $DCBA DEFB $1F,$F0,$00,$0F,$F8,$00,$07,$FC
- $DCC2 DEFB $01,$F8,$00,$FF,$80,$07,$FC,$00
- $DCCA DEFB $7F,$F8,$00,$FF,$00,$1F,$FC,$00
- $DCD2 DEFB $3F,$FF,$FF,$FF,$00,$FF,$80,$3F
- $DCDA DEFB $FF,$E0,$1F,$FF,$FF,$FF,$FC,$FF
- $DCE2 DEFB $FF,$FF,$FF,$FC,$07,$FF,$FF,$9F
- $DCEA DEFB $FF,$FF,$FC,$0F,$FF,$FF,$FF,$FF
- $DCF2 DEFB $FF,$FF,$FC,$FF,$FF,$FF,$FF,$F8
- $DCFA DEFB $1F,$FF,$FF,$FF,$FF,$E7
+ $D29A DEFB $C1,$2B,$E1,$1F,$E0,$C5
+
+; Data block at D2A0
+b$D2A0 DEFB $1F,$C5,$1F,$E1,$C5,$1F,$C1,$2B
+ $D2A8 DEFB $E1,$1F,$E0,$C5,$1F,$C5,$1F,$E1
+ $D2B0 DEFB $C5,$1F,$C1,$2B,$E7,$C7,$2B,$87
+ $D2B8 DEFB $8A,$88,$02,$04,$82,$DF,$00,$11
+ $D2C0 DEFB $07,$E1,$1D,$E0,$C5,$1D,$C5,$1D
+ $D2C8 DEFB $E1,$C5,$1D,$C1,$29,$E1,$1D,$E0
+ $D2D0 DEFB $C5,$1D,$C5,$1D,$E1,$C5,$1D,$C1
+ $D2D8 DEFB $29,$E1,$1D,$E0,$C5,$1D,$C5,$1D
+ $D2E0 DEFB $E1,$C5,$1D,$C1,$29,$E7,$C7,$29
+ $D2E8 DEFB $87,$8A,$88,$02,$04,$82,$DF,$00
+ $D2F0 DEFB $51,$07,$E0,$3C,$39,$37,$E1,$3C
+ $D2F8 DEFB $E0,$39,$E1,$37,$E0,$3C,$39,$37
+ $D300 DEFB $E1,$3C,$E0,$39,$E1,$37,$E0,$C8
+ $D308 DEFB $3C,$C8,$39,$C8,$37,$E1,$C8,$3C
+ $D310 DEFB $E0,$C8,$37,$E1,$C8,$34,$E7,$C8
+ $D318 DEFB $30,$87,$8A,$88,$02,$04,$82,$DF
+ $D320 DEFB $00,$51,$07,$E0,$31,$2F,$2D,$E1
+ $D328 DEFB $31,$E0,$2F,$E1,$2D,$E0,$31,$2F
+
+; Data block at D330
+b$D330 DEFB $2D,$E1,$31,$E0,$2F,$E1,$2D,$E0
+ $D338 DEFB $C8,$31,$C8,$2F,$C8,$2D,$E1,$C8
+ $D340 DEFB $31,$E0,$C8,$2F,$E1,$C8,$31,$E7
+ $D348 DEFB $C8,$2D,$87,$8A,$88,$02,$04,$82
+ $D350 DEFB $DF,$00,$71,$05,$E5,$37,$E1,$36
+ $D358 DEFB $E5,$37,$E1,$36,$E0,$C8,$37,$C8
+ $D360 DEFB $36,$C8,$34,$E1,$C8,$37,$E0,$C8
+ $D368 DEFB $36,$E1,$C8,$34,$E7,$C8,$32,$87
+ $D370 DEFB $8A,$88,$02,$04,$82,$DF,$00,$71
+ $D378 DEFB $05,$E5,$35,$E1,$34,$E5,$35,$E1
+ $D380 DEFB $34,$E0,$C8,$35,$C8,$34,$C8,$32
+ $D388 DEFB $E1,$C8,$35,$E0,$C8,$34,$E1,$C8
+ $D390 DEFB $32,$E7,$C8,$30,$87,$DF,$00,$F1
+ $D398 DEFB $01,$EF,$80,$80,$87,$BD,$88,$02
+ $D3A0 DEFB $04,$82,$DF,$00,$41,$05,$8A,$E1
+ $D3A8 DEFB $18,$18,$18,$18,$18,$18,$18,$18
+ $D3B0 DEFB $1F,$1F,$1F,$1F,$1F,$1F,$1F,$1F
+ $D3B8 DEFB $18,$18,$18,$18,$18,$18,$18,$18
+ $D3C0 DEFB $DF,$00,$F1,$04,$EF,$18,$87,$88
+ $D3C8 DEFB $02,$04,$82,$DF,$00,$61,$05,$8A
+ $D3D0 DEFB $E1,$24,$24,$EB,$24,$E1,$26,$26
+ $D3D8 DEFB $EB,$26,$E1,$2B,$2B,$EB,$24,$DF
+ $D3E0 DEFB $00,$F1,$05,$EF,$24,$87,$88,$02
+ $D3E8 DEFB $04,$82,$DF,$00,$61,$05,$8A,$E1
+ $D3F0 DEFB $27,$27,$EB,$29,$E1,$2A,$2A,$EB
+ $D3F8 DEFB $2B,$E1,$2F,$2F,$EB,$30,$DF,$00
+ $D400 DEFB $F1,$05,$EF,$C3,$30,$87,$00,$00
+ $D408 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D410 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D418 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D420 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D428 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D430 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D438 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D440 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D448 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D450 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D458 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D460 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D468 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D470 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D478 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D480 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D488 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D490 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D498 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D4A0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D4A8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $D4B0 DEFB $00,$00,$00,$00,$00,$00,$DB,$02
+ $D4B8 DEFB $4D,$00,$E8,$57,$00,$00,$77,$3E
+ $D4C0 DEFB $F3,$0D,$CE,$0B,$EF,$50,$DB,$02
+ $D4C8 DEFB $4D,$00,$F9,$56,$00,$00,$CE,$0B
+ $D4D0 DEFB $FC,$50,$05,$17,$DC,$0A,$DB,$02
+ $D4D8 DEFB $4D,$00,$DB,$02,$4D,$00,$F1,$5C
+ $D4E0 DEFB $06,$03,$07,$5C,$C0,$57,$71,$0E
+ $D4E8 DEFB $F3,$0D,$DB,$02,$4D,$00,$FF,$FF
+ $D4F0 DEFB $0E,$01,$00,$00,$51,$00,$92,$09
+ $D4F8 DEFB $3F,$05,$76,$1B,$03,$13,$00,$3E
+ $D500 DEFB $00,$00,$07,$FE,$00,$07,$F8,$0E
+ $D508 DEFB $07,$E0,$01,$FF,$00,$1F,$F0,$3F
+ $D510 DEFB $07,$E0,$07,$FC,$00,$7F,$81,$FC
+ $D518 DEFB $0F,$00,$7F,$C0,$0F,$E0,$3F,$C1
+ $D520 DEFB $E0,$1F,$F8,$07,$F0,$3F,$81,$F0
+ $D528 DEFB $0F,$C0,$03,$F0,$1F,$E0,$F8,$1F
+ $D530 DEFB $80,$07,$E0,$7F,$81,$F0,$3E,$00
+ $D538 DEFB $1F,$81,$FC,$07,$83,$E1,$E1,$F8
+ $D540 DEFB $1F,$F0,$10,$7E,$24,$7F,$03,$FC
+ $D548 DEFB $00,$0F,$0C,$0F,$81,$FE,$0E,$07
+ $D550 DEFB $C2,$0F,$C0,$1F,$83,$03,$C3,$07
+ $D558 DEFB $E0,$0F,$87,$03,$C7,$07,$C0,$1F
+ $D560 DEFB $80,$0F,$BC,$1F,$F0,$3F,$E0,$3C
+ $D568 DEFB $F0,$7F,$E0,$FF,$C0,$FF,$83,$BF
+ $D570 DEFB $02,$1E,$2E,$FC,$00,$F8,$01,$F0
+ $D578 DEFB $00,$7F,$F0,$FC,$00,$FC,$07,$F0
+ $D580 DEFB $7F,$7E,$00,$38,$1F,$F8,$07,$F8
+ $D588 DEFB $00,$00,$8F,$E0,$07,$80,$0F,$02
+ $D590 DEFB $3F,$80,$7C,$1C,$00,$7F,$FF,$C0
+ $D598 DEFB $07,$C0,$87,$C7,$87,$8E,$1C,$3F
+ $D5A0 DEFB $F8,$79,$E0,$0F,$C3,$9F,$80,$1E
+ $D5A8 DEFB $F0,$7E,$03,$F0,$03,$FF,$8F,$83
+ $D5B0 DEFB $FE,$00,$7C,$03,$F1,$FF,$C1,$07
+ $D5B8 DEFB $80,$3E,$2F,$F8,$5F,$E0,$0F,$83
+ $D5C0 DEFB $BF,$06,$7C,$0F,$E0,$FF,$C1,$FF
+ $D5C8 DEFB $01,$FC,$1F,$F0,$7B,$E0,$FB,$07
+ $D5D0 DEFB $FC,$1F,$B0,$3E,$83,$FF,$03,$FD
+ $D5D8 DEFB $0D,$20,$FD,$81,$F6,$03,$C0,$7F
+ $D5E0 DEFB $E0,$FD,$01,$F0,$3E,$F0,$7E,$C0
+ $D5E8 DEFB $F8,$1F,$F8,$3F,$E0,$3C,$07,$FC
+ $D5F0 DEFB $1F,$BC,$1E,$07,$BC,$0F,$94,$0F
+ $D5F8 DEFB $83,$DF,$07,$DE,$0F,$03,$CF,$03
+ $D600 DEFB $CB,$0F,$83,$C7,$83,$FF,$03,$03
+ $D608 DEFB $C3,$83,$F2,$03,$07,$87,$83,$FE
+ $D610 DEFB $06,$0F,$DF,$07,$F8,$0C,$1F,$BE
+ $D618 DEFB $0F,$F8,$7C,$3E,$3C,$1F,$F0,$F0
+ $D620 DEFB $7C,$78,$7F,$E0,$E0,$F9,$E0,$FF
+ $D628 DEFB $81,$C3,$C3,$C3,$9F,$03,$0F,$0F
+ $D630 DEFB $07,$1F,$0C,$1F,$00,$1F,$F8,$78
+ $D638 DEFB $7F,$F8,$37,$F0,$60,$FF,$E0,$0F
+ $D640 DEFB $C0,$87,$87,$83,$0F,$DE,$1F,$FE
+ $D648 DEFB $00,$3F,$50,$7F,$F8,$01,$F8,$03
+ $D650 DEFB $E0,$FF,$E0,$7E,$00,$07,$FF,$C0
+ $D658 DEFB $F8,$00,$FF,$FF,$C0,$E0,$21,$F9
+ $D660 DEFB $FF,$C0,$00,$0F,$FC,$7F,$08,$00
+ $D668 DEFB $3F,$3C,$FC,$00,$78,$3F,$F9,$FF
+ $D670 DEFB $00,$00,$7F,$C7,$FF,$00,$0F,$DF
+ $D678 DEFB $FF,$FF,$00,$0F,$E7,$FE,$1F,$80
+ $D680 DEFB $1F,$C0,$FF,$03,$80,$07,$E0,$FE
+ $D688 DEFB $07,$00,$07,$F0,$FE,$00,$00,$03
+ $D690 DEFB $FE,$FE,$78,$00,$01,$FF,$FF,$E0
+ $D698 DEFB $00,$00,$7F,$FF,$F8,$00,$00,$7F
+ $D6A0 DEFB $FF,$F8,$00,$1C,$1F,$FF,$FC,$00
+ $D6A8 DEFB $3F,$01,$FF,$80,$00,$00,$00,$7F
+ $D6B0 DEFB $FF,$C0,$00,$00,$3F,$FF,$FC,$00
+ $D6B8 DEFB $00,$3F,$F8,$3F,$E0,$00,$7F,$F0
+ $D6C0 DEFB $7F,$C0,$00,$BF,$ED,$BF,$80,$01
+ $D6C8 DEFB $BF,$C0,$7F,$00,$07,$FC,$49,$FF
+ $D6D0 DEFB $20,$03,$FE,$01,$FE,$00,$03,$A2
+ $D6D8 DEFB $D2,$FD,$87,$80,$27,$C0,$FF,$81
+ $D6E0 DEFB $6F,$06,$BC,$1C,$D8,$00,$DD,$59
+ $D6E8 DEFB $4F,$80,$49,$C1,$FF,$49,$EC,$01
+ $D6F0 DEFB $F4,$9B,$CD,$8C,$04,$02,$FE,$87
+ $D6F8 DEFB $FE,$00,$FF,$E0,$B6,$40,$E0,$FF
+ $D700 DEFB $F0,$00,$79,$F1,$80,$1F,$0F,$FF
+ $D708 DEFB $F0,$F0,$B0,$C3,$FF,$0E,$04,$1F
+ $D710 DEFB $3E,$FB,$E0,$03,$EF,$9C,$3F,$E0
+ $D718 DEFB $F9,$C3,$0F,$3E,$1C,$F0,$C3,$C7
+ $D720 DEFB $0F,$3C,$71,$E1,$83,$9E,$18,$78
+ $D728 DEFB $61,$CF,$84,$3C,$30,$E7,$C0,$1E
+ $D730 DEFB $18,$73,$E1,$0F,$1C,$39,$F0,$07
+ $D738 DEFB $8C,$1D,$F8,$07,$C4,$0F,$F8,$07
+ $D740 DEFB $E0,$0F,$F8,$07,$F4,$0F,$F8,$07
+ $D748 DEFB $E0,$0F,$F0,$0F,$C0,$1F,$F0,$0F
+ $D750 DEFB $C0,$1F,$F0,$3F,$80,$3F,$E0,$7F
+ $D758 DEFB $00,$7F,$C0,$FE,$00,$FF,$03,$FC
+ $D760 DEFB $01,$FE,$0F,$F0,$07,$F8,$1F,$E0
+ $D768 DEFB $1F,$E0,$7F,$80,$3F,$C1,$FE,$00
+ $D770 DEFB $FE,$0F,$F8,$07,$38,$3F,$C0,$3C
+ $D778 DEFB $60,$FF,$00,$F1,$83,$FC,$03,$C6
+ $D780 DEFB $0F,$F0,$0F,$00,$3F,$C0,$3F,$C0
+ $D788 DEFB $FF,$00,$EF,$03,$F8,$03,$B8,$1F
+ $D790 DEFB $E0,$1D,$E0,$7F,$00,$77,$03,$FC
+ $D798 DEFB $03,$DC,$1F,$E0,$0E,$F0,$7F,$80
+ $D7A0 DEFB $7B,$83,$FE,$01,$EE,$07,$F0,$07
+ $D7A8 DEFB $38,$3F,$C0,$1D,$E0,$BF,$20,$E7
+ $D7B0 DEFB $05,$F8,$03,$B8,$27,$C0,$1D,$C0
+ $D7B8 DEFB $3F,$00,$F7,$04,$F8,$03,$BC,$23
+ $D7C0 DEFB $C0,$1D,$E0,$1F,$00,$FF,$00,$F8
+ $D7C8 DEFB $03,$F8,$07,$C0,$1F,$E0,$3F,$80
+ $D7D0 DEFB $FF,$01,$FF,$07,$F0,$0F,$F0,$1F
+ $D7D8 DEFB $80,$7F,$80,$FE,$07,$F8,$07,$F0
+ $D7E0 DEFB $3F,$C0,$3F,$80,$7C,$01,$FC,$03
+ $D7E8 DEFB $EE,$1F,$E0,$1E,$E1,$CF,$30,$03
+ $D7F0 DEFB $00,$FF,$10,$31,$0F,$FC,$01,$E8
+ $D7F8 DEFB $1F,$80,$3F,$C0,$7F,$00,$FF,$00
+ $D800 DEFB $F8,$07,$FC,$01,$E0,$1B,$F8,$00
+ $D808 DEFB $00,$4F,$E1,$C0,$00,$7F,$0F,$E0
+ $D810 DEFB $0F,$F8,$3F,$E0,$3F,$E0,$1F,$80
+ $D818 DEFB $7F,$00,$7F,$00,$FE,$01,$FE,$01
+ $D820 DEFB $E0,$0F,$F0,$87,$08,$7B,$83,$38
+ $D828 DEFB $03,$FC,$0F,$E0,$1F,$E0,$1F,$80
+ $D830 DEFB $7F,$80,$FE,$01,$FE,$03,$F8,$0F
+ $D838 DEFB $F8,$1F,$C0,$3F,$C0,$FF,$01,$FE
+ $D840 DEFB $07,$F8,$07,$F0,$1F,$E0,$3F,$80
+ $D848 DEFB $7F,$01,$FC,$03,$F8,$0F,$F0,$0F
+ $D850 DEFB $E0,$1F,$C0,$3F,$80,$7F,$80,$7F
+ $D858 DEFB $80,$7F,$01,$FC,$01,$FC,$0F,$F0
+ $D860 DEFB $0F,$E0,$3F,$80,$7F,$81,$FE,$01
+ $D868 DEFB $F8,$0F,$F0,$0F,$C0,$7F,$80,$7F
+ $D870 DEFB $00,$FE,$01,$FC,$03,$F8,$07,$E0
+ $D878 DEFB $1F,$C0,$3F,$00,$FE,$01,$FC,$07
+ $D880 DEFB $F0,$0F,$F0,$1F,$C0,$7F,$C0,$7F
+ $D888 DEFB $00,$FE,$01,$FE,$07,$F8,$0F,$F0
+ $D890 DEFB $0F,$C0,$3F,$C0,$FE,$03,$FE,$0F
+ $D898 DEFB $F0,$0F,$C0,$7F,$80,$FE,$01,$FE
+ $D8A0 DEFB $03,$FC,$0F,$F0,$0F,$F0,$1F,$E0
+ $D8A8 DEFB $3F,$80,$7F,$81,$FE,$03,$FC,$07
+ $D8B0 DEFB $F0,$1F,$C0,$3F,$80,$FF,$80,$7E
+ $D8B8 DEFB $01,$FE,$01,$FC,$07,$F8,$07,$FC
+ $D8C0 DEFB $03,$FC,$03,$F8,$0F,$F0,$07,$E0
+ $D8C8 DEFB $3F,$E0,$1F,$C0,$F8,$3F,$E0,$FF
+ $D8D0 DEFB $00,$FF,$81,$FE,$03,$FC,$03,$FC
+ $D8D8 DEFB $07,$F8,$0F,$E0,$1F,$F0,$1F,$C0
+ $D8E0 DEFB $3F,$C0,$1F,$F0,$FF,$FE,$3F,$FF
+ $D8E8 DEFB $0F,$FC,$0F,$FC,$1F,$F0,$3F,$E0
+ $D8F0 DEFB $3F,$C0,$7F,$80,$FF,$01,$FC,$07
+ $D8F8 DEFB $FC,$07,$F0,$1F,$C0,$3F,$C0,$7E
+ $D900 DEFB $01,$F9,$4F,$5C,$07,$01,$FF,$01
+ $D908 DEFB $F8,$03,$F8,$07,$F8,$07,$C0,$3F
+ $D910 DEFB $F0,$01,$E1,$7F,$C0,$0F,$F9,$FF
+ $D918 DEFB $80,$3F,$F0,$FF,$00,$7F,$C1,$FC
+ $D920 DEFB $01,$FF,$00,$F1,$07,$FE,$03,$C4
+ $D928 DEFB $3F,$F0,$8F,$00,$FF,$C0,$7C,$03
+ $D930 DEFB $FF,$01,$F1,$0F,$FC,$0F,$C0,$3F
+ $D938 DEFB $F0,$3E,$00,$7B,$80,$F8,$03,$FE
+ $D940 DEFB $07,$E2,$1F,$F8,$1F,$00,$7F,$C0
+ $D948 DEFB $FC,$03,$EC,$0F,$E0,$1F,$A0,$7F
+ $D950 DEFB $00,$FD,$03,$FC,$03,$F4,$1F,$C0
+ $D958 DEFB $1F,$60,$FE,$05,$FA,$07,$F0,$4F
+ $D960 DEFB $90,$7F,$00,$FD,$03,$F8,$07,$FE
+ $D968 DEFB $0F,$98,$0F,$F8,$0F,$C0,$1F,$E0
+ $D970 DEFB $FE,$00,$FF,$07,$F0,$07,$F8,$3F
+ $D978 DEFB $C0,$1F,$F3,$FC,$01,$FF,$F3,$C0
+ $D980 DEFB $1F,$FF,$0E,$38,$FF,$E0,$0F,$90
+ $D988 DEFB $FE,$01,$FB,$07,$C0,$1F,$E0,$FC
+ $D990 DEFB $03,$F6,$1F,$80,$3E,$C7,$F8,$E7
+ $D998 DEFB $08,$FF,$0E,$E1,$1F,$E1,$DE,$23
+ $D9A0 DEFB $FC,$2B,$C0,$3F,$87,$78,$07,$F0
+ $D9A8 DEFB $AF,$00,$EE,$18,$E1,$1C,$C3,$9C
+ $D9B0 DEFB $23,$98,$63,$84,$63,$0C,$E1,$1C
+ $D9B8 DEFB $61,$9C,$23,$9C,$73,$84,$63,$8C
+ $D9C0 DEFB $71,$9C,$61,$9C,$23,$8C,$33,$80
+ $D9C8 DEFB $73,$84,$F0,$0E,$E1,$9E,$03,$9C
+ $D9D0 DEFB $27,$80,$77,$0C,$F0,$1F,$E1,$3C
+ $D9D8 DEFB $03,$FC,$27,$00,$7F,$00,$FA,$0F
+ $D9E0 DEFB $E0,$3F,$81,$FC,$0F,$F0,$1F,$81
+ $D9E8 DEFB $FE,$03,$E0,$3F,$C0,$7C,$46,$F8
+ $D9F0 DEFB $0F,$98,$CF,$31,$FA,$01,$F6,$3F
+ $D9F8 DEFB $50,$3F,$C6,$77,$03,$FC,$0E,$61
+ $DA00 DEFB $3F,$C0,$F6,$73,$F8,$0E,$64,$7F
+ $DA08 DEFB $80,$F7,$33,$FF,$0F,$23,$1D,$F1
+ $DA10 DEFB $F8,$11,$DC,$CF,$E4,$77,$37,$F9
+ $DA18 DEFB $99,$DC,$CE,$23,$73,$3B,$FE,$1E
+ $DA20 DEFB $C4,$27,$E0,$BE,$00,$7E,$37,$C6
+ $DA28 DEFB $67,$03,$FE,$07,$F0,$0F,$F8,$7F
+ $DA30 DEFB $00,$FC,$07,$F0,$1C,$C0,$7C,$07
+ $DA38 DEFB $F0,$6F,$00,$7F,$03,$F0,$1F,$C0
+ $DA40 DEFB $3E,$03,$FC,$0F,$80,$7F,$80,$FC
+ $DA48 DEFB $07,$E0,$0F,$E0,$FC,$03,$D8,$3F
+ $DA50 DEFB $80,$F0,$0F,$F0,$1F,$01,$FC,$03
+ $DA58 DEFB $E0,$3F,$80,$38,$07,$F0,$0E,$01
+ $DA60 DEFB $FE,$1F,$C0,$1F,$C3,$FE,$03,$F8
+ $DA68 DEFB $7F,$00,$FF,$07,$E0,$1F,$81,$FE
+ $DA70 DEFB $01,$F8,$0F,$E0,$3F,$01,$FE,$07
+ $DA78 DEFB $F0,$1F,$C0,$7F,$03,$F8,$03,$F0
+ $DA80 DEFB $7F,$80,$3F,$9F,$FE,$00,$FF,$1F
+ $DA88 DEFB $F0,$0F,$F3,$FE,$01,$FE,$7F,$F8
+ $DA90 DEFB $07,$CC,$FF,$00,$F9,$0F,$F0,$1F
+ $DA98 DEFB $71,$FE,$13,$C0,$7F,$80,$FC,$07
+ $DAA0 DEFB $F0,$0F,$E0,$FF,$01,$FE,$03,$E0
+ $DAA8 DEFB $1F,$C0,$7E,$01,$FC,$0F,$C0,$1F
+ $DAB0 DEFB $80,$F8,$07,$F0,$3F,$00,$FE,$07
+ $DAB8 DEFB $E0,$1F,$C0,$FE,$03,$F8,$1F,$C0
+ $DAC0 DEFB $3F,$80,$F8,$03,$F8,$07,$00,$7E
+ $DAC8 DEFB $0F,$C0,$1F,$01,$F0,$0F,$E0,$3F
+ $DAD0 DEFB $01,$FC,$07,$F0,$0F,$C0,$FF,$01
+ $DAD8 DEFB $F8,$1F,$C0,$3F,$03,$F8,$0F,$E0
+ $DAE0 DEFB $7F,$01,$F8,$0F,$E0,$3F,$81,$FC
+ $DAE8 DEFB $07,$F0,$7F,$00,$FA,$0F,$E0,$3F
+ $DAF0 DEFB $C1,$FC,$03,$F0,$3F,$80,$7F,$07
+ $DAF8 DEFB $F0,$1F,$E0,$FE,$01,$F8,$1F,$C0
+ $DB00 DEFB $3F,$87,$F8,$0F,$A0,$FF,$01,$F0
+ $DB08 DEFB $1F,$C0,$3F,$01,$F8,$07,$F0,$3F
+ $DB10 DEFB $80,$FC,$0F,$F0,$1F,$00,$7C,$07
+ $DB18 DEFB $F0,$1F,$80,$7F,$07,$F0,$1F,$C0
+ $DB20 DEFB $7E,$03,$FC,$0F,$E0,$3F,$C0,$FE
+ $DB28 DEFB $01,$FF,$FF,$80,$00,$0F,$FC,$00
+ $DB30 DEFB $11,$E0,$07,$FC,$C0,$1F,$FC,$01
+ $DB38 DEFB $FF,$10,$27,$FF,$00,$FF,$80,$19
+ $DB40 DEFB $FF,$8C,$3F,$C0,$1C,$FB,$CE,$3C
+ $DB48 DEFB $E1,$0E,$F9,$87,$1A,$F0,$07,$78
+ $DB50 DEFB $C7,$1C,$70,$87,$78,$C7,$1C,$F0
+ $DB58 DEFB $07,$78,$47,$9C,$71,$0E,$70,$87
+ $DB60 DEFB $1C,$61,$0E,$70,$87,$3C,$E1,$1E
+ $DB68 DEFB $E1,$87,$38,$C3,$1D,$E1,$0F,$79
+ $DB70 DEFB $C2,$3D,$C3,$8E,$7B,$C2,$3F,$C5
+ $DB78 DEFB $CF,$73,$84,$3F,$84,$0E,$F3,$84
+ $DB80 DEFB $3F,$88,$CE,$F3,$80,$3F,$A0,$CF
+ $DB88 DEFB $79,$C0,$3B,$84,$67,$19,$C2,$19
+ $DB90 DEFB $C0,$33,$9C,$E1,$0C,$E3,$19,$8F
+ $DB98 DEFB $78,$06,$70,$8C,$63,$CE,$51,$9C
+ $DBA0 DEFB $21,$0C,$73,$10,$F7,$B8,$01,$0E
+ $DBA8 DEFB $70,$0F,$FC,$01,$3D,$EC,$01,$DE
+ $DBB0 DEFB $02,$F9,$1E,$F2,$9C,$B5,$2F,$D8
+ $DBB8 DEFB $77,$90,$07,$F9,$0C,$47,$B8,$86
+ $DBC0 DEFB $39,$08,$63,$1E,$C2,$18,$A4,$21
+ $DBC8 DEFB $26,$37,$BC,$03,$7B,$C6,$04,$3F
+ $DBD0 DEFB $00,$43,$FE,$80,$66,$39,$08,$43
+ $DBD8 DEFB $D8,$86,$F6,$1D,$84,$21,$78,$4A
+ $DBE0 DEFB $78,$8C,$E7,$08,$42,$3F,$FC,$23
+ $DBE8 DEFB $F8,$00,$13,$FC,$07,$44,$3F,$BD
+ $DBF0 DEFB $C0,$33,$FC,$C0,$87,$F7,$00,$46
+ $DBF8 DEFB $33,$9C,$C6,$3F,$F8,$00,$7F,$F8
+ $DC00 DEFB $07,$31,$9F,$E0,$21,$9C,$E6,$20
+ $DC08 DEFB $03,$FF,$F4,$00,$3F,$FC,$00,$77
+ $DC10 DEFB $FE,$80,$01,$FF,$18,$C2,$18,$D6
+ $DC18 DEFB $F7,$18,$00,$0F,$F0,$01,$09,$FF
+ $DC20 DEFB $00,$00,$CF,$FA,$00,$04,$FF,$79
+ $DC28 DEFB $08,$C7,$33,$00,$0F,$C8,$03,$FF
+ $DC30 DEFB $80,$07,$FF,$80,$1F,$C4,$3F,$F9
+ $DC38 DEFB $00,$07,$FB,$00,$FF,$C0,$0B,$FF
+ $DC40 DEFB $00,$00,$FF,$FC,$00,$09,$99,$FE
+ $DC48 DEFB $40,$11,$DC,$C6,$7F,$90,$0E,$01
+ $DC50 DEFB $FF,$FC,$00,$3F,$F0,$07,$FF,$00
+ $DC58 DEFB $0D,$FF,$E1,$18,$00,$0F,$FF,$FE
+ $DC60 DEFB $01,$F0,$1F,$EC,$03,$00,$0F,$F8
+ $DC68 DEFB $00,$FF,$F8,$00,$7F,$F8,$00,$FF
+ $DC70 DEFB $E0,$0F,$C0,$07,$FF,$00,$3F,$F8
+ $DC78 DEFB $00,$3F,$F8,$00,$01,$80,$FF,$80
+ $DC80 DEFB $1F,$F0,$03,$FE,$00,$0F,$F8,$03
+ $DC88 DEFB $FF,$80,$01,$FF,$C0,$3E,$80,$03
+ $DC90 DEFB $FF,$C0,$07,$FF,$E6,$3B,$80,$3F
+ $DC98 DEFB $C0,$00,$19,$FF,$FC,$03,$FF,$F0
+ $DCA0 DEFB $00,$FF,$E0,$03,$FF,$C0,$07,$FC
+ $DCA8 DEFB $07,$F0,$00,$FF,$C0,$18,$EF,$E0
+ $DCB0 DEFB $1F,$F8,$00,$FF,$31,$FF,$E3,$70
+ $DCB8 DEFB $1F,$E0,$1F,$F0,$00,$0F,$F8,$00
+ $DCC0 DEFB $07,$FC,$01,$F8,$00,$FF,$80,$07
+ $DCC8 DEFB $FC,$00,$7F,$F8,$00,$FF,$00,$1F
+ $DCD0 DEFB $FC,$00,$3F,$FF,$FF,$FF,$00,$FF
+ $DCD8 DEFB $80,$3F,$FF,$E0,$1F,$FF,$FF,$FF
+ $DCE0 DEFB $FC,$FF,$FF,$FF,$FF,$FC,$07,$FF
+ $DCE8 DEFB $FF,$9F,$FF,$FF,$FC,$0F,$FF,$FF
+ $DCF0 DEFB $FF,$FF,$FF,$FF,$FC,$FF,$FF,$FF
+ $DCF8 DEFB $FF,$F8,$1F,$FF,$FF,$FF,$FF,$E7
 
 ; Graphics: Pub Scene
 ;
