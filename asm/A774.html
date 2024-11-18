@@ -47,167 +47,163 @@ Used by the routine at <a href="9D42.html">9D42</a>.
 <tr>
 <td class="address-2"><span id="a774"></span>A774</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Stash <span class="register">BC</span>, <span class="register">HL</span> and <span class="register">DE</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a775"></span>A775</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a776"></span>A776</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a777"></span>A777</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">D</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a778"></span>A778</td>
 <td class="instruction">CP $00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a77a"></span>A77A</td>
 <td class="instruction">JR C,<a href="A774.html#a783">$A783</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A774.html#a783">A783</a> if <span class="register">A</span> is less than 00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a77c"></span>A77C</td>
 <td class="instruction">CP $18</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a77e"></span>A77E</td>
 <td class="instruction">JR NC,<a href="A774.html#a783">$A783</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A774.html#a783">A783</a> if <span class="register">A</span> is greater than or equal to 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a780"></span>A780</td>
 <td class="instruction">CALL <a href="A774.html#a78e">$A78E</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="A774.html#a78e">A78E</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a783"></span>A783</td>
 <td class="instruction">POP DE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a784"></span>A784</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a785"></span>A785</td>
 <td class="instruction">LD BC,$0018</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0018.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a788"></span>A788</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a789"></span>A789</td>
 <td class="instruction">INC D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a78a"></span>A78A</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a78b"></span>A78B</td>
 <td class="instruction">DJNZ <a href="A774.html#a774">$A774</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A774.html">A774</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a78d"></span>A78D</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a78e"></span>A78E</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a78f"></span>A78F</td>
 <td class="instruction">CALL <a href="A8BD.html">CalculateDartBoardAddress</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="A8BD.html">CalculateDartBoardAddress</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a792"></span>A792</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a793"></span>A793</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a794"></span>A794</td>
 <td class="instruction">DEC E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a795"></span>A795</td>
 <td class="instruction">LD B,$08</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a797"></span>A797</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">DE</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a798"></span>A798</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a799"></span>A799</td>
 <td class="instruction">LDI</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a79b"></span>A79B</td>
 <td class="instruction">LDI</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a79d"></span>A79D</td>
 <td class="instruction">LDI</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a79f"></span>A79F</td>
 <td class="instruction">POP DE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a7a0"></span>A7A0</td>
 <td class="instruction">INC D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a7a1"></span>A7A1</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a7a2"></span>A7A2</td>
 <td class="instruction">DJNZ <a href="A774.html#a797">$A797</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A774.html#a797">A797</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a7a4"></span>A7A4</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

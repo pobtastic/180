@@ -47,107 +47,101 @@ Used by the routine at <a href="42081.html">42081</a>.
 <tr>
 <td class="address-2"><span id="42254"></span>42254</td>
 <td class="instruction">LD DE,(39619)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="39619.html">39619</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42258"></span>42258</td>
 <td class="instruction">DEC D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">D</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42259"></span>42259</td>
 <td class="instruction">LD HL,30720</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="30720.html">30720</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42262"></span>42262</td>
 <td class="instruction">LD B,10</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=10.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="42264"></span>42264</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Stash <span class="register">BC</span>, <span class="register">HL</span> and <span class="register">DE</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42265"></span>42265</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="42266"></span>42266</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="42267"></span>42267</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">D</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42268"></span>42268</td>
 <td class="instruction">CP 0</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="42254.html#42279">42279</a> if <span class="register">A</span> is less than 0.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42270"></span>42270</td>
 <td class="instruction">JR C,<a href="42254.html#42279">42279</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="42272"></span>42272</td>
 <td class="instruction">CP 24</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="42254.html#42279">42279</a> if <span class="register">A</span> is greater than or equal to 24.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42274"></span>42274</td>
 <td class="instruction">JR NC,<a href="42254.html#42279">42279</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="42276"></span>42276</td>
 <td class="instruction">CALL <a href="42326.html">42326</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="42326.html">42326</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="42279"></span>42279</td>
 <td class="instruction">POP DE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42280"></span>42280</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="42281"></span>42281</td>
 <td class="instruction">LD BC,64</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=0064.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42284"></span>42284</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="42285"></span>42285</td>
 <td class="instruction">INC D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42286"></span>42286</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42287"></span>42287</td>
 <td class="instruction">DJNZ <a href="42254.html#42264">42264</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="42254.html#42264">42264</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42289"></span>42289</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

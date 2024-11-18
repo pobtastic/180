@@ -69,7 +69,7 @@ Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ab39"></span>AB39</td>
 <td class="instruction">LD BC,($9AAE)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="9A6F.html#9aae">9AAE</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="9AA6.html#9aae">9AAE</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -156,7 +156,7 @@ Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ab5f"></span>AB5F</td>
 <td class="instruction">LD A,$01</td>
-<td class="comment-1" rowspan="2">Write 01 to *<a href="9A6F.html#9aaa">9AAA</a>.</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="9AA6.html#9aaa">9AAA</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -167,7 +167,7 @@ Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
 <td class="asm-label">Messaging_DartNumber_0</td>
 <td class="address-2"><span id="ab64"></span>AB64</td>
 <td class="instruction">LD HL,$ACF6</td>
-<td class="comment-1" rowspan="4">Copy 0003 bytes of data from *<a href="ACD9.html#acf6">Current_Total</a> to *<a href="9B1F.html#9b2f">9B2F</a>.</td>
+<td class="comment-1" rowspan="4">Copy 0003 bytes of data from *<a href="ACD9.html#acf6">Current_Total</a> to *<a href="9B25.html#9b2f">9B2F</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -193,8 +193,8 @@ Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ab72"></span>AB72</td>
-<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
-<td class="comment-1" rowspan="1">Call <a href="AE04.html">AE04</a>.</td>
+<td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AE04.html">LongPause</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -283,14 +283,14 @@ BLACK.</td>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ab9c"></span>AB9C</td>
-<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
-<td class="comment-1" rowspan="1">Call <a href="AE04.html">AE04</a>.</td>
+<td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AE04.html">LongPause</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ab9f"></span>AB9F</td>
 <td class="instruction">LD A,($B412)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="B16B.html">B16B</a> if *<a href="B230.html#b412">B412</a> is not equal to zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="B16B.html">B16B</a> if *<a href="B40A.html#b412">B412</a> is not equal to zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -306,7 +306,7 @@ BLACK.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="aba6"></span>ABA6</td>
 <td class="instruction">LD A,($B417)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="AD3B.html">Messaging_Bust</a> if *<a href="B230.html#b417">B417</a> is not equal to zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="AD3B.html">Messaging_Bust</a> if *<a href="B417.html">B417</a> is not equal to zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -405,14 +405,14 @@ BLACK.</td>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="abd4"></span>ABD4</td>
-<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
-<td class="comment-1" rowspan="1">Call <a href="AE04.html">AE04</a>.</td>
+<td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AE04.html">LongPause</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="abd7"></span>ABD7</td>
 <td class="instruction">LD A,($B412)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="B16B.html">B16B</a> if *<a href="B230.html#b412">B412</a> is not equal to 00.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="B16B.html">B16B</a> if *<a href="B40A.html#b412">B412</a> is not equal to 00.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -428,7 +428,7 @@ BLACK.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="abde"></span>ABDE</td>
 <td class="instruction">LD A,($B417)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="AD3B.html">Messaging_Bust</a> if *<a href="B230.html#b417">B417</a> is not equal to 00.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="AD3B.html">Messaging_Bust</a> if *<a href="B417.html">B417</a> is not equal to 00.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -527,14 +527,14 @@ BLACK.</td>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ac0c"></span>AC0C</td>
-<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
-<td class="comment-1" rowspan="1">Call <a href="AE04.html">AE04</a>.</td>
+<td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AE04.html">LongPause</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ac0f"></span>AC0F</td>
 <td class="instruction">LD A,($B412)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="B16B.html">B16B</a> if *<a href="B230.html#b412">B412</a> is not equal to 00.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="B16B.html">B16B</a> if *<a href="B40A.html#b412">B412</a> is not equal to 00.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -550,7 +550,7 @@ BLACK.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ac16"></span>AC16</td>
 <td class="instruction">LD A,($B417)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="AD3B.html">Messaging_Bust</a> if *<a href="B230.html#b417">B417</a> is not equal to 00.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="AD3B.html">Messaging_Bust</a> if *<a href="B417.html">B417</a> is not equal to 00.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -576,7 +576,7 @@ This entry point is used by the routine at <a href="AD3B.html">Messaging_Bust</a
 <td class="asm-label">Messaging_DartNumber_1</td>
 <td class="address-2"><span id="ac1d"></span>AC1D</td>
 <td class="instruction">LD A,($9AAA)</td>
-<td class="comment-1" rowspan="3">Call <a href="B871.html">B871</a> if *<a href="9A6F.html#9aaa">9AAA</a> is not equal to 00.</td>
+<td class="comment-1" rowspan="3">Call <a href="B871.html">B871</a> if *<a href="9AA6.html#9aaa">9AAA</a> is not equal to 00.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -624,14 +624,14 @@ This entry point is used by the routine at <a href="AD3B.html">Messaging_Bust</a
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ac35"></span>AC35</td>
-<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
-<td class="comment-1" rowspan="1">Call <a href="AE04.html">AE04</a>.</td>
+<td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AE04.html">LongPause</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ac38"></span>AC38</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 00 to *<a href="9A6F.html#9aaa">9AAA</a>.</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="9AA6.html#9aaa">9AAA</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

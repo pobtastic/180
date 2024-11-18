@@ -29,11 +29,11 @@ Prev: <a href="A8EA.html">A8EA</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#a8f8">Map</a></td>
 <td class="next">
-Next: <a href="A9E5.html">A9E5</a>
+Next: <a href="A97A.html">A97A</a>
 </td>
 </tr>
 </table>
-<div class="description">A8F8: Routine at A8F8</div>
+<div class="description">A8F8: Start Menu</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,66 +45,91 @@ Used by the routines at <a href="9D33.html">9D33</a> and <a href="A9E5.html">A9E
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="a8f8"></span>
+<div class="comments">
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="start-menu-1" src="../images/scr/start-menu-1.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">StartMenu</td>
 <td class="address-2"><span id="a8f8"></span>A8F8</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Write 00 to; <ul class="">
+<li>*<a href="9B25.html#9b2a">9B2A</a></li>
+<li>*<a href="9B25.html#9b2c">9B2C</a></li>
+<li>*<a href="9B25.html#9b2b">9B2B</a></li>
+</ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a8f9"></span>A8F9</td>
 <td class="instruction">LD ($9B2A),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a8fc"></span>A8FC</td>
 <td class="instruction">LD ($9B2C),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a8ff"></span>A8FF</td>
 <td class="instruction">LD ($9B2B),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a902"></span>A902</td>
 <td class="instruction">LD HL,$0501</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 0501 to *<a href="AF5D.html">AF5D</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a905"></span>A905</td>
 <td class="instruction">LD ($AF5D),HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a908"></span>A908</td>
 <td class="instruction">LD A,$14</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 14 to *<a href="9B25.html#9b2d">9B2D</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a90a"></span>A90A</td>
 <td class="instruction">LD ($9B2D),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a90d"></span>A90D</td>
 <td class="instruction">LD HL,$01F5</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 01F5 to *<a href="9B1F.html">Score</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a910"></span>A910</td>
 <td class="instruction">LD ($9B1F),HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a913"></span>A913</td>
-<td class="instruction">CALL <a href="A8F8.html#a9c2">$A9C2</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="A9C2.html">$A9C2</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A9C2.html">A9C2</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a916"></span>A916</td>
 <td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
 <td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a919"></span>A919</td>
 <td class="instruction">DEFB $10,$07</td>
 <td class="comment-1" rowspan="1">INK: 
@@ -113,6 +138,7 @@ Used by the routines at <a href="9D33.html">9D33</a> and <a href="A9E5.html">A9E
 WHITE.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a91b"></span>A91B</td>
 <td class="instruction">DEFB $11,$00</td>
 <td class="comment-1" rowspan="1">PAPER: 
@@ -121,425 +147,210 @@ WHITE.</td>
 BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a91d"></span>A91D</td>
 <td class="instruction">DEFB $12,$01</td>
 <td class="comment-1" rowspan="1">FLASH: ON.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a91f"></span>A91F</td>
 <td class="instruction">DEFB $16,$01,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 01, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a922"></span>A922</td>
 <td class="instruction">DEFM "1"</td>
-<td class="comment-1" rowspan="1">"1".</td>
+<td class="comment-1" rowspan="1"><img alt="1" src="../images/font/1.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a923"></span>A923</td>
 <td class="instruction">DEFB $16,$03,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 03, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a926"></span>A926</td>
 <td class="instruction">DEFM "TUNE"</td>
-<td class="comment-1" rowspan="1">"TUNE".</td>
+<td class="comment-1" rowspan="1"><img alt="tune" src="../images/font/tune.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a92a"></span>A92A</td>
 <td class="instruction">DEFB $16,$04,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 04, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a92d"></span>A92D</td>
 <td class="instruction">DEFM "UP"</td>
-<td class="comment-1" rowspan="1">"UP".</td>
+<td class="comment-1" rowspan="1"><img alt="up" src="../images/font/up.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a92f"></span>A92F</td>
 <td class="instruction">DEFB $16,$07,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 07, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a932"></span>A932</td>
 <td class="instruction">DEFM "2"</td>
-<td class="comment-1" rowspan="1">"2".</td>
+<td class="comment-1" rowspan="1"><img alt="2" src="../images/font/2.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a933"></span>A933</td>
 <td class="instruction">DEFB $16,$09,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 09, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a936"></span>A936</td>
 <td class="instruction">DEFM "GAME"</td>
-<td class="comment-1" rowspan="1">"GAME".</td>
+<td class="comment-1" rowspan="1"><img alt="game" src="../images/font/game.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a93a"></span>A93A</td>
 <td class="instruction">DEFB $16,$0A,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 0A, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a93d"></span>A93D</td>
 <td class="instruction">DEFM "ON"</td>
-<td class="comment-1" rowspan="1">"ON".</td>
+<td class="comment-1" rowspan="1"><img alt="on" src="../images/font/on.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a93f"></span>A93F</td>
 <td class="instruction">DEFB $16,$0D,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 0D, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a942"></span>A942</td>
 <td class="instruction">DEFM "3"</td>
-<td class="comment-1" rowspan="1">"3".</td>
+<td class="comment-1" rowspan="1"><img alt="3" src="../images/font/3.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a943"></span>A943</td>
 <td class="instruction">DEFB $16,$0F,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 0F, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a946"></span>A946</td>
 <td class="instruction">DEFM "TWO"</td>
-<td class="comment-1" rowspan="1">"TWO".</td>
+<td class="comment-1" rowspan="1"><img alt="two" src="../images/font/two.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a949"></span>A949</td>
 <td class="instruction">DEFB $16,$10,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 10, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a94c"></span>A94C</td>
 <td class="instruction">DEFM "PLAYER"</td>
-<td class="comment-1" rowspan="1">"PLAYER".</td>
+<td class="comment-1" rowspan="1"><img alt="player" src="../images/font/player.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a952"></span>A952</td>
 <td class="instruction">DEFB $16,$13,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 13, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a955"></span>A955</td>
 <td class="instruction">DEFM "4"</td>
-<td class="comment-1" rowspan="1">"4".</td>
+<td class="comment-1" rowspan="1"><img alt="4" src="../images/font/4.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a956"></span>A956</td>
 <td class="instruction">DEFB $16,$15,$01</td>
 <td class="comment-1" rowspan="1">PRINT AT: 15, 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a959"></span>A959</td>
 <td class="instruction">DEFM "OOPS["</td>
-<td class="comment-1" rowspan="1">"OOPS[".</td>
+<td class="comment-1" rowspan="1"><img alt="oops" src="../images/font/oops.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a95e"></span>A95E</td>
 <td class="instruction">DEFB $FF</td>
 <td class="comment-1" rowspan="1">Terminator.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a95f"></span>A95F</td>
-<td class="instruction">CALL <a href="AE04.html">$AE04</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AE04.html">LongPause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">StartMenu_InputLoop</td>
 <td class="address-2"><span id="a962"></span>A962</td>
 <td class="instruction">CALL <a href="965F.html">$965F</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="965F.html">965F</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a965"></span>A965</td>
 <td class="instruction">CP $31</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="A97A.html">AroundTheClock</a> if the player has pressed "&#49;".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a967"></span>A967</td>
-<td class="instruction">JR Z,<a href="A8F8.html#a97a">$A97A</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="A97A.html">AroundTheClock</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a969"></span>A969</td>
 <td class="instruction">CP $32</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="AA0A.html#aa3b">Game_OnePlayer</a> if the player has pressed "&#50;".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a96b"></span>A96B</td>
-<td class="instruction">JP Z,<a href="AA0A.html#aa3b">$AA3B</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JP Z,<a href="AA0A.html#aa3b">Game_OnePlayer</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a96e"></span>A96E</td>
 <td class="instruction">CP $33</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="AA9B.html">Game_TwoPlayer</a> if the player has pressed "&#51;".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a970"></span>A970</td>
-<td class="instruction">JP Z,<a href="AA9B.html">$AA9B</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JP Z,<a href="AA9B.html">Game_TwoPlayer</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a973"></span>A973</td>
 <td class="instruction">CP $34</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump back to <a href="933F.html">MainMenu</a> if the player has pressed "&#52;".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a975"></span>A975</td>
 <td class="instruction">JP Z,<a href="933F.html">MainMenu</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a978"></span>A978</td>
-<td class="instruction">JR <a href="A8F8.html#a962">$A962</a></td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="a97a"></span>A97A</td>
-<td class="instruction">CALL <a href="9942.html">$9942</a></td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a97d"></span>A97D</td>
-<td class="instruction">CALL <a href="A8F8.html#a9c2">$A9C2</a></td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a980"></span>A980</td>
-<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
-<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a983"></span>A983</td>
-<td class="instruction">DEFB $10,$07</td>
-<td class="comment-1" rowspan="1">INK: 
-
-
-WHITE.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a985"></span>A985</td>
-<td class="instruction">DEFB $11,$00</td>
-<td class="comment-1" rowspan="1">PAPER: 
-
-
-BLACK.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a987"></span>A987</td>
-<td class="instruction">DEFB $12,$01</td>
-<td class="comment-1" rowspan="1">FLASH: ON.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a989"></span>A989</td>
-<td class="instruction">DEFB $16,$01,$01</td>
-<td class="comment-1" rowspan="1">PRINT AT: 01, 01.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a98c"></span>A98C</td>
-<td class="instruction">DEFM "AROUND"</td>
-<td class="comment-1" rowspan="1">"AROUND".</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a992"></span>A992</td>
-<td class="instruction">DEFB $16,$02,$01</td>
-<td class="comment-1" rowspan="1">PRINT AT: 02, 01.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a995"></span>A995</td>
-<td class="instruction">DEFM " THE"</td>
-<td class="comment-1" rowspan="1">" THE".</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a999"></span>A999</td>
-<td class="instruction">DEFB $16,$03,$01</td>
-<td class="comment-1" rowspan="1">PRINT AT: 03, 01.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a99c"></span>A99C</td>
-<td class="instruction">DEFM "CLOCK["</td>
-<td class="comment-1" rowspan="1">"CLOCK[".</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9a2"></span>A9A2</td>
-<td class="instruction">DEFB $16,$09,$02</td>
-<td class="comment-1" rowspan="1">PRINT AT: 09, 02.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9a5"></span>A9A5</td>
-<td class="instruction">DEFM "TIME"</td>
-<td class="comment-1" rowspan="1">"TIME".</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9a9"></span>A9A9</td>
-<td class="instruction">DEFB $FF</td>
-<td class="comment-1" rowspan="1">Terminator.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9aa"></span>A9AA</td>
-<td class="instruction">LD HL,$A38C</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9ad"></span>A9AD</td>
-<td class="instruction">LD (HL),$39</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9af"></span>A9AF</td>
-<td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9b0"></span>A9B0</td>
-<td class="instruction">LD (HL),$39</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9b2"></span>A9B2</td>
-<td class="instruction">LD HL,$9AB5</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9b5"></span>A9B5</td>
-<td class="instruction">LD (HL),$32</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9b7"></span>A9B7</td>
-<td class="instruction">LD A,$01</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9b9"></span>A9B9</td>
-<td class="instruction">LD ($9B2C),A</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9bc"></span>A9BC</td>
-<td class="instruction">LD ($9B2B),A</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9bf"></span>A9BF</td>
-<td class="instruction">JP <a href="9D42.html">$9D42</a></td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="a9c2"></span>A9C2</td>
-<td class="instruction">LD DE,$0101</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9c5"></span>A9C5</td>
-<td class="instruction">LD B,$16</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="a9c7"></span>A9C7</td>
-<td class="instruction">PUSH DE</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9c8"></span>A9C8</td>
-<td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9c9"></span>A9C9</td>
-<td class="instruction">CALL <a href="A8AE.html">CalculateScreenBuffer</a></td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9cc"></span>A9CC</td>
-<td class="instruction">LD B,$08</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="a9ce"></span>A9CE</td>
-<td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9cf"></span>A9CF</td>
-<td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9d0"></span>A9D0</td>
-<td class="instruction">LD BC,$0005</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9d3"></span>A9D3</td>
-<td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9d4"></span>A9D4</td>
-<td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9d5"></span>A9D5</td>
-<td class="instruction">INC DE</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9d6"></span>A9D6</td>
-<td class="instruction">LD (HL),$00</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9d8"></span>A9D8</td>
-<td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9da"></span>A9DA</td>
-<td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9db"></span>A9DB</td>
-<td class="instruction">INC H</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9dc"></span>A9DC</td>
-<td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9dd"></span>A9DD</td>
-<td class="instruction">DJNZ <a href="A8F8.html#a9ce">$A9CE</a></td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9df"></span>A9DF</td>
-<td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9e0"></span>A9E0</td>
-<td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9e1"></span>A9E1</td>
-<td class="instruction">INC D</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9e2"></span>A9E2</td>
-<td class="instruction">DJNZ <a href="A8F8.html#a9c7">$A9C7</a></td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="a9e4"></span>A9E4</td>
-<td class="instruction">RET</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR <a href="A8F8.html#a962">StartMenu_InputLoop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A8F8.html#a962">StartMenu_InputLoop</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -549,7 +360,7 @@ Prev: <a href="A8EA.html">A8EA</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#a8f8">Map</a></td>
 <td class="next">
-Next: <a href="A9E5.html">A9E5</a>
+Next: <a href="A97A.html">A97A</a>
 </td>
 </tr>
 </table>

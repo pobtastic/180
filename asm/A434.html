@@ -47,132 +47,128 @@ Used by the routine at <a href="9D42.html">9D42</a>.
 <tr>
 <td class="address-2"><span id="a434"></span>A434</td>
 <td class="instruction">LD BC,$FFFF</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=FFFF.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a437"></span>A437</td>
 <td class="instruction">DEC BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">BC</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a438"></span>A438</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a439"></span>A439</td>
 <td class="instruction">OR C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a43a"></span>A43A</td>
 <td class="instruction">JR NZ,<a href="A434.html#a437">$A437</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A434.html#a437">A437</a> if <span class="register">BC</span> is not equal to <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a43c"></span>A43C</td>
 <td class="instruction">LD HL,$A8AE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write <a href="A8AE.html">CalculateScreenBuffer</a> to *<a href="A4D4.html#a4f1">A4F2</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a43f"></span>A43F</td>
 <td class="instruction">LD ($A4F2),HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a442"></span>A442</td>
 <td class="instruction">LD HL,$9CE9</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9CE9.html">9CE9</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a445"></span>A445</td>
 <td class="instruction">LD E,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a446"></span>A446</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a447"></span>A447</td>
 <td class="instruction">LD D,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a448"></span>A448</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a449"></span>A449</td>
 <td class="instruction">INC D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Increment <span class="register">D</span> by two.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a44a"></span>A44A</td>
 <td class="instruction">INC D</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a44b"></span>A44B</td>
 <td class="instruction">CALL <a href="A4D4.html">$A4D4</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="A4D4.html">A4D4</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a44e"></span>A44E</td>
 <td class="instruction">LD HL,$A8BD</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write <a href="A8BD.html">CalculateDartBoardAddress</a> to *<a href="A4D4.html#a4f1">A4F2</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a451"></span>A451</td>
 <td class="instruction">LD ($A4F2),HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a454"></span>A454</td>
 <td class="instruction">LD HL,$9CE9</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9CE9.html">9CE9</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a457"></span>A457</td>
 <td class="instruction">LD E,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a458"></span>A458</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a459"></span>A459</td>
 <td class="instruction">LD D,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a45a"></span>A45A</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a45b"></span>A45B</td>
 <td class="instruction">INC D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Increment <span class="register">D</span> by two.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a45c"></span>A45C</td>
 <td class="instruction">INC D</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a45d"></span>A45D</td>
 <td class="instruction">CALL <a href="A4D4.html">$A4D4</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="A4D4.html">A4D4</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a460"></span>A460</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

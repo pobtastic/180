@@ -33,7 +33,7 @@ Next: <a href="A3A4.html">A3A4</a>
 </td>
 </tr>
 </table>
-<div class="description">A380: Routine at A380</div>
+<div class="description">A380: Messaging: Around The Clock Timer</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,11 +45,23 @@ Used by the routine at <a href="95ED.html">InterruptRoutine</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="a380"></span>
+<div class="comments">
+<div class="paragraph">
+Print the current timer value.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Messaging_AroundTheClock_Timer</td>
 <td class="address-2"><span id="a380"></span>A380</td>
 <td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
 <td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a383"></span>A383</td>
 <td class="instruction">DEFB $10,$07</td>
 <td class="comment-1" rowspan="1">INK: 
@@ -58,6 +70,7 @@ Used by the routine at <a href="95ED.html">InterruptRoutine</a>.
 WHITE.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a385"></span>A385</td>
 <td class="instruction">DEFB $11,$00</td>
 <td class="comment-1" rowspan="1">PAPER: 
@@ -66,86 +79,109 @@ WHITE.</td>
 BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a387"></span>A387</td>
 <td class="instruction">DEFB $12,$01</td>
 <td class="comment-1" rowspan="1">FLASH: ON.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a389"></span>A389</td>
 <td class="instruction">DEFB $16,$0B,$03</td>
 <td class="comment-1" rowspan="1">PRINT AT: 0B, 03.</td>
 </tr>
 <tr>
+<td class="asm-label">AroundTheClock_Timer</td>
 <td class="address-1"><span id="a38c"></span>A38C</td>
 <td class="instruction">DEFM "00"</td>
 <td class="comment-1" rowspan="1">"00".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a38e"></span>A38E</td>
 <td class="instruction">DEFB $FF</td>
 <td class="comment-1" rowspan="1">Terminator.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="a38f"></span>
+<div class="comments">
+<div class="paragraph">
+Note; this is identical to <a href="9942.html">Sound_MenuTick</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a38f"></span>A38F</td>
 <td class="instruction">LD C,$00</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set initial speaker state in <span class="register">C</span> to OFF.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a391"></span>A391</td>
 <td class="instruction">LD B,$3C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the repeat loop counter in <span class="register">B</span> to 3C.</td>
 </tr>
 <tr>
+<td class="asm-label">AroundTheClock_Timer_OuterLoop</td>
 <td class="address-2"><span id="a393"></span>A393</td>
 <td class="instruction">LD HL,$000A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the delay loop in <span class="register">HL</span> to 000A.</td>
 </tr>
 <tr>
+<td class="asm-label">AroundTheClock_Timer_DelayLoop</td>
 <td class="address-2"><span id="a396"></span>A396</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease the delay loop by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a397"></span>A397</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump back to <a href="A380.html#a396">AroundTheClock_Timer_DelayLoop</a> until the delay loop is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a398"></span>A398</td>
 <td class="instruction">OR L</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a399"></span>A399</td>
-<td class="instruction">JR NZ,<a href="A380.html#a396">$A396</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="A380.html#a396">AroundTheClock_Timer_DelayLoop</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a39b"></span>A39B</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Flip the current speaker state.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a39c"></span>A39C</td>
-<td class="instruction">XOR $10</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">XOR %00010000</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a39e"></span>A39E</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a39f"></span>A39F</td>
 <td class="instruction">OUT ($FE),A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Send it to the speaker.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a3a1"></span>A3A1</td>
-<td class="instruction">DJNZ <a href="A380.html#a393">$A393</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="A380.html#a393">AroundTheClock_Timer_OuterLoop</a></td>
+<td class="comment-1" rowspan="1">Decrease the repeat loop counter by one and loop back to <a href="A380.html#a393">AroundTheClock_Timer_OuterLoop</a> until the repeat loop counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a3a3"></span>A3A3</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

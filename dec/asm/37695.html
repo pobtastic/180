@@ -39,7 +39,21 @@ Next: <a href="37966.html">37966</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="37251.html">GameEntryPoint</a>, <a href="41308.html">Messaging_YouWin</a>, <a href="43256.html">43256</a> and <a href="45419.html">45419</a>.
+Used by the routines at <a href="37251.html">GameEntryPoint</a>, <a href="41308.html">Messaging_YouWin</a>, <a href="43256.html">StartMenu</a> and <a href="45419.html">45419</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37695"></span>
+<div class="comments">
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="main-menu" src="../../images/scr/main-menu.png" /></td>
+</tr>
+</table>
 </div>
 </div>
 </td>
@@ -49,7 +63,7 @@ Used by the routines at <a href="37251.html">GameEntryPoint</a>, <a href="41308.
 <td class="address-2"><span id="37695"></span>37695</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 0 to; <ul class="">
-<li>*<a href="39711.html#39723">39723</a></li>
+<li>*<a href="39717.html#39723">39723</a></li>
 <li>*<a href="39604.html#39607">39607</a></li>
 </ul></td>
 </tr>
@@ -114,14 +128,14 @@ Zero the displayed score.
 <span id="37718"></span>
 <div class="comments">
 <div class="paragraph">
-SIM(start=$9356,stop=$93D1) <table class="default">
+Print the menu options.
+</div>
+<div class="paragraph">
+<table class="default">
 <tr>
 <td class="" colspan="1" rowspan="1"><img alt="main-menu-1" src="../../images/scr/main-menu-1.png" /></td>
 </tr>
-</table>
-</div>
-<div class="paragraph">
-Print the menu options.
+</table>  Note; the bright white doesn't happen until later.
 </div>
 </div>
 </td>
@@ -241,6 +255,13 @@ BLACK.</td>
 <div class="paragraph">
 Display the header and footer messaging.
 </div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="main-menu-2" src="../../images/scr/main-menu-2.png" /></td>
+</tr>
+</table>
+</div>
 </div>
 </td>
 </tr>
@@ -251,10 +272,37 @@ Display the header and footer messaging.
 <td class="comment-1" rowspan="1">Call <a href="37400.html">Messaging_HeaderFooter</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="37838"></span>
+<div class="comments">
+<div class="paragraph">
+Set the bright white colouring.
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="main-menu-3" src="../../images/scr/main-menu-3.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37838"></span>37838</td>
 <td class="instruction">CALL <a href="37302.html">SetAttributeBuffer_WhiteInk</a></td>
 <td class="comment-1" rowspan="1">Call <a href="37302.html">SetAttributeBuffer_WhiteInk</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37841"></span>
+<div class="comments">
+<div class="paragraph">
+Now begin setting up the dart pointer.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -322,25 +370,35 @@ Clear the attributes of all possible positions of the dart pointer.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37855"></span>37855</td>
 <td class="instruction">DJNZ <a href="37695.html#37846">ClearDartPointerAttributePositions</a></td>
-<td class="comment-1" rowspan="1">Decrease the dart width counter by one and loop back to <a href="37695.html#37846">ClearDartPointerAttributePositions</a> until counter is zero.</td>
+<td class="comment-1" rowspan="1">Decrease the dart width counter by one and loop back to <a href="37695.html#37846">ClearDartPointerAttributePositions</a> until the counter is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37857"></span>
+<div class="comments">
+<div class="paragraph">
+Initialise the dart pointer.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37857"></span>37857</td>
 <td class="instruction">LD DE,1280</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=1280.</td>
+<td class="comment-1" rowspan="1">Set the initial position of the dart pointer to <span class="register">DE</span> (1280).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37860"></span>37860</td>
 <td class="instruction">LD B,4</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=4.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the width of the dart pointer.</td>
 </tr>
 <tr>
-<td class="asm-label">MainMenu_0</td>
+<td class="asm-label">DrawDartPointer_Loop</td>
 <td class="address-2"><span id="37862"></span>37862</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">DE</span> on the stack.</td>
+<td class="comment-1" rowspan="2">Stash the dart width counter and dart co-ordinates on the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -357,7 +415,7 @@ Clear the attributes of all possible positions of the dart pointer.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37867"></span>37867</td>
 <td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">BC</span> from the stack.</td>
+<td class="comment-1" rowspan="2">Restore the dart co-ordinates and dart width counter from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -378,11 +436,11 @@ Clear the attributes of all possible positions of the dart pointer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37871"></span>37871</td>
-<td class="instruction">DJNZ <a href="37695.html#37862">MainMenu_0</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="37695.html#37862">MainMenu_0</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="37695.html#37862">DrawDartPointer_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the dart width counte by one and loop back to <a href="37695.html#37862">DrawDartPointer_Loop</a> until the counter is zero.</td>
 </tr>
 <tr>
-<td class="asm-label">MainMenu_1</td>
+<td class="asm-label">ColourDartPointerAttributes_Loop</td>
 <td class="address-2"><span id="37873"></span>37873</td>
 <td class="instruction">CALL <a href="37966.html">MainMenu_ColourDartPointer</a></td>
 <td class="comment-1" rowspan="1">Call <a href="37966.html">MainMenu_ColourDartPointer</a>.</td>
@@ -408,25 +466,55 @@ Clear the attributes of all possible positions of the dart pointer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37881"></span>37881</td>
-<td class="instruction">JR Z,<a href="37695.html#37873">MainMenu_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="37695.html#37873">MainMenu_1</a> if <span class="register">D</span> is equal to 4.</td>
+<td class="instruction">JR Z,<a href="37695.html#37873">ColourDartPointerAttributes_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="37695.html#37873">ColourDartPointerAttributes_Loop</a> if <span class="register">D</span> is equal to 4.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37883"></span>
+<div class="comments">
+<div class="paragraph">
+Has the player hit "Start Game"?
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37883"></span>37883</td>
 <td class="instruction">CP 48</td>
-<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37929">MainMenu_3</a> if <span class="register">A</span> is not equal to 48.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37929">MainMenu_1</a> if "0" was not pressed (ASCII 48 is "0").</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37885"></span>37885</td>
-<td class="instruction">JR NZ,<a href="37695.html#37929">MainMenu_3</a></td>
+<td class="instruction">JR NZ,<a href="37695.html#37929">MainMenu_1</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37887"></span>
+<div class="comments">
+<div class="paragraph">
+A game was started...
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37887"></span>37887</td>
-<td class="instruction">CALL <a href="39234.html">39234</a></td>
-<td class="comment-1" rowspan="1">Call <a href="39234.html">39234</a>.</td>
+<td class="instruction">CALL <a href="39234.html">Sound_MenuTick</a></td>
+<td class="comment-1" rowspan="1">Call <a href="39234.html">Sound_MenuTick</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37890"></span>
+<div class="comments">
+<div class="paragraph">
+Consolidate the selected configs.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -443,19 +531,17 @@ Clear the attributes of all possible positions of the dart pointer.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37896"></span>37896</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="3"><span class="register">D</span>=5+(<span class="register">A</span>*2).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37897"></span>37897</td>
 <td class="instruction">ADD A,5</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=5.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37899"></span>37899</td>
 <td class="instruction">LD D,A</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -470,7 +556,7 @@ Clear the attributes of all possible positions of the dart pointer.
 <td class="comment-1" rowspan="1"><span class="register">B</span>=62.</td>
 </tr>
 <tr>
-<td class="asm-label">MainMenu_2</td>
+<td class="asm-label">MainMenu_0</td>
 <td class="address-2"><span id="37904"></span>37904</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">DE</span> on the stack.</td>
@@ -555,8 +641,8 @@ Clear the attributes of all possible positions of the dart pointer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37924"></span>37924</td>
-<td class="instruction">DJNZ <a href="37695.html#37904">MainMenu_2</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="37695.html#37904">MainMenu_2</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="37695.html#37904">MainMenu_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="37695.html#37904">MainMenu_0</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -565,26 +651,26 @@ Clear the attributes of all possible positions of the dart pointer.
 <td class="comment-1" rowspan="1">Jump to <a href="38118.html">38118</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">MainMenu_3</td>
+<td class="asm-label">MainMenu_1</td>
 <td class="address-2"><span id="37929"></span>37929</td>
 <td class="instruction">CP 54</td>
-<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">MainMenu_1</a> if <span class="register">A</span> is greater than 54.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">ColourDartPointerAttributes_Loop</a> if <span class="register">A</span> is greater than (ASCII 54 is "6").</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37931"></span>37931</td>
-<td class="instruction">JP NC,<a href="37695.html#37873">MainMenu_1</a></td>
+<td class="instruction">JP NC,<a href="37695.html#37873">ColourDartPointerAttributes_Loop</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37934"></span>37934</td>
 <td class="instruction">CP 48</td>
-<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">MainMenu_1</a> if <span class="register">A</span> is less than 48.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">ColourDartPointerAttributes_Loop</a> if <span class="register">A</span> is less than (ASCII 48 is "0").</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37936"></span>37936</td>
-<td class="instruction">JP C,<a href="37695.html#37873">MainMenu_1</a></td>
+<td class="instruction">JP C,<a href="37695.html#37873">ColourDartPointerAttributes_Loop</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -607,8 +693,8 @@ Clear the attributes of all possible positions of the dart pointer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37945"></span>37945</td>
-<td class="instruction">CALL <a href="39234.html">39234</a></td>
-<td class="comment-1" rowspan="1">Call <a href="39234.html">39234</a>.</td>
+<td class="instruction">CALL <a href="39234.html">Sound_MenuTick</a></td>
+<td class="comment-1" rowspan="1">Call <a href="39234.html">Sound_MenuTick</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -626,12 +712,12 @@ Clear the attributes of all possible positions of the dart pointer.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37952"></span>37952</td>
 <td class="instruction">CP 4</td>
-<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">MainMenu_1</a> if <span class="register">A</span> is not equal to 4.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37695.html#37873">ColourDartPointerAttributes_Loop</a> if <span class="register">A</span> is not equal to 4.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37954"></span>37954</td>
-<td class="instruction">JP NZ,<a href="37695.html#37873">MainMenu_1</a></td>
+<td class="instruction">JP NZ,<a href="37695.html#37873">ColourDartPointerAttributes_Loop</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -642,8 +728,8 @@ Clear the attributes of all possible positions of the dart pointer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37960"></span>37960</td>
-<td class="instruction">CALL <a href="38099.html">38099</a></td>
-<td class="comment-1" rowspan="1">Call <a href="38099.html">38099</a>.</td>
+<td class="instruction">CALL <a href="38099.html">Debounce_CheckKeys</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38099.html">Debounce_CheckKeys</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

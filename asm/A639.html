@@ -47,82 +47,82 @@ Used by the routine at <a href="9D42.html">9D42</a>.
 <tr>
 <td class="address-2"><span id="a639"></span>A639</td>
 <td class="instruction">LD A,($9B10)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9B10.html">9B10</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a63c"></span>A63C</td>
 <td class="instruction">ADD A,$03</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=03.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a63e"></span>A63E</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a63f"></span>A63F</td>
 <td class="instruction">LD B,$10</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=10.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a641"></span>A641</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a642"></span>A642</td>
 <td class="instruction">RR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Rotate *<span class="register">HL</span> right.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a644"></span>A644</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a645"></span>A645</td>
 <td class="instruction">RR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Rotate *<span class="register">HL</span> right.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a647"></span>A647</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a648"></span>A648</td>
 <td class="instruction">RR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Rotate *<span class="register">HL</span> right.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a64a"></span>A64A</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a64b"></span>A64B</td>
 <td class="instruction">DJNZ <a href="A639.html#a641">$A641</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A639.html#a641">A641</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a64d"></span>A64D</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a64e"></span>A64E</td>
 <td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a64f"></span>A64F</td>
 <td class="instruction">JR NZ,<a href="A639.html#a63e">$A63E</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A639.html#a63e">A63E</a> if <span class="register">A</span> is not equal to <span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a651"></span>A651</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

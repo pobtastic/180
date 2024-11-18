@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>180: Data at 39535</title>
+<title>180: Routine at 39535</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="../skoolkit.css" />
 <link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
@@ -15,11 +15,11 @@ gtag('js', new Date());
 gtag('config', 'G-75RERFCHBG');
 </script>
 </head>
-<body class="Asm-b">
+<body class="Asm-c">
 <table class="header">
 <tr>
 <td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
-<td class="page-header">Data</td>
+<td class="page-header">Routines</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -29,105 +29,109 @@ Prev: <a href="39520.html">39520</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#39535">Map</a></td>
 <td class="next">
-Next: <a href="39600.html">39600</a>
+Next: <a href="39558.html">39558</a>
 </td>
 </tr>
 </table>
-<div class="description">39535: Data block at 9A6F</div>
+<div class="description">39535: Routine at 9A6F</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="39415.html">39415</a>.
+Used by the routines at <a href="39453.html">ControlMethod_InterfaceTwo</a> and <a href="39482.html">ControlMethod_Cursor</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="address-1"><span id="39535"></span>39535</td>
-<td class="instruction">DEFB 6,1,33</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-2"><span id="39535"></span>39535</td>
+<td class="instruction">LD B,1</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=1.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="39538"></span>39538</td>
-<td class="instruction">DEFB 87</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="39537"></span>39537</td>
+<td class="instruction">LD HL,39511</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39511.html">39511</a>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="39539"></span>39539</td>
-<td class="instruction">DEFB 154,126,35,219,254,166,35,35</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="routine-comment" colspan="5">
+<span id="39540"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="39453.html">ControlMethod_InterfaceTwo</a> and <a href="39482.html">ControlMethod_Cursor</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39540"></span>39540</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39541"></span>39541</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39542"></span>39542</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=byte from port 254.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39544"></span>39544</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39545"></span>39545</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">HL</span> by two.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39546"></span>39546</td>
+<td class="instruction">INC HL</td>
 </tr>
 <tr>
 <td class="address-1"><span id="39547"></span>39547</td>
-<td class="instruction">DEFB 32,1,55,203,16,48,242,120</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="39535.html#39550">39550</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39535.html#39550">39550</a> if <span class="register">HL</span> is not equal to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39549"></span>39549</td>
+<td class="instruction">SCF</td>
+<td class="comment-1" rowspan="1">Set the carry flag.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39550"></span>39550</td>
+<td class="instruction">RL B</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">B</span> left.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39552"></span>39552</td>
+<td class="instruction">JR NC,<a href="39535.html#39540">39540</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39535.html#39540">39540</a> if <span class="register">HL</span> is greater than or equal to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39554"></span>39554</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="39555"></span>39555</td>
-<td class="instruction">DEFB 177,79,201,120,33,174,145,133</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">C</span>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="39563"></span>39563</td>
-<td class="instruction">DEFB 111,48,1,36,126,129,254,58</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="39556"></span>39556</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="39571"></span>39571</td>
-<td class="instruction">DEFB 48,4,119,195,161,145,214,10</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39579"></span>39579</td>
-<td class="instruction">DEFB 119,5,14,1,120,60,202,161</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39587"></span>39587</td>
-<td class="instruction">DEFB 145,24,224</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39590"></span>39590</td>
-<td class="instruction">DEFB 0</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39591"></span>39591</td>
-<td class="instruction">DEFB 0</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39592"></span>39592</td>
-<td class="instruction">DEFB 0</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39593"></span>39593</td>
-<td class="instruction">DEFB 0</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39594"></span>39594</td>
-<td class="instruction">DEFB 0</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39595"></span>39595</td>
-<td class="instruction">DEFB 0,0</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39597"></span>39597</td>
-<td class="instruction">DEFB 0</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="39598"></span>39598</td>
-<td class="instruction">DEFW 0</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="39557"></span>39557</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -137,7 +141,7 @@ Prev: <a href="39520.html">39520</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#39535">Map</a></td>
 <td class="next">
-Next: <a href="39600.html">39600</a>
+Next: <a href="39558.html">39558</a>
 </td>
 </tr>
 </table>

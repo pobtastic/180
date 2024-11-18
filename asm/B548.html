@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at B548</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B517.html">B517</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b548">Map</a></td>
+<td class="next">
+Next: <a href="B5A6.html">B5A6</a>
+</td>
+</tr>
+</table>
+<div class="description">B548: Routine at B548</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="B5BA.html">QuarterFinals</a>, <a href="B640.html">SemiFinals</a> and <a href="B6C2.html">TheFinal</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="b548"></span>B548</td>
+<td class="instruction">LD DE,$040A</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=040A.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b54b"></span>B54B</td>
+<td class="instruction">CALL <a href="A8AE.html">CalculateScreenBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A8AE.html">CalculateScreenBuffer</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b54e"></span>B54E</td>
+<td class="instruction">LD B,$80</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=80.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="b550"></span>B550</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b551"></span>B551</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b552"></span>B552</td>
+<td class="instruction">LD BC,$0012</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0012.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b555"></span>B555</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b556"></span>B556</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b557"></span>B557</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="1">Write 00 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b559"></span>B559</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b55a"></span>B55A</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">LDIR.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b55c"></span>B55C</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b55d"></span>B55D</td>
+<td class="instruction">CALL <a href="A8CC.html">$A8CC</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A8CC.html">A8CC</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b560"></span>B560</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b561"></span>B561</td>
+<td class="instruction">DJNZ <a href="B548.html#b550">$B550</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B548.html#b550">B550</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b563"></span>B563</td>
+<td class="instruction">LD HL,$040A</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=040A.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b566"></span>B566</td>
+<td class="instruction">LD BC,$1013</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=1013.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b569"></span>B569</td>
+<td class="instruction">LD A,$60</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=60.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b56b"></span>B56B</td>
+<td class="instruction">CALL <a href="B5A6.html">$B5A6</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B5A6.html">B5A6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b56e"></span>B56E</td>
+<td class="instruction">LD HL,$0A10</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=0A10.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b571"></span>B571</td>
+<td class="instruction">LD BC,$0706</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0706.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b574"></span>B574</td>
+<td class="instruction">LD A,$47</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=47.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b576"></span>B576</td>
+<td class="instruction">CALL <a href="B5A6.html">$B5A6</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B5A6.html">B5A6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b579"></span>B579</td>
+<td class="instruction">LD HL,$051D</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=051D.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b57c"></span>B57C</td>
+<td class="instruction">LD BC,$1001</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=1001.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b57f"></span>B57F</td>
+<td class="instruction">LD A,$30</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=30.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b581"></span>B581</td>
+<td class="instruction">CALL <a href="B5A6.html">$B5A6</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B5A6.html">B5A6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b584"></span>B584</td>
+<td class="instruction">LD HL,$140B</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=140B.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b587"></span>B587</td>
+<td class="instruction">LD BC,$0113</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0113.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b58a"></span>B58A</td>
+<td class="instruction">LD A,$30</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=30.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b58c"></span>B58C</td>
+<td class="instruction">CALL <a href="B5A6.html">$B5A6</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B5A6.html">B5A6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b58f"></span>B58F</td>
+<td class="instruction">LD HL,$1111</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=1111.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b592"></span>B592</td>
+<td class="instruction">LD BC,$0106</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0106.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b595"></span>B595</td>
+<td class="instruction">LD A,$20</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b597"></span>B597</td>
+<td class="instruction">CALL <a href="B5A6.html">$B5A6</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B5A6.html">B5A6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b59a"></span>B59A</td>
+<td class="instruction">LD HL,$0B16</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=0B16.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b59d"></span>B59D</td>
+<td class="instruction">LD BC,$0701</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0701.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b5a0"></span>B5A0</td>
+<td class="instruction">LD A,$20</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b5a2"></span>B5A2</td>
+<td class="instruction">CALL <a href="B5A6.html">$B5A6</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B5A6.html">B5A6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="b5a5"></span>B5A5</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="B517.html">B517</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#b548">Map</a></td>
+<td class="next">
+Next: <a href="B5A6.html">B5A6</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/B548.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 39482</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39467.html">39467</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39482">Map</a></td>
+<td class="next">
+Next: <a href="39496.html">39496</a>
+</td>
+</tr>
+</table>
+<div class="description">39482: Control Method: Cursor Joystick</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc"></td>
+</tr>
+<tr>
+<td class="register">C</td>
+<td class="register-desc">Control byte</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Pointer to Key Map</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ControlMethod_Cursor</td>
+<td class="address-2"><span id="39482"></span>39482</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39483"></span>39483</td>
+<td class="instruction">CALL <a href="39535.html">39535</a></td>
+<td class="comment-1" rowspan="1">Call <a href="39535.html">39535</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39486"></span>39486</td>
+<td class="instruction">AND %11100000</td>
+<td class="comment-1" rowspan="1">Keep only bits 5-7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39488"></span>39488</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">Store the result in <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39489"></span>39489</td>
+<td class="instruction">LD HL,39496</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39496.html">KeyMap_Cursor</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39492"></span>39492</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=8.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39494"></span>39494</td>
+<td class="instruction">JR <a href="39535.html#39540">39540</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39535.html#39540">39540</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39467.html">39467</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39482">Map</a></td>
+<td class="next">
+Next: <a href="39496.html">39496</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/39482.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -29,7 +29,7 @@ Prev: <a href="AE04.html">AE04</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#ae17">Map</a></td>
 <td class="next">
-Next: <a href="AEF0.html">AEF0</a>
+Next: <a href="AE3C.html">AE3C</a>
 </td>
 </tr>
 </table>
@@ -47,642 +47,124 @@ Used by the routines at <a href="9D42.html">9D42</a>, <a href="A15C.html">Messag
 <tr>
 <td class="address-2"><span id="ae17"></span>AE17</td>
 <td class="instruction">LD DE,$AF51</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="AF51.html">AF51</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae1a"></span>AE1A</td>
 <td class="instruction">LD HL,$AF49</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="AF49.html">AF49</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae1d"></span>AE1D</td>
 <td class="instruction">LD B,$04</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=04.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="ae1f"></span>AE1F</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae20"></span>AE20</td>
 <td class="instruction">LD B,H</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">H</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae21"></span>AE21</td>
 <td class="instruction">LD C,L</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">L</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae22"></span>AE22</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae23"></span>AE23</td>
 <td class="instruction">LD E,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae24"></span>AE24</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae25"></span>AE25</td>
 <td class="instruction">LD D,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae26"></span>AE26</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae27"></span>AE27</td>
 <td class="instruction">POP DE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae28"></span>AE28</td>
 <td class="instruction">CALL <a href="AEF0.html">$AEF0</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="AEF0.html">AEF0</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae2b"></span>AE2B</td>
 <td class="instruction">LD H,B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae2c"></span>AE2C</td>
 <td class="instruction">LD L,C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae2d"></span>AE2D</td>
 <td class="instruction">INC DE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Increment <span class="register">DE</span> by three.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae2e"></span>AE2E</td>
 <td class="instruction">INC DE</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae2f"></span>AE2F</td>
 <td class="instruction">INC DE</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae30"></span>AE30</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Increment <span class="register">HL</span> by two.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae31"></span>AE31</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae32"></span>AE32</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae33"></span>AE33</td>
 <td class="instruction">DJNZ <a href="AE17.html#ae1f">$AE1F</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="AE17.html#ae1f">AE1F</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae35"></span>AE35</td>
 <td class="instruction">LD DE,$AF51</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="AF51.html">AF51</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae38"></span>AE38</td>
-<td class="instruction">CALL <a href="AE17.html#ae3c">$AE3C</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="AE3C.html">$AE3C</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AE3C.html">AE3C</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae3b"></span>AE3B</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="ae3c"></span>AE3C</td>
-<td class="instruction">LD HL,($AF5D)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae3f"></span>AE3F</td>
-<td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae40"></span>AE40</td>
-<td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae41"></span>AE41</td>
-<td class="instruction">LD B,$03</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="ae43"></span>AE43</td>
-<td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae44"></span>AE44</td>
-<td class="instruction">PUSH DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae45"></span>AE45</td>
-<td class="instruction">LD A,(DE)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae46"></span>AE46</td>
-<td class="instruction">CP $20</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae48"></span>AE48</td>
-<td class="instruction">JR Z,<a href="AE17.html#ae5b">$AE5B</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae4a"></span>AE4A</td>
-<td class="instruction">ADD A,A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae4b"></span>AE4B</td>
-<td class="instruction">LD HL,$AF5F</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae4e"></span>AE4E</td>
-<td class="instruction">LD E,A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae4f"></span>AE4F</td>
-<td class="instruction">LD D,$00</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae51"></span>AE51</td>
-<td class="instruction">ADD HL,DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae52"></span>AE52</td>
-<td class="instruction">LD E,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae53"></span>AE53</td>
-<td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae54"></span>AE54</td>
-<td class="instruction">LD D,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae55"></span>AE55</td>
-<td class="instruction">PUSH DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae56"></span>AE56</td>
-<td class="instruction">POP IX</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae58"></span>AE58</td>
-<td class="instruction">CALL <a href="AE17.html#ae6e">$AE6E</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="ae5b"></span>AE5B</td>
-<td class="instruction">POP DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae5c"></span>AE5C</td>
-<td class="instruction">INC DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae5d"></span>AE5D</td>
-<td class="instruction">LD HL,($AF5D)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae60"></span>AE60</td>
-<td class="instruction">INC L</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae61"></span>AE61</td>
-<td class="instruction">INC L</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae62"></span>AE62</td>
-<td class="instruction">LD ($AF5D),HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae65"></span>AE65</td>
-<td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae66"></span>AE66</td>
-<td class="instruction">DJNZ <a href="AE17.html#ae43">$AE43</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae68"></span>AE68</td>
-<td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae69"></span>AE69</td>
-<td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae6a"></span>AE6A</td>
-<td class="instruction">LD ($AF5D),HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae6d"></span>AE6D</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="ae6e"></span>AE6E</td>
-<td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae6f"></span>AE6F</td>
-<td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae70"></span>AE70</td>
-<td class="instruction">PUSH DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae71"></span>AE71</td>
-<td class="instruction">LD B,(IX+$00)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae74"></span>AE74</td>
-<td class="instruction">INC IX</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="ae76"></span>AE76</td>
-<td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae77"></span>AE77</td>
-<td class="instruction">CALL <a href="AE17.html#aea3">$AEA3</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae7a"></span>AE7A</td>
-<td class="instruction">LD A,(IX+$00)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae7d"></span>AE7D</td>
-<td class="instruction">CALL <a href="AE17.html#aeaf">$AEAF</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae80"></span>AE80</td>
-<td class="instruction">LD DE,($AF5D)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae84"></span>AE84</td>
-<td class="instruction">CALL <a href="A8AE.html">CalculateScreenBuffer</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae87"></span>AE87</td>
-<td class="instruction">LD A,(IX+$01)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae8a"></span>AE8A</td>
-<td class="instruction">INC IX</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae8c"></span>AE8C</td>
-<td class="instruction">INC IX</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae8e"></span>AE8E</td>
-<td class="instruction">CALL <a href="AE17.html#aec3">$AEC3</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae91"></span>AE91</td>
-<td class="instruction">CALL <a href="AE17.html#aecc">$AECC</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae94"></span>AE94</td>
-<td class="instruction">LD BC,$03E8</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="ae97"></span>AE97</td>
-<td class="instruction">DEC BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae98"></span>AE98</td>
-<td class="instruction">LD A,B</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae99"></span>AE99</td>
-<td class="instruction">OR C</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae9a"></span>AE9A</td>
-<td class="instruction">JR NZ,<a href="AE17.html#ae97">$AE97</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae9c"></span>AE9C</td>
-<td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae9d"></span>AE9D</td>
-<td class="instruction">DJNZ <a href="AE17.html#ae76">$AE76</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ae9f"></span>AE9F</td>
-<td class="instruction">POP DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aea0"></span>AEA0</td>
-<td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aea1"></span>AEA1</td>
-<td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aea2"></span>AEA2</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="aea3"></span>AEA3</td>
-<td class="instruction">LD HL,$8F55</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aea6"></span>AEA6</td>
-<td class="instruction">LD DE,$8F5D</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aea9"></span>AEA9</td>
-<td class="instruction">LD BC,$0008</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeac"></span>AEAC</td>
-<td class="instruction">LDIR</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeae"></span>AEAE</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="aeaf"></span>AEAF</td>
-<td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeb0"></span>AEB0</td>
-<td class="instruction">RET Z</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="aeb1"></span>AEB1</td>
-<td class="instruction">LD HL,$8F5D</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeb4"></span>AEB4</td>
-<td class="instruction">LD B,$04</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="aeb6"></span>AEB6</td>
-<td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeb7"></span>AEB7</td>
-<td class="instruction">RR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeb9"></span>AEB9</td>
-<td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeba"></span>AEBA</td>
-<td class="instruction">RR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aebc"></span>AEBC</td>
-<td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aebd"></span>AEBD</td>
-<td class="instruction">DJNZ <a href="AE17.html#aeb6">$AEB6</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aebf"></span>AEBF</td>
-<td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aec0"></span>AEC0</td>
-<td class="instruction">JR NZ,<a href="AE17.html#aeb1">$AEB1</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aec2"></span>AEC2</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="aec3"></span>AEC3</td>
-<td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aec4"></span>AEC4</td>
-<td class="instruction">RET Z</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aec5"></span>AEC5</td>
-<td class="instruction">LD B,A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="aec6"></span>AEC6</td>
-<td class="instruction">CALL <a href="A8CC.html">$A8CC</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aec9"></span>AEC9</td>
-<td class="instruction">DJNZ <a href="AE17.html#aec6">$AEC6</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aecb"></span>AECB</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="aecc"></span>AECC</td>
-<td class="instruction">LD DE,$8F5D</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aecf"></span>AECF</td>
-<td class="instruction">CALL <a href="AE17.html#aee5">$AEE5</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aed2"></span>AED2</td>
-<td class="instruction">CALL <a href="A8CC.html">$A8CC</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aed5"></span>AED5</td>
-<td class="instruction">CALL <a href="AE17.html#aee5">$AEE5</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aed8"></span>AED8</td>
-<td class="instruction">CALL <a href="A8CC.html">$A8CC</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aedb"></span>AEDB</td>
-<td class="instruction">CALL <a href="AE17.html#aee5">$AEE5</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aede"></span>AEDE</td>
-<td class="instruction">CALL <a href="A8CC.html">$A8CC</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aee1"></span>AEE1</td>
-<td class="instruction">CALL <a href="AE17.html#aee5">$AEE5</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aee4"></span>AEE4</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="aee5"></span>AEE5</td>
-<td class="instruction">LD A,(DE)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aee6"></span>AEE6</td>
-<td class="instruction">OR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aee7"></span>AEE7</td>
-<td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aee8"></span>AEE8</td>
-<td class="instruction">INC L</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aee9"></span>AEE9</td>
-<td class="instruction">INC DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeea"></span>AEEA</td>
-<td class="instruction">LD A,(DE)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeeb"></span>AEEB</td>
-<td class="instruction">OR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeec"></span>AEEC</td>
-<td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeed"></span>AEED</td>
-<td class="instruction">DEC L</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeee"></span>AEEE</td>
-<td class="instruction">INC DE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="aeef"></span>AEEF</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -692,7 +174,7 @@ Prev: <a href="AE04.html">AE04</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#ae17">Map</a></td>
 <td class="next">
-Next: <a href="AEF0.html">AEF0</a>
+Next: <a href="AE3C.html">AE3C</a>
 </td>
 </tr>
 </table>

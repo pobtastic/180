@@ -33,18 +33,19 @@ Next: <a href="43688.html">43688</a>
 </td>
 </tr>
 </table>
-<div class="description">43675: Routine at AA9B</div>
+<div class="description">43675: Two Player Game</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="43256.html">43256</a>.
+Used by the routine at <a href="43256.html">StartMenu</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Game_TwoPlayer</td>
 <td class="address-2"><span id="43675"></span>43675</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="3">Write 1 to; <ul class="">
@@ -53,19 +54,23 @@ Used by the routine at <a href="43256.html">43256</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43677"></span>43677</td>
 <td class="instruction">LD (39607),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43680"></span>43680</td>
 <td class="instruction">LD (39608),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43683"></span>43683</td>
 <td class="instruction">CALL <a href="43688.html">Print_CurrentPlayerID</a></td>
 <td class="comment-1" rowspan="1">Call <a href="43688.html">Print_CurrentPlayerID</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43686"></span>43686</td>
 <td class="instruction">JR <a href="43740.html">43740</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="43740.html">43740</a>.</td>

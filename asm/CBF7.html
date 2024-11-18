@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at CBF7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="CBC8.html">CBC8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#cbf7">Map</a></td>
+<td class="next">
+Next: <a href="CC62.html">CC62</a>
+</td>
+</tr>
+</table>
+<div class="description">CBF7: Routine at CBF7</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="95ED.html">InterruptRoutine</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="cbf7"></span>CBF7</td>
+<td class="instruction">LD A,($D009)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbfa"></span>CBFA</td>
+<td class="instruction">AND A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbfb"></span>CBFB</td>
+<td class="instruction">RET Z</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbfc"></span>CBFC</td>
+<td class="instruction">LD A,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbfe"></span>CBFE</td>
+<td class="instruction">LD ($CC4A),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc01"></span>CC01</td>
+<td class="instruction">LD HL,$CC84</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc04"></span>CC04</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc05"></span>CC05</td>
+<td class="instruction">JR NZ,<a href="CBF7.html#cc22">$CC22</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc07"></span>CC07</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc08"></span>CC08</td>
+<td class="instruction">LD IX,$CB6B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc0c"></span>CC0C</td>
+<td class="instruction">CALL <a href="CC84.html#cd4a">$CD4A</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc0f"></span>CC0F</td>
+<td class="instruction">LD IX,$CB8A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc13"></span>CC13</td>
+<td class="instruction">CALL <a href="CC84.html#cd4a">$CD4A</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc16"></span>CC16</td>
+<td class="instruction">LD IX,$CBA9</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc1a"></span>CC1A</td>
+<td class="instruction">CALL <a href="CC84.html#cd4a">$CD4A</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc1d"></span>CC1D</td>
+<td class="instruction">LD HL,$CC84</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc20"></span>CC20</td>
+<td class="instruction">LD (HL),$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="cc22"></span>CC22</td>
+<td class="instruction">LD IX,$CB6B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc26"></span>CC26</td>
+<td class="instruction">CALL <a href="CC84.html#cdec">$CDEC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc29"></span>CC29</td>
+<td class="instruction">LD ($CEFD),HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc2c"></span>CC2C</td>
+<td class="instruction">LD ($CF05),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc2f"></span>CC2F</td>
+<td class="instruction">LD IX,$CB8A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc33"></span>CC33</td>
+<td class="instruction">CALL <a href="CC84.html#cdec">$CDEC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc36"></span>CC36</td>
+<td class="instruction">LD ($CEFF),HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc39"></span>CC39</td>
+<td class="instruction">LD ($CF06),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc3c"></span>CC3C</td>
+<td class="instruction">LD IX,$CBA9</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc40"></span>CC40</td>
+<td class="instruction">CALL <a href="CC84.html#cdec">$CDEC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc43"></span>CC43</td>
+<td class="instruction">LD ($CF01),HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc46"></span>CC46</td>
+<td class="instruction">LD ($CF07),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc49"></span>CC49</td>
+<td class="instruction">LD A,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc4b"></span>CC4B</td>
+<td class="instruction">LD ($CF03),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc4e"></span>CC4E</td>
+<td class="instruction">LD HL,$CF0A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc51"></span>CC51</td>
+<td class="instruction">LD A,$0D</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc53"></span>CC53</td>
+<td class="instruction">LD C,$FD</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="cc55"></span>CC55</td>
+<td class="instruction">LD B,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc57"></span>CC57</td>
+<td class="instruction">OUT (C),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc59"></span>CC59</td>
+<td class="instruction">LD B,$BF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc5b"></span>CC5B</td>
+<td class="instruction">OUTD</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc5d"></span>CC5D</td>
+<td class="instruction">DEC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc5e"></span>CC5E</td>
+<td class="instruction">JP P,<a href="CBF7.html#cc55">$CC55</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="cc61"></span>CC61</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="CBC8.html">CBC8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#cbf7">Map</a></td>
+<td class="next">
+Next: <a href="CC62.html">CC62</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/CBF7.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

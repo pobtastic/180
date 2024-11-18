@@ -33,71 +33,78 @@ Next: <a href="AE17.html">AE17</a>
 </td>
 </tr>
 </table>
-<div class="description">AE04: Routine at AE04</div>
+<div class="description">AE04: Long Pause</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="9D42.html">9D42</a>, <a href="A15C.html">Messaging_YouWin</a>, <a href="A8F8.html">A8F8</a>, <a href="A9E5.html">A9E5</a>, <a href="AA0A.html">AA0A</a>, <a href="AA5A.html">AA5A</a>, <a href="AA7B.html">AA7B</a>, <a href="AAA8.html">Print_CurrentPlayerID</a>, <a href="AB2E.html">Messaging_DartNumber</a>, <a href="AD3B.html">Messaging_Bust</a> and <a href="B16B.html">B16B</a>.
+Used by the routines at <a href="9D42.html">9D42</a>, <a href="A15C.html">Messaging_YouWin</a>, <a href="A8F8.html">StartMenu</a>, <a href="A9E5.html">A9E5</a>, <a href="AA0A.html">AA0A</a>, <a href="AA5A.html">AA5A</a>, <a href="AA7B.html">AA7B</a>, <a href="AAA8.html">Print_CurrentPlayerID</a>, <a href="AB2E.html">Messaging_DartNumber</a>, <a href="AD3B.html">Messaging_Bust</a> and <a href="B16B.html">B16B</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">LongPause</td>
 <td class="address-2"><span id="ae04"></span>AE04</td>
 <td class="instruction">LD B,$03</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set a repeat counter in <span class="register">B</span> for 03 loops.</td>
 </tr>
 <tr>
+<td class="asm-label">LongPause_RepeatLoop</td>
 <td class="address-2"><span id="ae06"></span>AE06</td>
 <td class="instruction">LD HL,$FFFF</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set a delay counter in <span class="register">HL</span> to FFFF. We count down from this value to zero three times.</td>
 </tr>
 <tr>
+<td class="asm-label">LongPause_DelayLoop</td>
 <td class="address-2"><span id="ae09"></span>AE09</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease the delay counter by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ae0a"></span>AE0A</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump back to <a href="AE04.html#ae09">LongPause_DelayLoop</a> until the delay counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ae0b"></span>AE0B</td>
 <td class="instruction">OR L</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ae0c"></span>AE0C</td>
-<td class="instruction">JR NZ,<a href="AE04.html#ae09">$AE09</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="AE04.html#ae09">LongPause_DelayLoop</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ae0e"></span>AE0E</td>
 <td class="instruction">LD A,($F821)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Return if bit 4 of *<a href="F81C.html#f821">F821</a> is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ae11"></span>AE11</td>
 <td class="instruction">BIT 4,A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ae13"></span>AE13</td>
 <td class="instruction">RET NZ</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ae14"></span>AE14</td>
-<td class="instruction">DJNZ <a href="AE04.html#ae06">$AE06</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="AE04.html#ae06">LongPause_RepeatLoop</a></td>
+<td class="comment-1" rowspan="1">Decrease the repeat counter by one and loop back to <a href="AE04.html#ae06">LongPause_RepeatLoop</a> until the repeat counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ae16"></span>AE16</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

@@ -47,167 +47,166 @@ Used by the routine at <a href="A461.html">A461</a>.
 <tr>
 <td class="address-2"><span id="a5e1"></span>A5E1</td>
 <td class="instruction">LD A,($9B11)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9B11.html">9B11</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5e4"></span>A5E4</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if *<a href="9B11.html">9B11</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5e5"></span>A5E5</td>
 <td class="instruction">RET Z</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5e6"></span>A5E6</td>
 <td class="instruction">LD HL,$7B00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="7B00.html">7B00</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5e9"></span>A5E9</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5ea"></span>A5EA</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5eb"></span>A5EB</td>
 <td class="instruction">LD DE,$7C87</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="7C87.html">7C87</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5ee"></span>A5EE</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Exchange the shadow <span class="register">AF</span> register with the <span class="register">AF</span> register.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5ef"></span>A5EF</td>
 <td class="instruction">LD H,D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">D</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f0"></span>A5F0</td>
 <td class="instruction">LD L,E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">E</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f1"></span>A5F1</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f2"></span>A5F2</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f3"></span>A5F3</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f4"></span>A5F4</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f5"></span>A5F5</td>
 <td class="instruction">SUB C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f6"></span>A5F6</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f7"></span>A5F7</td>
 <td class="instruction">LD B,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5f9"></span>A5F9</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5fa"></span>A5FA</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5fb"></span>A5FB</td>
 <td class="instruction">LD BC,$0188</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0188.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a5fe"></span>A5FE</td>
 <td class="instruction">LDDR</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">LDDR.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a600"></span>A600</td>
 <td class="instruction">LD A,($9B11)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9B11.html">9B11</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a603"></span>A603</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a604"></span>A604</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Exchange the shadow <span class="register">AF</span> register with the <span class="register">AF</span> register.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a605"></span>A605</td>
 <td class="instruction">LD HL,$7B00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="7B00.html">7B00</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a608"></span>A608</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a609"></span>A609</td>
 <td class="instruction">LD B,$07</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=07.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a60b"></span>A60B</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a60c"></span>A60C</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a60d"></span>A60D</td>
 <td class="instruction">DJNZ <a href="A5E1.html#a60b">$A60B</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A5E1.html#a60b">A60B</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a60f"></span>A60F</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a610"></span>A610</td>
 <td class="instruction">DJNZ <a href="A5E1.html#a608">$A608</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="A5E1.html#a608">A608</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a612"></span>A612</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

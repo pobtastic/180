@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 9A86</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9A6F.html">9A6F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9a86">Map</a></td>
+<td class="next">
+Next: <a href="9AA6.html">9AA6</a>
+</td>
+</tr>
+</table>
+<div class="description">9A86: Routine at 9A86</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="9a86"></span>9A86</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a87"></span>9A87</td>
+<td class="instruction">LD HL,$91AE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="91A1.html#91ab">91AE</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a8a"></span>9A8A</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a8b"></span>9A8B</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a8c"></span>9A8C</td>
+<td class="instruction">JR NC,<a href="9A86.html#9a8f">$9A8F</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9A86.html#9a8f">9A8F</a> if ?? is greater than or equal to 00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a8e"></span>9A8E</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="9a8f"></span>9A8F</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a90"></span>9A90</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a91"></span>9A91</td>
+<td class="instruction">CP $3A</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 3A.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a93"></span>9A93</td>
+<td class="instruction">JR NC,<a href="9A86.html#9a99">$9A99</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9A86.html#9a99">9A99</a> if <span class="register">A</span> is greater than or equal to 3A.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a95"></span>9A95</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a96"></span>9A96</td>
+<td class="instruction">JP <a href="91A1.html">Print_Score</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="91A1.html">Print_Score</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="9a99"></span>9A99</td>
+<td class="instruction">SUB $0A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=0A.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a9b"></span>9A9B</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a9c"></span>9A9C</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a9d"></span>9A9D</td>
+<td class="instruction">LD C,$01</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9a9f"></span>9A9F</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9aa0"></span>9AA0</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9aa1"></span>9AA1</td>
+<td class="instruction">JP Z,<a href="91A1.html">Print_Score</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="91A1.html">Print_Score</a> if <span class="register">A</span> is equal to 01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="9aa4"></span>9AA4</td>
+<td class="instruction">JR <a href="9A86.html#9a86">$9A86</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9A86.html">9A86</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="9A6F.html">9A6F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#9a86">Map</a></td>
+<td class="next">
+Next: <a href="9AA6.html">9AA6</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/9A86.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

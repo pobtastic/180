@@ -33,76 +33,99 @@ Next: <a href="39255.html">39255</a>
 </td>
 </tr>
 </table>
-<div class="description">39234: Routine at 9942</div>
+<div class="description">39234: Sound: Menu Tick</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="37695.html">MainMenu</a> and <a href="43256.html">43256</a>.
+Used by the routines at <a href="37695.html">MainMenu</a> and <a href="43386.html">AroundTheClock</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="39234"></span>
+<div class="comments">
+<div class="paragraph">
+<audio controls="" src="../../audio/menu.wav">
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="../../audio/menu.wav">link to the audio</a> instead.</p>
+</audio>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Sound_MenuTick</td>
 <td class="address-2"><span id="39234"></span>39234</td>
 <td class="instruction">LD C,0</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=0.</td>
+<td class="comment-1" rowspan="1">Set initial speaker state in <span class="register">C</span> to OFF.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39236"></span>39236</td>
 <td class="instruction">LD B,60</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=60.</td>
+<td class="comment-1" rowspan="1">Set the repeat loop counter in <span class="register">B</span> to 60.</td>
 </tr>
 <tr>
+<td class="asm-label">MenuTick_OuterLoop</td>
 <td class="address-2"><span id="39238"></span>39238</td>
 <td class="instruction">LD HL,10</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=0010.</td>
+<td class="comment-1" rowspan="1">Set the delay loop in <span class="register">HL</span> to 0010.</td>
 </tr>
 <tr>
+<td class="asm-label">MenuTick_DelayLoop</td>
 <td class="address-2"><span id="39241"></span>39241</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Decrease the delay loop by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39242"></span>39242</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="3">Jump to <a href="39234.html#39241">39241</a> until <span class="register">HL</span> is zero.</td>
+<td class="comment-1" rowspan="3">Jump back to <a href="39234.html#39241">MenuTick_DelayLoop</a> until the delay loop is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39243"></span>39243</td>
 <td class="instruction">OR L</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39244"></span>39244</td>
-<td class="instruction">JR NZ,<a href="39234.html#39241">39241</a></td>
+<td class="instruction">JR NZ,<a href="39234.html#39241">MenuTick_DelayLoop</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39246"></span>39246</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-1" rowspan="1">Load <span class="register">C</span> into <span class="register">A</span>.</td>
+<td class="comment-1" rowspan="3">Flip the current speaker state.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39247"></span>39247</td>
 <td class="instruction">XOR %00010000</td>
-<td class="comment-1" rowspan="1">Flip the speaker bit.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39249"></span>39249</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1">Store the result back to <span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39250"></span>39250</td>
 <td class="instruction">OUT (254),A</td>
-<td class="comment-1" rowspan="1">Send <span class="register">A</span> to the speaker.</td>
+<td class="comment-1" rowspan="1">Send it to the speaker.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39252"></span>39252</td>
-<td class="instruction">DJNZ <a href="39234.html#39238">39238</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="39234.html#39238">39238</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="39234.html#39238">MenuTick_OuterLoop</a></td>
+<td class="comment-1" rowspan="1">Decrease the repeat loop counter by one and loop back to <a href="39234.html#39238">MenuTick_OuterLoop</a> until the repeat loop counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39254"></span>39254</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 43386</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43256.html">43256</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43386">Map</a></td>
+<td class="next">
+Next: <a href="43458.html">43458</a>
+</td>
+</tr>
+</table>
+<div class="description">43386: SubGame: Around The Clock</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="43256.html">StartMenu</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43386"></span>
+<div class="comments">
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="around-the-clock" src="../../images/scr/around-the-clock.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">AroundTheClock</td>
+<td class="address-2"><span id="43386"></span>43386</td>
+<td class="instruction">CALL <a href="39234.html">Sound_MenuTick</a></td>
+<td class="comment-1" rowspan="1">Call <a href="39234.html">Sound_MenuTick</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43389"></span>43389</td>
+<td class="instruction">CALL <a href="43458.html">43458</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43458.html">43458</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43392"></span>43392</td>
+<td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43395"></span>43395</td>
+<td class="instruction">DEFB 16,7</td>
+<td class="comment-1" rowspan="1">INK: 
+
+
+WHITE.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43397"></span>43397</td>
+<td class="instruction">DEFB 17,0</td>
+<td class="comment-1" rowspan="1">PAPER: 
+
+
+BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43399"></span>43399</td>
+<td class="instruction">DEFB 18,1</td>
+<td class="comment-1" rowspan="1">FLASH: ON.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43401"></span>43401</td>
+<td class="instruction">DEFB 22,1,1</td>
+<td class="comment-1" rowspan="1">PRINT AT: 1, 1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43404"></span>43404</td>
+<td class="instruction">DEFM "AROUND"</td>
+<td class="comment-1" rowspan="1"><img alt="around" src="../../images/font/around.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43410"></span>43410</td>
+<td class="instruction">DEFB 22,2,1</td>
+<td class="comment-1" rowspan="1">PRINT AT: 2, 1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43413"></span>43413</td>
+<td class="instruction">DEFM " THE"</td>
+<td class="comment-1" rowspan="1"><img alt="the" src="../../images/font/the.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43417"></span>43417</td>
+<td class="instruction">DEFB 22,3,1</td>
+<td class="comment-1" rowspan="1">PRINT AT: 3, 1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43420"></span>43420</td>
+<td class="instruction">DEFM "CLOCK["</td>
+<td class="comment-1" rowspan="1"><img alt="clock" src="../../images/font/clock.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43426"></span>43426</td>
+<td class="instruction">DEFB 22,9,2</td>
+<td class="comment-1" rowspan="1">PRINT AT: 9, 2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43429"></span>43429</td>
+<td class="instruction">DEFM "TIME"</td>
+<td class="comment-1" rowspan="1"><img alt="time" src="../../images/font/time.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43433"></span>43433</td>
+<td class="instruction">DEFB 255</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43434"></span>
+<div class="comments">
+<div class="paragraph">
+Set the countdown timer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43434"></span>43434</td>
+<td class="instruction">LD HL,41868</td>
+<td class="comment-1" rowspan="4">Write "&#57;&#57;" to *<a href="41856.html#41868">AroundTheClock_Timer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43437"></span>43437</td>
+<td class="instruction">LD (HL),57</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43439"></span>43439</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43440"></span>43440</td>
+<td class="instruction">LD (HL),57</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43442"></span>43442</td>
+<td class="instruction">LD HL,39605</td>
+<td class="comment-1" rowspan="2">Write "&#50;" to *<a href="39604.html#39605">39605</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43445"></span>43445</td>
+<td class="instruction">LD (HL),50</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43447"></span>43447</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="3">Write 1 to; <ul class="">
+<li>*<a href="39717.html#39724">39724</a></li>
+<li>*<a href="39717.html#39723">39723</a></li>
+</ul></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43449"></span>43449</td>
+<td class="instruction">LD (39724),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43452"></span>43452</td>
+<td class="instruction">LD (39723),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="43455"></span>43455</td>
+<td class="instruction">JP <a href="40258.html">40258</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="40258.html">40258</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43256.html">43256</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43386">Map</a></td>
+<td class="next">
+Next: <a href="43458.html">43458</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/43386.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>
