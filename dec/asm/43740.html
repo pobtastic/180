@@ -39,7 +39,21 @@ Next: <a href="43822.html">43822</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="43530.html">43530</a>, <a href="43610.html">43610</a>, <a href="43643.html">43643</a>, <a href="43675.html">Game_TwoPlayer</a> and <a href="45419.html">45419</a>.
+Used by the routines at <a href="43530.html">43530</a>, <a href="43610.html">NextLeg</a>, <a href="43643.html">43643</a>, <a href="43675.html">Game_TwoPlayer</a> and <a href="45419.html">45419</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43740"></span>
+<div class="comments">
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="stadgfgfgf" src="../../images/scr/stadgfgfgf.png" /></td>
+</tr>
+</table>
 </div>
 </div>
 </td>
@@ -103,7 +117,7 @@ Update the copy of the "current total".
 <tr>
 <td class="address-1"><span id="43765"></span>43765</td>
 <td class="instruction">LD HL,44278</td>
-<td class="comment-1" rowspan="2">Write "&#53;" to *<a href="44249.html#44278">Current_Total</a>.</td>
+<td class="comment-1" rowspan="6">Write "&#53;&#48;&#49;" to *<a href="44249.html#44278">Current_Total</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="43768"></span>43768</td>
@@ -112,7 +126,6 @@ Update the copy of the "current total".
 <tr>
 <td class="address-1"><span id="43770"></span>43770</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="2">Write "&#48;" to *<a href="44249.html#44278">44279</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="43771"></span>43771</td>
@@ -121,7 +134,6 @@ Update the copy of the "current total".
 <tr>
 <td class="address-1"><span id="43773"></span>43773</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="2">Write "&#49;" to *<a href="44249.html#44278">44280</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="43774"></span>43774</td>
@@ -129,16 +141,16 @@ Update the copy of the "current total".
 </tr>
 <tr>
 <td class="address-1"><span id="43776"></span>43776</td>
-<td class="instruction">CALL <a href="41892.html">41892</a></td>
-<td class="comment-1" rowspan="1">Call <a href="41892.html">41892</a>.</td>
+<td class="instruction">CALL <a href="41892.html">DrawCurrentScore</a></td>
+<td class="comment-1" rowspan="1">Call <a href="41892.html">DrawCurrentScore</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="43779"></span>43779</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="5">Write 0 to; <ul class="">
 <li>*<a href="46102.html">46102</a></li>
-<li>*<a href="39621.html#39695">39695</a></li>
-<li>*<a href="39590.html#39597">39597</a></li>
+<li>*<a href="39684.html#39695">39695</a></li>
+<li>*<a href="39597.html">39597</a></li>
 <li>*<a href="39590.html#39593">39593</a></li>
 </ul></td>
 </tr>

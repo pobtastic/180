@@ -47,137 +47,130 @@ Used by the routine at <a href="AE3C.html">AE3C</a>.
 <tr>
 <td class="address-2"><span id="ae6e"></span>AE6E</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Stash <span class="register">HL</span>, <span class="register">BC</span> and <span class="register">DE</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae6f"></span>AE6F</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae70"></span>AE70</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae71"></span>AE71</td>
 <td class="instruction">LD B,(IX+$00)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae74"></span>AE74</td>
 <td class="instruction">INC IX</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">IX</span> by one.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="ae76"></span>AE76</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae77"></span>AE77</td>
 <td class="instruction">CALL <a href="AEA3.html">$AEA3</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="AEA3.html">AEA3</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae7a"></span>AE7A</td>
 <td class="instruction">LD A,(IX+$00)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae7d"></span>AE7D</td>
 <td class="instruction">CALL <a href="AEAF.html">$AEAF</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="AEAF.html">AEAF</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae80"></span>AE80</td>
 <td class="instruction">LD DE,($AF5D)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="AF5D.html">AF5D</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae84"></span>AE84</td>
 <td class="instruction">CALL <a href="A8AE.html">CalculateScreenBuffer</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="A8AE.html">CalculateScreenBuffer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae87"></span>AE87</td>
 <td class="instruction">LD A,(IX+$01)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+01.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae8a"></span>AE8A</td>
 <td class="instruction">INC IX</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Increment <span class="register">IX</span> by two.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae8c"></span>AE8C</td>
 <td class="instruction">INC IX</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae8e"></span>AE8E</td>
 <td class="instruction">CALL <a href="AEC3.html">$AEC3</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="AEC3.html">AEC3</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae91"></span>AE91</td>
 <td class="instruction">CALL <a href="AECC.html">$AECC</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="AECC.html">AECC</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae94"></span>AE94</td>
 <td class="instruction">LD BC,$03E8</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=03E8.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="ae97"></span>AE97</td>
 <td class="instruction">DEC BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">BC</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae98"></span>AE98</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump back to <a href="AE6E.html#ae97">AE97</a> until <span class="register">BC</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae99"></span>AE99</td>
 <td class="instruction">OR C</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae9a"></span>AE9A</td>
 <td class="instruction">JR NZ,<a href="AE6E.html#ae97">$AE97</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae9c"></span>AE9C</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae9d"></span>AE9D</td>
 <td class="instruction">DJNZ <a href="AE6E.html#ae76">$AE76</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="AE6E.html#ae76">AE76</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ae9f"></span>AE9F</td>
 <td class="instruction">POP DE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Restore <span class="register">DE</span>, <span class="register">BC</span> and <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aea0"></span>AEA0</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="aea1"></span>AEA1</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="aea2"></span>AEA2</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

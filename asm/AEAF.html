@@ -47,67 +47,66 @@ Used by the routine at <a href="AE6E.html">AE6E</a>.
 <tr>
 <td class="address-2"><span id="aeaf"></span>AEAF</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aeb0"></span>AEB0</td>
 <td class="instruction">RET Z</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-2"><span id="aeb1"></span>AEB1</td>
 <td class="instruction">LD HL,$8F5D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="8D75.html#8f5d">8F5D</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aeb4"></span>AEB4</td>
 <td class="instruction">LD B,$04</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=04.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="aeb6"></span>AEB6</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aeb7"></span>AEB7</td>
 <td class="instruction">RR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Rotate *<span class="register">HL</span> right.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aeb9"></span>AEB9</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aeba"></span>AEBA</td>
 <td class="instruction">RR (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Rotate *<span class="register">HL</span> right.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aebc"></span>AEBC</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aebd"></span>AEBD</td>
 <td class="instruction">DJNZ <a href="AEAF.html#aeb6">$AEB6</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="AEAF.html#aeb6">AEB6</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aebf"></span>AEBF</td>
 <td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aec0"></span>AEC0</td>
 <td class="instruction">JR NZ,<a href="AEAF.html#aeb1">$AEB1</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="AEAF.html#aeb1">AEB1</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="aec2"></span>AEC2</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

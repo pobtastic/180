@@ -33,7 +33,7 @@ Next: <a href="41923.html">41923</a>
 </td>
 </tr>
 </table>
-<div class="description">41892: Routine at A3A4</div>
+<div class="description">41892: Draw Current Score</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,64 +45,99 @@ Used by the routines at <a href="41308.html">Messaging_YouWin</a> and <a href="4
 </td>
 </tr>
 <tr>
+<td class="asm-label">DrawCurrentScore</td>
 <td class="address-2"><span id="41892"></span>41892</td>
 <td class="instruction">LD A,(39607)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="41923.html">Messaging_PrintPlayerCurrentTotal</a> if *<a href="39604.html#39607">39607</a> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41895"></span>41895</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41896"></span>41896</td>
 <td class="instruction">JR NZ,<a href="41923.html">Messaging_PrintPlayerCurrentTotal</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41898"></span>41898</td>
 <td class="instruction">CALL <a href="44189.html">FlashCurrentTotal</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="44189.html">FlashCurrentTotal</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="41901"></span>
+<div class="comments">
+<div class="paragraph">
+Set up the scoring area block positioning and attributes.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41901"></span>41901</td>
 <td class="instruction">LD HL,257</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the X/ Y co-ordinates in <span class="register">HL</span> (1/ 1).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41904"></span>41904</td>
 <td class="instruction">LD BC,774</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the height and width in <span class="register">BC</span> (3/ 6).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41907"></span>41907</td>
 <td class="instruction">LD A,70</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">The colour: INK:
+YELLOW,
+PAPER:
+BLACK
+(BRIGHT)
+.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41909"></span>41909</td>
-<td class="instruction">CALL <a href="46502.html">46502</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="46502.html">FillAttributeBlock</a></td>
+<td class="comment-1" rowspan="1">Call <a href="46502.html">FillAttributeBlock</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="41912"></span>
+<div class="comments">
+<div class="paragraph">
+Display the score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41912"></span>41912</td>
 <td class="instruction">LD BC,(39595)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Load *<a href="39595.html">RunningTotal</a> into <span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41916"></span>41916</td>
 <td class="instruction">LD DE,3841</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the X/ Y co-ordinates in <span class="register">DE</span> (15/ 1).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41919"></span>41919</td>
-<td class="instruction">CALL <a href="46914.html">46914</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="46914.html">DrawLargeNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="46914.html">DrawLargeNumber</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="41922"></span>41922</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

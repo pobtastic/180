@@ -33,7 +33,7 @@ Next: <a href="43643.html">43643</a>
 </td>
 </tr>
 </table>
-<div class="description">43610: Routine at AA5A</div>
+<div class="description">43610: Next Leg</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,79 +45,87 @@ Used by the routine at <a href="41308.html">Messaging_YouWin</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">NextLeg</td>
 <td class="address-2"><span id="43610"></span>43610</td>
 <td class="instruction">LD HL,39590</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39590.html">39590</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43613"></span>43613</td>
 <td class="instruction">INC (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43614"></span>43614</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="43740.html">43740</a> if *<span class="register">HL</span> is not equal to 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43615"></span>43615</td>
 <td class="instruction">CP 2</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43617"></span>43617</td>
 <td class="instruction">JR NZ,<a href="43740.html">43740</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43619"></span>43619</td>
 <td class="instruction">XOR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Write 0 to *<a href="39590.html">39590</a> and *<a href="39590.html#39591">39591</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43620"></span>43620</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43621"></span>43621</td>
 <td class="instruction">LD HL,39591</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43624"></span>43624</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43625"></span>43625</td>
 <td class="instruction">CALL <a href="42917.html">Print_PlayArea</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="42917.html">Print_PlayArea</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43628"></span>43628</td>
 <td class="instruction">CALL <a href="46656.html">SemiFinals</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="46656.html">SemiFinals</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43631"></span>43631</td>
 <td class="instruction">CALL <a href="44548.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Call <a href="44548.html">LongPause</a> three times.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43634"></span>43634</td>
 <td class="instruction">CALL <a href="44548.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43637"></span>43637</td>
 <td class="instruction">CALL <a href="44548.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43640"></span>43640</td>
 <td class="instruction">JP <a href="43740.html">43740</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="43740.html">43740</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

@@ -33,7 +33,7 @@ Next: <a href="9A10.html">9A10</a>
 </td>
 </tr>
 </table>
-<div class="description">99F7: Routine at 99F7</div>
+<div class="description">99F7: Interrupt Driven Controls</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,84 +45,101 @@ Used by the routine at <a href="95ED.html">InterruptRoutine</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">InterruptDrivenControls</td>
 <td class="address-2"><span id="99f7"></span>99F7</td>
 <td class="instruction">LD C,$00</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="99f9"></span>99F9</td>
 <td class="instruction">LD HL,$9A6F</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9A6F.html">9A6F</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9A6F.html">Controls</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="99fc"></span>99FC</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="99fd"></span>99FD</td>
 <td class="instruction">LD A,($99F5)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="99F5.html">ControlType</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a00"></span>9A00</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a01"></span>9A01</td>
 <td class="instruction">RET M</td>
 <td class="comment-1" rowspan="1">Return if *<a href="99F5.html">ControlType</a> was set to "keyboard" (00).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a02"></span>9A02</td>
 <td class="instruction">ADD A,A</td>
 <td class="comment-1" rowspan="1">Multiply <span class="register">A</span> by 02.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a03"></span>9A03</td>
 <td class="instruction">LD HL,$9A10</td>
 <td class="comment-1" rowspan="3"><span class="register">HL</span>=<a href="9A10.html">JumpTable_ControlMethods</a>+<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a06"></span>9A06</td>
 <td class="instruction">ADD A,L</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a07"></span>9A07</td>
 <td class="instruction">LD L,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a08"></span>9A08</td>
-<td class="instruction">JR NC,<a href="99F7.html#9a0b">$9A0B</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="99F7.html#9a0b">9A0B</a> if <span class="register">A</span> is greater than or equal to 00.</td>
+<td class="instruction">JR NC,<a href="99F7.html#9a0b">InterruptDrivenControls_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="99F7.html#9a0b">InterruptDrivenControls_0</a> if <span class="register">A</span> is greater than or equal to 00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a0a"></span>9A0A</td>
 <td class="instruction">INC H</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label">InterruptDrivenControls_0</td>
 <td class="address-2"><span id="9a0b"></span>9A0B</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a0c"></span>9A0C</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a0d"></span>9A0D</td>
 <td class="instruction">LD H,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a0e"></span>9A0E</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9a0f"></span>9A0F</td>
 <td class="instruction">JP (HL)</td>
 <td class="comment-1" rowspan="1">Jump to the address held in *<span class="register">HL</span>.</td>

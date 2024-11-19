@@ -33,7 +33,7 @@ Next: <a href="39558.html">39558</a>
 </td>
 </tr>
 </table>
-<div class="description">39535: Routine at 9A6F</div>
+<div class="description">39535: Controls</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,11 +45,13 @@ Used by the routines at <a href="39453.html">ControlMethod_InterfaceTwo</a> and 
 </td>
 </tr>
 <tr>
+<td class="asm-label">Controls</td>
 <td class="address-2"><span id="39535"></span>39535</td>
 <td class="instruction">LD B,1</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39537"></span>39537</td>
 <td class="instruction">LD HL,39511</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39511.html">39511</a>.</td>
@@ -65,70 +67,84 @@ This entry point is used by the routines at <a href="39453.html">ControlMethod_I
 </td>
 </tr>
 <tr>
+<td class="asm-label">Controls_0</td>
 <td class="address-2"><span id="39540"></span>39540</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39541"></span>39541</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39542"></span>39542</td>
 <td class="instruction">IN A,(254)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=byte from port 254.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39544"></span>39544</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39545"></span>39545</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="2">Increment <span class="register">HL</span> by two.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39546"></span>39546</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39547"></span>39547</td>
-<td class="instruction">JR NZ,<a href="39535.html#39550">39550</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="39535.html#39550">39550</a> if <span class="register">HL</span> is not equal to *<span class="register">HL</span>.</td>
+<td class="instruction">JR NZ,<a href="39535.html#39550">Controls_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39535.html#39550">Controls_1</a> if <span class="register">HL</span> is not equal to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39549"></span>39549</td>
 <td class="instruction">SCF</td>
 <td class="comment-1" rowspan="1">Set the carry flag.</td>
 </tr>
 <tr>
+<td class="asm-label">Controls_1</td>
 <td class="address-2"><span id="39550"></span>39550</td>
 <td class="instruction">RL B</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">B</span> left.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39552"></span>39552</td>
-<td class="instruction">JR NC,<a href="39535.html#39540">39540</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="39535.html#39540">39540</a> if <span class="register">HL</span> is greater than or equal to *<span class="register">HL</span>.</td>
+<td class="instruction">JR NC,<a href="39535.html#39540">Controls_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39535.html#39540">Controls_0</a> if <span class="register">HL</span> is greater than or equal to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39554"></span>39554</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39555"></span>39555</td>
 <td class="instruction">OR C</td>
 <td class="comment-1" rowspan="1">Set the bits from <span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39556"></span>39556</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39557"></span>39557</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

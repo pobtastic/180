@@ -33,107 +33,147 @@ Next: <a href="46945.html">46945</a>
 </td>
 </tr>
 </table>
-<div class="description">46914: Routine at B742</div>
+<div class="description">46914: Draw Large Number</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="41892.html">41892</a>, <a href="46522.html">QuarterFinals</a>, <a href="46656.html">SemiFinals</a> and <a href="46786.html">TheFinal</a>.
+Used by the routines at <a href="41892.html">DrawCurrentScore</a>, <a href="46522.html">QuarterFinals</a>, <a href="46656.html">SemiFinals</a> and <a href="46786.html">TheFinal</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">The numbering to display</td>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">Destination Y location</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">Destination X location</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46914"></span>
+<div class="comments">
+<div class="paragraph">
+On return from <a href="43182.html">CalculateScreenBuffer</a> <span class="register">HL</span> will contain the screen buffer destination.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">DrawLargeNumber</td>
 <td class="address-2"><span id="46914"></span>46914</td>
 <td class="instruction">CALL <a href="43182.html">CalculateScreenBuffer</a></td>
 <td class="comment-1" rowspan="1">Call <a href="43182.html">CalculateScreenBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46917"></span>46917</td>
 <td class="instruction">LD D,B</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">B</span>.</td>
+<td class="comment-1" rowspan="2">Copy the number to display into <span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46918"></span>46918</td>
 <td class="instruction">LD E,C</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46919"></span>46919</td>
 <td class="instruction">LD B,56</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=56.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the height of the numbering.</td>
 </tr>
 <tr>
+<td class="asm-label">DrawLargeNumber_Loop</td>
 <td class="address-2"><span id="46921"></span>46921</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="2">Stash the height counter and destination pointer on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46922"></span>46922</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46923"></span>46923</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+<td class="comment-1" rowspan="1">Swap the source and destination registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46924"></span>46924</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
+<td class="comment-1" rowspan="6">Copy 6 bytes of data from the source address to the destination.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46926"></span>46926</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46928"></span>46928</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46930"></span>46930</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46932"></span>46932</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46934"></span>46934</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46936"></span>46936</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+<td class="comment-1" rowspan="1">Swap the source and destination registers back again.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46937"></span>46937</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the original screen position from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46938"></span>46938</td>
-<td class="instruction">CALL <a href="43212.html">43212</a></td>
-<td class="comment-1" rowspan="1">Call <a href="43212.html">43212</a>.</td>
+<td class="instruction">CALL <a href="43212.html">NextScreenBufferLine</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43212.html">NextScreenBufferLine</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46941"></span>46941</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the height counter from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46942"></span>46942</td>
-<td class="instruction">DJNZ <a href="46914.html#46921">46921</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="46914.html#46921">46921</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="46914.html#46921">DrawLargeNumber_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="46914.html#46921">DrawLargeNumber_Loop</a> until the whole image has been displayed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="46944"></span>46944</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

@@ -39,7 +39,7 @@ Next: <a href="44217.html">44217</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="41892.html">41892</a> and <a href="41923.html">Messaging_PrintPlayerCurrentTotal</a>.
+Used by the routines at <a href="41892.html">DrawCurrentScore</a> and <a href="41923.html">Messaging_PrintPlayerCurrentTotal</a>.
 </div>
 </div>
 </td>
@@ -48,7 +48,7 @@ Used by the routines at <a href="41892.html">41892</a> and <a href="41923.html">
 <td class="asm-label">FlashCurrentTotal</td>
 <td class="address-2"><span id="44189"></span>44189</td>
 <td class="instruction">LD HL,44278</td>
-<td class="comment-1" rowspan="4">Copy 0003 bytes of data from *<a href="44249.html#44278">Current_Total</a> to *<a href="44189.html#44212">CurrentTotal</a>.</td>
+<td class="comment-1" rowspan="4">Copy 0003 bytes of data from *<a href="44249.html#44278">Current_Total</a> to *<a href="44189.html#44212">Messaging_FlashCurrentTotal</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -102,7 +102,7 @@ YELLOW.</td>
 BLACK.</td>
 </tr>
 <tr>
-<td class="asm-label">CurrentTotal</td>
+<td class="asm-label">Messaging_FlashCurrentTotal</td>
 <td class="address-1"><span id="44212"></span>44212</td>
 <td class="instruction">DEFM "   "</td>
 <td class="comment-1" rowspan="1">"&#160;&#160;&#160;".</td>

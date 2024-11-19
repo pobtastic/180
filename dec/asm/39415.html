@@ -33,7 +33,7 @@ Next: <a href="39440.html">39440</a>
 </td>
 </tr>
 </table>
-<div class="description">39415: Routine at 99F7</div>
+<div class="description">39415: Interrupt Driven Controls</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,84 +45,101 @@ Used by the routine at <a href="38381.html">InterruptRoutine</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">InterruptDrivenControls</td>
 <td class="address-2"><span id="39415"></span>39415</td>
 <td class="instruction">LD C,0</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39417"></span>39417</td>
 <td class="instruction">LD HL,39535</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39535.html">39535</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39535.html">Controls</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39420"></span>39420</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39421"></span>39421</td>
 <td class="instruction">LD A,(39413)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="39413.html">ControlType</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39424"></span>39424</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39425"></span>39425</td>
 <td class="instruction">RET M</td>
 <td class="comment-1" rowspan="1">Return if *<a href="39413.html">ControlType</a> was set to "keyboard" (0).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39426"></span>39426</td>
 <td class="instruction">ADD A,A</td>
 <td class="comment-1" rowspan="1">Multiply <span class="register">A</span> by 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39427"></span>39427</td>
 <td class="instruction">LD HL,39440</td>
 <td class="comment-1" rowspan="3"><span class="register">HL</span>=<a href="39440.html">JumpTable_ControlMethods</a>+<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39430"></span>39430</td>
 <td class="instruction">ADD A,L</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39431"></span>39431</td>
 <td class="instruction">LD L,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39432"></span>39432</td>
-<td class="instruction">JR NC,<a href="39415.html#39435">39435</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="39415.html#39435">39435</a> if <span class="register">A</span> is greater than or equal to 0.</td>
+<td class="instruction">JR NC,<a href="39415.html#39435">InterruptDrivenControls_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="39415.html#39435">InterruptDrivenControls_0</a> if <span class="register">A</span> is greater than or equal to 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39434"></span>39434</td>
 <td class="instruction">INC H</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label">InterruptDrivenControls_0</td>
 <td class="address-2"><span id="39435"></span>39435</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39436"></span>39436</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39437"></span>39437</td>
 <td class="instruction">LD H,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39438"></span>39438</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39439"></span>39439</td>
 <td class="instruction">JP (HL)</td>
 <td class="comment-1" rowspan="1">Jump to the address held in *<span class="register">HL</span>.</td>

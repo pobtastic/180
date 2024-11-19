@@ -80,7 +80,7 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="95f6"></span>95F6</td>
 <td class="instruction">LD A,($9B2B)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="95ED.html#9626">InterruptRoutine_1</a> if *<a href="9B25.html#9b2b">9B2B</a> is equal to C3.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="95ED.html#9626">GetControls</a> if *<a href="9B25.html#9b2b">9B2B</a> is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -90,7 +90,7 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="95fa"></span>95FA</td>
-<td class="instruction">JR Z,<a href="95ED.html#9626">InterruptRoutine_1</a></td>
+<td class="instruction">JR Z,<a href="95ED.html#9626">GetControls</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -107,20 +107,30 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9600"></span>9600</td>
-<td class="instruction">JR NZ,<a href="95ED.html#9626">InterruptRoutine_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="95ED.html#9626">InterruptRoutine_1</a> if *<span class="register">HL</span> is not equal to C3.</td>
+<td class="instruction">JR NZ,<a href="95ED.html#9626">GetControls</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="95ED.html#9626">GetControls</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9602"></span>9602</td>
 <td class="instruction">LD (HL),$32</td>
-<td class="comment-1" rowspan="1">Write 32 to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write "&#50;" to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="9604"></span>
+<div class="comments">
+<div class="paragraph">
+Handle the units digit of <a href="A380.html#a38c">AroundTheClock_Timer</a>.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9604"></span>9604</td>
 <td class="instruction">LD HL,$A38D</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="A380.html#a38c">A38D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="A380.html#a38c">A38D</a> (2nd digit of <a href="A380.html#a38c">AroundTheClock_Timer</a>).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -129,10 +139,20 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="9608"></span>
+<div class="comments">
+<div class="paragraph">
+Has <a href="A380.html#a38c">A38D</a> just ticked down from a "0"?
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9608"></span>9608</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="95ED.html#9623">InterruptRoutine_0</a> if *<span class="register">HL</span> is not equal to 2F.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="95ED.html#9623">InterruptDrivenTimer</a> if *<span class="register">HL</span> is not equal to 2F ("&#48;" minus one).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -142,19 +162,39 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="960b"></span>960B</td>
-<td class="instruction">JR NZ,<a href="95ED.html#9623">InterruptRoutine_0</a></td>
+<td class="instruction">JR NZ,<a href="95ED.html#9623">InterruptDrivenTimer</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="960d"></span>
+<div class="comments">
+<div class="paragraph">
+Replace the unit digit with a "9".
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="960d"></span>960D</td>
 <td class="instruction">LD (HL),$39</td>
-<td class="comment-1" rowspan="1">Write 39 to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write "&#57;" to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="960f"></span>
+<div class="comments">
+<div class="paragraph">
+Handle the tens digit of <a href="A380.html#a38c">AroundTheClock_Timer</a>.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="960f"></span>960F</td>
 <td class="instruction">LD HL,$A38C</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="A380.html#a383">A38C</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="A380.html#a38c">AroundTheClock_Timer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -163,10 +203,20 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="9613"></span>
+<div class="comments">
+<div class="paragraph">
+Has <a href="A380.html#a38c">AroundTheClock_Timer</a> just ticked down from a "0"?
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9613"></span>9613</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="95ED.html#9623">InterruptRoutine_0</a> if *<span class="register">L</span> is not equal to 2F.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="95ED.html#9623">InterruptDrivenTimer</a> if *<span class="register">L</span> is not equal to 2F ("&#48;" minus one).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -176,13 +226,23 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9616"></span>9616</td>
-<td class="instruction">JR NZ,<a href="95ED.html#9623">InterruptRoutine_0</a></td>
+<td class="instruction">JR NZ,<a href="95ED.html#9623">InterruptDrivenTimer</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="9618"></span>
+<div class="comments">
+<div class="paragraph">
+This signifies that the time is now up!
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9618"></span>9618</td>
 <td class="instruction">LD A,$01</td>
-<td class="comment-1" rowspan="2">Write 01 to *9B2A.</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="9B25.html#9b2a">9B2A</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -193,7 +253,7 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="961d"></span>961D</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="2">Write 00 to *9B2B.</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="9B25.html#9b2b">9B2B</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -203,26 +263,36 @@ Used by the routine at <a href="FDFD.html">AliasInterruptRedirect</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9621"></span>9621</td>
-<td class="instruction">JR <a href="95ED.html#9626">InterruptRoutine_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="95ED.html#9626">InterruptRoutine_1</a>.</td>
+<td class="instruction">JR <a href="95ED.html#9626">GetControls</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="95ED.html#9626">GetControls</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">InterruptRoutine_0</td>
+<td class="routine-comment" colspan="5">
+<span id="9623"></span>
+<div class="comments">
+<div class="paragraph">
+Print the "Around The Clock" timer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">InterruptDrivenTimer</td>
 <td class="address-2"><span id="9623"></span>9623</td>
 <td class="instruction">CALL <a href="A380.html">Messaging_AroundTheClock_Timer</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A380.html">Messaging_AroundTheClock_Timer</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">InterruptRoutine_1</td>
+<td class="asm-label">GetControls</td>
 <td class="address-2"><span id="9626"></span>9626</td>
-<td class="instruction">CALL <a href="99F7.html">$99F7</a></td>
-<td class="comment-1" rowspan="1">Call <a href="99F7.html">99F7</a>.</td>
+<td class="instruction">CALL <a href="99F7.html">InterruptDrivenControls</a></td>
+<td class="comment-1" rowspan="1">Call <a href="99F7.html">InterruptDrivenControls</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9629"></span>9629</td>
 <td class="instruction">LD ($F821),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="F81C.html#f821">F821</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="F821.html">ControlByte</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

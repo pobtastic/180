@@ -47,32 +47,31 @@ Used by the routine at <a href="44654.html">44654</a>.
 <tr>
 <td class="address-2"><span id="44739"></span>44739</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="44740"></span>44740</td>
 <td class="instruction">RET Z</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="44741"></span>44741</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="44742"></span>44742</td>
-<td class="instruction">CALL <a href="43212.html">43212</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="43212.html">NextScreenBufferLine</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43212.html">NextScreenBufferLine</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="44745"></span>44745</td>
 <td class="instruction">DJNZ <a href="44739.html#44742">44742</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="44739.html#44742">44742</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="44747"></span>44747</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

@@ -33,7 +33,7 @@ Next: <a href="AA7B.html">AA7B</a>
 </td>
 </tr>
 </table>
-<div class="description">AA5A: Routine at AA5A</div>
+<div class="description">AA5A: Next Leg</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,79 +45,87 @@ Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">NextLeg</td>
 <td class="address-2"><span id="aa5a"></span>AA5A</td>
 <td class="instruction">LD HL,$9AA6</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9AA6.html">9AA6</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa5d"></span>AA5D</td>
 <td class="instruction">INC (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa5e"></span>AA5E</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="AADC.html">AADC</a> if *<span class="register">HL</span> is not equal to 02.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa5f"></span>AA5F</td>
 <td class="instruction">CP $02</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa61"></span>AA61</td>
 <td class="instruction">JR NZ,<a href="AADC.html">$AADC</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa63"></span>AA63</td>
 <td class="instruction">XOR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Write 00 to *<a href="9AA6.html">9AA6</a> and *<a href="9AA6.html#9aa7">9AA7</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa64"></span>AA64</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa65"></span>AA65</td>
 <td class="instruction">LD HL,$9AA7</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa68"></span>AA68</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa69"></span>AA69</td>
 <td class="instruction">CALL <a href="A7A5.html">Print_PlayArea</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="A7A5.html">Print_PlayArea</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa6c"></span>AA6C</td>
 <td class="instruction">CALL <a href="B640.html">SemiFinals</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="B640.html">SemiFinals</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa6f"></span>AA6F</td>
 <td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Call <a href="AE04.html">LongPause</a> three times.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa72"></span>AA72</td>
 <td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa75"></span>AA75</td>
 <td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa78"></span>AA78</td>
 <td class="instruction">JP <a href="AADC.html">$AADC</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="AADC.html">AADC</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
