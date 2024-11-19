@@ -33,13 +33,13 @@ Next: <a href="46945.html">46945</a>
 </td>
 </tr>
 </table>
-<div class="description">46914: Draw Large Number</div>
+<div class="description">46914: Draw Opponent Image</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="41892.html">DrawCurrentScore</a>, <a href="46522.html">QuarterFinals</a>, <a href="46656.html">SemiFinals</a> and <a href="46786.html">TheFinal</a>.
+Used by the routines at <a href="41892.html">DrawCurrentOpponent</a>, <a href="46522.html">QuarterFinals</a>, <a href="46656.html">SemiFinals</a> and <a href="46786.html">TheFinal</a>.
 </div>
 </div>
 <table class="input">
@@ -48,7 +48,7 @@ Used by the routines at <a href="41892.html">DrawCurrentScore</a>, <a href="4652
 </tr>
 <tr>
 <td class="register">BC</td>
-<td class="register-desc">The numbering to display</td>
+<td class="register-desc">Pointer to the opponent graphic</td>
 </tr>
 <tr>
 <td class="register">D</td>
@@ -72,7 +72,7 @@ On return from <a href="43182.html">CalculateScreenBuffer</a> <span class="regis
 </td>
 </tr>
 <tr>
-<td class="asm-label">DrawLargeNumber</td>
+<td class="asm-label">DrawOpponentImage</td>
 <td class="address-2"><span id="46914"></span>46914</td>
 <td class="instruction">CALL <a href="43182.html">CalculateScreenBuffer</a></td>
 <td class="comment-1" rowspan="1">Call <a href="43182.html">CalculateScreenBuffer</a>.</td>
@@ -81,7 +81,7 @@ On return from <a href="43182.html">CalculateScreenBuffer</a> <span class="regis
 <td class="asm-label"></td>
 <td class="address-1"><span id="46917"></span>46917</td>
 <td class="instruction">LD D,B</td>
-<td class="comment-1" rowspan="2">Copy the number to display into <span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="2">Copy the opponent pointer to display into <span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -92,10 +92,10 @@ On return from <a href="43182.html">CalculateScreenBuffer</a> <span class="regis
 <td class="asm-label"></td>
 <td class="address-1"><span id="46919"></span>46919</td>
 <td class="instruction">LD B,56</td>
-<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the height of the numbering.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the height of the opponent image.</td>
 </tr>
 <tr>
-<td class="asm-label">DrawLargeNumber_Loop</td>
+<td class="asm-label">DrawOpponentImage_Loop</td>
 <td class="address-2"><span id="46921"></span>46921</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="2">Stash the height counter and destination pointer on the stack.</td>
@@ -169,8 +169,8 @@ On return from <a href="43182.html">CalculateScreenBuffer</a> <span class="regis
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46942"></span>46942</td>
-<td class="instruction">DJNZ <a href="46914.html#46921">DrawLargeNumber_Loop</a></td>
-<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="46914.html#46921">DrawLargeNumber_Loop</a> until the whole image has been displayed.</td>
+<td class="instruction">DJNZ <a href="46914.html#46921">DrawOpponentImage_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="46914.html#46921">DrawOpponentImage_Loop</a> until the whole image has been displayed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

@@ -33,7 +33,7 @@ Next: <a href="A3C3.html">A3C3</a>
 </td>
 </tr>
 </table>
-<div class="description">A3A4: Draw Current Score</div>
+<div class="description">A3A4: Draw Current Opponent</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,7 +45,7 @@ Used by the routines at <a href="A15C.html">Messaging_YouWin</a> and <a href="AA
 </td>
 </tr>
 <tr>
-<td class="asm-label">DrawCurrentScore</td>
+<td class="asm-label">DrawCurrentOpponent</td>
 <td class="address-2"><span id="a3a4"></span>A3A4</td>
 <td class="instruction">LD A,($9AB7)</td>
 <td class="comment-1" rowspan="3">Jump to <a href="A3C3.html">Messaging_PrintPlayerCurrentTotal</a> if *<a href="9AB4.html#9ab7">9AB7</a> is not zero.</td>
@@ -71,7 +71,7 @@ Used by the routines at <a href="A15C.html">Messaging_YouWin</a> and <a href="AA
 <span id="a3ad"></span>
 <div class="comments">
 <div class="paragraph">
-Set up the scoring area block positioning and attributes.
+Set up the opponent image area block positioning and attributes.
 </div>
 </div>
 </td>
@@ -110,7 +110,7 @@ BLACK
 <span id="a3b8"></span>
 <div class="comments">
 <div class="paragraph">
-Display the score.
+Display the opponents image.
 </div>
 </div>
 </td>
@@ -119,7 +119,7 @@ Display the score.
 <td class="asm-label"></td>
 <td class="address-1"><span id="a3b8"></span>A3B8</td>
 <td class="instruction">LD BC,($9AAB)</td>
-<td class="comment-1" rowspan="1">Load *<a href="9AAB.html">RunningTotal</a> into <span class="register">BC</span>.</td>
+<td class="comment-1" rowspan="1">Load *<a href="9AAB.html">CurrentOpponent</a> into <span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -130,8 +130,8 @@ Display the score.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="a3bf"></span>A3BF</td>
-<td class="instruction">CALL <a href="B742.html">DrawLargeNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B742.html">DrawLargeNumber</a>.</td>
+<td class="instruction">CALL <a href="B742.html">DrawOpponentImage</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B742.html">DrawOpponentImage</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
