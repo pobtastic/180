@@ -8,7 +8,7 @@
 
 [Config]
 Expand=#INCLUDE(Expand)
-RefFiles=bases.ref;analytics.ref;changelog.ref;data.ref;pokes.ref;sound.ref
+RefFiles=bases.ref;analytics.ref;changelog.ref;data.ref;opponents.ref;pokes.ref;sound.ref
 GameDir=180
 
 [Game]
@@ -23,7 +23,11 @@ AddressAnchor={address#IF({base}==16)(:04x)}
 GameStatusBuffer=Game Status Buffer
 
 [Paths]
+Opponents=graphics/opponents.html
 Sound=sound/sounds.html
+
+[Page:Opponents]
+SectionPrefix=Opponent
 
 [Page:Sound]
 SectionPrefix=Audio
@@ -35,6 +39,7 @@ GameIndex=The complete<>RAM disassembly (work in progress)
 GameStatusBuffer
 
 [Index:Graphics:Graphics And Sounds]
+Opponents
 Sound
 
 [Expand]

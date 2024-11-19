@@ -1322,13 +1322,19 @@ c $9A86
   $9AA4,$02 Jump to #R$9A86.
 
 b $9AA6
-  $9AA6,$01
-  $9AA7,$01
+
+g $9AA6 Player Leg Counts
+@ $9AA6 label=Leg_1UP
+B $9AA6,$01
+@ $9AA7 label=Leg_2UP
+B $9AA7,$01
+
+g $9AA8
   $9AA9,$01
   $9AAA,$01
 
-g $9AAB Running Total
-@ $9AAB label=RunningTotal
+g $9AAB Current Opponent
+@ $9AAB label=CurrentOpponent
 W $9AAB,$02
 
 b $9AAD
@@ -1926,16 +1932,16 @@ M $A39B,$04 Flip the current speaker state.
 . until the repeat loop counter is zero.
   $A3A3,$01 Return.
 
-c $A3A4 Draw Current Score
-@ $A3A4 label=DrawCurrentScore
+c $A3A4 Draw Current Opponent
+@ $A3A4 label=DrawCurrentOpponent
   $A3A4,$06 Jump to #R$A3C3 if *#R$9AB7 is not zero.
   $A3AA,$03 Call #R$AC9D.
-N $A3AD Set up the scoring area block positioning and attributes.
+N $A3AD Set up the opponent image area block positioning and attributes.
   $A3AD,$03 Set the X/ Y co-ordinates in #REGhl (#N$01/ #N$01).
   $A3B0,$03 Set the height and width in #REGbc (#N$03/ #N$06).
   $A3B3,$02 The colour: #COLOUR$46.
   $A3B5,$03 Call #R$B5A6.
-N $A3B8 Display the score.
+N $A3B8 Display the opponents image.
   $A3B8,$04 Load *#R$9AAB into #REGbc.
   $A3BC,$03 Set the X/ Y co-ordinates in #REGde (#N$0F/ #N$01).
   $A3BF,$03 Call #R$B742.
@@ -2585,19 +2591,23 @@ c $A7A5 Print Play Area
   $A7CD,$01 Restore #REGbc from the stack.
   $A7CE,$02 Decrease counter by one and loop back to #R$A7B5 until counter is zero.
   $A7D0,$05 Return if *#R$9AB7 is not zero.
+N $A7D5 Set the 1UP leg count.
   $A7D5,$03 #REGa=*#R$9AA6.
-  $A7D8,$02 #REGa+=#N$30.
-  $A7DA,$03 Write #REGa to *#R$A7F1.
+  $A7D8,$05 Add #N$30 (ASCII "#CHR$30") to #REGa to "convert" it to ASCII and
+. write #REGa to *#R$A7F1.
+N $A7DD Set the 2UP leg count.
   $A7DD,$03 #REGa=*#R$9AA7.
-  $A7E0,$02 #REGa+=#N$30.
-  $A7E2,$03 Write #REGa to *#R$A7F5.
+  $A7E0,$05 Add #N$30 (ASCII "#CHR$30") to #REGa to "convert" it to ASCII and
+. write it to *#R$A7F5.
   $A7E5,$03 Call #R$964C.
 B $A7E8,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $A7EA,$02 INK: #INK(#PEEK(#PC+$01)).
 B $A7EC,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $A7EE,$03,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
+@ $A7F1 label=Messaging_LegCount_1UP
 T $A7F1,$01 "#STR#(#PC,$04,$01)".
 B $A7F2,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
+@ $A7F5 label=Messaging_LegCount_2UP
 T $A7F5,$01 "#STR#(#PC,$04,$01)".
 B $A7F6,$01 Terminator.
   $A7F7,$01 Return.
@@ -3622,16 +3632,16 @@ B $B717,$01 Terminator.
 
   $B741,$01 Return.
 
-c $B742 Draw Large Number
-@ $B742 label=DrawLargeNumber
-R $B742 BC The numbering to display
+c $B742 Draw Opponent Image
+@ $B742 label=DrawOpponentImage
+R $B742 BC Pointer to the opponent graphic
 R $B742 D Destination Y location
 R $B742 E Destination X location
 N $B742 On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $B742,$03 Call #R$A8AE.
-  $B745,$02 Copy the number to display into #REGde.
-  $B747,$02 Set a counter in #REGb for the height of the numbering.
-@ $B749 label=DrawLargeNumber_Loop
+  $B745,$02 Copy the opponent pointer to display into #REGde.
+  $B747,$02 Set a counter in #REGb for the height of the opponent image.
+@ $B749 label=DrawOpponentImage_Loop
   $B749,$02 Stash the height counter and destination pointer on the stack.
   $B74B,$01 Swap the source and destination registers.
   $B74C,$0C Copy #N$06 bytes of data from the source address to the destination.
@@ -3973,20 +3983,60 @@ c $B965
   $B983,$01 Return.
 
 b $B984 Graphics: Jammy Jim
+@ $B984 label=Graphics_JammyJim
+N $B984 #UDGTABLE(default)
+. { #UDGARRAY$06,attr=$47,scale=$04,step=$06($B984-$BACE-$01-$30)(jammy-jim) }
+. UDGTABLE#
+  $B984,$150,$06
 
-b $B985 Graphics: Beer Belly Bill
+b $BAD4 Graphics: Beer Belly Bill
+@ $BAD4 label=Graphics_BeerBellyBill
+N $BAD4 #UDGTABLE(default)
+. { #UDGARRAY$06,attr=$47,scale=$04,step=$06($BAD4-$BC1E-$01-$30)(beer-belly-bill) }
+. UDGTABLE#
+  $BAD4,$150,$06
 
-b $B986 Graphics: Del Boy Desmond
+b $BC24 Graphics: Del Boy Desmond
+@ $BC24 label=Graphics_DelBoyDesmond
+N $BC24 #UDGTABLE(default)
+. { #UDGARRAY$06,attr=$47,scale=$04,step=$06($BC24-$BD6E-$01-$30)(del-boy-desmond) }
+. UDGTABLE#
+  $BC24,$150,$06
 
-b $B987 Graphics: Mega Mick
+b $BD74 Graphics: Mega Mick
+@ $BD74 label=Graphics_MegaMick
+N $BD74 #UDGTABLE(default)
+. { #UDGARRAY$06,attr=$47,scale=$04,step=$06($BD74-$BEBE-$01-$30)(mega-mick) }
+. UDGTABLE#
+  $BD74,$150,$06
 
-b $B988 Graphics: Devious Dave
+b $BEC4 Graphics: Devious Dave
+@ $BEC4 label=Graphics_DeviousDave
+N $BEC4 #UDGTABLE(default)
+. { #UDGARRAY$06,attr=$47,scale=$04,step=$06($BEC4-$C00E-$01-$30)(devious-dave) }
+. UDGTABLE#
+  $BEC4,$150,$06
 
-b $B989 Graphics: Sure Shot Sidney
+b $C014 Graphics: Sure Shot Sidney
+@ $C014 label=Graphics_SureShotSidney
+N $C014 #UDGTABLE(default)
+. { #UDGARRAY$06,attr=$47,scale=$04,step=$06($C014-$C15E-$01-$30)(sure-shot-sidney) }
+. UDGTABLE#
+  $C014,$150,$06
 
-b $B98A Graphics: Limp Wrist Larry
+b $C164 Graphics: Limp Wrist Larry
+@ $C164 label=Graphics_LimpWristLarry
+N $C164 #UDGTABLE(default)
+. { #UDGARRAY$06,attr=$47,scale=$04,step=$06($C164-$C2AE-$01-$30)(limp-wrist-larry) }
+. UDGTABLE#
+  $C164,$150,$06
 
-b $B98B Graphics: Tactical Tel
+b $C2B4 Graphics: Tactical Tel
+@ $C2B4 label=Graphics_TacticalTel
+N $C2B4 #UDGTABLE(default)
+. { #UDGARRAY$06,attr=$47,scale=$04,step=$06($C2B4-$C3FE-$01-$30)(tactical-tel) }
+. UDGTABLE#
+  $C2B4,$150,$06
 
 b $C404
 
@@ -4028,6 +4078,8 @@ b $C934
 b $C994
 
 b $C9F4
+
+c $CAEB
 
 c $CB1E
   $CB1E,$01 Stash #REGaf on the stack.

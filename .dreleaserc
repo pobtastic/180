@@ -1,4 +1,4 @@
 GAME=180
-SRCFILES=$(echo 180.skool {180,analytics,bases,changelog,data,pokes,sound}.ref {dark,wide}.css)
+SRCFILES=$(echo 180.skool {180,analytics,bases,changelog,data,opponents,pokes,sound}.ref {dark,wide}.css)
 SKOOL2BINOPTS="-i 36210"
 WAVCONVERT="tick.wav"

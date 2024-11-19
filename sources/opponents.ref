@@ -1,0 +1,81 @@
+; Copyright 2024 Paul Maddern (paul@arcadegeek.co.uk)
+
+[Opponent:Jammy Jim]
+#HTML(
+<table>
+  <tr><th>#R$B984</th></tr>
+  <tr>
+    <td><img src="../images/udgs/jammy-jim.png"/></td>
+  </tr>
+</table>
+)
+
+[Opponent:Beer Belly Bill]
+#HTML(
+<table>
+  <tr><th>#R$BAD4</th></tr>
+  <tr>
+    <td><img src="../images/udgs/beer-belly-bill.png"/></td>
+  </tr>
+</table>
+)
+
+[Opponent:Del Boy Desmond]
+#HTML(
+<table>
+  <tr><th>#R$BC24</th></tr>
+  <tr>
+    <td><img src="../images/udgs/del-boy-desmond.png"/></td>
+  </tr>
+</table>
+)
+
+[Opponent:Mega Mick]
+#HTML(
+<table>
+  <tr><th>#R$BD74</th></tr>
+  <tr>
+    <td><img src="../images/udgs/mega-mick.png"/></td>
+  </tr>
+</table>
+)
+
+[Opponent:Devious Dave]
+#HTML(
+<table>
+  <tr><th>#R$BEC4</th></tr>
+  <tr>
+    <td><img src="../images/udgs/devious-dave.png"/></td>
+  </tr>
+</table>
+)
+
+[Opponent:Sure Shot Sidney]
+#HTML(
+<table>
+  <tr><th>#R$C014</th></tr>
+  <tr>
+    <td><img src="../images/udgs/sure-shot-sidney.png"/></td>
+  </tr>
+</table>
+)
+
+[Opponent:Limp Wrist Larry]
+#HTML(
+<table>
+  <tr><th>#R$C164</th></tr>
+  <tr>
+    <td><img src="../images/udgs/limp-wrist-larry.png"/></td>
+  </tr>
+</table>
+)
+
+[Opponent:Tactical Tel]
+#HTML(
+<table>
+  <tr><th>#R$C2B4</th></tr>
+  <tr>
+    <td><img src="../images/udgs/tactical-tel.png"/></td>
+  </tr>
+</table>
+)
