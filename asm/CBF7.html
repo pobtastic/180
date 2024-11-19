@@ -47,207 +47,203 @@ Used by the routines at <a href="95ED.html">InterruptRoutine</a> and <a href="CA
 <tr>
 <td class="address-2"><span id="cbf7"></span>CBF7</td>
 <td class="instruction">LD A,($D009)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Return if *<a href="D009.html">D009</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cbfa"></span>CBFA</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="cbfb"></span>CBFB</td>
 <td class="instruction">RET Z</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="cbfc"></span>CBFC</td>
 <td class="instruction">LD A,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="CBF7.html#cc49">CC4A</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cbfe"></span>CBFE</td>
 <td class="instruction">LD ($CC4A),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc01"></span>CC01</td>
 <td class="instruction">LD HL,$CC84</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="CC84.html">CC84</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc04"></span>CC04</td>
 <td class="instruction">DEC (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc05"></span>CC05</td>
 <td class="instruction">JR NZ,<a href="CBF7.html#cc22">$CC22</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="CBF7.html#cc22">CC22</a> if *<span class="register">HL</span> is not equal to 00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc07"></span>CC07</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc08"></span>CC08</td>
 <td class="instruction">LD IX,$CB6B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span>=<a href="CB6B.html">CB6B</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc0c"></span>CC0C</td>
 <td class="instruction">CALL <a href="CC84.html#cd4a">$CD4A</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="CC84.html#cd4a">CD4A</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc0f"></span>CC0F</td>
 <td class="instruction">LD IX,$CB8A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span>=<a href="CB6B.html#cb8a">CB8A</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc13"></span>CC13</td>
 <td class="instruction">CALL <a href="CC84.html#cd4a">$CD4A</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="CC84.html#cd4a">CD4A</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc16"></span>CC16</td>
 <td class="instruction">LD IX,$CBA9</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span>=<a href="CB6B.html#cba9">CBA9</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc1a"></span>CC1A</td>
 <td class="instruction">CALL <a href="CC84.html#cd4a">$CD4A</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="CC84.html#cd4a">CD4A</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc1d"></span>CC1D</td>
 <td class="instruction">LD HL,$CC84</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="CC84.html">CC84</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc20"></span>CC20</td>
 <td class="instruction">LD (HL),$01</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 01 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="cc22"></span>CC22</td>
 <td class="instruction">LD IX,$CB6B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span>=<a href="CB6B.html">CB6B</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc26"></span>CC26</td>
 <td class="instruction">CALL <a href="CC84.html#cdec">$CDEC</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="CC84.html#cdec">CDEC</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc29"></span>CC29</td>
 <td class="instruction">LD ($CEFD),HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="CEFD.html">CEFD</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc2c"></span>CC2C</td>
 <td class="instruction">LD ($CF05),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="CF05.html">CF05</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc2f"></span>CC2F</td>
 <td class="instruction">LD IX,$CB8A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span>=<a href="CB6B.html#cb8a">CB8A</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc33"></span>CC33</td>
 <td class="instruction">CALL <a href="CC84.html#cdec">$CDEC</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="CC84.html#cdec">CDEC</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc36"></span>CC36</td>
 <td class="instruction">LD ($CEFF),HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="CEFF.html">CEFF</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc39"></span>CC39</td>
 <td class="instruction">LD ($CF06),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="CF06.html">CF06</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc3c"></span>CC3C</td>
 <td class="instruction">LD IX,$CBA9</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">IX</span>=<a href="CB6B.html#cba9">CBA9</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc40"></span>CC40</td>
 <td class="instruction">CALL <a href="CC84.html#cdec">$CDEC</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="CC84.html#cdec">CDEC</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc43"></span>CC43</td>
 <td class="instruction">LD ($CF01),HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="CF01.html">CF01</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc46"></span>CC46</td>
 <td class="instruction">LD ($CF07),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="CF07.html">CF07</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc49"></span>CC49</td>
 <td class="instruction">LD A,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="CF03.html">CF03</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc4b"></span>CC4B</td>
 <td class="instruction">LD ($CF03),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc4e"></span>CC4E</td>
 <td class="instruction">LD HL,$CF0A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="CF0A.html">CF0A</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc51"></span>CC51</td>
 <td class="instruction">LD A,$0D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0D.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc53"></span>CC53</td>
 <td class="instruction">LD C,$FD</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=FD.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="cc55"></span>CC55</td>
 <td class="instruction">LD B,$FF</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=FF.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc57"></span>CC57</td>
 <td class="instruction">OUT (C),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Send <span class="register">A</span> to port *<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc59"></span>CC59</td>
 <td class="instruction">LD B,$BF</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=BF.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc5b"></span>CC5B</td>
 <td class="instruction">OUTD</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">OUTD.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc5d"></span>CC5D</td>
 <td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc5e"></span>CC5E</td>
 <td class="instruction">JP P,<a href="CBF7.html#cc55">$CC55</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="CBF7.html#cc55">CC55</a> if <span class="register">A</span> is greater than or equal to <span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="cc61"></span>CC61</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
