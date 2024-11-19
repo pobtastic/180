@@ -4051,8 +4051,7 @@ c$A15C CALL $A7F8                     ;
  $A1FB CP $04                         ;
  $A1FD JP Z,$AA5A                     ;
  $A200 CP $02                         ;
-; This entry point is used by the routine at #R$CC84.
-*$A202 JP Z,$AA7B                     ;
+ $A202 JP Z,$AA7B                     ;
  $A205 CALL $964C                     ;
  $A208 DEFB $11,$00                   ; PAPER: #INK(#PEEK(#PC+$01)).
  $A20A DEFB $10,$07                   ; INK: #INK(#PEEK(#PC+$01)).
@@ -5162,7 +5161,8 @@ g$A873 DEFW $5254
 
 ; Routine at A875
 ;
-; Used by the routines at #R$AB2E, #R$B230, #R$B517 and #R$B7E1.
+; Used by the routines at #R$AB2E, #R$B29C, #R$B342, #R$B3B6, #R$B517 and
+; #R$B7E1.
 c$A875 PUSH HL       ; {Stash #REGhl and #REGbc on the stack.
  $A876 PUSH BC       ; }
  $A877 LD C,E        ; #REGc=#REGe.
@@ -6216,211 +6216,215 @@ b$AF73 DEFB $00,$7E,$00,$00,$00,$00
 ; Routine at AFB5
 ;
 ; Used by the routine at #R$AB2E.
-c$AFB5 XOR A         ;
- $AFB6 LD ($B417),A  ;
- $AFB9 LD HL,($B40A) ;
- $AFBC LD BC,$006E   ;
- $AFBF AND A         ;
- $AFC0 SBC HL,BC     ;
- $AFC2 ADD HL,BC     ;
- $AFC3 JR C,$AFD6    ;
- $AFC5 LD A,$14      ;
- $AFC7 LD BC,($B431) ;
+c$AFB5 XOR A         ; {Write #N$00 to *#R$B417.
+ $AFB6 LD ($B417),A  ; }
+ $AFB9 LD HL,($B40A) ; #REGhl=*#R$B40A.
+ $AFBC LD BC,$006E   ; #REGbc=#N($006E,$04,$04).
+ $AFBF AND A         ; Set flags.
+ $AFC0 SBC HL,BC     ; #REGhl-=#REGbc.
+ $AFC2 ADD HL,BC     ; #REGhl+=#REGbc.
+ $AFC3 JR C,$AFD6    ; Jump to #R$AFD6 if ?? is less than #REGa.
+ $AFC5 LD A,$14      ; #REGa=#N$14.
+ $AFC7 LD BC,($B431) ; {#REGix=*#R$B431 (using the stack).
  $AFCB PUSH BC       ;
- $AFCC POP IX        ;
- $AFCE LD C,$FF      ;
- $AFD0 CALL $B29C    ;
- $AFD3 JP $B0BA      ;
-*$AFD6 LD A,L        ;
+ $AFCC POP IX        ; }
+ $AFCE LD C,$FF      ; #REGc=#N$FF.
+ $AFD0 CALL $B29C    ; Call #R$B29C.
+ $AFD3 JP $B0BA      ; Jump to #R$B0BA.
+*$AFD6 LD A,L        ; {Jump to #R$B068 if #REGl is less than #N$32.
  $AFD7 CP $32        ;
- $AFD9 JP C,$B068    ;
- $AFDC LD A,$FF      ;
- $AFDE LD ($B416),A  ;
- $AFE1 LD A,($B41A)  ;
- $AFE4 LD B,A        ;
- $AFE5 LD A,L        ;
+ $AFD9 JP C,$B068    ; }
+ $AFDC LD A,$FF      ; {Write #N$FF to *#R$B416.
+ $AFDE LD ($B416),A  ; }
+ $AFE1 LD A,($B41A)  ; {#REGb=*#R$B41A.
+ $AFE4 LD B,A        ; }
+ $AFE5 LD A,L        ; {Jump to #R$B05C if #REGl is equal to #REGb.
  $AFE6 CP B          ;
- $AFE7 JR Z,$B05C    ;
- $AFE9 SUB $32       ;
- $AFEB CP $15        ;
- $AFED JR NC,$AFFE   ;
- $AFEF LD BC,($B433) ;
+ $AFE7 JR Z,$B05C    ; }
+ $AFE9 SUB $32       ; #REGa-=#N$32.
+ $AFEB CP $15        ; {Jump to #R$AFFE if #REGa is greater than or equal to
+ $AFED JR NC,$AFFE   ; #N$15.}
+ $AFEF LD BC,($B433) ; {#REGix=*#R$B433 (using the stack).
  $AFF3 PUSH BC       ;
- $AFF4 POP IX        ;
- $AFF6 LD C,$00      ;
- $AFF8 CALL $B29C    ;
- $AFFB JP $B0BA      ;
-*$AFFE LD D,A        ;
- $AFFF CP $29        ;
- $B001 JR NC,$B016   ;
- $B003 BIT 0,A       ;
- $B005 JR NZ,$B016   ;
- $B007 SRL A         ;
- $B009 LD BC,($B437) ;
+ $AFF4 POP IX        ; }
+ $AFF6 LD C,$00      ; #REGc=#N$00.
+ $AFF8 CALL $B29C    ; Call #R$B29C.
+ $AFFB JP $B0BA      ; Jump to #R$B0BA.
+*$AFFE LD D,A        ; {Jump to #R$B016 if #REGd is greater than or equal to
+ $AFFF CP $29        ; #N$29.
+ $B001 JR NC,$B016   ; }
+ $B003 BIT 0,A       ; Test bit 0 of #REGa.
+ $B005 JR NZ,$B016   ; Jump to #R$B016 if #REGa is not equal to #N$29.
+ $B007 SRL A         ; Shift #REGa right.
+ $B009 LD BC,($B437) ; {#REGix=*#R$B437 (using the stack).
  $B00D PUSH BC       ;
- $B00E POP IX        ;
- $B010 CALL $B342    ;
- $B013 JP $B0BA      ;
-*$B016 LD D,A        ;
- $B017 LD C,$00      ;
- $B019 SUB $03       ;
-*$B01B INC C         ;
- $B01C SUB $03       ;
- $B01E JR Z,$B024    ;
- $B020 JR C,$B035    ;
- $B022 JR $B01B      ;
-*$B024 INC C         ;
- $B025 LD A,C        ;
- $B026 LD BC,($B431) ;
+ $B00E POP IX        ; }
+ $B010 CALL $B342    ; Call #R$B342.
+ $B013 JP $B0BA      ; Jump to #R$B0BA.
+*$B016 LD D,A        ; #REGd=#REGa.
+ $B017 LD C,$00      ; #REGc=#N$00.
+ $B019 SUB $03       ; #REGa-=#N$03.
+*$B01B INC C         ; Increment #REGc by one.
+ $B01C SUB $03       ; #REGa-=#N$03.
+ $B01E JR Z,$B024    ; Jump to #R$B024 if #REGc is equal to #N$00.
+ $B020 JR C,$B035    ; Jump to #R$B035 if #REGc is less than #N$00.
+ $B022 JR $B01B      ; Jump to #R$B01B.
+*$B024 INC C         ; Increment #REGc by one.
+ $B025 LD A,C        ; #REGa=#REGc.
+ $B026 LD BC,($B431) ; {#REGix=*#R$B431 (using the stack).
  $B02A PUSH BC       ;
- $B02B POP IX        ;
- $B02D LD C,$FF      ;
- $B02F CALL $B29C    ;
- $B032 JP $B0BA      ;
-*$B035 LD A,D        ;
- $B036 BIT 0,A       ;
- $B038 JR NZ,$B04B   ;
- $B03A LD A,$14      ;
- $B03C LD BC,($B431) ;
+ $B02B POP IX        ; }
+ $B02D LD C,$FF      ; #REGc=#N$FF.
+ $B02F CALL $B29C    ; Call #R$B29C.
+ $B032 JP $B0BA      ; Jump to #R$B0BA.
+*$B035 LD A,D        ; #REGa=#REGd.
+ $B036 BIT 0,A       ; Test bit 0 of #REGa.
+ $B038 JR NZ,$B04B   ; Jump to #R$B04B if #REGc is not equal to #N$FF.
+ $B03A LD A,$14      ; #REGa=#N$14.
+ $B03C LD BC,($B431) ; {#REGix=*#R$B431 (using the stack).
  $B040 PUSH BC       ;
- $B041 POP IX        ;
- $B043 LD C,$FF      ;
- $B045 CALL $B29C    ;
- $B048 JP $B0BA      ;
-*$B04B LD A,$13      ;
- $B04D LD BC,($B431) ;
+ $B041 POP IX        ; }
+ $B043 LD C,$FF      ; #REGc=#N$FF.
+ $B045 CALL $B29C    ; Call #R$B29C.
+ $B048 JP $B0BA      ; Jump to #R$B0BA.
+*$B04B LD A,$13      ; #REGa=#N$13.
+ $B04D LD BC,($B431) ; {#REGix=*#R$B431 (using the stack).
  $B051 PUSH BC       ;
- $B052 POP IX        ;
- $B054 LD C,$FF      ;
- $B056 CALL $B29C    ;
- $B059 JP $B0BA      ;
-*$B05C LD BC,($B439) ;
+ $B052 POP IX        ; }
+ $B054 LD C,$FF      ; #REGc=#N$FF.
+ $B056 CALL $B29C    ; Call #R$B29C.
+ $B059 JP $B0BA      ; Jump to #R$B0BA.
+*$B05C LD BC,($B439) ; {#REGix=*#R$B439 (using the stack).
  $B060 PUSH BC       ;
- $B061 POP IX        ;
- $B063 CALL $B3B6    ;
- $B066 JR $B0BA      ;
-*$B068 LD A,L        ;
+ $B061 POP IX        ; }
+ $B063 CALL $B3B6    ; Call #R$B3B6.
+ $B066 JR $B0BA      ; Jump to #R$B0BA.
+*$B068 LD A,L        ; {Jump to #R$B073 if #REGl is less than #N$29.
  $B069 CP $29        ;
- $B06B JR C,$B073    ;
- $B06D BIT 0,A       ;
- $B06F JR Z,$B09A    ;
- $B071 JR $B079      ;
-*$B073 BIT 0,A       ;
- $B075 JR Z,$B0AA    ;
- $B077 JR $B08A      ;
-*$B079 LD A,$13      ;
- $B07B LD BC,($B433) ;
+ $B06B JR C,$B073    ; }
+ $B06D BIT 0,A       ; Test bit 0 of #REGa.
+ $B06F JR Z,$B09A    ; Jump to #R$B09A if #REGa is equal to #N$29.
+ $B071 JR $B079      ; Jump to #R$B079.
+*$B073 BIT 0,A       ; Test bit 0 of #REGa.
+ $B075 JR Z,$B0AA    ; Jump to #R$B0AA if #REGa is equal to #N$29.
+ $B077 JR $B08A      ; Jump to #R$B08A.
+*$B079 LD A,$13      ; #REGa=#N$13.
+ $B07B LD BC,($B433) ; {#REGix=*#R$B433 (using the stack).
  $B07F PUSH BC       ;
- $B080 POP IX        ;
- $B082 LD C,$00      ;
- $B084 CALL $B29C    ;
- $B087 JP $B0BA      ;
-*$B08A LD A,$01      ;
- $B08C LD BC,($B433) ;
+ $B080 POP IX        ; }
+ $B082 LD C,$00      ; #REGc=#N$00.
+ $B084 CALL $B29C    ; Call #R$B29C.
+ $B087 JP $B0BA      ; Jump to #R$B0BA.
+*$B08A LD A,$01      ; #REGa=#N$01.
+ $B08C LD BC,($B433) ; {#REGix=*#R$B433 (using the stack).
  $B090 PUSH BC       ;
- $B091 POP IX        ;
- $B093 LD C,$00      ;
- $B095 CALL $B29C    ;
- $B098 JR $B0BA      ;
-*$B09A LD A,$14      ;
- $B09C LD BC,($B433) ;
+ $B091 POP IX        ; }
+ $B093 LD C,$00      ; #REGc=#N$00.
+ $B095 CALL $B29C    ; Call #R$B29C.
+ $B098 JR $B0BA      ; Jump to #R$B0BA.
+*$B09A LD A,$14      ; #REGa=#N$14.
+ $B09C LD BC,($B433) ; {#REGix=*#R$B433 (using the stack).
  $B0A0 PUSH BC       ;
- $B0A1 POP IX        ;
- $B0A3 LD C,$00      ;
- $B0A5 CALL $B29C    ;
- $B0A8 JR $B0BA      ;
-*$B0AA LD A,L        ;
- $B0AB SRL A         ;
- $B0AD LD BC,($B437) ;
+ $B0A1 POP IX        ; }
+ $B0A3 LD C,$00      ; #REGc=#N$00.
+ $B0A5 CALL $B29C    ; Call #R$B29C.
+ $B0A8 JR $B0BA      ; Jump to #R$B0BA.
+*$B0AA LD A,L        ; #REGa=#REGl.
+ $B0AB SRL A         ; Shift #REGa right.
+ $B0AD LD BC,($B437) ; {#REGix=*#R$B437 (using the stack).
  $B0B1 PUSH BC       ;
- $B0B2 POP IX        ;
- $B0B4 CALL $B342    ;
- $B0B7 JP $B0BA      ;
-*$B0BA LD A,($B416)  ;
- $B0BD BIT 0,A       ;
- $B0BF JR Z,$B0DC    ;
- $B0C1 LD A,L        ;
- $B0C2 CP $7F        ;
- $B0C4 JR NC,$B0D1   ;
- $B0C6 CP $02        ;
- $B0C8 JR NC,$B0DC   ;
- $B0CA LD A,($B412)  ;
- $B0CD BIT 0,A       ;
- $B0CF JR NZ,$B0E0   ;
-*$B0D1 LD HL,($B40E) ;
- $B0D4 LD ($B40A),HL ;
- $B0D7 LD A,$01      ;
- $B0D9 LD ($B417),A  ;
-*$B0DC XOR A         ;
- $B0DD LD ($B412),A  ;
-*$B0E0 PUSH HL       ;
- $B0E1 LD A,($B415)  ;
- $B0E4 INC A         ;
- $B0E5 CP $03        ;
- $B0E7 JR NZ,$B0ED   ;
- $B0E9 LD ($B40E),HL ;
- $B0EC XOR A         ;
-*$B0ED LD ($B415),A  ;
- $B0F0 POP HL        ;
- $B0F1 LD DE,$ACF6   ;
- $B0F4 LD ($B40A),HL ;
- $B0F7 CALL $AEF0    ;
- $B0FA LD DE,$AD0E   ;
- $B0FD LD A,($B410)  ;
- $B100 LD H,$00      ;
- $B102 LD L,A        ;
- $B103 CALL $AEF0    ;
- $B106 LD DE,$AD36   ;
- $B109 LD A,($B40C)  ;
- $B10C LD L,A        ;
- $B10D LD H,$00      ;
- $B10F CALL $AEF0    ;
- $B112 LD DE,$AD75   ;
- $B115 LD A,($B411)  ;
- $B118 LD H,$00      ;
- $B11A LD L,A        ;
- $B11B CALL $AEF0    ;
- $B11E LD B,$03      ;
- $B120 LD HL,$ACF6   ;
-*$B123 LD A,(HL)     ;
- $B124 CP $20        ;
- $B126 JR Z,$B12B    ;
- $B128 ADD A,$30     ;
- $B12A LD (HL),A     ;
-*$B12B INC HL        ;
- $B12C DJNZ $B123    ;
- $B12E LD B,$03      ;
- $B130 LD HL,$AD0E   ;
-*$B133 LD A,(HL)     ;
- $B134 CP $20        ;
- $B136 JR Z,$B13B    ;
- $B138 ADD A,$30     ;
- $B13A LD (HL),A     ;
-*$B13B INC HL        ;
- $B13C DJNZ $B133    ;
- $B13E LD B,$03      ;
- $B140 LD HL,$AD36   ;
-*$B143 LD A,(HL)     ;
- $B144 CP $20        ;
- $B146 JR Z,$B14B    ;
- $B148 ADD A,$30     ;
- $B14A LD (HL),A     ;
-*$B14B INC HL        ;
- $B14C DJNZ $B143    ;
- $B14E LD B,$03      ;
- $B150 LD HL,$AD75   ;
-*$B153 LD A,(HL)     ;
- $B154 CP $20        ;
- $B156 JR Z,$B15B    ;
- $B158 ADD A,$30     ;
- $B15A LD (HL),A     ;
-*$B15B INC HL        ;
- $B15C DJNZ $B153    ;
- $B15E LD A,($B418)  ;
- $B161 LD ($AD0E),A  ;
- $B164 LD A,($B419)  ;
- $B167 LD ($AD75),A  ;
- $B16A RET           ;
+ $B0B2 POP IX        ; }
+ $B0B4 CALL $B342    ; Call #R$B342.
+ $B0B7 JP $B0BA      ; Jump to #R$B0BA.
+*$B0BA LD A,($B416)  ; #REGa=*#R$B416.
+ $B0BD BIT 0,A       ; Test bit 0 of #REGa.
+ $B0BF JR Z,$B0DC    ; Jump to #R$B0DC if #REGa is equal to #N$00.
+ $B0C1 LD A,L        ; {Jump to #R$B0D1 if #REGl is greater than or equal to
+ $B0C2 CP $7F        ; #N$7F.
+ $B0C4 JR NC,$B0D1   ; }
+ $B0C6 CP $02        ; {Jump to #R$B0DC if #REGl is greater than or equal to
+ $B0C8 JR NC,$B0DC   ; #N$02.}
+ $B0CA LD A,($B412)  ; #REGa=*#R$B412.
+ $B0CD BIT 0,A       ; Test bit 0 of #REGa.
+ $B0CF JR NZ,$B0E0   ; Jump to #R$B0E0 if #REGa is not equal to #N$02.
+*$B0D1 LD HL,($B40E) ; {Write *#R$B40E to *#R$B40A.
+ $B0D4 LD ($B40A),HL ; }
+ $B0D7 LD A,$01      ; {Write #N$01 to *#R$B417.
+ $B0D9 LD ($B417),A  ; }
+*$B0DC XOR A         ; {Write #N$00 to *#R$B412.
+ $B0DD LD ($B412),A  ; }
+*$B0E0 PUSH HL       ; Stash #REGhl on the stack.
+ $B0E1 LD A,($B415)  ; #REGa=*#R$B415.
+ $B0E4 INC A         ; Increment #REGa by one.
+ $B0E5 CP $03        ; {Jump to #R$B0ED if #REGa is not equal to #N$03.
+ $B0E7 JR NZ,$B0ED   ; }
+ $B0E9 LD ($B40E),HL ; Write #REGhl to *#R$B40E.
+ $B0EC XOR A         ; {Write #N$00 to *#R$B415.
+*$B0ED LD ($B415),A  ; }
+ $B0F0 POP HL        ; Restore #REGhl from the stack.
+ $B0F1 LD DE,$ACF6   ; #REGde=#R$ACF6.
+ $B0F4 LD ($B40A),HL ; Write #REGhl to *#R$B40A.
+ $B0F7 CALL $AEF0    ; Call #R$AEF0.
+ $B0FA LD DE,$AD0E   ; #REGde=#R$AD0E.
+ $B0FD LD A,($B410)  ; #REGa=*#R$B410.
+ $B100 LD H,$00      ; #REGh=#N$00.
+ $B102 LD L,A        ; #REGl=#REGa.
+ $B103 CALL $AEF0    ; Call #R$AEF0.
+ $B106 LD DE,$AD36   ; #REGde=#R$AD36.
+ $B109 LD A,($B40C)  ; #REGa=*#R$B40C.
+ $B10C LD L,A        ; #REGl=#REGa.
+ $B10D LD H,$00      ; #REGh=#N$00.
+ $B10F CALL $AEF0    ; Call #R$AEF0.
+ $B112 LD DE,$AD75   ; #REGde=#R$AD75.
+ $B115 LD A,($B411)  ; #REGa=*#R$B411.
+ $B118 LD H,$00      ; #REGh=#N$00.
+ $B11A LD L,A        ; #REGl=#REGa.
+ $B11B CALL $AEF0    ; Call #R$AEF0.
+ $B11E LD B,$03      ; #REGb=#N$03.
+ $B120 LD HL,$ACF6   ; #REGhl=#R$ACF6.
+*$B123 LD A,(HL)     ; #REGa=*#REGhl.
+ $B124 CP $20        ; {Jump to #R$B12B if #REGa is equal to #N$20.
+ $B126 JR Z,$B12B    ; }
+ $B128 ADD A,$30     ; #REGa+=#N$30.
+ $B12A LD (HL),A     ; Write #REGa to *#REGhl.
+*$B12B INC HL        ; Increment #REGhl by one.
+ $B12C DJNZ $B123    ; Decrease counter by one and loop back to #R$B123 until
+                     ; counter is zero.
+ $B12E LD B,$03      ; #REGb=#N$03.
+ $B130 LD HL,$AD0E   ; #REGhl=#R$AD0E.
+*$B133 LD A,(HL)     ; #REGa=*#REGhl.
+ $B134 CP $20        ; {Jump to #R$B13B if #REGa is equal to #N$20.
+ $B136 JR Z,$B13B    ; }
+ $B138 ADD A,$30     ; #REGa+=#N$30.
+ $B13A LD (HL),A     ; Write #REGa to *#REGhl.
+*$B13B INC HL        ; Increment #REGhl by one.
+ $B13C DJNZ $B133    ; Decrease counter by one and loop back to #R$B133 until
+                     ; counter is zero.
+ $B13E LD B,$03      ; #REGb=#N$03.
+ $B140 LD HL,$AD36   ; #REGhl=#R$AD36.
+*$B143 LD A,(HL)     ; #REGa=*#REGhl.
+ $B144 CP $20        ; {Jump to #R$B14B if #REGa is equal to #N$20.
+ $B146 JR Z,$B14B    ; }
+ $B148 ADD A,$30     ; #REGa+=#N$30.
+ $B14A LD (HL),A     ; Write #REGa to *#REGhl.
+*$B14B INC HL        ; Increment #REGhl by one.
+ $B14C DJNZ $B143    ; Decrease counter by one and loop back to #R$B143 until
+                     ; counter is zero.
+ $B14E LD B,$03      ; #REGb=#N$03.
+ $B150 LD HL,$AD75   ; #REGhl=#R$AD75.
+*$B153 LD A,(HL)     ; #REGa=*#REGhl.
+ $B154 CP $20        ; {Jump to #R$B15B if #REGa is equal to #N$20.
+ $B156 JR Z,$B15B    ; }
+ $B158 ADD A,$30     ; #REGa+=#N$30.
+ $B15A LD (HL),A     ; Write #REGa to *#REGhl.
+*$B15B INC HL        ; Increment #REGhl by one.
+ $B15C DJNZ $B153    ; Decrease counter by one and loop back to #R$B153 until
+                     ; counter is zero.
+ $B15E LD A,($B418)  ; {Write *#R$B418 to *#R$AD0E.
+ $B161 LD ($AD0E),A  ; }
+ $B164 LD A,($B419)  ; {Write *#R$B419 to *#R$AD75.
+ $B167 LD ($AD75),A  ; }
+ $B16A RET           ; Return.
 
 ; Routine at B16B
 ;
@@ -6491,91 +6495,66 @@ c$B16B POP HL                        ;
  $B22A CALL $AE04                    ; Call #R$AE04.
  $B22D JP $933F                      ; Jump to #R$933F.
 
-; Routine at B230
-c$B230 LD B,C        ;
- $B231 LD D,E        ;
- $B232 JR NZ,$B275   ;
- $B234 JR NZ,$B28D   ;
- $B236 LD B,C        ;
- $B237 LD C,H        ;
- $B238 LD C,H        ;
- $B239 LD E,C        ;
- $B23A LD E,E        ;
- $B23B LD E,E        ;
- $B23C JR NZ,$B25E   ;
- $B23E JR NZ,$B260   ;
- $B240 JR NZ,$B262   ;
- $B242 LD B,C        ;
- $B243 LD D,E        ;
- $B244 JR NZ,$B287   ;
- $B246 JR NZ,$B28C   ;
- $B248 LD C,C        ;
- $B249 LD D,B        ;
- $B24A LD D,E        ;
- $B24B LD D,H        ;
- $B24C LD C,C        ;
- $B24D LD B,E        ;
- $B24E LD C,E        ;
- $B24F LD E,E        ;
- $B250 LD E,E        ;
- $B251 JR NZ,$B273   ;
- $B253 JR NZ,$B296   ;
- $B255 LD D,E        ;
- $B256 JR NZ,$B299   ;
- $B258 LD C,(HL)     ;
- $B259 JR NZ,$B29C   ;
- $B25B LD C,L        ;
- $B25C LD B,C        ;
- $B25D LD D,H        ;
-*$B25E LD B,L        ;
- $B25F LD D,L        ;
-*$B260 LD D,D        ;
- $B261 LD E,E        ;
-*$B262 LD E,E        ;
- $B263 JR NZ,$B285   ;
- $B265 JR NZ,$B2A8   ;
- $B267 LD D,E        ;
- $B268 JR NZ,$B2AB   ;
- $B26A JR NZ,$B2BA   ;
- $B26C LD C,A        ;
- $B26D LD D,(HL)     ;
- $B26E LD C,C        ;
- $B26F LD B,E        ;
- $B270 LD B,L        ;
- $B271 LD E,E        ;
- $B272 LD E,E        ;
-*$B273 JR NZ,$B295   ;
-*$B275 JR NZ,$B297   ;
- $B277 JR NZ,$B2BA   ;
- $B279 LD D,E        ;
- $B27A JR NZ,$B2BD   ;
- $B27C JR NZ,$B2CB   ;
- $B27E LD B,L        ;
- $B27F LD B,A        ;
- $B280 LD B,C        ;
- $B281 JR NZ,$B2D3   ;
- $B283 LD C,H        ;
- $B284 LD B,C        ;
-*$B285 LD E,C        ;
- $B286 LD B,L        ;
-*$B287 LD D,D        ;
- $B288 LD E,E        ;
- $B289 LD E,E        ;
- $B28A LD B,C        ;
- $B28B LD D,E        ;
-*$B28C JR NZ,$B2E0   ;
- $B28E LD B,L        ;
- $B28F LD B,H        ;
- $B290 JR NZ,$B2DA   ;
- $B292 LD C,A        ;
- $B293 LD D,H        ;
- $B294 LD E,E        ;
-*$B295 LD E,E        ;
-*$B296 JR NZ,$B2B8   ;
- $B298 JR NZ,$B2BA   ;
- $B29A JR NZ,$B2BC   ;
-; This entry point is used by the routine at #R$AFB5.
-*$B29C PUSH HL       ;
+; Data block at B230
+w$B230 DEFW $5341
+ $B232 DEFW $4120
+ $B234 DEFW $5720
+ $B236 DEFW $4C41
+ $B238 DEFW $594C
+ $B23A DEFW $5B5B
+ $B23C DEFW $2020
+ $B23E DEFW $2020
+ $B240 DEFW $2020
+ $B242 DEFW $5341
+ $B244 DEFW $4120
+ $B246 DEFW $4420
+ $B248 DEFW $5049
+ $B24A DEFW $5453
+ $B24C DEFW $4349
+ $B24E DEFW $5B4B
+ $B250 DEFW $205B
+ $B252 DEFW $2020
+ $B254 DEFW $5341
+ $B256 DEFW $4120
+ $B258 DEFW $204E
+ $B25A DEFW $4D41
+ $B25C DEFW $5441
+ $B25E DEFW $5545
+ $B260 DEFW $5B52
+ $B262 DEFW $205B
+ $B264 DEFW $2020
+ $B266 DEFW $5341
+ $B268 DEFW $4120
+ $B26A DEFW $4E20
+ $B26C DEFW $564F
+ $B26E DEFW $4349
+ $B270 DEFW $5B45
+ $B272 DEFW $205B
+ $B274 DEFW $2020
+ $B276 DEFW $2020
+ $B278 DEFW $5341
+ $B27A DEFW $4120
+ $B27C DEFW $4D20
+ $B27E DEFW $4745
+ $B280 DEFW $2041
+ $B282 DEFW $4C50
+ $B284 DEFW $5941
+ $B286 DEFW $5245
+ $B288 DEFW $5B5B
+ $B28A DEFW $5341
+ $B28C DEFW $5220
+ $B28E DEFW $4445
+ $B290 DEFW $4820
+ $B292 DEFW $544F
+ $B294 DEFW $5B5B
+ $B296 DEFW $2020
+ $B298 DEFW $2020
+ $B29A DEFW $2020
+
+; Routine at B29C
+;
+; Used by the routine at #R$AFB5.
+c$B29C PUSH HL       ;
  $B29D LD D,A        ;
  $B29E SRL C         ;
  $B2A0 JR NC,$B2AC   ;
@@ -6588,7 +6567,7 @@ c$B230 LD B,C        ;
  $B2B1 LD ($B418),A  ;
 *$B2B4 LD A,D        ;
  $B2B5 CALL $B402    ;
-*$B2B8 LD DE,$00C8   ;
+ $B2B8 LD DE,$00C8   ;
  $B2BB CALL $A875    ;
  $B2BE CP (IX+$00)   ;
  $B2C1 JR NC,$B2CE   ;
@@ -6599,7 +6578,7 @@ c$B230 LD B,C        ;
  $B2CC JR $B337      ;
 *$B2CE CP (IX+$01)   ;
  $B2D1 JR NC,$B2E1   ;
-*$B2D3 LD A,$54      ;
+ $B2D3 LD A,$54      ;
  $B2D5 LD ($B419),A  ;
  $B2D8 LD A,(HL)     ;
  $B2D9 LD ($B411),A  ;
@@ -6659,8 +6638,11 @@ c$B230 LD B,C        ;
  $B33C SBC HL,DE     ;
  $B33E LD ($B40C),A  ;
  $B341 RET           ;
-; This entry point is used by the routine at #R$AFB5.
-*$B342 PUSH HL       ;
+
+; Routine at B342
+;
+; Used by the routine at #R$AFB5.
+c$B342 PUSH HL       ;
  $B343 LD ($B410),A  ;
  $B346 LD D,A        ;
  $B347 LD A,$44      ;
@@ -6718,8 +6700,11 @@ c$B230 LD B,C        ;
  $B3B1 LD ($B419),A  ;
  $B3B4 XOR A         ;
 *$B3B5 RET           ;
-; This entry point is used by the routine at #R$AFB5.
-*$B3B6 PUSH HL       ;
+
+; Routine at B3B6
+;
+; Used by the routine at #R$AFB5.
+c$B3B6 PUSH HL       ;
  $B3B7 LD A,L        ;
  $B3B8 LD ($B410),A  ;
  $B3BB LD A,$42      ;
@@ -6754,55 +6739,151 @@ c$B230 LD B,C        ;
  $B3FE AND A         ;
  $B3FF SBC HL,DE     ;
  $B401 RET           ;
-*$B402 LD HL,$B41C   ;
+
+; Routine at B402
+;
+; Used by the routines at #R$B29C and #R$B342.
+c$B402 LD HL,$B41C   ;
 *$B405 CP (HL)       ;
  $B406 RET Z         ;
  $B407 INC HL        ;
  $B408 JR $B405      ;
 
 ; Data block at B40A
-b$B40A DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $B412 DEFB $00,$00,$00,$00
+b$B40A DEFB $00,$00
+
+; Data block at B40C
+b$B40C DEFB $00,$00
+
+; Data block at B40E
+b$B40E DEFB $00,$00
+
+; Data block at B410
+b$B410 DEFB $00
+
+; Data block at B411
+b$B411 DEFB $00
+
+; Data block at B412
+b$B412 DEFB $00,$00,$00
+
+; Data block at B415
+b$B415 DEFB $00
 
 ; Data block at B416
 b$B416 DEFB $00
 
 ; Data block at B417
-b$B417 DEFB $00,$00,$00,$32,$05,$14,$01,$12
- $B41F DEFB $04,$0D,$06,$0A,$0F,$02,$11,$03
- $B427 DEFB $13,$07,$10,$08,$0B,$0E,$09,$0C
- $B42F DEFB $05,$14,$3B,$B4,$41,$B4,$47,$B4
- $B437 DEFB $4D,$B4,$51,$B4,$3D,$7A,$8A,$9A
- $B43F DEFB $AA,$BA,$14,$B4,$B8,$BC,$C0,$C4
- $B447 DEFB $64,$96,$A0,$AA,$B4,$BE,$96,$AF
- $B44F DEFB $64,$96,$64,$96,$6E,$82,$96,$A0
- $B457 DEFB $B4,$BE,$78,$8C,$A0,$AA,$BE,$C7
- $B45F DEFB $46,$78,$82,$96,$A0,$BE,$64,$96
- $B467 DEFB $64,$96,$28,$4B,$3B,$B4,$53,$B4
- $B46F DEFB $20,$20,$20,$4A,$41,$4D,$4D,$59
- $B477 DEFB $20,$4A,$49,$4D,$20,$20,$20,$20
- $B47F DEFB $04,$84,$B9,$04,$C4
+b$B417 DEFB $00
 
-; Data block at B484
-b$B484 DEFB $42,$45,$45,$52,$20,$42,$45,$4C
- $B48C DEFB $4C,$59,$20,$42,$49,$4C,$4C,$20
- $B494 DEFB $03,$D4,$BA,$4C,$C4,$44,$45,$4C
- $B49C DEFB $20,$42,$4F,$59,$20,$44,$45,$53
- $B4A4 DEFB $4D,$4F,$4E,$44,$20,$04,$24,$BC
- $B4AC DEFB $94,$C4,$20,$20,$20,$4D,$45,$47
- $B4B4 DEFB $41,$20,$4D,$49,$43,$4B,$20,$20
- $B4BC DEFB $20,$20,$02,$74,$BD,$DC,$C4,$20
- $B4C4 DEFB $20,$44,$45,$56,$49,$4F,$55,$53
- $B4CC DEFB $20,$44,$41,$56,$45,$20,$20,$03
- $B4D4 DEFB $C4,$BE,$24,$C5,$53,$55,$52,$45
- $B4DC DEFB $20,$53,$48,$4F,$54,$20,$53,$49
- $B4E4 DEFB $44,$4E,$45,$59,$01,$14,$C0,$6C
- $B4EC DEFB $C5,$4C,$49,$4D,$50,$20,$57,$52
- $B4F4 DEFB $49,$53,$54,$20,$4C,$41,$52,$52
- $B4FC DEFB $59,$04,$64,$C1,$B4,$C5,$20,$20
- $B504 DEFB $54,$41,$43,$54,$49,$43,$41,$4C
- $B50C DEFB $20,$54,$45,$4C,$20,$20,$02,$B4
- $B514 DEFB $C2,$FC,$C5
+; Data block at B418
+b$B418 DEFB $00
+
+; Data block at B419
+b$B419 DEFB $00
+
+; Data block at B41A
+b$B41A DEFB $32,$05,$14,$01,$12,$04,$0D,$06
+ $B422 DEFB $0A,$0F,$02,$11,$03,$13,$07,$10
+ $B42A DEFB $08,$0B,$0E,$09,$0C,$05,$14
+
+; Data block at B431
+w$B431 DEFW $B43B
+ $B433 DEFW $B441
+ $B435 DEFW $B447
+ $B437 DEFW $B44D
+ $B439 DEFW $B451
+
+; Data block at B43B
+w$B43B DEFW $7A3D
+ $B43D DEFW $9A8A
+ $B43F DEFW $BAAA
+
+; Data block at B441
+w$B441 DEFW $B414
+ $B443 DEFW $BCB8
+ $B445 DEFW $C4C0
+
+; Data block at B447
+w$B447 DEFW $9664
+ $B449 DEFW $AAA0
+ $B44B DEFW $BEB4
+
+; Data block at B44D
+w$B44D DEFW $AF96
+ $B44F DEFW $9664
+ $B451 DEFW $9664
+
+; Data block at B453
+w$B453 DEFW $826E
+ $B455 DEFW $A096
+ $B457 DEFW $BEB4
+ $B459 DEFW $8C78
+ $B45B DEFW $AAA0
+ $B45D DEFW $C7BE
+ $B45F DEFW $7846
+ $B461 DEFW $9682
+ $B463 DEFW $BEA0
+ $B465 DEFW $9664
+ $B467 DEFW $9664
+ $B469 DEFW $4B28
+ $B46B DEFW $B43B
+ $B46D DEFW $B453
+
+; Table: Opponent Data
+;
+; .
+;
+; .
+;
+; "#STR(#PC,$04,$10)".
+@label=Table_Opponent_JammyJim
+b$B46F DEFM "   JAMMY JIM    "
+ $B47F DEFB $04
+ $B480 DEFW $B984
+ $B482 DEFW $C404
+; "#STR(#PC,$04,$10)".
+@label=Table_Opponent_BeerBellyBill
+ $B484 DEFM "BEER BELLY BILL "
+ $B494 DEFB $03
+ $B495 DEFW $BAD4
+ $B497 DEFW $C44C
+; "#STR(#PC,$04,$10)".
+@label=Table_Opponent_DelBoyDesmond
+ $B499 DEFM "DEL BOY DESMOND "
+ $B4A9 DEFB $04
+ $B4AA DEFW $BC24
+ $B4AC DEFW $C494
+; "#STR(#PC,$04,$10)".
+@label=Table_Opponent_MegaMick
+ $B4AE DEFM "   MEGA MICK    "
+ $B4BE DEFB $02
+ $B4BF DEFW $BD74
+ $B4C1 DEFW $C4DC
+; "#STR(#PC,$04,$10)".
+@label=Table_Opponent_DeviousDave
+ $B4C3 DEFM "  DEVIOUS DAVE  "
+ $B4D3 DEFB $03
+ $B4D4 DEFW $BEC4
+ $B4D6 DEFW $C524
+; "#STR(#PC,$04,$10)".
+@label=Table_Opponent_SureShotSidney
+ $B4D8 DEFM "SURE SHOT SIDNEY"
+ $B4E8 DEFB $01
+ $B4E9 DEFW $C014
+ $B4EB DEFW $C56C
+; "#STR(#PC,$04,$10)".
+@label=Table_Opponent_LimpWristLarry
+ $B4ED DEFM "LIMP WRIST LARRY"
+ $B4FD DEFB $04
+ $B4FE DEFW $C164
+ $B500 DEFW $C5B4
+; "#STR(#PC,$04,$10)".
+@label=Table_Opponent_TacticalTel
+ $B502 DEFM "  TACTICAL TEL  "
+ $B512 DEFB $02
+ $B513 DEFW $C2B4
+ $B515 DEFW $C5FC
 
 ; Routine at B517
 ;
@@ -8040,79 +8121,285 @@ b$C2B4 DEFB $00,$00,$00,$00,$00,$00
  $C3F8 DEFB $00,$00,$00,$00,$00,$00
  $C3FE DEFB $00,$00,$00,$00,$00,$00
 
-; Data block at C404
-b$C404 DEFB $FF,$76,$7F,$00,$ED,$80,$01,$DD
- $C40C DEFB $C0,$01,$DD,$E0,$01,$0D,$E0,$03
- $C414 DEFB $F5,$F0,$06,$99,$88,$05,$6E,$28
- $C41C DEFB $04,$2F,$A8,$02,$9D,$C4,$01,$FA
- $C424 DEFB $F4,$1B,$FE,$E8,$BF,$BE,$E7,$3F
- $C42C DEFB $DE,$E0,$BD,$BA,$DF,$18,$7D,$C0
- $C434 DEFB $01,$E7,$80,$01,$DB,$80,$01,$3F
- $C43C DEFB $00,$FC,$FE,$9F,$01,$FD,$80,$FD
- $C444 DEFB $FB,$9F,$00,$F7,$80,$00,$07,$40
- $C44C DEFB $FF,$9F,$CF,$00,$60,$30,$00,$9F
- $C454 DEFB $C8,$01,$7F,$F4,$01,$7F,$F4,$00
- $C45C DEFB $90,$FA,$00,$EF,$2A,$00,$BB,$D2
- $C464 DEFB $00,$D5,$EA,$00,$11,$F2,$00,$FF
- $C46C DEFB $EA,$01,$DF,$BA,$FD,$BF,$B4,$01
- $C474 DEFB $CF,$A8,$FE,$FF,$AB,$00,$99,$68
- $C47C DEFB $00,$C7,$D0,$00,$7D,$B7,$00,$6D
- $C484 DEFB $B0,$FE,$93,$78,$00,$6E,$C8,$0F
- $C48C DEFB $31,$B4,$76,$5F,$26,$00,$00,$00
- $C494 DEFB $FB,$23,$7F,$01,$B6,$30,$19,$FE
- $C49C DEFB $60,$0D,$FF,$C7,$07,$83,$F8,$03
- $C4A4 DEFB $7D,$FD,$00,$AE,$F0,$01,$56,$FC
- $C4AC DEFB $01,$57,$7C,$01,$06,$F8,$00,$AD
- $C4B4 DEFB $70,$01,$7F,$78,$FD,$5F,$7C,$03
- $C4BC DEFB $BE,$F8,$F5,$4E,$F7,$0B,$BA,$E0
- $C4C4 DEFB $17,$ED,$40,$10,$3B,$A0,$0F,$6E
- $C4CC DEFB $A0,$F6,$BE,$AF,$06,$75,$A0,$F0
- $C4D4 DEFB $DB,$AF,$00,$F5,$A0,$00,$6D,$D0
- $C4DC DEFB $FF,$3C,$FF,$00,$C3,$00,$01,$3C
- $C4E4 DEFB $80,$02,$FF,$40,$05,$FF,$40,$04
- $C4EC DEFB $E7,$40,$03,$5A,$E0,$04,$A5,$50
- $C4F4 DEFB $06,$F6,$A8,$06,$B5,$E8,$07,$35
- $C4FC DEFB $E8,$02,$DB,$A8,$F5,$E7,$57,$0B
- $C504 DEFB $BF,$60,$D6,$BE,$DF,$11,$7D,$40
- $C50C DEFB $0F,$FB,$40,$01,$D7,$40,$02,$B7
- $C514 DEFB $40,$FA,$AB,$5F,$03,$DB,$40,$FA
- $C51C DEFB $AB,$5F,$02,$2B,$40,$01,$CB,$40
- $C524 DEFB $DE,$38,$7F,$3F,$C7,$80,$1F,$FF
- $C52C DEFB $E0,$06,$FF,$F8,$0C,$7F,$FC,$3E
- $C534 DEFB $FF,$FC,$1F,$FF,$FC,$08,$00,$18
- $C53C DEFB $0A,$D4,$08,$0D,$6C,$08,$06,$FC
- $C544 DEFB $08,$01,$F9,$88,$FB,$FB,$8B,$07
- $C54C DEFB $3F,$88,$EF,$9F,$0B,$0C,$6F,$08
- $C554 DEFB $09,$F7,$88,$01,$03,$90,$01,$E7
- $C55C DEFB $F0,$FB,$FE,$6F,$07,$E1,$E0,$EF
- $C564 DEFB $DF,$EF,$0F,$A3,$E0,$07,$43,$D0
- $C56C DEFB $FD,$FE,$7F,$02,$01,$80,$05,$FE
- $C574 DEFB $40,$05,$FF,$A0,$05,$FF,$A0,$04
- $C57C DEFB $A7,$D0,$05,$5B,$D0,$07,$FD,$D0
- $C584 DEFB $05,$9D,$28,$06,$6C,$C8,$02,$2D
- $C58C DEFB $C8,$01,$8F,$C8,$FB,$EF,$8B,$07
- $C594 DEFB $FF,$90,$EF,$FF,$AF,$1F,$3F,$C0
- $C59C DEFB $3E,$FB,$C0,$3C,$E7,$80,$18,$4F
- $C5A4 DEFB $80,$E7,$5F,$1F,$00,$7E,$80,$FE
- $C5AC DEFB $FD,$9F,$00,$FB,$80,$00,$77,$40
- $C5B4 DEFB $FF,$DE,$7F,$00,$3F,$80,$00,$7F
- $C5BC DEFB $C0,$00,$FF,$E4,$00,$77,$E9,$00
- $C5C4 DEFB $AB,$D6,$00,$FF,$3C,$00,$76,$FD
- $C5CC DEFB $00,$AA,$CE,$00,$22,$B5,$01,$76
- $C5D4 DEFB $9A,$01,$DE,$AA,$FB,$EE,$AB,$03
- $C5DC DEFB $ED,$B6,$FD,$DB,$75,$00,$7C,$F8
- $C5E4 DEFB $00,$7F,$E0,$00,$07,$C0,$00,$27
- $C5EC DEFB $C0,$FF,$BF,$DF,$00,$3F,$80,$FF
- $C5F4 DEFB $9F,$BF,$00,$1F,$00,$FF,$DF,$BF
- $C5FC DEFB $FF,$9C,$FF,$00,$63,$00,$00,$92
- $C604 DEFB $80,$01,$6D,$40,$02,$9C,$A0,$04
- $C60C DEFB $A2,$A0,$15,$3E,$50,$2A,$C0,$A8
- $C614 DEFB $2C,$FF,$68,$26,$63,$BC,$15,$8C
- $C61C DEFB $52,$08,$65,$A2,$F6,$F1,$F5,$0F
- $C624 DEFB $1B,$F8,$EE,$EB,$FB,$0E,$ED,$F0
- $C62C DEFB $06,$ED,$F0,$03,$5C,$F0,$01,$BB
- $C634 DEFB $70,$FC,$E7,$67,$03,$1E,$E0,$FB
- $C63C DEFB $FD,$E7,$03,$FB,$E0,$01,$F7,$C0
+; Graphics: Jammy Jim (Pub Scene)
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C404-$C449-$01-$18)(pub-jammy-jim) }
+; UDGTABLE#
+@label=Graphics_JammyJim_Pub
+b$C404 DEFB $FF,$76,$7F
+ $C407 DEFB $00,$ED,$80
+ $C40A DEFB $01,$DD,$C0
+ $C40D DEFB $01,$DD,$E0
+ $C410 DEFB $01,$0D,$E0
+ $C413 DEFB $03,$F5,$F0
+ $C416 DEFB $06,$99,$88
+ $C419 DEFB $05,$6E,$28
+ $C41C DEFB $04,$2F,$A8
+ $C41F DEFB $02,$9D,$C4
+ $C422 DEFB $01,$FA,$F4
+ $C425 DEFB $1B,$FE,$E8
+ $C428 DEFB $BF,$BE,$E7
+ $C42B DEFB $3F,$DE,$E0
+ $C42E DEFB $BD,$BA,$DF
+ $C431 DEFB $18,$7D,$C0
+ $C434 DEFB $01,$E7,$80
+ $C437 DEFB $01,$DB,$80
+ $C43A DEFB $01,$3F,$00
+ $C43D DEFB $FC,$FE,$9F
+ $C440 DEFB $01,$FD,$80
+ $C443 DEFB $FD,$FB,$9F
+ $C446 DEFB $00,$F7,$80
+ $C449 DEFB $00,$07,$40
+
+; Graphics: Beer Belly Bill (Pub Scene)
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C44C-$C491-$01-$18)(pub-beer-belly-bill) }
+; UDGTABLE#
+@label=Graphics_BeerBellyBill_Pub
+b$C44C DEFB $FF,$9F,$CF
+ $C44F DEFB $00,$60,$30
+ $C452 DEFB $00,$9F,$C8
+ $C455 DEFB $01,$7F,$F4
+ $C458 DEFB $01,$7F,$F4
+ $C45B DEFB $00,$90,$FA
+ $C45E DEFB $00,$EF,$2A
+ $C461 DEFB $00,$BB,$D2
+ $C464 DEFB $00,$D5,$EA
+ $C467 DEFB $00,$11,$F2
+ $C46A DEFB $00,$FF,$EA
+ $C46D DEFB $01,$DF,$BA
+ $C470 DEFB $FD,$BF,$B4
+ $C473 DEFB $01,$CF,$A8
+ $C476 DEFB $FE,$FF,$AB
+ $C479 DEFB $00,$99,$68
+ $C47C DEFB $00,$C7,$D0
+ $C47F DEFB $00,$7D,$B7
+ $C482 DEFB $00,$6D,$B0
+ $C485 DEFB $FE,$93,$78
+ $C488 DEFB $00,$6E,$C8
+ $C48B DEFB $0F,$31,$B4
+ $C48E DEFB $76,$5F,$26
+ $C491 DEFB $00,$00,$00
+
+; Graphics: Del Boy Desmond (Pub Scene)
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C494-$C4D9-$01-$18)(pub-del-boy-desmond) }
+; UDGTABLE#
+@label=Graphics_DelBoyDesmond_Pub
+b$C494 DEFB $FB,$23,$7F
+ $C497 DEFB $01,$B6,$30
+ $C49A DEFB $19,$FE,$60
+ $C49D DEFB $0D,$FF,$C7
+ $C4A0 DEFB $07,$83,$F8
+ $C4A3 DEFB $03,$7D,$FD
+ $C4A6 DEFB $00,$AE,$F0
+ $C4A9 DEFB $01,$56,$FC
+ $C4AC DEFB $01,$57,$7C
+ $C4AF DEFB $01,$06,$F8
+ $C4B2 DEFB $00,$AD,$70
+ $C4B5 DEFB $01,$7F,$78
+ $C4B8 DEFB $FD,$5F,$7C
+ $C4BB DEFB $03,$BE,$F8
+ $C4BE DEFB $F5,$4E,$F7
+ $C4C1 DEFB $0B,$BA,$E0
+ $C4C4 DEFB $17,$ED,$40
+ $C4C7 DEFB $10,$3B,$A0
+ $C4CA DEFB $0F,$6E,$A0
+ $C4CD DEFB $F6,$BE,$AF
+ $C4D0 DEFB $06,$75,$A0
+ $C4D3 DEFB $F0,$DB,$AF
+ $C4D6 DEFB $00,$F5,$A0
+ $C4D9 DEFB $00,$6D,$D0
+
+; Graphics: Mega Mick (Pub Scene)
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C4DC-$C521-$01-$18)(pub-mega-mick) }
+; UDGTABLE#
+@label=Graphics_MegaMick_Pub
+b$C4DC DEFB $FF,$3C,$FF
+ $C4DF DEFB $00,$C3,$00
+ $C4E2 DEFB $01,$3C,$80
+ $C4E5 DEFB $02,$FF,$40
+ $C4E8 DEFB $05,$FF,$40
+ $C4EB DEFB $04,$E7,$40
+ $C4EE DEFB $03,$5A,$E0
+ $C4F1 DEFB $04,$A5,$50
+ $C4F4 DEFB $06,$F6,$A8
+ $C4F7 DEFB $06,$B5,$E8
+ $C4FA DEFB $07,$35,$E8
+ $C4FD DEFB $02,$DB,$A8
+ $C500 DEFB $F5,$E7,$57
+ $C503 DEFB $0B,$BF,$60
+ $C506 DEFB $D6,$BE,$DF
+ $C509 DEFB $11,$7D,$40
+ $C50C DEFB $0F,$FB,$40
+ $C50F DEFB $01,$D7,$40
+ $C512 DEFB $02,$B7,$40
+ $C515 DEFB $FA,$AB,$5F
+ $C518 DEFB $03,$DB,$40
+ $C51B DEFB $FA,$AB,$5F
+ $C51E DEFB $02,$2B,$40
+ $C521 DEFB $01,$CB,$40
+
+; Graphics: Devious Dave (Pub Scene)
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C524-$C569-$01-$18)(pub-devious-dave) }
+; UDGTABLE#
+@label=Graphics_DeviousDave_Pub
+b$C524 DEFB $DE,$38,$7F
+ $C527 DEFB $3F,$C7,$80
+ $C52A DEFB $1F,$FF,$E0
+ $C52D DEFB $06,$FF,$F8
+ $C530 DEFB $0C,$7F,$FC
+ $C533 DEFB $3E,$FF,$FC
+ $C536 DEFB $1F,$FF,$FC
+ $C539 DEFB $08,$00,$18
+ $C53C DEFB $0A,$D4,$08
+ $C53F DEFB $0D,$6C,$08
+ $C542 DEFB $06,$FC,$08
+ $C545 DEFB $01,$F9,$88
+ $C548 DEFB $FB,$FB,$8B
+ $C54B DEFB $07,$3F,$88
+ $C54E DEFB $EF,$9F,$0B
+ $C551 DEFB $0C,$6F,$08
+ $C554 DEFB $09,$F7,$88
+ $C557 DEFB $01,$03,$90
+ $C55A DEFB $01,$E7,$F0
+ $C55D DEFB $FB,$FE,$6F
+ $C560 DEFB $07,$E1,$E0
+ $C563 DEFB $EF,$DF,$EF
+ $C566 DEFB $0F,$A3,$E0
+ $C569 DEFB $07,$43,$D0
+
+; Graphics: Sure Shot Sidney (Pub Scene)
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C56C-$C5B1-$01-$18)(pub-sure-shot-sidney) }
+; UDGTABLE#
+@label=Graphics_SureShotSidney_Pub
+b$C56C DEFB $FD,$FE,$7F
+ $C56F DEFB $02,$01,$80
+ $C572 DEFB $05,$FE,$40
+ $C575 DEFB $05,$FF,$A0
+ $C578 DEFB $05,$FF,$A0
+ $C57B DEFB $04,$A7,$D0
+ $C57E DEFB $05,$5B,$D0
+ $C581 DEFB $07,$FD,$D0
+ $C584 DEFB $05,$9D,$28
+ $C587 DEFB $06,$6C,$C8
+ $C58A DEFB $02,$2D,$C8
+ $C58D DEFB $01,$8F,$C8
+ $C590 DEFB $FB,$EF,$8B
+ $C593 DEFB $07,$FF,$90
+ $C596 DEFB $EF,$FF,$AF
+ $C599 DEFB $1F,$3F,$C0
+ $C59C DEFB $3E,$FB,$C0
+ $C59F DEFB $3C,$E7,$80
+ $C5A2 DEFB $18,$4F,$80
+ $C5A5 DEFB $E7,$5F,$1F
+ $C5A8 DEFB $00,$7E,$80
+ $C5AB DEFB $FE,$FD,$9F
+ $C5AE DEFB $00,$FB,$80
+ $C5B1 DEFB $00,$77,$40
+
+; Graphics: Limp Wrist Larry (Pub Scene)
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C5B4-$C5F9-$01-$18)(pub-limp-wrist-larry) }
+; UDGTABLE#
+@label=Graphics_LimpWristLarry_Pub
+b$C5B4 DEFB $FF,$DE,$7F
+ $C5B7 DEFB $00,$3F,$80
+ $C5BA DEFB $00,$7F,$C0
+ $C5BD DEFB $00,$FF,$E4
+ $C5C0 DEFB $00,$77,$E9
+ $C5C3 DEFB $00,$AB,$D6
+ $C5C6 DEFB $00,$FF,$3C
+ $C5C9 DEFB $00,$76,$FD
+ $C5CC DEFB $00,$AA,$CE
+ $C5CF DEFB $00,$22,$B5
+ $C5D2 DEFB $01,$76,$9A
+ $C5D5 DEFB $01,$DE,$AA
+ $C5D8 DEFB $FB,$EE,$AB
+ $C5DB DEFB $03,$ED,$B6
+ $C5DE DEFB $FD,$DB,$75
+ $C5E1 DEFB $00,$7C,$F8
+ $C5E4 DEFB $00,$7F,$E0
+ $C5E7 DEFB $00,$07,$C0
+ $C5EA DEFB $00,$27,$C0
+ $C5ED DEFB $FF,$BF,$DF
+ $C5F0 DEFB $00,$3F,$80
+ $C5F3 DEFB $FF,$9F,$BF
+ $C5F6 DEFB $00,$1F,$00
+ $C5F9 DEFB $FF,$DF,$BF
+
+; Graphics: Tactical Tel (Pub Scene)
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C5FC-$C641-$01-$18)(pub-tactical-tel) }
+; UDGTABLE#
+@label=Graphics_TacticalTel_Pub
+b$C5FC DEFB $FF,$9C,$FF
+ $C5FF DEFB $00,$63,$00
+ $C602 DEFB $00,$92,$80
+ $C605 DEFB $01,$6D,$40
+ $C608 DEFB $02,$9C,$A0
+ $C60B DEFB $04,$A2,$A0
+ $C60E DEFB $15,$3E,$50
+ $C611 DEFB $2A,$C0,$A8
+ $C614 DEFB $2C,$FF,$68
+ $C617 DEFB $26,$63,$BC
+ $C61A DEFB $15,$8C,$52
+ $C61D DEFB $08,$65,$A2
+ $C620 DEFB $F6,$F1,$F5
+ $C623 DEFB $0F,$1B,$F8
+ $C626 DEFB $EE,$EB,$FB
+ $C629 DEFB $0E,$ED,$F0
+ $C62C DEFB $06,$ED,$F0
+ $C62F DEFB $03,$5C,$F0
+ $C632 DEFB $01,$BB,$70
+ $C635 DEFB $FC,$E7,$67
+ $C638 DEFB $03,$1E,$E0
+ $C63B DEFB $FB,$FD,$E7
+ $C63E DEFB $03,$FB,$E0
+ $C641 DEFB $01,$F7,$C0
 
 ; Graphics: Throwing
 ;
@@ -8217,138 +8504,349 @@ b$C644 DEFB $09,$40,$1C
 b$C71C DEFB $00,$70,$E0,$FF
  $C720 DEFB $00,$70,$00,$00
 
-; Data block at C724
-b$C724 DEFB $00,$1E,$03,$00,$21,$03,$80,$4C
- $C72C DEFB $84,$40,$9E,$48,$40,$BF,$48,$40
- $C734 DEFB $AD,$48,$FE,$BF,$5F,$00,$B3,$40
- $C73C DEFB $FE,$BF,$5F,$00,$B5,$40,$00,$B3
- $C744 DEFB $40,$00,$9E,$40,$8D,$8C,$6F,$01
- $C74C DEFB $33,$24,$01,$7F,$A0,$03,$FF,$F0
- $C754 DEFB $05,$FF,$E8,$0D,$F3,$EC,$1D,$ED
- $C75C DEFB $EE,$1D,$C1,$EE,$1D,$DD,$EE,$3D
- $C764 DEFB $91,$EF,$3C,$3D,$CF,$3C,$70,$07
- $C76C DEFB $3E,$FC,$07,$3C,$FC,$07,$39,$EC
- $C774 DEFB $07,$33,$DE,$1F,$3F,$AD,$EF,$BF
- $C77C DEFB $0C,$0F,$3E,$0C,$0F,$3C,$0C,$1E
+; Graphics: Bar Maid
+;
+; .
+;
+; .
+;
+; Frame #N$01:
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C724-$C781-$01-$18)(bar-maid-1) }
+; UDGTABLE#
+@label=Graphics_BarMaid_01
+b$C724 DEFB $00,$1E,$03
+ $C727 DEFB $00,$21,$03
+ $C72A DEFB $80,$4C,$84
+ $C72D DEFB $40,$9E,$48
+ $C730 DEFB $40,$BF,$48
+ $C733 DEFB $40,$AD,$48
+ $C736 DEFB $FE,$BF,$5F
+ $C739 DEFB $00,$B3,$40
+ $C73C DEFB $FE,$BF,$5F
+ $C73F DEFB $00,$B5,$40
+ $C742 DEFB $00,$B3,$40
+ $C745 DEFB $00,$9E,$40
+ $C748 DEFB $8D,$8C,$6F
+ $C74B DEFB $01,$33,$24
+ $C74E DEFB $01,$7F,$A0
+ $C751 DEFB $03,$FF,$F0
+ $C754 DEFB $05,$FF,$E8
+ $C757 DEFB $0D,$F3,$EC
+ $C75A DEFB $1D,$ED,$EE
+ $C75D DEFB $1D,$C1,$EE
+ $C760 DEFB $1D,$DD,$EE
+ $C763 DEFB $3D,$91,$EF
+ $C766 DEFB $3C,$3D,$CF
+ $C769 DEFB $3C,$70,$07
+ $C76C DEFB $3E,$FC,$07
+ $C76F DEFB $3C,$FC,$07
+ $C772 DEFB $39,$EC,$07
+ $C775 DEFB $33,$DE,$1F
+ $C778 DEFB $3F,$AD,$EF
+ $C77B DEFB $BF,$0C,$0F
+ $C77E DEFB $3E,$0C,$0F
+ $C781 DEFB $3C,$0C,$1E
+; Frame #N$02:
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C784-$C7E1-$01-$18)(bar-maid-2) }
+; UDGTABLE#
+@label=Graphics_BarMaid_02
+ $C784 DEFB $00,$1E,$03
+ $C787 DEFB $00,$21,$03
+ $C78A DEFB $80,$4C,$84
+ $C78D DEFB $40,$9E,$48
+ $C790 DEFB $40,$BF,$48
+ $C793 DEFB $40,$AD,$48
+ $C796 DEFB $FE,$BF,$5F
+ $C799 DEFB $00,$B3,$40
+ $C79C DEFB $FE,$BF,$5F
+ $C79F DEFB $00,$B5,$40
+ $C7A2 DEFB $00,$B3,$40
+ $C7A5 DEFB $00,$9E,$40
+ $C7A8 DEFB $8D,$8C,$6F
+ $C7AB DEFB $01,$33,$24
+ $C7AE DEFB $01,$7F,$A0
+ $C7B1 DEFB $03,$FF,$F0
+ $C7B4 DEFB $05,$FF,$E8
+ $C7B7 DEFB $0D,$F3,$EC
+ $C7BA DEFB $1D,$ED,$EE
+ $C7BD DEFB $1D,$ED,$EE
+ $C7C0 DEFB $1D,$ED,$EE
+ $C7C3 DEFB $3D,$ED,$EF
+ $C7C6 DEFB $3C,$E1,$CF
+ $C7C9 DEFB $3C,$0C,$07
+ $C7CC DEFB $3C,$30,$07
+ $C7CF DEFB $3C,$FC,$07
+ $C7D2 DEFB $3B,$F0,$07
+ $C7D5 DEFB $37,$EE,$1F
+ $C7D8 DEFB $3F,$CD,$EF
+ $C7DB DEFB $BF,$0C,$0F
+ $C7DE DEFB $3C,$0C,$0F
+ $C7E1 DEFB $38,$0C,$1E
+; Frame #N$03:
+; #UDGTABLE(default)
+; { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C7E4-$C841-$01-$18)(bar-maid-3) }
+; UDGTABLE#
+@label=Graphics_BarMaid_03
+ $C7E4 DEFB $00,$1E,$03
+ $C7E7 DEFB $00,$21,$03
+ $C7EA DEFB $80,$4C,$84
+ $C7ED DEFB $40,$9E,$48
+ $C7F0 DEFB $40,$BF,$48
+ $C7F3 DEFB $40,$AD,$48
+ $C7F6 DEFB $FE,$BF,$5F
+ $C7F9 DEFB $00,$B3,$40
+ $C7FC DEFB $FE,$BF,$5F
+ $C7FF DEFB $00,$B5,$40
+ $C802 DEFB $00,$B3,$40
+ $C805 DEFB $00,$9E,$40
+ $C808 DEFB $8D,$8C,$6F
+ $C80B DEFB $01,$33,$24
+ $C80E DEFB $01,$7F,$A0
+ $C811 DEFB $03,$FF,$F0
+ $C814 DEFB $05,$FF,$E8
+ $C817 DEFB $0D,$FF,$EC
+ $C81A DEFB $1D,$FF,$EE
+ $C81D DEFB $1D,$F3,$EE
+ $C820 DEFB $3D,$EF,$EE
+ $C823 DEFB $3D,$ED,$EF
+ $C826 DEFB $3C,$ED,$CF
+ $C829 DEFB $78,$0C,$07
+ $C82C DEFB $78,$10,$07
+ $C82F DEFB $78,$3C,$07
+ $C832 DEFB $78,$F2,$07
+ $C835 DEFB $73,$FE,$1F
+ $C838 DEFB $77,$F1,$EF
+ $C83B DEFB $7F,$CC,$0F
+ $C83E DEFB $7F,$0C,$0F
+ $C841 DEFB $7C,$0C,$1E
 
-; Data block at C784
-b$C784 DEFB $00,$1E,$03,$00,$21,$03,$80,$4C
- $C78C DEFB $84,$40,$9E,$48,$40,$BF,$48,$40
- $C794 DEFB $AD,$48,$FE,$BF,$5F,$00,$B3,$40
- $C79C DEFB $FE,$BF,$5F,$00,$B5,$40,$00,$B3
- $C7A4 DEFB $40,$00,$9E,$40,$8D,$8C,$6F,$01
- $C7AC DEFB $33,$24,$01,$7F,$A0,$03,$FF,$F0
- $C7B4 DEFB $05,$FF,$E8,$0D,$F3,$EC,$1D,$ED
- $C7BC DEFB $EE,$1D,$ED,$EE,$1D,$ED,$EE,$3D
- $C7C4 DEFB $ED,$EF,$3C,$E1,$CF,$3C,$0C,$07
- $C7CC DEFB $3C,$30,$07,$3C,$FC,$07,$3B,$F0
- $C7D4 DEFB $07,$37,$EE,$1F,$3F,$CD,$EF,$BF
- $C7DC DEFB $0C,$0F,$3C,$0C,$0F,$38,$0C,$1E
+; Graphics: Dog
+;
+; .
+;
+; .
+;
+; Frame #N$01:
+; #UDGTABLE(default)
+; { #UDGARRAY$05,attr=$47,scale=$04,step=$05($C844-$C8B7-$01-$28)(dog-1) }
+; UDGTABLE#
+@label=Graphics_Dog_01
+b$C844 DEFB $00,$64,$00,$00,$00
+ $C849 DEFB $01,$8A,$00,$00,$00
+ $C84E DEFB $02,$04,$00,$00,$00
+ $C853 DEFB $05,$D4,$00,$00,$00
+ $C858 DEFB $0A,$FA,$00,$30,$00
+ $C85D DEFB $17,$C9,$8E,$48,$00
+ $C862 DEFB $2F,$C4,$71,$B0,$00
+ $C867 DEFB $14,$2B,$00,$40,$00
+ $C86C DEFB $11,$96,$62,$20,$00
+ $C871 DEFB $0E,$AE,$7E,$20,$00
+ $C876 DEFB $00,$9C,$3F,$20,$00
+ $C87B DEFB $00,$BC,$7E,$20,$00
+ $C880 DEFB $00,$5C,$F6,$20,$00
+ $C885 DEFB $00,$5F,$77,$10,$00
+ $C88A DEFB $00,$5C,$F7,$10,$00
+ $C88F DEFB $00,$BA,$0B,$90,$00
+ $C894 DEFB $00,$B5,$ED,$D0,$00
+ $C899 DEFB $FF,$B6,$DC,$DF,$FF
+ $C89E DEFB $01,$6B,$5A,$E8,$00
+ $C8A3 DEFB $02,$E7,$3B,$68,$00
+ $C8A8 DEFB $02,$E8,$C6,$E8,$00
+ $C8AD DEFB $01,$17,$39,$10,$00
+ $C8B2 DEFB $00,$E0,$00,$E0,$00
+ $C8B7 DEFB $00,$00,$00,$00,$00
+; Frame #N$02:
+; #UDGTABLE(default)
+; { #UDGARRAY$05,attr=$47,scale=$04,step=$05($C8BC-$C92F-$01-$28)(dog-2) }
+; UDGTABLE#
+@label=Graphics_Dog_02
+ $C8BC DEFB $00,$01,$80,$00,$00
+ $C8C1 DEFB $00,$06,$40,$00,$00
+ $C8C6 DEFB $00,$18,$A0,$00,$00
+ $C8CB DEFB $00,$20,$40,$00,$00
+ $C8D0 DEFB $00,$5D,$40,$00,$00
+ $C8D5 DEFB $01,$AF,$A0,$03,$00
+ $C8DA DEFB $02,$7C,$98,$E4,$80
+ $C8DF DEFB $02,$FC,$47,$1B,$00
+ $C8E4 DEFB $01,$42,$B0,$04,$00
+ $C8E9 DEFB $00,$19,$66,$22,$00
+ $C8EE DEFB $00,$EA,$E7,$E2,$00
+ $C8F3 DEFB $00,$09,$C3,$F2,$00
+ $C8F8 DEFB $00,$0B,$C7,$E2,$00
+ $C8FD DEFB $00,$05,$CF,$62,$00
+ $C902 DEFB $00,$04,$F7,$74,$00
+ $C907 DEFB $00,$04,$CF,$74,$00
+ $C90C DEFB $00,$0B,$60,$EA,$00
+ $C911 DEFB $FF,$FB,$6E,$EB,$FF
+ $C916 DEFB $00,$0B,$6D,$CD,$00
+ $C91B DEFB $00,$16,$B5,$B6,$00
+ $C920 DEFB $00,$2E,$B5,$AE,$00
+ $C925 DEFB $00,$11,$73,$B1,$00
+ $C92A DEFB $00,$0E,$8C,$4E,$00
+ $C92F DEFB $00,$00,$73,$A0,$00
+; Frame #N$03:
+; #UDGTABLE(default)
+; { #UDGARRAY$04,attr=$47,scale=$04,step=$04($C934-$C990-$01-$20)(dog-3) }
+; UDGTABLE#
+@label=Graphics_Dog_03
+ $C934 DEFB $00,$30,$00,$00
+ $C938 DEFB $00,$E0,$00,$00
+ $C93C DEFB $01,$A0,$00,$00
+ $C940 DEFB $C7,$90,$00,$00
+ $C944 DEFB $19,$38,$20,$00
+ $C948 DEFB $0C,$5C,$40,$00
+ $C94C DEFB $04,$BB,$C0,$00
+ $C950 DEFB $05,$53,$F8,$00
+ $C954 DEFB $02,$84,$48,$00
+ $C958 DEFB $01,$4E,$04,$00
+ $C95C DEFB $00,$CF,$44,$00
+ $C960 DEFB $01,$DE,$0C,$00
+ $C964 DEFB $01,$DC,$0E,$00
+ $C968 DEFB $01,$D0,$AE,$00
+ $C96C DEFB $00,$B1,$2E,$00
+ $C970 DEFB $00,$AA,$D6,$00
+ $C974 DEFB $00,$AD,$52,$00
+ $C978 DEFB $00,$AC,$4D,$FF
+ $C97C DEFB $01,$33,$92,$00
+ $C980 DEFB $01,$32,$12,$00
+ $C984 DEFB $02,$52,$1A,$00
+ $C988 DEFB $01,$A2,$0C,$00
+ $C98C DEFB $00,$1C,$12,$00
+ $C990 DEFB $00,$00,$0C,$00
+; Frame #N$04:
+; #UDGTABLE(default)
+; { #UDGARRAY$04,attr=$47,scale=$04,step=$04($C994-$C9F0-$01-$20)(dog-4) }
+; UDGTABLE#
+@label=Graphics_Dog_04
+ $C994 DEFB $00,$30,$00,$00
+ $C998 DEFB $00,$E0,$00,$00
+ $C99C DEFB $01,$A0,$00,$00
+ $C9A0 DEFB $C7,$90,$00,$00
+ $C9A4 DEFB $19,$38,$40,$00
+ $C9A8 DEFB $0C,$5C,$40,$00
+ $C9AC DEFB $04,$BB,$C0,$00
+ $C9B0 DEFB $05,$53,$F8,$00
+ $C9B4 DEFB $02,$84,$4A,$00
+ $C9B8 DEFB $01,$4E,$05,$00
+ $C9BC DEFB $00,$CF,$46,$C0
+ $C9C0 DEFB $01,$DE,$09,$20
+ $C9C4 DEFB $01,$DC,$00,$D0
+ $C9C8 DEFB $01,$D0,$9C,$E8
+ $C9CC DEFB $00,$B1,$23,$34
+ $C9D0 DEFB $00,$AA,$C0,$C4
+ $C9D4 DEFB $00,$AD,$40,$48
+ $C9D8 DEFB $00,$AC,$5F,$FF
+ $C9DC DEFB $01,$33,$80,$00
+ $C9E0 DEFB $01,$32,$00,$00
+ $C9E4 DEFB $02,$52,$00,$00
+ $C9E8 DEFB $01,$A2,$00,$00
+ $C9EC DEFB $00,$1C,$00,$00
+ $C9F0 DEFB $00,$00,$00,$00
+; Frame #N$05:
+; #UDGTABLE(default)
+; { #UDGARRAY$04,attr=$47,scale=$04,step=$04($C9F4-$CA50-$01-$20)(dog-5) }
+; UDGTABLE#
+@label=Graphics_Dog_05
+ $C9F4 DEFB $00,$30,$00,$00
+ $C9F8 DEFB $00,$E0,$00,$00
+ $C9FC DEFB $01,$A0,$00,$00
+ $CA00 DEFB $C7,$90,$00,$00
+ $CA04 DEFB $19,$38,$00,$00
+ $CA08 DEFB $0C,$5C,$00,$00
+ $CA0C DEFB $04,$BB,$00,$E0
+ $CA10 DEFB $05,$53,$FF,$50
+ $CA14 DEFB $02,$84,$5C,$D0
+ $CA18 DEFB $01,$4E,$00,$D0
+ $CA1C DEFB $00,$CF,$5C,$50
+ $CA20 DEFB $01,$DE,$23,$A0
+ $CA24 DEFB $01,$DC,$40,$40
+ $CA28 DEFB $01,$D0,$80,$00
+ $CA2C DEFB $00,$B1,$00,$00
+ $CA30 DEFB $00,$AA,$C0,$00
+ $CA34 DEFB $00,$AD,$40,$00
+ $CA38 DEFB $00,$AC,$5F,$FF
+ $CA3C DEFB $01,$33,$80,$00
+ $CA40 DEFB $01,$32,$00,$00
+ $CA44 DEFB $02,$52,$00,$00
+ $CA48 DEFB $01,$A2,$00,$00
+ $CA4C DEFB $00,$1C,$00,$00
+ $CA50 DEFB $00,$00,$00,$00
 
-; Data block at C7E4
-b$C7E4 DEFB $00,$1E,$03,$00,$21,$03,$80,$4C
- $C7EC DEFB $84,$40,$9E,$48,$40,$BF,$48,$40
- $C7F4 DEFB $AD,$48,$FE,$BF,$5F,$00,$B3,$40
- $C7FC DEFB $FE,$BF,$5F,$00,$B5,$40,$00,$B3
- $C804 DEFB $40,$00,$9E,$40,$8D,$8C,$6F,$01
- $C80C DEFB $33,$24,$01,$7F,$A0,$03,$FF,$F0
- $C814 DEFB $05,$FF,$E8,$0D,$FF,$EC,$1D,$FF
- $C81C DEFB $EE,$1D,$F3,$EE,$3D,$EF,$EE,$3D
- $C824 DEFB $ED,$EF,$3C,$ED,$CF,$78,$0C,$07
- $C82C DEFB $78,$10,$07,$78,$3C,$07,$78,$F2
- $C834 DEFB $07,$73,$FE,$1F,$77,$F1,$EF,$7F
- $C83C DEFB $CC,$0F,$7F,$0C,$0F,$7C,$0C,$1E
- $C844 DEFB $00,$64,$00,$00,$00,$01,$8A,$00
- $C84C DEFB $00,$00,$02,$04,$00,$00,$00,$05
- $C854 DEFB $D4,$00,$00,$00,$0A,$FA,$00,$30
- $C85C DEFB $00,$17,$C9,$8E,$48,$00,$2F,$C4
- $C864 DEFB $71,$B0,$00,$14,$2B,$00,$40,$00
- $C86C DEFB $11,$96,$62,$20,$00,$0E,$AE,$7E
- $C874 DEFB $20,$00,$00,$9C,$3F,$20,$00,$00
- $C87C DEFB $BC,$7E,$20,$00,$00,$5C,$F6,$20
- $C884 DEFB $00,$00,$5F,$77,$10,$00,$00,$5C
- $C88C DEFB $F7,$10,$00,$00,$BA,$0B,$90,$00
- $C894 DEFB $00,$B5,$ED,$D0,$00,$FF,$B6,$DC
- $C89C DEFB $DF,$FF,$01,$6B,$5A,$E8,$00,$02
- $C8A4 DEFB $E7,$3B,$68,$00,$02,$E8,$C6,$E8
- $C8AC DEFB $00,$01,$17,$39,$10,$00,$00,$E0
- $C8B4 DEFB $00,$E0,$00,$00,$00,$00,$00,$00
- $C8BC DEFB $00,$01,$80,$00,$00,$00,$06,$40
- $C8C4 DEFB $00,$00,$00,$18,$A0,$00,$00,$00
- $C8CC DEFB $20,$40,$00,$00,$00,$5D,$40,$00
- $C8D4 DEFB $00,$01,$AF,$A0,$03,$00,$02,$7C
- $C8DC DEFB $98,$E4,$80,$02,$FC,$47,$1B,$00
- $C8E4 DEFB $01,$42,$B0,$04,$00,$00,$19,$66
- $C8EC DEFB $22,$00,$00,$EA,$E7,$E2,$00,$00
- $C8F4 DEFB $09,$C3,$F2,$00,$00,$0B,$C7,$E2
- $C8FC DEFB $00,$00,$05,$CF,$62,$00,$00,$04
- $C904 DEFB $F7,$74,$00,$00,$04,$CF,$74,$00
- $C90C DEFB $00,$0B,$60,$EA,$00,$FF,$FB,$6E
- $C914 DEFB $EB,$FF,$00,$0B,$6D,$CD,$00,$00
- $C91C DEFB $16,$B5,$B6,$00,$00,$2E,$B5,$AE
- $C924 DEFB $00,$00,$11,$73,$B1,$00,$00,$0E
- $C92C DEFB $8C,$4E,$00,$00,$00,$73,$A0,$00
-
-; Data block at C934
-b$C934 DEFB $00,$30,$00,$00,$00,$E0,$00,$00
- $C93C DEFB $01,$A0,$00,$00,$C7,$90,$00,$00
- $C944 DEFB $19,$38,$20,$00,$0C,$5C,$40,$00
- $C94C DEFB $04,$BB,$C0,$00,$05,$53,$F8,$00
- $C954 DEFB $02,$84,$48,$00,$01,$4E,$04,$00
- $C95C DEFB $00,$CF,$44,$00,$01,$DE,$0C,$00
- $C964 DEFB $01,$DC,$0E,$00,$01,$D0,$AE,$00
- $C96C DEFB $00,$B1,$2E,$00,$00,$AA,$D6,$00
- $C974 DEFB $00,$AD,$52,$00,$00,$AC,$4D,$FF
- $C97C DEFB $01,$33,$92,$00,$01,$32,$12,$00
- $C984 DEFB $02,$52,$1A,$00,$01,$A2,$0C,$00
- $C98C DEFB $00,$1C,$12,$00,$00,$00,$0C,$00
-
-; Data block at C994
-b$C994 DEFB $00,$30,$00,$00,$00,$E0,$00,$00
- $C99C DEFB $01,$A0,$00,$00,$C7,$90,$00,$00
- $C9A4 DEFB $19,$38,$40,$00,$0C,$5C,$40,$00
- $C9AC DEFB $04,$BB,$C0,$00,$05,$53,$F8,$00
- $C9B4 DEFB $02,$84,$4A,$00,$01,$4E,$05,$00
- $C9BC DEFB $00,$CF,$46,$C0,$01,$DE,$09,$20
- $C9C4 DEFB $01,$DC,$00,$D0,$01,$D0,$9C,$E8
- $C9CC DEFB $00,$B1,$23,$34,$00,$AA,$C0,$C4
- $C9D4 DEFB $00,$AD,$40,$48,$00,$AC,$5F,$FF
- $C9DC DEFB $01,$33,$80,$00,$01,$32,$00,$00
- $C9E4 DEFB $02,$52,$00,$00,$01,$A2,$00,$00
- $C9EC DEFB $00,$1C,$00,$00,$00,$00,$00,$00
-
-; Data block at C9F4
-b$C9F4 DEFB $00,$30,$00,$00,$00,$E0,$00,$00
- $C9FC DEFB $01,$A0,$00,$00,$C7,$90,$00,$00
- $CA04 DEFB $19,$38,$00,$00,$0C,$5C,$00,$00
- $CA0C DEFB $04,$BB,$00,$E0,$05,$53,$FF,$50
- $CA14 DEFB $02,$84,$5C,$D0,$01,$4E,$00,$D0
- $CA1C DEFB $00,$CF,$5C,$50,$01,$DE,$23,$A0
- $CA24 DEFB $01,$DC,$40,$40,$01,$D0,$80,$00
- $CA2C DEFB $00,$B1,$00,$00,$00,$AA,$C0,$00
- $CA34 DEFB $00,$AD,$40,$00,$00,$AC,$5F,$FF
- $CA3C DEFB $01,$33,$80,$00,$01,$32,$00,$00
- $CA44 DEFB $02,$52,$00,$00,$01,$A2,$00,$00
- $CA4C DEFB $00,$1C,$00,$00,$00,$00,$00,$00
- $CA54 DEFB $00,$FF,$FF,$81,$81,$81,$81,$81
+; Data block at CA54
+b$CA54 DEFB $00,$FF,$FF,$81,$81,$81,$81,$81
  $CA5C DEFB $81,$C3,$C3,$C3,$C3,$C3,$E7,$FF
  $CA64 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $CA6C DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $CA74 DEFB $00,$FF,$00,$00,$00,$00,$00,$00
-*$CA7C DEFB $21,$00,$D5,$11,$00,$08,$06,$08
- $CA84 DEFB $CB,$06,$3E,$10,$38,$01,$AF,$D3
- $CA8C DEFB $FE,$0E,$12,$0D,$20,$FD,$10,$08
- $CA94 DEFB $23,$1B,$7A,$B3,$20,$E8,$FB,$C9
- $CA9C DEFB $00,$00,$00,$00,$00,$18,$E1,$6E
- $CAA4 DEFB $B4,$96,$A0,$B4,$BE,$78,$8C,$A0
- $CAAC DEFB $AA,$BE,$C7,$46,$78,$82,$96,$A0
- $CAB4 DEFB $BE,$64,$96,$64,$96,$28,$4B,$32
- $CABC DEFB $96,$AA,$B4,$C3,$C6,$96,$A5,$AA
- $CAC4 DEFB $AF,$B9,$C7,$50,$A0,$AA,$B4,$BE
- $CACC DEFB $C3,$96,$64,$96,$64,$64,$64,$01
- $CAD4 DEFB $C8,$C4,$C5,$C6,$C7,$B4,$BE,$C0
- $CADC DEFB $C2,$C4,$C6,$32,$BE,$C0,$C2,$C6
- $CAE4 DEFB $C7,$B4,$BE,$A0,$B4,$AF,$B4
+
+; Routine at CA7C
+;
+; Used by the routine at #R$9D42.
+c$CA7C LD HL,$D500   ;
+ $CA7F LD DE,$0800   ;
+*$CA82 LD B,$08      ;
+*$CA84 RLC (HL)      ;
+ $CA86 LD A,$10      ;
+ $CA88 JR C,$CA8B    ;
+ $CA8A XOR A         ;
+*$CA8B OUT ($FE),A   ;
+ $CA8D LD C,$12      ;
+*$CA8F DEC C         ;
+ $CA90 JR NZ,$CA8F   ;
+ $CA92 DJNZ $CA9C    ;
+ $CA94 INC HL        ;
+ $CA95 DEC DE        ;
+ $CA96 LD A,D        ;
+ $CA97 OR E          ;
+ $CA98 JR NZ,$CA82   ;
+ $CA9A EI            ;
+ $CA9B RET           ;
+*$CA9C NOP           ;
+ $CA9D NOP           ;
+ $CA9E NOP           ;
+ $CA9F NOP           ;
+ $CAA0 NOP           ;
+ $CAA1 JR $CA84      ;
+
+; Data block at CAA3
+w$CAA3 DEFW $B46E
+ $CAA5 DEFW $A096
+ $CAA7 DEFW $BEB4
+ $CAA9 DEFW $8C78
+ $CAAB DEFW $AAA0
+ $CAAD DEFW $C7BE
+ $CAAF DEFW $7846
+ $CAB1 DEFW $9682
+ $CAB3 DEFW $BEA0
+ $CAB5 DEFW $9664
+ $CAB7 DEFW $9664
+ $CAB9 DEFW $4B28
+ $CABB DEFW $9632
+ $CABD DEFW $B4AA
+ $CABF DEFW $C6C3
+ $CAC1 DEFW $A596
+ $CAC3 DEFW $AFAA
+ $CAC5 DEFW $C7B9
+ $CAC7 DEFW $A050
+ $CAC9 DEFW $B4AA
+ $CACB DEFW $C3BE
+ $CACD DEFW $6496
+ $CACF DEFW $6496
+ $CAD1 DEFW $6464
+ $CAD3 DEFW $C801
+ $CAD5 DEFW $C5C4
+ $CAD7 DEFW $C7C6
+ $CAD9 DEFW $BEB4
+ $CADB DEFW $C2C0
+ $CADD DEFW $C6C4
+ $CADF DEFW $BE32
+ $CAE1 DEFW $C2C0
+ $CAE3 DEFW $C7C6
+ $CAE5 DEFW $BEB4
+ $CAE7 DEFW $B4A0
+ $CAE9 DEFW $B4AF
 
 ; Routine at CAEB
 ;
@@ -8434,15 +8932,15 @@ c$CB1E PUSH AF         ; Stash #REGaf on the stack.
 b$CB6B DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $CB73 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $CB7B DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CB83 DEFB $00,$00,$00,$00,$00,$00,$09,$00
- $CB8B DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CB93 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CB9B DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CBA3 DEFB $00,$00,$00,$00,$00,$12,$00,$00
- $CBAB DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CBB3 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CBBB DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CBC3 DEFB $00,$00,$00,$00,$24
+ $CB83 DEFB $00,$00,$00,$00,$00,$00,$09
+ $CB8A DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $CB92 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $CB9A DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $CBA2 DEFB $00,$00,$00,$00,$00,$00,$12
+ $CBA9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $CBB1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $CBB9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $CBC1 DEFB $00,$00,$00,$00,$00,$00,$24
 
 ; Routine at CBC8
 ;
@@ -8480,47 +8978,48 @@ c$CBC8 LD A,$01      ;
 ; Routine at CBF7
 ;
 ; Used by the routines at #R$95ED and #R$CAEB.
-c$CBF7 LD A,($D009)  ;
+c$CBF7 LD A,($D009)  ; {Return if *#R$D009 is zero.
  $CBFA AND A         ;
- $CBFB RET Z         ;
- $CBFC LD A,$00      ;
- $CBFE LD ($CC4A),A  ;
- $CC01 LD HL,$CC84   ;
- $CC04 DEC (HL)      ;
- $CC05 JR NZ,$CC22   ;
- $CC07 LD B,(HL)     ;
- $CC08 LD IX,$CB6B   ;
- $CC0C CALL $CD4A    ;
- $CC0F LD IX,$CB8A   ;
- $CC13 CALL $CD4A    ;
- $CC16 LD IX,$CBA9   ;
- $CC1A CALL $CD4A    ;
- $CC1D LD HL,$CC84   ;
- $CC20 LD (HL),$01   ;
-*$CC22 LD IX,$CB6B   ;
- $CC26 CALL $CDEC    ;
- $CC29 LD ($CEFD),HL ;
- $CC2C LD ($CF05),A  ;
- $CC2F LD IX,$CB8A   ;
- $CC33 CALL $CDEC    ;
- $CC36 LD ($CEFF),HL ;
- $CC39 LD ($CF06),A  ;
- $CC3C LD IX,$CBA9   ;
- $CC40 CALL $CDEC    ;
- $CC43 LD ($CF01),HL ;
- $CC46 LD ($CF07),A  ;
- $CC49 LD A,$00      ;
- $CC4B LD ($CF03),A  ;
- $CC4E LD HL,$CF0A   ;
- $CC51 LD A,$0D      ;
- $CC53 LD C,$FD      ;
-*$CC55 LD B,$FF      ;
- $CC57 OUT (C),A     ;
- $CC59 LD B,$BF      ;
- $CC5B OUTD          ;
- $CC5D DEC A         ;
- $CC5E JP P,$CC55    ;
- $CC61 RET           ;
+ $CBFB RET Z         ; }
+ $CBFC LD A,$00      ; {Write #N$00 to *#R$CC49(#N$CC4A).
+ $CBFE LD ($CC4A),A  ; }
+ $CC01 LD HL,$CC84   ; #REGhl=#R$CC84.
+ $CC04 DEC (HL)      ; Decrease *#REGhl by one.
+ $CC05 JR NZ,$CC22   ; Jump to #R$CC22 if *#REGhl is not equal to #N$00.
+ $CC07 LD B,(HL)     ; #REGb=*#REGhl.
+ $CC08 LD IX,$CB6B   ; #REGix=#R$CB6B.
+ $CC0C CALL $CD4A    ; Call #R$CD4A.
+ $CC0F LD IX,$CB8A   ; #REGix=#R$CB8A.
+ $CC13 CALL $CD4A    ; Call #R$CD4A.
+ $CC16 LD IX,$CBA9   ; #REGix=#R$CBA9.
+ $CC1A CALL $CD4A    ; Call #R$CD4A.
+ $CC1D LD HL,$CC84   ; #REGhl=#R$CC84.
+ $CC20 LD (HL),$01   ; Write #N$01 to *#REGhl.
+*$CC22 LD IX,$CB6B   ; #REGix=#R$CB6B.
+ $CC26 CALL $CDEC    ; Call #R$CDEC.
+ $CC29 LD ($CEFD),HL ; Write #REGhl to *#R$CEFD.
+ $CC2C LD ($CF05),A  ; Write #REGa to *#R$CF05.
+ $CC2F LD IX,$CB8A   ; #REGix=#R$CB8A.
+ $CC33 CALL $CDEC    ; Call #R$CDEC.
+ $CC36 LD ($CEFF),HL ; Write #REGhl to *#R$CEFF.
+ $CC39 LD ($CF06),A  ; Write #REGa to *#R$CF06.
+ $CC3C LD IX,$CBA9   ; #REGix=#R$CBA9.
+ $CC40 CALL $CDEC    ; Call #R$CDEC.
+ $CC43 LD ($CF01),HL ; Write #REGhl to *#R$CF01.
+ $CC46 LD ($CF07),A  ; Write #REGa to *#R$CF07.
+ $CC49 LD A,$00      ; {Write #N$00 to *#R$CF03.
+ $CC4B LD ($CF03),A  ; }
+ $CC4E LD HL,$CF0A   ; #REGhl=#R$CF0A.
+ $CC51 LD A,$0D      ; #REGa=#N$0D.
+ $CC53 LD C,$FD      ; #REGc=#N$FD.
+*$CC55 LD B,$FF      ; #REGb=#N$FF.
+ $CC57 OUT (C),A     ; Send #REGa to port *#REGc.
+ $CC59 LD B,$BF      ; #REGb=#N$BF.
+ $CC5B OUTD          ; OUTD.
+ $CC5D DEC A         ; Decrease #REGa by one.
+ $CC5E JP P,$CC55    ; Jump to #R$CC55 if #REGa is greater than or equal to
+                     ; #REGa.
+ $CC61 RET           ; Return.
 
 ; Routine at CC62
 ;
@@ -8856,234 +9355,64 @@ c$CC84 NOP             ;
  $CEF8 EX DE,HL        ;
  $CEF9 LD A,(IX+$13)   ;
  $CEFC RET             ;
- $CEFD NOP             ;
- $CEFE NOP             ;
- $CEFF NOP             ;
- $CF00 NOP             ;
- $CF01 NOP             ;
- $CF02 NOP             ;
- $CF03 NOP             ;
- $CF04 JR C,$CF15      ;
- $CF06 RRCA            ;
- $CF07 DEC C           ;
- $CF08 NOP             ;
- $CF09 NOP             ;
- $CF0A NOP             ;
- $CF0B RET P           ;
- $CF0C DEC E           ;
- $CF0D JR NZ,$CF2B     ;
- $CF0F RET NZ          ;
- $CF10 LD A,(DE)       ;
- $CF11 NOP             ;
- $CF12 ADD HL,DE       ;
- $CF13 OR B            ;
- $CF14 RLA             ;
-*$CF15 LD D,B          ;
- $CF16 LD D,$10        ;
- $CF18 DEC D           ;
- $CF19 RET PO          ;
- $CF1A INC DE          ;
- $CF1B RET NZ          ;
- $CF1C LD (DE),A       ;
- $CF1D RET NZ          ;
- $CF1E LD DE,$10B0     ;
- $CF21 RET NZ          ;
- $CF22 RRCA            ;
- $CF23 RET M           ;
- $CF24 LD C,$10        ;
- $CF26 LD C,$60        ;
- $CF28 DEC C           ;
- $CF29 ADD A,B         ;
- $CF2A INC C           ;
-*$CF2B RET C           ;
- $CF2C DEC BC          ;
- $CF2D JR Z,$CF3A      ;
- $CF2F ADC A,B         ;
- $CF30 LD A,(BC)       ;
- $CF31 RET P           ;
- $CF32 ADD HL,BC       ;
- $CF33 LD H,B          ;
- $CF34 ADD HL,BC       ;
- $CF35 RET PO          ;
- $CF36 EX AF,AF'       ;
- $CF37 LD E,B          ;
- $CF38 EX AF,AF'       ;
- $CF39 RET PO          ;
-*$CF3A RLCA            ;
- $CF3B LD A,H          ;
- $CF3C RLCA            ;
- $CF3D EX AF,AF'       ;
- $CF3E RLCA            ;
- $CF3F OR B            ;
- $CF40 LD B,$40        ;
- $CF42 LD B,$EC        ;
- $CF44 DEC B           ;
- $CF45 SUB H           ;
- $CF46 DEC B           ;
- $CF47 LD B,H          ;
- $CF48 DEC B           ;
- $CF49 RET M           ;
- $CF4A INC B           ;
- $CF4B OR B            ;
- $CF4C INC B           ;
- $CF4D LD (HL),B       ;
- $CF4E INC B           ;
- $CF4F INC L           ;
- $CF50 INC B           ;
- $CF51 RET P           ;
- $CF52 INC BC          ;
- $CF53 CP (HL)         ;
- $CF54 INC BC          ;
- $CF55 ADD A,H         ;
- $CF56 INC BC          ;
- $CF57 LD E,B          ;
- $CF58 INC BC          ;
- $CF59 JR NZ,$CF5E     ;
- $CF5B OR $02          ;
- $CF5D JP Z,$A202      ;
- $CF60 LD (BC),A       ;
- $CF61 LD A,H          ;
- $CF62 LD (BC),A       ;
- $CF63 LD E,B          ;
- $CF64 LD (BC),A       ;
- $CF65 JR C,$CF69      ;
- $CF67 LD D,$02        ;
-*$CF69 RET M           ;
- $CF6A LD BC,$01DF     ;
- $CF6D JP NZ,$AC01     ;
- $CF70 LD BC,$0190     ;
- $CF73 LD A,E          ;
- $CF74 LD BC,$0165     ;
- $CF77 LD D,C          ;
- $CF78 LD BC,$013E     ;
- $CF7B INC L           ;
- $CF7C LD BC,$011C     ;
- $CF7F DEC BC          ;
- $CF80 LD BC,$00FC     ;
- $CF83 RST $28         ;
- $CF84 NOP             ;
- $CF85 POP HL          ;
- $CF86 NOP             ;
- $CF87 SUB $00         ;
- $CF89 RET Z           ;
- $CF8A NOP             ;
- $CF8B CP L            ;
- $CF8C NOP             ;
- $CF8D OR D            ;
- $CF8E NOP             ;
- $CF8F XOR B           ;
- $CF90 NOP             ;
- $CF91 SBC A,A         ;
- $CF92 NOP             ;
- $CF93 SUB (HL)        ;
- $CF94 NOP             ;
- $CF95 ADC A,(HL)      ;
- $CF96 NOP             ;
- $CF97 ADD A,L         ;
- $CF98 NOP             ;
- $CF99 LD A,(HL)       ;
- $CF9A NOP             ;
- $CF9B LD (HL),A       ;
- $CF9C NOP             ;
- $CF9D LD (HL),B       ;
- $CF9E NOP             ;
- $CF9F LD L,E          ;
- $CFA0 NOP             ;
- $CFA1 LD H,H          ;
- $CFA2 NOP             ;
- $CFA3 LD E,(HL)       ;
- $CFA4 NOP             ;
- $CFA5 LD E,C          ;
- $CFA6 NOP             ;
- $CFA7 LD D,H          ;
- $CFA8 NOP             ;
- $CFA9 LD C,A          ;
- $CFAA NOP             ;
- $CFAB LD C,E          ;
- $CFAC NOP             ;
- $CFAD LD B,A          ;
- $CFAE NOP             ;
- $CFAF LD B,D          ;
- $CFB0 NOP             ;
- $CFB1 CCF             ;
- $CFB2 NOP             ;
- $CFB3 DEC SP          ;
- $CFB4 NOP             ;
- $CFB5 JR C,$CFB7      ;
-*$CFB7 DEC (HL)        ;
- $CFB8 NOP             ;
- $CFB9 LD ($2F00),A    ;
- $CFBC NOP             ;
- $CFBD INC L           ;
- $CFBE NOP             ;
- $CFBF LD HL,($2700)   ;
- $CFC2 NOP             ;
- $CFC3 DEC H           ;
- $CFC4 NOP             ;
- $CFC5 INC HL          ;
- $CFC6 NOP             ;
- $CFC7 LD HL,$1F00     ;
- $CFCA NOP             ;
- $CFCB DEC C           ;
- $CFCC DJNZ $CFE1      ;
- $CFCE RLA             ;
- $CFCF DEC DE          ;
- $CFD0 LD E,$21        ;
- $CFD2 INC H           ;
- $CFD3 DAA             ;
- $CFD4 ADD HL,HL       ;
- $CFD5 DEC HL          ;
- $CFD6 DEC L           ;
- $CFD7 CPL             ;
- $CFD8 NOP             ;
- $CFD9 INC BC          ;
- $CFDA RLCA            ;
- $CFDB ADD A,A         ;
- $CFDC NOP             ;
- $CFDD INC B           ;
- $CFDE RLCA            ;
- $CFDF ADD A,A         ;
- $CFE0 NOP             ;
-*$CFE1 INC BC          ;
- $CFE2 RLCA            ;
- $CFE3 INC C           ;
- $CFE4 ADD A,A         ;
- $CFE5 NOP             ;
- $CFE6 INC B           ;
- $CFE7 RLCA            ;
- $CFE8 INC C           ;
- $CFE9 ADD A,A         ;
- $CFEA RLCA            ;
- $CFEB INC C           ;
- $CFEC RRCA            ;
- $CFED ADD A,A         ;
- $CFEE RLCA            ;
- $CFEF INC C           ;
- $CFF0 DJNZ $CF79      ;
- $CFF2 INC BC          ;
- $CFF3 RLCA            ;
- $CFF4 INC C           ;
- $CFF5 ADD A,A         ;
- $CFF6 INC B           ;
- $CFF7 RLCA            ;
- $CFF8 INC C           ;
- $CFF9 ADD A,A         ;
- $CFFA NOP             ;
- $CFFB INC C           ;
- $CFFC ADD A,A         ;
- $CFFD NOP             ;
- $CFFE INC B           ;
- $CFFF ADD A,A         ;
- $D000 NOP             ;
- $D001 INC BC          ;
- $D002 ADD A,A         ;
- $D003 NOP             ;
- $D004 DEC B           ;
- $D005 ADD A,A         ;
- $D006 NOP             ;
- $D007 RLCA            ;
- $D008 ADD A,A         ;
- $D009 NOP             ;
+
+; Data block at CEFD
+b$CEFD DEFB $00,$00
+
+; Data block at CEFF
+b$CEFF DEFB $00,$00
+
+; Data block at CF01
+b$CF01 DEFB $00,$00
+
+; Data block at CF03
+b$CF03 DEFB $00,$38
+
+; Data block at CF05
+b$CF05 DEFB $0F
+
+; Data block at CF06
+b$CF06 DEFB $0F
+
+; Data block at CF07
+b$CF07 DEFB $0D,$00,$00
+
+; Data block at CF0A
+b$CF0A DEFB $00,$F0,$1D,$20,$1C,$C0,$1A,$00
+ $CF12 DEFB $19,$B0,$17,$50,$16,$10,$15,$E0
+ $CF1A DEFB $13,$C0,$12,$C0,$11,$B0,$10,$C0
+ $CF22 DEFB $0F,$F8,$0E,$10,$0E,$60,$0D,$80
+ $CF2A DEFB $0C,$D8,$0B,$28,$0B,$88,$0A,$F0
+ $CF32 DEFB $09,$60,$09,$E0,$08,$58,$08,$E0
+ $CF3A DEFB $07,$7C,$07,$08,$07,$B0,$06,$40
+ $CF42 DEFB $06,$EC,$05,$94,$05,$44,$05,$F8
+ $CF4A DEFB $04,$B0,$04,$70,$04,$2C,$04,$F0
+ $CF52 DEFB $03,$BE,$03,$84,$03,$58,$03,$20
+ $CF5A DEFB $03,$F6,$02,$CA,$02,$A2,$02,$7C
+ $CF62 DEFB $02,$58,$02,$38,$02,$16,$02,$F8
+ $CF6A DEFB $01,$DF,$01,$C2,$01,$AC,$01,$90
+ $CF72 DEFB $01,$7B,$01,$65,$01,$51,$01,$3E
+ $CF7A DEFB $01,$2C,$01,$1C,$01,$0B,$01,$FC
+ $CF82 DEFB $00,$EF,$00,$E1,$00,$D6,$00,$C8
+ $CF8A DEFB $00,$BD,$00,$B2,$00,$A8,$00,$9F
+ $CF92 DEFB $00,$96,$00,$8E,$00,$85,$00,$7E
+ $CF9A DEFB $00,$77,$00,$70,$00,$6B,$00,$64
+ $CFA2 DEFB $00,$5E,$00,$59,$00,$54,$00,$4F
+ $CFAA DEFB $00,$4B,$00,$47,$00,$42,$00,$3F
+ $CFB2 DEFB $00,$3B,$00,$38,$00,$35,$00,$32
+ $CFBA DEFB $00,$2F,$00,$2C,$00,$2A,$00,$27
+ $CFC2 DEFB $00,$25,$00,$23,$00,$21,$00,$1F
+ $CFCA DEFB $00,$0D,$10,$13,$17,$1B,$1E,$21
+ $CFD2 DEFB $24,$27,$29,$2B,$2D,$2F,$00,$03
+ $CFDA DEFB $07,$87,$00,$04,$07,$87,$00,$03
+ $CFE2 DEFB $07,$0C,$87,$00,$04,$07,$0C,$87
+ $CFEA DEFB $07,$0C,$0F,$87,$07,$0C,$10,$87
+ $CFF2 DEFB $03,$07,$0C,$87,$04,$07,$0C,$87
+ $CFFA DEFB $00,$0C,$87,$00,$04,$87,$00,$03
+ $D002 DEFB $87,$00,$05,$87,$00,$07,$87
+
+; Data block at D009
+b$D009 DEFB $00
 
 ; Data block at D00A
 b$D00A DEFB $16,$D0,$30,$D0,$4A,$D0,$64,$D0

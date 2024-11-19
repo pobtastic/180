@@ -3450,6 +3450,176 @@ D $AF73 Graphic data, arranged as:
   $AF73,$42,$06
 
 c $AFB5
+  $AFB5,$04 Write #N$00 to *#R$B417.
+  $AFB9,$03 #REGhl=*#R$B40A.
+  $AFBC,$03 #REGbc=#N($006E,$04,$04).
+  $AFBF,$01 Set flags.
+  $AFC0,$02 #REGhl-=#REGbc.
+  $AFC2,$01 #REGhl+=#REGbc.
+  $AFC3,$02 Jump to #R$AFD6 if ?? is less than #REGa.
+  $AFC5,$02 #REGa=#N$14.
+  $AFC7,$07 #REGix=*#R$B431 (using the stack).
+  $AFCE,$02 #REGc=#N$FF.
+  $AFD0,$03 Call #R$B29C.
+  $AFD3,$03 Jump to #R$B0BA.
+
+  $AFD6,$06 Jump to #R$B068 if #REGl is less than #N$32.
+  $AFDC,$05 Write #N$FF to *#R$B416.
+  $AFE1,$04 #REGb=*#R$B41A.
+  $AFE5,$04 Jump to #R$B05C if #REGl is equal to #REGb.
+  $AFE9,$02 #REGa-=#N$32.
+  $AFEB,$04 Jump to #R$AFFE if #REGa is greater than or equal to #N$15.
+  $AFEF,$07 #REGix=*#R$B433 (using the stack).
+  $AFF6,$02 #REGc=#N$00.
+  $AFF8,$03 Call #R$B29C.
+  $AFFB,$03 Jump to #R$B0BA.
+
+  $AFFE,$05 Jump to #R$B016 if #REGd is greater than or equal to #N$29.
+  $B003,$02 Test bit 0 of #REGa.
+  $B005,$02 Jump to #R$B016 if #REGa is not equal to #N$29.
+  $B007,$02 Shift #REGa right.
+  $B009,$07 #REGix=*#R$B437 (using the stack).
+  $B010,$03 Call #R$B342.
+  $B013,$03 Jump to #R$B0BA.
+
+  $B016,$01 #REGd=#REGa.
+  $B017,$02 #REGc=#N$00.
+  $B019,$02 #REGa-=#N$03.
+  $B01B,$01 Increment #REGc by one.
+  $B01C,$02 #REGa-=#N$03.
+  $B01E,$02 Jump to #R$B024 if #REGc is equal to #N$00.
+  $B020,$02 Jump to #R$B035 if #REGc is less than #N$00.
+  $B022,$02 Jump to #R$B01B.
+
+  $B024,$01 Increment #REGc by one.
+  $B025,$01 #REGa=#REGc.
+  $B026,$07 #REGix=*#R$B431 (using the stack).
+  $B02D,$02 #REGc=#N$FF.
+  $B02F,$03 Call #R$B29C.
+  $B032,$03 Jump to #R$B0BA.
+  $B035,$01 #REGa=#REGd.
+  $B036,$02 Test bit 0 of #REGa.
+  $B038,$02 Jump to #R$B04B if #REGc is not equal to #N$FF.
+  $B03A,$02 #REGa=#N$14.
+  $B03C,$07 #REGix=*#R$B431 (using the stack).
+  $B043,$02 #REGc=#N$FF.
+  $B045,$03 Call #R$B29C.
+  $B048,$03 Jump to #R$B0BA.
+
+  $B04B,$02 #REGa=#N$13.
+  $B04D,$07 #REGix=*#R$B431 (using the stack).
+  $B054,$02 #REGc=#N$FF.
+  $B056,$03 Call #R$B29C.
+  $B059,$03 Jump to #R$B0BA.
+
+  $B05C,$07 #REGix=*#R$B439 (using the stack).
+  $B063,$03 Call #R$B3B6.
+  $B066,$02 Jump to #R$B0BA.
+
+  $B068,$05 Jump to #R$B073 if #REGl is less than #N$29.
+  $B06D,$02 Test bit 0 of #REGa.
+  $B06F,$02 Jump to #R$B09A if #REGa is equal to #N$29.
+  $B071,$02 Jump to #R$B079.
+
+  $B073,$02 Test bit 0 of #REGa.
+  $B075,$02 Jump to #R$B0AA if #REGa is equal to #N$29.
+  $B077,$02 Jump to #R$B08A.
+
+  $B079,$02 #REGa=#N$13.
+  $B07B,$07 #REGix=*#R$B433 (using the stack).
+  $B082,$02 #REGc=#N$00.
+  $B084,$03 Call #R$B29C.
+  $B087,$03 Jump to #R$B0BA.
+
+  $B08A,$02 #REGa=#N$01.
+  $B08C,$07 #REGix=*#R$B433 (using the stack).
+  $B093,$02 #REGc=#N$00.
+  $B095,$03 Call #R$B29C.
+  $B098,$02 Jump to #R$B0BA.
+
+  $B09A,$02 #REGa=#N$14.
+  $B09C,$07 #REGix=*#R$B433 (using the stack).
+  $B0A3,$02 #REGc=#N$00.
+  $B0A5,$03 Call #R$B29C.
+  $B0A8,$02 Jump to #R$B0BA.
+
+  $B0AA,$01 #REGa=#REGl.
+  $B0AB,$02 Shift #REGa right.
+  $B0AD,$07 #REGix=*#R$B437 (using the stack).
+  $B0B4,$03 Call #R$B342.
+  $B0B7,$03 Jump to #R$B0BA.
+
+  $B0BA,$03 #REGa=*#R$B416.
+  $B0BD,$02 Test bit 0 of #REGa.
+  $B0BF,$02 Jump to #R$B0DC if #REGa is equal to #N$00.
+  $B0C1,$05 Jump to #R$B0D1 if #REGl is greater than or equal to #N$7F.
+  $B0C6,$04 Jump to #R$B0DC if #REGl is greater than or equal to #N$02.
+  $B0CA,$03 #REGa=*#R$B412.
+  $B0CD,$02 Test bit 0 of #REGa.
+  $B0CF,$02 Jump to #R$B0E0 if #REGa is not equal to #N$02.
+  $B0D1,$06 Write *#R$B40E to *#R$B40A.
+  $B0D7,$05 Write #N$01 to *#R$B417.
+  $B0DC,$04 Write #N$00 to *#R$B412.
+  $B0E0,$01 Stash #REGhl on the stack.
+  $B0E1,$03 #REGa=*#R$B415.
+  $B0E4,$01 Increment #REGa by one.
+  $B0E5,$04 Jump to #R$B0ED if #REGa is not equal to #N$03.
+  $B0E9,$03 Write #REGhl to *#R$B40E.
+  $B0EC,$04 Write #N$00 to *#R$B415.
+  $B0F0,$01 Restore #REGhl from the stack.
+  $B0F1,$03 #REGde=#R$ACF6.
+  $B0F4,$03 Write #REGhl to *#R$B40A.
+  $B0F7,$03 Call #R$AEF0.
+  $B0FA,$03 #REGde=#R$AD0E.
+  $B0FD,$03 #REGa=*#R$B410.
+  $B100,$02 #REGh=#N$00.
+  $B102,$01 #REGl=#REGa.
+  $B103,$03 Call #R$AEF0.
+  $B106,$03 #REGde=#R$AD36.
+  $B109,$03 #REGa=*#R$B40C.
+  $B10C,$01 #REGl=#REGa.
+  $B10D,$02 #REGh=#N$00.
+  $B10F,$03 Call #R$AEF0.
+  $B112,$03 #REGde=#R$AD75.
+  $B115,$03 #REGa=*#R$B411.
+  $B118,$02 #REGh=#N$00.
+  $B11A,$01 #REGl=#REGa.
+  $B11B,$03 Call #R$AEF0.
+  $B11E,$02 #REGb=#N$03.
+  $B120,$03 #REGhl=#R$ACF6.
+  $B123,$01 #REGa=*#REGhl.
+  $B124,$04 Jump to #R$B12B if #REGa is equal to #N$20.
+  $B128,$02 #REGa+=#N$30.
+  $B12A,$01 Write #REGa to *#REGhl.
+  $B12B,$01 Increment #REGhl by one.
+  $B12C,$02 Decrease counter by one and loop back to #R$B123 until counter is zero.
+  $B12E,$02 #REGb=#N$03.
+  $B130,$03 #REGhl=#R$AD0E.
+  $B133,$01 #REGa=*#REGhl.
+  $B134,$04 Jump to #R$B13B if #REGa is equal to #N$20.
+  $B138,$02 #REGa+=#N$30.
+  $B13A,$01 Write #REGa to *#REGhl.
+  $B13B,$01 Increment #REGhl by one.
+  $B13C,$02 Decrease counter by one and loop back to #R$B133 until counter is zero.
+  $B13E,$02 #REGb=#N$03.
+  $B140,$03 #REGhl=#R$AD36.
+  $B143,$01 #REGa=*#REGhl.
+  $B144,$04 Jump to #R$B14B if #REGa is equal to #N$20.
+  $B148,$02 #REGa+=#N$30.
+  $B14A,$01 Write #REGa to *#REGhl.
+  $B14B,$01 Increment #REGhl by one.
+  $B14C,$02 Decrease counter by one and loop back to #R$B143 until counter is zero.
+  $B14E,$02 #REGb=#N$03.
+  $B150,$03 #REGhl=#R$AD75.
+  $B153,$01 #REGa=*#REGhl.
+  $B154,$04 Jump to #R$B15B if #REGa is equal to #N$20.
+  $B158,$02 #REGa+=#N$30.
+  $B15A,$01 Write #REGa to *#REGhl.
+  $B15B,$01 Increment #REGhl by one.
+  $B15C,$02 Decrease counter by one and loop back to #R$B153 until counter is zero.
+  $B15E,$06 Write *#R$B418 to *#R$AD0E.
+  $B164,$06 Write *#R$B419 to *#R$AD75.
+  $B16A,$01 Return.
 
 c $B16B
 
@@ -3473,14 +3643,53 @@ B $B229,$01 Terminator.
   $B22A,$03 Call #R$AE04.
   $B22D,$03 Jump to #R$933F.
 
-c $B230
+w $B230
+
+c $B29C
+
+c $B342
+
+c $B3B6
+
+c $B402
 
 b $B40A
-
+b $B40C
+b $B40E
+b $B410
+b $B411
+b $B412
+b $B415
 b $B416
 b $B417
+b $B418
+b $B419
+b $B41A
 
-b $B484
+w $B431
+
+w $B43B
+w $B441
+w $B447
+w $B44D
+
+w $B453
+
+b $B46F Table: Opponent Data
+@ $B46F label=Table_Opponent_JammyJim
+@ $B484 label=Table_Opponent_BeerBellyBill
+@ $B499 label=Table_Opponent_DelBoyDesmond
+@ $B4AE label=Table_Opponent_MegaMick
+@ $B4C3 label=Table_Opponent_DeviousDave
+@ $B4D8 label=Table_Opponent_SureShotSidney
+@ $B4ED label=Table_Opponent_LimpWristLarry
+@ $B502 label=Table_Opponent_TacticalTel
+N $B46F "#STR(#PC,$04,$10)".
+T $B46F,$10
+  $B47F,$01
+W $B480,$02
+W $B482,$02
+L $B46F,$15,$08
 
 c $B517
   $B517,$02 #REGe=#N$06.
@@ -4038,7 +4247,61 @@ N $C2B4 #UDGTABLE(default)
 . UDGTABLE#
   $C2B4,$150,$06
 
-b $C404
+b $C404 Graphics: Jammy Jim (Pub Scene)
+@ $C404 label=Graphics_JammyJim_Pub
+N $C404 #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C404-$C449-$01-$18)(pub-jammy-jim) }
+. UDGTABLE#
+  $C404,$48,$03
+
+b $C44C Graphics: Beer Belly Bill (Pub Scene)
+@ $C44C label=Graphics_BeerBellyBill_Pub
+N $C44C #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C44C-$C491-$01-$18)(pub-beer-belly-bill) }
+. UDGTABLE#
+  $C44C,$48,$03
+
+b $C494 Graphics: Del Boy Desmond (Pub Scene)
+@ $C494 label=Graphics_DelBoyDesmond_Pub
+N $C494 #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C494-$C4D9-$01-$18)(pub-del-boy-desmond) }
+. UDGTABLE#
+  $C494,$48,$03
+
+b $C4DC Graphics: Mega Mick (Pub Scene)
+@ $C4DC label=Graphics_MegaMick_Pub
+N $C4DC #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C4DC-$C521-$01-$18)(pub-mega-mick) }
+. UDGTABLE#
+  $C4DC,$48,$03
+
+b $C524 Graphics: Devious Dave (Pub Scene)
+@ $C524 label=Graphics_DeviousDave_Pub
+N $C524 #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C524-$C569-$01-$18)(pub-devious-dave) }
+. UDGTABLE#
+  $C524,$48,$03
+
+b $C56C Graphics: Sure Shot Sidney (Pub Scene)
+@ $C56C label=Graphics_SureShotSidney_Pub
+N $C56C #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C56C-$C5B1-$01-$18)(pub-sure-shot-sidney) }
+. UDGTABLE#
+  $C56C,$48,$03
+
+b $C5B4 Graphics: Limp Wrist Larry (Pub Scene)
+@ $C5B4 label=Graphics_LimpWristLarry_Pub
+N $C5B4 #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C5B4-$C5F9-$01-$18)(pub-limp-wrist-larry) }
+. UDGTABLE#
+  $C5B4,$48,$03
+
+b $C5FC Graphics: Tactical Tel (Pub Scene)
+@ $C5FC label=Graphics_TacticalTel_Pub
+N $C5FC #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C5FC-$C641-$01-$18)(pub-tactical-tel) }
+. UDGTABLE#
+  $C5FC,$48,$03
 
 b $C644 Graphics: Throwing
 @ $C644 label=Graphics_Throwing_01
@@ -4067,17 +4330,63 @@ D $C71C #UDGTABLE(default)
 . UDGTABLE#
   $C71C,$08,$04
 
-b $C724
+b $C724 Graphics: Bar Maid
+@ $C724 label=Graphics_BarMaid_01
+N $C724 Frame #N$01:
+. #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C724-$C781-$01-$18)(bar-maid-1) }
+. UDGTABLE#
+  $C724,$60,$03
+@ $C784 label=Graphics_BarMaid_02
+N $C784 Frame #N$02:
+. #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C784-$C7E1-$01-$18)(bar-maid-2) }
+. UDGTABLE#
+  $C784,$60,$03
+@ $C7E4 label=Graphics_BarMaid_03
+N $C7E4 Frame #N$03:
+. #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$47,scale=$04,step=$03($C7E4-$C841-$01-$18)(bar-maid-3) }
+. UDGTABLE#
+  $C7E4,$60,$03
 
-b $C784
+b $C844 Graphics: Dog
+@ $C844 label=Graphics_Dog_01
+N $C844 Frame #N$01:
+. #UDGTABLE(default)
+. { #UDGARRAY$05,attr=$47,scale=$04,step=$05($C844-$C8B7-$01-$28)(dog-1) }
+. UDGTABLE#
+  $C844,$78,$05
+@ $C8BC label=Graphics_Dog_02
+N $C8BC Frame #N$02:
+. #UDGTABLE(default)
+. { #UDGARRAY$05,attr=$47,scale=$04,step=$05($C8BC-$C92F-$01-$28)(dog-2) }
+. UDGTABLE#
+  $C8BC,$78,$05
+@ $C934 label=Graphics_Dog_03
+N $C934 Frame #N$03:
+. #UDGTABLE(default)
+. { #UDGARRAY$04,attr=$47,scale=$04,step=$04($C934-$C990-$01-$20)(dog-3) }
+. UDGTABLE#
+  $C934,$60,$04
+@ $C994 label=Graphics_Dog_04
+N $C994 Frame #N$04:
+. #UDGTABLE(default)
+. { #UDGARRAY$04,attr=$47,scale=$04,step=$04($C994-$C9F0-$01-$20)(dog-4) }
+. UDGTABLE#
+  $C994,$60,$04
+@ $C9F4 label=Graphics_Dog_05
+N $C9F4 Frame #N$05:
+. #UDGTABLE(default)
+. { #UDGARRAY$04,attr=$47,scale=$04,step=$04($C9F4-$CA50-$01-$20)(dog-5) }
+. UDGTABLE#
+  $C9F4,$60,$04
 
-b $C7E4
+b $CA54
 
-b $C934
+c $CA7C
 
-b $C994
-
-b $C9F4
+w $CAA3
 
 c $CAEB
 
@@ -4124,15 +4433,64 @@ c $CB1E
   $CB6A,$01 Return.
 
 b $CB6B
+  $CB8A
+  $CBA9
 
 c $CBC8
 
 c $CBF7
+  $CBF7,$05 Return if *#R$D009 is zero.
+  $CBFC,$05 Write #N$00 to *#R$CC49(#N$CC4A).
+  $CC01,$03 #REGhl=#R$CC84.
+  $CC04,$01 Decrease *#REGhl by one.
+  $CC05,$02 Jump to #R$CC22 if *#REGhl is not equal to #N$00.
+  $CC07,$01 #REGb=*#REGhl.
+  $CC08,$04 #REGix=#R$CB6B.
+  $CC0C,$03 Call #R$CD4A.
+  $CC0F,$04 #REGix=#R$CB8A.
+  $CC13,$03 Call #R$CD4A.
+  $CC16,$04 #REGix=#R$CBA9.
+  $CC1A,$03 Call #R$CD4A.
+  $CC1D,$03 #REGhl=#R$CC84.
+  $CC20,$02 Write #N$01 to *#REGhl.
+  $CC22,$04 #REGix=#R$CB6B.
+  $CC26,$03 Call #R$CDEC.
+  $CC29,$03 Write #REGhl to *#R$CEFD.
+  $CC2C,$03 Write #REGa to *#R$CF05.
+  $CC2F,$04 #REGix=#R$CB8A.
+  $CC33,$03 Call #R$CDEC.
+  $CC36,$03 Write #REGhl to *#R$CEFF.
+  $CC39,$03 Write #REGa to *#R$CF06.
+  $CC3C,$04 #REGix=#R$CBA9.
+  $CC40,$03 Call #R$CDEC.
+  $CC43,$03 Write #REGhl to *#R$CF01.
+  $CC46,$03 Write #REGa to *#R$CF07.
+  $CC49,$05 Write #N$00 to *#R$CF03.
+  $CC4E,$03 #REGhl=#R$CF0A.
+  $CC51,$02 #REGa=#N$0D.
+  $CC53,$02 #REGc=#N$FD.
+  $CC55,$02 #REGb=#N$FF.
+  $CC57,$02 Send #REGa to port *#REGc.
+  $CC59,$02 #REGb=#N$BF.
+  $CC5B,$02 OUTD.
+  $CC5D,$01 Decrease #REGa by one.
+  $CC5E,$03 Jump to #R$CC55 if #REGa is greater than or equal to #REGa.
+  $CC61,$01 Return.
 
 c $CC62
 
 c $CC84
 
+b $CEFD
+b $CEFF
+b $CF01
+b $CF03
+b $CF05
+b $CF06
+b $CF07
+b $CF0A
+
+b $D009
 b $D00A
 
 b $D2A0
