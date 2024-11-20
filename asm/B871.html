@@ -33,7 +33,7 @@ Next: <a href="B8D6.html">B8D6</a>
 </td>
 </tr>
 </table>
-<div class="description">B871: Routine at B871</div>
+<div class="description">B871: Animation: Dog</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,240 +45,306 @@ Used by the routine at <a href="AB2E.html">Messaging_DartNumber</a>.
 </td>
 </tr>
 <tr>
-<td class="address-2"><span id="b871"></span>B871</td>
-<td class="instruction">LD A,$ED</td>
-<td class="comment-1" rowspan="2">Write ED to *<a href="B8D6.html#b8ea">B8EA</a>.</td>
+<td class="routine-comment" colspan="5">
+<span id="b871"></span>
+<div class="comments">
+<div class="paragraph">
+Self-modifying code:
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label">Animation_Dog</td>
+<td class="address-2"><span id="b871"></span>B871</td>
+<td class="instruction">LD A,$ED</td>
+<td class="comment-1" rowspan="4">Writes an extra <code>LDI</code> to <a href="B8D6.html#b8ea">B8EA</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b873"></span>B873</td>
 <td class="instruction">LD ($B8EA),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b876"></span>B876</td>
 <td class="instruction">LD A,$A0</td>
-<td class="comment-1" rowspan="2">Write A0 to *<a href="B8D6.html#b8eb">B8EB</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b878"></span>B878</td>
 <td class="instruction">LD ($B8EB),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b87b"></span>B87B</td>
 <td class="instruction">LD B,$07</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=07.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b87d"></span>B87D</td>
 <td class="instruction">LD HL,$48B0</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=48B0 (screen buffer location).</td>
 </tr>
 <tr>
+<td class="asm-label">Animation_Dog_0</td>
 <td class="address-2"><span id="b880"></span>B880</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b881"></span>B881</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b882"></span>B882</td>
 <td class="instruction">LD DE,$C8BC</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C844.html#c8bc">Graphics_Dog_02</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b885"></span>B885</td>
-<td class="instruction">CALL <a href="B8D6.html#b8d9">$B8D9</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html#b8d9">B8D9</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html#b8d9">Print_Dog_Frame_0</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html#b8d9">Print_Dog_Frame_0</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b888"></span>B888</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b889"></span>B889</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b88a"></span>B88A</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b88b"></span>B88B</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b88c"></span>B88C</td>
 <td class="instruction">LD DE,$C844</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C844.html">Graphics_Dog_01</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b88f"></span>B88F</td>
-<td class="instruction">CALL <a href="B8D6.html#b8d9">$B8D9</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html#b8d9">B8D9</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html#b8d9">Print_Dog_Frame_0</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html#b8d9">Print_Dog_Frame_0</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b892"></span>B892</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b893"></span>B893</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b894"></span>B894</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b895"></span>B895</td>
 <td class="instruction">DEC L</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">L</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b896"></span>B896</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b897"></span>B897</td>
-<td class="instruction">DJNZ <a href="B871.html#b880">$B880</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B871.html#b880">B880</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B871.html#b880">Animation_Dog_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B871.html#b880">Animation_Dog_0</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b899"></span>B899</td>
 <td class="instruction">INC L</td>
 <td class="comment-1" rowspan="4">Increment <span class="register">L</span> by four.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b89a"></span>B89A</td>
 <td class="instruction">INC L</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b89b"></span>B89B</td>
 <td class="instruction">INC L</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b89c"></span>B89C</td>
 <td class="instruction">INC L</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b89d"></span>B89D</td>
 <td class="instruction">LD DE,$CA64</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="CA54.html#ca64">CA64</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8a0"></span>B8A0</td>
 <td class="instruction">LD B,$18</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=18.</td>
 </tr>
 <tr>
+<td class="asm-label">Animation_Dog_1</td>
 <td class="address-2"><span id="b8a2"></span>B8A2</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8a3"></span>B8A3</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8a4"></span>B8A4</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8a5"></span>B8A5</td>
 <td class="instruction">CALL <a href="A8CC.html">NextScreenBufferLine</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8CC.html">NextScreenBufferLine</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8a8"></span>B8A8</td>
-<td class="instruction">DJNZ <a href="B871.html#b8a2">$B8A2</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B871.html#b8a2">B8A2</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B871.html#b8a2">Animation_Dog_1</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B871.html#b8a2">Animation_Dog_1</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b8aa"></span>
+<div class="comments">
+<div class="paragraph">
+Self-modifying code.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8aa"></span>B8AA</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
+<td class="comment-1" rowspan="3">Writes <code>NOP NOP</code> to remove the extra <code>LDI</code> command.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8ab"></span>B8AB</td>
 <td class="instruction">LD ($B8EA),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="B8D6.html#b8ea">B8EA</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8ae"></span>B8AE</td>
 <td class="instruction">LD ($B8EB),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="B8D6.html#b8eb">B8EB</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8b1"></span>B8B1</td>
 <td class="instruction">LD DE,$C934</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C844.html#c934">Graphics_Dog_03</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8b4"></span>B8B4</td>
-<td class="instruction">CALL <a href="B8D6.html">$B8D6</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html">B8D6</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html">Print_Dog_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html">Print_Dog_Frame</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8b7"></span>B8B7</td>
 <td class="instruction">LD DE,$C994</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C844.html#c994">Graphics_Dog_04</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8ba"></span>B8BA</td>
-<td class="instruction">CALL <a href="B8D6.html">$B8D6</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html">B8D6</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html">Print_Dog_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html">Print_Dog_Frame</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8bd"></span>B8BD</td>
 <td class="instruction">LD DE,$C9F4</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C844.html#c9f4">Graphics_Dog_05</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8c0"></span>B8C0</td>
-<td class="instruction">CALL <a href="B8D6.html">$B8D6</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html">B8D6</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html">Print_Dog_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html">Print_Dog_Frame</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8c3"></span>B8C3</td>
 <td class="instruction">LD DE,$C9F4</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C844.html#c9f4">Graphics_Dog_05</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8c6"></span>B8C6</td>
-<td class="instruction">CALL <a href="B8D6.html">$B8D6</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html">B8D6</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html">Print_Dog_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html">Print_Dog_Frame</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8c9"></span>B8C9</td>
 <td class="instruction">LD DE,$C994</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C844.html#c994">Graphics_Dog_04</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8cc"></span>B8CC</td>
-<td class="instruction">CALL <a href="B8D6.html">$B8D6</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html">B8D6</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html">Print_Dog_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html">Print_Dog_Frame</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8cf"></span>B8CF</td>
 <td class="instruction">LD DE,$C934</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="C844.html#c934">Graphics_Dog_03</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8d2"></span>B8D2</td>
-<td class="instruction">CALL <a href="B8D6.html">$B8D6</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html">B8D6</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html">Print_Dog_Frame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html">Print_Dog_Frame</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8d5"></span>B8D5</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

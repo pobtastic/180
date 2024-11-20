@@ -90,10 +90,20 @@ Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
 <td class="comment-1" rowspan="1">Call <a href="B761.html">B761</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ab44"></span>
+<div class="comments">
+<div class="paragraph">
+Self-modifying code.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ab44"></span>AB44</td>
 <td class="instruction">LD A,$ED</td>
-<td class="comment-1" rowspan="2">Write ED to *<a href="B8D6.html#b8ea">B8EA</a>.</td>
+<td class="comment-1" rowspan="4">Writes an extra <code>LDI</code> to <a href="B8D6.html#b8ea">B8EA</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -104,7 +114,6 @@ Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ab49"></span>AB49</td>
 <td class="instruction">LD A,$A0</td>
-<td class="comment-1" rowspan="2">Write A0 to *<a href="B8D6.html#b8eb">B8EB</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -149,8 +158,8 @@ Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ab5c"></span>AB5C</td>
-<td class="instruction">CALL <a href="B8D6.html#b8d9">$B8D9</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B8D6.html#b8d9">B8D9</a>.</td>
+<td class="instruction">CALL <a href="B8D6.html#b8d9">Print_Dog_Frame_0</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B8D6.html#b8d9">Print_Dog_Frame_0</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -576,7 +585,7 @@ This entry point is used by the routine at <a href="AD3B.html">Messaging_Bust</a
 <td class="asm-label">Messaging_DartNumber_1</td>
 <td class="address-2"><span id="ac1d"></span>AC1D</td>
 <td class="instruction">LD A,($9AAA)</td>
-<td class="comment-1" rowspan="3">Call <a href="B871.html">B871</a> if *<a href="9AA8.html#9aaa">9AAA</a> is not equal to 00.</td>
+<td class="comment-1" rowspan="3">Call <a href="B871.html">Animation_Dog</a> if *<a href="9AA8.html#9aaa">9AAA</a> is not equal to 00.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -586,7 +595,7 @@ This entry point is used by the routine at <a href="AD3B.html">Messaging_Bust</a
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ac21"></span>AC21</td>
-<td class="instruction">CALL NZ,<a href="B871.html">$B871</a></td>
+<td class="instruction">CALL NZ,<a href="B871.html">Animation_Dog</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>

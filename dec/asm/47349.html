@@ -33,102 +33,115 @@ Next: <a href="47376.html">47376</a>
 </td>
 </tr>
 </table>
-<div class="description">47349: Routine at B8F5</div>
+<div class="description">47349: Print Bar Maid Frame</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="47165.html">47165</a>.
+Used by the routine at <a href="47165.html">Animation_BarMaid</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Print_BarMaid_Frame</td>
 <td class="address-2"><span id="47349"></span>47349</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+<td class="comment-1" rowspan="4">Halt operation (suspend CPU until the next interrupt) four times.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47350"></span>47350</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47351"></span>47351</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47352"></span>47352</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47353"></span>47353</td>
 <td class="instruction">LD B,32</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=32.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> of 32 for the height of the graphic.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47355"></span>47355</td>
 <td class="instruction">LD HL,16558</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=16558 (screen buffer location).</td>
+<td class="comment-1" rowspan="1">Set the target screen buffer location in <span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label">Print_BarMaid_Frame_Loop</td>
 <td class="address-2"><span id="47358"></span>47358</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="2">Stash the height counter and screen buffer location on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47359"></span>47359</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47360"></span>47360</td>
 <td class="instruction">EX DE,HL</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47361"></span>47361</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
+<td class="comment-1" rowspan="3">Copy 3 bytes of data from the graphic to the screen buffer.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47363"></span>47363</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47365"></span>47365</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47367"></span>47367</td>
 <td class="instruction">EX DE,HL</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47368"></span>47368</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the screen buffer location from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47369"></span>47369</td>
 <td class="instruction">CALL <a href="43212.html">NextScreenBufferLine</a></td>
 <td class="comment-1" rowspan="1">Call <a href="43212.html">NextScreenBufferLine</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47372"></span>47372</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the height counter from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47373"></span>47373</td>
-<td class="instruction">DJNZ <a href="47349.html#47358">47358</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="47349.html#47358">47358</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="47349.html#47358">Print_BarMaid_Frame_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="47349.html#47358">Print_BarMaid_Frame_Loop</a> until the frame has been displayed in full.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="47375"></span>47375</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

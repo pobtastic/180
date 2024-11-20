@@ -33,127 +33,152 @@ Next: <a href="B8F5.html">B8F5</a>
 </td>
 </tr>
 </table>
-<div class="description">B8D6: Routine at B8D6</div>
+<div class="description">B8D6: Print Dog Frame</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="B871.html">B871</a>.
+Used by the routine at <a href="B871.html">Animation_Dog</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Print_Dog_Frame</td>
 <td class="address-2"><span id="b8d6"></span>B8D6</td>
 <td class="instruction">LD HL,$48A9</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=48A9 (screen buffer location).</td>
+<td class="comment-1" rowspan="1">Set the target screen buffer location in <span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
 <span id="b8d9"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routines at <a href="AB2E.html">Messaging_DartNumber</a> and <a href="B871.html">B871</a>.
+This entry point is used by the routines at <a href="AB2E.html">Messaging_DartNumber</a> and <a href="B871.html">Animation_Dog</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Print_Dog_Frame_0</td>
 <td class="address-2"><span id="b8d9"></span>B8D9</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
+<td class="comment-1" rowspan="4">Halt operation (suspend CPU until the next interrupt) four times.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8da"></span>B8DA</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8db"></span>B8DB</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8dc"></span>B8DC</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8dd"></span>B8DD</td>
 <td class="instruction">LD B,$18</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=18.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> of 18 for the height of the graphic.</td>
 </tr>
 <tr>
+<td class="asm-label">Print_Dog_Frame_Loop</td>
 <td class="address-2"><span id="b8df"></span>B8DF</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="2">Stash the height counter and screen buffer location on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8e0"></span>B8E0</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8e1"></span>B8E1</td>
 <td class="instruction">EX DE,HL</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8e2"></span>B8E2</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
+<td class="comment-1" rowspan="4">Copy 04 bytes of data from the graphic to the screen buffer.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8e4"></span>B8E4</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8e6"></span>B8E6</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8e8"></span>B8E8</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b8ea"></span>
+<div class="comments">
+<div class="paragraph">
+Self-modifying code. See; <a href="AB2E.html">Messaging_DartNumber</a> and <a href="B871.html">Animation_Dog</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8ea"></span>B8EA</td>
 <td class="instruction">NOP</td>
 <td class="comment-1" rowspan="1">No operation.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8eb"></span>B8EB</td>
 <td class="instruction">NOP</td>
 <td class="comment-1" rowspan="1">No operation.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8ec"></span>B8EC</td>
 <td class="instruction">EX DE,HL</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8ed"></span>B8ED</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the screen buffer location from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8ee"></span>B8EE</td>
 <td class="instruction">CALL <a href="A8CC.html">NextScreenBufferLine</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8CC.html">NextScreenBufferLine</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8f1"></span>B8F1</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the height counter from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8f2"></span>B8F2</td>
-<td class="instruction">DJNZ <a href="B8D6.html#b8df">$B8DF</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B8D6.html#b8df">B8DF</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B8D6.html#b8df">Print_Dog_Frame_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="B8D6.html#b8df">Print_Dog_Frame_Loop</a> until the frame has been displayed in full.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b8f4"></span>B8F4</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

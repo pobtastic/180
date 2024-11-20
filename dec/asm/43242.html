@@ -33,7 +33,7 @@ Next: <a href="43256.html">43256</a>
 </td>
 </tr>
 </table>
-<div class="description">43242: Routine at A8EA</div>
+<div class="description">43242: Sounds: Opponent Dart</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,49 +45,58 @@ Used by the routines at <a href="40258.html">40258</a> and <a href="47073.html">
 </td>
 </tr>
 <tr>
+<td class="asm-label">Sounds_OpponentDart</td>
 <td class="address-2"><span id="43242"></span>43242</td>
 <td class="instruction">SUB A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43243"></span>43243</td>
 <td class="instruction">LD C,150</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label">Sounds_OpponentDart_0</td>
 <td class="address-2"><span id="43245"></span>43245</td>
 <td class="instruction">LD B,C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label">Sounds_OpponentDart_1</td>
 <td class="address-2"><span id="43246"></span>43246</td>
-<td class="instruction">DJNZ <a href="43242.html#43246">43246</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="43242.html#43246">Sounds_OpponentDart_1</a></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43248"></span>43248</td>
 <td class="instruction">XOR 16</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43250"></span>43250</td>
 <td class="instruction">OUT (254),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43252"></span>43252</td>
 <td class="instruction">INC C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43253"></span>43253</td>
-<td class="instruction">JR NZ,<a href="43242.html#43245">43245</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="43242.html#43245">Sounds_OpponentDart_0</a></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43255"></span>43255</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
