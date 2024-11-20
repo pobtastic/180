@@ -3,6 +3,10 @@
 ; Label naming is loosely based on Action_ActionName_SubAction e.g. Print_HighScore_Loop.
 
 > $4000 @org=$4000
+> $4000 @start
+> $4000 @expand=#DEF(#POKE #LINK:Pokes)
+> $4000 @expand=#DEF(#ANIMATE(delay,count=$50)(name=$a)*$name-1,$delay;#FOR$02,$count||x|$name-x|;||($name-animation))
+> $4000 @set-handle-unsupported-macros=1
 b $4000 Loading Screen
 D $4000 #UDGTABLE { =h 180 Loading Screen. } { #SCR$02(loading) } UDGTABLE#
 @ $4000 label=Loading
@@ -2785,7 +2789,10 @@ c $A8DB
   $A8E5,$04 #REGh+=#N$08.
   $A8E9,$01 Return.
 
-c $A8EA
+c $A8EA Sounds: Opponent Dart
+@ $A8EA label=Sounds_OpponentDart
+
+  $A8F7,$01 Return.
 
 c $A8F8 Start Menu
 @ $A8F8 label=StartMenu
@@ -3017,8 +3024,10 @@ c $AB2E Messaging: Dart Number
   $AB3D,$02 #REGd=#N$06.
   $AB3F,$02 #REGe=#N$16.
   $AB41,$03 Call #R$B761.
+N $AB44 Self-modifying code.
   $AB44,$05 Write #N$ED to *#R$B8EA.
   $AB49,$05 Write #N$A0 to *#R$B8EB.
+M $AB44,$0A #HTML(Writes an extra <code>LDI</code> to #R$B8EA.)
   $AB4E,$02 #REGe=#N$0A.
   $AB50,$03 Call #R$A875.
   $AB53,$03 Jump to #R$AB64 if #REGa is not equal to #N$0A.
@@ -3995,7 +4004,18 @@ N $B80E
   $B839,$03 Call #R$A8EA.
   $B83C,$01 Return.
 
-c $B83D
+c $B83D Animation: Bar Maid
+@ $B83D label=Animation_BarMaid
+N $B83D Plays through frames; #N$01#RAW(,) #N$02#RAW(,) #N$03#RAW(,)
+. #N$03#RAW(,) #N$02#RAW(,) #N$01.
+N $B83D #PUSHS #SIM(start=$AB2E,stop=$AB39)
+. #FOR$B8F5,$B8F8||n|#POKESn,$00||#FOR$B974,$B976||n|#POKESn,$00||
+. #FOR$00,$05||x|
+.   #SIM(start=($B83D+(x*$06)),stop=($B843+(x*$06)))#SCR$02(*bar-maid-animation-x)
+. ||
+. #SIM(start=$B861,stop=$B866)
+. #FOR$06,$10||x|#SIM(start=$B866,stop=$B86E)#SCR$02(*bar-maid-animation-x)||
+. #UDGTABLE { #UDGARRAY#(#ANIMATE$10,$10(bar-maid-animation)) } UDGTABLE# #POPS
   $B83D,$03 #REGde=#R$C724.
   $B840,$03 Call #R$B8F5.
   $B843,$03 #REGde=#R$C784.
@@ -4017,9 +4037,12 @@ c $B83D
   $B86E,$02 Decrease counter by one and loop back to #R$B866 until counter is zero.
   $B870,$01 Return.
 
-c $B871
+c $B871 Animation: Dog
+@ $B871 label=Animation_Dog
+N $B871 Self-modifying code:
   $B871,$05 Write #N$ED to *#R$B8EA.
   $B876,$05 Write #N$A0 to *#R$B8EB.
+M $B871,$0A #HTML(Writes an extra <code>LDI</code> to #R$B8EA.)
   $B87B,$02 #REGb=#N$07.
   $B87D,$03 #REGhl=#N$48B0 (screen buffer location).
   $B880,$02 Stash #REGbc and #REGhl on the stack.
@@ -4045,9 +4068,13 @@ c $B871
   $B8A4,$01 Increment #REGde by one.
   $B8A5,$03 Call #R$A8CC.
   $B8A8,$02 Decrease counter by one and loop back to #R$B8A2 until counter is zero.
-  $B8AA,$01 #REGa=#N$00.
-  $B8AB,$03 Write #REGa to *#R$B8EA.
-  $B8AE,$03 Write #REGa to *#R$B8EB.
+N $B8AA Self-modifying code.
+  $B8AA,$07 Write #N$00 to; #LIST
+. { *#R$B8EA }
+. { *#R$B8EB }
+. LIST#
+M $B8AA,$07 #HTML(Writes <code>NOP NOP</code> to remove the extra
+. <code>LDI</code> command.)
   $B8B1,$03 #REGde=#R$C934.
   $B8B4,$03 Call #R$B8D6.
   $B8B7,$03 #REGde=#R$C994.
@@ -4062,45 +4089,41 @@ c $B871
   $B8D2,$03 Call #R$B8D6.
   $B8D5,$01 Return.
 
-c $B8D6
-  $B8D6,$03 #REGhl=#N$48A9 (screen buffer location).
-  $B8D9,$01 Halt operation (suspend CPU until the next interrupt).
-  $B8DA,$01 Halt operation (suspend CPU until the next interrupt).
-  $B8DB,$01 Halt operation (suspend CPU until the next interrupt).
-  $B8DC,$01 Halt operation (suspend CPU until the next interrupt).
-  $B8DD,$02 #REGb=#N$18.
-  $B8DF,$02 Stash #REGbc and #REGhl on the stack.
+c $B8D6 Print Dog Frame
+@ $B8D6 label=Print_Dog_Frame
+  $B8D6,$03 Set the target screen buffer location in #REGhl.
+  $B8D9,$04 Halt operation (suspend CPU until the next interrupt) four times.
+  $B8DD,$02 Set a counter in #REGb of #N$18 for the height of the graphic.
+@ $B8DF label=Print_Dog_Frame_Loop
+  $B8DF,$02 Stash the height counter and screen buffer location on the stack.
   $B8E1,$01 Exchange the #REGde and #REGhl registers.
-  $B8E2,$02 LDI.
-  $B8E4,$02 LDI.
-  $B8E6,$02 LDI.
-  $B8E8,$02 LDI.
+  $B8E2,$08 Copy #N$04 bytes of data from the graphic to the screen buffer.
+N $B8EA Self-modifying code. See; #R$AB2E and #R$B871.
   $B8EA,$01 No operation.
   $B8EB,$01 No operation.
   $B8EC,$01 Exchange the #REGde and #REGhl registers.
-  $B8ED,$01 Restore #REGhl from the stack.
+  $B8ED,$01 Restore the screen buffer location from the stack.
   $B8EE,$03 Call #R$A8CC.
-  $B8F1,$01 Restore #REGbc from the stack.
-  $B8F2,$02 Decrease counter by one and loop back to #R$B8DF until counter is zero.
+  $B8F1,$01 Restore the height counter from the stack.
+  $B8F2,$02 Decrease the height counter by one and loop back to #R$B8DF until
+. the frame has been displayed in full.
   $B8F4,$01 Return.
 
-c $B8F5
-  $B8F5,$01 Halt operation (suspend CPU until the next interrupt).
-  $B8F6,$01 Halt operation (suspend CPU until the next interrupt).
-  $B8F7,$01 Halt operation (suspend CPU until the next interrupt).
-  $B8F8,$01 Halt operation (suspend CPU until the next interrupt).
-  $B8F9,$02 #REGb=#N$20.
-  $B8FB,$03 #REGhl=#N$40AE (screen buffer location).
-  $B8FE,$02 Stash #REGbc and #REGhl on the stack.
+c $B8F5 Print Bar Maid Frame
+@ $B8F5 label=Print_BarMaid_Frame
+  $B8F5,$04 Halt operation (suspend CPU until the next interrupt) four times.
+  $B8F9,$02 Set a counter in #REGb of #N$20 for the height of the graphic.
+  $B8FB,$03 Set the target screen buffer location in #REGhl.
+@ $B8FE label=Print_BarMaid_Frame_Loop
+  $B8FE,$02 Stash the height counter and screen buffer location on the stack.
   $B900,$01 Exchange the #REGde and #REGhl registers.
-  $B901,$02 LDI.
-  $B903,$02 LDI.
-  $B905,$02 LDI.
+  $B901,$06 Copy #N$03 bytes of data from the graphic to the screen buffer.
   $B907,$01 Exchange the #REGde and #REGhl registers.
-  $B908,$01 Restore #REGhl from the stack.
+  $B908,$01 Restore the screen buffer location from the stack.
   $B909,$03 Call #R$A8CC.
-  $B90C,$01 Restore #REGbc from the stack.
-  $B90D,$02 Decrease counter by one and loop back to #R$B8FE until counter is zero.
+  $B90C,$01 Restore the height counter from the stack.
+  $B90D,$02 Decrease the height counter by one and loop back to #R$B8FE until
+. the frame has been displayed in full.
   $B90F,$01 Return.
 
 c $B910 Print Throwing Dart Frame

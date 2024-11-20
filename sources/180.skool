@@ -1,4 +1,8 @@
 @org=$4000
+@start
+@expand=#DEF(#POKE #LINK:Pokes)
+@expand=#DEF(#ANIMATE(delay,count=$50)(name=$a)*$name-1,$delay;#FOR$02,$count||x|$name-x|;||($name-animation))
+@set-handle-unsupported-macros=1
 
 ; Loading Screen
 ;
@@ -5287,9 +5291,10 @@ c$A8DB LD A,H        ; #REGa=#REGh.
  $A8E8 LD H,A        ; }
  $A8E9 RET           ; Return.
 
-; Routine at A8EA
+; Sounds: Opponent Dart
 ;
 ; Used by the routines at #R$9D42 and #R$B7E1.
+@label=Sounds_OpponentDart
 c$A8EA SUB A         ;
  $A8EB LD C,$96      ;
 *$A8ED LD B,C        ;
@@ -5298,7 +5303,7 @@ c$A8EA SUB A         ;
  $A8F2 OUT ($FE),A   ;
  $A8F4 INC C         ;
  $A8F5 JR NZ,$A8ED   ;
- $A8F7 RET           ;
+ $A8F7 RET           ; Return.
 
 ; Start Menu
 ;
@@ -5614,9 +5619,10 @@ c$AB2E LD HL,$DD00      ; {Copy #N$1B00 bytes of data from *#R$DD00 to #R$4000.
  $AB3D LD D,$06         ; #REGd=#N$06.
  $AB3F LD E,$16         ; #REGe=#N$16.
  $AB41 CALL $B761       ; Call #R$B761.
- $AB44 LD A,$ED         ; {Write #N$ED to *#R$B8EA.
- $AB46 LD ($B8EA),A     ; }
- $AB49 LD A,$A0         ; {Write #N$A0 to *#R$B8EB.
+; Self-modifying code.
+ $AB44 LD A,$ED         ; {#HTML(Writes an extra <code>LDI</code> to #R$B8EA.)
+ $AB46 LD ($B8EA),A     ;
+ $AB49 LD A,$A0         ;
  $AB4B LD ($B8EB),A     ; }
  $AB4E LD E,$0A         ; #REGe=#N$0A.
  $AB50 CALL $A875       ; Call #R$A875.
@@ -7344,9 +7350,24 @@ c$B7E1 LD E,$04      ; #REGe=#N$04.
  $B839 CALL $A8EA    ; Call #R$A8EA.
  $B83C RET           ; Return.
 
-; Routine at B83D
+; Animation: Bar Maid
 ;
 ; Used by the routine at #R$B7E1.
+;
+; .
+;
+; Plays through frames; #N$01#RAW(,) #N$02#RAW(,) #N$03#RAW(,)
+; #N$03#RAW(,) #N$02#RAW(,) #N$01.
+; .
+; #PUSHS #SIM(start=$AB2E,stop=$AB39)
+; #FOR$B8F5,$B8F8||n|#POKESn,$00||#FOR$B974,$B976||n|#POKESn,$00||
+; #FOR$00,$05||x|
+;   #SIM(start=($B83D+(x*$06)),stop=($B843+(x*$06)))#SCR$02(*bar-maid-animation-x)
+; ||
+; #SIM(start=$B861,stop=$B866)
+; #FOR$06,$10||x|#SIM(start=$B866,stop=$B86E)#SCR$02(*bar-maid-animation-x)||
+; #UDGTABLE { #UDGARRAY#(#ANIMATE$10,$10(bar-maid-animation)) } UDGTABLE# #POPS
+@label=Animation_BarMaid
 c$B83D LD DE,$C724   ; #REGde=#R$C724.
  $B840 CALL $B8F5    ; Call #R$B8F5.
  $B843 LD DE,$C784   ; #REGde=#R$C784.
@@ -7371,12 +7392,17 @@ c$B83D LD DE,$C724   ; #REGde=#R$C724.
                      ; counter is zero.
  $B870 RET           ; Return.
 
-; Routine at B871
+; Animation: Dog
 ;
 ; Used by the routine at #R$AB2E.
-c$B871 LD A,$ED      ; {Write #N$ED to *#R$B8EA.
- $B873 LD ($B8EA),A  ; }
- $B876 LD A,$A0      ; {Write #N$A0 to *#R$B8EB.
+;
+; .
+;
+; Self-modifying code:
+@label=Animation_Dog
+c$B871 LD A,$ED      ; {#HTML(Writes an extra <code>LDI</code> to #R$B8EA.)
+ $B873 LD ($B8EA),A  ;
+ $B876 LD A,$A0      ;
  $B878 LD ($B8EB),A  ; }
  $B87B LD B,$07      ; #REGb=#N$07.
  $B87D LD HL,$48B0   ; #REGhl=#N$48B0 (screen buffer location).
@@ -7409,9 +7435,10 @@ c$B871 LD A,$ED      ; {Write #N$ED to *#R$B8EA.
  $B8A5 CALL $A8CC    ; Call #R$A8CC.
  $B8A8 DJNZ $B8A2    ; Decrease counter by one and loop back to #R$B8A2 until
                      ; counter is zero.
- $B8AA XOR A         ; #REGa=#N$00.
- $B8AB LD ($B8EA),A  ; Write #REGa to *#R$B8EA.
- $B8AE LD ($B8EB),A  ; Write #REGa to *#R$B8EB.
+; Self-modifying code.
+ $B8AA XOR A         ; {#HTML(Writes <code>NOP NOP</code> to remove the extra
+ $B8AB LD ($B8EA),A  ; <code>LDI</code> command.)
+ $B8AE LD ($B8EB),A  ; }
  $B8B1 LD DE,$C934   ; #REGde=#R$C934.
  $B8B4 CALL $B8D6    ; Call #R$B8D6.
  $B8B7 LD DE,$C994   ; #REGde=#R$C994.
@@ -7426,54 +7453,61 @@ c$B871 LD A,$ED      ; {Write #N$ED to *#R$B8EA.
  $B8D2 CALL $B8D6    ; Call #R$B8D6.
  $B8D5 RET           ; Return.
 
-; Routine at B8D6
+; Print Dog Frame
 ;
 ; Used by the routine at #R$B871.
-c$B8D6 LD HL,$48A9   ; #REGhl=#N$48A9 (screen buffer location).
+@label=Print_Dog_Frame
+c$B8D6 LD HL,$48A9   ; Set the target screen buffer location in #REGhl.
 ; This entry point is used by the routines at #R$AB2E and #R$B871.
-*$B8D9 HALT          ; Halt operation (suspend CPU until the next interrupt).
- $B8DA HALT          ; Halt operation (suspend CPU until the next interrupt).
- $B8DB HALT          ; Halt operation (suspend CPU until the next interrupt).
- $B8DC HALT          ; Halt operation (suspend CPU until the next interrupt).
- $B8DD LD B,$18      ; #REGb=#N$18.
-*$B8DF PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
- $B8E0 PUSH HL       ; }
+*$B8D9 HALT          ; {Halt operation (suspend CPU until the next interrupt)
+ $B8DA HALT          ; four times.
+ $B8DB HALT          ;
+ $B8DC HALT          ; }
+ $B8DD LD B,$18      ; Set a counter in #REGb of #N$18 for the height of the
+                     ; graphic.
+@label=Print_Dog_Frame_Loop
+*$B8DF PUSH BC       ; {Stash the height counter and screen buffer location on
+ $B8E0 PUSH HL       ; the stack.}
  $B8E1 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
- $B8E2 LDI           ; LDI.
- $B8E4 LDI           ; LDI.
- $B8E6 LDI           ; LDI.
- $B8E8 LDI           ; LDI.
+ $B8E2 LDI           ; {Copy #N$04 bytes of data from the graphic to the screen
+ $B8E4 LDI           ; buffer.
+ $B8E6 LDI           ;
+ $B8E8 LDI           ; }
+; Self-modifying code. See; #R$AB2E and #R$B871.
  $B8EA NOP           ; No operation.
  $B8EB NOP           ; No operation.
  $B8EC EX DE,HL      ; Exchange the #REGde and #REGhl registers.
- $B8ED POP HL        ; Restore #REGhl from the stack.
+ $B8ED POP HL        ; Restore the screen buffer location from the stack.
  $B8EE CALL $A8CC    ; Call #R$A8CC.
- $B8F1 POP BC        ; Restore #REGbc from the stack.
- $B8F2 DJNZ $B8DF    ; Decrease counter by one and loop back to #R$B8DF until
-                     ; counter is zero.
+ $B8F1 POP BC        ; Restore the height counter from the stack.
+ $B8F2 DJNZ $B8DF    ; Decrease the height counter by one and loop back to #R$B8DF until
+                     ; the frame has been displayed in full.
  $B8F4 RET           ; Return.
 
-; Routine at B8F5
+; Print Bar Maid Frame
 ;
 ; Used by the routine at #R$B83D.
-c$B8F5 HALT          ; Halt operation (suspend CPU until the next interrupt).
- $B8F6 HALT          ; Halt operation (suspend CPU until the next interrupt).
- $B8F7 HALT          ; Halt operation (suspend CPU until the next interrupt).
- $B8F8 HALT          ; Halt operation (suspend CPU until the next interrupt).
- $B8F9 LD B,$20      ; #REGb=#N$20.
- $B8FB LD HL,$40AE   ; #REGhl=#N$40AE (screen buffer location).
-*$B8FE PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
- $B8FF PUSH HL       ; }
+@label=Print_BarMaid_Frame
+c$B8F5 HALT          ; {Halt operation (suspend CPU until the next interrupt)
+ $B8F6 HALT          ; four times.
+ $B8F7 HALT          ;
+ $B8F8 HALT          ; }
+ $B8F9 LD B,$20      ; Set a counter in #REGb of #N$20 for the height of the
+                     ; graphic.
+ $B8FB LD HL,$40AE   ; Set the target screen buffer location in #REGhl.
+@label=Print_BarMaid_Frame_Loop
+*$B8FE PUSH BC       ; {Stash the height counter and screen buffer location on
+ $B8FF PUSH HL       ; the stack.}
  $B900 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
- $B901 LDI           ; LDI.
- $B903 LDI           ; LDI.
- $B905 LDI           ; LDI.
+ $B901 LDI           ; {Copy #N$03 bytes of data from the graphic to the screen
+ $B903 LDI           ; buffer.
+ $B905 LDI           ; }
  $B907 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
- $B908 POP HL        ; Restore #REGhl from the stack.
+ $B908 POP HL        ; Restore the screen buffer location from the stack.
  $B909 CALL $A8CC    ; Call #R$A8CC.
- $B90C POP BC        ; Restore #REGbc from the stack.
- $B90D DJNZ $B8FE    ; Decrease counter by one and loop back to #R$B8FE until
-                     ; counter is zero.
+ $B90C POP BC        ; Restore the height counter from the stack.
+ $B90D DJNZ $B8FE    ; Decrease the height counter by one and loop back to #R$B8FE until
+                     ; the frame has been displayed in full.
  $B90F RET           ; Return.
 
 ; Print Throwing Dart Frame
