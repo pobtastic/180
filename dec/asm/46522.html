@@ -48,55 +48,49 @@ Used by the routine at <a href="43530.html">43530</a>.
 <td class="asm-label">QuarterFinals</td>
 <td class="address-2"><span id="46522"></span>46522</td>
 <td class="instruction">LD HL,(39713)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Copy <span class="register">BC</span> 0016 bytes of data from *<a href="39713.html">Pointer_CurrentOpponentData</a> to *<a href="45419.html#45433">Messaging_OpponentName_Wins</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46525"></span>46525</td>
 <td class="instruction">LD DE,45433</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46528"></span>46528</td>
 <td class="instruction">LD BC,16</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46531"></span>46531</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46533"></span>46533</td>
 <td class="instruction">LD HL,(39713)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Copy <span class="register">BC</span> 0016 bytes of data from *<a href="39713.html">Pointer_CurrentOpponentData</a> to *<a href="46522.html#46597">46597</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46536"></span>46536</td>
 <td class="instruction">LD DE,46597</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46539"></span>46539</td>
 <td class="instruction">LD BC,16</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46542"></span>46542</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46544"></span>46544</td>
 <td class="instruction">CALL <a href="46408.html">46408</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="46408.html">46408</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -138,7 +132,7 @@ GREEN.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46559"></span>46559</td>
 <td class="instruction">DEFM "QUARTER  FINALS"</td>
-<td class="comment-1" rowspan="1">"QUARTER&#160;&#160;FINALS".</td>
+<td class="comment-1" rowspan="1"><img alt="quarter-finals" src="../../images/font/quarter-finals.png" /></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -159,7 +153,7 @@ BLACK.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46579"></span>46579</td>
 <td class="instruction">DEFM "YOUR OPPONENT"</td>
-<td class="comment-1" rowspan="1">"YOUR OPPONENT".</td>
+<td class="comment-1" rowspan="1"><img alt="your-opponent" src="../../images/font/your-opponent.png" /></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -192,115 +186,113 @@ WHITE.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46614"></span>46614</td>
 <td class="instruction">LD HL,(39713)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="39713.html">Pointer_CurrentOpponentData</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46617"></span>46617</td>
 <td class="instruction">LD DE,17</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=0017.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46620"></span>46620</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46621"></span>46621</td>
 <td class="instruction">LD C,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46622"></span>46622</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46623"></span>46623</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46624"></span>46624</td>
 <td class="instruction">LD (39595),BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="39595.html">CurrentOpponent_Portrait</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46628"></span>46628</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46629"></span>46629</td>
 <td class="instruction">LD C,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46630"></span>46630</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46631"></span>46631</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46632"></span>46632</td>
 <td class="instruction">LD (39598),BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="39598.html">CurrentOpponent_PubScene</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46636"></span>46636</td>
 <td class="instruction">LD BC,(39595)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="39595.html">CurrentOpponent_Portrait</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46640"></span>46640</td>
 <td class="instruction">LD DE,2576</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=2576.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46643"></span>46643</td>
-<td class="instruction">CALL <a href="46914.html">DrawOpponentImage</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="46914.html">Draw_OpponentPortrait</a></td>
+<td class="comment-1" rowspan="1">Call <a href="46914.html">Draw_OpponentPortrait</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46646"></span>46646</td>
 <td class="instruction">LD A,4</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 4 to *<a href="39604.html">39604</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46648"></span>46648</td>
 <td class="instruction">LD (39604),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46651"></span>46651</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46652"></span>46652</td>
 <td class="instruction">CALL <a href="51947.html">51947</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="51947.html">51947</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

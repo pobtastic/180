@@ -33,7 +33,7 @@ Next: <a href="B761.html">B761</a>
 </td>
 </tr>
 </table>
-<div class="description">B742: Draw Opponent Image</div>
+<div class="description">B742: Draw Opponent Portrait</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -52,11 +52,11 @@ Used by the routines at <a href="A3A4.html">DrawCurrentOpponent</a>, <a href="B5
 </tr>
 <tr>
 <td class="register">D</td>
-<td class="register-desc">Destination Y location</td>
+<td class="register-desc">Destination Y position</td>
 </tr>
 <tr>
 <td class="register">E</td>
-<td class="register-desc">Destination X location</td>
+<td class="register-desc">Destination X position</td>
 </tr>
 </table>
 </td>
@@ -72,7 +72,7 @@ On return from <a href="A8AE.html">CalculateScreenBuffer</a> <span class="regist
 </td>
 </tr>
 <tr>
-<td class="asm-label">DrawOpponentImage</td>
+<td class="asm-label">Draw_OpponentPortrait</td>
 <td class="address-2"><span id="b742"></span>B742</td>
 <td class="instruction">CALL <a href="A8AE.html">CalculateScreenBuffer</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8AE.html">CalculateScreenBuffer</a>.</td>
@@ -95,7 +95,7 @@ On return from <a href="A8AE.html">CalculateScreenBuffer</a> <span class="regist
 <td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the height of the opponent image.</td>
 </tr>
 <tr>
-<td class="asm-label">DrawOpponentImage_Loop</td>
+<td class="asm-label">Draw_OpponentPortrait_Loop</td>
 <td class="address-2"><span id="b749"></span>B749</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="2">Stash the height counter and destination pointer on the stack.</td>
@@ -169,8 +169,8 @@ On return from <a href="A8AE.html">CalculateScreenBuffer</a> <span class="regist
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b75e"></span>B75E</td>
-<td class="instruction">DJNZ <a href="B742.html#b749">DrawOpponentImage_Loop</a></td>
-<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="B742.html#b749">DrawOpponentImage_Loop</a> until the whole image has been displayed.</td>
+<td class="instruction">DJNZ <a href="B742.html#b749">Draw_OpponentPortrait_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="B742.html#b749">Draw_OpponentPortrait_Loop</a> until the whole image has been displayed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

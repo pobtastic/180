@@ -33,7 +33,7 @@ Next: <a href="44093.html">44093</a>
 </td>
 </tr>
 </table>
-<div class="description">43822: Messaging: Dart Number</div>
+<div class="description">43822: Animation: Opponent Throwing</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,7 +45,7 @@ Used by the routine at <a href="41308.html">Messaging_YouWin</a>.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Messaging_DartNumber</td>
+<td class="asm-label">Animation_OpponentThrowing</td>
 <td class="address-2"><span id="43822"></span>43822</td>
 <td class="instruction">LD HL,56576</td>
 <td class="comment-1" rowspan="4">Copy 6912 bytes of data from *<a href="56576.html">PubScene</a> to <a href="16384.html">Loading</a>.</td>
@@ -69,7 +69,7 @@ Used by the routine at <a href="41308.html">Messaging_YouWin</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="43833"></span>43833</td>
 <td class="instruction">LD BC,(39598)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="39597.html#39598">39598</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="39598.html">CurrentOpponent_PubScene</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -86,8 +86,8 @@ Used by the routine at <a href="41308.html">Messaging_YouWin</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="43841"></span>43841</td>
-<td class="instruction">CALL <a href="46945.html">46945</a></td>
-<td class="comment-1" rowspan="1">Call <a href="46945.html">46945</a>.</td>
+<td class="instruction">CALL <a href="46945.html">Draw_OpponentPubScene</a></td>
+<td class="comment-1" rowspan="1">Call <a href="46945.html">Draw_OpponentPubScene</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -136,12 +136,12 @@ Self-modifying code.
 <td class="asm-label"></td>
 <td class="address-1"><span id="43859"></span>43859</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="43822.html#43876">Messaging_DartNumber_0</a> if <span class="register">A</span> is not equal to 10.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="43822.html#43876">Animation_OpponentThrowing_0</a> if <span class="register">A</span> is not equal to 10.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="43860"></span>43860</td>
-<td class="instruction">JR NZ,<a href="43822.html#43876">Messaging_DartNumber_0</a></td>
+<td class="instruction">JR NZ,<a href="43822.html#43876">Animation_OpponentThrowing_0</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -173,7 +173,7 @@ Self-modifying code.
 <td class="instruction">LD (39594),A</td>
 </tr>
 <tr>
-<td class="asm-label">Messaging_DartNumber_0</td>
+<td class="asm-label">Animation_OpponentThrowing_0</td>
 <td class="address-2"><span id="43876"></span>43876</td>
 <td class="instruction">LD HL,44278</td>
 <td class="comment-1" rowspan="4">Copy 0003 bytes of data from *<a href="44249.html#44278">Current_Total</a> to *<a href="39717.html#39727">39727</a>.</td>
@@ -208,8 +208,8 @@ Self-modifying code.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="43893"></span>43893</td>
-<td class="instruction">CALL <a href="44114.html">44114</a></td>
-<td class="comment-1" rowspan="1">Call <a href="44114.html">44114</a>.</td>
+<td class="instruction">CALL <a href="44114.html">ClearMessagingArea</a></td>
+<td class="comment-1" rowspan="1">Call <a href="44114.html">ClearMessagingArea</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -299,7 +299,7 @@ BLACK.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="43935"></span>43935</td>
 <td class="instruction">LD A,(46098)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="45419.html">45419</a> if *<a href="46098.html">46098</a> is not equal to zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="45419.html">Handler_OpponentWins</a> if *<a href="46098.html">46098</a> is not equal to zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -309,7 +309,7 @@ BLACK.</td>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="43939"></span>43939</td>
-<td class="instruction">JP NZ,<a href="45419.html">45419</a></td>
+<td class="instruction">JP NZ,<a href="45419.html">Handler_OpponentWins</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -330,8 +330,8 @@ BLACK.</td>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="43949"></span>43949</td>
-<td class="instruction">CALL <a href="44114.html">44114</a></td>
-<td class="comment-1" rowspan="1">Call <a href="44114.html">44114</a>.</td>
+<td class="instruction">CALL <a href="44114.html">ClearMessagingArea</a></td>
+<td class="comment-1" rowspan="1">Call <a href="44114.html">ClearMessagingArea</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -421,7 +421,7 @@ BLACK.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="43991"></span>43991</td>
 <td class="instruction">LD A,(46098)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="45419.html">45419</a> if *<a href="46098.html">46098</a> is not equal to 0.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="45419.html">Handler_OpponentWins</a> if *<a href="46098.html">46098</a> is not equal to 0.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -431,7 +431,7 @@ BLACK.</td>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="43995"></span>43995</td>
-<td class="instruction">JP NZ,<a href="45419.html">45419</a></td>
+<td class="instruction">JP NZ,<a href="45419.html">Handler_OpponentWins</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -452,8 +452,8 @@ BLACK.</td>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="44005"></span>44005</td>
-<td class="instruction">CALL <a href="44114.html">44114</a></td>
-<td class="comment-1" rowspan="1">Call <a href="44114.html">44114</a>.</td>
+<td class="instruction">CALL <a href="44114.html">ClearMessagingArea</a></td>
+<td class="comment-1" rowspan="1">Call <a href="44114.html">ClearMessagingArea</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -543,7 +543,7 @@ BLACK.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="44047"></span>44047</td>
 <td class="instruction">LD A,(46098)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="45419.html">45419</a> if *<a href="46098.html">46098</a> is not equal to 0.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="45419.html">Handler_OpponentWins</a> if *<a href="46098.html">46098</a> is not equal to 0.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -553,7 +553,7 @@ BLACK.</td>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="44051"></span>44051</td>
-<td class="instruction">JP NZ,<a href="45419.html">45419</a></td>
+<td class="instruction">JP NZ,<a href="45419.html">Handler_OpponentWins</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -582,7 +582,7 @@ This entry point is used by the routine at <a href="44347.html">Messaging_Bust</
 </td>
 </tr>
 <tr>
-<td class="asm-label">Messaging_DartNumber_1</td>
+<td class="asm-label">Animation_OpponentThrowing_1</td>
 <td class="address-2"><span id="44061"></span>44061</td>
 <td class="instruction">LD A,(39594)</td>
 <td class="comment-1" rowspan="3">Call <a href="47217.html">Animation_Dog</a> if *<a href="39592.html#39594">39594</a> is not equal to 0.</td>
@@ -621,8 +621,8 @@ This entry point is used by the routine at <a href="44347.html">Messaging_Bust</
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="44079"></span>44079</td>
-<td class="instruction">CALL <a href="44114.html">44114</a></td>
-<td class="comment-1" rowspan="1">Call <a href="44114.html">44114</a>.</td>
+<td class="instruction">CALL <a href="44114.html">ClearMessagingArea</a></td>
+<td class="comment-1" rowspan="1">Call <a href="44114.html">ClearMessagingArea</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

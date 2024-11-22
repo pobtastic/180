@@ -33,48 +33,55 @@ Next: <a href="AC9D.html">AC9D</a>
 </td>
 </tr>
 </table>
-<div class="description">AC52: Routine at AC52</div>
+<div class="description">AC52: Clear Messaging Area</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="AB2E.html">Messaging_DartNumber</a>, <a href="AD3B.html">Messaging_Bust</a> and <a href="B16B.html">B16B</a>.
+Used by the routines at <a href="AB2E.html">Animation_OpponentThrowing</a>, <a href="AD3B.html">Messaging_Bust</a> and <a href="B16B.html">Handler_OpponentWins</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">ClearMessagingArea</td>
 <td class="address-2"><span id="ac52"></span>AC52</td>
 <td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
 <td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ac55"></span>AC55</td>
 <td class="instruction">DEFB $16,$16,$00</td>
 <td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ac58"></span>AC58</td>
 <td class="instruction">DEFM "                                "</td>
 <td class="comment-1" rowspan="1">"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ac78"></span>AC78</td>
 <td class="instruction">DEFB $16,$17,$00</td>
 <td class="comment-1" rowspan="1">PRINT AT: 17, 00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ac7b"></span>AC7B</td>
 <td class="instruction">DEFM "                                "</td>
 <td class="comment-1" rowspan="1">"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ac9b"></span>AC9B</td>
 <td class="instruction">DEFB $FF</td>
 <td class="comment-1" rowspan="1">Terminator.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ac9c"></span>AC9C</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

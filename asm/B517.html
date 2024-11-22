@@ -33,7 +33,7 @@ Next: <a href="B548.html">B548</a>
 </td>
 </tr>
 </table>
-<div class="description">B517: Routine at B517</div>
+<div class="description">B517: Initialise Opponent</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,133 +42,176 @@ Next: <a href="B548.html">B548</a>
 Used by the routine at <a href="AA0A.html">AA0A</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Opponent number</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
+<td class="asm-label">InitialiseOpponent</td>
 <td class="address-2"><span id="b517"></span>B517</td>
 <td class="instruction">LD E,$06</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=06.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b519"></span>B519</td>
 <td class="instruction">CALL <a href="A875.html">$A875</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A875.html">A875</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b51c"></span>B51C</td>
 <td class="instruction">LD HL,$B484</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="B46F.html#b484">Table_Opponent_BeerBellyBill</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b51f"></span>B51F</td>
 <td class="instruction">LD DE,$0015</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=0015.</td>
+<td class="comment-1" rowspan="1">Set the length of the opponent data in <span class="register">DE</span> (0015 bytes).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b522"></span>B522</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=the opponent ID.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b523"></span>B523</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
+<td class="comment-1" rowspan="2">Set a counter in <span class="register">B</span> of the opponent ID.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b524"></span>B524</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b525"></span>B525</td>
-<td class="instruction">JR Z,<a href="B517.html#b52a">$B52A</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="B517.html#b52a">B52A</a> if <span class="register">A</span> is zero.</td>
+<td class="instruction">JR Z,<a href="B517.html#b52a">FoundOpponentData</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="B517.html#b52a">FoundOpponentData</a> if the opponent counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label">FindOpponentData_Loop</td>
 <td class="address-2"><span id="b527"></span>B527</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="1">Move <span class="register">HL</span> to the next opponent data block.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b528"></span>B528</td>
-<td class="instruction">DJNZ <a href="B517.html#b527">$B527</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B517.html#b527">B527</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B517.html#b527">FindOpponentData_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the opponent counter by one and loop back to <a href="B517.html#b527">FindOpponentData_Loop</a> until the counter is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b52a"></span>
+<div class="comments">
+<div class="paragraph">
+<span class="register">HL</span> now points to the opponent data block.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FoundOpponentData</td>
 <td class="address-2"><span id="b52a"></span>B52A</td>
 <td class="instruction">LD ($9B21),HL</td>
-<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="9B1F.html#9b21">9B21</a>.</td>
+<td class="comment-1" rowspan="1">Write the opponent data pointer to *<a href="9B21.html">Pointer_CurrentOpponentData</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">InitialiseOpponent_0</td>
 <td class="address-2"><span id="b52d"></span>B52D</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b52e"></span>B52E</td>
 <td class="instruction">LD E,$06</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=06.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b530"></span>B530</td>
 <td class="instruction">CALL <a href="A875.html">$A875</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A875.html">A875</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b533"></span>B533</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b534"></span>B534</td>
 <td class="instruction">CP C</td>
-<td class="comment-1" rowspan="2">Jump to <a href="B517.html#b52d">B52D</a> if <span class="register">A</span> is equal to <span class="register">C</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="B517.html#b52d">InitialiseOpponent_0</a> if <span class="register">A</span> is equal to <span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b535"></span>B535</td>
-<td class="instruction">JR Z,<a href="B517.html#b52d">$B52D</a></td>
+<td class="instruction">JR Z,<a href="B517.html#b52d">InitialiseOpponent_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b537"></span>B537</td>
 <td class="instruction">LD HL,$B484</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="B46F.html#b484">Table_Opponent_BeerBellyBill</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b53a"></span>B53A</td>
 <td class="instruction">LD DE,$0015</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=0015.</td>
+<td class="comment-1" rowspan="1">Set the length of the opponent data in <span class="register">DE</span> (0015 bytes).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b53d"></span>B53D</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
+<td class="comment-1" rowspan="2">Set a counter in <span class="register">B</span> of the opponent ID.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b53e"></span>B53E</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b53f"></span>B53F</td>
-<td class="instruction">JR Z,<a href="B517.html#b544">$B544</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="B517.html#b544">B544</a> if <span class="register">A</span> is zero.</td>
+<td class="instruction">JR Z,<a href="B517.html#b544">InitialiseOpponent_2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="B517.html#b544">InitialiseOpponent_2</a> if the opponent counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label">InitialiseOpponent_1</td>
 <td class="address-2"><span id="b541"></span>B541</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="1">Move <span class="register">HL</span> to the next opponent data block.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b542"></span>B542</td>
-<td class="instruction">DJNZ <a href="B517.html#b541">$B541</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B517.html#b541">B541</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B517.html#b541">InitialiseOpponent_1</a></td>
+<td class="comment-1" rowspan="1">Decrease the opponent counter by one and loop back to <a href="B517.html#b541">InitialiseOpponent_1</a> until the counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label">InitialiseOpponent_2</td>
 <td class="address-2"><span id="b544"></span>B544</td>
 <td class="instruction">LD ($9B23),HL</td>
 <td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="9B23.html">9B23</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b547"></span>B547</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

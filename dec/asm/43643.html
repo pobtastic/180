@@ -33,7 +33,7 @@ Next: <a href="43675.html">43675</a>
 </td>
 </tr>
 </table>
-<div class="description">43643: Routine at AA7B</div>
+<div class="description">43643: Handler: Semi Final</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,79 +45,89 @@ Used by the routine at <a href="41308.html">Messaging_YouWin</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_SemiFinal</td>
 <td class="address-2"><span id="43643"></span>43643</td>
 <td class="instruction">LD HL,39590</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39590.html">Leg_1UP</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43646"></span>43646</td>
 <td class="instruction">INC (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43647"></span>43647</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="43740.html">43740</a> if *<span class="register">HL</span> is not equal to 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43648"></span>43648</td>
 <td class="instruction">CP 2</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43650"></span>43650</td>
 <td class="instruction">JR NZ,<a href="43740.html">43740</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43652"></span>43652</td>
 <td class="instruction">XOR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Write 0 to *<a href="39590.html">Leg_1UP</a> and *<a href="39590.html#39591">Leg_2UP</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43653"></span>43653</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43654"></span>43654</td>
 <td class="instruction">LD HL,39591</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43657"></span>43657</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43658"></span>43658</td>
 <td class="instruction">CALL <a href="42917.html">Print_PlayArea</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="42917.html">Print_PlayArea</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43661"></span>43661</td>
 <td class="instruction">CALL <a href="46786.html">TheFinal</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="46786.html">TheFinal</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43664"></span>43664</td>
 <td class="instruction">CALL <a href="44548.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="44548.html">LongPause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43667"></span>43667</td>
 <td class="instruction">CALL <a href="44548.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="44548.html">LongPause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43670"></span>43670</td>
 <td class="instruction">CALL <a href="44548.html">LongPause</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="44548.html">LongPause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43673"></span>43673</td>
 <td class="instruction">JR <a href="43740.html">43740</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="43740.html">43740</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

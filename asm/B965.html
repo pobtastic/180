@@ -33,7 +33,7 @@ Next: <a href="B984.html">B984</a>
 </td>
 </tr>
 </table>
-<div class="description">B965: Routine at B965</div>
+<div class="description">B965: Animation: Pint</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,96 +45,115 @@ Used by the routine at <a href="B83D.html">Animation_BarMaid</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Animation_Pint</td>
 <td class="address-2"><span id="b965"></span>B965</td>
 <td class="instruction">LD B,$10</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=10.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b967"></span>B967</td>
 <td class="instruction">LD DE,$CA54</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="CA54.html">CA54</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="CA54.html">Graphics_Pint</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Animation_Pint_0</td>
 <td class="address-2"><span id="b96a"></span>B96A</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b96b"></span>B96B</td>
 <td class="instruction">PUSH AF</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b96c"></span>B96C</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b96d"></span>B96D</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b96e"></span>B96E</td>
 <td class="instruction">CALL <a href="A8CC.html">NextScreenBufferLine</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8CC.html">NextScreenBufferLine</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b971"></span>B971</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b972"></span>B972</td>
-<td class="instruction">DJNZ <a href="B965.html#b96a">$B96A</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B965.html#b96a">B96A</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B965.html#b96a">Animation_Pint_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B965.html#b96a">Animation_Pint_0</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b974"></span>B974</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b975"></span>B975</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b976"></span>B976</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b977"></span>B977</td>
 <td class="instruction">CALL <a href="A8DB.html">$A8DB</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8DB.html">A8DB</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b97a"></span>B97A</td>
 <td class="instruction">LD B,$10</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=10.</td>
 </tr>
 <tr>
+<td class="asm-label">Animation_Pint_1</td>
 <td class="address-2"><span id="b97c"></span>B97C</td>
 <td class="instruction">POP AF</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b97d"></span>B97D</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b97e"></span>B97E</td>
 <td class="instruction">CALL <a href="A8DB.html">$A8DB</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8DB.html">A8DB</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b981"></span>B981</td>
-<td class="instruction">DJNZ <a href="B965.html#b97c">$B97C</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B965.html#b97c">B97C</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B965.html#b97c">Animation_Pint_1</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B965.html#b97c">Animation_Pint_1</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b983"></span>B983</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

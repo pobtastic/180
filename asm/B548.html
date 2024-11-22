@@ -45,6 +45,16 @@ Used by the routines at <a href="B5BA.html">QuarterFinals</a>, <a href="B640.htm
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b548"></span>
+<div class="comments">
+<div class="paragraph">
+On return from <a href="A8AE.html">CalculateScreenBuffer</a> <span class="register">HL</span> will contain the screen buffer destination.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-2"><span id="b548"></span>B548</td>
 <td class="instruction">LD DE,$040A</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=040A.</td>
@@ -121,122 +131,146 @@ Used by the routines at <a href="B5BA.html">QuarterFinals</a>, <a href="B640.htm
 <tr>
 <td class="address-1"><span id="b563"></span>B563</td>
 <td class="instruction">LD HL,$040A</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=040A.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 040A.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b566"></span>B566</td>
 <td class="instruction">LD BC,$1013</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=1013.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 1013.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b569"></span>B569</td>
 <td class="instruction">LD A,$60</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=60.</td>
+<td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
+BLACK,
+PAPER:
+GREEN
+(BRIGHT)
+.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b56b"></span>B56B</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B5A6.html">FillAttributeBlock</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b56e"></span>B56E</td>
 <td class="instruction">LD HL,$0A10</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=0A10.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 0A10.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b571"></span>B571</td>
 <td class="instruction">LD BC,$0706</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=0706.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 0706.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b574"></span>B574</td>
 <td class="instruction">LD A,$47</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=47.</td>
+<td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
+WHITE,
+PAPER:
+BLACK
+(BRIGHT)
+.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b576"></span>B576</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B5A6.html">FillAttributeBlock</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b579"></span>B579</td>
 <td class="instruction">LD HL,$051D</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=051D.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 051D.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b57c"></span>B57C</td>
 <td class="instruction">LD BC,$1001</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=1001.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 1001.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b57f"></span>B57F</td>
 <td class="instruction">LD A,$30</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=30.</td>
+<td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
+BLACK,
+PAPER:
+YELLOW
+
+.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b581"></span>B581</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B5A6.html">FillAttributeBlock</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b584"></span>B584</td>
 <td class="instruction">LD HL,$140B</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=140B.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 140B.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b587"></span>B587</td>
 <td class="instruction">LD BC,$0113</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=0113.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 0113.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b58a"></span>B58A</td>
 <td class="instruction">LD A,$30</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=30.</td>
+<td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
+BLACK,
+PAPER:
+YELLOW
+
+.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b58c"></span>B58C</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B5A6.html">FillAttributeBlock</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b58f"></span>B58F</td>
 <td class="instruction">LD HL,$1111</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=1111.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 1111.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b592"></span>B592</td>
 <td class="instruction">LD BC,$0106</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=0106.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 0106.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b595"></span>B595</td>
 <td class="instruction">LD A,$20</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=20.</td>
+<td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
+BLACK,
+PAPER:
+GREEN
+
+.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b597"></span>B597</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B5A6.html">FillAttributeBlock</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b59a"></span>B59A</td>
 <td class="instruction">LD HL,$0B16</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=0B16.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 0B16.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b59d"></span>B59D</td>
 <td class="instruction">LD BC,$0701</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=0701.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 0701.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b5a0"></span>B5A0</td>
 <td class="instruction">LD A,$20</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=20.</td>
+<td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
+BLACK,
+PAPER:
+GREEN
+
+.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b5a2"></span>B5A2</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B5A6.html">FillAttributeBlock</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b5a5"></span>B5A5</td>

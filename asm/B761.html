@@ -33,92 +33,132 @@ Next: <a href="B77A.html">B77A</a>
 </td>
 </tr>
 </table>
-<div class="description">B761: Routine at B761</div>
+<div class="description">B761: Draw Opponent Pub Scene</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="AB2E.html">Messaging_DartNumber</a>.
+Used by the routine at <a href="AB2E.html">Animation_OpponentThrowing</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">Pointer to graphic data</td>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">Destination Y position</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">Destination X position</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="b761"></span>
+<div class="comments">
+<div class="paragraph">
+On return from <a href="A8AE.html">CalculateScreenBuffer</a> <span class="register">HL</span> will contain the screen buffer destination.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Draw_OpponentPubScene</td>
 <td class="address-2"><span id="b761"></span>B761</td>
 <td class="instruction">CALL <a href="A8AE.html">CalculateScreenBuffer</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8AE.html">CalculateScreenBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b764"></span>B764</td>
 <td class="instruction">LD D,B</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">B</span>.</td>
+<td class="comment-1" rowspan="2">Copy the opponent pointer to display into <span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b765"></span>B765</td>
 <td class="instruction">LD E,C</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b766"></span>B766</td>
 <td class="instruction">LD B,$18</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=18.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the height of the opponent image.</td>
 </tr>
 <tr>
+<td class="asm-label">Draw_OpponentPubScene_Loop</td>
 <td class="address-2"><span id="b768"></span>B768</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="2">Stash the height counter and destination pointer on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b769"></span>B769</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b76a"></span>B76A</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+<td class="comment-1" rowspan="1">Swap the source and destination registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b76b"></span>B76B</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
+<td class="comment-1" rowspan="3">Copy 06 bytes of data from the source address to the destination.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b76d"></span>B76D</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b76f"></span>B76F</td>
 <td class="instruction">LDI</td>
-<td class="comment-1" rowspan="1">LDI.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b771"></span>B771</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+<td class="comment-1" rowspan="1">Swap the source and destination registers back again.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b772"></span>B772</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the original screen position from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b773"></span>B773</td>
 <td class="instruction">CALL <a href="A8CC.html">NextScreenBufferLine</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8CC.html">NextScreenBufferLine</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b776"></span>B776</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the height counter from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b777"></span>B777</td>
-<td class="instruction">DJNZ <a href="B761.html#b768">$B768</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B761.html#b768">B768</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B761.html#b768">Draw_OpponentPubScene_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease the height counter by one and loop back to <a href="B761.html#b768">Draw_OpponentPubScene_Loop</a> until the whole image has been displayed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b779"></span>B779</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

@@ -1783,12 +1783,11 @@ This entry point is used by the routine at <a href="A15C.html">Messaging_YouWin<
 <tr>
 <td class="address-1"><span id="a002"></span>A002</td>
 <td class="instruction">LD HL,$9B04</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9B04.html">9B04</a>.</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="9B04.html">9B04</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a005"></span>A005</td>
 <td class="instruction">LD (HL),$01</td>
-<td class="comment-1" rowspan="1">Write 01 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a007"></span>A007</td>
@@ -1833,12 +1832,11 @@ This entry point is used by the routine at <a href="A15C.html">Messaging_YouWin<
 <tr>
 <td class="address-1"><span id="a019"></span>A019</td>
 <td class="instruction">LD A,($9B2E)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9B25.html#9b2e">9B2E</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">B</span>=*<a href="9B25.html#9b2e">9B2E</a></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a01c"></span>A01C</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a01d"></span>A01D</td>
@@ -2039,12 +2037,11 @@ This entry point is used by the routine at <a href="A15C.html">Messaging_YouWin<
 <tr>
 <td class="address-2"><span id="a087"></span>A087</td>
 <td class="instruction">LD HL,$9B06</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9B04.html#9b06">9B06</a>.</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="9B04.html#9b06">9B06</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a08a"></span>A08A</td>
 <td class="instruction">LD (HL),$01</td>
-<td class="comment-1" rowspan="1">Write 01 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a08c"></span>A08C</td>
@@ -2215,257 +2212,239 @@ This entry point is used by the routine at <a href="A15C.html">Messaging_YouWin<
 <tr>
 <td class="address-1"><span id="a0e3"></span>A0E3</td>
 <td class="instruction">LD HL,$9AA8</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9AA8.html">9AA8</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0e6"></span>A0E6</td>
 <td class="instruction">INC (HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0e7"></span>A0E7</td>
 <td class="instruction">LD HL,($9B33)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9B25.html#9b33">9B33</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0ea"></span>A0EA</td>
 <td class="instruction">LD A,($9AB7)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="9D42.html#a100">A100</a> if *<a href="9AB4.html#9ab7">9AB7</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0ed"></span>A0ED</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0ee"></span>A0EE</td>
 <td class="instruction">JR Z,<a href="9D42.html#a100">$A100</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0f0"></span>A0F0</td>
 <td class="instruction">LD A,($9AB8)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="9D42.html#a0fb">A0FB</a> if *<a href="9AB8.html">ActivePlayer</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0f3"></span>A0F3</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0f4"></span>A0F4</td>
 <td class="instruction">JR Z,<a href="9D42.html#a0fb">$A0FB</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0f6"></span>A0F6</td>
 <td class="instruction">LD ($9AB0),HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="9AB0.html">2UP_Total</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0f9"></span>A0F9</td>
 <td class="instruction">JR <a href="9D42.html#a103">$A103</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9D42.html#a103">A103</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a0fb"></span>A0FB</td>
 <td class="instruction">LD ($9AB2),HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="9AB0.html#9ab2">1UP_Total</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a0fe"></span>A0FE</td>
 <td class="instruction">JR <a href="9D42.html#a103">$A103</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9D42.html#a103">A103</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a100"></span>A100</td>
 <td class="instruction">LD ($9B1F),HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="9B1F.html">Score</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a103"></span>A103</td>
 <td class="instruction">LD HL,$0810</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 0810 to *<a href="9AC3.html">9AC3</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a106"></span>A106</td>
 <td class="instruction">LD ($9AC3),HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a109"></span>A109</td>
 <td class="instruction">LD A,($9AB7)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="9D42.html#a11f">A11F</a> if *<a href="9AB4.html#9ab7">9AB7</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a10c"></span>A10C</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a10d"></span>A10D</td>
 <td class="instruction">JR Z,<a href="9D42.html#a11f">$A11F</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a10f"></span>A10F</td>
 <td class="instruction">LD A,($9AB8)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="9D42.html#a11a">A11A</a> if *<a href="9AB8.html">ActivePlayer</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a112"></span>A112</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a113"></span>A113</td>
 <td class="instruction">JR Z,<a href="9D42.html#a11a">$A11A</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a115"></span>A115</td>
 <td class="instruction">LD HL,($9AB0)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9AB0.html">2UP_Total</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a118"></span>A118</td>
 <td class="instruction">JR <a href="9D42.html#a122">$A122</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9D42.html#a122">A122</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a11a"></span>A11A</td>
 <td class="instruction">LD HL,($9AB2)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9AB0.html#9ab2">1UP_Total</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a11d"></span>A11D</td>
 <td class="instruction">JR <a href="9D42.html#a122">$A122</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9D42.html#a122">A122</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a11f"></span>A11F</td>
 <td class="instruction">LD HL,($9B1F)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write *<a href="9B1F.html">Score</a> to *<a href="AF49.html">AF49</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a122"></span>A122</td>
 <td class="instruction">LD ($AF49),HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a125"></span>A125</td>
 <td class="instruction">LD HL,$0C01</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 0C01to *<a href="AF5D.html">AF5D</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a128"></span>A128</td>
 <td class="instruction">LD ($AF5D),HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a12b"></span>A12B</td>
 <td class="instruction">CALL <a href="AE17.html">$AE17</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="AE17.html">AE17</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a12e"></span>A12E</td>
 <td class="instruction">LD A,($9AAD)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="9D42.html#a13e">A13E</a> if *<a href="9AAD.html">9AAD</a> is not equal to B4.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a131"></span>A131</td>
 <td class="instruction">CP $B4</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a133"></span>A133</td>
 <td class="instruction">JR NZ,<a href="9D42.html#a13e">$A13E</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a135"></span>A135</td>
 <td class="instruction">LD A,($9AA8)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="9D42.html#a13e">A13E</a> if *<a href="9AA8.html">9AA8</a> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a138"></span>A138</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a139"></span>A139</td>
 <td class="instruction">JR NZ,<a href="9D42.html#a13e">$A13E</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a13b"></span>A13B</td>
 <td class="instruction">CALL <a href="CA7C.html">$CA7C</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="CA7C.html">CA7C</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="a13e"></span>A13E</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Write 00 to; <ul class="">
+<li>*<a href="9AAD.html">9AAD</a></li>
+<li>*<a href="9AA8.html">9AA8</a></li>
+</ul></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a13f"></span>A13F</td>
 <td class="instruction">LD ($9AAD),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a142"></span>A142</td>
 <td class="instruction">LD ($9AA8),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a145"></span>A145</td>
 <td class="instruction">LD A,($9B06)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="A15C.html#a165">Messaging_YouWin_0</a> if *<a href="9B04.html#9b06">9B06</a> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a148"></span>A148</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a149"></span>A149</td>
 <td class="instruction">JR NZ,<a href="A15C.html#a165">Messaging_YouWin_0</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a14b"></span>A14B</td>
 <td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="AE04.html">LongPause</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a14e"></span>A14E</td>
 <td class="instruction">LD A,($9AB7)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="A15C.html">Messaging_YouWin</a> if *<a href="9AB4.html#9ab7">9AB7</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a151"></span>A151</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a152"></span>A152</td>
 <td class="instruction">JR Z,<a href="A15C.html">Messaging_YouWin</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="a154"></span>A154</td>
 <td class="instruction">CALL <a href="AAA8.html">Print_CurrentPlayerID</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="AAA8.html">Print_CurrentPlayerID</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a157"></span>A157</td>
 <td class="instruction">CALL <a href="A7F8.html">$A7F8</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="A7F8.html">A7F8</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="a15a"></span>A15A</td>
 <td class="instruction">JR <a href="A15C.html#a165">Messaging_YouWin_0</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A15C.html#a165">Messaging_YouWin_0</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

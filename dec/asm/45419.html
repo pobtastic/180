@@ -33,268 +33,413 @@ Next: <a href="45616.html">45616</a>
 </td>
 </tr>
 </table>
-<div class="description">45419: Routine at B16B</div>
+<div class="description">45419: Handler: Opponent Wins</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="43822.html">Messaging_DartNumber</a>.
+Used by the routine at <a href="43822.html">Animation_OpponentThrowing</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_OpponentWins</td>
 <td class="address-2"><span id="45419"></span>45419</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45420"></span>45420</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="46098.html">46098</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45421"></span>45421</td>
 <td class="instruction">LD (46098),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45424"></span>45424</td>
-<td class="instruction">CALL <a href="44114.html">44114</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="44114.html">ClearMessagingArea</a></td>
+<td class="comment-1" rowspan="1">Call <a href="44114.html">ClearMessagingArea</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45427"></span>45427</td>
 <td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
 <td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45430"></span>45430</td>
 <td class="instruction">DEFB 22,22,2</td>
 <td class="comment-1" rowspan="1">PRINT AT: 22, 2.</td>
 </tr>
 <tr>
+<td class="asm-label">Messaging_OpponentName_Wins</td>
 <td class="address-1"><span id="45433"></span>45433</td>
 <td class="instruction">DEFM "                 WINS["</td>
-<td class="comment-1" rowspan="1">"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;WINS[".</td>
+<td class="comment-1" rowspan="1"><img alt="wins" src="../../images/font/wins.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45455"></span>45455</td>
 <td class="instruction">DEFB 22,23,2</td>
 <td class="comment-1" rowspan="1">PRINT AT: 23, 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45458"></span>45458</td>
 <td class="instruction">DEFM "   HARD LUCK[[  "</td>
-<td class="comment-1" rowspan="1">"&#160;&#160;&#160;HARD LUCK[[&#160;&#160;".</td>
+<td class="comment-1" rowspan="1"><img alt="hard-luck" src="../../images/font/hard-luck.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45474"></span>45474</td>
 <td class="instruction">DEFB 255</td>
 <td class="comment-1" rowspan="1">Terminator.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45475"></span>45475</td>
 <td class="instruction">CALL <a href="44548.html">LongPause</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="44548.html">LongPause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45478"></span>45478</td>
 <td class="instruction">LD HL,39591</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="39590.html#39591">Leg_2UP</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45481"></span>45481</td>
 <td class="instruction">INC (HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment *<span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45482"></span>45482</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="43740.html">43740</a> if *<span class="register">HL</span> is not equal to 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45483"></span>45483</td>
 <td class="instruction">CP 2</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45485"></span>45485</td>
 <td class="instruction">JP NZ,<a href="43740.html">43740</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45488"></span>45488</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 0 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45489"></span>45489</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45490"></span>
+<div class="comments">
+<div class="paragraph">
+Handle displaying the players rating.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45490"></span>45490</td>
 <td class="instruction">LD A,(39604)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="39604.html">39604</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45493"></span>45493</td>
 <td class="instruction">CP 1</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="45419.html#45505">CheckRating_MegaPlayer</a> if <span class="register">A</span> is equal to 1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45495"></span>45495</td>
-<td class="instruction">JR Z,<a href="45419.html#45505">45505</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="45419.html#45505">CheckRating_MegaPlayer</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45497"></span>45497</td>
 <td class="instruction">CP 2</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="45419.html#45522">CheckRating_Amateur</a> if <span class="register">A</span> is equal to 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45499"></span>45499</td>
-<td class="instruction">JR Z,<a href="45419.html#45522">45522</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="45419.html#45522">CheckRating_Amateur</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45501"></span>45501</td>
 <td class="instruction">CP 4</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="45419.html#45539">CheckRating_Wally</a> if <span class="register">A</span> is equal to 4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45503"></span>45503</td>
-<td class="instruction">JR Z,<a href="45419.html#45539">45539</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="45419.html#45539">CheckRating_Wally</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45505"></span>
+<div class="comments">
+<div class="paragraph">
+Check if the players rating is "AS A MEGA PLAYER".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CheckRating_MegaPlayer</td>
 <td class="address-2"><span id="45505"></span>45505</td>
 <td class="instruction">LD A,(39593)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="45419.html#45517">SetRating_AsAMegaPlayer</a> if *<a href="39592.html#39593">39593</a> is greater than or equal to 13.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45508"></span>45508</td>
 <td class="instruction">CP 13</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45510"></span>45510</td>
-<td class="instruction">JR NC,<a href="45419.html#45517">45517</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="45419.html#45517">SetRating_AsAMegaPlayer</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45512"></span>
+<div class="comments">
+<div class="paragraph">
+Sets the rating: "AS RED HOT".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetRating_AsRedHot</td>
 <td class="address-1"><span id="45512"></span>45512</td>
 <td class="instruction">LD HL,45706</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="45616.html#45706">Messaging_AsRedHot</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45515"></span>45515</td>
-<td class="instruction">JR <a href="45419.html#45554">45554</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR <a href="45419.html#45554">CopyToRatingString</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="45419.html#45554">CopyToRatingString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45517"></span>
+<div class="comments">
+<div class="paragraph">
+Sets the rating: "AS A MEGA PLAYER".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetRating_AsAMegaPlayer</td>
 <td class="address-2"><span id="45517"></span>45517</td>
 <td class="instruction">LD HL,45688</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="45616.html#45688">Messaging_AsAMegaPlayer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45520"></span>45520</td>
-<td class="instruction">JR <a href="45419.html#45554">45554</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR <a href="45419.html#45554">CopyToRatingString</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="45419.html#45554">CopyToRatingString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45522"></span>
+<div class="comments">
+<div class="paragraph">
+Check if the players rating is "AS AN AMATEUR".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CheckRating_Amateur</td>
 <td class="address-2"><span id="45522"></span>45522</td>
 <td class="instruction">LD A,(39593)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="45419.html#45534">SetRating_AsAnAmateur</a> if *<a href="39592.html#39593">39593</a> is greater than or equal to 13.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45525"></span>45525</td>
 <td class="instruction">CP 13</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45527"></span>45527</td>
-<td class="instruction">JR NC,<a href="45419.html#45534">45534</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="45419.html#45534">SetRating_AsAnAmateur</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45529"></span>
+<div class="comments">
+<div class="paragraph">
+Sets the rating: "AS A NOVICE".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetRating_AsANovice</td>
 <td class="address-1"><span id="45529"></span>45529</td>
 <td class="instruction">LD HL,45670</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="45616.html#45670">Messaging_AsANovice</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45532"></span>45532</td>
-<td class="instruction">JR <a href="45419.html#45554">45554</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR <a href="45419.html#45554">CopyToRatingString</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="45419.html#45554">CopyToRatingString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45534"></span>
+<div class="comments">
+<div class="paragraph">
+Sets the rating: "AS AN AMATEUR".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetRating_AsAnAmateur</td>
 <td class="address-2"><span id="45534"></span>45534</td>
 <td class="instruction">LD HL,45652</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="45616.html#45652">Messaging_AsAnAmateur</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45537"></span>45537</td>
-<td class="instruction">JR <a href="45419.html#45554">45554</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR <a href="45419.html#45554">CopyToRatingString</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="45419.html#45554">CopyToRatingString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45539"></span>
+<div class="comments">
+<div class="paragraph">
+Check if the players rating is "AS A WALLY".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CheckRating_Wally</td>
 <td class="address-2"><span id="45539"></span>45539</td>
 <td class="instruction">LD A,(39593)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="45419.html#45551">SetRating_AsAWally</a> if *<a href="39592.html#39593">39593</a> is greater than or equal to 13.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45542"></span>45542</td>
 <td class="instruction">CP 13</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45544"></span>45544</td>
-<td class="instruction">JR NC,<a href="45419.html#45551">45551</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="45419.html#45551">SetRating_AsAWally</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45546"></span>
+<div class="comments">
+<div class="paragraph">
+Sets the rating: "AS A DIPSTICK".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetRating_AsADipstick</td>
 <td class="address-1"><span id="45546"></span>45546</td>
 <td class="instruction">LD HL,45634</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="45616.html#45634">Messaging_AsADipstick</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45549"></span>45549</td>
-<td class="instruction">JR <a href="45419.html#45554">45554</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR <a href="45419.html#45554">CopyToRatingString</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="45419.html#45554">CopyToRatingString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45551"></span>
+<div class="comments">
+<div class="paragraph">
+Sets the rating: "AS A WALLY".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetRating_AsAWally</td>
 <td class="address-2"><span id="45551"></span>45551</td>
 <td class="instruction">LD HL,45616</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Copy 0018 bytes of data from *<a href="45616.html">Messaging_AsAWally</a> to *<a href="45419.html#45591">Messaging_Rating</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">CopyToRatingString</td>
 <td class="address-2"><span id="45554"></span>45554</td>
 <td class="instruction">LD DE,45591</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45557"></span>45557</td>
 <td class="instruction">LD BC,18</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45560"></span>45560</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45562"></span>
+<div class="comments">
+<div class="paragraph">
+Print the rating messaging:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45562"></span>45562</td>
 <td class="instruction">CALL <a href="38476.html">PrintString_Loop</a></td>
 <td class="comment-1" rowspan="1">Call <a href="38476.html">PrintString_Loop</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45565"></span>45565</td>
 <td class="instruction">DEFB 22,10,10</td>
 <td class="comment-1" rowspan="1">PRINT AT: 10, 10.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45568"></span>45568</td>
 <td class="instruction">DEFB 16,7</td>
 <td class="comment-1" rowspan="1">INK: 
@@ -303,6 +448,7 @@ Used by the routine at <a href="43822.html">Messaging_DartNumber</a>.
 WHITE.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45570"></span>45570</td>
 <td class="instruction">DEFB 17,0</td>
 <td class="comment-1" rowspan="1">PAPER: 
@@ -311,41 +457,59 @@ WHITE.</td>
 BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45572"></span>45572</td>
 <td class="instruction">DEFB 18,1</td>
 <td class="comment-1" rowspan="1">FLASH: ON.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45574"></span>45574</td>
 <td class="instruction">DEFB 0</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45575"></span>45575</td>
 <td class="instruction">DEFM "YOU ARE RATED"</td>
-<td class="comment-1" rowspan="1">"YOU ARE RATED".</td>
+<td class="comment-1" rowspan="1"><img alt="you-are-rated" src="../../images/font/you-are-rated.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45588"></span>45588</td>
 <td class="instruction">DEFB 22,12,10</td>
 <td class="comment-1" rowspan="1">PRINT AT: 12, 10.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="45591"></span>
+<div class="comments">
+<div class="paragraph">
+See <a href="45616.html">Messaging_AsAWally</a> for the ratings.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Messaging_Rating</td>
 <td class="address-1"><span id="45591"></span>45591</td>
 <td class="instruction">DEFM "                  "</td>
 <td class="comment-1" rowspan="1">"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45609"></span>45609</td>
 <td class="instruction">DEFB 255</td>
 <td class="comment-1" rowspan="1">Terminator.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45610"></span>45610</td>
 <td class="instruction">CALL <a href="44548.html">LongPause</a></td>
 <td class="comment-1" rowspan="1">Call <a href="44548.html">LongPause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="45613"></span>45613</td>
 <td class="instruction">JP <a href="37695.html">MainMenu</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="37695.html">MainMenu</a>.</td>
