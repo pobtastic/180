@@ -265,6 +265,7 @@ c $9305 Main Menu: Print Dart Pointer
 R $9305 DE The co-ordinates of the dart
   $9305,$04 Return if #REGe is greater than #N$20.
   $9309,$01 Stash #REGde on the stack.
+N $930A On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $930A,$03 Call #R$A8AE.
   $930D,$01 Restore #REGde from the stack.
   $930E,$02 #REGa=#N$20.
@@ -1337,12 +1338,15 @@ g $9AA8
   $9AA9,$01
   $9AAA,$01
 
-g $9AAB Current Opponent
-@ $9AAB label=CurrentOpponent
+g $9AAB Current Opponent Portrait
+@ $9AAB label=CurrentOpponent_Portrait
 W $9AAB,$02
 
 b $9AAD
   $9AAD,$01
+
+g $9AAE Current Opponent Pub Scene
+@ $9AAE label=CurrentOpponent_PubScene
 W $9AAE,$02
 
 g $9AB0 Player Current Total
@@ -1438,6 +1442,10 @@ g $9B1F Score?
 @ $9B1F label=Score
 B $9B1F,$02
 
+g $9B21 Pointer Current Opponent Data
+@ $9B21 label=Pointer_CurrentOpponentData
+W $9B21,$02
+
 g $9B23
 W $9B23,$02
 
@@ -1452,6 +1460,7 @@ g $9B25
   $9B2D
   $9B2E
   $9B2F
+  $9B33
   $9B35
 
 g $9C55
@@ -1789,15 +1798,13 @@ c $9D42
   $9FFB,$03 #REGa=*#R$AF49.
   $9FFE,$01 #REGa+=#REGa.
   $9FFF,$03 Write #REGa to *#R$AF49.
-  $A002,$03 #REGhl=#R$9B04.
-  $A005,$02 Write #N$01 to *#REGhl.
+  $A002,$05 Write #N$01 to *#R$9B04.
   $A007,$02 Jump to #R$A010.
   $A009,$07 Write #N$00 to; #LIST { *#R$AF49 } { *#R$9B2E } LIST#
   $A010,$03 #REGa=*#R$9B2C.
   $A013,$03 Jump to #R$A046 if #REGa is equal to #REGa.
   $A016,$03 Call #R$A434.
-  $A019,$03 #REGa=*#R$9B2E.
-  $A01C,$01 #REGb=#REGa.
+  $A019,$04 #REGb=*#R$9B2E
   $A01D,$03 #REGa=*#R$9B2D.
   $A020,$04 Jump to #R$A0B9 if #REGa is not equal to #REGb.
   $A024,$01 Decrease #REGa by one.
@@ -1831,8 +1838,7 @@ B $A043,$01 Terminator.
   $A07D,$07 Jump to #R$A087 if *#R$9B05 is not equal to zero.
   $A084,$03 Jump to #R$A0D6.
 
-  $A087,$03 #REGhl=#R$9B06.
-  $A08A,$02 Write #N$01 to *#REGhl.
+  $A087,$05 Write #N$01 to *#R$9B06.
   $A08C,$03 Jump to #R$A103.
 
   $A08F,$01 #REGa=#REGl.
@@ -1858,11 +1864,48 @@ B $A043,$01 Terminator.
   $A0C5,$07 Jump to #R$9D42 if *#R$9B2C is not equal to zero.
   $A0CC,$07 Jump to #R$A103 if *#R$9B0F is equal to #N$03.
   $A0D3,$03 Jump to #R$A37A.
-
   $A0D6,$03 Call #R$964C.
 B $A0D9,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $A0DC,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(bust)
 B $A0E2,$01 Terminator.
+  $A0E3,$03 #REGhl=#R$9AA8.
+  $A0E6,$01 Increment *#REGhl by one.
+  $A0E7,$03 #REGhl=*#R$9B33.
+  $A0EA,$06 Jump to #R$A100 if *#R$9AB7 is zero.
+  $A0F0,$06 Jump to #R$A0FB if *#R$9AB8 is zero.
+  $A0F6,$03 Write #REGhl to *#R$9AB0.
+  $A0F9,$02 Jump to #R$A103.
+
+  $A0FB,$03 Write #REGhl to *#R$9AB2.
+  $A0FE,$02 Jump to #R$A103.
+
+  $A100,$03 Write #REGhl to *#R$9B1F.
+  $A103,$06 Write #N$0810 to *#R$9AC3.
+  $A109,$06 Jump to #R$A11F if *#R$9AB7 is zero.
+  $A10F,$06 Jump to #R$A11A if *#R$9AB8 is zero.
+
+  $A115,$03 #REGhl=*#R$9AB0.
+  $A118,$02 Jump to #R$A122.
+
+  $A11A,$03 #REGhl=*#R$9AB2.
+  $A11D,$02 Jump to #R$A122.
+
+  $A11F,$06 Write *#R$9B1F to *#R$AF49.
+  $A125,$06 Write #N$0C01to *#R$AF5D.
+  $A12B,$03 Call #R$AE17.
+  $A12E,$07 Jump to #R$A13E if *#R$9AAD is not equal to #N$B4.
+  $A135,$06 Jump to #R$A13E if *#R$9AA8 is not zero.
+  $A13B,$03 Call #R$CA7C.
+  $A13E,$07 Write #N$00 to; #LIST
+. { *#R$9AAD }
+. { *#R$9AA8 }
+. LIST#
+  $A145,$06 Jump to #R$A165 if *#R$9B06 is not zero.
+  $A14B,$03 Call #R$AE04.
+  $A14E,$06 Jump to #R$A15C if *#R$9AB7 is zero.
+  $A154,$03 Call #R$AAA8.
+  $A157,$03 Call #R$A7F8.
+  $A15A,$02 Jump to #R$A165.
 
 c $9D33
 
@@ -2482,6 +2525,7 @@ c $A6E6
   $A713,$01 Return.
   $A714,$01 Stash #REGhl on the stack.
   $A715,$01 Exchange the #REGaf register with the shadow #REGaf register.
+N $A716 On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $A716,$03 Call #R$A8AE.
   $A719,$01 Exchange the shadow #REGaf register with the #REGaf register.
   $A71A,$01 Exchange the #REGde and #REGhl registers.
@@ -2526,7 +2570,9 @@ c $A73A
   $A759,$01 Restore #REGbc from the stack.
   $A75A,$02 Decrease counter by one and loop back to #R$A743 until counter is zero.
   $A75C,$01 Return.
+
   $A75D,$01 Stash #REGhl on the stack.
+N $A75E On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $A75E,$03 Call #R$A8AE.
   $A761,$01 Exchange the #REGde and #REGhl registers.
   $A762,$01 Restore #REGhl from the stack.
@@ -2876,6 +2922,7 @@ c $A9C2
   $A9C2,$03 #REGde=#N$0101.
   $A9C5,$02 #REGb=#N$16.
   $A9C7,$02 Stash #REGde and #REGbc on the stack.
+N $A9C9 On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $A9C9,$03 Call #R$A8AE.
   $A9CC,$02 #REGb=#N$08.
   $A9CE,$02 Stash #REGbc and #REGhl on the stack.
@@ -2940,8 +2987,8 @@ N $AA3B The entrypoint for a one-player game.
   $AA54,$03 Call #R$AE04.
   $AA57,$03 Jump to #R$AADC.
 
-c $AA5A Next Leg
-@ $AA5A label=NextLeg
+c $AA5A Handler: Match
+@ $AA5A label=Handler_Match
   $AA5A,$03 #REGhl=#R$9AA6.
   $AA5D,$01 Increment *#REGhl by one.
   $AA5E,$05 Jump to #R$AADC if *#REGhl is not equal to #N$02.
@@ -2951,7 +2998,18 @@ c $AA5A Next Leg
   $AA6F,$09 Call #R$AE04 three times.
   $AA78,$03 Jump to #R$AADC.
 
-c $AA7B
+c $AA7B Handler: Semi Final
+@ $AA7B label=Handler_SemiFinal
+  $AA7B,$03 #REGhl=#R$9AA6.
+  $AA7E,$01 Increment *#REGhl by one.
+  $AA7F,$05 Jump to #R$AADC if *#REGhl is not equal to #N$02.
+  $AA84,$06 Write #N$00 to *#R$9AA6 and *#R$9AA7.
+  $AA8A,$03 Call #R$A7A5.
+  $AA8D,$03 Call #R$B6C2.
+  $AA90,$03 Call #R$AE04.
+  $AA93,$03 Call #R$AE04.
+  $AA96,$03 Call #R$AE04.
+  $AA99,$02 Jump to #R$AADC.
 
 c $AA9B Two Player Game
 @ $AA9B label=Game_TwoPlayer
@@ -3017,8 +3075,8 @@ N $AAF5 Update the copy of the "current total".
   $AB25,$06 Write #N$01F5 to *#R$B40A.
   $AB2B,$03 Jump to #R$9D42.
 
-c $AB2E Messaging: Dart Number
-@ $AB2E label=Messaging_DartNumber
+c $AB2E Animation: Opponent Throwing
+@ $AB2E label=Animation_OpponentThrowing
   $AB2E,$0B Copy #N$1B00 bytes of data from *#R$DD00 to #R$4000.
   $AB39,$04 #REGbc=*#R$9AAE.
   $AB3D,$02 #REGd=#N$06.
@@ -3105,7 +3163,8 @@ T $AC47,$09 "#STR#(#PC,$04,$09)".
 B $AC50,$01 Terminator.
   $AC51,$01 Return.
 
-c $AC52
+c $AC52 Clear Messaging Area
+@ $AC52 label=ClearMessagingArea
   $AC52,$03 Call #R$964C.
 B $AC55,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $AC58,$20 "#STR#(#PC,$04,$20)".
@@ -3313,6 +3372,7 @@ c $AE6E
   $AE7A,$03 #REGa=*#REGix+#N$00.
   $AE7D,$03 Call #R$AEAF.
   $AE80,$04 #REGde=*#R$AF5D.
+N $AE84 On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $AE84,$03 Call #R$A8AE.
   $AE87,$03 #REGa=*#REGix+#N$01.
   $AE8A,$04 Increment #REGix by two.
@@ -3630,31 +3690,161 @@ c $AFB5
   $B164,$06 Write *#R$B419 to *#R$AD75.
   $B16A,$01 Return.
 
-c $B16B
-
+c $B16B Handler: Opponent Wins
+@ $B16B label=Handler_OpponentWins
+  $B16B,$01 Restore #REGhl from the stack.
+  $B16C,$04 Write #N$00 to *#R$B412.
+  $B170,$03 Call #R$AC52.
   $B173,$03 Call #R$964C.
 B $B176,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $B179,$16 "#STR#(#PC,$04,$16)".
+@ $B179 label=Messaging_OpponentName_Wins
+T $B179,$16 #FONT#(:(#STR(#PC,$00,$16)))$8D75,attr=$47(wins)
 B $B18F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $B192,$10 "#STR#(#PC,$04,$10)".
+T $B192,$10 #FONT#(:(#STR(#PC,$00,$10)))$8D75,attr=$47(hard-luck)
 B $B1A2,$01 Terminator.
-
+  $B1A3,$03 Call #R$AE04.
+  $B1A6,$03 #REGhl=#R$9AA7.
+  $B1A9,$01 Increment *#REGhl by one.
+  $B1AA,$06 Jump to #R$AADC if *#REGhl is not equal to #N$02.
+  $B1B0,$02 Write #N$00 to *#REGhl.
+N $B1B2 Handle displaying the players rating.
+  $B1B2,$03 #REGa=*#R$9AB4.
+  $B1B5,$04 Jump to #R$B1C1 if #REGa is equal to #N$01.
+  $B1B9,$04 Jump to #R$B1D2 if #REGa is equal to #N$02.
+  $B1BD,$04 Jump to #R$B1E3 if #REGa is equal to #N$04.
+N $B1C1 Check if the players rating is "#STR$B278,$08($b==$5B)".
+@ $B1C1 label=CheckRating_MegaPlayer
+  $B1C1,$07 Jump to #R$B1CD if *#R$9AA9 is greater than or equal to #N$0D.
+N $B1C8 Sets the rating: "#STR$B28A,$08($b==$5B)".
+@ $B1C8 label=SetRating_AsRedHot
+  $B1C8,$03 #REGhl=#R$B28A.
+  $B1CB,$02 Jump to #R$B1F2.
+N $B1CD Sets the rating: "#STR$B278,$08($b==$5B)".
+@ $B1CD label=SetRating_AsAMegaPlayer
+  $B1CD,$03 #REGhl=#R$B278.
+  $B1D0,$02 Jump to #R$B1F2.
+N $B1D2 Check if the players rating is "#STR$B254,$08($b==$5B)".
+@ $B1D2 label=CheckRating_Amateur
+  $B1D2,$07 Jump to #R$B1DE if *#R$9AA9 is greater than or equal to #N$0D.
+N $B1D9 Sets the rating: "#STR$B266,$08($b==$5B)".
+@ $B1D9 label=SetRating_AsANovice
+  $B1D9,$03 #REGhl=#R$B266.
+  $B1DC,$02 Jump to #R$B1F2.
+N $B1DE Sets the rating: "#STR$B254,$08($b==$5B)".
+@ $B1DE label=SetRating_AsAnAmateur
+  $B1DE,$03 #REGhl=#R$B254.
+  $B1E1,$02 Jump to #R$B1F2.
+N $B1E3 Check if the players rating is "#STR$B230,$08($b==$5B)".
+@ $B1E3 label=CheckRating_Wally
+  $B1E3,$07 Jump to #R$B1EF if *#R$9AA9 is greater than or equal to #N$0D.
+N $B1EA Sets the rating: "#STR$B242,$08($b==$5B)".
+@ $B1EA label=SetRating_AsADipstick
+  $B1EA,$03 #REGhl=#R$B242.
+  $B1ED,$02 Jump to #R$B1F2.
+N $B1EF Sets the rating: "#STR$B230,$08($b==$5B)".
+@ $B1EF label=SetRating_AsAWally
+  $B1EF,$0B Copy #N($0012,$04,$04) bytes of data from *#R$B230 to *#R$B217.
+@ $B1F2 label=CopyToRatingString
+N $B1FA Print the rating messaging:
   $B1FA,$03 Call #R$964C.
 B $B1FD,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B200,$02 INK: #INK(#PEEK(#PC+$01)).
 B $B202,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $B204,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $B206,$01
-T $B207,$0D "#STR#(#PC,$04,$0D)".
+T $B207,$0D #FONT#(:(#STR(#PC,$04,$0D)))$8D75,attr=$47(you-are-rated)
 B $B214,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
+N $B217 See #R$B230 for the ratings.
+@ $B217 label=Messaging_Rating
 T $B217,$12 "#STR#(#PC,$04,$12)".
 B $B229,$01 Terminator.
   $B22A,$03 Call #R$AE04.
   $B22D,$03 Jump to #R$933F.
 
-w $B230
+t $B230 Messaging: Ratings
+@ $B230 label=Messaging_AsAWally
+  $B230,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-wally)
+@ $B242 label=Messaging_AsADipstick
+  $B242,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-dipstick)
+@ $B254 label=Messaging_AsAnAmateur
+  $B254,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-an-amateur)
+@ $B266 label=Messaging_AsANovice
+  $B266,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-novice)
+@ $B278 label=Messaging_AsAMegaPlayer
+  $B278,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-mega-player)
+@ $B28A label=Messaging_AsRedHot
+  $B28A,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-red-hot)
 
 c $B29C
+  $B29C,$01 Stash #REGhl on the stack.
+  $B29D,$01 #REGd=#REGa.
+  $B29E,$02 Shift #REGc right.
+  $B2A0,$02 Jump to #R$B2AC if the result is greater than or equal to #N$00.
+  $B2A2,$03 Write #REGa to *#R$B410.
+  $B2A5,$05 Write #N$54 to *#R$B418.
+  $B2AA,$02 Jump to #R$B2B4.
+
+  $B2AC,$03 Write #REGa to *#R$B410.
+  $B2AF,$05 Write #N$53 to *#R$B418.
+  $B2B4,$01 #REGa=#REGd.
+  $B2B5,$03 Call #R$B402.
+  $B2B8,$03 #REGde=#N($00C8,$04,$04).
+  $B2BB,$03 Call #R$A875.
+  $B2BE,$05 Jump to #R$B2CE if *#REGix+#N$00 is greater than or equal to #N$53.
+  $B2C3,$05 Write #N$53 to *#R$B419.
+  $B2C8,$04 Write *#REGhl to *#R$B411.
+  $B2CC,$02 Jump to #R$B337.
+
+  $B2CE,$05 Jump to #R$B2E1 if *#REGix+#N$01 is greater than or equal to #N$53.
+  $B2D3,$05 Write #N$54 to *#R$B419.
+  $B2D8,$04 Write *#REGhl to *#R$B411.
+  $B2DC,$01 #REGc=#REGa.
+  $B2DD,$01 #REGa+=#REGa.
+  $B2DE,$01 #REGa+=#REGc.
+  $B2DF,$02 Jump to #R$B337.
+
+  $B2E1,$05  Jump to #R$B2F2 if *#REGix+#N$02 is greater than or equal to #N$54.
+  $B2E6,$05 Write #N$53 to *#R$B419.
+  $B2EB,$01 Decrease #REGhl by one.
+  $B2EC,$04 Write *#REGhl to *#R$B411.
+  $B2F0,$02 Jump to #R$B337.
+
+  $B2F2,$05 Jump to #R$B306 if *#REGix+#N$03 is greater than or equal to #N$53.
+  $B2F7,$05 Write #N$54 to *#R$B419.
+  $B2FC,$01 Decrease #REGhl by one.
+  $B2FD,$04 Write *#REGhl to *#R$B411.
+  $B301,$01 #REGc=#REGa.
+  $B302,$01 #REGa+=#REGa.
+  $B303,$01 #REGa+=#REGc.
+  $B304,$02 Jump to #R$B337.
+
+  $B306,$05 Jump to #R$B317 if *#REGix+#N$04 is greater than or equal to #N$54.
+  $B30B,$05 Write #N$53 to *#R$B419.
+  $B310,$01 Increment #REGhl by one.
+  $B311,$04 Write *#REGhl to *#R$B411.
+  $B315,$02 Jump to #R$B337.
+
+  $B317,$05 Jump to #R$B32B if *#REGix+#N$05 is greater than or equal to #N$53.
+  $B31C,$05 Write #N$54 to *#R$B419.
+  $B321,$01 Increment #REGhl by one.
+  $B322,$01 #REGa=*#REGhl.
+  $B323,$03 Write #REGa to *#R$B411.
+  $B326,$01 #REGc=#REGa.
+  $B327,$01 #REGa+=#REGa.
+  $B328,$01 #REGa+=#REGc.
+  $B329,$02 Jump to #R$B337.
+
+  $B32B,$02 #REGd=*#REGhl.
+  $B32D,$05 Write #N$44 to *#R$B419.
+  $B332,$04 Write #REGd to *#R$B411.
+  $B336,$01 #REGa+=#REGa.
+  $B337,$01 Restore #REGhl from the stack.
+  $B338,$02 #REGd=#N$00.
+  $B33A,$01 #REGe=#REGa.
+  $B33B,$01 Set flags.
+  $B33C,$02 #REGhl-=#REGde (with carry).
+  $B33E,$03 Write #REGa to *#R$B40C.
+  $B341,$01 Return.
 
 c $B342
 
@@ -3700,35 +3890,43 @@ W $B480,$02
 W $B482,$02
 L $B46F,$15,$08
 
-c $B517
+c $B517 Initialise Opponent
+@ $B517 label=InitialiseOpponent
+R $B517 A Opponent number
   $B517,$02 #REGe=#N$06.
   $B519,$03 Call #R$A875.
   $B51C,$03 #REGhl=#R$B484.
-  $B51F,$03 #REGde=#N($0015,$04,$04).
-  $B522,$01 #REGc=#REGa.
-  $B523,$01 Set flags.
-  $B524,$01 #REGb=#REGa.
-  $B525,$02 Jump to #R$B52A if #REGa is zero.
-  $B527,$01 #REGhl+=#REGde.
-  $B528,$02 Decrease counter by one and loop back to #R$B527 until counter is zero.
-  $B52A,$03 Write #REGhl to *#R$9B21.
+  $B51F,$03 Set the length of the opponent data in #REGde (#N($0015,$04,$04)
+. bytes).
+  $B522,$01 #REGc=the opponent ID.
+  $B523,$02 Set a counter in #REGb of the opponent ID.
+  $B525,$02 Jump to #R$B52A if the opponent counter is zero.
+@ $B527 label=FindOpponentData_Loop
+  $B527,$01 Move #REGhl to the next opponent data block.
+  $B528,$02 Decrease the opponent counter by one and loop back to #R$B527 until
+. the counter is zero.
+N $B52A #REGhl now points to the opponent data block.
+@ $B52A label=FoundOpponentData
+  $B52A,$03 Write the opponent data pointer to *#R$9B21.
   $B52D,$01 Stash #REGbc on the stack.
   $B52E,$02 #REGe=#N$06.
   $B530,$03 Call #R$A875.
   $B533,$01 Restore #REGbc from the stack.
   $B534,$03 Jump to #R$B52D if #REGa is equal to #REGc.
   $B537,$03 #REGhl=#R$B484.
-  $B53A,$03 #REGde=#N($0015,$04,$04).
-  $B53D,$01 Set flags.
-  $B53E,$01 #REGb=#REGa.
-  $B53F,$02 Jump to #R$B544 if #REGa is zero.
-  $B541,$01 #REGhl+=#REGde.
-  $B542,$02 Decrease counter by one and loop back to #R$B541 until counter is zero.
+  $B53A,$03 Set the length of the opponent data in #REGde (#N($0015,$04,$04)
+. bytes).
+  $B53D,$02 Set a counter in #REGb of the opponent ID.
+  $B53F,$02 Jump to #R$B544 if the opponent counter is zero.
+  $B541,$01 Move #REGhl to the next opponent data block.
+  $B542,$02 Decrease the opponent counter by one and loop back to #R$B541 until
+. the counter is zero.
   $B544,$03 Write #REGhl to *#R$9B23.
   $B547,$01 Return.
 
 c $B548
   $B548,$03 #REGde=#N$040A.
+N $B548 On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $B54B,$03 Call #R$A8AE.
   $B54E,$02 #REGb=#N$80.
   $B550,$02 Stash #REGbc and #REGhl on the stack.
@@ -3742,30 +3940,24 @@ c $B548
   $B55D,$03 Call #R$A8CC.
   $B560,$01 Restore #REGbc from the stack.
   $B561,$02 Decrease counter by one and loop back to #R$B550 until counter is zero.
-  $B563,$03 #REGhl=#N($040A,$04,$04).
-  $B566,$03 #REGbc=#N($1013,$04,$04).
-  $B569,$02 #REGa=#N$60.
-  $B56B,$03 Call #R$B5A6.
-  $B56E,$03 #REGhl=#N($0A10,$04,$04).
-  $B571,$03 #REGbc=#N($0706,$04,$04).
-  $B574,$02 #REGa=#N$47.
-  $B576,$03 Call #R$B5A6.
-  $B579,$03 #REGhl=#N($051D,$04,$04).
-  $B57C,$03 #REGbc=#N($1001,$04,$04).
-  $B57F,$02 #REGa=#N$30.
-  $B581,$03 Call #R$B5A6.
-  $B584,$03 #REGhl=#N($140B,$04,$04).
-  $B587,$03 #REGbc=#N($0113,$04,$04).
-  $B58A,$02 #REGa=#N$30.
-  $B58C,$03 Call #R$B5A6.
-  $B58F,$03 #REGhl=#N($1111,$04,$04).
-  $B592,$03 #REGbc=#N($0106,$04,$04).
-  $B595,$02 #REGa=#N$20.
-  $B597,$03 Call #R$B5A6.
-  $B59A,$03 #REGhl=#N($0B16,$04,$04).
-  $B59D,$03 #REGbc=#N($0701,$04,$04).
-  $B5A0,$02 #REGa=#N$20.
-  $B5A2,$03 Call #R$B5A6.
+  $B563,$03 Set the co-ordinates in #REGhl to #N($040A,$04,$04).
+  $B566,$03 Set the block dimensions in #REGbc to #N($1013,$04,$04).
+  $B569,$05 Call #R$B5A6 with #COLOUR$60.
+  $B56E,$03 Set the co-ordinates in #REGhl to #N($0A10,$04,$04).
+  $B571,$03 Set the block dimensions in #REGbc to #N($0706,$04,$04).
+  $B574,$05 Call #R$B5A6 with #COLOUR$47.
+  $B579,$03 Set the co-ordinates in #REGhl to #N($051D,$04,$04).
+  $B57C,$03 Set the block dimensions in #REGbc to #N($1001,$04,$04).
+  $B57F,$05 Call #R$B5A6 with #COLOUR$30.
+  $B584,$03 Set the co-ordinates in #REGhl to #N($140B,$04,$04).
+  $B587,$03 Set the block dimensions in #REGbc to #N($0113,$04,$04).
+  $B58A,$05 Call #R$B5A6 with #COLOUR$30.
+  $B58F,$03 Set the co-ordinates in #REGhl to #N($1111,$04,$04).
+  $B592,$03 Set the block dimensions in #REGbc to #N($0106,$04,$04).
+  $B595,$05 Call #R$B5A6 with #COLOUR$20.
+  $B59A,$03 Set the co-ordinates in #REGhl to #N($0B16,$04,$04).
+  $B59D,$03 Set the block dimensions in #REGbc to #N($0701,$04,$04).
+  $B5A0,$05 Call #R$B5A6 with #COLOUR$20.
   $B5A5,$01 Return.
 
 c $B5A6 Fill Attribute Block
@@ -3795,21 +3987,39 @@ N $B5AA Convert the X/ Y co-ordinates to an attribute buffer location.
 
 c $B5BA Quarter Finals
 @ $B5BA label=QuarterFinals
-
+  $B5BA,$0B Copy #REGbc #N($0010,$04,$04) bytes of data from *#R$9B21 to *#R$B179.
+  $B5C5,$0B Copy #REGbc #N($0010,$04,$04) bytes of data from *#R$9B21 to *#R$B605.
+  $B5D0,$03 Call #R$B548.
   $B5D3,$03 Call #R$964C.
 B $B5D6,$02 INK: #INK(#PEEK(#PC+$01)).
 B $B5D8,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $B5DA,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $B5DC,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $B5DF,$0F "#STR#(#PC,$04,$0F)".
+T $B5DF,$0F #FONT#(:(#STR(#PC,$00,$0F)))$8D75,attr=$47(quarter-finals)
 B $B5EE,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B5F1,$02 INK: #INK(#PEEK(#PC+$01)).
-T $B5F3,$0D "#STR#(#PC,$04,$0D)".
+T $B5F3,$0D #FONT#(:(#STR(#PC,$00,$0D)))$8D75,attr=$47(your-opponent)
 B $B600,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B603,$02 INK: #INK(#PEEK(#PC+$01)).
 T $B605,$10 "#STR#(#PC,$04,$10)".
 B $B615,$01 Terminator.
-
+  $B616,$03 #REGhl=*#R$9B21.
+  $B619,$04 #REGhl+=#N($0011,$04,$04).
+  $B61D,$01 #REGc=*#REGhl.
+  $B61E,$01 Increment #REGhl by one.
+  $B61F,$01 #REGb=*#REGhl.
+  $B620,$04 Write #REGbc to *#R$9AAB.
+  $B624,$01 Increment #REGhl by one.
+  $B625,$01 #REGc=*#REGhl.
+  $B626,$01 Increment #REGhl by one.
+  $B627,$01 #REGb=*#REGhl.
+  $B628,$04 Write #REGbc to *#R$9AAE.
+  $B62C,$04 #REGbc=*#R$9AAB.
+  $B630,$03 #REGde=#N$0A10.
+  $B633,$03 Call #R$B742.
+  $B636,$05 Write #N$04 to *#R$9AB4.
+  $B63B,$01 #REGa=#N$00.
+  $B63C,$03 Call #R$CAEB.
   $B63F,$01 Return.
 
 c $B640 Semi Finals
@@ -3833,33 +4043,49 @@ B $B697,$01 Terminator.
 
 c $B6C2 The Final
 @ $B6C2 label=TheFinal
-
+  $B6C2,$0B Copy #N($0010,$04,$04) bytes of data from *#R$B46F to *#R$B179.
+  $B6CD,$0B Copy #N($0010,$04,$04) bytes of data from *#R$B46F to *#R$B707.
+  $B6D8,$03 Call #R$B548.
   $B6DB,$03 Call #R$964C.
 B $B6DE,$02 INK: #INK(#PEEK(#PC+$01)).
 B $B6E0,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $B6E2,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $B6E4,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $B6E7,$09 "#STR#(#PC,$04,$09)".
+T $B6E7,$09 #FONT#(:(#STR(#PC,$04,$09)))$8D75,attr=$47(the-final)
 B $B6F0,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B6F3,$02 INK: #INK(#PEEK(#PC+$01)).
-T $B6F5,$0D "#STR#(#PC,$04,$0D)".
+T $B6F5,$0D #FONT#(:(#STR(#PC,$04,$0D)))$8D75,attr=$47(your-opponent)
 B $B702,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B705,$02 INK: #INK(#PEEK(#PC+$01)).
+@ $B707 label=Messaging_OpponentName
 T $B707,$10 "#STR#(#PC,$04,$10)".
 B $B717,$01 Terminator.
-
+N $B718 The finals are always with Jammy Jim.
+  $B718,$03 #REGhl=#R$B46F.
+  $B71B,$04 Move the pointer by #N($0011,$04,$04) bytes...
+  $B71F,$03 Load the opponents portrait graphic pointer into #REGbc.
+  $B722,$04 Write #REGbc to *#R$9AAB.
+  $B726,$04 Load the opponents pub scene graphic pointer into #REGbc.
+  $B72A,$04 Write #REGbc to *#R$9AAE.
+N $B72E Draw the opponent card to the screen.
+  $B72E,$04 #REGbc=*#R$9AAB.
+  $B732,$03 Set the destination co-ordinates to: #N($0A10,$04,$04).
+  $B735,$03 Call #R$B742.
+  $B738,$05 Write #N$01 to *#R$9AB4.
+  $B73D,$01 Increment #REGa by one.
+  $B73E,$03 Call #R$CAEB.
   $B741,$01 Return.
 
-c $B742 Draw Opponent Image
-@ $B742 label=DrawOpponentImage
+c $B742 Draw Opponent Portrait
+@ $B742 label=Draw_OpponentPortrait
 R $B742 BC Pointer to the opponent graphic
-R $B742 D Destination Y location
-R $B742 E Destination X location
+R $B742 D Destination Y position
+R $B742 E Destination X position
 N $B742 On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $B742,$03 Call #R$A8AE.
   $B745,$02 Copy the opponent pointer to display into #REGde.
   $B747,$02 Set a counter in #REGb for the height of the opponent image.
-@ $B749 label=DrawOpponentImage_Loop
+@ $B749 label=Draw_OpponentPortrait_Loop
   $B749,$02 Stash the height counter and destination pointer on the stack.
   $B74B,$01 Swap the source and destination registers.
   $B74C,$0C Copy #N$06 bytes of data from the source address to the destination.
@@ -3871,21 +4097,25 @@ N $B742 On return from #R$A8AE #REGhl will contain the screen buffer destination
 . the whole image has been displayed.
   $B760,$01 Return.
 
-c $B761
+c $B761 Draw Opponent Pub Scene
+@ $B761 label=Draw_OpponentPubScene
+R $B761 BC Pointer to graphic data
+R $B761 D Destination Y position
+R $B761 E Destination X position
+N $B761 On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $B761,$03 Call #R$A8AE.
-  $B764,$01 #REGd=#REGb.
-  $B765,$01 #REGe=#REGc.
-  $B766,$02 #REGb=#N$18.
-  $B768,$02 Stash #REGbc and #REGhl on the stack.
-  $B76A,$01 Exchange the #REGde and #REGhl registers.
-  $B76B,$02 LDI.
-  $B76D,$02 LDI.
-  $B76F,$02 LDI.
-  $B771,$01 Exchange the #REGde and #REGhl registers.
-  $B772,$01 Restore #REGhl from the stack.
+  $B764,$02 Copy the opponent pointer to display into #REGde.
+  $B766,$02 Set a counter in #REGb for the height of the opponent image.
+@ $B768 label=Draw_OpponentPubScene_Loop
+  $B768,$02 Stash the height counter and destination pointer on the stack.
+  $B76A,$01 Swap the source and destination registers.
+  $B76B,$06 Copy #N$06 bytes of data from the source address to the destination.
+  $B771,$01 Swap the source and destination registers back again.
+  $B772,$01 Restore the original screen position from the stack.
   $B773,$03 Call #R$A8CC.
-  $B776,$01 Restore #REGbc from the stack.
-  $B777,$02 Decrease counter by one and loop back to #R$B768 until counter is zero.
+  $B776,$01 Restore the height counter from the stack.
+  $B777,$02 Decrease the height counter by one and loop back to #R$B768 until
+. the whole image has been displayed.
   $B779,$01 Return.
 
 c $B77A
@@ -3896,6 +4126,7 @@ c $B77A
   $B789,$03 Stash #REGbc, #REGde and #REGde on the stack.
   $B78C,$01 #REGa=#REGe.
   $B78D,$01 Exchange the #REGaf register with the shadow #REGaf register.
+N $B78E On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $B78E,$03 Call #R$A8AE.
   $B791,$01 Restore #REGde from the stack.
   $B792,$01 Stash #REGhl on the stack.
@@ -4143,7 +4374,8 @@ c $B910 Print Throwing Dart Frame
 . the frame has been displayed in full.
   $B92E,$01 Return.
 
-c $B92F
+c $B92F Animation: Dart
+@ $B92F label=Animation_Dart
   $B92F,$02 #REGb=#N$02.
   $B931,$03 #REGde=#R$C71C.
   $B934,$01 #REGa=*#REGhl.
@@ -4193,7 +4425,8 @@ c $B92F
   $B962,$02 Decrease counter by one and loop back to #R$B956 until counter is zero.
   $B964,$01 Return.
 
-c $B965
+c $B965 Animation: Pint
+@ $B965 label=Animation_Pint
   $B965,$02 #REGb=#N$10.
   $B967,$03 #REGde=#R$CA54.
   $B96A,$01 #REGa=*#REGhl.
@@ -4405,13 +4638,49 @@ N $C9F4 Frame #N$05:
 . UDGTABLE#
   $C9F4,$60,$04
 
-b $CA54
+b $CA54 Graphics: Pint
+@ $CA54 label=Graphics_Pint
+N $CA54 #UDGTABLE(default)
+. { #UDGARRAY$01,attr=$47,scale=$04,step=$01($CA54-$CA7B-$01-$08)(pint) }
+. UDGTABLE#
+  $CA54,$28,$01
 
 c $CA7C
 
 w $CAA3
 
 c $CAEB
+  $CAEB,$03 #REGhl=#R$CAA3.
+  $CAEE,$03 #REGde=#N($0018,$04,$04).
+  $CAF1,$01 Set the bits from #REGa.
+  $CAF2,$02 Jump to #R$CAF8 if the result is zero.
+  $CAF4,$01 #REGb=#REGa.
+  $CAF5,$01 #REGhl+=#REGde.
+  $CAF6,$02 Decrease counter by one and loop back to #R$CAF5 until counter is zero.
+  $CAF8,$03 #REGde=#R$B431.
+  $CAFB,$02 #REGb=#N$04.
+  $CAFD,$01 Stash #REGbc on the stack.
+  $CAFE,$01 Exchange the #REGde and #REGhl registers.
+  $CAFF,$01 Write #REGe to *#REGhl.
+  $CB00,$01 Increment #REGhl by one.
+  $CB01,$01 Write #REGd to *#REGhl.
+  $CB02,$01 Increment #REGhl by one.
+  $CB03,$01 Exchange the #REGde and #REGhl registers.
+  $CB04,$04 #REGhl+=#N($0006,$04,$04).
+  $CB08,$01 Restore #REGbc from the stack.
+  $CB09,$02 Decrease counter by one and loop back to #R$CAFD until counter is zero.
+  $CB0B,$01 Exchange the #REGde and #REGhl registers.
+  $CB0C,$02 Decrease #REGde by two.
+  $CB0E,$01 Write #REGe to *#REGhl.
+  $CB0F,$01 Increment #REGhl by one.
+  $CB10,$01 Write #REGd to *#REGhl.
+  $CB11,$01 Return.
+
+c $CB12
+  $CB12,$03 Jump to #R$CB1E.
+  $CB15,$03 Jump to #R$CBF7.
+  $CB18,$03 Jump to #R$CC62.
+  $CB1B,$03 Jump to #R$CBC8.
 
 c $CB1E
   $CB1E,$01 Stash #REGaf on the stack.

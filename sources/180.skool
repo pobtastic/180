@@ -1726,6 +1726,7 @@ c$9305 LD A,E        ; {Return if #REGe is greater than #N$20.
  $9306 CP $20        ;
  $9308 RET NC        ; }
  $9309 PUSH DE       ; Stash #REGde on the stack.
+; On return from #R$A8AE #REGhl will contain the screen buffer destination.
  $930A CALL $A8AE    ; Call #R$A8AE.
  $930D POP DE        ; Restore #REGde from the stack.
  $930E LD A,$20      ; #REGa=#N$20.
@@ -3247,13 +3248,16 @@ g$9AA8 DEFB $00
  $9AA9 DEFB $00
  $9AAA DEFB $00
 
-; Current Opponent
-@label=CurrentOpponent
+; Current Opponent Portrait
+@label=CurrentOpponent_Portrait
 g$9AAB DEFW $0000
 
 ; Data block at 9AAD
 b$9AAD DEFB $00
- $9AAE DEFW $0000
+
+; Current Opponent Pub Scene
+@label=CurrentOpponent_PubScene
+g$9AAE DEFW $0000
 
 ; Player Current Total
 @label=2UP_Total
@@ -3373,7 +3377,10 @@ g$9B1D DEFW $0000
 ; Score?
 @label=Score
 g$9B1F DEFB $00,$00
- $9B21 DEFB $00,$00
+
+; Pointer Current Opponent Data
+@label=Pointer_CurrentOpponentData
+g$9B21 DEFW $0000
 
 ; Game status buffer entry at 9B23
 g$9B23 DEFW $0000
@@ -3389,7 +3396,8 @@ g$9B25 DEFB $00
  $9B2C DEFB $00
  $9B2D DEFB $00
  $9B2E DEFB $00
- $9B2F DEFB $00,$00,$00,$00,$00,$00
+ $9B2F DEFB $00,$00,$00,$00
+ $9B33 DEFB $00,$00
  $9B35 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9B3D DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $9B45 DEFB $00,$00,$00,$00,$00,$00,$00,$00
@@ -3842,8 +3850,8 @@ c$9D42 CALL $CC62       ; Call #R$CC62.
  $9FFB LD A,($AF49)     ; #REGa=*#R$AF49.
  $9FFE ADD A,A          ; #REGa+=#REGa.
  $9FFF LD ($AF49),A     ; Write #REGa to *#R$AF49.
- $A002 LD HL,$9B04      ; #REGhl=#R$9B04.
- $A005 LD (HL),$01      ; Write #N$01 to *#REGhl.
+ $A002 LD HL,$9B04      ; {Write #N$01 to *#R$9B04.
+ $A005 LD (HL),$01      ; }
  $A007 JR $A010         ; Jump to #R$A010.
 *$A009 XOR A            ; {Write #N$00 to; #LIST { *#R$AF49 } { *#R$9B2E }
  $A00A LD ($AF49),A     ; LIST#
@@ -3852,8 +3860,8 @@ c$9D42 CALL $CC62       ; Call #R$CC62.
  $A013 AND A            ; {Jump to #R$A046 if #REGa is equal to #REGa.
  $A014 JR Z,$A046       ; }
  $A016 CALL $A434       ; Call #R$A434.
- $A019 LD A,($9B2E)     ; #REGa=*#R$9B2E.
- $A01C LD B,A           ; #REGb=#REGa.
+ $A019 LD A,($9B2E)     ; {#REGb=*#R$9B2E
+ $A01C LD B,A           ; }
  $A01D LD A,($9B2D)     ; #REGa=*#R$9B2D.
  $A020 CP B             ; {Jump to #R$A0B9 if #REGa is not equal to #REGb.
  $A021 JP NZ,$A0B9      ; }
@@ -3895,8 +3903,8 @@ c$9D42 CALL $CC62       ; Call #R$CC62.
  $A080 AND A            ;
  $A081 JP NZ,$A087      ; }
  $A084 JP $A0D6         ; Jump to #R$A0D6.
-*$A087 LD HL,$9B06      ; #REGhl=#R$9B06.
- $A08A LD (HL),$01      ; Write #N$01 to *#REGhl.
+*$A087 LD HL,$9B06      ; {Write #N$01 to *#R$9B06.
+ $A08A LD (HL),$01      ; }
  $A08C JP $A103         ; Jump to #R$A103.
 *$A08F LD A,L           ; #REGa=#REGl.
  $A090 DEC A            ; Decrease #REGa by one.
@@ -3932,57 +3940,58 @@ c$9D42 CALL $CC62       ; Call #R$CC62.
  $A0D9 DEFB $16,$0A,$01 ; PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
  $A0DC DEFM "BUST[["    ; #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(bust)
  $A0E2 DEFB $FF         ; Terminator.
- $A0E3 LD HL,$9AA8      ;
- $A0E6 INC (HL)         ;
- $A0E7 LD HL,($9B33)    ;
- $A0EA LD A,($9AB7)     ;
+ $A0E3 LD HL,$9AA8      ; #REGhl=#R$9AA8.
+ $A0E6 INC (HL)         ; Increment *#REGhl by one.
+ $A0E7 LD HL,($9B33)    ; #REGhl=*#R$9B33.
+ $A0EA LD A,($9AB7)     ; {Jump to #R$A100 if *#R$9AB7 is zero.
  $A0ED AND A            ;
- $A0EE JR Z,$A100       ;
- $A0F0 LD A,($9AB8)     ;
+ $A0EE JR Z,$A100       ; }
+ $A0F0 LD A,($9AB8)     ; {Jump to #R$A0FB if *#R$9AB8 is zero.
  $A0F3 AND A            ;
- $A0F4 JR Z,$A0FB       ;
- $A0F6 LD ($9AB0),HL    ;
- $A0F9 JR $A103         ;
-*$A0FB LD ($9AB2),HL    ;
- $A0FE JR $A103         ;
-*$A100 LD ($9B1F),HL    ;
-*$A103 LD HL,$0810      ;
- $A106 LD ($9AC3),HL    ;
- $A109 LD A,($9AB7)     ;
+ $A0F4 JR Z,$A0FB       ; }
+ $A0F6 LD ($9AB0),HL    ; Write #REGhl to *#R$9AB0.
+ $A0F9 JR $A103         ; Jump to #R$A103.
+*$A0FB LD ($9AB2),HL    ; Write #REGhl to *#R$9AB2.
+ $A0FE JR $A103         ; Jump to #R$A103.
+*$A100 LD ($9B1F),HL    ; Write #REGhl to *#R$9B1F.
+*$A103 LD HL,$0810      ; {Write #N$0810 to *#R$9AC3.
+ $A106 LD ($9AC3),HL    ; }
+ $A109 LD A,($9AB7)     ; {Jump to #R$A11F if *#R$9AB7 is zero.
  $A10C AND A            ;
- $A10D JR Z,$A11F       ;
- $A10F LD A,($9AB8)     ;
+ $A10D JR Z,$A11F       ; }
+ $A10F LD A,($9AB8)     ; {Jump to #R$A11A if *#R$9AB8 is zero.
  $A112 AND A            ;
- $A113 JR Z,$A11A       ;
- $A115 LD HL,($9AB0)    ;
- $A118 JR $A122         ;
-*$A11A LD HL,($9AB2)    ;
- $A11D JR $A122         ;
-*$A11F LD HL,($9B1F)    ;
-*$A122 LD ($AF49),HL    ;
- $A125 LD HL,$0C01      ;
- $A128 LD ($AF5D),HL    ;
- $A12B CALL $AE17       ;
- $A12E LD A,($9AAD)     ;
+ $A113 JR Z,$A11A       ; }
+ $A115 LD HL,($9AB0)    ; #REGhl=*#R$9AB0.
+ $A118 JR $A122         ; Jump to #R$A122.
+*$A11A LD HL,($9AB2)    ; #REGhl=*#R$9AB2.
+ $A11D JR $A122         ; Jump to #R$A122.
+*$A11F LD HL,($9B1F)    ; {Write *#R$9B1F to *#R$AF49.
+*$A122 LD ($AF49),HL    ; }
+ $A125 LD HL,$0C01      ; {Write #N$0C01to *#R$AF5D.
+ $A128 LD ($AF5D),HL    ; }
+ $A12B CALL $AE17       ; Call #R$AE17.
+ $A12E LD A,($9AAD)     ; {Jump to #R$A13E if *#R$9AAD is not equal to #N$B4.
  $A131 CP $B4           ;
- $A133 JR NZ,$A13E      ;
- $A135 LD A,($9AA8)     ;
+ $A133 JR NZ,$A13E      ; }
+ $A135 LD A,($9AA8)     ; {Jump to #R$A13E if *#R$9AA8 is not zero.
  $A138 AND A            ;
- $A139 JR NZ,$A13E      ;
- $A13B CALL $CA7C       ;
-*$A13E XOR A            ;
- $A13F LD ($9AAD),A     ;
- $A142 LD ($9AA8),A     ;
- $A145 LD A,($9B06)     ;
+ $A139 JR NZ,$A13E      ; }
+ $A13B CALL $CA7C       ; Call #R$CA7C.
+*$A13E XOR A            ; {Write #N$00 to; #LIST
+ $A13F LD ($9AAD),A     ; { *#R$9AAD }
+ $A142 LD ($9AA8),A     ; { *#R$9AA8 }
+                        ; LIST#}
+ $A145 LD A,($9B06)     ; {Jump to #R$A165 if *#R$9B06 is not zero.
  $A148 AND A            ;
- $A149 JR NZ,$A165      ;
- $A14B CALL $AE04       ;
- $A14E LD A,($9AB7)     ;
+ $A149 JR NZ,$A165      ; }
+ $A14B CALL $AE04       ; Call #R$AE04.
+ $A14E LD A,($9AB7)     ; {Jump to #R$A15C if *#R$9AB7 is zero.
  $A151 AND A            ;
- $A152 JR Z,$A15C       ;
- $A154 CALL $AAA8       ;
- $A157 CALL $A7F8       ;
- $A15A JR $A165         ;
+ $A152 JR Z,$A15C       ; }
+ $A154 CALL $AAA8       ; Call #R$AAA8.
+ $A157 CALL $A7F8       ; Call #R$A7F8.
+ $A15A JR $A165         ; Jump to #R$A165.
 
 ; Messaging: You Win!
 ;
@@ -4891,6 +4900,7 @@ c$A6E6 LD DE,($9AC3) ; #REGde=*#R$9AC3.
 *$A714 PUSH HL       ; Stash #REGhl on the stack.
  $A715 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
                      ; register.
+; On return from #R$A8AE #REGhl will contain the screen buffer destination.
  $A716 CALL $A8AE    ; Call #R$A8AE.
  $A719 EX AF,AF'     ; Exchange the shadow #REGaf register with the #REGaf
                      ; register.
@@ -4946,6 +4956,7 @@ c$A73A LD DE,($9AC5) ; #REGde=*#R$9AC5.
                      ; counter is zero.
  $A75C RET           ; Return.
 *$A75D PUSH HL       ; Stash #REGhl on the stack.
+; On return from #R$A8AE #REGhl will contain the screen buffer destination.
  $A75E CALL $A8AE    ; Call #R$A8AE.
  $A761 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
  $A762 POP HL        ; Restore #REGhl from the stack.
@@ -5413,6 +5424,7 @@ c$A9C2 LD DE,$0101   ; #REGde=#N$0101.
  $A9C5 LD B,$16      ; #REGb=#N$16.
 *$A9C7 PUSH DE       ; {Stash #REGde and #REGbc on the stack.
  $A9C8 PUSH BC       ; }
+; On return from #R$A8AE #REGhl will contain the screen buffer destination.
  $A9C9 CALL $A8AE    ; Call #R$A8AE.
  $A9CC LD B,$08      ; #REGb=#N$08.
 *$A9CE PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
@@ -5487,10 +5499,10 @@ c$AA0A XOR A            ; {Write #N$00 to; #LIST
  $AA54 CALL $AE04       ; Call #R$AE04.
  $AA57 JP $AADC         ; Jump to #R$AADC.
 
-; Next Leg
+; Handler: Match
 ;
 ; Used by the routine at #R$A15C.
-@label=NextLeg
+@label=Handler_Match
 c$AA5A LD HL,$9AA6   ; #REGhl=#R$9AA6.
  $AA5D INC (HL)      ; Increment *#REGhl by one.
  $AA5E LD A,(HL)     ; {Jump to #R$AADC if *#REGhl is not equal to #N$02.
@@ -5507,24 +5519,25 @@ c$AA5A LD HL,$9AA6   ; #REGhl=#R$9AA6.
  $AA75 CALL $AE04    ; }
  $AA78 JP $AADC      ; Jump to #R$AADC.
 
-; Routine at AA7B
+; Handler: Semi Final
 ;
 ; Used by the routine at #R$A15C.
-c$AA7B LD HL,$9AA6   ;
- $AA7E INC (HL)      ;
- $AA7F LD A,(HL)     ;
+@label=Handler_SemiFinal
+c$AA7B LD HL,$9AA6   ; #REGhl=#R$9AA6.
+ $AA7E INC (HL)      ; Increment *#REGhl by one.
+ $AA7F LD A,(HL)     ; {Jump to #R$AADC if *#REGhl is not equal to #N$02.
  $AA80 CP $02        ;
- $AA82 JR NZ,$AADC   ;
- $AA84 XOR A         ;
+ $AA82 JR NZ,$AADC   ; }
+ $AA84 XOR A         ; {Write #N$00 to *#R$9AA6 and *#R$9AA7.
  $AA85 LD (HL),A     ;
  $AA86 LD HL,$9AA7   ;
- $AA89 LD (HL),A     ;
- $AA8A CALL $A7A5    ;
- $AA8D CALL $B6C2    ;
- $AA90 CALL $AE04    ;
- $AA93 CALL $AE04    ;
- $AA96 CALL $AE04    ;
- $AA99 JR $AADC      ;
+ $AA89 LD (HL),A     ; }
+ $AA8A CALL $A7A5    ; Call #R$A7A5.
+ $AA8D CALL $B6C2    ; Call #R$B6C2.
+ $AA90 CALL $AE04    ; Call #R$AE04.
+ $AA93 CALL $AE04    ; Call #R$AE04.
+ $AA96 CALL $AE04    ; Call #R$AE04.
+ $AA99 JR $AADC      ; Jump to #R$AADC.
 
 ; Two Player Game
 ;
@@ -5607,10 +5620,10 @@ c$AADC XOR A         ; #REGa=#N$00.
  $AB28 LD ($B40A),HL ; }
  $AB2B JP $9D42      ; Jump to #R$9D42.
 
-; Messaging: Dart Number
+; Animation: Opponent Throwing
 ;
 ; Used by the routine at #R$A15C.
-@label=Messaging_DartNumber
+@label=Animation_OpponentThrowing
 c$AB2E LD HL,$DD00      ; {Copy #N$1B00 bytes of data from *#R$DD00 to #R$4000.
  $AB31 LD DE,$4000      ;
  $AB34 LD BC,$1B00      ;
@@ -5726,9 +5739,10 @@ c$AC3D CALL $964C       ; Call #R$964C.
  $AC50 DEFB $FF         ; Terminator.
  $AC51 RET              ; Return.
 
-; Routine at AC52
+; Clear Messaging Area
 ;
 ; Used by the routines at #R$AB2E, #R$AD3B and #R$B16B.
+@label=ClearMessagingArea
 c$AC52 CALL $964C                              ; Call #R$964C.
  $AC55 DEFB $16,$16,$00                        ; PRINT AT: #N(#PEEK(#PC+$01)),
                                                ; #N(#PEEK(#PC+$02)).
@@ -6019,6 +6033,7 @@ c$AE6E PUSH HL       ; {Stash #REGhl, #REGbc and #REGde on the stack.
  $AE7A LD A,(IX+$00) ; #REGa=*#REGix+#N$00.
  $AE7D CALL $AEAF    ; Call #R$AEAF.
  $AE80 LD DE,($AF5D) ; #REGde=*#R$AF5D.
+; On return from #R$A8AE #REGhl will contain the screen buffer destination.
  $AE84 CALL $A8AE    ; Call #R$A8AE.
  $AE87 LD A,(IX+$01) ; #REGa=*#REGix+#N$01.
  $AE8A INC IX        ; {Increment #REGix by two.
@@ -6432,59 +6447,82 @@ c$AFB5 XOR A         ; {Write #N$00 to *#R$B417.
  $B167 LD ($AD75),A  ; }
  $B16A RET           ; Return.
 
-; Routine at B16B
+; Handler: Opponent Wins
 ;
 ; Used by the routine at #R$AB2E.
-c$B16B POP HL                        ;
- $B16C XOR A                         ;
- $B16D LD ($B412),A                  ;
- $B170 CALL $AC52                    ;
+@label=Handler_OpponentWins
+c$B16B POP HL                        ; Restore #REGhl from the stack.
+ $B16C XOR A                         ; {Write #N$00 to *#R$B412.
+ $B16D LD ($B412),A                  ; }
+ $B170 CALL $AC52                    ; Call #R$AC52.
  $B173 CALL $964C                    ; Call #R$964C.
  $B176 DEFB $16,$16,$02              ; PRINT AT: #N(#PEEK(#PC+$01)),
                                      ; #N(#PEEK(#PC+$02)).
- $B179 DEFM "                 WINS[" ; "#STR#(#PC,$04,$16)".
+@label=Messaging_OpponentName_Wins
+ $B179 DEFM "                 WINS[" ; #FONT#(:(#STR(#PC,$00,$16)))$8D75,attr=$47(wins)
  $B18F DEFB $16,$17,$02              ; PRINT AT: #N(#PEEK(#PC+$01)),
                                      ; #N(#PEEK(#PC+$02)).
- $B192 DEFM "   HARD LUCK[[  "       ; "#STR#(#PC,$04,$10)".
+ $B192 DEFM "   HARD LUCK[[  "       ; #FONT#(:(#STR(#PC,$00,$10)))$8D75,attr=$47(hard-luck)
  $B1A2 DEFB $FF                      ; Terminator.
- $B1A3 CALL $AE04                    ;
- $B1A6 LD HL,$9AA7                   ;
- $B1A9 INC (HL)                      ;
- $B1AA LD A,(HL)                     ;
- $B1AB CP $02                        ;
- $B1AD JP NZ,$AADC                   ;
- $B1B0 XOR A                         ;
- $B1B1 LD (HL),A                     ;
- $B1B2 LD A,($9AB4)                  ;
- $B1B5 CP $01                        ;
- $B1B7 JR Z,$B1C1                    ;
- $B1B9 CP $02                        ;
- $B1BB JR Z,$B1D2                    ;
- $B1BD CP $04                        ;
- $B1BF JR Z,$B1E3                    ;
-*$B1C1 LD A,($9AA9)                  ;
- $B1C4 CP $0D                        ;
- $B1C6 JR NC,$B1CD                   ;
- $B1C8 LD HL,$B28A                   ;
- $B1CB JR $B1F2                      ;
-*$B1CD LD HL,$B278                   ;
- $B1D0 JR $B1F2                      ;
-*$B1D2 LD A,($9AA9)                  ;
- $B1D5 CP $0D                        ;
- $B1D7 JR NC,$B1DE                   ;
- $B1D9 LD HL,$B266                   ;
- $B1DC JR $B1F2                      ;
-*$B1DE LD HL,$B254                   ;
- $B1E1 JR $B1F2                      ;
-*$B1E3 LD A,($9AA9)                  ;
- $B1E6 CP $0D                        ;
- $B1E8 JR NC,$B1EF                   ;
- $B1EA LD HL,$B242                   ;
- $B1ED JR $B1F2                      ;
-*$B1EF LD HL,$B230                   ;
-*$B1F2 LD DE,$B217                   ;
+ $B1A3 CALL $AE04                    ; Call #R$AE04.
+ $B1A6 LD HL,$9AA7                   ; #REGhl=#R$9AA7.
+ $B1A9 INC (HL)                      ; Increment *#REGhl by one.
+ $B1AA LD A,(HL)                     ; {Jump to #R$AADC if *#REGhl is not equal
+ $B1AB CP $02                        ; to #N$02.
+ $B1AD JP NZ,$AADC                   ; }
+ $B1B0 XOR A                         ; {Write #N$00 to *#REGhl.
+ $B1B1 LD (HL),A                     ; }
+; Handle displaying the players rating.
+ $B1B2 LD A,($9AB4)                  ; #REGa=*#R$9AB4.
+ $B1B5 CP $01                        ; {Jump to #R$B1C1 if #REGa is equal to
+ $B1B7 JR Z,$B1C1                    ; #N$01.}
+ $B1B9 CP $02                        ; {Jump to #R$B1D2 if #REGa is equal to
+ $B1BB JR Z,$B1D2                    ; #N$02.}
+ $B1BD CP $04                        ; {Jump to #R$B1E3 if #REGa is equal to
+ $B1BF JR Z,$B1E3                    ; #N$04.}
+; Check if the players rating is "#STR$B278,$08($b==$5B)".
+@label=CheckRating_MegaPlayer
+*$B1C1 LD A,($9AA9)                  ; {Jump to #R$B1CD if *#R$9AA9 is greater
+ $B1C4 CP $0D                        ; than or equal to #N$0D.
+ $B1C6 JR NC,$B1CD                   ; }
+; Sets the rating: "#STR$B28A,$08($b==$5B)".
+@label=SetRating_AsRedHot
+ $B1C8 LD HL,$B28A                   ; #REGhl=#R$B28A.
+ $B1CB JR $B1F2                      ; Jump to #R$B1F2.
+; Sets the rating: "#STR$B278,$08($b==$5B)".
+@label=SetRating_AsAMegaPlayer
+*$B1CD LD HL,$B278                   ; #REGhl=#R$B278.
+ $B1D0 JR $B1F2                      ; Jump to #R$B1F2.
+; Check if the players rating is "#STR$B254,$08($b==$5B)".
+@label=CheckRating_Amateur
+*$B1D2 LD A,($9AA9)                  ; {Jump to #R$B1DE if *#R$9AA9 is greater
+ $B1D5 CP $0D                        ; than or equal to #N$0D.
+ $B1D7 JR NC,$B1DE                   ; }
+; Sets the rating: "#STR$B266,$08($b==$5B)".
+@label=SetRating_AsANovice
+ $B1D9 LD HL,$B266                   ; #REGhl=#R$B266.
+ $B1DC JR $B1F2                      ; Jump to #R$B1F2.
+; Sets the rating: "#STR$B254,$08($b==$5B)".
+@label=SetRating_AsAnAmateur
+*$B1DE LD HL,$B254                   ; #REGhl=#R$B254.
+ $B1E1 JR $B1F2                      ; Jump to #R$B1F2.
+; Check if the players rating is "#STR$B230,$08($b==$5B)".
+@label=CheckRating_Wally
+*$B1E3 LD A,($9AA9)                  ; {Jump to #R$B1EF if *#R$9AA9 is greater
+ $B1E6 CP $0D                        ; than or equal to #N$0D.
+ $B1E8 JR NC,$B1EF                   ; }
+; Sets the rating: "#STR$B242,$08($b==$5B)".
+@label=SetRating_AsADipstick
+ $B1EA LD HL,$B242                   ; #REGhl=#R$B242.
+ $B1ED JR $B1F2                      ; Jump to #R$B1F2.
+; Sets the rating: "#STR$B230,$08($b==$5B)".
+@label=SetRating_AsAWally
+*$B1EF LD HL,$B230                   ; {Copy #N($0012,$04,$04) bytes of data
+@label=CopyToRatingString
+*$B1F2 LD DE,$B217                   ; from *#R$B230 to *#R$B217.
  $B1F5 LD BC,$0012                   ;
- $B1F8 LDIR                          ;
+ $B1F8 LDIR                          ; }
+; Print the rating messaging:
  $B1FA CALL $964C                    ; Call #R$964C.
  $B1FD DEFB $16,$0A,$0A              ; PRINT AT: #N(#PEEK(#PC+$01)),
                                      ; #N(#PEEK(#PC+$02)).
@@ -6493,157 +6531,118 @@ c$B16B POP HL                        ;
  $B204 DEFB $12,$01                  ; FLASH:
                                      ; #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
  $B206 DEFB $00                      ;
- $B207 DEFM "YOU ARE RATED"          ; "#STR#(#PC,$04,$0D)".
+ $B207 DEFM "YOU ARE RATED"          ; #FONT#(:(#STR(#PC,$04,$0D)))$8D75,attr=$47(you-are-rated)
  $B214 DEFB $16,$0C,$0A              ; PRINT AT: #N(#PEEK(#PC+$01)),
                                      ; #N(#PEEK(#PC+$02)).
+; See #R$B230 for the ratings.
+@label=Messaging_Rating
  $B217 DEFM "                  "     ; "#STR#(#PC,$04,$12)".
  $B229 DEFB $FF                      ; Terminator.
  $B22A CALL $AE04                    ; Call #R$AE04.
  $B22D JP $933F                      ; Jump to #R$933F.
 
-; Data block at B230
-w$B230 DEFW $5341
- $B232 DEFW $4120
- $B234 DEFW $5720
- $B236 DEFW $4C41
- $B238 DEFW $594C
- $B23A DEFW $5B5B
- $B23C DEFW $2020
- $B23E DEFW $2020
- $B240 DEFW $2020
- $B242 DEFW $5341
- $B244 DEFW $4120
- $B246 DEFW $4420
- $B248 DEFW $5049
- $B24A DEFW $5453
- $B24C DEFW $4349
- $B24E DEFW $5B4B
- $B250 DEFW $205B
- $B252 DEFW $2020
- $B254 DEFW $5341
- $B256 DEFW $4120
- $B258 DEFW $204E
- $B25A DEFW $4D41
- $B25C DEFW $5441
- $B25E DEFW $5545
- $B260 DEFW $5B52
- $B262 DEFW $205B
- $B264 DEFW $2020
- $B266 DEFW $5341
- $B268 DEFW $4120
- $B26A DEFW $4E20
- $B26C DEFW $564F
- $B26E DEFW $4349
- $B270 DEFW $5B45
- $B272 DEFW $205B
- $B274 DEFW $2020
- $B276 DEFW $2020
- $B278 DEFW $5341
- $B27A DEFW $4120
- $B27C DEFW $4D20
- $B27E DEFW $4745
- $B280 DEFW $2041
- $B282 DEFW $4C50
- $B284 DEFW $5941
- $B286 DEFW $5245
- $B288 DEFW $5B5B
- $B28A DEFW $5341
- $B28C DEFW $5220
- $B28E DEFW $4445
- $B290 DEFW $4820
- $B292 DEFW $544F
- $B294 DEFW $5B5B
- $B296 DEFW $2020
- $B298 DEFW $2020
- $B29A DEFW $2020
+; Messaging: Ratings
+@label=Messaging_AsAWally
+t$B230 DEFM "AS A WALLY[[      " ; #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-wally)
+@label=Messaging_AsADipstick
+ $B242 DEFM "AS A DIPSTICK[[   " ; #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-dipstick)
+@label=Messaging_AsAnAmateur
+ $B254 DEFM "AS AN AMATEUR[[   " ; #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-an-amateur)
+@label=Messaging_AsANovice
+ $B266 DEFM "AS A NOVICE[[     " ; #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-novice)
+@label=Messaging_AsAMegaPlayer
+ $B278 DEFM "AS A MEGA PLAYER[[" ; #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-mega-player)
+@label=Messaging_AsRedHot
+ $B28A DEFM "AS RED HOT[[      " ; #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-red-hot)
 
 ; Routine at B29C
 ;
 ; Used by the routine at #R$AFB5.
-c$B29C PUSH HL       ;
- $B29D LD D,A        ;
- $B29E SRL C         ;
- $B2A0 JR NC,$B2AC   ;
- $B2A2 LD ($B410),A  ;
- $B2A5 LD A,$54      ;
- $B2A7 LD ($B418),A  ;
- $B2AA JR $B2B4      ;
-*$B2AC LD ($B410),A  ;
- $B2AF LD A,$53      ;
- $B2B1 LD ($B418),A  ;
-*$B2B4 LD A,D        ;
- $B2B5 CALL $B402    ;
- $B2B8 LD DE,$00C8   ;
- $B2BB CALL $A875    ;
- $B2BE CP (IX+$00)   ;
- $B2C1 JR NC,$B2CE   ;
- $B2C3 LD A,$53      ;
- $B2C5 LD ($B419),A  ;
- $B2C8 LD A,(HL)     ;
- $B2C9 LD ($B411),A  ;
- $B2CC JR $B337      ;
-*$B2CE CP (IX+$01)   ;
- $B2D1 JR NC,$B2E1   ;
- $B2D3 LD A,$54      ;
- $B2D5 LD ($B419),A  ;
- $B2D8 LD A,(HL)     ;
- $B2D9 LD ($B411),A  ;
- $B2DC LD C,A        ;
- $B2DD ADD A,A       ;
- $B2DE ADD A,C       ;
- $B2DF JR $B337      ;
-*$B2E1 CP (IX+$02)   ;
- $B2E4 JR NC,$B2F2   ;
- $B2E6 LD A,$53      ;
- $B2E8 LD ($B419),A  ;
- $B2EB DEC HL        ;
- $B2EC LD A,(HL)     ;
- $B2ED LD ($B411),A  ;
- $B2F0 JR $B337      ;
-*$B2F2 CP (IX+$03)   ;
- $B2F5 JR NC,$B306   ;
- $B2F7 LD A,$54      ;
- $B2F9 LD ($B419),A  ;
- $B2FC DEC HL        ;
- $B2FD LD A,(HL)     ;
- $B2FE LD ($B411),A  ;
- $B301 LD C,A        ;
- $B302 ADD A,A       ;
- $B303 ADD A,C       ;
- $B304 JR $B337      ;
-*$B306 CP (IX+$04)   ;
- $B309 JR NC,$B317   ;
- $B30B LD A,$53      ;
- $B30D LD ($B419),A  ;
- $B310 INC HL        ;
- $B311 LD A,(HL)     ;
- $B312 LD ($B411),A  ;
- $B315 JR $B337      ;
-*$B317 CP (IX+$05)   ;
- $B31A JR NC,$B32B   ;
- $B31C LD A,$54      ;
- $B31E LD ($B419),A  ;
- $B321 INC HL        ;
- $B322 LD A,(HL)     ;
- $B323 LD ($B411),A  ;
- $B326 LD C,A        ;
- $B327 ADD A,A       ;
- $B328 ADD A,C       ;
- $B329 JR $B337      ;
-*$B32B LD A,(HL)     ;
- $B32C LD D,A        ;
- $B32D LD A,$44      ;
- $B32F LD ($B419),A  ;
- $B332 LD A,D        ;
- $B333 LD ($B411),A  ;
- $B336 ADD A,A       ;
-*$B337 POP HL        ;
- $B338 LD D,$00      ;
- $B33A LD E,A        ;
- $B33B AND A         ;
- $B33C SBC HL,DE     ;
- $B33E LD ($B40C),A  ;
- $B341 RET           ;
+c$B29C PUSH HL       ; Stash #REGhl on the stack.
+ $B29D LD D,A        ; #REGd=#REGa.
+ $B29E SRL C         ; Shift #REGc right.
+ $B2A0 JR NC,$B2AC   ; Jump to #R$B2AC if the result is greater than or equal
+                     ; to #N$00.
+ $B2A2 LD ($B410),A  ; Write #REGa to *#R$B410.
+ $B2A5 LD A,$54      ; {Write #N$54 to *#R$B418.
+ $B2A7 LD ($B418),A  ; }
+ $B2AA JR $B2B4      ; Jump to #R$B2B4.
+*$B2AC LD ($B410),A  ; Write #REGa to *#R$B410.
+ $B2AF LD A,$53      ; {Write #N$53 to *#R$B418.
+ $B2B1 LD ($B418),A  ; }
+*$B2B4 LD A,D        ; #REGa=#REGd.
+ $B2B5 CALL $B402    ; Call #R$B402.
+ $B2B8 LD DE,$00C8   ; #REGde=#N($00C8,$04,$04).
+ $B2BB CALL $A875    ; Call #R$A875.
+ $B2BE CP (IX+$00)   ; {Jump to #R$B2CE if *#REGix+#N$00 is greater than or
+ $B2C1 JR NC,$B2CE   ; equal to #N$53.}
+ $B2C3 LD A,$53      ; {Write #N$53 to *#R$B419.
+ $B2C5 LD ($B419),A  ; }
+ $B2C8 LD A,(HL)     ; {Write *#REGhl to *#R$B411.
+ $B2C9 LD ($B411),A  ; }
+ $B2CC JR $B337      ; Jump to #R$B337.
+*$B2CE CP (IX+$01)   ; {Jump to #R$B2E1 if *#REGix+#N$01 is greater than or
+ $B2D1 JR NC,$B2E1   ; equal to #N$53.}
+ $B2D3 LD A,$54      ; {Write #N$54 to *#R$B419.
+ $B2D5 LD ($B419),A  ; }
+ $B2D8 LD A,(HL)     ; {Write *#REGhl to *#R$B411.
+ $B2D9 LD ($B411),A  ; }
+ $B2DC LD C,A        ; #REGc=#REGa.
+ $B2DD ADD A,A       ; #REGa+=#REGa.
+ $B2DE ADD A,C       ; #REGa+=#REGc.
+ $B2DF JR $B337      ; Jump to #R$B337.
+*$B2E1 CP (IX+$02)   ; { Jump to #R$B2F2 if *#REGix+#N$02 is greater than or
+ $B2E4 JR NC,$B2F2   ; equal to #N$54.}
+ $B2E6 LD A,$53      ; {Write #N$53 to *#R$B419.
+ $B2E8 LD ($B419),A  ; }
+ $B2EB DEC HL        ; Decrease #REGhl by one.
+ $B2EC LD A,(HL)     ; {Write *#REGhl to *#R$B411.
+ $B2ED LD ($B411),A  ; }
+ $B2F0 JR $B337      ; Jump to #R$B337.
+*$B2F2 CP (IX+$03)   ; {Jump to #R$B306 if *#REGix+#N$03 is greater than or
+ $B2F5 JR NC,$B306   ; equal to #N$53.}
+ $B2F7 LD A,$54      ; {Write #N$54 to *#R$B419.
+ $B2F9 LD ($B419),A  ; }
+ $B2FC DEC HL        ; Decrease #REGhl by one.
+ $B2FD LD A,(HL)     ; {Write *#REGhl to *#R$B411.
+ $B2FE LD ($B411),A  ; }
+ $B301 LD C,A        ; #REGc=#REGa.
+ $B302 ADD A,A       ; #REGa+=#REGa.
+ $B303 ADD A,C       ; #REGa+=#REGc.
+ $B304 JR $B337      ; Jump to #R$B337.
+*$B306 CP (IX+$04)   ; {Jump to #R$B317 if *#REGix+#N$04 is greater than or
+ $B309 JR NC,$B317   ; equal to #N$54.}
+ $B30B LD A,$53      ; {Write #N$53 to *#R$B419.
+ $B30D LD ($B419),A  ; }
+ $B310 INC HL        ; Increment #REGhl by one.
+ $B311 LD A,(HL)     ; {Write *#REGhl to *#R$B411.
+ $B312 LD ($B411),A  ; }
+ $B315 JR $B337      ; Jump to #R$B337.
+*$B317 CP (IX+$05)   ; {Jump to #R$B32B if *#REGix+#N$05 is greater than or
+ $B31A JR NC,$B32B   ; equal to #N$53.}
+ $B31C LD A,$54      ; {Write #N$54 to *#R$B419.
+ $B31E LD ($B419),A  ; }
+ $B321 INC HL        ; Increment #REGhl by one.
+ $B322 LD A,(HL)     ; #REGa=*#REGhl.
+ $B323 LD ($B411),A  ; Write #REGa to *#R$B411.
+ $B326 LD C,A        ; #REGc=#REGa.
+ $B327 ADD A,A       ; #REGa+=#REGa.
+ $B328 ADD A,C       ; #REGa+=#REGc.
+ $B329 JR $B337      ; Jump to #R$B337.
+*$B32B LD A,(HL)     ; {#REGd=*#REGhl.
+ $B32C LD D,A        ; }
+ $B32D LD A,$44      ; {Write #N$44 to *#R$B419.
+ $B32F LD ($B419),A  ; }
+ $B332 LD A,D        ; {Write #REGd to *#R$B411.
+ $B333 LD ($B411),A  ; }
+ $B336 ADD A,A       ; #REGa+=#REGa.
+*$B337 POP HL        ; Restore #REGhl from the stack.
+ $B338 LD D,$00      ; #REGd=#N$00.
+ $B33A LD E,A        ; #REGe=#REGa.
+ $B33B AND A         ; Set flags.
+ $B33C SBC HL,DE     ; #REGhl-=#REGde (with carry).
+ $B33E LD ($B40C),A  ; Write #REGa to *#R$B40C.
+ $B341 RET           ; Return.
 
 ; Routine at B342
 ;
@@ -6891,21 +6890,28 @@ b$B46F DEFM "   JAMMY JIM    "
  $B513 DEFW $C2B4
  $B515 DEFW $C5FC
 
-; Routine at B517
+; Initialise Opponent
 ;
 ; Used by the routine at #R$AA0A.
+;
+; A Opponent number
+@label=InitialiseOpponent
 c$B517 LD E,$06      ; #REGe=#N$06.
  $B519 CALL $A875    ; Call #R$A875.
  $B51C LD HL,$B484   ; #REGhl=#R$B484.
- $B51F LD DE,$0015   ; #REGde=#N($0015,$04,$04).
- $B522 LD C,A        ; #REGc=#REGa.
- $B523 AND A         ; Set flags.
- $B524 LD B,A        ; #REGb=#REGa.
- $B525 JR Z,$B52A    ; Jump to #R$B52A if #REGa is zero.
-*$B527 ADD HL,DE     ; #REGhl+=#REGde.
- $B528 DJNZ $B527    ; Decrease counter by one and loop back to #R$B527 until
-                     ; counter is zero.
-*$B52A LD ($9B21),HL ; Write #REGhl to *#R$9B21.
+ $B51F LD DE,$0015   ; Set the length of the opponent data in #REGde (#N($0015,$04,$04)
+                     ; bytes).
+ $B522 LD C,A        ; #REGc=the opponent ID.
+ $B523 AND A         ; {Set a counter in #REGb of the opponent ID.
+ $B524 LD B,A        ; }
+ $B525 JR Z,$B52A    ; Jump to #R$B52A if the opponent counter is zero.
+@label=FindOpponentData_Loop
+*$B527 ADD HL,DE     ; Move #REGhl to the next opponent data block.
+ $B528 DJNZ $B527    ; Decrease the opponent counter by one and loop back to #R$B527 until
+                     ; the counter is zero.
+; #REGhl now points to the opponent data block.
+@label=FoundOpponentData
+*$B52A LD ($9B21),HL ; Write the opponent data pointer to *#R$9B21.
 *$B52D PUSH BC       ; Stash #REGbc on the stack.
  $B52E LD E,$06      ; #REGe=#N$06.
  $B530 CALL $A875    ; Call #R$A875.
@@ -6913,19 +6919,24 @@ c$B517 LD E,$06      ; #REGe=#N$06.
  $B534 CP C          ; {Jump to #R$B52D if #REGa is equal to #REGc.
  $B535 JR Z,$B52D    ; }
  $B537 LD HL,$B484   ; #REGhl=#R$B484.
- $B53A LD DE,$0015   ; #REGde=#N($0015,$04,$04).
- $B53D AND A         ; Set flags.
- $B53E LD B,A        ; #REGb=#REGa.
- $B53F JR Z,$B544    ; Jump to #R$B544 if #REGa is zero.
-*$B541 ADD HL,DE     ; #REGhl+=#REGde.
- $B542 DJNZ $B541    ; Decrease counter by one and loop back to #R$B541 until
-                     ; counter is zero.
+ $B53A LD DE,$0015   ; Set the length of the opponent data in #REGde (#N($0015,$04,$04)
+                     ; bytes).
+ $B53D AND A         ; {Set a counter in #REGb of the opponent ID.
+ $B53E LD B,A        ; }
+ $B53F JR Z,$B544    ; Jump to #R$B544 if the opponent counter is zero.
+*$B541 ADD HL,DE     ; Move #REGhl to the next opponent data block.
+ $B542 DJNZ $B541    ; Decrease the opponent counter by one and loop back to #R$B541 until
+                     ; the counter is zero.
 *$B544 LD ($9B23),HL ; Write #REGhl to *#R$9B23.
  $B547 RET           ; Return.
 
 ; Routine at B548
 ;
 ; Used by the routines at #R$B5BA, #R$B640 and #R$B6C2.
+;
+; .
+;
+; On return from #R$A8AE #REGhl will contain the screen buffer destination.
 c$B548 LD DE,$040A   ; #REGde=#N$040A.
  $B54B CALL $A8AE    ; Call #R$A8AE.
  $B54E LD B,$80      ; #REGb=#N$80.
@@ -6942,30 +6953,30 @@ c$B548 LD DE,$040A   ; #REGde=#N$040A.
  $B560 POP BC        ; Restore #REGbc from the stack.
  $B561 DJNZ $B550    ; Decrease counter by one and loop back to #R$B550 until
                      ; counter is zero.
- $B563 LD HL,$040A   ; #REGhl=#N($040A,$04,$04).
- $B566 LD BC,$1013   ; #REGbc=#N($1013,$04,$04).
- $B569 LD A,$60      ; #REGa=#N$60.
- $B56B CALL $B5A6    ; Call #R$B5A6.
- $B56E LD HL,$0A10   ; #REGhl=#N($0A10,$04,$04).
- $B571 LD BC,$0706   ; #REGbc=#N($0706,$04,$04).
- $B574 LD A,$47      ; #REGa=#N$47.
- $B576 CALL $B5A6    ; Call #R$B5A6.
- $B579 LD HL,$051D   ; #REGhl=#N($051D,$04,$04).
- $B57C LD BC,$1001   ; #REGbc=#N($1001,$04,$04).
- $B57F LD A,$30      ; #REGa=#N$30.
- $B581 CALL $B5A6    ; Call #R$B5A6.
- $B584 LD HL,$140B   ; #REGhl=#N($140B,$04,$04).
- $B587 LD BC,$0113   ; #REGbc=#N($0113,$04,$04).
- $B58A LD A,$30      ; #REGa=#N$30.
- $B58C CALL $B5A6    ; Call #R$B5A6.
- $B58F LD HL,$1111   ; #REGhl=#N($1111,$04,$04).
- $B592 LD BC,$0106   ; #REGbc=#N($0106,$04,$04).
- $B595 LD A,$20      ; #REGa=#N$20.
- $B597 CALL $B5A6    ; Call #R$B5A6.
- $B59A LD HL,$0B16   ; #REGhl=#N($0B16,$04,$04).
- $B59D LD BC,$0701   ; #REGbc=#N($0701,$04,$04).
- $B5A0 LD A,$20      ; #REGa=#N$20.
- $B5A2 CALL $B5A6    ; Call #R$B5A6.
+ $B563 LD HL,$040A   ; Set the co-ordinates in #REGhl to #N($040A,$04,$04).
+ $B566 LD BC,$1013   ; Set the block dimensions in #REGbc to #N($1013,$04,$04).
+ $B569 LD A,$60      ; {Call #R$B5A6 with #COLOUR$60.
+ $B56B CALL $B5A6    ; }
+ $B56E LD HL,$0A10   ; Set the co-ordinates in #REGhl to #N($0A10,$04,$04).
+ $B571 LD BC,$0706   ; Set the block dimensions in #REGbc to #N($0706,$04,$04).
+ $B574 LD A,$47      ; {Call #R$B5A6 with #COLOUR$47.
+ $B576 CALL $B5A6    ; }
+ $B579 LD HL,$051D   ; Set the co-ordinates in #REGhl to #N($051D,$04,$04).
+ $B57C LD BC,$1001   ; Set the block dimensions in #REGbc to #N($1001,$04,$04).
+ $B57F LD A,$30      ; {Call #R$B5A6 with #COLOUR$30.
+ $B581 CALL $B5A6    ; }
+ $B584 LD HL,$140B   ; Set the co-ordinates in #REGhl to #N($140B,$04,$04).
+ $B587 LD BC,$0113   ; Set the block dimensions in #REGbc to #N($0113,$04,$04).
+ $B58A LD A,$30      ; {Call #R$B5A6 with #COLOUR$30.
+ $B58C CALL $B5A6    ; }
+ $B58F LD HL,$1111   ; Set the co-ordinates in #REGhl to #N($1111,$04,$04).
+ $B592 LD BC,$0106   ; Set the block dimensions in #REGbc to #N($0106,$04,$04).
+ $B595 LD A,$20      ; {Call #R$B5A6 with #COLOUR$20.
+ $B597 CALL $B5A6    ; }
+ $B59A LD HL,$0B16   ; Set the co-ordinates in #REGhl to #N($0B16,$04,$04).
+ $B59D LD BC,$0701   ; Set the block dimensions in #REGbc to #N($0701,$04,$04).
+ $B5A0 LD A,$20      ; {Call #R$B5A6 with #COLOUR$20.
+ $B5A2 CALL $B5A6    ; }
  $B5A5 RET           ; Return.
 
 ; Fill Attribute Block
@@ -7003,50 +7014,50 @@ c$B5A6 PUSH BC       ; {Stash the height, width, X/ Y position, attribute byte a
 ;
 ; Used by the routine at #R$AA0A.
 @label=QuarterFinals
-c$B5BA LD HL,($9B21)           ;
- $B5BD LD DE,$B179             ;
+c$B5BA LD HL,($9B21)           ; {Copy #REGbc #N($0010,$04,$04) bytes of data
+ $B5BD LD DE,$B179             ; from *#R$9B21 to *#R$B179.
  $B5C0 LD BC,$0010             ;
- $B5C3 LDIR                    ;
- $B5C5 LD HL,($9B21)           ;
- $B5C8 LD DE,$B605             ;
+ $B5C3 LDIR                    ; }
+ $B5C5 LD HL,($9B21)           ; {Copy #REGbc #N($0010,$04,$04) bytes of data
+ $B5C8 LD DE,$B605             ; from *#R$9B21 to *#R$B605.
  $B5CB LD BC,$0010             ;
- $B5CE LDIR                    ;
- $B5D0 CALL $B548              ;
+ $B5CE LDIR                    ; }
+ $B5D0 CALL $B548              ; Call #R$B548.
  $B5D3 CALL $964C              ; Call #R$964C.
  $B5D6 DEFB $10,$07            ; INK: #INK(#PEEK(#PC+$01)).
  $B5D8 DEFB $11,$04            ; PAPER: #INK(#PEEK(#PC+$01)).
  $B5DA DEFB $12,$01            ; FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
  $B5DC DEFB $16,$05,$0C        ; PRINT AT: #N(#PEEK(#PC+$01)),
                                ; #N(#PEEK(#PC+$02)).
- $B5DF DEFM "QUARTER  FINALS"  ; "#STR#(#PC,$04,$0F)".
+ $B5DF DEFM "QUARTER  FINALS"  ; #FONT#(:(#STR(#PC,$00,$0F)))$8D75,attr=$47(quarter-finals)
  $B5EE DEFB $16,$08,$0D        ; PRINT AT: #N(#PEEK(#PC+$01)),
                                ; #N(#PEEK(#PC+$02)).
  $B5F1 DEFB $10,$00            ; INK: #INK(#PEEK(#PC+$01)).
- $B5F3 DEFM "YOUR OPPONENT"    ; "#STR#(#PC,$04,$0D)".
+ $B5F3 DEFM "YOUR OPPONENT"    ; #FONT#(:(#STR(#PC,$00,$0D)))$8D75,attr=$47(your-opponent)
  $B600 DEFB $16,$12,$0C        ; PRINT AT: #N(#PEEK(#PC+$01)),
                                ; #N(#PEEK(#PC+$02)).
  $B603 DEFB $10,$07            ; INK: #INK(#PEEK(#PC+$01)).
  $B605 DEFM "0000000000000000" ; "#STR#(#PC,$04,$10)".
  $B615 DEFB $FF                ; Terminator.
- $B616 LD HL,($9B21)           ;
- $B619 LD DE,$0011             ;
- $B61C ADD HL,DE               ;
- $B61D LD C,(HL)               ;
- $B61E INC HL                  ;
- $B61F LD B,(HL)               ;
- $B620 LD ($9AAB),BC           ;
- $B624 INC HL                  ;
- $B625 LD C,(HL)               ;
- $B626 INC HL                  ;
- $B627 LD B,(HL)               ;
- $B628 LD ($9AAE),BC           ;
- $B62C LD BC,($9AAB)           ;
- $B630 LD DE,$0A10             ;
- $B633 CALL $B742              ;
- $B636 LD A,$04                ;
- $B638 LD ($9AB4),A            ;
- $B63B XOR A                   ;
- $B63C CALL $CAEB              ;
+ $B616 LD HL,($9B21)           ; #REGhl=*#R$9B21.
+ $B619 LD DE,$0011             ; {#REGhl+=#N($0011,$04,$04).
+ $B61C ADD HL,DE               ; }
+ $B61D LD C,(HL)               ; #REGc=*#REGhl.
+ $B61E INC HL                  ; Increment #REGhl by one.
+ $B61F LD B,(HL)               ; #REGb=*#REGhl.
+ $B620 LD ($9AAB),BC           ; Write #REGbc to *#R$9AAB.
+ $B624 INC HL                  ; Increment #REGhl by one.
+ $B625 LD C,(HL)               ; #REGc=*#REGhl.
+ $B626 INC HL                  ; Increment #REGhl by one.
+ $B627 LD B,(HL)               ; #REGb=*#REGhl.
+ $B628 LD ($9AAE),BC           ; Write #REGbc to *#R$9AAE.
+ $B62C LD BC,($9AAB)           ; #REGbc=*#R$9AAB.
+ $B630 LD DE,$0A10             ; #REGde=#N$0A10.
+ $B633 CALL $B742              ; Call #R$B742.
+ $B636 LD A,$04                ; {Write #N$04 to *#R$9AB4.
+ $B638 LD ($9AB4),A            ; }
+ $B63B XOR A                   ; #REGa=#N$00.
+ $B63C CALL $CAEB              ; Call #R$CAEB.
  $B63F RET                     ; Return.
 
 ; Semi Finals
@@ -7103,68 +7114,72 @@ c$B640 LD HL,($9B23)           ;
 ;
 ; Used by the routine at #R$AA7B.
 @label=TheFinal
-c$B6C2 LD HL,$B46F             ;
- $B6C5 LD DE,$B179             ;
+c$B6C2 LD HL,$B46F             ; {Copy #N($0010,$04,$04) bytes of data from
+ $B6C5 LD DE,$B179             ; *#R$B46F to *#R$B179.
  $B6C8 LD BC,$0010             ;
- $B6CB LDIR                    ;
- $B6CD LD HL,$B46F             ;
- $B6D0 LD DE,$B707             ;
+ $B6CB LDIR                    ; }
+ $B6CD LD HL,$B46F             ; {Copy #N($0010,$04,$04) bytes of data from
+ $B6D0 LD DE,$B707             ; *#R$B46F to *#R$B707.
  $B6D3 LD BC,$0010             ;
- $B6D6 LDIR                    ;
- $B6D8 CALL $B548              ;
+ $B6D6 LDIR                    ; }
+ $B6D8 CALL $B548              ; Call #R$B548.
  $B6DB CALL $964C              ; Call #R$964C.
  $B6DE DEFB $10,$07            ; INK: #INK(#PEEK(#PC+$01)).
  $B6E0 DEFB $11,$04            ; PAPER: #INK(#PEEK(#PC+$01)).
  $B6E2 DEFB $12,$01            ; FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
  $B6E4 DEFB $16,$05,$0F        ; PRINT AT: #N(#PEEK(#PC+$01)),
                                ; #N(#PEEK(#PC+$02)).
- $B6E7 DEFM "THE FINAL"        ; "#STR#(#PC,$04,$09)".
+ $B6E7 DEFM "THE FINAL"        ; #FONT#(:(#STR(#PC,$04,$09)))$8D75,attr=$47(the-final)
  $B6F0 DEFB $16,$08,$0D        ; PRINT AT: #N(#PEEK(#PC+$01)),
                                ; #N(#PEEK(#PC+$02)).
  $B6F3 DEFB $10,$00            ; INK: #INK(#PEEK(#PC+$01)).
- $B6F5 DEFM "YOUR OPPONENT"    ; "#STR#(#PC,$04,$0D)".
+ $B6F5 DEFM "YOUR OPPONENT"    ; #FONT#(:(#STR(#PC,$04,$0D)))$8D75,attr=$47(your-opponent)
  $B702 DEFB $16,$12,$0C        ; PRINT AT: #N(#PEEK(#PC+$01)),
                                ; #N(#PEEK(#PC+$02)).
  $B705 DEFB $10,$07            ; INK: #INK(#PEEK(#PC+$01)).
+@label=Messaging_OpponentName
  $B707 DEFM "0000000000000000" ; "#STR#(#PC,$04,$10)".
  $B717 DEFB $FF                ; Terminator.
- $B718 LD HL,$B46F             ;
- $B71B LD DE,$0011             ;
- $B71E ADD HL,DE               ;
- $B71F LD C,(HL)               ;
- $B720 INC HL                  ;
- $B721 LD B,(HL)               ;
- $B722 LD ($9AAB),BC           ;
- $B726 INC HL                  ;
- $B727 LD C,(HL)               ;
+; The finals are always with Jammy Jim.
+ $B718 LD HL,$B46F             ; #REGhl=#R$B46F.
+ $B71B LD DE,$0011             ; {Move the pointer by #N($0011,$04,$04)
+ $B71E ADD HL,DE               ; bytes...}
+ $B71F LD C,(HL)               ; {Load the opponents portrait graphic pointer
+ $B720 INC HL                  ; into #REGbc.
+ $B721 LD B,(HL)               ; }
+ $B722 LD ($9AAB),BC           ; Write #REGbc to *#R$9AAB.
+ $B726 INC HL                  ; {Load the opponents pub scene graphic pointer
+ $B727 LD C,(HL)               ; into #REGbc.
  $B728 INC HL                  ;
- $B729 LD B,(HL)               ;
- $B72A LD ($9AAE),BC           ;
- $B72E LD BC,($9AAB)           ;
- $B732 LD DE,$0A10             ;
- $B735 CALL $B742              ;
- $B738 LD A,$01                ;
- $B73A LD ($9AB4),A            ;
- $B73D INC A                   ;
- $B73E CALL $CAEB              ;
+ $B729 LD B,(HL)               ; }
+ $B72A LD ($9AAE),BC           ; Write #REGbc to *#R$9AAE.
+; Draw the opponent card to the screen.
+ $B72E LD BC,($9AAB)           ; #REGbc=*#R$9AAB.
+ $B732 LD DE,$0A10             ; Set the destination co-ordinates to:
+                               ; #N($0A10,$04,$04).
+ $B735 CALL $B742              ; Call #R$B742.
+ $B738 LD A,$01                ; {Write #N$01 to *#R$9AB4.
+ $B73A LD ($9AB4),A            ; }
+ $B73D INC A                   ; Increment #REGa by one.
+ $B73E CALL $CAEB              ; Call #R$CAEB.
  $B741 RET                     ; Return.
 
-; Draw Opponent Image
+; Draw Opponent Portrait
 ;
 ; Used by the routines at #R$A3A4, #R$B5BA, #R$B640 and #R$B6C2.
 ;
 ; BC Pointer to the opponent graphic
-; D Destination Y location
-; E Destination X location
+; D Destination Y position
+; E Destination X position
 ;
 ; On return from #R$A8AE #REGhl will contain the screen buffer destination.
-@label=DrawOpponentImage
+@label=Draw_OpponentPortrait
 c$B742 CALL $A8AE    ; Call #R$A8AE.
  $B745 LD D,B        ; {Copy the opponent pointer to display into #REGde.
  $B746 LD E,C        ; }
  $B747 LD B,$38      ; Set a counter in #REGb for the height of the opponent
                      ; image.
-@label=DrawOpponentImage_Loop
+@label=Draw_OpponentPortrait_Loop
 *$B749 PUSH BC       ; {Stash the height counter and destination pointer on the
  $B74A PUSH HL       ; stack.}
  $B74B EX DE,HL      ; Swap the source and destination registers.
@@ -7182,25 +7197,34 @@ c$B742 CALL $A8AE    ; Call #R$A8AE.
                      ; the whole image has been displayed.
  $B760 RET           ; Return.
 
-; Routine at B761
+; Draw Opponent Pub Scene
 ;
 ; Used by the routine at #R$AB2E.
+;
+; BC Pointer to graphic data
+; D Destination Y position
+; E Destination X position
+;
+; On return from #R$A8AE #REGhl will contain the screen buffer destination.
+@label=Draw_OpponentPubScene
 c$B761 CALL $A8AE    ; Call #R$A8AE.
- $B764 LD D,B        ; #REGd=#REGb.
- $B765 LD E,C        ; #REGe=#REGc.
- $B766 LD B,$18      ; #REGb=#N$18.
-*$B768 PUSH BC       ; {Stash #REGbc and #REGhl on the stack.
- $B769 PUSH HL       ; }
- $B76A EX DE,HL      ; Exchange the #REGde and #REGhl registers.
- $B76B LDI           ; LDI.
- $B76D LDI           ; LDI.
- $B76F LDI           ; LDI.
- $B771 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
- $B772 POP HL        ; Restore #REGhl from the stack.
+ $B764 LD D,B        ; {Copy the opponent pointer to display into #REGde.
+ $B765 LD E,C        ; }
+ $B766 LD B,$18      ; Set a counter in #REGb for the height of the opponent
+                     ; image.
+@label=Draw_OpponentPubScene_Loop
+*$B768 PUSH BC       ; {Stash the height counter and destination pointer on the
+ $B769 PUSH HL       ; stack.}
+ $B76A EX DE,HL      ; Swap the source and destination registers.
+ $B76B LDI           ; {Copy #N$06 bytes of data from the source address to the
+ $B76D LDI           ; destination.
+ $B76F LDI           ; }
+ $B771 EX DE,HL      ; Swap the source and destination registers back again.
+ $B772 POP HL        ; Restore the original screen position from the stack.
  $B773 CALL $A8CC    ; Call #R$A8CC.
- $B776 POP BC        ; Restore #REGbc from the stack.
- $B777 DJNZ $B768    ; Decrease counter by one and loop back to #R$B768 until
-                     ; counter is zero.
+ $B776 POP BC        ; Restore the height counter from the stack.
+ $B777 DJNZ $B768    ; Decrease the height counter by one and loop back to #R$B768 until
+                     ; the whole image has been displayed.
  $B779 RET           ; Return.
 
 ; Routine at B77A
@@ -7219,6 +7243,7 @@ c$B77A LD DE,($9AC3) ; #REGde=*#R$9AC3.
  $B78C LD A,E        ; #REGa=#REGe.
  $B78D EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
                      ; register.
+; On return from #R$A8AE #REGhl will contain the screen buffer destination.
  $B78E CALL $A8AE    ; Call #R$A8AE.
  $B791 POP DE        ; Restore #REGde from the stack.
  $B792 PUSH HL       ; Stash #REGhl on the stack.
@@ -7540,9 +7565,10 @@ c$B910 HALT          ; {Halt operation (suspend CPU until the next interrupt)
                      ; the frame has been displayed in full.
  $B92E RET           ; Return.
 
-; Routine at B92F
+; Animation: Dart
 ;
 ; Used by the routine at #R$B7E1.
+@label=Animation_Dart
 c$B92F LD B,$02      ; #REGb=#N$02.
  $B931 LD DE,$C71C   ; #REGde=#R$C71C.
 *$B934 LD A,(HL)     ; #REGa=*#REGhl.
@@ -7594,9 +7620,10 @@ c$B92F LD B,$02      ; #REGb=#N$02.
                      ; counter is zero.
  $B964 RET           ; Return.
 
-; Routine at B965
+; Animation: Pint
 ;
 ; Used by the routine at #R$B83D.
+@label=Animation_Pint
 c$B965 LD B,$10      ; #REGb=#N$10.
  $B967 LD DE,$CA54   ; #REGde=#R$CA54.
 *$B96A LD A,(HL)     ; #REGa=*#REGhl.
@@ -8808,12 +8835,56 @@ b$C844 DEFB $00,$64,$00,$00,$00
  $CA4C DEFB $00,$1C,$00,$00
  $CA50 DEFB $00,$00,$00,$00
 
-; Data block at CA54
-b$CA54 DEFB $00,$FF,$FF,$81,$81,$81,$81,$81
- $CA5C DEFB $81,$C3,$C3,$C3,$C3,$C3,$E7,$FF
- $CA64 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CA6C DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $CA74 DEFB $00,$FF,$00,$00,$00,$00,$00,$00
+; Graphics: Pint
+;
+; .
+;
+; .
+;
+; #UDGTABLE(default)
+; { #UDGARRAY$01,attr=$47,scale=$04,step=$01($CA54-$CA7B-$01-$08)(pint) }
+; UDGTABLE#
+@label=Graphics_Pint
+b$CA54 DEFB $00
+ $CA55 DEFB $FF
+ $CA56 DEFB $FF
+ $CA57 DEFB $81
+ $CA58 DEFB $81
+ $CA59 DEFB $81
+ $CA5A DEFB $81
+ $CA5B DEFB $81
+ $CA5C DEFB $81
+ $CA5D DEFB $C3
+ $CA5E DEFB $C3
+ $CA5F DEFB $C3
+ $CA60 DEFB $C3
+ $CA61 DEFB $C3
+ $CA62 DEFB $E7
+ $CA63 DEFB $FF
+ $CA64 DEFB $00
+ $CA65 DEFB $00
+ $CA66 DEFB $00
+ $CA67 DEFB $00
+ $CA68 DEFB $00
+ $CA69 DEFB $00
+ $CA6A DEFB $00
+ $CA6B DEFB $00
+ $CA6C DEFB $00
+ $CA6D DEFB $00
+ $CA6E DEFB $00
+ $CA6F DEFB $00
+ $CA70 DEFB $00
+ $CA71 DEFB $00
+ $CA72 DEFB $00
+ $CA73 DEFB $00
+ $CA74 DEFB $00
+ $CA75 DEFB $FF
+ $CA76 DEFB $00
+ $CA77 DEFB $00
+ $CA78 DEFB $00
+ $CA79 DEFB $00
+ $CA7A DEFB $00
+ $CA7B DEFB $00
 
 ; Routine at CA7C
 ;
@@ -8885,41 +8956,45 @@ w$CAA3 DEFW $B46E
 ; Routine at CAEB
 ;
 ; Used by the routines at #R$B5BA, #R$B640 and #R$B6C2.
-c$CAEB LD HL,$CAA3   ;
- $CAEE LD DE,$0018   ;
- $CAF1 OR A          ;
- $CAF2 JR Z,$CAF8    ;
- $CAF4 LD B,A        ;
-*$CAF5 ADD HL,DE     ;
- $CAF6 DJNZ $CAF5    ;
-*$CAF8 LD DE,$B431   ;
- $CAFB LD B,$04      ;
-*$CAFD PUSH BC       ;
- $CAFE EX DE,HL      ;
- $CAFF LD (HL),E     ;
- $CB00 INC HL        ;
- $CB01 LD (HL),D     ;
- $CB02 INC HL        ;
- $CB03 EX DE,HL      ;
- $CB04 LD BC,$0006   ;
- $CB07 ADD HL,BC     ;
- $CB08 POP BC        ;
- $CB09 DJNZ $CAFD    ;
- $CB0B EX DE,HL      ;
- $CB0C DEC DE        ;
- $CB0D DEC DE        ;
- $CB0E LD (HL),E     ;
- $CB0F INC HL        ;
- $CB10 LD (HL),D     ;
- $CB11 RET           ;
- $CB12 JP $CB1E      ;
- $CB15 JP $CBF7      ;
- $CB18 JP $CC62      ;
- $CB1B JP $CBC8      ;
+c$CAEB LD HL,$CAA3   ; #REGhl=#R$CAA3.
+ $CAEE LD DE,$0018   ; #REGde=#N($0018,$04,$04).
+ $CAF1 OR A          ; Set the bits from #REGa.
+ $CAF2 JR Z,$CAF8    ; Jump to #R$CAF8 if the result is zero.
+ $CAF4 LD B,A        ; #REGb=#REGa.
+*$CAF5 ADD HL,DE     ; #REGhl+=#REGde.
+ $CAF6 DJNZ $CAF5    ; Decrease counter by one and loop back to #R$CAF5 until
+                     ; counter is zero.
+*$CAF8 LD DE,$B431   ; #REGde=#R$B431.
+ $CAFB LD B,$04      ; #REGb=#N$04.
+*$CAFD PUSH BC       ; Stash #REGbc on the stack.
+ $CAFE EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $CAFF LD (HL),E     ; Write #REGe to *#REGhl.
+ $CB00 INC HL        ; Increment #REGhl by one.
+ $CB01 LD (HL),D     ; Write #REGd to *#REGhl.
+ $CB02 INC HL        ; Increment #REGhl by one.
+ $CB03 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $CB04 LD BC,$0006   ; {#REGhl+=#N($0006,$04,$04).
+ $CB07 ADD HL,BC     ; }
+ $CB08 POP BC        ; Restore #REGbc from the stack.
+ $CB09 DJNZ $CAFD    ; Decrease counter by one and loop back to #R$CAFD until
+                     ; counter is zero.
+ $CB0B EX DE,HL      ; Exchange the #REGde and #REGhl registers.
+ $CB0C DEC DE        ; {Decrease #REGde by two.
+ $CB0D DEC DE        ; }
+ $CB0E LD (HL),E     ; Write #REGe to *#REGhl.
+ $CB0F INC HL        ; Increment #REGhl by one.
+ $CB10 LD (HL),D     ; Write #REGd to *#REGhl.
+ $CB11 RET           ; Return.
+
+; Routine at CB12
+c$CB12 JP $CB1E      ; Jump to #R$CB1E.
+ $CB15 JP $CBF7      ; Jump to #R$CBF7.
+ $CB18 JP $CC62      ; Jump to #R$CC62.
+ $CB1B JP $CBC8      ; Jump to #R$CBC8.
 
 ; Routine at CB1E
 ;
-; Used by the routines at #R$933F, #R$A15C, #R$AADC and #R$CAEB.
+; Used by the routines at #R$933F, #R$A15C, #R$AADC and #R$CB12.
 c$CB1E PUSH AF         ; Stash #REGaf on the stack.
  $CB1F XOR A           ; {Write #N$00 to *#R$D009.
  $CB20 LD ($D009),A    ; }
@@ -8978,7 +9053,7 @@ b$CB6B DEFB $00,$00,$00,$00,$00,$00,$00,$00
 
 ; Routine at CBC8
 ;
-; Used by the routines at #R$A15C and #R$CAEB.
+; Used by the routines at #R$A15C and #R$CB12.
 c$CBC8 LD A,$01      ;
  $CBCA LD ($D009),A  ;
  $CBCD RET           ;
@@ -9011,7 +9086,7 @@ c$CBC8 LD A,$01      ;
 
 ; Routine at CBF7
 ;
-; Used by the routines at #R$95ED and #R$CAEB.
+; Used by the routines at #R$95ED and #R$CB12.
 c$CBF7 LD A,($D009)  ; {Return if *#R$D009 is zero.
  $CBFA AND A         ;
  $CBFB RET Z         ; }
@@ -9057,7 +9132,7 @@ c$CBF7 LD A,($D009)  ; {Return if *#R$D009 is zero.
 
 ; Routine at CC62
 ;
-; Used by the routines at #R$9D42, #R$AADC and #R$CAEB.
+; Used by the routines at #R$9D42, #R$AADC and #R$CB12.
 c$CC62 XOR A         ;
  $CC63 LD ($D009),A  ;
 ; This entry point is used by the routine at #R$CC84.
