@@ -29,9 +29,88 @@ b $7B00
 
 b $7C87
 
-b $7D00
+b $7D00 Graphics: Hand
+@ $7D00 label=Graphics_Hand_01
+D $7D00 Graphic data, arranged as.
+N $7D00 Frame #N$01:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($7D00-$7E81-$01-$38)(hand-1) }
+. UDGTABLE#
+  $7D00,$188,$07
+@ $7E88 label=Graphics_Hand_02
+N $7E88 Frame #N$02:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($7E88-$8009-$01-$38)(hand-2) }
+. UDGTABLE#
+  $7E88,$188,$07
+@ $8010 label=Graphics_Hand_03
+N $8010 Frame #N$03:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($8010-$8191-$01-$38)(hand-3) }
+. UDGTABLE#
+  $8010,$188,$07
+@ $8198 label=Graphics_Hand_04
+N $8198 Frame #N$03:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($8198-$8319-$01-$38)(hand-4) }
+. UDGTABLE#
+  $8198,$188,$07
 
-b $8320
+b $8320 Graphics: Hand Mask
+@ $8320 label=Graphics_HandMask_01
+D $8320 Graphic data, arranged as.
+N $8320 Mask #N$01:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($8320-$84A1-$01-$38)(hand-mask-1) }
+. UDGTABLE#
+  $8320,$188,$07
+@ $84A8 label=Graphics_HandMask_02
+N $84A8 Mask #N$02:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($84A8-$8629-$01-$38)(hand-mask-2) }
+. UDGTABLE#
+  $84A8,$188,$07
+@ $8630 label=Graphics_HandMask_03
+N $8630 Mask #N$03:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($8630-$87B1-$01-$38)(hand-mask-3) }
+. UDGTABLE#
+  $8630,$188,$07
+@ $87B8 label=Graphics_HandMask_04
+N $87B8 Mask #N$04:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($87B8-$8939-$01-$38)(hand-mask-4) }
+. UDGTABLE#
+  $87B8,$188,$07
+
+b $8940 Graphics: Hand (No Dart)
+@ $8940 label=Graphics_HandNoDart
+D $7D00 Graphic data, arranged as:
+N $8940 #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($8940-$8AC1-$01-$38)(hand-no-dart) }
+. UDGTABLE#
+  $8940,$188,$07
+N $8AC8 Mask:
+. #UDGTABLE(default)
+. { #UDGARRAY$07,attr=$70,scale=$04,step=$07($8AC8-$8C49-$01-$38)(hand-mask-no-dart) }
+. UDGTABLE#
+  $8AC8,$188,$07
+
+b $8C50 Graphics: Thrown Dart
+@ $8940 label=Graphics_ThrownDart
+D $8C50 Graphic data, arranged as:
+N $8C50 #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$70,scale=$04,step=$03($8C50-$8CDC-$01-$18)(thrown-dart) }
+. UDGTABLE#
+  $8C50,$90,$03
+N $8CE0 Mask:
+. #UDGTABLE(default)
+. { #UDGARRAY$03,attr=$70,scale=$04,step=$03($8CE0-$8D6D-$01-$18)(mask-thrown-dart) }
+. UDGTABLE#
+  $8CE0,$90,$03
+
+u $8D70
+B $8D70,$02
 
 c $8D72 Game Entry Point Alias
 @ $8D72 label=GameEntryPointAlias
@@ -1384,8 +1463,9 @@ g $9AC5
   $9AC6
   $9AC7
 
-g $9AC8
-N $9AC8 #N((#PC-$9AC8)/$04).
+g $9AC8 Table: Floating Hand Graphics
+@ $9AC8 label=Table_FloatingHandGraphics
+N $9AC8 Frame #N($01+(#PC-$9AC8)/$04):
 W $9AC8,$02
 W $9ACA,$02
 L $9AC8,$04,$06
@@ -1442,11 +1522,12 @@ g $9B1F Score?
 @ $9B1F label=Score
 B $9B1F,$02
 
-g $9B21 Pointer Current Opponent Data
-@ $9B21 label=Pointer_CurrentOpponentData
+g $9B21 Quarter Finals Opponent Data
+@ $9B21 label=QuarterFinals_OpponentData
 W $9B21,$02
 
-g $9B23
+g $9B23 Semi Finals Opponent Data
+@ $9B23 label=SemiFinals_OpponentData
 W $9B23,$02
 
 g $9B25
@@ -3924,11 +4005,23 @@ N $B52A #REGhl now points to the opponent data block.
   $B544,$03 Write #REGhl to *#R$9B23.
   $B547,$01 Return.
 
-c $B548
-  $B548,$03 #REGde=#N$040A.
+c $B548 Print Match Card
+@ $B548 label=Print_MatchCard
+N $B548 #PUSHS #SIM(start=$9D33,stop=$A95F)#SIM(start=$B548,stop=$B5A5)
+. #UDGTABLE(default)
+.   { #SCR$02{$80,$00,$180,$180}(match-card) }
+. UDGTABLE# #POPS
+N $B548 This first section clears the area of the dart board where the card
+. will appear.
+. #PUSHS #SIM(start=$9D33,stop=$A95F)#SIM(start=$B548,stop=$B563)
+. #UDGTABLE(default)
+.   { #SCR$01(match-card-clear) }
+. UDGTABLE#
+  $B548,$03 #REGde=#N$04/ #N$0A.
 N $B548 On return from #R$A8AE #REGhl will contain the screen buffer destination.
   $B54B,$03 Call #R$A8AE.
   $B54E,$02 #REGb=#N$80.
+@ $B550 label=MatchCard_ClearLoop
   $B550,$02 Stash #REGbc and #REGhl on the stack.
   $B552,$03 #REGbc=#N($0012,$04,$04).
   $B555,$01 Stash #REGhl on the stack.
@@ -3940,23 +4033,53 @@ N $B548 On return from #R$A8AE #REGhl will contain the screen buffer destination
   $B55D,$03 Call #R$A8CC.
   $B560,$01 Restore #REGbc from the stack.
   $B561,$02 Decrease counter by one and loop back to #R$B550 until counter is zero.
-  $B563,$03 Set the co-ordinates in #REGhl to #N($040A,$04,$04).
-  $B566,$03 Set the block dimensions in #REGbc to #N($1013,$04,$04).
+N $B563 Colour the card background:
+. #SIM(start=$B563,stop=$B56E)
+. #UDGTABLE(default)
+.   { #SCR$01(match-card-1) }
+. UDGTABLE#
+  $B563,$03 Set the co-ordinates in #REGhl to #N$04/ #N$0A.
+  $B566,$03 Set the block dimensions in #REGbc to #N$10/ #N$13.
   $B569,$05 Call #R$B5A6 with #COLOUR$60.
-  $B56E,$03 Set the co-ordinates in #REGhl to #N($0A10,$04,$04).
-  $B571,$03 Set the block dimensions in #REGbc to #N($0706,$04,$04).
+N $B56E Colour the opponent portrait background:
+. #SIM(start=$B56E,stop=$B579)
+. #UDGTABLE(default)
+.   { #SCR$01(match-card-2) }
+. UDGTABLE#
+  $B56E,$03 Set the co-ordinates in #REGhl to #N$0A/ #N$10.
+  $B571,$03 Set the block dimensions in #REGbc to #N$07/ #N$06.
   $B574,$05 Call #R$B5A6 with #COLOUR$47.
-  $B579,$03 Set the co-ordinates in #REGhl to #N($051D,$04,$04).
-  $B57C,$03 Set the block dimensions in #REGbc to #N($1001,$04,$04).
+N $B579 Colour the card right-hand shadow:
+. #SIM(start=$B579,stop=$B584)
+. #UDGTABLE(default)
+.   { #SCR$01(match-card-3) }
+. UDGTABLE#
+  $B579,$03 Set the co-ordinates in #REGhl to #N$05/ #N$1D.
+  $B57C,$03 Set the block dimensions in #REGbc to #N$10/ #N$01.
   $B57F,$05 Call #R$B5A6 with #COLOUR$30.
-  $B584,$03 Set the co-ordinates in #REGhl to #N($140B,$04,$04).
-  $B587,$03 Set the block dimensions in #REGbc to #N($0113,$04,$04).
+N $B584 Colour the card bottom shadow:
+. #SIM(start=$B584,stop=$B58F)
+. #UDGTABLE(default)
+.   { #SCR$01(match-card-4) }
+. UDGTABLE#
+  $B584,$03 Set the co-ordinates in #REGhl to #N$14/ #N$0B.
+  $B587,$03 Set the block dimensions in #REGbc to #N$01/ #N$13.
   $B58A,$05 Call #R$B5A6 with #COLOUR$30.
-  $B58F,$03 Set the co-ordinates in #REGhl to #N($1111,$04,$04).
-  $B592,$03 Set the block dimensions in #REGbc to #N($0106,$04,$04).
+N $B58F Colour the opponent portrait bottom shadow:
+. #SIM(start=$B58F,stop=$B59A)
+. #UDGTABLE(default)
+.   { #SCR$01(match-card-5) }
+. UDGTABLE#
+  $B58F,$03 Set the co-ordinates in #REGhl to #N$11/ #N$11.
+  $B592,$03 Set the block dimensions in #REGbc to #N$01/ #N$06.
   $B595,$05 Call #R$B5A6 with #COLOUR$20.
-  $B59A,$03 Set the co-ordinates in #REGhl to #N($0B16,$04,$04).
-  $B59D,$03 Set the block dimensions in #REGbc to #N($0701,$04,$04).
+N $B59A Colour the opponent portrait right-hand shadow:
+. #SIM(start=$B59A,stop=$B5A5)
+. #UDGTABLE(default)
+.   { #SCR$01(match-card-6) }
+. UDGTABLE# #POPS
+  $B59A,$03 Set the co-ordinates in #REGhl to #N$0B/ #N$16.
+  $B59D,$03 Set the block dimensions in #REGbc to #N$07/ #N$01.
   $B5A0,$05 Call #R$B5A6 with #COLOUR$20.
   $B5A5,$01 Return.
 
@@ -4001,21 +4124,18 @@ B $B5F1,$02 INK: #INK(#PEEK(#PC+$01)).
 T $B5F3,$0D #FONT#(:(#STR(#PC,$00,$0D)))$8D75,attr=$47(your-opponent)
 B $B600,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B603,$02 INK: #INK(#PEEK(#PC+$01)).
+@ $B605 label=QuarterFinals_OpponentName
 T $B605,$10 "#STR#(#PC,$04,$10)".
 B $B615,$01 Terminator.
   $B616,$03 #REGhl=*#R$9B21.
-  $B619,$04 #REGhl+=#N($0011,$04,$04).
-  $B61D,$01 #REGc=*#REGhl.
-  $B61E,$01 Increment #REGhl by one.
-  $B61F,$01 #REGb=*#REGhl.
+  $B619,$04 Move the pointer by #N($0011,$04,$04) bytes...
+  $B61D,$03 Load the opponents portrait graphic pointer into #REGbc.
   $B620,$04 Write #REGbc to *#R$9AAB.
-  $B624,$01 Increment #REGhl by one.
-  $B625,$01 #REGc=*#REGhl.
-  $B626,$01 Increment #REGhl by one.
-  $B627,$01 #REGb=*#REGhl.
+  $B624,$04 Load the opponents pub scene graphic pointer into #REGbc.
   $B628,$04 Write #REGbc to *#R$9AAE.
+N $B62C Draw the opponent portrait to the screen.
   $B62C,$04 #REGbc=*#R$9AAB.
-  $B630,$03 #REGde=#N$0A10.
+  $B630,$03 Set the destination co-ordinates to: #N$0A/ #N$10.
   $B633,$03 Call #R$B742.
   $B636,$05 Write #N$04 to *#R$9AB4.
   $B63B,$01 #REGa=#N$00.
@@ -4024,7 +4144,9 @@ B $B615,$01 Terminator.
 
 c $B640 Semi Finals
 @ $B640 label=SemiFinals
-
+  $B640,$0B Copy #REGbc #N($0010,$04,$04) bytes of data from *#R$9B23 to *#R$B179.
+  $B64B,$0B Copy #REGbc #N($0010,$04,$04) bytes of data from *#R$9B23 to *#R$B687.
+  $B656,$03 Call #R$B548.
   $B659,$03 Call #R$964C.
 B $B65C,$02 INK: #INK(#PEEK(#PC+$01)).
 B $B65E,$02 PAPER: #INK(#PEEK(#PC+$01)).
@@ -4036,9 +4158,22 @@ B $B673,$02 INK: #INK(#PEEK(#PC+$01)).
 T $B675,$0D "#STR#(#PC,$04,$0D)".
 B $B682,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B685,$02 INK: #INK(#PEEK(#PC+$01)).
+@ $B687 label=SemiFinals_OpponentName
 T $B687,$10 "#STR#(#PC,$04,$10)".
 B $B697,$01 Terminator.
-
+  $B698,$03 #REGhl=*#R$9B23.
+  $B69B,$04 Move the pointer by #N($0011,$04,$04) bytes...
+  $B69F,$03 Load the opponents portrait graphic pointer into #REGbc.
+  $B6A2,$04 Write #REGbc to *#R$9AAB.
+  $B6A6,$04 Load the opponents pub scene graphic pointer into #REGbc.
+  $B6AA,$04 Write #REGbc to *#R$9AAE.
+N $B6AE Draw the opponent portrait to the screen.
+  $B6AE,$04 #REGbc=*#R$9AAB.
+  $B6B2,$03 Set the destination co-ordinates to: #N$0A/ #N$10.
+  $B6B5,$03 Call #R$B742.
+  $B6B8,$05 Write #N$02 to *#R$9AB4.
+  $B6BD,$01 Decrease #REGa by one.
+  $B6BE,$03 Call #R$CAEB.
   $B6C1,$01 Return.
 
 c $B6C2 The Final
@@ -4057,7 +4192,7 @@ B $B6F3,$02 INK: #INK(#PEEK(#PC+$01)).
 T $B6F5,$0D #FONT#(:(#STR(#PC,$04,$0D)))$8D75,attr=$47(your-opponent)
 B $B702,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B705,$02 INK: #INK(#PEEK(#PC+$01)).
-@ $B707 label=Messaging_OpponentName
+@ $B707 label=TheFinal_OpponentName
 T $B707,$10 "#STR#(#PC,$04,$10)".
 B $B717,$01 Terminator.
 N $B718 The finals are always with Jammy Jim.
@@ -4067,9 +4202,9 @@ N $B718 The finals are always with Jammy Jim.
   $B722,$04 Write #REGbc to *#R$9AAB.
   $B726,$04 Load the opponents pub scene graphic pointer into #REGbc.
   $B72A,$04 Write #REGbc to *#R$9AAE.
-N $B72E Draw the opponent card to the screen.
+N $B72E Draw the opponent portrait to the screen.
   $B72E,$04 #REGbc=*#R$9AAB.
-  $B732,$03 Set the destination co-ordinates to: #N($0A10,$04,$04).
+  $B732,$03 Set the destination co-ordinates to: #N$0A/ #N$10.
   $B735,$03 Call #R$B742.
   $B738,$05 Write #N$01 to *#R$9AB4.
   $B73D,$01 Increment #REGa by one.
