@@ -48,55 +48,49 @@ Used by the routine at <a href="AA5A.html">Handler_Match</a>.
 <td class="asm-label">SemiFinals</td>
 <td class="address-2"><span id="b640"></span>B640</td>
 <td class="instruction">LD HL,($9B23)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Copy <span class="register">BC</span> 0010 bytes of data from *<a href="9B23.html">SemiFinals_OpponentData</a> to *<a href="B16B.html#b179">Messaging_OpponentName_Wins</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b643"></span>B643</td>
 <td class="instruction">LD DE,$B179</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b646"></span>B646</td>
 <td class="instruction">LD BC,$0010</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b649"></span>B649</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b64b"></span>B64B</td>
 <td class="instruction">LD HL,($9B23)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Copy <span class="register">BC</span> 0010 bytes of data from *<a href="9B23.html">SemiFinals_OpponentData</a> to *<a href="B640.html#b687">SemiFinals_OpponentName</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b64e"></span>B64E</td>
 <td class="instruction">LD DE,$B687</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b651"></span>B651</td>
 <td class="instruction">LD BC,$0010</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b654"></span>B654</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b656"></span>B656</td>
-<td class="instruction">CALL <a href="B548.html">$B548</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="B548.html">Print_MatchCard</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B548.html">Print_MatchCard</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -177,7 +171,7 @@ BLACK.</td>
 WHITE.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">SemiFinals_OpponentName</td>
 <td class="address-1"><span id="b687"></span>B687</td>
 <td class="instruction">DEFM "0000000000000000"</td>
 <td class="comment-1" rowspan="1">"0000000000000000".</td>
@@ -192,115 +186,118 @@ WHITE.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b698"></span>B698</td>
 <td class="instruction">LD HL,($9B23)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9B23.html">SemiFinals_OpponentData</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b69b"></span>B69B</td>
 <td class="instruction">LD DE,$0011</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Move the pointer by 0011 bytes...</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b69e"></span>B69E</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b69f"></span>B69F</td>
 <td class="instruction">LD C,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Load the opponents portrait graphic pointer into <span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6a0"></span>B6A0</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6a1"></span>B6A1</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6a2"></span>B6A2</td>
 <td class="instruction">LD ($9AAB),BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="9AAB.html">CurrentOpponent_Portrait</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6a6"></span>B6A6</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Load the opponents pub scene graphic pointer into <span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6a7"></span>B6A7</td>
 <td class="instruction">LD C,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6a8"></span>B6A8</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6a9"></span>B6A9</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6aa"></span>B6AA</td>
 <td class="instruction">LD ($9AAE),BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="9AAE.html">CurrentOpponent_PubScene</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="b6ae"></span>
+<div class="comments">
+<div class="paragraph">
+Draw the opponent portrait to the screen.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6ae"></span>B6AE</td>
 <td class="instruction">LD BC,($9AAB)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="9AAB.html">CurrentOpponent_Portrait</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6b2"></span>B6B2</td>
 <td class="instruction">LD DE,$0A10</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the destination co-ordinates to: 0A/ 10.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6b5"></span>B6B5</td>
 <td class="instruction">CALL <a href="B742.html">Draw_OpponentPortrait</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="B742.html">Draw_OpponentPortrait</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6b8"></span>B6B8</td>
 <td class="instruction">LD A,$02</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 02 to *<a href="9AB4.html">9AB4</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6ba"></span>B6BA</td>
 <td class="instruction">LD ($9AB4),A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6bd"></span>B6BD</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6be"></span>B6BE</td>
 <td class="instruction">CALL <a href="CAEB.html">$CAEB</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="CAEB.html">CAEB</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

@@ -69,7 +69,7 @@ Used by the routine at <a href="AA7B.html">Handler_SemiFinal</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6cd"></span>B6CD</td>
 <td class="instruction">LD HL,$B46F</td>
-<td class="comment-1" rowspan="4">Copy 0010 bytes of data from *<a href="B46F.html">Table_Opponent_JammyJim</a> to *<a href="B6C2.html#b707">Messaging_OpponentName</a>.</td>
+<td class="comment-1" rowspan="4">Copy 0010 bytes of data from *<a href="B46F.html">Table_Opponent_JammyJim</a> to *<a href="B6C2.html#b707">TheFinal_OpponentName</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -89,8 +89,8 @@ Used by the routine at <a href="AA7B.html">Handler_SemiFinal</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="b6d8"></span>B6D8</td>
-<td class="instruction">CALL <a href="B548.html">$B548</a></td>
-<td class="comment-1" rowspan="1">Call <a href="B548.html">B548</a>.</td>
+<td class="instruction">CALL <a href="B548.html">Print_MatchCard</a></td>
+<td class="comment-1" rowspan="1">Call <a href="B548.html">Print_MatchCard</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -171,7 +171,7 @@ BLACK.</td>
 WHITE.</td>
 </tr>
 <tr>
-<td class="asm-label">Messaging_OpponentName</td>
+<td class="asm-label">TheFinal_OpponentName</td>
 <td class="address-1"><span id="b707"></span>B707</td>
 <td class="instruction">DEFM "0000000000000000"</td>
 <td class="comment-1" rowspan="1">"0000000000000000".</td>
@@ -263,7 +263,7 @@ The finals are always with Jammy Jim.
 <span id="b72e"></span>
 <div class="comments">
 <div class="paragraph">
-Draw the opponent card to the screen.
+Draw the opponent portrait to the screen.
 </div>
 </div>
 </td>
@@ -278,7 +278,7 @@ Draw the opponent card to the screen.
 <td class="asm-label"></td>
 <td class="address-1"><span id="b732"></span>B732</td>
 <td class="instruction">LD DE,$0A10</td>
-<td class="comment-1" rowspan="1">Set the destination co-ordinates to: 0A10.</td>
+<td class="comment-1" rowspan="1">Set the destination co-ordinates to: 0A/ 10.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

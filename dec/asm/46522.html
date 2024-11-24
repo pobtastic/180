@@ -48,7 +48,7 @@ Used by the routine at <a href="43530.html">43530</a>.
 <td class="asm-label">QuarterFinals</td>
 <td class="address-2"><span id="46522"></span>46522</td>
 <td class="instruction">LD HL,(39713)</td>
-<td class="comment-1" rowspan="4">Copy <span class="register">BC</span> 0016 bytes of data from *<a href="39713.html">Pointer_CurrentOpponentData</a> to *<a href="45419.html#45433">Messaging_OpponentName_Wins</a>.</td>
+<td class="comment-1" rowspan="4">Copy <span class="register">BC</span> 0016 bytes of data from *<a href="39713.html">QuarterFinals_OpponentData</a> to *<a href="45419.html#45433">Messaging_OpponentName_Wins</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -69,7 +69,7 @@ Used by the routine at <a href="43530.html">43530</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="46533"></span>46533</td>
 <td class="instruction">LD HL,(39713)</td>
-<td class="comment-1" rowspan="4">Copy <span class="register">BC</span> 0016 bytes of data from *<a href="39713.html">Pointer_CurrentOpponentData</a> to *<a href="46522.html#46597">46597</a>.</td>
+<td class="comment-1" rowspan="4">Copy <span class="register">BC</span> 0016 bytes of data from *<a href="39713.html">QuarterFinals_OpponentData</a> to *<a href="46522.html#46597">QuarterFinals_OpponentName</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -89,8 +89,8 @@ Used by the routine at <a href="43530.html">43530</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46544"></span>46544</td>
-<td class="instruction">CALL <a href="46408.html">46408</a></td>
-<td class="comment-1" rowspan="1">Call <a href="46408.html">46408</a>.</td>
+<td class="instruction">CALL <a href="46408.html">Print_MatchCard</a></td>
+<td class="comment-1" rowspan="1">Call <a href="46408.html">Print_MatchCard</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -171,7 +171,7 @@ BLACK.</td>
 WHITE.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">QuarterFinals_OpponentName</td>
 <td class="address-1"><span id="46597"></span>46597</td>
 <td class="instruction">DEFM "0000000000000000"</td>
 <td class="comment-1" rowspan="1">"0000000000000000".</td>
@@ -186,13 +186,13 @@ WHITE.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46614"></span>46614</td>
 <td class="instruction">LD HL,(39713)</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="39713.html">Pointer_CurrentOpponentData</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="39713.html">QuarterFinals_OpponentData</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46617"></span>46617</td>
 <td class="instruction">LD DE,17</td>
-<td class="comment-1" rowspan="2"><span class="register">HL</span>+=0017.</td>
+<td class="comment-1" rowspan="2">Move the pointer by 0017 bytes...</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -203,19 +203,17 @@ WHITE.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46621"></span>46621</td>
 <td class="instruction">LD C,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="3">Load the opponents portrait graphic pointer into <span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46622"></span>46622</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46623"></span>46623</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -227,31 +225,38 @@ WHITE.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46628"></span>46628</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="4">Load the opponents pub scene graphic pointer into <span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46629"></span>46629</td>
 <td class="instruction">LD C,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46630"></span>46630</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46631"></span>46631</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46632"></span>46632</td>
 <td class="instruction">LD (39598),BC</td>
 <td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="39598.html">CurrentOpponent_PubScene</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46636"></span>
+<div class="comments">
+<div class="paragraph">
+Draw the opponent portrait to the screen.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -263,7 +268,7 @@ WHITE.</td>
 <td class="asm-label"></td>
 <td class="address-1"><span id="46640"></span>46640</td>
 <td class="instruction">LD DE,2576</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=2576.</td>
+<td class="comment-1" rowspan="1">Set the destination co-ordinates to: 10/ 16.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

@@ -33,7 +33,7 @@ Next: <a href="B5A6.html">B5A6</a>
 </td>
 </tr>
 </table>
-<div class="description">B548: Routine at B548</div>
+<div class="description">B548: Print Match Card</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -49,96 +49,142 @@ Used by the routines at <a href="B5BA.html">QuarterFinals</a>, <a href="B640.htm
 <span id="b548"></span>
 <div class="comments">
 <div class="paragraph">
+<table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="match-card" src="../images/scr/match-card.png" /></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+This first section clears the area of the dart board where the card will appear.   <table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="match-card-clear" src="../images/scr/match-card-clear.png" /></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
 On return from <a href="A8AE.html">CalculateScreenBuffer</a> <span class="register">HL</span> will contain the screen buffer destination.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Print_MatchCard</td>
 <td class="address-2"><span id="b548"></span>B548</td>
 <td class="instruction">LD DE,$040A</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=040A.</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=04/ 0A.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b54b"></span>B54B</td>
 <td class="instruction">CALL <a href="A8AE.html">CalculateScreenBuffer</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8AE.html">CalculateScreenBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b54e"></span>B54E</td>
 <td class="instruction">LD B,$80</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=80.</td>
 </tr>
 <tr>
+<td class="asm-label">MatchCard_ClearLoop</td>
 <td class="address-2"><span id="b550"></span>B550</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b551"></span>B551</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b552"></span>B552</td>
 <td class="instruction">LD BC,$0012</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=0012.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b555"></span>B555</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b556"></span>B556</td>
 <td class="instruction">POP DE</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b557"></span>B557</td>
 <td class="instruction">LD (HL),$00</td>
 <td class="comment-1" rowspan="1">Write 00 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b559"></span>B559</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b55a"></span>B55A</td>
 <td class="instruction">LDIR</td>
 <td class="comment-1" rowspan="1">LDIR.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b55c"></span>B55C</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b55d"></span>B55D</td>
 <td class="instruction">CALL <a href="A8CC.html">NextScreenBufferLine</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8CC.html">NextScreenBufferLine</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b560"></span>B560</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b561"></span>B561</td>
-<td class="instruction">DJNZ <a href="B548.html#b550">$B550</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B548.html#b550">B550</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="B548.html#b550">MatchCard_ClearLoop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="B548.html#b550">MatchCard_ClearLoop</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b563"></span>
+<div class="comments">
+<div class="paragraph">
+Colour the card background:  <table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="match-card-1" src="../images/scr/match-card-1.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b563"></span>B563</td>
 <td class="instruction">LD HL,$040A</td>
-<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 040A.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 04/ 0A.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b566"></span>B566</td>
 <td class="instruction">LD BC,$1013</td>
-<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 1013.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 10/ 13.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b569"></span>B569</td>
 <td class="instruction">LD A,$60</td>
 <td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
@@ -149,20 +195,38 @@ GREEN
 .</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b56b"></span>B56B</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b56e"></span>
+<div class="comments">
+<div class="paragraph">
+Colour the opponent portrait background:  <table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="match-card-2" src="../images/scr/match-card-2.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b56e"></span>B56E</td>
 <td class="instruction">LD HL,$0A10</td>
-<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 0A10.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 0A/ 10.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b571"></span>B571</td>
 <td class="instruction">LD BC,$0706</td>
-<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 0706.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 07/ 06.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b574"></span>B574</td>
 <td class="instruction">LD A,$47</td>
 <td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
@@ -173,20 +237,38 @@ BLACK
 .</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b576"></span>B576</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b579"></span>
+<div class="comments">
+<div class="paragraph">
+Colour the card right-hand shadow:  <table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="match-card-3" src="../images/scr/match-card-3.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b579"></span>B579</td>
 <td class="instruction">LD HL,$051D</td>
-<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 051D.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 05/ 1D.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b57c"></span>B57C</td>
 <td class="instruction">LD BC,$1001</td>
-<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 1001.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 10/ 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b57f"></span>B57F</td>
 <td class="instruction">LD A,$30</td>
 <td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
@@ -197,20 +279,38 @@ YELLOW
 .</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b581"></span>B581</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b584"></span>
+<div class="comments">
+<div class="paragraph">
+Colour the card bottom shadow:  <table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="match-card-4" src="../images/scr/match-card-4.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b584"></span>B584</td>
 <td class="instruction">LD HL,$140B</td>
-<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 140B.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 14/ 0B.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b587"></span>B587</td>
 <td class="instruction">LD BC,$0113</td>
-<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 0113.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 01/ 13.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b58a"></span>B58A</td>
 <td class="instruction">LD A,$30</td>
 <td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
@@ -221,20 +321,38 @@ YELLOW
 .</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b58c"></span>B58C</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b58f"></span>
+<div class="comments">
+<div class="paragraph">
+Colour the opponent portrait bottom shadow:  <table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="match-card-5" src="../images/scr/match-card-5.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b58f"></span>B58F</td>
 <td class="instruction">LD HL,$1111</td>
-<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 1111.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 11/ 11.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b592"></span>B592</td>
 <td class="instruction">LD BC,$0106</td>
-<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 0106.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 01/ 06.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b595"></span>B595</td>
 <td class="instruction">LD A,$20</td>
 <td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
@@ -245,20 +363,38 @@ GREEN
 .</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b597"></span>B597</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="b59a"></span>
+<div class="comments">
+<div class="paragraph">
+Colour the opponent portrait right-hand shadow:  <table class="default">
+<tr>
+<td class="" colspan="1" rowspan="1"><img alt="match-card-6" src="../images/scr/match-card-6.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b59a"></span>B59A</td>
 <td class="instruction">LD HL,$0B16</td>
-<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 0B16.</td>
+<td class="comment-1" rowspan="1">Set the co-ordinates in <span class="register">HL</span> to 0B/ 16.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b59d"></span>B59D</td>
 <td class="instruction">LD BC,$0701</td>
-<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 0701.</td>
+<td class="comment-1" rowspan="1">Set the block dimensions in <span class="register">BC</span> to 07/ 01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b5a0"></span>B5A0</td>
 <td class="instruction">LD A,$20</td>
 <td class="comment-1" rowspan="2">Call <a href="B5A6.html">FillAttributeBlock</a> with INK:
@@ -269,10 +405,12 @@ GREEN
 .</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b5a2"></span>B5A2</td>
 <td class="instruction">CALL <a href="B5A6.html">FillAttributeBlock</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="b5a5"></span>B5A5</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
