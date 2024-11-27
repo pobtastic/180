@@ -47,27 +47,26 @@ Used by the routines at <a href="B29C.html">B29C</a> and <a href="B342.html">B34
 <tr>
 <td class="address-2"><span id="b402"></span>B402</td>
 <td class="instruction">LD HL,$B41C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="B41C.html">B41C</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="b405"></span>B405</td>
 <td class="instruction">CP (HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is equal to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b406"></span>B406</td>
 <td class="instruction">RET Z</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="b407"></span>B407</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="b408"></span>B408</td>
 <td class="instruction">JR <a href="B402.html#b405">$B405</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="B402.html#b405">B405</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

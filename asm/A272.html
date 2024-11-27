@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at A272</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="A15C.html">A15C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#a272">Map</a></td>
+<td class="next">
+Next: <a href="A380.html">A380</a>
+</td>
+</tr>
+</table>
+<div class="description">A272: Routine at A272</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="A15C.html">Messaging_YouWin</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a272"></span>A272</td>
+<td class="instruction">LD A,($B412)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="933F.html">MainMenu</a> if *<a href="B412.html">B412</a> is not equal to 00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a275"></span>A275</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a276"></span>A276</td>
+<td class="instruction">JP NZ,<a href="933F.html">MainMenu</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a279"></span>A279</td>
+<td class="instruction">CALL <a href="A7A5.html">Print_PlayArea</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A7A5.html">Print_PlayArea</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a27c"></span>A27C</td>
+<td class="instruction">CALL <a href="A3A4.html">DrawCurrentOpponent</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A3A4.html">DrawCurrentOpponent</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a27f"></span>A27F</td>
+<td class="instruction">LD HL,$0201</td>
+<td class="comment-1" rowspan="2">Write 0201 to *<a href="AF5D.html">AF5D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a282"></span>A282</td>
+<td class="instruction">LD ($AF5D),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a285"></span>A285</td>
+<td class="instruction">LD A,($9AB7)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="A272.html#a29b">A29B</a> if *<a href="9AB4.html#9ab7">9AB7</a> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a288"></span>A288</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a289"></span>A289</td>
+<td class="instruction">JR Z,<a href="A272.html#a29b">$A29B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a28b"></span>A28B</td>
+<td class="instruction">LD A,($9AB8)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="A272.html#a296">A296</a> if *<a href="9AB8.html">ActivePlayer</a> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a28e"></span>A28E</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a28f"></span>A28F</td>
+<td class="instruction">JR Z,<a href="A272.html#a296">$A296</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a291"></span>A291</td>
+<td class="instruction">LD HL,($9AB0)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9AB0.html">2UP_Total</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a294"></span>A294</td>
+<td class="instruction">JR <a href="A272.html#a29e">$A29E</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a29e">A29E</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a296"></span>A296</td>
+<td class="instruction">LD HL,($9AB2)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9AB0.html#9ab2">1UP_Total</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a299"></span>A299</td>
+<td class="instruction">JR <a href="A272.html#a29e">$A29E</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a29e">A29E</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a29b"></span>A29B</td>
+<td class="instruction">LD HL,($9B1F)</td>
+<td class="comment-1" rowspan="3">Write *<a href="9B1F.html">Score</a> to; <ul class="">
+<li>*<a href="AF49.html">AF49</a></li>
+<li>*<a href="9B25.html#9b33">9B33</a></li>
+</ul></td>
+</tr>
+<tr>
+<td class="address-2"><span id="a29e"></span>A29E</td>
+<td class="instruction">LD ($AF49),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2a1"></span>A2A1</td>
+<td class="instruction">LD ($9B33),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2a4"></span>A2A4</td>
+<td class="instruction">CALL <a href="AE17.html">$AE17</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AE17.html">AE17</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2a7"></span>A2A7</td>
+<td class="instruction">LD HL,$0501</td>
+<td class="comment-1" rowspan="2">Write 0501 to *<a href="AF5D.html">AF5D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2aa"></span>A2AA</td>
+<td class="instruction">LD ($AF5D),HL</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="a2ad"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="9D42.html">9D42</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a2ad"></span>A2AD</td>
+<td class="instruction">LD HL,$9AB6</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9AB4.html#9ab6">9AB6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2b0"></span>A2B0</td>
+<td class="instruction">LD A,($F821)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F821.html">ControlByte</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2b3"></span>A2B3</td>
+<td class="instruction">BIT 1,A</td>
+<td class="comment-1" rowspan="1">Test bit 1 of <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2b5"></span>A2B5</td>
+<td class="instruction">JR Z,<a href="A272.html#a2b9">$A2B9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a2b9">A2B9</a> if ?? is equal to <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2b7"></span>A2B7</td>
+<td class="instruction">LD (HL),$01</td>
+<td class="comment-1" rowspan="1">Write 01 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a2b9"></span>A2B9</td>
+<td class="instruction">BIT 0,A</td>
+<td class="comment-1" rowspan="1">Test bit 0 of <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2bb"></span>A2BB</td>
+<td class="instruction">JR Z,<a href="A272.html#a2bf">$A2BF</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a2bf">A2BF</a> if ?? is equal to <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2bd"></span>A2BD</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="1">Write 00 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a2bf"></span>A2BF</td>
+<td class="instruction">BIT 3,A</td>
+<td class="comment-1" rowspan="1">Test bit 3 of <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2c1"></span>A2C1</td>
+<td class="instruction">JR Z,<a href="A272.html#a2c5">$A2C5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a2c5">A2C5</a> if ?? is equal to <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2c3"></span>A2C3</td>
+<td class="instruction">LD (HL),$03</td>
+<td class="comment-1" rowspan="1">Write 03 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a2c5"></span>A2C5</td>
+<td class="instruction">BIT 2,A</td>
+<td class="comment-1" rowspan="1">Test bit 2 of <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2c7"></span>A2C7</td>
+<td class="instruction">JR Z,<a href="A272.html#a2cb">$A2CB</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a2cb">A2CB</a> if ?? is equal to <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2c9"></span>A2C9</td>
+<td class="instruction">LD (HL),$02</td>
+<td class="comment-1" rowspan="1">Write 02 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a2cb"></span>A2CB</td>
+<td class="instruction">LD A,($9AB6)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9AB4.html#9ab6">9AB6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2ce"></span>A2CE</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a2d8">A2D8</a> if <span class="register">A</span> is equal to 01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2d0"></span>A2D0</td>
+<td class="instruction">JR Z,<a href="A272.html#a2d8">$A2D8</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2d2"></span>A2D2</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a2d8">A2D8</a> if <span class="register">A</span> is equal to 03.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2d4"></span>A2D4</td>
+<td class="instruction">JR Z,<a href="A272.html#a2d8">$A2D8</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2d6"></span>A2D6</td>
+<td class="instruction">JR <a href="A272.html#a2f7">$A2F7</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a2f7">A2F7</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a2d8"></span>A2D8</td>
+<td class="instruction">LD A,($9AC3)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9AC3.html">9AC3</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2db"></span>A2DB</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a2f7">A2F7</a> if <span class="register">A</span> is equal to 08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2dd"></span>A2DD</td>
+<td class="instruction">JR Z,<a href="A272.html#a2f7">$A2F7</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2df"></span>A2DF</td>
+<td class="instruction">LD A,($9B26)</td>
+<td class="comment-1" rowspan="2">Write *<a href="9B25.html#9b26">9B26</a> to *<a href="A272.html#a2e8">A2E9</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2e2"></span>A2E2</td>
+<td class="instruction">LD ($A2E9),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2e5"></span>A2E5</td>
+<td class="instruction">LD A,($9B10)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9B10.html">9B10</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2e8"></span>A2E8</td>
+<td class="instruction">SUB $01</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2ea"></span>A2EA</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a2f4">A2F4</a> if <span class="register">A</span> is less than 08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2ec"></span>A2EC</td>
+<td class="instruction">JR C,<a href="A272.html#a2f4">$A2F4</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2ee"></span>A2EE</td>
+<td class="instruction">LD HL,$9AC3</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9AC3.html">9AC3</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2f1"></span>A2F1</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2f2"></span>A2F2</td>
+<td class="instruction">ADD A,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=08.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a2f4"></span>A2F4</td>
+<td class="instruction">LD ($9B10),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="9B10.html">9B10</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a2f7"></span>A2F7</td>
+<td class="instruction">LD A,($9AB6)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9AB4.html#9ab6">9AB6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2fa"></span>A2FA</td>
+<td class="instruction">CP $00</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a304">A304</a> if <span class="register">A</span> is equal to 00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2fc"></span>A2FC</td>
+<td class="instruction">JR Z,<a href="A272.html#a304">$A304</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a2fe"></span>A2FE</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a304">A304</a> if <span class="register">A</span> is equal to 02.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a300"></span>A300</td>
+<td class="instruction">JR Z,<a href="A272.html#a304">$A304</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a302"></span>A302</td>
+<td class="instruction">JR <a href="A272.html#a323">$A323</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a323">A323</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a304"></span>A304</td>
+<td class="instruction">LD A,($9AC3)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="A272.html#a323">A323</a> if *<a href="9AC3.html">9AC3</a> is equal to 1D.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a307"></span>A307</td>
+<td class="instruction">CP $1D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a309"></span>A309</td>
+<td class="instruction">JR Z,<a href="A272.html#a323">$A323</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a30b"></span>A30B</td>
+<td class="instruction">LD A,($9B26)</td>
+<td class="comment-1" rowspan="2">Write *<a href="9B25.html#9b26">9B26</a> to *<a href="A272.html#a314">A315</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a30e"></span>A30E</td>
+<td class="instruction">LD ($A315),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a311"></span>A311</td>
+<td class="instruction">LD A,($9B10)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9B10.html">9B10</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a314"></span>A314</td>
+<td class="instruction">ADD A,$01</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a316"></span>A316</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a320">A320</a> if <span class="register">A</span> is less than 08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a318"></span>A318</td>
+<td class="instruction">JR C,<a href="A272.html#a320">$A320</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a31a"></span>A31A</td>
+<td class="instruction">SUB $08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a31c"></span>A31C</td>
+<td class="instruction">LD HL,$9AC3</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9AC3.html">9AC3</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a31f"></span>A31F</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-1" rowspan="1">Increment *<span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a320"></span>A320</td>
+<td class="instruction">LD ($9B10),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="9B10.html">9B10</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a323"></span>A323</td>
+<td class="instruction">LD A,($9AB6)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9AB4.html#9ab6">9AB6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a326"></span>A326</td>
+<td class="instruction">CP $00</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a330">A330</a> if <span class="register">A</span> is equal to 00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a328"></span>A328</td>
+<td class="instruction">JR Z,<a href="A272.html#a330">$A330</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a32a"></span>A32A</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a330">A330</a> if <span class="register">A</span> is equal to 03.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a32c"></span>A32C</td>
+<td class="instruction">JR Z,<a href="A272.html#a330">$A330</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a32e"></span>A32E</td>
+<td class="instruction">JR <a href="A272.html#a34e">$A34E</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a34e">A34E</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a330"></span>A330</td>
+<td class="instruction">LD A,($9AC4)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="A272.html#a34e">A34E</a> if *<a href="9AC3.html#9ac4">9AC4</a> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a333"></span>A333</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a334"></span>A334</td>
+<td class="instruction">JR Z,<a href="A272.html#a34e">$A34E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a336"></span>A336</td>
+<td class="instruction">LD A,($9B27)</td>
+<td class="comment-1" rowspan="2">Write *<a href="9B25.html#9b27">9B27</a> to *<a href="A272.html#a33f">A340</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a339"></span>A339</td>
+<td class="instruction">LD ($A340),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a33c"></span>A33C</td>
+<td class="instruction">LD A,($9B11)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9B11.html">9B11</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a33f"></span>A33F</td>
+<td class="instruction">SUB $01</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a341"></span>A341</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a34b">A34B</a> if <span class="register">A</span> is less than 08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a343"></span>A343</td>
+<td class="instruction">JR C,<a href="A272.html#a34b">$A34B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a345"></span>A345</td>
+<td class="instruction">LD HL,$9AC4</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9AC3.html#9ac4">9AC4</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a348"></span>A348</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">Decrease *<span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a349"></span>A349</td>
+<td class="instruction">ADD A,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=08.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a34b"></span>A34B</td>
+<td class="instruction">LD ($9B11),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="9B11.html">9B11</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a34e"></span>A34E</td>
+<td class="instruction">LD A,($9AB6)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9AB4.html#9ab6">9AB6</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a351"></span>A351</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a35b">A35B</a> if <span class="register">A</span> is equal to 01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a353"></span>A353</td>
+<td class="instruction">JR Z,<a href="A272.html#a35b">$A35B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a355"></span>A355</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a35b">A35B</a> if <span class="register">A</span> is equal to 02.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a357"></span>A357</td>
+<td class="instruction">JR Z,<a href="A272.html#a35b">$A35B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a359"></span>A359</td>
+<td class="instruction">JR <a href="A272.html#a37a">$A37A</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="A272.html#a37a">A37A</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a35b"></span>A35B</td>
+<td class="instruction">LD A,($9AC4)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="A272.html#a37a">A37A</a> if *<a href="9AC3.html#9ac4">9AC4</a> is equal to 17.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a35e"></span>A35E</td>
+<td class="instruction">CP $17</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a360"></span>A360</td>
+<td class="instruction">JR Z,<a href="A272.html#a37a">$A37A</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a362"></span>A362</td>
+<td class="instruction">LD A,($9B27)</td>
+<td class="comment-1" rowspan="2">Write *<a href="9B25.html#9b27">9B27</a> to *<a href="A272.html#a36b">A36C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a365"></span>A365</td>
+<td class="instruction">LD ($A36C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a368"></span>A368</td>
+<td class="instruction">LD A,($9B11)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="9B11.html">9B11</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a36b"></span>A36B</td>
+<td class="instruction">ADD A,$01</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=01.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a36d"></span>A36D</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Jump to <a href="A272.html#a377">A377</a> if <span class="register">A</span> is less than 08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a36f"></span>A36F</td>
+<td class="instruction">JR C,<a href="A272.html#a377">$A377</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="a371"></span>A371</td>
+<td class="instruction">SUB $08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a373"></span>A373</td>
+<td class="instruction">LD HL,$9AC4</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9AC3.html#9ac4">9AC4</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a376"></span>A376</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-1" rowspan="1">Increment *<span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a377"></span>A377</td>
+<td class="instruction">LD ($9B11),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="9B11.html">9B11</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="a37a"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="9D42.html">9D42</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="a37a"></span>A37A</td>
+<td class="instruction">CALL <a href="A461.html">$A461</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A461.html">A461</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="a37d"></span>A37D</td>
+<td class="instruction">JP <a href="9D42.html#9d53">$9D53</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="9D42.html#9d53">9D53</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="A15C.html">A15C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#a272">Map</a></td>
+<td class="next">
+Next: <a href="A380.html">A380</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/A272.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -29,11 +29,11 @@ Prev: <a href="AD3B.html">AD3B</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#ad5c">Map</a></td>
 <td class="next">
-Next: <a href="AD82.html">AD82</a>
+Next: <a href="AE04.html">AE04</a>
 </td>
 </tr>
 </table>
-<div class="description">AD5C: Routine at AD5C</div>
+<div class="description">AD5C: Report Opponent Score</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,31 +45,37 @@ Used by the routine at <a href="AB2E.html">Animation_OpponentThrowing</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">ReportOpponentScore</td>
 <td class="address-2"><span id="ad5c"></span>AD5C</td>
 <td class="instruction">LD HL,$AD75</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="AD5C.html#ad75">AD75</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad5f"></span>AD5F</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad60"></span>AD60</td>
 <td class="instruction">PUSH AF</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad61"></span>AD61</td>
 <td class="instruction">LD (HL),$20</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 20 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad63"></span>AD63</td>
 <td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
 <td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad66"></span>AD66</td>
 <td class="instruction">DEFB $10,$05</td>
 <td class="comment-1" rowspan="1">INK: 
@@ -78,6 +84,7 @@ Used by the routine at <a href="AB2E.html">Animation_OpponentThrowing</a>.
 CYAN.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad68"></span>AD68</td>
 <td class="instruction">DEFB $11,$00</td>
 <td class="comment-1" rowspan="1">PAPER: 
@@ -86,59 +93,425 @@ CYAN.</td>
 BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad6a"></span>AD6A</td>
 <td class="instruction">DEFB $12,$01</td>
 <td class="comment-1" rowspan="1">FLASH: ON.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad6c"></span>AD6C</td>
 <td class="instruction">DEFB $16,$17,$10</td>
 <td class="comment-1" rowspan="1">PRINT AT: 17, 10.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad6f"></span>AD6F</td>
 <td class="instruction">DEFM "GOT"</td>
 <td class="comment-1" rowspan="1"><img alt="got" src="../images/font/got.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad72"></span>AD72</td>
 <td class="instruction">DEFB $16,$17,$1A</td>
 <td class="comment-1" rowspan="1">PRINT AT: 17, 1A.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad75"></span>AD75</td>
 <td class="instruction">DEFM "   "</td>
 <td class="comment-1" rowspan="1">"&#160;&#160;&#160;".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad78"></span>AD78</td>
 <td class="instruction">DEFB $FF</td>
 <td class="comment-1" rowspan="1">Terminator.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad79"></span>AD79</td>
 <td class="instruction">POP AF</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad7a"></span>AD7A</td>
 <td class="instruction">LD C,$14</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=14.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad7c"></span>AD7C</td>
 <td class="instruction">LD B,$17</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=17.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad7e"></span>AD7E</td>
-<td class="instruction">CALL <a href="AD82.html">$AD82</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="AD5C.html#ad82">ReportOpponentScore_Type</a></td>
+<td class="comment-1" rowspan="1">Call <a href="AD5C.html#ad82">ReportOpponentScore_Type</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ad81"></span>AD81</td>
 <td class="instruction">RET</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ad82"></span>
+<div class="comments">
+<div class="paragraph">
+Now report the "type" of scoring.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ReportOpponentScore_Type</td>
+<td class="address-2"><span id="ad82"></span>AD82</td>
+<td class="instruction">CP $53</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD5C.html#ad97">Report_Single</a> if <span class="register">A</span> is equal to 53.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad84"></span>AD84</td>
+<td class="instruction">JR Z,<a href="AD5C.html#ad97">Report_Single</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad86"></span>AD86</td>
+<td class="instruction">CP $44</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD5C.html#adad">Report_Double</a> if <span class="register">A</span> is equal to 44.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad88"></span>AD88</td>
+<td class="instruction">JR Z,<a href="AD5C.html#adad">Report_Double</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad8a"></span>AD8A</td>
+<td class="instruction">CP $54</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD5C.html#adc3">Report_Treble</a> if <span class="register">A</span> is equal to 54.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad8c"></span>AD8C</td>
+<td class="instruction">JR Z,<a href="AD5C.html#adc3">Report_Treble</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad8e"></span>AD8E</td>
+<td class="instruction">CP $4D</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD5C.html#add9">Report_MissedBoard</a> if <span class="register">A</span> is equal to 4D.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad90"></span>AD90</td>
+<td class="instruction">JR Z,<a href="AD5C.html#add9">Report_MissedBoard</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad92"></span>AD92</td>
+<td class="instruction">CP $42</td>
+<td class="comment-1" rowspan="2">Jump to <a href="AD5C.html#adee">Report_Bullseye</a> if <span class="register">A</span> is equal to 42.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad94"></span>AD94</td>
+<td class="instruction">JR Z,<a href="AD5C.html#adee">Report_Bullseye</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad96"></span>AD96</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ad97"></span>
+<div class="comments">
+<div class="paragraph">
+Report score is a "SINGLE".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Report_Single</td>
+<td class="address-2"><span id="ad97"></span>AD97</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="4">Write <span class="register">BC</span> to *<a href="AD5C.html#ada2">Report_Single_PrintAt</a>+01/ 02 (co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad98"></span>AD98</td>
+<td class="instruction">LD ($ADA3),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad9b"></span>AD9B</td>
+<td class="instruction">LD A,C</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad9c"></span>AD9C</td>
+<td class="instruction">LD ($ADA4),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ad9f"></span>AD9F</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Report_Single_PrintAt</td>
+<td class="address-1"><span id="ada2"></span>ADA2</td>
+<td class="instruction">DEFB $16,$16,$00</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ada5"></span>ADA5</td>
+<td class="instruction">DEFM "SINGLE"</td>
+<td class="comment-1" rowspan="1"><img alt="single" src="../images/font/single.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adab"></span>ADAB</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adac"></span>ADAC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="adad"></span>
+<div class="comments">
+<div class="paragraph">
+Report score is a "DOUBLE".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Report_Double</td>
+<td class="address-2"><span id="adad"></span>ADAD</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="4">Write <span class="register">BC</span> to *<a href="AD5C.html#adb8">Report_Double_PrintAt</a>+01/ 02 (co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adae"></span>ADAE</td>
+<td class="instruction">LD ($ADB9),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adb1"></span>ADB1</td>
+<td class="instruction">LD A,C</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adb2"></span>ADB2</td>
+<td class="instruction">LD ($ADBA),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adb5"></span>ADB5</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Report_Double_PrintAt</td>
+<td class="address-1"><span id="adb8"></span>ADB8</td>
+<td class="instruction">DEFB $16,$16,$00</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adbb"></span>ADBB</td>
+<td class="instruction">DEFM "DOUBLE"</td>
+<td class="comment-1" rowspan="1"><img alt="double" src="../images/font/double.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adc1"></span>ADC1</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adc2"></span>ADC2</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="adc3"></span>
+<div class="comments">
+<div class="paragraph">
+Report score is a "TREBLE".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Report_Treble</td>
+<td class="address-2"><span id="adc3"></span>ADC3</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="4">Write <span class="register">BC</span> to *<a href="AD5C.html#adce">Report_Treble_PrintAt</a>+01/ 02 (co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adc4"></span>ADC4</td>
+<td class="instruction">LD ($ADCF),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adc7"></span>ADC7</td>
+<td class="instruction">LD A,C</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adc8"></span>ADC8</td>
+<td class="instruction">LD ($ADD0),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adcb"></span>ADCB</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Report_Treble_PrintAt</td>
+<td class="address-1"><span id="adce"></span>ADCE</td>
+<td class="instruction">DEFB $16,$16,$00</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="add1"></span>ADD1</td>
+<td class="instruction">DEFM "TREBLE"</td>
+<td class="comment-1" rowspan="1"><img alt="treble" src="../images/font/treble.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="add7"></span>ADD7</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="add8"></span>ADD8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="add9"></span>
+<div class="comments">
+<div class="paragraph">
+Report score is a "MISSED BOARD".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Report_MissedBoard</td>
+<td class="address-2"><span id="add9"></span>ADD9</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Report_MissedBoard_PrintAt</td>
+<td class="address-1"><span id="addc"></span>ADDC</td>
+<td class="instruction">DEFB $16,$17,$10</td>
+<td class="comment-1" rowspan="1">PRINT AT: 17, 10.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="addf"></span>ADDF</td>
+<td class="instruction">DEFM " MISSED BOARD"</td>
+<td class="comment-1" rowspan="1"><img alt="missed-board" src="../images/font/missed-board.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adec"></span>ADEC</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="aded"></span>ADED</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="adee"></span>
+<div class="comments">
+<div class="paragraph">
+Report score is a "BULL".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Report_Bullseye</td>
+<td class="address-2"><span id="adee"></span>ADEE</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="4">Write <span class="register">BC</span> to *<a href="AD5C.html#adf9">Report_Bullseye_PrintAt</a>+01/ 02 (co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adef"></span>ADEF</td>
+<td class="instruction">LD ($ADFA),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adf2"></span>ADF2</td>
+<td class="instruction">LD A,C</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adf3"></span>ADF3</td>
+<td class="instruction">LD ($ADFB),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adf6"></span>ADF6</td>
+<td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Report_Bullseye_PrintAt</td>
+<td class="address-1"><span id="adf9"></span>ADF9</td>
+<td class="instruction">DEFB $16,$16,$00</td>
+<td class="comment-1" rowspan="1">PRINT AT: 16, 00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="adfc"></span>ADFC</td>
+<td class="instruction">DEFM "BULL  "</td>
+<td class="comment-1" rowspan="1"><img alt="bull" src="../images/font/bull.png" /></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ae02"></span>AE02</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">Terminator.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ae03"></span>AE03</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -148,7 +521,7 @@ Prev: <a href="AD3B.html">AD3B</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#ad5c">Map</a></td>
 <td class="next">
-Next: <a href="AD82.html">AD82</a>
+Next: <a href="AE04.html">AE04</a>
 </td>
 </tr>
 </table>

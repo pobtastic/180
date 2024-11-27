@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at CBCE</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="CBC8.html">CBC8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#cbce">Map</a></td>
+<td class="next">
+Next: <a href="CBF7.html">CBF7</a>
+</td>
+</tr>
+</table>
+<div class="description">CBCE: Routine at CBCE</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="cbce"></span>CBCE</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="5">Multiply <span class="register">A</span> by 06 and store the result in <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbcf"></span>CBCF</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbd0"></span>CBD0</td>
+<td class="instruction">ADD A,C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbd1"></span>CBD1</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbd2"></span>CBD2</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbd3"></span>CBD3</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbd5"></span>CBD5</td>
+<td class="instruction">LD HL,$D00A</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D00A.html">D00A</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbd8"></span>CBD8</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbd9"></span>CBD9</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Write *<span class="register">HL</span> to *<a href="CB6B.html#cb6e">CB6E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbda"></span>CBDA</td>
+<td class="instruction">LD ($CB6E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbdd"></span>CBDD</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbde"></span>CBDE</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Write *<span class="register">HL</span> to *<a href="CB6B.html#cb6f">CB6F</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbdf"></span>CBDF</td>
+<td class="instruction">LD ($CB6F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbe2"></span>CBE2</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbe3"></span>CBE3</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Write *<span class="register">HL</span> to *<a href="CB6B.html#cb8d">CB8D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbe4"></span>CBE4</td>
+<td class="instruction">LD ($CB8D),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbe7"></span>CBE7</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbe8"></span>CBE8</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Write *<span class="register">HL</span> to *<a href="CB6B.html#cb8e">CB8E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbe9"></span>CBE9</td>
+<td class="instruction">LD ($CB8E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbec"></span>CBEC</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbed"></span>CBED</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Write *<span class="register">HL</span> to *<a href="CB6B.html#cbac">CBAC</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbee"></span>CBEE</td>
+<td class="instruction">LD ($CBAC),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbf1"></span>CBF1</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbf2"></span>CBF2</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Write *<span class="register">HL</span> to *<a href="CB6B.html#cbad">CBAD</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbf3"></span>CBF3</td>
+<td class="instruction">LD ($CBAD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="cbf6"></span>CBF6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="CBC8.html">CBC8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#cbce">Map</a></td>
+<td class="next">
+Next: <a href="CBF7.html">CBF7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/CBCE.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

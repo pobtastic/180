@@ -47,97 +47,95 @@ Used by the routine at <a href="9688.html">9688</a>.
 <tr>
 <td class="address-2"><span id="96f0"></span>96F0</td>
 <td class="instruction">LD D,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96f1"></span>96F1</td>
 <td class="instruction">LD E,B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="96f2"></span>96F2</td>
 <td class="instruction">RR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96f4"></span>96F4</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96f5"></span>96F5</td>
 <td class="instruction">JR NC,<a href="96F0.html#96f2">$96F2</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="96F0.html#96f2">96F2</a> if <span class="register">HL</span> is greater than or equal to 00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96f7"></span>96F7</td>
 <td class="instruction">LD BC,$0028</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0028.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96fa"></span>96FA</td>
 <td class="instruction">LD A,($F864)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F82D.html#f864">F864</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96fd"></span>96FD</td>
 <td class="instruction">OR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="96F0.html#9707">9707</a> if <span class="register">A</span> has even parity (P flag is set).</td>
 </tr>
 <tr>
 <td class="address-1"><span id="96fe"></span>96FE</td>
 <td class="instruction">JP PE,<a href="96F0.html#9707">$9707</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="9701"></span>9701</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9702"></span>9702</td>
 <td class="instruction">SRL A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Shift <span class="register">A</span> right.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9704"></span>9704</td>
 <td class="instruction">JR Z,<a href="96F0.html#9707">$9707</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="96F0.html#9707">9707</a> if <span class="register">A</span> is ??.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9706"></span>9706</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="9707"></span>9707</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9708"></span>9708</td>
 <td class="instruction">OR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="9709"></span>9709</td>
 <td class="instruction">POP IX</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IX</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="970b"></span>970B</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Restore <span class="register">HL</span> and <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="970c"></span>970C</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="970d"></span>970D</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

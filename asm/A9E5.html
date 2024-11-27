@@ -33,7 +33,7 @@ Next: <a href="AA0A.html">AA0A</a>
 </td>
 </tr>
 </table>
-<div class="description">A9E5: Routine at A9E5</div>
+<div class="description">A9E5: Messaging: Hard Luck</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,11 +45,13 @@ Used by the routine at <a href="9D42.html">9D42</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Messaging_HardLuck</td>
 <td class="address-2"><span id="a9e5"></span>A9E5</td>
 <td class="instruction">CALL <a href="964C.html">PrintString_Loop</a></td>
 <td class="comment-1" rowspan="1">Call <a href="964C.html">PrintString_Loop</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9e8"></span>A9E8</td>
 <td class="instruction">DEFB $10,$07</td>
 <td class="comment-1" rowspan="1">INK: 
@@ -58,6 +60,7 @@ Used by the routine at <a href="9D42.html">9D42</a>.
 WHITE.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9ea"></span>A9EA</td>
 <td class="instruction">DEFB $11,$00</td>
 <td class="comment-1" rowspan="1">PAPER: 
@@ -66,51 +69,61 @@ WHITE.</td>
 BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9ec"></span>A9EC</td>
 <td class="instruction">DEFB $12,$01</td>
 <td class="comment-1" rowspan="1">FLASH: ON.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9ee"></span>A9EE</td>
 <td class="instruction">DEFB $16,$0B,$03</td>
 <td class="comment-1" rowspan="1">PRINT AT: 0B, 03.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9f1"></span>A9F1</td>
 <td class="instruction">DEFM "UP["</td>
-<td class="comment-1" rowspan="1">"UP[".</td>
+<td class="comment-1" rowspan="1"><img alt="up" src="../images/font/up.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9f4"></span>A9F4</td>
 <td class="instruction">DEFB $16,$0D,$02</td>
 <td class="comment-1" rowspan="1">PRINT AT: 0D, 02.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9f7"></span>A9F7</td>
 <td class="instruction">DEFM "HARD"</td>
-<td class="comment-1" rowspan="1">"HARD".</td>
+<td class="comment-1" rowspan="1"><img alt="hard" src="../images/font/hard.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9fb"></span>A9FB</td>
 <td class="instruction">DEFB $16,$0E,$02</td>
 <td class="comment-1" rowspan="1">PRINT AT: 0E, 02.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a9fe"></span>A9FE</td>
 <td class="instruction">DEFM "LUCK["</td>
-<td class="comment-1" rowspan="1">"LUCK[".</td>
+<td class="comment-1" rowspan="1"><img alt="luck" src="../images/font/luck.png" /></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa03"></span>AA03</td>
 <td class="instruction">DEFB $FF</td>
 <td class="comment-1" rowspan="1">Terminator.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa04"></span>AA04</td>
 <td class="instruction">CALL <a href="AE04.html">LongPause</a></td>
 <td class="comment-1" rowspan="1">Call <a href="AE04.html">LongPause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="aa07"></span>AA07</td>
 <td class="instruction">JP <a href="A8F8.html">StartMenu</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="A8F8.html">StartMenu</a>.</td>

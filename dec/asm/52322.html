@@ -33,7 +33,7 @@ Next: <a href="52356.html">52356</a>
 </td>
 </tr>
 </table>
-<div class="description">52322: Routine at CC62</div>
+<div class="description">52322: Initialise AY Sound</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,14 +45,16 @@ Used by the routines at <a href="40258.html">40258</a>, <a href="43740.html">437
 </td>
 </tr>
 <tr>
+<td class="asm-label">Initialise_AYSound</td>
 <td class="address-2"><span id="52322"></span>52322</td>
 <td class="instruction">XOR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52323"></span>52323</td>
 <td class="instruction">LD (53257),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53257.html">53257</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -65,79 +67,104 @@ This entry point is used by the routine at <a href="52356.html">52356</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Initialise_AYSound_0</td>
 <td class="address-2"><span id="52326"></span>52326</td>
 <td class="instruction">LD C,253</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the port number for the AY sound in <span class="register">C</span> (253).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52328"></span>52328</td>
 <td class="instruction">LD DE,3328</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=3328.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52331"></span>52331</td>
 <td class="instruction">SUB A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label">Initialise_AYSound_1</td>
 <td class="address-2"><span id="52332"></span>52332</td>
 <td class="instruction">LD B,255</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Select the register port.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52334"></span>52334</td>
 <td class="instruction">OUT (C),D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Select register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52336"></span>52336</td>
 <td class="instruction">LD B,191</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the data port in <span class="register">B</span> (191).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52338"></span>52338</td>
 <td class="instruction">OUT (C),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write zero to the register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52340"></span>52340</td>
 <td class="instruction">DEC D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">D</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52341"></span>52341</td>
-<td class="instruction">JP P,<a href="52322.html#52332">52332</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JP P,<a href="52322.html#52332">Initialise_AYSound_1</a></td>
+<td class="comment-1" rowspan="1">Jump back to <a href="52322.html#52332">Initialise_AYSound_1</a> if <span class="register">D</span> is greater than or equal to 0.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="52344"></span>
+<div class="comments">
+<div class="paragraph">
+Set mixer control.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52344"></span>52344</td>
 <td class="instruction">LD DE,1855</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=1855.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52347"></span>52347</td>
 <td class="instruction">LD B,255</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=255.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52349"></span>52349</td>
 <td class="instruction">OUT (C),D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Select mixer register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52351"></span>52351</td>
 <td class="instruction">LD B,191</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the data port in <span class="register">B</span> (191).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52353"></span>52353</td>
 <td class="instruction">OUT (C),E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set mixer state.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="52355"></span>52355</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

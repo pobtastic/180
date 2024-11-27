@@ -33,7 +33,7 @@ Next: <a href="43089.html">43089</a>
 </td>
 </tr>
 </table>
-<div class="description">43061: Routine at A835</div>
+<div class="description">43061: Initialise Floating Hand</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,51 +45,62 @@ Used by the routine at <a href="40243.html">40243</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Initialise_FloatingHand</td>
 <td class="address-2"><span id="43061"></span>43061</td>
 <td class="instruction">LD HL,2570</td>
-<td class="comment-1" rowspan="2">Write 2570 to *<a href="39619.html">39619</a>.</td>
+<td class="comment-1" rowspan="2">Write 10/ 10 to *<a href="39619.html">39619</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43064"></span>43064</td>
 <td class="instruction">LD (39619),HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43067"></span>43067</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="39696.html">39696</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43068"></span>43068</td>
 <td class="instruction">LD (39696),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43071"></span>43071</td>
 <td class="instruction">LD A,2</td>
 <td class="comment-1" rowspan="2">Write 2 to *<a href="39717.html">39717</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43073"></span>43073</td>
 <td class="instruction">LD (39717),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43076"></span>43076</td>
 <td class="instruction">LD HL,32000</td>
-<td class="comment-1" rowspan="2">Write <a href="32000.html">Graphics_Hand_01</a> to *<a href="39699.html">39699</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="32000.html">Graphics_Hand_01</a> to *<a href="39699.html">FloatingHand_GraphicData</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43079"></span>43079</td>
 <td class="instruction">LD (39699),HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43082"></span>43082</td>
 <td class="instruction">LD HL,33568</td>
-<td class="comment-1" rowspan="2">Write <a href="33568.html">Graphics_HandMask_01</a> to *<a href="39701.html">39701</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="33568.html">Graphics_HandMask_01</a> to *<a href="39701.html">FloatingHand_MaskData</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43085"></span>43085</td>
 <td class="instruction">LD (39701),HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="43088"></span>43088</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
