@@ -45,52 +45,64 @@ Used by the routines at <a href="9D42.html">9D42</a> and <a href="B7E1.html">Ani
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="a8ea"></span>
+<div class="comments">
+<div class="paragraph">
+<audio controls="" src="../audio/opponent-dart.wav">
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="../audio/opponent-dart.wav">link to the audio</a> instead.</p>
+</audio>
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">Sounds_OpponentDart</td>
 <td class="address-2"><span id="a8ea"></span>A8EA</td>
 <td class="instruction">SUB A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="a8eb"></span>A8EB</td>
 <td class="instruction">LD C,$96</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=96.</td>
 </tr>
 <tr>
-<td class="asm-label">Sounds_OpponentDart_0</td>
+<td class="asm-label">Sounds_OpponentDart_OuterLoop</td>
 <td class="address-2"><span id="a8ed"></span>A8ED</td>
 <td class="instruction">LD B,C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Copy the delay into <span class="register">B</span> as a counter.</td>
 </tr>
 <tr>
-<td class="asm-label">Sounds_OpponentDart_1</td>
+<td class="asm-label">Sounds_OpponentDart_DelayLoop</td>
 <td class="address-2"><span id="a8ee"></span>A8EE</td>
-<td class="instruction">DJNZ <a href="A8EA.html#a8ee">Sounds_OpponentDart_1</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="A8EA.html#a8ee">Sounds_OpponentDart_DelayLoop</a></td>
+<td class="comment-1" rowspan="1">Decrease the delay loop counter by one and loop back to <a href="A8EA.html#a8ee">Sounds_OpponentDart_DelayLoop</a> until the counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="a8f0"></span>A8F0</td>
-<td class="instruction">XOR $10</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">XOR %00010000</td>
+<td class="comment-1" rowspan="1">Flip the current speaker state.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="a8f2"></span>A8F2</td>
 <td class="instruction">OUT ($FE),A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Send it to the speaker.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="a8f4"></span>A8F4</td>
 <td class="instruction">INC C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="a8f5"></span>A8F5</td>
-<td class="instruction">JR NZ,<a href="A8EA.html#a8ed">Sounds_OpponentDart_0</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="A8EA.html#a8ed">Sounds_OpponentDart_OuterLoop</a></td>
+<td class="comment-1" rowspan="1">Jump back to <a href="A8EA.html#a8ed">Sounds_OpponentDart_OuterLoop</a> until <span class="register">C</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

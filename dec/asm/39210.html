@@ -42,6 +42,18 @@ Next: <a href="39234.html">39234</a>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="39210"></span>
+<div class="comments">
+<div class="paragraph">
+<audio controls="" src="../../audio/tick.wav">
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="../../audio/tick.wav">link to the audio</a> instead.</p>
+</audio>
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">ControlCode_07</td>
 <td class="address-2"><span id="39210"></span>39210</td>
 <td class="instruction">PUSH BC</td>
@@ -51,31 +63,31 @@ Next: <a href="39234.html">39234</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39211"></span>39211</td>
 <td class="instruction">LD C,0</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=0.</td>
+<td class="comment-1" rowspan="1">Set initial speaker state in <span class="register">C</span> to OFF.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39213"></span>39213</td>
 <td class="instruction">LD B,20</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=20.</td>
+<td class="comment-1" rowspan="1">Set the repeat loop counter in <span class="register">B</span> to 20.</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_07_0</td>
+<td class="asm-label">ControlCode_07_OuterLoop</td>
 <td class="address-2"><span id="39215"></span>39215</td>
 <td class="instruction">LD HL,20</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=0020.</td>
+<td class="comment-1" rowspan="1">Set the delay loop in <span class="register">HL</span> to 0020.</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_07_1</td>
+<td class="asm-label">ControlCode_07_DelayLoop</td>
 <td class="address-2"><span id="39218"></span>39218</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Decrease the delay loop by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39219"></span>39219</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="3">Jump to <a href="39210.html#39218">ControlCode_07_1</a> until <span class="register">HL</span> is zero.</td>
+<td class="comment-1" rowspan="3">Jump back to <a href="39210.html#39218">ControlCode_07_DelayLoop</a> until the delay loop is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -85,37 +97,35 @@ Next: <a href="39234.html">39234</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39221"></span>39221</td>
-<td class="instruction">JR NZ,<a href="39210.html#39218">ControlCode_07_1</a></td>
+<td class="instruction">JR NZ,<a href="39210.html#39218">ControlCode_07_DelayLoop</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39223"></span>39223</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-1" rowspan="1">Load <span class="register">C</span> into <span class="register">A</span>.</td>
+<td class="comment-1" rowspan="3">Flip the current speaker state.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39224"></span>39224</td>
 <td class="instruction">XOR %00010000</td>
-<td class="comment-1" rowspan="1">Flip the speaker bit.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39226"></span>39226</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1">Store the result back to <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39227"></span>39227</td>
 <td class="instruction">OUT (254),A</td>
-<td class="comment-1" rowspan="1">Send <span class="register">A</span> to the speaker.</td>
+<td class="comment-1" rowspan="1">Send it to the speaker.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39229"></span>39229</td>
-<td class="instruction">DJNZ <a href="39210.html#39215">ControlCode_07_0</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="39210.html#39215">ControlCode_07_0</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="39210.html#39215">ControlCode_07_OuterLoop</a></td>
+<td class="comment-1" rowspan="1">Decrease the repeat loop counter by one and loop back to <a href="39210.html#39215">ControlCode_07_OuterLoop</a> until the repeat loop counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

@@ -33,7 +33,7 @@ Next: <a href="38128.html">38128</a>
 </td>
 </tr>
 </table>
-<div class="description">38118: Routine at 94E6</div>
+<div class="description">38118: Initialise Dartboard Menu</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,31 +45,37 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Initialise_DartboardMenu</td>
 <td class="address-2"><span id="38118"></span>38118</td>
-<td class="instruction">CALL <a href="40243.html">40243</a></td>
-<td class="comment-1" rowspan="1">Call <a href="40243.html">40243</a>.</td>
+<td class="instruction">CALL <a href="40243.html">InitialiseNewGame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="40243.html">InitialiseNewGame</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38121"></span>38121</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38122"></span>38122</td>
 <td class="instruction">IN A,(254)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=byte from port 254.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38124"></span>38124</td>
 <td class="instruction">OR %11100000</td>
 <td class="comment-1" rowspan="1">Set bits 5-7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38126"></span>38126</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38127"></span>38127</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

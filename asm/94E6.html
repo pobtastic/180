@@ -33,7 +33,7 @@ Next: <a href="94F0.html">94F0</a>
 </td>
 </tr>
 </table>
-<div class="description">94E6: Routine at 94E6</div>
+<div class="description">94E6: Initialise Dartboard Menu</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,31 +45,37 @@ Used by the routine at <a href="933F.html">MainMenu</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Initialise_DartboardMenu</td>
 <td class="address-2"><span id="94e6"></span>94E6</td>
-<td class="instruction">CALL <a href="9D33.html">$9D33</a></td>
-<td class="comment-1" rowspan="1">Call <a href="9D33.html">9D33</a>.</td>
+<td class="instruction">CALL <a href="9D33.html">InitialiseNewGame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="9D33.html">InitialiseNewGame</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="94e9"></span>94E9</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="94ea"></span>94EA</td>
 <td class="instruction">IN A,($FE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=byte from port FE.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="94ec"></span>94EC</td>
 <td class="instruction">OR %11100000</td>
 <td class="comment-1" rowspan="1">Set bits 5-7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="94ee"></span>94EE</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="94ef"></span>94EF</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
