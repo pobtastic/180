@@ -1812,9 +1812,12 @@ c$9218 CALL $964C                    ; Call #R$9736.
  $9251 DEFB $FF                      ; Terminator.
  $9252 RET                           ; Return.
 
-; Routine at 9253
+; Reveal Dartboard
 ;
 ; Used by the routine at #R$933F.
+;
+; DE Dart pointer co-ordinates
+@label=RevealDartboard
 c$9253 DEC E         ; Decrease #REGe by one.
  $9254 LD ($9AB9),DE ; Write #REGde to *#R$9AB9.
  $9258 INC D         ; Increment #REGd by one.
@@ -2079,7 +2082,7 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
  $93EC POP BC                     ; width counter from the stack.}
  $93ED INC D                      ; {Increment #REGd by two.
  $93EE INC D                      ; }
- $93EF DJNZ $93E6                 ; Decrease the dart width counte by one and loop back to #R$93E6
+ $93EF DJNZ $93E6                 ; Decrease the dart width counter by one and loop back to #R$93E6
                                   ; until the counter is zero.
 @label=ColourDartPointerAttributes_Loop
 *$93F1 CALL $944E                 ; Call #R$944E.
@@ -2095,13 +2098,25 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
 ; Consolidate the selected configs.
  $9402 LD A,($99F6)               ; {Write *#R$99F6 to *#R$99F5.
  $9405 LD ($99F5),A               ; }
+; Then play an absolutely stunning reveal animation!
+; #PUSHS #POKES$91C1,$00#SIM(start=$933F,stop=$93F4)
+; #POKES$9412,$00 #SIM(start=$9402,stop=$9410)
+; #FOR$00,$3E||x|
+;   #SIM(start=$9410,stop=$9424)#SCR$02(*reveal-dartboard-animation-x)
+; ||
+; #UDGTABLE { #UDGARRAY#(#ANIMATE$03,$3E(reveal-dartboard-animation)) }
+; UDGTABLE# #POPS
+; .
+; First calculate the co-ordinates of the selected menu item.
  $9408 ADD A,A                    ; {#REGd=#N$05+(#REGa*#N$02).
  $9409 ADD A,$05                  ;
  $940B LD D,A                     ; }
  $940C LD E,$01                   ; #REGe=#N$01.
- $940E LD B,$3E                   ; #REGb=#N$3E.
-*$9410 PUSH BC                    ; {Stash #REGbc and #REGde on the stack.
- $9411 PUSH DE                    ; }
+ $940E LD B,$3E                   ; Set a counter in #REGb of the number of loops to complete the
+                                  ; animation (#N$3E).
+@label=RevealDartboard_Loop
+*$9410 PUSH BC                    ; {Stash the reveal loop counter and selected item co-ordinates on the
+ $9411 PUSH DE                    ; stack.}
  $9412 HALT                       ; Halt operation (suspend CPU until the next
                                   ; interrupt).
  $9413 CALL $9305                 ; Call #R$9305.
@@ -2114,10 +2129,12 @@ c$933F XOR A                      ; {Write #N$00 to; #LIST
  $941E CALL $9253                 ; Call #R$9253.
  $9421 POP DE                     ; Restore #REGde from the stack.
  $9422 INC E                      ; Increment #REGe by one.
- $9423 POP BC                     ; Restore #REGbc from the stack.
- $9424 DJNZ $9410                 ; Decrease counter by one and loop back to
-                                  ; #R$9410 until counter is zero.
+ $9423 POP BC                     ; Restore the reveal loop counter from the
+                                  ; stack.
+ $9424 DJNZ $9410                 ; Decrease the reveal loop counter by one and loop back to #R$9410
+                                  ; until the dartboard is fully revealed.
  $9426 JP $94E6                   ; Jump to #R$94E6.
+@label=MainMenu_Next
 *$9429 CP $36                     ; {Jump to #R$93F1 if #REGa is greater than
  $942B JP NC,$93F1                ; (ASCII #N$36 is "6").}
  $942E CP $30                     ; {Jump to #R$93F1 if #REGa is less than
@@ -2302,9 +2319,10 @@ c$94D3 CALL $965F    ; Call #R$965F.
                      ; the timeout counter is zero.
  $94E5 RET           ; Return.
 
-; Routine at 94E6
+; Initialise Dartboard Menu
 ;
 ; Used by the routine at #R$933F.
+@label=Initialise_DartboardMenu
 c$94E6 CALL $9D33    ; Call #R$9D33.
  $94E9 XOR A         ; #REGa=#N$00.
  $94EA IN A,($FE)    ; #REGa=byte from port #N$FE.
@@ -3030,21 +3048,29 @@ c$9903 PUSH DE       ; {Stash #REGde and #REGbc on the stack.
  $9927 JP $995B      ; Jump to #R$995B.
 
 ; Control Code #N$07:
+;
+; .
+;
+; .
+;
+; #HTML(#AUDIO(tick.wav)(#INCLUDE(Tick)))
 @label=ControlCode_07
 c$992A PUSH BC       ; Stash #REGbc on the stack.
- $992B LD C,$00      ; #REGc=#N$00.
- $992D LD B,$14      ; #REGb=#N$14.
-*$992F LD HL,$0014   ; #REGhl=#N($0014,$04,$04).
-*$9932 DEC HL        ; Decrease #REGhl by one.
- $9933 LD A,H        ; {Jump to #R$9932 until #REGhl is zero.
+ $992B LD C,$00      ; Set initial speaker state in #REGc to OFF.
+ $992D LD B,$14      ; Set the repeat loop counter in #REGb to #N$14.
+@label=ControlCode_07_OuterLoop
+*$992F LD HL,$0014   ; Set the delay loop in #REGhl to #N($0014,$04,$04).
+@label=ControlCode_07_DelayLoop
+*$9932 DEC HL        ; Decrease the delay loop by one.
+ $9933 LD A,H        ; {Jump back to #R$9932 until the delay loop is zero.
  $9934 OR L          ;
  $9935 JR NZ,$9932   ; }
- $9937 LD A,C        ; Load #REGc into #REGa.
- $9938 XOR %00010000 ; Flip the speaker bit.
- $993A LD C,A        ; Store the result back to #REGc.
- $993B OUT ($FE),A   ; Send #REGa to the speaker.
- $993D DJNZ $992F    ; Decrease counter by one and loop back to #R$992F until
-                     ; counter is zero.
+ $9937 LD A,C        ; {Flip the current speaker state.
+ $9938 XOR %00010000 ;
+ $993A LD C,A        ; }
+ $993B OUT ($FE),A   ; Send it to the speaker.
+ $993D DJNZ $992F    ; Decrease the repeat loop counter by one and loop back to #R$992F
+                     ; until the repeat loop counter is zero.
  $993F JP $9961      ; Jump to #R$9961.
 
 ; Sound: Menu Tick
@@ -3703,6 +3729,7 @@ g$9CE9 DEFW $0000
 ; Routine at 9D33
 ;
 ; Used by the routine at #R$94E6.
+@label=InitialiseNewGame
 c$9D33 CALL $A7A5    ; Call #R$A7A5.
  $9D36 CALL $A835    ; Call #R$A835.
  $9D39 CALL $A851    ; Call #R$A851.
@@ -4477,6 +4504,8 @@ c$A380 CALL $964C       ; Call #R$964C.
 @label=AroundTheClock_Timer
  $A38C DEFM "00"        ; "#STR#(#PC,$04,$02)".
  $A38E DEFB $FF         ; Terminator.
+; #HTML(#AUDIO(menu.wav)(#INCLUDE(Menu)))
+; .
 ; Note; this is identical to #R$9942.
  $A38F LD C,$00         ; Set initial speaker state in #REGc to OFF.
  $A391 LD B,$3C         ; Set the repeat loop counter in #REGb to #N$3C.
@@ -5578,15 +5607,22 @@ c$A8DB LD A,H        ; #REGa=#REGh.
 ; Sounds: Opponent Dart
 ;
 ; Used by the routines at #R$9D42 and #R$B7E1.
+;
+; .
+;
+; #AUDIO(opponent-dart.wav)(#INCLUDE(OpponentDart))
 @label=Sounds_OpponentDart
-c$A8EA SUB A         ;
- $A8EB LD C,$96      ;
-*$A8ED LD B,C        ;
-*$A8EE DJNZ $A8EE    ;
- $A8F0 XOR $10       ;
- $A8F2 OUT ($FE),A   ;
- $A8F4 INC C         ;
- $A8F5 JR NZ,$A8ED   ;
+c$A8EA SUB A         ; #REGa=#N$00.
+ $A8EB LD C,$96      ; #REGc=#N$96.
+@label=Sounds_OpponentDart_OuterLoop
+*$A8ED LD B,C        ; Copy the delay into #REGb as a counter.
+@label=Sounds_OpponentDart_DelayLoop
+*$A8EE DJNZ $A8EE    ; Decrease the delay loop counter by one and loop back to #R$A8EE
+                     ; until the counter is zero.
+ $A8F0 XOR %00010000 ; Flip the current speaker state.
+ $A8F2 OUT ($FE),A   ; Send it to the speaker.
+ $A8F4 INC C         ; Increment #REGc by one.
+ $A8F5 JR NZ,$A8ED   ; Jump back to #R$A8ED until #REGc is zero.
  $A8F7 RET           ; Return.
 
 ; Start Menu
