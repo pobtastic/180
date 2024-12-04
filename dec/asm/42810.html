@@ -25,7 +25,7 @@ gtag('config', 'G-75RERFCHBG');
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="42726.html">42726</a>
+Prev: <a href="42772.html">42772</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#42810">Map</a></td>
 <td class="next">
@@ -80,22 +80,20 @@ Used by the routine at <a href="42129.html">42129</a>.
 <tr>
 <td class="address-1"><span id="42823"></span>42823</td>
 <td class="instruction">CP 0</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 0.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="42810.html#42834">42834</a> if <span class="register">A</span> is less than 0.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42825"></span>42825</td>
 <td class="instruction">JR C,<a href="42810.html#42834">42834</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="42810.html#42834">42834</a> if <span class="register">A</span> is less than 0.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42827"></span>42827</td>
 <td class="instruction">CP 24</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 24.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="42810.html#42834">42834</a> if <span class="register">A</span> is greater than or equal to 24.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42829"></span>42829</td>
 <td class="instruction">JR NC,<a href="42810.html#42834">42834</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="42810.html#42834">42834</a> if <span class="register">A</span> is greater than or equal to 24.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42831"></span>42831</td>
@@ -114,12 +112,11 @@ Used by the routine at <a href="42129.html">42129</a>.
 <tr>
 <td class="address-1"><span id="42836"></span>42836</td>
 <td class="instruction">LD BC,24</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=0024.</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=0024.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42839"></span>42839</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="42840"></span>42840</td>
@@ -234,7 +231,7 @@ On return from <a href="43182.html">CalculateScreenBuffer</a> <span class="regis
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="42726.html">42726</a>
+Prev: <a href="42772.html">42772</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#42810">Map</a></td>
 <td class="next">

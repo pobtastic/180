@@ -33,7 +33,7 @@ Next: <a href="A491.html">A491</a>
 </td>
 </tr>
 </table>
-<div class="description">A461: Routine at A461</div>
+<div class="description">A461: Handler: Floating Hand</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,91 +45,107 @@ Used by the routines at <a href="9D42.html">9D42</a> and <a href="A272.html">A27
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_FloatingHand</td>
 <td class="address-2"><span id="a461"></span>A461</td>
 <td class="instruction">CALL <a href="A50E.html">$A50E</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A50E.html">A50E</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a464"></span>A464</td>
 <td class="instruction">LD HL,($9B15)</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9B15.html">FloatingHand_MaskData</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a467"></span>A467</td>
 <td class="instruction">CALL <a href="A58F.html">$A58F</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A58F.html">A58F</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a46a"></span>A46A</td>
 <td class="instruction">LD A,$37</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=37.</td>
+<td class="comment-1" rowspan="2">Write 37 to *<a href="A613.html#a61d">A61D</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a46c"></span>A46C</td>
 <td class="instruction">LD ($A61D),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="A613.html#a61d">A61D</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a46f"></span>A46F</td>
 <td class="instruction">CALL <a href="A613.html">$A613</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A613.html">A613</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a472"></span>A472</td>
 <td class="instruction">CALL <a href="A5E1.html">$A5E1</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A5E1.html">A5E1</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a475"></span>A475</td>
 <td class="instruction">CALL <a href="A652.html">$A652</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A652.html">A652</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a478"></span>A478</td>
 <td class="instruction">LD HL,($9B13)</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="9B13.html">FloatingHand_GraphicData</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a47b"></span>A47B</td>
 <td class="instruction">CALL <a href="A58F.html">$A58F</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A58F.html">A58F</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a47e"></span>A47E</td>
 <td class="instruction">LD A,$A7</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=A7.</td>
+<td class="comment-1" rowspan="2">Write A7 to *<a href="A613.html#a61d">A61D</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a480"></span>A480</td>
 <td class="instruction">LD ($A61D),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="A613.html#a61d">A61D</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a483"></span>A483</td>
 <td class="instruction">CALL <a href="A613.html">$A613</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A613.html">A613</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a486"></span>A486</td>
 <td class="instruction">CALL <a href="A5E1.html">$A5E1</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A5E1.html">A5E1</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a489"></span>A489</td>
 <td class="instruction">CALL <a href="A69C.html">$A69C</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A69C.html">A69C</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a48c"></span>A48C</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a48d"></span>A48D</td>
-<td class="instruction">CALL <a href="A6E6.html">$A6E6</a></td>
-<td class="comment-1" rowspan="1">Call <a href="A6E6.html">A6E6</a>.</td>
+<td class="instruction">CALL <a href="A6E6.html">CopyFloatingHandToScreen</a></td>
+<td class="comment-1" rowspan="1">Call <a href="A6E6.html">CopyFloatingHandToScreen</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="a490"></span>A490</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
