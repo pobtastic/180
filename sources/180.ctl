@@ -1432,7 +1432,11 @@ B $9AA6,$01
 @ $9AA7 label=Leg_2UP
 B $9AA7,$01
 
-g $9AA8
+g $9AA8 Bust Counter
+@ $9AA8 label=BustCounter
+B $9AA8,$01
+
+g $9AA9
   $9AA9,$01
   $9AAA,$01
 
@@ -1475,7 +1479,8 @@ W $9ABD,$02
 
 g $9ABF
 
-g $9AC3
+g $9AC3 Floating Hand Co-ordinates
+@ $9AC3 label=FloatingHandCoordinates
 B $9AC3,$02,$01
 
 g $9AC5
@@ -1960,6 +1965,9 @@ B $A043,$01 Terminator.
   $A0C5,$07 Jump to #R$9D42 if *#R$9B2C is not equal to zero.
   $A0CC,$07 Jump to #R$A103 if *#R$9B0F is equal to #N$03.
   $A0D3,$03 Jump to #R$A37A.
+
+c $A0D6 Handler: Bust
+@ $A0D6 label=Handler_Bust
   $A0D6,$03 Call #R$964C.
 B $A0D9,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $A0DC,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(bust)
@@ -1969,12 +1977,16 @@ B $A0E2,$01 Terminator.
   $A0E7,$03 #REGhl=*#R$9B33.
   $A0EA,$06 Jump to #R$A100 if *#R$9AB7 is zero.
   $A0F0,$06 Jump to #R$A0FB if *#R$9AB8 is zero.
+N $A0F6 Update 2UP total.
   $A0F6,$03 Write #REGhl to *#R$9AB0.
   $A0F9,$02 Jump to #R$A103.
-
+N $A0FB Update 1UP total.
+@ $A0FB label=Bust_Update1Up_Total
   $A0FB,$03 Write #REGhl to *#R$9AB2.
   $A0FE,$02 Jump to #R$A103.
 
+N $A100 Update the total for single player games.
+@ $A100 label=Bust_UpdateSingleUp_Total
   $A100,$03 Write #REGhl to *#R$9B1F.
   $A103,$06 Write #N$0810 to *#R$9AC3.
   $A109,$06 Jump to #R$A11F if *#R$9AB7 is zero.
@@ -1987,7 +1999,7 @@ B $A0E2,$01 Terminator.
   $A11D,$02 Jump to #R$A122.
 
   $A11F,$06 Write *#R$9B1F to *#R$AF49.
-  $A125,$06 Write #N$0C01to *#R$AF5D.
+  $A125,$06 Write #N$0C01 to *#R$AF5D.
   $A12B,$03 Call #R$AE17.
   $A12E,$07 Jump to #R$A13E if *#R$9AAD is not equal to #N$B4.
   $A135,$06 Jump to #R$A13E if *#R$9AA8 is not zero.
@@ -2199,6 +2211,12 @@ M $A39B,$04 Flip the current speaker state.
 
 c $A3A4 Draw Current Opponent
 @ $A3A4 label=DrawCurrentOpponent
+N $A3A4 Handles drawing the opponent image on the game screen.
+. #PUSHS #POKES$9AAB,$84;$9AAC,$B9
+. #SIM(start=$A7A5,stop=$A7D0)#SIM(start=$A3AD,stop=$A3C2)
+. #UDGTABLE(default)
+.   { #SCR$02(draw-current-opponent) }
+. UDGTABLE# #POPS
   $A3A4,$06 Jump to #R$A3C3 if *#R$9AB7 is not zero.
   $A3AA,$03 Call #R$AC9D.
 N $A3AD Set up the opponent image area block positioning and attributes.
@@ -2289,19 +2307,18 @@ c $A434
   $A45D,$03 Call #R$A4D4.
   $A460,$01 Return.
 
-c $A461
+c $A461 Handler: Floating Hand
+@ $A461 label=Handler_FloatingHand
   $A461,$03 Call #R$A50E.
   $A464,$03 #REGhl=*#R$9B15.
   $A467,$03 Call #R$A58F.
-  $A46A,$02 #REGa=#N$37.
-  $A46C,$03 Write #REGa to *#R$A61D.
+  $A46A,$05 Write #N$37 to *#R$A61D.
   $A46F,$03 Call #R$A613.
   $A472,$03 Call #R$A5E1.
   $A475,$03 Call #R$A652.
   $A478,$03 #REGhl=*#R$9B13.
   $A47B,$03 Call #R$A58F.
-  $A47E,$02 #REGa=#N$A7.
-  $A480,$03 Write #REGa to *#R$A61D.
+  $A47E,$05 Write #N$A7 to *#R$A61D.
   $A483,$03 Call #R$A613.
   $A486,$03 Call #R$A5E1.
   $A489,$03 Call #R$A69C.
@@ -2714,31 +2731,33 @@ c $A6CC
   $A6E3,$02 Decrease counter by one and loop back to #R$A6D4 until counter is zero.
   $A6E5,$01 Return.
 
-c $A6E6
+c $A6E6 Copy Floating Hand To Screen
+@ $A6E6 label=CopyFloatingHandToScreen
   $A6E6,$04 #REGde=*#R$9AC3.
-  $A6EA,$01 Decrease #REGd by one.
+  $A6EA,$01 Adjust the Y position.
   $A6EB,$03 #REGhl=#R$7800.
-  $A6EE,$02 #REGb=#N$0A.
-  $A6F0,$03 Stash #REGbc, #REGhl and #REGde on the stack.
-  $A6F3,$01 #REGa=#REGd.
-  $A6F4,$02 Compare #REGa with #N$00.
-  $A6F6,$02 Jump to #R$A709 if #REGa is less than #N$00.
-  $A6F8,$02 Compare #REGa with #N$18.
-  $A6FA,$02 Jump to #R$A709 if #REGa is greater than or equal to #N$18.
-  $A6FC,$01 #REGa=#REGe.
-  $A6FD,$02 Compare #REGa with #N$19.
+  $A6EE,$02 Set a counter in #REGb of #N$0A for the height of the graphic.
+@ $A6F0 label=CopyFloatingHandToScreen_Loop
+  $A6F0,$03 Stash the height counter, buffer pointer and co-ordinates on the
+. stack.
+N $A6F3 Check if this line is within the screen boundaries.
+  $A6F3,$09 Jump to #R$A709 if the Y position is less than #N$00 or  greater
+. than/ equal to #N$18.
+  $A6FC,$03 Compare #REGe with #N$19.
   $A6FF,$02 #REGa=#N$08.
-  $A701,$02 Jump to #R$A706 if #REGa is less than #N$08.
+  $A701,$02 Jump to #R$A706 if #REGe is less than #N$19.
   $A703,$02 #REGa=#N$21.
   $A705,$01 #REGa-=#REGe.
   $A706,$03 Call #R$A714.
   $A709,$02 Restore #REGde and #REGhl from the stack.
-  $A70B,$03 #REGbc=#N($0040,$04,$04).
-  $A70E,$01 #REGhl+=#REGbc.
+  $A70B,$04 #REGhl+=#N($0040,$04,$04).
   $A70F,$01 Increment #REGd by one.
   $A710,$01 Restore #REGbc from the stack.
   $A711,$02 Decrease counter by one and loop back to #R$A6F0 until counter is zero.
   $A713,$01 Return.
+
+c $A714 Draw Floating Hand
+@ $A714 label=DrawFloatingHand
   $A714,$01 Stash #REGhl on the stack.
   $A715,$01 Exchange the #REGaf register with the shadow #REGaf register.
 N $A716 On return from #R$A8AE #REGhl will contain the screen buffer destination.
@@ -2752,8 +2771,7 @@ N $A716 On return from #R$A8AE #REGhl will contain the screen buffer destination
   $A721,$01 #REGc=#REGa.
   $A722,$02 #REGb=#N$00.
   $A724,$02 LDIR.
-  $A726,$02 Compare #REGa with #N$08.
-  $A728,$02 Jump to #R$A734 if #REGa is equal to #N$08.
+  $A726,$04 Jump to #R$A734 if #REGa is equal to #N$08.
   $A72A,$01 Stash #REGaf on the stack.
   $A72B,$01 #REGc=#REGa.
   $A72C,$02 #REGa=#N$08.
@@ -2774,14 +2792,11 @@ c $A73A
   $A741,$02 #REGb=#N$05.
   $A743,$03 Stash #REGbc, #REGhl and #REGde on the stack.
   $A746,$01 #REGa=#REGd.
-  $A747,$02 Compare #REGa with #N$00.
-  $A749,$02 Jump to #R$A752 if #REGa is less than #N$00.
-  $A74B,$02 Compare #REGa with #N$18.
-  $A74D,$02 Jump to #R$A752 if #REGa is greater than or equal to #N$18.
+  $A747,$04 Jump to #R$A752 if #REGa is less than #N$00.
+  $A74B,$04 Jump to #R$A752 if #REGa is greater than or equal to #N$18.
   $A74F,$03 Call #R$A75D.
   $A752,$02 Restore #REGde and #REGhl from the stack.
-  $A754,$03 #REGbc=#N($0018,$04,$04).
-  $A757,$01 #REGhl+=#REGbc.
+  $A754,$04 #REGhl+=#N($0018,$04,$04).
   $A758,$01 Increment #REGd by one.
   $A759,$01 Restore #REGbc from the stack.
   $A75A,$02 Decrease counter by one and loop back to #R$A743 until counter is zero.
@@ -4635,25 +4650,23 @@ N $B83D #PUSHS #SIM(start=$AB2E,stop=$AB39)
 . #SIM(start=$B861,stop=$B866)
 . #FOR$06,$10||x|#SIM(start=$B866,stop=$B86E)#SCR$02(*bar-maid-animation-x)||
 . #UDGTABLE { #UDGARRAY#(#ANIMATE$10,$10(bar-maid-animation)) } UDGTABLE# #POPS
-  $B83D,$03 #REGde=#R$C724.
-  $B840,$03 Call #R$B8F5.
-  $B843,$03 #REGde=#R$C784.
-  $B846,$03 Call #R$B8F5.
-  $B849,$03 #REGde=#R$C7E4.
-  $B84C,$03 Call #R$B8F5.
-  $B84F,$03 #REGde=#R$C7E4.
-  $B852,$03 Call #R$B8F5.
-  $B855,$03 #REGde=#R$C784.
-  $B858,$03 Call #R$B8F5.
-  $B85B,$03 #REGde=#R$C724.
-  $B85E,$03 Call #R$B8F5.
-  $B861,$02 #REGb=#N$0A.
-  $B863,$03 #REGhl=#N$4810 (screen buffer location).
-  $B866,$02 Stash #REGbc and #REGhl on the stack.
+  $B83D,$06 Call #R$B8F5 with #REGde=#R$C724.
+  $B843,$06 Call #R$B8F5 with #REGde=#R$C784.
+  $B849,$06 Call #R$B8F5 with #REGde=#R$C7E4.
+  $B84F,$06 Call #R$B8F5 with #REGde=#R$C7E4.
+  $B855,$06 Call #R$B8F5 with #REGde=#R$C784.
+  $B85B,$06 Call #R$B8F5 with #REGde=#R$C724.
+  $B861,$02 Set a counter in #REGb for the number of times to move the pint
+. graphic across the screen (#N$0A times).
+  $B863,$03 Set the initial screen buffer location in #REGhl of where the pint
+. will first appear.
+@ $B866 label=Pint_Loop
+  $B866,$02 Stash the movement counter and screen buffer pointer on the stack.
   $B868,$03 Call #R$B965.
-  $B86B,$02 Restore #REGhl and #REGbc from the stack.
-  $B86D,$01 Decrease #REGl by one.
-  $B86E,$02 Decrease counter by one and loop back to #R$B866 until counter is zero.
+  $B86B,$02 Restore the screen buffer pointer and movement counter from the stack.
+  $B86D,$01 Move the pint graphic left by one character block.
+  $B86E,$02 Decrease the movement counter by one and loop back to #R$B866 until
+. the pint is at its destination position.
   $B870,$01 Return.
 
 c $B871 Animation: Dog
@@ -4694,18 +4707,12 @@ N $B8AA Self-modifying code.
 . LIST#
 M $B8AA,$07 #HTML(Writes <code>NOP NOP</code> to remove the extra
 . <code>LDI</code> command.)
-  $B8B1,$03 #REGde=#R$C934.
-  $B8B4,$03 Call #R$B8D6.
-  $B8B7,$03 #REGde=#R$C994.
-  $B8BA,$03 Call #R$B8D6.
-  $B8BD,$03 #REGde=#R$C9F4.
-  $B8C0,$03 Call #R$B8D6.
-  $B8C3,$03 #REGde=#R$C9F4.
-  $B8C6,$03 Call #R$B8D6.
-  $B8C9,$03 #REGde=#R$C994.
-  $B8CC,$03 Call #R$B8D6.
-  $B8CF,$03 #REGde=#R$C934.
-  $B8D2,$03 Call #R$B8D6.
+  $B8B1,$06 Call #R$B8D6 with #REGde=#R$C934.
+  $B8B7,$06 Call #R$B8D6 with #REGde=#R$C994.
+  $B8BD,$06 Call #R$B8D6 with #REGde=#R$C9F4.
+  $B8C3,$06 Call #R$B8D6 with #REGde=#R$C9F4.
+  $B8C9,$06 Call #R$B8D6 with #REGde=#R$C994.
+  $B8CF,$06 Call #R$B8D6 with #REGde=#R$C934.
   $B8D5,$01 Return.
 
 c $B8D6 Print Dog Frame
@@ -4813,26 +4820,36 @@ c $B92F Animation: Dart
   $B962,$02 Decrease counter by one and loop back to #R$B956 until counter is zero.
   $B964,$01 Return.
 
-c $B965 Animation: Pint
-@ $B965 label=Animation_Pint
-  $B965,$02 #REGb=#N$10.
+c $B965 Print Pint Frame
+@ $B965 label=Print_Pint_Frame
+R $B965 HL Screen buffer address for drawing
+N $B965 Draws the pint glass to the screen at the location provided by #REGhl.
+. #PUSHS #SIM(start=$AB2E,stop=$AB39)
+. #SIM(start=$B965,stop=$B974,hl=$4810)
+. #UDGTABLE { #SCR$02{$C0,$40,$80,$70}(pint-frame) } UDGTABLE#
+  $B965,$02 Set a counter in #REGb for the height of the graphic (#N$10).
   $B967,$03 #REGde=#R$CA54.
-  $B96A,$01 #REGa=*#REGhl.
-  $B96B,$01 Stash #REGaf on the stack.
-  $B96C,$01 #REGa=*#REGde.
-  $B96D,$01 Write #REGa to *#REGhl.
+@ $B96A label=Print_Pint_Frame_Loop
+  $B96A,$02 Fetch the current byte in the screen buffer and stash it on the
+. stack.
+  $B96C,$02 Fetch a byte from the graphic pointer in *#REGde and write it to
+. the screen buffer pointer held by *#REGhl.
   $B96E,$03 Call #R$A8CC.
-  $B971,$01 Increment #REGde by one.
-  $B972,$02 Decrease counter by one and loop back to #R$B96A until counter is zero.
-  $B974,$01 Halt operation (suspend CPU until the next interrupt).
-  $B975,$01 Halt operation (suspend CPU until the next interrupt).
-  $B976,$01 Halt operation (suspend CPU until the next interrupt).
+  $B971,$01 Increment the graphic pointer by one.
+  $B972,$02 Decrease the height counter by one and loop back to #R$B96A until
+. the whole of the graphic has been drawn to the screen.
+N $B974 Make sure the player sees the drawn pint before removing it.
+  $B974,$03 Halt operation (suspend CPU until the next interrupt) three times.
+N $B977 Next all the stashed bytes are returned to the screen, ready for the
+. next frame of the animation.
   $B977,$03 Call #R$A8DB.
-  $B97A,$02 #REGb=#N$10.
-  $B97C,$01 Restore #REGaf from the stack.
-  $B97D,$01 Write #REGa to *#REGhl.
+  $B97A,$02 Set a counter in #REGb for the height of the graphic (#N$10).
+@ $B97C label=Restore_Background_Loop
+  $B97C,$02 Restore the stashed byte from the stack and write it to the screen
+. buffer pointer held by *#REGhl.
   $B97E,$03 Call #R$A8DB.
-  $B981,$02 Decrease counter by one and loop back to #R$B97C until counter is zero.
+  $B981,$02 Decrease the height counter by one and loop back to #R$B97C until
+. all the stashed bytes have been drawn back to the screen.
   $B983,$01 Return.
 
 b $B984 Graphics: Jammy Jim
@@ -5029,9 +5046,16 @@ N $C9F4 Frame #N$05:
 b $CA54 Graphics: Pint
 @ $CA54 label=Graphics_Pint
 N $CA54 #UDGTABLE(default)
-. { #UDGARRAY$01,attr=$47,scale=$04,step=$01($CA54-$CA7B-$01-$08)(pint) }
+. { #UDGARRAY$01,attr=$47,scale=$04,step=$01($CA54-$CA63-$01-$08)(pint) }
 . UDGTABLE#
-  $CA54,$28,$01
+  $CA54,$10,$01
+
+b $CA64 Graphics: Bar
+@ $CA64 label=Graphics_Bar
+N $CA64 #UDGTABLE(default)
+. { #UDGARRAY$01,attr=$47,scale=$04,step=$01($CA64-$CA7B-$01-$08)(bar) }
+. UDGTABLE#
+  $CA64,$18,$01
 
 c $CA7C
 
@@ -5074,11 +5098,7 @@ c $CB1E
   $CB1E,$01 Stash #REGaf on the stack.
   $CB1F,$04 Write #N$00 to *#R$D009.
   $CB23,$01 Restore #REGaf from the stack.
-  $CB24,$01 #REGc=#REGa.
-  $CB25,$01 #REGa+=#REGa.
-  $CB26,$01 #REGa+=#REGc.
-  $CB27,$01 #REGa+=#REGa.
-  $CB28,$01 #REGc=#REGa.
+  $CB24,$05 Multiply #REGa by #N$06 and store the result in #REGc.
   $CB29,$02 #REGb=#N$00.
   $CB2B,$03 #REGhl=#R$D00A.
   $CB2E,$01 #REGhl+=#REGbc.
@@ -5216,7 +5236,19 @@ b $CF07
 b $CF0A
 
 b $D009
+
 w $D00A
+N $D00A #N((#PC-$D00A)/$06).
+  $D00A,$02
+  $D00C,$02
+  $D00E,$02
+L $D00A,$06,$02
+N $D016 Data?
+N $D030 Data?
+N $D04A Data?
+N $D064 Data?
+N $D068 Data?
+N $D06C Data?
 
 b $D2A0
 
