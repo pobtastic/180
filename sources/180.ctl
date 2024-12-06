@@ -258,23 +258,31 @@ B $9251,$01 Terminator.
 c $9253 Reveal Dartboard
 @ $9253 label=RevealDartboard
 R $9253 DE Dart pointer co-ordinates
-  $9253,$01 Decrease #REGe by one.
-  $9254,$04 Write #REGde to *#R$9AB9.
-  $9258,$01 Increment #REGd by one.
-  $9259,$04 Write #REGde to *#R$9ABB.
+N $9253 Creates a "zipper" transition effect that reveals the dartboard from 
+. the selected menu item expanding both upwards and downwards simultaneously.
+  $9253,$01 Move one position left to start the reveal.
+  $9254,$04 Store this position to *#R$9AB9.
+  $9258,$01 Move one position down.
+  $9259,$04 Store this position to *#R$9ABB.
+@ $925D label=RevealDartboard_Loop
   $925D,$04 #REGde=*#R$9AB9.
   $9261,$05 Jump to #R$92A6 if #REGe is less than #N$00.
+N $9266 Process the upper half of the reveal.
   $9266,$01 Stash #REGde on the stack.
   $9267,$05 Jump to #R$927C if #REGd is less than #N$00.
+N $926C Set up the right-shifting mask for the upper reveal.
   $926C,$05 Write #N$FF to *#R$92C6(#N$92C7).
   $9271,$08 #HTML(Write <code>SRL #REGc</code> (#N$CB+#N$39) to *#R$92CD.)
   $9279,$03 Call #R$92A7.
-  $927C,$01 Restore #REGde from the stack.
-  $927D,$01 Decrease #REGd by one.
-  $927E,$01 Decrease #REGe by one.
-  $927F,$04 Write #REGde to *#R$9AB9.
+@ $927C label=UpperReveal_Done
+  $927C,$01 Restore the position from the stack.
+  $927D,$02 Move up one line and left one column for the next upper reveal
+. position.
+  $927F,$04 Store the new position at *#R$9AB9.
+N $9283 Process the lower half of the reveal.
   $9283,$04 #REGde=*#R$9ABB.
   $9287,$05 Jump to #R$92A6 if #REGd is greater than or equal to #N$18.
+N $928C Set up the left-shifting mask for the lower reveal.
   $928C,$01 Stash #REGde on the stack.
   $928D,$05 Write #N$01 to *#R$92C6(#N$92C7).
   $9292,$08 #HTML(Write <code>SLL #REGc</code> (#N$CB+#N$31) to *#R$92CD.)
@@ -284,19 +292,28 @@ R $9253 DE Dart pointer co-ordinates
   $929F,$01 Decrease #REGe by one.
   $92A0,$04 Write #REGde to *#R$9ABB.
   $92A4,$02 Jump to #R$925D.
+@ $92A6 label=RevealDartboard_Done
   $92A6,$01 Return.
 
+c $92A7 Process Single Line Zipper Reveal
+@ $92A7 label=ProcessRevealLine
+N $92A7 Handles the pixel manipulation for one line of the reveal effect,
+. including both straight copying of already-revealed areas and masked reveal
+. of transition areas.
   $92A7,$01 Stash #REGde on the stack.
+N $92A8 First handle the already-revealed portion.
   $92A8,$01 Decrease #REGe by one.
   $92A9,$05 Jump to #R$92B5 if #REGe is greater than or equal to #N$20.
   $92AE,$04 Jump to #R$92B5 if #REGe is less than #N$20.
   $92B2,$03 Call #R$92E2.
+@ $92B5 label=ProcessRevealLine_Skip
   $92B5,$01 Restore #REGde from the stack.
   $92B6,$04 Return if #REGe is greater than #N$20.
   $92BA,$01 Stash #REGde on the stack.
+N $92BB On return from #R$A8BD #REGhl will contain the dart board graphic
+. destination (i.e. #R$6000 onwards).
   $92BB,$03 Call #R$A8BD.
-  $92BE,$01 #REGd=#REGh.
-  $92BF,$01 #REGe=#REGl.
+  $92BE,$02 Copy the dart board graphic location from #REGhl into #REGde.
   $92C0,$04 #REGh-=#N$20.
   $92C4,$02 #REGb=#N$08.
   $92C6,$02 #REGc=#N$FF.
@@ -312,35 +329,40 @@ R $9253 DE Dart pointer co-ordinates
   $92D5,$02 #REGa=#COLOUR$70.
   $92D7,$02 Jump to #R$92DB if #REGl was greater than or equal to #N$70.
   $92D9,$02 #REGa=#COLOUR$00.
-  $92DB,$01 Exchange the #REGaf register with the shadow #REGaf register.
+@ $92DB label=RevealDartboard_SetAttribute
+  $92DB,$01 Temporarily switch the #REGaf register with the shadow #REGaf
+. register.
   $92DC,$03 Call #R$A862.
-  $92DF,$01 Exchange the shadow #REGaf register with the #REGaf register.
-  $92E0,$01 Write #REGa to *#REGhl.
+  $92DF,$01 Restore the #REGaf register from the shadow #REGaf register.
+  $92E0,$01 Write the colour attribute byte to *#REGhl.
   $92E1,$01 Return.
 
-c $92E2
-  $92E2,$01 Stash #REGde on the stack.
+c $92E2 Copy Reveal Line
+@ $92E2 label=CopyRevealLine
+R $92E2 DE Screen position
+  $92E2,$01 Stash the screen position on the stack.
+N $92E3 On return from #R$A8BD #REGhl will contain the dart board graphic
+. destination (i.e. #R$6000 onwards).
   $92E3,$03 Call #R$A8BD.
-  $92E6,$01 #REGd=#REGh.
-  $92E7,$01 #REGe=#REGl.
-  $92E8,$01 #REGa=#REGh.
-  $92E9,$02 #REGa-=#N$20.
-  $92EB,$01 #REGh=#REGa.
+  $92E6,$02 Copy the dart board graphic location from #REGhl into #REGde.
+  $92E8,$04 #REGh-=#N$20.
   $92EC,$02 #REGb=#N$08.
-  $92EE,$01 #REGa=*#REGde.
-  $92EF,$01 Write #REGa to *#REGhl.
+@ $92EE label=CopyRevealLine_Loop
+  $92EE,$02 Write *#REGde to *#REGhl.
   $92F0,$01 Increment #REGh by one.
   $92F1,$01 Increment #REGd by one.
   $92F2,$02 Decrease counter by one and loop back to #R$92EE until counter is zero.
-  $92F4,$01 Restore #REGhl from the stack.
+  $92F4,$01 Restore the screen position from the stack.
   $92F5,$03 Compare #REGl with #N$08.
   $92F8,$02 #REGa=#COLOUR$70.
   $92FA,$02 Jump to #R$92FE if #REGl was greater than or equal to #N$08.
   $92FC,$02 #REGa=#COLOUR$47.
-  $92FE,$01 Exchange the #REGaf register with the shadow #REGaf register.
+@ $92FE label=RevealLine_SetAttribute
+  $92FE,$01 Temporarily switch the #REGaf register with the shadow #REGaf
+. register.
   $92FF,$03 Call #R$A862.
-  $9302,$01 Exchange the shadow #REGaf register with the #REGaf register.
-  $9303,$01 Write #REGa to *#REGhl.
+  $9302,$01 Restore the #REGaf register from the shadow #REGaf register.
+  $9303,$01 Write the colour attribute byte to *#REGhl.
   $9304,$01 Return.
 
 c $9305 Main Menu: Print Dart Pointer
@@ -473,32 +495,41 @@ N $9408 Then play an absolutely stunning reveal animation!
 . #PUSHS #POKES$91C1,$00#SIM(start=$933F,stop=$93F4)
 . #POKES$9412,$00 #SIM(start=$9402,stop=$9410)
 . #FOR$00,$3E||x|
-.   #SIM(start=$9410,stop=$9424)#SCR$02(*reveal-dartboard-animation-x)
+.   #SIM(start=$9410,stop=$9424)#SCR$02(*reveal-dartboard-x)
 . ||
-. #UDGTABLE { #UDGARRAY#(#ANIMATE$03,$3E(reveal-dartboard-animation)) }
+. #UDGTABLE { #UDGARRAY#(#ANIMATE$03,$3E(reveal-dartboard)) }
 . UDGTABLE# #POPS
 N $9408 First calculate the co-ordinates of the selected menu item.
-  $9408,$04 #REGd=#N$05+(#REGa*#N$02).
-  $940C,$02 #REGe=#N$01.
+  $9408,$04 The menu items are spaced two rows apart, so double the value in
+. #REGa and also they start five rows from the top of the screen so add that
+. too and store the result in #REGd.
+  $940C,$02 The dart graphic is indented by one column - store this in #REGe.
+N $940E Initialise the animation counter.
   $940E,$02 Set a counter in #REGb of the number of loops to complete the
 . animation (#N$3E).
-@ $9410 label=RevealDartboard_Loop
-  $9410,$02 Stash the reveal loop counter and selected item co-ordinates on the
+N $9410 The main animation loop. Each iterations reveals one more column of the
+. transition.
+@ $9410 label=RevealDartboard_AnimationLoop
+  $9410,$02 Stash the reveal loop counter and dart pointer co-ordinates on the
 . stack.
+N $9412 Synchronise with the screen refresh so the animation is smooth.
   $9412,$01 Halt operation (suspend CPU until the next interrupt).
   $9413,$03 Call #R$9305.
-  $9416,$01 Restore #REGhl from the stack.
-  $9417,$01 Stash #REGhl on the stack.
-  $9418,$01 Increment #REGl by one.
+  $9416,$01 Restore the dart pointer co-ordinates from the stack into #REGhl.
+  $9417,$01 But keep a copy on the stack for later.
+  $9418,$01 Move the dart pointer right one position.
+N $9419 Draw the dart pointer at the new position.
   $9419,$03 Call #R$9457.
-  $941C,$01 Restore #REGde from the stack.
-  $941D,$01 Stash #REGde on the stack.
+N $941C Process one step of the reveal.
+  $941C,$01 Restore the dart pointer co-ordinates from the stack into #REGde.
+  $941D,$01 But keep a copy on the stack for later.
   $941E,$03 Call #R$9253.
-  $9421,$01 Restore #REGde from the stack.
-  $9422,$01 Increment #REGe by one.
+  $9421,$01 Restore the dart pointer co-ordinates from the stack.
+  $9422,$01 Move the dart pointer right one position.
   $9423,$01 Restore the reveal loop counter from the stack.
   $9424,$02 Decrease the reveal loop counter by one and loop back to #R$9410
 . until the dartboard is fully revealed.
+N $9426 The reveal animation is now complete!
   $9426,$03 Jump to #R$94E6.
 @ $9429 label=MainMenu_Next
   $9429,$05 Jump to #R$93F1 if #REGa is greater than (ASCII #N$36 is "6").
@@ -526,6 +557,7 @@ N $944E #PUSHS #SIM(start=$9195,stop=$919E)#SIM(start=$93D1,stop=$94AE)
 . screen.
   $9454,$01 Store the result in #REGh as the Y co-ordinate.
   $9455,$02 Store #N$01 in #REGl as the X co-ordinate.
+@ $9457 label=PrintDartPointer
   $9457,$04 Return if #REGl is greater than #N$20.
   $945B,$01 Stash the dart attribute co-ordinates on the stack.
 N $945C First colour the flight.
@@ -1493,8 +1525,12 @@ D $9AB8 #TABLE(default,centre,centre)
 . TABLE#
 B $9AB8,$01
 
-g $9AB9
+g $9AB9 Zipper Reveal Positions
+D $9AB9 Used by the routine at #R$9253.
+@ $9AB9 label=ZipperPosition_Upper
 W $9AB9,$02
+@ $9ABB label=ZipperPosition_Lower
+W $9ABB,$02
 
 g $9ABD
 W $9ABD,$02
@@ -4680,11 +4716,11 @@ N $B83D Plays through frames; #N$01#RAW(,) #N$02#RAW(,) #N$03#RAW(,)
 N $B83D #PUSHS #SIM(start=$AB2E,stop=$AB39)
 . #FOR$B8F5,$B8F8||n|#POKESn,$00||#FOR$B974,$B976||n|#POKESn,$00||
 . #FOR$00,$05||x|
-.   #SIM(start=($B83D+(x*$06)),stop=($B843+(x*$06)))#SCR$02(*bar-maid-animation-x)
+.   #SIM(start=($B83D+(x*$06)),stop=($B843+(x*$06)))#SCR$02(*bar-maid-x)
 . ||
 . #SIM(start=$B861,stop=$B866)
-. #FOR$06,$10||x|#SIM(start=$B866,stop=$B86E)#SCR$02(*bar-maid-animation-x)||
-. #UDGTABLE { #UDGARRAY#(#ANIMATE$10,$10(bar-maid-animation)) } UDGTABLE# #POPS
+. #FOR$06,$10||x|#SIM(start=$B866,stop=$B86E)#SCR$02(*bar-maid-x)||
+. #UDGTABLE { #UDGARRAY#(#ANIMATE$10,$10(bar-maid)) } UDGTABLE# #POPS
   $B83D,$06 Call #R$B8F5 with #REGde=#R$C724.
   $B843,$06 Call #R$B8F5 with #REGde=#R$C784.
   $B849,$06 Call #R$B8F5 with #REGde=#R$C7E4.
