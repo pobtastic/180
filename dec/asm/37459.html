@@ -29,7 +29,7 @@ Prev: <a href="37400.html">37400</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#37459">Map</a></td>
 <td class="next">
-Next: <a href="37602.html">37602</a>
+Next: <a href="37543.html">37543</a>
 </td>
 </tr>
 </table>
@@ -54,40 +54,50 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="37459"></span>
+<div class="comments">
+<div class="paragraph">
+Creates a "zipper" transition effect that reveals the dartboard from the selected menu item expanding both upwards and downwards simultaneously.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">RevealDartboard</td>
 <td class="address-2"><span id="37459"></span>37459</td>
 <td class="instruction">DEC E</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
+<td class="comment-1" rowspan="1">Move one position left to start the reveal.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37460"></span>37460</td>
 <td class="instruction">LD (39609),DE</td>
-<td class="comment-1" rowspan="1">Write <span class="register">DE</span> to *<a href="39609.html">39609</a>.</td>
+<td class="comment-1" rowspan="1">Store this position to *<a href="39609.html">ZipperPosition_Upper</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37464"></span>37464</td>
 <td class="instruction">INC D</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+<td class="comment-1" rowspan="1">Move one position down.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37465"></span>37465</td>
 <td class="instruction">LD (39611),DE</td>
-<td class="comment-1" rowspan="1">Write <span class="register">DE</span> to *<a href="39609.html#39611">39611</a>.</td>
+<td class="comment-1" rowspan="1">Store this position to *<a href="39609.html#39611">ZipperPosition_Lower</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">RevealDartboard_0</td>
+<td class="asm-label">RevealDartboard_Loop</td>
 <td class="address-2"><span id="37469"></span>37469</td>
 <td class="instruction">LD DE,(39609)</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="39609.html">39609</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="39609.html">ZipperPosition_Upper</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37473"></span>37473</td>
 <td class="instruction">LD A,E</td>
-<td class="comment-1" rowspan="3">Jump to <a href="37459.html#37542">RevealDartboard_2</a> if <span class="register">E</span> is less than 0.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="37459.html#37542">RevealDartboard_Done</a> if <span class="register">E</span> is less than 0.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -97,7 +107,17 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37475"></span>37475</td>
-<td class="instruction">JP M,<a href="37459.html#37542">RevealDartboard_2</a></td>
+<td class="instruction">JP M,<a href="37459.html#37542">RevealDartboard_Done</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37478"></span>
+<div class="comments">
+<div class="paragraph">
+Process the upper half of the reveal.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -109,7 +129,7 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37479"></span>37479</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="3">Jump to <a href="37459.html#37500">RevealDartboard_1</a> if <span class="register">D</span> is less than 0.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="37459.html#37500">UpperReveal_Done</a> if <span class="register">D</span> is less than 0.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -119,13 +139,23 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37481"></span>37481</td>
-<td class="instruction">JP M,<a href="37459.html#37500">RevealDartboard_1</a></td>
+<td class="instruction">JP M,<a href="37459.html#37500">UpperReveal_Done</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37484"></span>
+<div class="comments">
+<div class="paragraph">
+Set up the right-shifting mask for the upper reveal.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37484"></span>37484</td>
 <td class="instruction">LD HL,37575</td>
-<td class="comment-1" rowspan="2">Write 255 to *<a href="37459.html#37574">37575</a>.</td>
+<td class="comment-1" rowspan="2">Write 255 to *<a href="37543.html#37574">37575</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -136,7 +166,7 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37489"></span>37489</td>
 <td class="instruction">LD HL,37581</td>
-<td class="comment-1" rowspan="4">Write <code>SRL <span class="register">C</span></code> (203+57) to *<a href="37459.html#37581">37581</a>.</td>
+<td class="comment-1" rowspan="4">Write <code>SRL <span class="register">C</span></code> (203+57) to *<a href="37543.html#37581">37581</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -156,44 +186,53 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37497"></span>37497</td>
-<td class="instruction">CALL <a href="37459.html#37543">RevealDartboard_3</a></td>
-<td class="comment-1" rowspan="1">Call <a href="37459.html#37543">RevealDartboard_3</a>.</td>
+<td class="instruction">CALL <a href="37543.html">ProcessRevealLine</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37543.html">ProcessRevealLine</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">RevealDartboard_1</td>
+<td class="asm-label">UpperReveal_Done</td>
 <td class="address-2"><span id="37500"></span>37500</td>
 <td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the position from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37501"></span>37501</td>
 <td class="instruction">DEC D</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">D</span> by one.</td>
+<td class="comment-1" rowspan="2">Move up one line and left one column for the next upper reveal position.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37502"></span>37502</td>
 <td class="instruction">DEC E</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37503"></span>37503</td>
 <td class="instruction">LD (39609),DE</td>
-<td class="comment-1" rowspan="1">Write <span class="register">DE</span> to *<a href="39609.html">39609</a>.</td>
+<td class="comment-1" rowspan="1">Store the new position at *<a href="39609.html">ZipperPosition_Upper</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37507"></span>
+<div class="comments">
+<div class="paragraph">
+Process the lower half of the reveal.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37507"></span>37507</td>
 <td class="instruction">LD DE,(39611)</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="39609.html#39611">39611</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="39609.html#39611">ZipperPosition_Lower</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37511"></span>37511</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="3">Jump to <a href="37459.html#37542">RevealDartboard_2</a> if <span class="register">D</span> is greater than or equal to 24.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="37459.html#37542">RevealDartboard_Done</a> if <span class="register">D</span> is greater than or equal to 24.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -203,7 +242,17 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37514"></span>37514</td>
-<td class="instruction">JR NC,<a href="37459.html#37542">RevealDartboard_2</a></td>
+<td class="instruction">JR NC,<a href="37459.html#37542">RevealDartboard_Done</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37516"></span>
+<div class="comments">
+<div class="paragraph">
+Set up the left-shifting mask for the lower reveal.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -215,7 +264,7 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37517"></span>37517</td>
 <td class="instruction">LD HL,37575</td>
-<td class="comment-1" rowspan="2">Write 1 to *<a href="37459.html#37574">37575</a>.</td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="37543.html#37574">37575</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -226,7 +275,7 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37522"></span>37522</td>
 <td class="instruction">LD HL,37581</td>
-<td class="comment-1" rowspan="4">Write <code>SLL <span class="register">C</span></code> (203+49) to *<a href="37459.html#37581">37581</a>.</td>
+<td class="comment-1" rowspan="4">Write <code>SLL <span class="register">C</span></code> (203+49) to *<a href="37543.html#37581">37581</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -246,8 +295,8 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37530"></span>37530</td>
-<td class="instruction">CALL <a href="37459.html#37543">RevealDartboard_3</a></td>
-<td class="comment-1" rowspan="1">Call <a href="37459.html#37543">RevealDartboard_3</a>.</td>
+<td class="instruction">CALL <a href="37543.html">ProcessRevealLine</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37543.html">ProcessRevealLine</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -271,253 +320,17 @@ Used by the routine at <a href="37695.html">MainMenu</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="37536"></span>37536</td>
 <td class="instruction">LD (39611),DE</td>
-<td class="comment-1" rowspan="1">Write <span class="register">DE</span> to *<a href="39609.html#39611">39611</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">DE</span> to *<a href="39609.html#39611">ZipperPosition_Lower</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37540"></span>37540</td>
-<td class="instruction">JR <a href="37459.html#37469">RevealDartboard_0</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="37459.html#37469">RevealDartboard_0</a>.</td>
+<td class="instruction">JR <a href="37459.html#37469">RevealDartboard_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="37459.html#37469">RevealDartboard_Loop</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">RevealDartboard_2</td>
+<td class="asm-label">RevealDartboard_Done</td>
 <td class="address-2"><span id="37542"></span>37542</td>
-<td class="instruction">RET</td>
-<td class="comment-1" rowspan="1">Return.</td>
-</tr>
-<tr>
-<td class="asm-label">RevealDartboard_3</td>
-<td class="address-2"><span id="37543"></span>37543</td>
-<td class="instruction">PUSH DE</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37544"></span>37544</td>
-<td class="instruction">DEC E</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37545"></span>37545</td>
-<td class="instruction">LD A,E</td>
-<td class="comment-1" rowspan="3">Jump to <a href="37459.html#37557">RevealDartboard_4</a> if <span class="register">E</span> is greater than or equal to 32.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37546"></span>37546</td>
-<td class="instruction">CP 32</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37548"></span>37548</td>
-<td class="instruction">JR NC,<a href="37459.html#37557">RevealDartboard_4</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37550"></span>37550</td>
-<td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="37459.html#37557">RevealDartboard_4</a> if <span class="register">E</span> is less than 32.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37551"></span>37551</td>
-<td class="instruction">JP M,<a href="37459.html#37557">RevealDartboard_4</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37554"></span>37554</td>
-<td class="instruction">CALL <a href="37602.html">37602</a></td>
-<td class="comment-1" rowspan="1">Call <a href="37602.html">37602</a>.</td>
-</tr>
-<tr>
-<td class="asm-label">RevealDartboard_4</td>
-<td class="address-2"><span id="37557"></span>37557</td>
-<td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37558"></span>37558</td>
-<td class="instruction">LD A,E</td>
-<td class="comment-1" rowspan="3">Return if <span class="register">E</span> is greater than 32.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37559"></span>37559</td>
-<td class="instruction">CP 32</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37561"></span>37561</td>
-<td class="instruction">RET NC</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37562"></span>37562</td>
-<td class="instruction">PUSH DE</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37563"></span>37563</td>
-<td class="instruction">CALL <a href="43197.html">CalculateDartBoardAddress</a></td>
-<td class="comment-1" rowspan="1">Call <a href="43197.html">CalculateDartBoardAddress</a>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37566"></span>37566</td>
-<td class="instruction">LD D,H</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">H</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37567"></span>37567</td>
-<td class="instruction">LD E,L</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">L</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37568"></span>37568</td>
-<td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="3"><span class="register">H</span>-=32.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37569"></span>37569</td>
-<td class="instruction">SUB 32</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37571"></span>37571</td>
-<td class="instruction">LD H,A</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37572"></span>37572</td>
-<td class="instruction">LD B,8</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=8.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37574"></span>37574</td>
-<td class="instruction">LD C,255</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=255.</td>
-</tr>
-<tr>
-<td class="asm-label">RevealDartboard_5</td>
-<td class="address-2"><span id="37576"></span>37576</td>
-<td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37577"></span>37577</td>
-<td class="instruction">OR C</td>
-<td class="comment-1" rowspan="1">Set the bits from <span class="register">C</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37578"></span>37578</td>
-<td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37579"></span>37579</td>
-<td class="instruction">INC H</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37580"></span>37580</td>
-<td class="instruction">INC D</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37581"></span>37581</td>
-<td class="instruction">SRL C</td>
-<td class="comment-1" rowspan="1">Shift <span class="register">C</span> right.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37583"></span>37583</td>
-<td class="instruction">DJNZ <a href="37459.html#37576">RevealDartboard_5</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="37459.html#37576">RevealDartboard_5</a> until counter is zero.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37585"></span>37585</td>
-<td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37586"></span>37586</td>
-<td class="instruction">LD A,L</td>
-<td class="comment-1" rowspan="2">Compare <span class="register">L</span> with 8.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37587"></span>37587</td>
-<td class="instruction">CP 8</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37589"></span>37589</td>
-<td class="instruction">LD A,112</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=INK:
-BLACK,
-PAPER:
-YELLOW
-(BRIGHT)
-.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37591"></span>37591</td>
-<td class="instruction">JR NC,<a href="37459.html#37595">RevealDartboard_6</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="37459.html#37595">RevealDartboard_6</a> if <span class="register">L</span> was greater than or equal to 112.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37593"></span>37593</td>
-<td class="instruction">LD A,0</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=INK:
-BLACK,
-PAPER:
-BLACK
-
-.</td>
-</tr>
-<tr>
-<td class="asm-label">RevealDartboard_6</td>
-<td class="address-2"><span id="37595"></span>37595</td>
-<td class="instruction">EX AF,AF'</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37596"></span>37596</td>
-<td class="instruction">CALL <a href="43106.html">CalculateAttributeBuffer</a></td>
-<td class="comment-1" rowspan="1">Call <a href="43106.html">CalculateAttributeBuffer</a>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37599"></span>37599</td>
-<td class="instruction">EX AF,AF'</td>
-<td class="comment-1" rowspan="1">Exchange the shadow <span class="register">AF</span> register with the <span class="register">AF</span> register.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37600"></span>37600</td>
-<td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="37601"></span>37601</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
@@ -529,7 +342,7 @@ Prev: <a href="37400.html">37400</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#37459">Map</a></td>
 <td class="next">
-Next: <a href="37602.html">37602</a>
+Next: <a href="37543.html">37543</a>
 </td>
 </tr>
 </table>

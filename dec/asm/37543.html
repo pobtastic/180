@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>180: Routine at 37543</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37459.html">37459</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#37543">Map</a></td>
+<td class="next">
+Next: <a href="37602.html">37602</a>
+</td>
+</tr>
+</table>
+<div class="description">37543: Process Single Line Zipper Reveal</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="37459.html">RevealDartboard</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37543"></span>
+<div class="comments">
+<div class="paragraph">
+Handles the pixel manipulation for one line of the reveal effect, including both straight copying of already-revealed areas and masked reveal of transition areas.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ProcessRevealLine</td>
+<td class="address-2"><span id="37543"></span>37543</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37544"></span>
+<div class="comments">
+<div class="paragraph">
+First handle the already-revealed portion.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37544"></span>37544</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37545"></span>37545</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="3">Jump to <a href="37543.html#37557">ProcessRevealLine_Skip</a> if <span class="register">E</span> is greater than or equal to 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37546"></span>37546</td>
+<td class="instruction">CP 32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37548"></span>37548</td>
+<td class="instruction">JR NC,<a href="37543.html#37557">ProcessRevealLine_Skip</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37550"></span>37550</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="37543.html#37557">ProcessRevealLine_Skip</a> if <span class="register">E</span> is less than 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37551"></span>37551</td>
+<td class="instruction">JP M,<a href="37543.html#37557">ProcessRevealLine_Skip</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37554"></span>37554</td>
+<td class="instruction">CALL <a href="37602.html">CopyRevealLine</a></td>
+<td class="comment-1" rowspan="1">Call <a href="37602.html">CopyRevealLine</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">ProcessRevealLine_Skip</td>
+<td class="address-2"><span id="37557"></span>37557</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37558"></span>37558</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="3">Return if <span class="register">E</span> is greater than 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37559"></span>37559</td>
+<td class="instruction">CP 32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37561"></span>37561</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37562"></span>37562</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37563"></span>
+<div class="comments">
+<div class="paragraph">
+On return from <a href="43197.html">CalculateDartBoardAddress</a> <span class="register">HL</span> will contain the dart board graphic destination (i.e. <a href="24576.html">DartBoard</a> onwards).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37563"></span>37563</td>
+<td class="instruction">CALL <a href="43197.html">CalculateDartBoardAddress</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43197.html">CalculateDartBoardAddress</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37566"></span>37566</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="2">Copy the dart board graphic location from <span class="register">HL</span> into <span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37567"></span>37567</td>
+<td class="instruction">LD E,L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37568"></span>37568</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="3"><span class="register">H</span>-=32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37569"></span>37569</td>
+<td class="instruction">SUB 32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37571"></span>37571</td>
+<td class="instruction">LD H,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37572"></span>37572</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=8.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37574"></span>37574</td>
+<td class="instruction">LD C,255</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=255.</td>
+</tr>
+<tr>
+<td class="asm-label">ProcessRevealLine_0</td>
+<td class="address-2"><span id="37576"></span>37576</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37577"></span>37577</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37578"></span>37578</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37579"></span>37579</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37580"></span>37580</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37581"></span>37581</td>
+<td class="instruction">SRL C</td>
+<td class="comment-1" rowspan="1">Shift <span class="register">C</span> right.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37583"></span>37583</td>
+<td class="instruction">DJNZ <a href="37543.html#37576">ProcessRevealLine_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="37543.html#37576">ProcessRevealLine_0</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37585"></span>37585</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37586"></span>37586</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="2">Compare <span class="register">L</span> with 8.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37587"></span>37587</td>
+<td class="instruction">CP 8</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37589"></span>37589</td>
+<td class="instruction">LD A,112</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=INK:
+BLACK,
+PAPER:
+YELLOW
+(BRIGHT)
+.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37591"></span>37591</td>
+<td class="instruction">JR NC,<a href="37543.html#37595">RevealDartboard_SetAttribute</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="37543.html#37595">RevealDartboard_SetAttribute</a> if <span class="register">L</span> was greater than or equal to 112.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37593"></span>37593</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=INK:
+BLACK,
+PAPER:
+BLACK
+
+.</td>
+</tr>
+<tr>
+<td class="asm-label">RevealDartboard_SetAttribute</td>
+<td class="address-2"><span id="37595"></span>37595</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Temporarily switch the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37596"></span>37596</td>
+<td class="instruction">CALL <a href="43106.html">CalculateAttributeBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="43106.html">CalculateAttributeBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37599"></span>37599</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Restore the <span class="register">AF</span> register from the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37600"></span>37600</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write the colour attribute byte to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="37601"></span>37601</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37459.html">37459</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#37543">Map</a></td>
+<td class="next">
+Next: <a href="37602.html">37602</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
+<div><a href="asm/37543.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

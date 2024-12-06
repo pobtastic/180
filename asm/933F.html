@@ -534,7 +534,7 @@ Consolidate the selected configs.
 <div class="paragraph">
 Then play an absolutely stunning reveal animation!                                                                                                                                    <table class="">
 <tr>
-<td class="" colspan="1" rowspan="1"><img alt="reveal-dartboard-animation-animation" src="../images/udgs/reveal-dartboard-animation-animation.png" /></td>
+<td class="" colspan="1" rowspan="1"><img alt="reveal-dartboard-animation" src="../images/udgs/reveal-dartboard-animation.png" /></td>
 </tr>
 </table>
 </div>
@@ -548,7 +548,7 @@ First calculate the co-ordinates of the selected menu item.
 <td class="asm-label"></td>
 <td class="address-1"><span id="9408"></span>9408</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="3"><span class="register">D</span>=05+(<span class="register">A</span>*02).</td>
+<td class="comment-1" rowspan="3">The menu items are spaced two rows apart, so double the value in <span class="register">A</span> and also they start five rows from the top of the screen so add that too and store the result in <span class="register">D</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -564,7 +564,17 @@ First calculate the co-ordinates of the selected menu item.
 <td class="asm-label"></td>
 <td class="address-1"><span id="940c"></span>940C</td>
 <td class="instruction">LD E,$01</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=01.</td>
+<td class="comment-1" rowspan="1">The dart graphic is indented by one column - store this in <span class="register">E</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="940e"></span>
+<div class="comments">
+<div class="paragraph">
+Initialise the animation counter.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -573,15 +583,35 @@ First calculate the co-ordinates of the selected menu item.
 <td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> of the number of loops to complete the animation (3E).</td>
 </tr>
 <tr>
-<td class="asm-label">RevealDartboard_Loop</td>
+<td class="routine-comment" colspan="5">
+<span id="9410"></span>
+<div class="comments">
+<div class="paragraph">
+The main animation loop. Each iterations reveals one more column of the transition.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">RevealDartboard_AnimationLoop</td>
 <td class="address-2"><span id="9410"></span>9410</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="2">Stash the reveal loop counter and selected item co-ordinates on the stack.</td>
+<td class="comment-1" rowspan="2">Stash the reveal loop counter and dart pointer co-ordinates on the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9411"></span>9411</td>
 <td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="9412"></span>
+<div class="comments">
+<div class="paragraph">
+Synchronise with the screen refresh so the animation is smooth.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -599,37 +629,57 @@ First calculate the co-ordinates of the selected menu item.
 <td class="asm-label"></td>
 <td class="address-1"><span id="9416"></span>9416</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the dart pointer co-ordinates from the stack into <span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9417"></span>9417</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="1">But keep a copy on the stack for later.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9418"></span>9418</td>
 <td class="instruction">INC L</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+<td class="comment-1" rowspan="1">Move the dart pointer right one position.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="9419"></span>
+<div class="comments">
+<div class="paragraph">
+Draw the dart pointer at the new position.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9419"></span>9419</td>
-<td class="instruction">CALL <a href="944E.html#9457">MainMenu_ColourDartPointer_0</a></td>
-<td class="comment-1" rowspan="1">Call <a href="944E.html#9457">MainMenu_ColourDartPointer_0</a>.</td>
+<td class="instruction">CALL <a href="944E.html#9457">PrintDartPointer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="944E.html#9457">PrintDartPointer</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="941c"></span>
+<div class="comments">
+<div class="paragraph">
+Process one step of the reveal.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="941c"></span>941C</td>
 <td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the dart pointer co-ordinates from the stack into <span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="941d"></span>941D</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+<td class="comment-1" rowspan="1">But keep a copy on the stack for later.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -641,13 +691,13 @@ First calculate the co-ordinates of the selected menu item.
 <td class="asm-label"></td>
 <td class="address-1"><span id="9421"></span>9421</td>
 <td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the dart pointer co-ordinates from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9422"></span>9422</td>
 <td class="instruction">INC E</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
+<td class="comment-1" rowspan="1">Move the dart pointer right one position.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -658,8 +708,18 @@ First calculate the co-ordinates of the selected menu item.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9424"></span>9424</td>
-<td class="instruction">DJNZ <a href="933F.html#9410">RevealDartboard_Loop</a></td>
-<td class="comment-1" rowspan="1">Decrease the reveal loop counter by one and loop back to <a href="933F.html#9410">RevealDartboard_Loop</a> until the dartboard is fully revealed.</td>
+<td class="instruction">DJNZ <a href="933F.html#9410">RevealDartboard_AnimationLoop</a></td>
+<td class="comment-1" rowspan="1">Decrease the reveal loop counter by one and loop back to <a href="933F.html#9410">RevealDartboard_AnimationLoop</a> until the dartboard is fully revealed.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="9426"></span>
+<div class="comments">
+<div class="paragraph">
+The reveal animation is now complete!
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
