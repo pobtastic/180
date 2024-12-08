@@ -334,12 +334,16 @@ N $92C6 Mask value; altered to either- #N$01 at #R$928D, or #N$FF at #R$926C.
 N $92CD #HTML(Shift command; altered to either- <code>SLL #REGc</code> at
 . #R$9292, or <code>SRL #REGc</code> at #R$9271.)
   $92CD,$02 Shift the mask value.
-  $92CF,$02 Decrease counter by one and loop back to #R$92C8 until counter is zero.
-N $92D1 Work out the attribute.
+  $92CF,$02 Decrease counter by one and loop back to #R$92C8 until counter is
+. zero.
+N $92D1 Work out which attribute byte to apply.
   $92D1,$01 Restore the original reveal co-ordinate from the stack.
   $92D2,$03 Is the co-ordinate in the menu or dartboard area?
+N $92D5 Default with the dartboard attribute value.
   $92D5,$02 #REGa=#COLOUR$70.
-  $92D7,$02 Jump to #R$92DB if #REGl was greater than or equal to #N$70.
+  $92D7,$02 Jump to #R$92DB if the X co-ordinate is greater than or equal to
+. #N$08.
+N $92D9 The X co-ordinate was less than #N$08 so use the menu attribute value.
   $92D9,$02 #REGa=#COLOUR$00.
 @ $92DB label=RevealDartboard_SetAttribute
   $92DB,$01 Temporarily switch the #REGaf register with the shadow #REGaf
