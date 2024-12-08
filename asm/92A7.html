@@ -42,6 +42,15 @@ Next: <a href="92E2.html">92E2</a>
 Used by the routine at <a href="9253.html">RevealDartboard</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Current reveal co-ordinates</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
@@ -58,7 +67,7 @@ Handles the pixel manipulation for one line of the reveal effect, including both
 <td class="asm-label">ProcessRevealLine</td>
 <td class="address-2"><span id="92a7"></span>92A7</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the reveal co-ordinate on the stack.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -187,22 +196,32 @@ On return from <a href="A8BD.html">CalculateDartBoardAddress</a> <span class="re
 <td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="92c6"></span>
+<div class="comments">
+<div class="paragraph">
+Mask value; altered to either- 01 at <a href="9253.html#928d">928D</a>, or FF at <a href="9253.html#926c">926C</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92c6"></span>92C6</td>
 <td class="instruction">LD C,$FF</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=FF.</td>
+<td class="comment-1" rowspan="1">Set the initial mask value.</td>
 </tr>
 <tr>
-<td class="asm-label">ProcessRevealLine_0</td>
+<td class="asm-label">RevealDartboard_MaskLoop</td>
 <td class="address-2"><span id="92c8"></span>92C8</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="1">Get the dartboard graphic byte.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92c9"></span>92C9</td>
 <td class="instruction">OR C</td>
-<td class="comment-1" rowspan="1">Set the bits from <span class="register">C</span>.</td>
+<td class="comment-1" rowspan="1">Apply the reveal mask.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -223,28 +242,48 @@ On return from <a href="A8BD.html">CalculateDartBoardAddress</a> <span class="re
 <td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="92cd"></span>
+<div class="comments">
+<div class="paragraph">
+Shift command; altered to either- <code>SLL <span class="register">C</span></code> at <a href="9253.html#9292">9292</a>, or <code>SRL <span class="register">C</span></code> at <a href="9253.html#9271">9271</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92cd"></span>92CD</td>
 <td class="instruction">SRL C</td>
-<td class="comment-1" rowspan="1">Shift <span class="register">C</span> right.</td>
+<td class="comment-1" rowspan="1">Shift the mask value.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92cf"></span>92CF</td>
-<td class="instruction">DJNZ <a href="92A7.html#92c8">ProcessRevealLine_0</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="92A7.html#92c8">ProcessRevealLine_0</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="92A7.html#92c8">RevealDartboard_MaskLoop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="92A7.html#92c8">RevealDartboard_MaskLoop</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="92d1"></span>
+<div class="comments">
+<div class="paragraph">
+Work out the attribute.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92d1"></span>92D1</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the original reveal co-ordinate from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92d2"></span>92D2</td>
 <td class="instruction">LD A,L</td>
-<td class="comment-1" rowspan="2">Compare <span class="register">L</span> with 08.</td>
+<td class="comment-1" rowspan="2">Is the co-ordinate in the menu or dartboard area?</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

@@ -88,6 +88,16 @@ Creates a "zipper" transition effect that reveals the dartboard from the selecte
 <td class="comment-1" rowspan="1">Store this position to *<a href="9AB9.html#9abb">ZipperPosition_Lower</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="925d"></span>
+<div class="comments">
+<div class="paragraph">
+Process the upper half of the reveal.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">RevealDartboard_Loop</td>
 <td class="address-2"><span id="925d"></span>925D</td>
 <td class="instruction">LD DE,($9AB9)</td>
@@ -97,7 +107,7 @@ Creates a "zipper" transition effect that reveals the dartboard from the selecte
 <td class="asm-label"></td>
 <td class="address-1"><span id="9261"></span>9261</td>
 <td class="instruction">LD A,E</td>
-<td class="comment-1" rowspan="3">Jump to <a href="9253.html#92a6">RevealDartboard_Done</a> if <span class="register">E</span> is less than 00.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="9253.html#92a6">RevealDartboard_Done</a> if <span class="register">E</span> becomes negative (if it's gone past the left edge).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -110,26 +120,16 @@ Creates a "zipper" transition effect that reveals the dartboard from the selecte
 <td class="instruction">JP M,<a href="9253.html#92a6">RevealDartboard_Done</a></td>
 </tr>
 <tr>
-<td class="routine-comment" colspan="5">
-<span id="9266"></span>
-<div class="comments">
-<div class="paragraph">
-Process the upper half of the reveal.
-</div>
-</div>
-</td>
-</tr>
-<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9266"></span>9266</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the upper position on the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="9267"></span>9267</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="3">Jump to <a href="9253.html#927c">UpperReveal_Done</a> if <span class="register">D</span> is less than 00.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="9253.html#927c">UpperReveal_Done</a> if <span class="register">D</span> becomes negative (if it's gone past the top of the screen).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -148,6 +148,9 @@ Process the upper half of the reveal.
 <div class="paragraph">
 Set up the right-shifting mask for the upper reveal.
 </div>
+<div class="paragraph">
+Self-modifying code;
+</div>
 </div>
 </td>
 </tr>
@@ -155,7 +158,7 @@ Set up the right-shifting mask for the upper reveal.
 <td class="asm-label"></td>
 <td class="address-1"><span id="926c"></span>926C</td>
 <td class="instruction">LD HL,$92C7</td>
-<td class="comment-1" rowspan="2">Write FF to *<a href="92A7.html#92c6">92C7</a>.</td>
+<td class="comment-1" rowspan="2">Set the mask value to FF at *<a href="92A7.html#92c6">92C7</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -193,7 +196,7 @@ Set up the right-shifting mask for the upper reveal.
 <td class="asm-label">UpperReveal_Done</td>
 <td class="address-2"><span id="927c"></span>927C</td>
 <td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1">Restore the position from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the original upper position from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -210,7 +213,7 @@ Set up the right-shifting mask for the upper reveal.
 <td class="asm-label"></td>
 <td class="address-1"><span id="927f"></span>927F</td>
 <td class="instruction">LD ($9AB9),DE</td>
-<td class="comment-1" rowspan="1">Store the new position at *<a href="9AB9.html">ZipperPosition_Upper</a>.</td>
+<td class="comment-1" rowspan="1">Store the updated upper position at *<a href="9AB9.html">ZipperPosition_Upper</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -232,7 +235,7 @@ Process the lower half of the reveal.
 <td class="asm-label"></td>
 <td class="address-1"><span id="9287"></span>9287</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="3">Jump to <a href="9253.html#92a6">RevealDartboard_Done</a> if <span class="register">D</span> is greater than or equal to 18.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="9253.html#92a6">RevealDartboard_Done</a> if <span class="register">D</span> is greater than or equal to 18 (if it's gone past the bottom of the screen).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -258,13 +261,23 @@ Set up the left-shifting mask for the lower reveal.
 <td class="asm-label"></td>
 <td class="address-1"><span id="928c"></span>928C</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the lower position on the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="928d"></span>
+<div class="comments">
+<div class="paragraph">
+Self-modifying code;
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="928d"></span>928D</td>
 <td class="instruction">LD HL,$92C7</td>
-<td class="comment-1" rowspan="2">Write 01 to *<a href="92A7.html#92c6">92C7</a>.</td>
+<td class="comment-1" rowspan="2">Set the mask value to 01 at *<a href="92A7.html#92c6">92C7</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -302,31 +315,40 @@ Set up the left-shifting mask for the lower reveal.
 <td class="asm-label"></td>
 <td class="address-1"><span id="929d"></span>929D</td>
 <td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the original lower position from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="929e"></span>929E</td>
 <td class="instruction">INC D</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+<td class="comment-1" rowspan="2">Move down one line and left one column for the next lower reveal position.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="929f"></span>929F</td>
 <td class="instruction">DEC E</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92a0"></span>92A0</td>
 <td class="instruction">LD ($9ABB),DE</td>
-<td class="comment-1" rowspan="1">Write <span class="register">DE</span> to *<a href="9AB9.html#9abb">ZipperPosition_Lower</a>.</td>
+<td class="comment-1" rowspan="1">Store the updated lower position at *<a href="9AB9.html#9abb">ZipperPosition_Lower</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92a4"></span>92A4</td>
 <td class="instruction">JR <a href="9253.html#925d">RevealDartboard_Loop</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="9253.html#925d">RevealDartboard_Loop</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="92a6"></span>
+<div class="comments">
+<div class="paragraph">
+All finished for this frame, so return.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label">RevealDartboard_Done</td>
