@@ -1825,18 +1825,20 @@ c$9253 DEC E         ; Move one position left to start the reveal.
  $9254 LD ($9AB9),DE ; Store this position to *#R$9AB9.
  $9258 INC D         ; Move one position down.
  $9259 LD ($9ABB),DE ; Store this position to *#R$9ABB.
+; Process the upper half of the reveal.
 @label=RevealDartboard_Loop
 *$925D LD DE,($9AB9) ; #REGde=*#R$9AB9.
- $9261 LD A,E        ; {Jump to #R$92A6 if #REGe is less than #N$00.
- $9262 AND A         ;
+ $9261 LD A,E        ; {Jump to #R$92A6 if #REGe becomes negative (if it's gone past the
+ $9262 AND A         ; left edge).
  $9263 JP M,$92A6    ; }
-; Process the upper half of the reveal.
- $9266 PUSH DE       ; Stash #REGde on the stack.
- $9267 LD A,D        ; {Jump to #R$927C if #REGd is less than #N$00.
- $9268 AND A         ;
+ $9266 PUSH DE       ; Stash the upper position on the stack.
+ $9267 LD A,D        ; {Jump to #R$927C if #REGd becomes negative (if it's gone past the
+ $9268 AND A         ; top of the screen).
  $9269 JP M,$927C    ; }
 ; Set up the right-shifting mask for the upper reveal.
- $926C LD HL,$92C7   ; {Write #N$FF to *#R$92C6(#N$92C7).
+; .
+; Self-modifying code;
+ $926C LD HL,$92C7   ; {Set the mask value to #N$FF at *#R$92C6(#N$92C7).
  $926F LD (HL),$FF   ; }
  $9271 LD HL,$92CD   ; {#HTML(Write <code>SRL #REGc</code> (#N$CB+#N$39) to
  $9274 LD (HL),$CB   ; *#R$92CD.)
@@ -1844,29 +1846,31 @@ c$9253 DEC E         ; Move one position left to start the reveal.
  $9277 LD (HL),$39   ; }
  $9279 CALL $92A7    ; Call #R$92A7.
 @label=UpperReveal_Done
-*$927C POP DE        ; Restore the position from the stack.
+*$927C POP DE        ; Restore the original upper position from the stack.
  $927D DEC D         ; {Move up one line and left one column for the next upper reveal
  $927E DEC E         ; position.}
- $927F LD ($9AB9),DE ; Store the new position at *#R$9AB9.
+ $927F LD ($9AB9),DE ; Store the updated upper position at *#R$9AB9.
 ; Process the lower half of the reveal.
  $9283 LD DE,($9ABB) ; #REGde=*#R$9ABB.
- $9287 LD A,D        ; {Jump to #R$92A6 if #REGd is greater than or equal to
- $9288 CP $18        ; #N$18.
+ $9287 LD A,D        ; {Jump to #R$92A6 if #REGd is greater than or equal to #N$18 (if it's
+ $9288 CP $18        ; gone past the bottom of the screen).
  $928A JR NC,$92A6   ; }
 ; Set up the left-shifting mask for the lower reveal.
- $928C PUSH DE       ; Stash #REGde on the stack.
- $928D LD HL,$92C7   ; {Write #N$01 to *#R$92C6(#N$92C7).
+ $928C PUSH DE       ; Stash the lower position on the stack.
+; Self-modifying code;
+ $928D LD HL,$92C7   ; {Set the mask value to #N$01 at *#R$92C6(#N$92C7).
  $9290 LD (HL),$01   ; }
  $9292 LD HL,$92CD   ; {#HTML(Write <code>SLL #REGc</code> (#N$CB+#N$31) to
  $9295 LD (HL),$CB   ; *#R$92CD.)
  $9297 INC HL        ;
  $9298 LD (HL),$31   ; }
  $929A CALL $92A7    ; Call #R$92A7.
- $929D POP DE        ; Restore #REGde from the stack.
- $929E INC D         ; Increment #REGd by one.
- $929F DEC E         ; Decrease #REGe by one.
- $92A0 LD ($9ABB),DE ; Write #REGde to *#R$9ABB.
+ $929D POP DE        ; Restore the original lower position from the stack.
+ $929E INC D         ; {Move down one line and left one column for the next lower reveal
+ $929F DEC E         ; position.}
+ $92A0 LD ($9ABB),DE ; Store the updated lower position at *#R$9ABB.
  $92A4 JR $925D      ; Jump to #R$925D.
+; All finished for this frame, so return.
 @label=RevealDartboard_Done
 *$92A6 RET           ; Return.
 
@@ -1874,13 +1878,13 @@ c$9253 DEC E         ; Move one position left to start the reveal.
 ;
 ; Used by the routine at #R$9253.
 ;
-; .
+; DE Current reveal co-ordinates
 ;
 ; Handles the pixel manipulation for one line of the reveal effect,
 ; including both straight copying of already-revealed areas and masked reveal
 ; of transition areas.
 @label=ProcessRevealLine
-c$92A7 PUSH DE       ; Stash #REGde on the stack.
+c$92A7 PUSH DE       ; Stash the reveal co-ordinate on the stack.
 ; First handle the already-revealed portion.
  $92A8 DEC E         ; Decrease #REGe by one.
  $92A9 LD A,E        ; {Jump to #R$92B5 if #REGe is greater than or equal to
@@ -1904,17 +1908,22 @@ c$92A7 PUSH DE       ; Stash #REGde on the stack.
  $92C1 SUB $20       ;
  $92C3 LD H,A        ; }
  $92C4 LD B,$08      ; #REGb=#N$08.
- $92C6 LD C,$FF      ; #REGc=#N$FF.
-*$92C8 LD A,(DE)     ; #REGa=*#REGde.
- $92C9 OR C          ; Set the bits from #REGc.
+; Mask value; altered to either- #N$01 at #R$928D, or #N$FF at #R$926C.
+ $92C6 LD C,$FF      ; Set the initial mask value.
+@label=RevealDartboard_MaskLoop
+*$92C8 LD A,(DE)     ; Get the dartboard graphic byte.
+ $92C9 OR C          ; Apply the reveal mask.
  $92CA LD (HL),A     ; Write #REGa to *#REGhl.
  $92CB INC H         ; Increment #REGh by one.
  $92CC INC D         ; Increment #REGd by one.
- $92CD SRL C         ; Shift #REGc right.
+; #HTML(Shift command; altered to either- <code>SLL #REGc</code> at
+; #R$9292, or <code>SRL #REGc</code> at #R$9271.)
+ $92CD SRL C         ; Shift the mask value.
  $92CF DJNZ $92C8    ; Decrease counter by one and loop back to #R$92C8 until
                      ; counter is zero.
- $92D1 POP HL        ; Restore #REGhl from the stack.
- $92D2 LD A,L        ; {Compare #REGl with #N$08.
+; Work out the attribute.
+ $92D1 POP HL        ; Restore the original reveal co-ordinate from the stack.
+ $92D2 LD A,L        ; {Is the co-ordinate in the menu or dartboard area?
  $92D3 CP $08        ; }
  $92D5 LD A,$70      ; #REGa=#COLOUR$70.
  $92D7 JR NC,$92DB   ; Jump to #R$92DB if #REGl was greater than or equal to
