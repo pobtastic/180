@@ -268,7 +268,7 @@ Shift command; altered to either- <code>SLL <span class="register">C</span></cod
 <span id="92d1"></span>
 <div class="comments">
 <div class="paragraph">
-Work out the attribute.
+Work out which attribute byte to apply.
 </div>
 </div>
 </td>
@@ -291,6 +291,16 @@ Work out the attribute.
 <td class="instruction">CP $08</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="92d5"></span>
+<div class="comments">
+<div class="paragraph">
+Default with the dartboard attribute value.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92d5"></span>92D5</td>
 <td class="instruction">LD A,$70</td>
@@ -305,7 +315,17 @@ YELLOW
 <td class="asm-label"></td>
 <td class="address-1"><span id="92d7"></span>92D7</td>
 <td class="instruction">JR NC,<a href="92A7.html#92db">RevealDartboard_SetAttribute</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="92A7.html#92db">RevealDartboard_SetAttribute</a> if <span class="register">L</span> was greater than or equal to 70.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="92A7.html#92db">RevealDartboard_SetAttribute</a> if the X co-ordinate is greater than or equal to 08.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="92d9"></span>
+<div class="comments">
+<div class="paragraph">
+The X co-ordinate was less than 08 so use the menu attribute value.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
