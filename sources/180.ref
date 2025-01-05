@@ -14,7 +14,7 @@ GameDir=180
 [Game]
 Game=180
 Logo=#SCR$02,$0B,$02,$0A,$03,$4000,$5800(/images/logo)
-Copyright=&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.
+Copyright=&copy; 1986 Mastertronic &copy; 2025 ArcadeGeek LTD.
 Repository=https://github.com/pobtastic/180/
 LinkInternalOperands=1
 AddressAnchor={address#IF({base}==16)(:04x)}

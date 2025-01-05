@@ -1,4 +1,4 @@
-; Copyright Mastertronic 1986, 2024 ArcadeGeek LTD.
+; Copyright Mastertronic 1986, 2025 ArcadeGeek LTD.
 ; NOTE: Disassembly is Work-In-Progress.
 ; Label naming is loosely based on Action_ActionName_SubAction e.g. Print_HighScore_Loop.
 
@@ -260,6 +260,7 @@ c $9253 Reveal Dartboard
 R $9253 DE Dart pointer co-ordinates
 N $9253 Creates a "zipper" transition effect that reveals the dartboard from
 . the selected menu item expanding both upwards and downwards simultaneously.
+N $9253 The zipper trails behind the dartboard pointer.
   $9253,$01 Move one position left to start the reveal.
   $9254,$04 Store this position to *#R$9AB9.
   $9258,$01 Move one position down.
@@ -274,7 +275,9 @@ N $925D Process the upper half of the reveal.
 . top of the screen).
 N $926C Set up the right-shifting mask for the upper reveal.
 N $926C Self-modifying code;
+@ $926C label=RevealDartboard_ModifyMaskForUpper
   $926C,$05 Set the mask value to #N$FF at *#R$92C6(#N$92C7).
+@ $9271 label=RevealDartboard_ModifyToShiftRight
   $9271,$08 #HTML(Write <code>SRL #REGc</code> (#N$CB+#N$39) to *#R$92CD.)
   $9279,$03 Call #R$92A7.
 @ $927C label=UpperReveal_Done
@@ -289,7 +292,9 @@ N $9283 Process the lower half of the reveal.
 N $928C Set up the left-shifting mask for the lower reveal.
   $928C,$01 Stash the lower position on the stack.
 N $928D Self-modifying code;
+@ $928D label=RevealDartboard_ModifyMaskForLower
   $928D,$05 Set the mask value to #N$01 at *#R$92C6(#N$92C7).
+@ $9292 label=RevealDartboard_ModifyToShiftLeft
   $9292,$08 #HTML(Write <code>SLL #REGc</code> (#N$CB+#N$31) to *#R$92CD.)
   $929A,$03 Call #R$92A7.
   $929D,$01 Restore the original lower position from the stack.
@@ -309,33 +314,38 @@ N $92A7 Handles the pixel manipulation for one line of the reveal effect,
 . of transition areas.
   $92A7,$01 Stash the reveal co-ordinate on the stack.
 N $92A8 First handle the already-revealed portion.
-  $92A8,$01 Decrease #REGe by one.
-  $92A9,$05 Jump to #R$92B5 if #REGe is greater than or equal to #N$20.
-  $92AE,$04 Jump to #R$92B5 if #REGe is less than #N$20.
+  $92A8,$01 Decrease #REGe by one for the check below.
+N $92A9 Is the X coordinate within the screen boundaries?
+  $92A9,$09 Jump to #R$92B5 if (#N$00 <= #REGe < #N$20).
   $92B2,$03 Call #R$92E2.
 @ $92B5 label=ProcessRevealLine_Skip
-  $92B5,$01 Restore #REGde from the stack.
-  $92B6,$04 Return if #REGe is greater than #N$20.
-  $92BA,$01 Stash #REGde on the stack.
+  $92B5,$01 Restore the reveal co-ordinate from the stack.
+  $92B6,$04 Return if X is past the right-hand edge of the screen.
+  $92BA,$01 Stash the reveal co-ordinate on the stack.
 N $92BB On return from #R$A8BD #REGhl will contain the dart board graphic
 . destination (i.e. #R$6000 onwards).
   $92BB,$03 Call #R$A8BD.
+N $92BE Set up the source and destination addresses.
   $92BE,$02 Copy the dart board graphic location from #REGhl into #REGde.
   $92C0,$04 #REGh-=#N$20.
-  $92C4,$02 #REGb=#N$08.
+N $92C4 Process #N$08 pixel rows with the reveal mask.
+  $92C4,$02 Set a counter in #REGb for the number of pixels rows to process.
 N $92C6 Mask value; altered to either- #N$01 at #R$928D, or #N$FF at #R$926C.
+@ $92C6 label=Reveal_MaskValue
   $92C6,$02 Set the initial mask value.
 @ $92C8 label=RevealDartboard_MaskLoop
   $92C8,$01 Get the dartboard graphic byte.
   $92C9,$01 Apply the reveal mask.
-  $92CA,$01 Write #REGa to *#REGhl.
-  $92CB,$01 Increment #REGh by one.
-  $92CC,$01 Increment #REGd by one.
-N $92CD #HTML(Shift command; altered to either- <code>SLL #REGc</code> at
-. #R$9292, or <code>SRL #REGc</code> at #R$9271.)
+  $92CA,$01 Write the result to the screen.
+  $92CB,$01 Move to the next screen line.
+  $92CC,$01 Move to the next dartboard graphic line.
+N $92CD Shift command. Altered to either;
+N $92CD #HTML(<code>SLL C</code> at #R$9292.)
+N $92CD #HTML(<code>SRL C</code> at #R$9271.)
+@ $92CD label=Reveal_ShiftCommand
   $92CD,$02 Shift the mask value.
-  $92CF,$02 Decrease counter by one and loop back to #R$92C8 until counter is
-. zero.
+  $92CF,$02 Decrease the pixel row counter by one and loop back to #R$92C8
+. until all #N$08 lines have been processed.
 N $92D1 Work out which attribute byte to apply.
   $92D1,$01 Restore the original reveal co-ordinate from the stack.
   $92D2,$03 Is the co-ordinate in the menu or dartboard area?
@@ -345,12 +355,16 @@ N $92D5 Default with the dartboard attribute value.
 . #N$08.
 N $92D9 The X co-ordinate was less than #N$08 so use the menu attribute value.
   $92D9,$02 #REGa=#COLOUR$00.
-@ $92DB label=RevealDartboard_SetAttribute
-  $92DB,$01 Temporarily switch the #REGaf register with the shadow #REGaf
+N $92DB Stash the attribute byte temporarily as #R$A862 needs the #REGa
 . register.
+@ $92DB label=RevealDartboard_SetAttribute
+  $92DB,$01 Temporarily switch the attribute byte with the shadow #REGaf
+. register.
+N $92DC #R$A862 converts given co-ordinates into an attribute buffer location
+. (into #REGhl).
   $92DC,$03 Call #R$A862.
-  $92DF,$01 Restore the #REGaf register from the shadow #REGaf register.
-  $92E0,$01 Write the colour attribute byte to *#REGhl.
+  $92DF,$01 Restore the attribute byte back from the shadow #REGaf register.
+  $92E0,$01 Write the colour attribute byte to the attribute buffer.
   $92E1,$01 Return.
 
 c $92E2 Copy Reveal Line
@@ -360,22 +374,29 @@ R $92E2 DE Screen position
 N $92E3 On return from #R$A8BD #REGhl will contain the dart board graphic
 . destination (i.e. #R$6000 onwards).
   $92E3,$03 Call #R$A8BD.
+N $92E6 Set up the source and destination addresses.
   $92E6,$02 Copy the dart board graphic location from #REGhl into #REGde.
   $92E8,$04 #REGh-=#N$20.
-  $92EC,$02 #REGb=#N$08.
+N $92EC Copy #N$08 pixel rows that make up one character cell of the dartboard.
+  $92EC,$02 Set a counter in #REGb for the number of pixels rows to process.
 @ $92EE label=CopyRevealLine_Loop
-  $92EE,$02 Write *#REGde to *#REGhl.
-  $92F0,$01 Increment #REGh by one.
-  $92F1,$01 Increment #REGd by one.
+  $92EE,$02 Copy a byte of the dartboard graphic to the screen buffer.
+  $92F0,$01 Move to the next screen line.
+  $92F1,$01 Move to the next dartboard graphic line.
   $92F2,$02 Decrease counter by one and loop back to #R$92EE until counter is zero.
+N $92F4 Work out which attribute byte to apply.
   $92F4,$01 Restore the screen position from the stack.
-  $92F5,$03 Compare #REGl with #N$08.
+  $92F5,$03 Is the co-ordinate in the menu or dartboard area?
+N $92F8 Default with the dartboard attribute value.
   $92F8,$02 #REGa=#COLOUR$70.
-  $92FA,$02 Jump to #R$92FE if #REGl was greater than or equal to #N$08.
+  $92FA,$02 Jump to #R$92FE if the X co-ordinate is greater than or equal to #N$08.
+N $92FC The X co-ordinate was less than #N$08 so use the menu attribute value.
   $92FC,$02 #REGa=#COLOUR$47.
 @ $92FE label=RevealLine_SetAttribute
   $92FE,$01 Temporarily switch the #REGaf register with the shadow #REGaf
 . register.
+N $92FF On return from #R$A862 #REGhl will contain the attribute buffer
+. location.
   $92FF,$03 Call #R$A862.
   $9302,$01 Restore the #REGaf register from the shadow #REGaf register.
   $9303,$01 Write the colour attribute byte to *#REGhl.
@@ -523,7 +544,7 @@ N $9408 First calculate the co-ordinates of the selected menu item.
 N $940E Initialise the animation counter.
   $940E,$02 Set a counter in #REGb of the number of loops to complete the
 . animation (#N$3E).
-N $9410 The main animation loop. Each iterations reveals one more column of the
+N $9410 The main animation loop. Each iteration reveals one more column of the
 . transition.
 @ $9410 label=RevealDartboard_AnimationLoop
   $9410,$02 Stash the reveal loop counter and dart pointer co-ordinates on the
@@ -1059,11 +1080,17 @@ c $978B Handler: ASCII Character
 
 c $97D5 Control Code #N$00: Clear Screen
 @ $97D5 label=ControlCode_ClearScreen
+D $97D5 Copies the attribute byte held by *#R$F81E to the address held by
+. *#R$F81C #N$02FF times.
+.
+. The routine then copies #N$00 to the address held by *#R$F82B, #N$17FF times.
   $97D5,$02 Stash #REGbc and #REGde on the stack.
+N $97D7 Start with the attribute byte copy to *#R$F81C, #N$02FF times.
   $97D7,$03 #REGhl=*#R$F81C.
   $97DA,$03 #REGa=*#R$F81E.
   $97DD,$03 #REGbc=#N$02FF.
   $97E0,$03 Call #R$97F0.
+N $97E3 Next copy #N$00 to *#R$F82B, #N$17FF times.
   $97E3,$03 #REGhl=*#R$F82B.
   $97E6,$01 #REGa=#N$00.
   $97E7,$03 #REGbc=#N$17FF.
@@ -1276,20 +1303,23 @@ M $994E,$04 Flip the current speaker state.
 . until the repeat loop counter is zero.
   $9956,$01 Return.
 
-c $9957 Control Code #N$04:
-@ $9957 label=ControlCode_04
+c $9957 Helper: Return
+@ $9957 label=Helper_Return
+D $9957 Provides a method of a control code being routed to just do nothing.
   $9957,$01 Return.
 
 u $9958
   $9958,$03 Jump to #R$95BE.
 
-c $995B
+c $995B Control Code: Return
+@ $995B label=ControlCode_FullReturn_1
   $995B,$02 Restore #REGbc and #REGde from the stack.
+@ $995D label=ControlCode_Return_1
   $995D,$02 Restore #REGaf and #REGhl from the stack.
   $995F,$01 Return.
-
-c $9960
+@ $9960 label=ControlCode_FullReturn_2
   $9960,$01 Restore #REGde from the stack.
+@ $9961 label=ControlCode_Return_2
   $9961,$03 Restore #REGbc, #REGaf and #REGhl from the stack.
   $9964,$01 Return.
 
@@ -1522,6 +1552,9 @@ g $9AAE Current Opponent Pub Scene
 W $9AAE,$02
 
 g $9AB0 Player Current Total
+D $9AB0 Player totals when playing a two player game.
+.
+. #R$9B1F is used for single player games instead.
 @ $9AB0 label=2UP_Total
 W $9AB0,$02
 @ $9AB2 label=1UP_Total
@@ -1622,8 +1655,9 @@ W $9B1B,$02
 g $9B1D
 W $9B1D,$02
 
-g $9B1F Score?
-@ $9B1F label=Score
+g $9B1F Total
+@ $9B1F label=Total
+D $9B1F Total (when playing a single player game).
 B $9B1F,$02
 
 g $9B21 Quarter Finals Opponent Data
@@ -2388,13 +2422,15 @@ c $A461 Handler: Floating Hand
   $A461,$03 Call #R$A50E.
   $A464,$03 #REGhl=*#R$9B15.
   $A467,$03 Call #R$A58F.
-  $A46A,$05 Write #N$37 to *#R$A61D.
+N $A46A Self-modifying code;
+  $A46A,$05 #HTML(Write <code>SCF</code> (#N$37) to *#R$A61D.)
   $A46F,$03 Call #R$A613.
   $A472,$03 Call #R$A5E1.
   $A475,$03 Call #R$A652.
   $A478,$03 #REGhl=*#R$9B13.
   $A47B,$03 Call #R$A58F.
-  $A47E,$05 Write #N$A7 to *#R$A61D.
+N $A47E Self-modifying code;
+  $A47E,$05 #HTML(Write <code>AND #REGa</code> (#N$A7) to *#R$A61D.)
   $A483,$03 Call #R$A613.
   $A486,$03 Call #R$A5E1.
   $A489,$03 Call #R$A69C.
@@ -5384,7 +5420,15 @@ D $F81C Pointer to the attribute buffer location of where the characters will
 . be printed.
 W $F81C,$02
 
-  $F81E
+g $F81E Print: Attribute Variable
+@ $F81E label=Print_AttributeVariable
+D $F81E Helper variable for printing routines.
+.
+. Holds an attribute value to copy for #R$97D5.
+B $F81E,$01
+
+u $F81F
+W $F81F,$02
 
 g $F821 Control Byte?
 @ $F821 label=ControlByte
