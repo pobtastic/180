@@ -60,6 +60,9 @@ Used by the routine at <a href="933F.html">MainMenu</a>.
 <div class="paragraph">
 Creates a "zipper" transition effect that reveals the dartboard from the selected menu item expanding both upwards and downwards simultaneously.
 </div>
+<div class="paragraph">
+The zipper trails behind the dartboard pointer.
+</div>
 </div>
 </td>
 </tr>
@@ -155,7 +158,7 @@ Self-modifying code;
 </td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">RevealDartboard_ModifyMaskForUpper</td>
 <td class="address-1"><span id="926c"></span>926C</td>
 <td class="instruction">LD HL,$92C7</td>
 <td class="comment-1" rowspan="2">Set the mask value to FF at *<a href="92A7.html#92c6">92C7</a>.</td>
@@ -166,10 +169,10 @@ Self-modifying code;
 <td class="instruction">LD (HL),$FF</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">RevealDartboard_ModifyToShiftRight</td>
 <td class="address-1"><span id="9271"></span>9271</td>
 <td class="instruction">LD HL,$92CD</td>
-<td class="comment-1" rowspan="4">Write <code>SRL <span class="register">C</span></code> (CB+39) to *<a href="92A7.html#92cd">92CD</a>.</td>
+<td class="comment-1" rowspan="4">Write <code>SRL <span class="register">C</span></code> (CB+39) to *<a href="92A7.html#92cd">Reveal_ShiftCommand</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -274,7 +277,7 @@ Self-modifying code;
 </td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">RevealDartboard_ModifyMaskForLower</td>
 <td class="address-1"><span id="928d"></span>928D</td>
 <td class="instruction">LD HL,$92C7</td>
 <td class="comment-1" rowspan="2">Set the mask value to 01 at *<a href="92A7.html#92c6">92C7</a>.</td>
@@ -285,10 +288,10 @@ Self-modifying code;
 <td class="instruction">LD (HL),$01</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">RevealDartboard_ModifyToShiftLeft</td>
 <td class="address-1"><span id="9292"></span>9292</td>
 <td class="instruction">LD HL,$92CD</td>
-<td class="comment-1" rowspan="4">Write <code>SLL <span class="register">C</span></code> (CB+31) to *<a href="92A7.html#92cd">92CD</a>.</td>
+<td class="comment-1" rowspan="4">Write <code>SLL <span class="register">C</span></code> (CB+31) to *<a href="92A7.html#92cd">Reveal_ShiftCommand</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -370,7 +373,7 @@ Next: <a href="92A7.html">92A7</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2025 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
 <div><a href="asm/9253.html">Switch to decimal</a>.</div>

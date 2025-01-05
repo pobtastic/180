@@ -76,6 +76,16 @@ On return from <a href="43197.html">CalculateDartBoardAddress</a> <span class="r
 <td class="comment-1" rowspan="1">Call <a href="43197.html">CalculateDartBoardAddress</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="37606"></span>
+<div class="comments">
+<div class="paragraph">
+Set up the source and destination addresses.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37606"></span>37606</td>
 <td class="instruction">LD D,H</td>
@@ -103,16 +113,26 @@ On return from <a href="43197.html">CalculateDartBoardAddress</a> <span class="r
 <td class="instruction">LD H,A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="37612"></span>
+<div class="comments">
+<div class="paragraph">
+Copy 8 pixel rows that make up one character cell of the dartboard.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37612"></span>37612</td>
 <td class="instruction">LD B,8</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=8.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the number of pixels rows to process.</td>
 </tr>
 <tr>
 <td class="asm-label">CopyRevealLine_Loop</td>
 <td class="address-2"><span id="37614"></span>37614</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="2">Write *<span class="register">DE</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="2">Copy a byte of the dartboard graphic to the screen buffer.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -123,19 +143,29 @@ On return from <a href="43197.html">CalculateDartBoardAddress</a> <span class="r
 <td class="asm-label"></td>
 <td class="address-1"><span id="37616"></span>37616</td>
 <td class="instruction">INC H</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+<td class="comment-1" rowspan="1">Move to the next screen line.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37617"></span>37617</td>
 <td class="instruction">INC D</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+<td class="comment-1" rowspan="1">Move to the next dartboard graphic line.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37618"></span>37618</td>
 <td class="instruction">DJNZ <a href="37602.html#37614">CopyRevealLine_Loop</a></td>
 <td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="37602.html#37614">CopyRevealLine_Loop</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37620"></span>
+<div class="comments">
+<div class="paragraph">
+Work out which attribute byte to apply.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -147,12 +177,22 @@ On return from <a href="43197.html">CalculateDartBoardAddress</a> <span class="r
 <td class="asm-label"></td>
 <td class="address-1"><span id="37621"></span>37621</td>
 <td class="instruction">LD A,L</td>
-<td class="comment-1" rowspan="2">Compare <span class="register">L</span> with 8.</td>
+<td class="comment-1" rowspan="2">Is the co-ordinate in the menu or dartboard area?</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="37622"></span>37622</td>
 <td class="instruction">CP 8</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37624"></span>
+<div class="comments">
+<div class="paragraph">
+Default with the dartboard attribute value.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -169,7 +209,17 @@ YELLOW
 <td class="asm-label"></td>
 <td class="address-1"><span id="37626"></span>37626</td>
 <td class="instruction">JR NC,<a href="37602.html#37630">RevealLine_SetAttribute</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="37602.html#37630">RevealLine_SetAttribute</a> if <span class="register">L</span> was greater than or equal to 8.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="37602.html#37630">RevealLine_SetAttribute</a> if the X co-ordinate is greater than or equal to 8.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37628"></span>
+<div class="comments">
+<div class="paragraph">
+The X co-ordinate was less than 8 so use the menu attribute value.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -187,6 +237,16 @@ BLACK
 <td class="address-2"><span id="37630"></span>37630</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Temporarily switch the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="37631"></span>
+<div class="comments">
+<div class="paragraph">
+On return from <a href="43106.html">CalculateAttributeBuffer</a> <span class="register">HL</span> will contain the attribute buffer location.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -226,7 +286,7 @@ Next: <a href="37637.html">37637</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2025 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
 <div><a href="asm/37602.html">Switch to hexadecimal</a>.</div>

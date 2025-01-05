@@ -200,6 +200,12 @@ Holds the number of the menu selection the dart points at in the main menu. <tab
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/39600.html">Player Current Total</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Player totals when playing a two player game.
+</div>
+<div class="paragraph">
+<a href="../asm/39711.html">Total</a> is used for single player games instead.
+</div>
 </div>
 </td>
 </tr>
@@ -433,8 +439,11 @@ Used by the routine at <a href="../asm/37459.html">RevealDartboard</a>.
 <td class="map-g"><span id="39711"></span><a href="../asm/39711.html">39711</a></td>
 <td class="map-length">2</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/39711.html">Score?</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/39711.html">Total</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Total (when playing a single player game).
+</div>
 </div>
 </td>
 </tr>
@@ -620,12 +629,27 @@ Used by the routine at <a href="../asm/37459.html">RevealDartboard</a>.
 </tr>
 <tr>
 <td class="map-g"><span id="63516"></span><a href="../asm/63516.html">63516</a></td>
-<td class="map-length">5</td>
+<td class="map-length">2</td>
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/63516.html">Print: Attribute Buffer Pointer</a></div>
 <div class="map-entry-desc">
 <div class="paragraph">
 Pointer to the attribute buffer location of where the characters will be printed.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="63518"></span><a href="../asm/63518.html">63518</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/63518.html">Print: Attribute Variable</a></div>
+<div class="map-entry-desc">
+<div class="paragraph">
+Helper variable for printing routines.
+</div>
+<div class="paragraph">
+Holds an attribute value to copy for <a href="../asm/38869.html">ControlCode_ClearScreen</a>.
 </div>
 </div>
 </td>
@@ -675,7 +699,7 @@ Pointer to the screen buffer location of where the characters will be printed.
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2025 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
 <div><a href="buffers/gbuffer.html">Switch to hexadecimal</a>.</div>

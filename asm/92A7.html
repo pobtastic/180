@@ -83,13 +83,23 @@ First handle the already-revealed portion.
 <td class="asm-label"></td>
 <td class="address-1"><span id="92a8"></span>92A8</td>
 <td class="instruction">DEC E</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one for the check below.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="92a9"></span>
+<div class="comments">
+<div class="paragraph">
+Is the X coordinate within the screen boundaries?
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92a9"></span>92A9</td>
 <td class="instruction">LD A,E</td>
-<td class="comment-1" rowspan="3">Jump to <a href="92A7.html#92b5">ProcessRevealLine_Skip</a> if <span class="register">E</span> is greater than or equal to 20.</td>
+<td class="comment-1" rowspan="5">Jump to <a href="92A7.html#92b5">ProcessRevealLine_Skip</a> if (00 &lt;= <span class="register">E</span> &lt; 20).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -105,7 +115,6 @@ First handle the already-revealed portion.
 <td class="asm-label"></td>
 <td class="address-1"><span id="92ae"></span>92AE</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="92A7.html#92b5">ProcessRevealLine_Skip</a> if <span class="register">E</span> is less than 20.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -122,13 +131,13 @@ First handle the already-revealed portion.
 <td class="asm-label">ProcessRevealLine_Skip</td>
 <td class="address-2"><span id="92b5"></span>92B5</td>
 <td class="instruction">POP DE</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the reveal co-ordinate from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92b6"></span>92B6</td>
 <td class="instruction">LD A,E</td>
-<td class="comment-1" rowspan="3">Return if <span class="register">E</span> is greater than 20.</td>
+<td class="comment-1" rowspan="3">Return if X is past the right-hand edge of the screen.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -144,7 +153,7 @@ First handle the already-revealed portion.
 <td class="asm-label"></td>
 <td class="address-1"><span id="92ba"></span>92BA</td>
 <td class="instruction">PUSH DE</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the reveal co-ordinate on the stack.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -161,6 +170,16 @@ On return from <a href="A8BD.html">CalculateDartBoardAddress</a> <span class="re
 <td class="address-1"><span id="92bb"></span>92BB</td>
 <td class="instruction">CALL <a href="A8BD.html">CalculateDartBoardAddress</a></td>
 <td class="comment-1" rowspan="1">Call <a href="A8BD.html">CalculateDartBoardAddress</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="92be"></span>
+<div class="comments">
+<div class="paragraph">
+Set up the source and destination addresses.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -190,23 +209,33 @@ On return from <a href="A8BD.html">CalculateDartBoardAddress</a> <span class="re
 <td class="instruction">LD H,A</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="92c4"></span>92C4</td>
-<td class="instruction">LD B,$08</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
-</tr>
-<tr>
 <td class="routine-comment" colspan="5">
-<span id="92c6"></span>
+<span id="92c4"></span>
 <div class="comments">
 <div class="paragraph">
-Mask value; altered to either- 01 at <a href="9253.html#928d">928D</a>, or FF at <a href="9253.html#926c">926C</a>.
+Process 08 pixel rows with the reveal mask.
 </div>
 </div>
 </td>
 </tr>
 <tr>
 <td class="asm-label"></td>
+<td class="address-1"><span id="92c4"></span>92C4</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for the number of pixels rows to process.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="92c6"></span>
+<div class="comments">
+<div class="paragraph">
+Mask value; altered to either- 01 at <a href="9253.html#928d">RevealDartboard_ModifyMaskForLower</a>, or FF at <a href="9253.html#926c">RevealDartboard_ModifyMaskForUpper</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Reveal_MaskValue</td>
 <td class="address-1"><span id="92c6"></span>92C6</td>
 <td class="instruction">LD C,$FF</td>
 <td class="comment-1" rowspan="1">Set the initial mask value.</td>
@@ -227,32 +256,38 @@ Mask value; altered to either- 01 at <a href="9253.html#928d">928D</a>, or FF at
 <td class="asm-label"></td>
 <td class="address-1"><span id="92ca"></span>92CA</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the result to the screen.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92cb"></span>92CB</td>
 <td class="instruction">INC H</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+<td class="comment-1" rowspan="1">Move to the next screen line.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92cc"></span>92CC</td>
 <td class="instruction">INC D</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+<td class="comment-1" rowspan="1">Move to the next dartboard graphic line.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
 <span id="92cd"></span>
 <div class="comments">
 <div class="paragraph">
-Shift command; altered to either- <code>SLL <span class="register">C</span></code> at <a href="9253.html#9292">9292</a>, or <code>SRL <span class="register">C</span></code> at <a href="9253.html#9271">9271</a>.
+Shift command. Altered to either;
+</div>
+<div class="paragraph">
+<code>SLL C</code> at <a href="9253.html#9292">RevealDartboard_ModifyToShiftLeft</a>.
+</div>
+<div class="paragraph">
+<code>SRL C</code> at <a href="9253.html#9271">RevealDartboard_ModifyToShiftRight</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">Reveal_ShiftCommand</td>
 <td class="address-1"><span id="92cd"></span>92CD</td>
 <td class="instruction">SRL C</td>
 <td class="comment-1" rowspan="1">Shift the mask value.</td>
@@ -261,7 +296,7 @@ Shift command; altered to either- <code>SLL <span class="register">C</span></cod
 <td class="asm-label"></td>
 <td class="address-1"><span id="92cf"></span>92CF</td>
 <td class="instruction">DJNZ <a href="92A7.html#92c8">RevealDartboard_MaskLoop</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="92A7.html#92c8">RevealDartboard_MaskLoop</a> until counter is zero.</td>
+<td class="comment-1" rowspan="1">Decrease the pixel row counter by one and loop back to <a href="92A7.html#92c8">RevealDartboard_MaskLoop</a> until all 08 lines have been processed.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -339,10 +374,30 @@ BLACK
 .</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="92db"></span>
+<div class="comments">
+<div class="paragraph">
+Stash the attribute byte temporarily as <a href="A862.html">CalculateAttributeBuffer</a> needs the <span class="register">A</span> register.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">RevealDartboard_SetAttribute</td>
 <td class="address-2"><span id="92db"></span>92DB</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-1" rowspan="1">Temporarily switch the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+<td class="comment-1" rowspan="1">Temporarily switch the attribute byte with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="92dc"></span>
+<div class="comments">
+<div class="paragraph">
+<a href="A862.html">CalculateAttributeBuffer</a> converts given co-ordinates into an attribute buffer location (into <span class="register">HL</span>).
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -354,13 +409,13 @@ BLACK
 <td class="asm-label"></td>
 <td class="address-1"><span id="92df"></span>92DF</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-1" rowspan="1">Restore the <span class="register">AF</span> register from the shadow <span class="register">AF</span> register.</td>
+<td class="comment-1" rowspan="1">Restore the attribute byte back from the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="92e0"></span>92E0</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write the colour attribute byte to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the colour attribute byte to the attribute buffer.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -382,7 +437,7 @@ Next: <a href="92E2.html">92E2</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2025 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
 <div><a href="asm/92A7.html">Switch to decimal</a>.</div>

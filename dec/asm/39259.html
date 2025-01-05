@@ -29,11 +29,11 @@ Prev: <a href="39256.html">39256</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#39259">Map</a></td>
 <td class="next">
-Next: <a href="39264.html">39264</a>
+Next: <a href="39269.html">39269</a>
 </td>
 </tr>
 </table>
-<div class="description">39259: Routine at 995B</div>
+<div class="description">39259: Control Code: Return</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,11 +45,13 @@ Used by the routine at <a href="39171.html">ControlCode_02</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">ControlCode_FullReturn_1</td>
 <td class="address-2"><span id="39259"></span>39259</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">DE</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39260"></span>39260</td>
 <td class="instruction">POP DE</td>
 </tr>
@@ -64,16 +66,67 @@ This entry point is used by the routines at <a href="38907.html">ControlCode_10<
 </td>
 </tr>
 <tr>
+<td class="asm-label">ControlCode_Return_1</td>
 <td class="address-2"><span id="39261"></span>39261</td>
 <td class="instruction">POP AF</td>
 <td class="comment-1" rowspan="2">Restore <span class="register">AF</span> and <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39262"></span>39262</td>
 <td class="instruction">POP HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="39263"></span>39263</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39264"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="38869.html">ControlCode_ClearScreen</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_FullReturn_2</td>
+<td class="address-2"><span id="39264"></span>39264</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39265"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="39089.html">ControlCode_12</a> and <a href="39210.html">ControlCode_07</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_Return_2</td>
+<td class="address-2"><span id="39265"></span>39265</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="3">Restore <span class="register">BC</span>, <span class="register">AF</span> and <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39266"></span>39266</td>
+<td class="instruction">POP AF</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39267"></span>39267</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="39268"></span>39268</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
@@ -85,13 +138,13 @@ Prev: <a href="39256.html">39256</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#39259">Map</a></td>
 <td class="next">
-Next: <a href="39264.html">39264</a>
+Next: <a href="39269.html">39269</a>
 </td>
 </tr>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Mastertronic &copy; 2024 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Mastertronic &copy; 2025 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/180/">Source code</a>.</div>
 <div><a href="asm/39259.html">Switch to hexadecimal</a>.</div>
