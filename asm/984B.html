@@ -33,7 +33,7 @@ Next: <a href="9862.html">9862</a>
 </td>
 </tr>
 </table>
-<div class="description">984B: Routine at 984B</div>
+<div class="description">984B: Control Code 11: Set Paper Colour</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,63 +42,76 @@ Next: <a href="9862.html">9862</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">ControlCode_SetPaperColour</td>
 <td class="address-2"><span id="984b"></span>984B</td>
 <td class="instruction">LD HL,$F81E</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="F81E.html">Print_AttributeVariable</a>.</td>
+<td class="comment-1" rowspan="1">Set a pointer to <a href="F81E.html">Print_AttributeVariable</a> in <span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="984e"></span>984E</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Fetch the current print attribute colour and store it in <span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="984f"></span>984F</td>
 <td class="instruction">AND %11000111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-2, 6-7.</td>
+<td class="comment-1" rowspan="1">Mask off the current PAPER bits.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9851"></span>9851</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the value back to *<a href="F81E.html">Print_AttributeVariable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9852"></span>9852</td>
 <td class="instruction">LD A,($F80C)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="F80C.html">F80C</a>.</td>
+<td class="comment-1" rowspan="1">Fetch the new PAPER colour from *<a href="F80C.html">PrintVariable_01</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9855"></span>9855</td>
 <td class="instruction">CP $08</td>
-<td class="comment-1" rowspan="2">Jump to <a href="9957.html">Helper_Return</a> if <span class="register">A</span> is greater than 08.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="9957.html">Helper_Return</a> if the new PAPER colour is invalid (08 or higher), valid ink values are between 00-07.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="9857"></span>9857</td>
 <td class="instruction">JP NC,<a href="9957.html">Helper_Return</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="985a"></span>985A</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="3">Multiply <span class="register">A</span> by 08.</td>
+<td class="comment-1" rowspan="3">Shift the colour value into bits 3-5 so it applies for PAPER.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="985b"></span>985B</td>
 <td class="instruction">ADD A,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="985c"></span>985C</td>
 <td class="instruction">ADD A,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="985d"></span>985D</td>
 <td class="instruction">OR (HL)</td>
-<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Set the new PAPER value with the current print attribute colour held by *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="985e"></span>985E</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the updated value back to *<a href="F81E.html">Print_AttributeVariable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="985f"></span>985F</td>
 <td class="instruction">JP <a href="995B.html#995d">ControlCode_Return_1</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="995B.html#995d">ControlCode_Return_1</a>.</td>

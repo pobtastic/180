@@ -33,7 +33,7 @@ Next: <a href="38334.html">38334</a>
 </td>
 </tr>
 </table>
-<div class="description">38313: Routine at 95A9</div>
+<div class="description">38313: Initialise Game</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,45 +45,54 @@ Used by the routine at <a href="37251.html">GameEntryPoint</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">InitialiseGame</td>
 <td class="address-2"><span id="38313"></span>38313</td>
 <td class="instruction">DI</td>
 <td class="comment-1" rowspan="1">Disable interrupts.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38314"></span>38314</td>
 <td class="instruction">LD IY,63488</td>
 <td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="63488.html">63488</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38318"></span>38318</td>
 <td class="instruction">RES 7,(IY+37)</td>
 <td class="comment-1" rowspan="1">Reset bit 7 of *<span class="register">IY</span>+37.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38322"></span>38322</td>
 <td class="instruction">CALL <a href="38354.html">CreateInterruptByteJumpTable</a></td>
 <td class="comment-1" rowspan="1">Call <a href="38354.html">CreateInterruptByteJumpTable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38325"></span>38325</td>
 <td class="instruction">CALL <a href="38453.html">38453</a></td>
 <td class="comment-1" rowspan="1">Call <a href="38453.html">38453</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38328"></span>38328</td>
 <td class="instruction">EI</td>
 <td class="comment-1" rowspan="1">Enable interrupts.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38329"></span>38329</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="63509.html">Buffer_Counter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38330"></span>38330</td>
 <td class="instruction">LD (63509),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38333"></span>38333</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

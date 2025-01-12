@@ -33,7 +33,7 @@ Next: <a href="38967.html">38967</a>
 </td>
 </tr>
 </table>
-<div class="description">38945: Routine at 9821</div>
+<div class="description">38945: Control Code 18: Set Bright Bit</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,58 +42,71 @@ Next: <a href="38967.html">38967</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">ControlCode_SetBrightBit</td>
 <td class="address-2"><span id="38945"></span>38945</td>
 <td class="instruction">LD HL,63518</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="63518.html">Print_AttributeVariable</a>.</td>
+<td class="comment-1" rowspan="1">Set a pointer to <a href="63518.html">Print_AttributeVariable</a> in <span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38948"></span>38948</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Fetch the current print attribute colour and store it in <span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38949"></span>38949</td>
 <td class="instruction">AND %10111111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-5, 7.</td>
+<td class="comment-1" rowspan="1">Mask off the current BRIGHT bit.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38951"></span>38951</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the value back to *<a href="63518.html">Print_AttributeVariable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38952"></span>38952</td>
 <td class="instruction">LD A,(63500)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="39255.html">Helper_Return</a> if *<a href="63500.html">63500</a> is greater than 2.</td>
+<td class="comment-1" rowspan="1">Fetch the new BRIGHT value from *<a href="63500.html">PrintVariable_01</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38955"></span>38955</td>
 <td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="2">Jump to <a href="39255.html">Helper_Return</a> if the new BRIGHT value is invalid (2 or higher), valid values are either 0 or 1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38957"></span>38957</td>
 <td class="instruction">JP NC,<a href="39255.html">Helper_Return</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38960"></span>38960</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="2">RRCA.</td>
+<td class="comment-1" rowspan="2">Shift the value into bit 6 so it applies for BRIGHT.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38961"></span>38961</td>
 <td class="instruction">RRCA</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38962"></span>38962</td>
 <td class="instruction">OR (HL)</td>
-<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Set the new BRIGHT value with the current print attribute colour held by *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38963"></span>38963</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the updated value back to *<a href="63518.html">Print_AttributeVariable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38964"></span>38964</td>
 <td class="instruction">JP <a href="39259.html#39261">ControlCode_Return_1</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="39259.html#39261">ControlCode_Return_1</a>.</td>

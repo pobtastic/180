@@ -33,7 +33,7 @@ Next: <a href="38987.html">38987</a>
 </td>
 </tr>
 </table>
-<div class="description">38967: Routine at 9837</div>
+<div class="description">38967: Control Code 16: Set Ink Colour</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,49 +42,60 @@ Next: <a href="38987.html">38987</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">ControlCode_SetInkColour</td>
 <td class="address-2"><span id="38967"></span>38967</td>
 <td class="instruction">LD HL,63518</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="63518.html">Print_AttributeVariable</a>.</td>
+<td class="comment-1" rowspan="1">Set a pointer to <a href="63518.html">Print_AttributeVariable</a> in <span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38970"></span>38970</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Fetch the current print attribute colour and store it in <span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38971"></span>38971</td>
 <td class="instruction">AND %11111000</td>
-<td class="comment-1" rowspan="1">Keep only bits 3-7.</td>
+<td class="comment-1" rowspan="1">Mask off the current INK bits.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38973"></span>38973</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the value back to *<a href="63518.html">Print_AttributeVariable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38974"></span>38974</td>
 <td class="instruction">LD A,(63500)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="39255.html">Helper_Return</a> if *<a href="63500.html">63500</a> is greater than 8.</td>
+<td class="comment-1" rowspan="1">Fetch the new INK colour from *<a href="63500.html">PrintVariable_01</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38977"></span>38977</td>
 <td class="instruction">CP 8</td>
+<td class="comment-1" rowspan="2">Jump to <a href="39255.html">Helper_Return</a> if the new INK colour is invalid (8 or higher), valid ink values are between 0-7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38979"></span>38979</td>
 <td class="instruction">JP NC,<a href="39255.html">Helper_Return</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38982"></span>38982</td>
 <td class="instruction">OR (HL)</td>
-<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Set the new INK value with the current print attribute colour held by *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38983"></span>38983</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the updated value back to *<a href="63518.html">Print_AttributeVariable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="38984"></span>38984</td>
 <td class="instruction">JP <a href="39259.html#39261">ControlCode_Return_1</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="39259.html#39261">ControlCode_Return_1</a>.</td>

@@ -33,7 +33,7 @@ Next: <a href="95BE.html">95BE</a>
 </td>
 </tr>
 </table>
-<div class="description">95A9: Routine at 95A9</div>
+<div class="description">95A9: Initialise Game</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,45 +45,54 @@ Used by the routine at <a href="9183.html">GameEntryPoint</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">InitialiseGame</td>
 <td class="address-2"><span id="95a9"></span>95A9</td>
 <td class="instruction">DI</td>
 <td class="comment-1" rowspan="1">Disable interrupts.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="95aa"></span>95AA</td>
 <td class="instruction">LD IY,$F800</td>
 <td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="F800.html">F800</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="95ae"></span>95AE</td>
 <td class="instruction">RES 7,(IY+$25)</td>
 <td class="comment-1" rowspan="1">Reset bit 7 of *<span class="register">IY</span>+25.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="95b2"></span>95B2</td>
 <td class="instruction">CALL <a href="95D2.html">CreateInterruptByteJumpTable</a></td>
 <td class="comment-1" rowspan="1">Call <a href="95D2.html">CreateInterruptByteJumpTable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="95b5"></span>95B5</td>
 <td class="instruction">CALL <a href="9635.html">$9635</a></td>
 <td class="comment-1" rowspan="1">Call <a href="9635.html">9635</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="95b8"></span>95B8</td>
 <td class="instruction">EI</td>
 <td class="comment-1" rowspan="1">Enable interrupts.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="95b9"></span>95B9</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 00 to *<a href="F815.html">Buffer_Counter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="95ba"></span>95BA</td>
 <td class="instruction">LD ($F815),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="95bd"></span>95BD</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

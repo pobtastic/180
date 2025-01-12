@@ -33,7 +33,7 @@ Next: <a href="39210.html">39210</a>
 </td>
 </tr>
 </table>
-<div class="description">39171: Control Code 2:</div>
+<div class="description">39171: Control Code 2: Blank Screen</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,7 +42,17 @@ Next: <a href="39210.html">39210</a>
 </td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_02</td>
+<td class="routine-comment" colspan="5">
+<span id="39171"></span>
+<div class="comments">
+<div class="paragraph">
+Preserve the current registers.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ControlCode_BlankScreen</td>
 <td class="address-2"><span id="39171"></span>39171</td>
 <td class="instruction">PUSH DE</td>
 <td class="comment-1" rowspan="2">Stash <span class="register">DE</span> and <span class="register">BC</span> on the stack.</td>
@@ -51,6 +61,16 @@ Next: <a href="39210.html">39210</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39172"></span>39172</td>
 <td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39173"></span>
+<div class="comments">
+<div class="paragraph">
+First blank the attribute buffer.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -80,40 +100,55 @@ Next: <a href="39210.html">39210</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39183"></span>39183</td>
 <td class="instruction">LD (HL),0</td>
-<td class="comment-1" rowspan="1">Write 0 to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write INK:
+BLACK,
+PAPER:
+BLACK
+
+ to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39185"></span>39185</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1">LDIR.</td>
+<td class="comment-1" rowspan="1">Copy the 0 to the rest of the attribute buffer.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39187"></span>
+<div class="comments">
+<div class="paragraph">
+Next blank the screen buffer.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39187"></span>39187</td>
 <td class="instruction">LD B,192</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=192.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> of 192; which is 24 rows x 8 pixels in each.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39189"></span>39189</td>
 <td class="instruction">LD HL,16384</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=16384.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=16384 (screen buffer location).</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_02_0</td>
+<td class="asm-label">BlankPixelLine_Loop</td>
 <td class="address-2"><span id="39192"></span>39192</td>
 <td class="instruction">LD C,L</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">L</span>.</td>
+<td class="comment-1" rowspan="1">Save the row start in <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39193"></span>39193</td>
 <td class="instruction">LD A,32</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=32.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">A</span> of 32 for the number of bytes in a row.</td>
 </tr>
 <tr>
-<td class="asm-label">ControlCode_02_1</td>
+<td class="asm-label">BlankByte_Loop</td>
 <td class="address-2"><span id="39195"></span>39195</td>
 <td class="instruction">LD (HL),0</td>
 <td class="comment-1" rowspan="1">Write 0 to *<span class="register">HL</span>.</td>
@@ -122,25 +157,25 @@ Next: <a href="39210.html">39210</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39197"></span>39197</td>
 <td class="instruction">INC L</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+<td class="comment-1" rowspan="1">Move to the next byte in this line.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39198"></span>39198</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+<td class="comment-1" rowspan="1">Decrease the byte counter by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39199"></span>39199</td>
-<td class="instruction">JR NZ,<a href="39171.html#39195">ControlCode_02_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="39171.html#39195">ControlCode_02_1</a> if <span class="register">A</span> is not equal to 32.</td>
+<td class="instruction">JR NZ,<a href="39171.html#39195">BlankByte_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump back to <a href="39171.html#39195">BlankByte_Loop</a> until the byte clearing is done for this pixel row.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39201"></span>39201</td>
 <td class="instruction">LD L,C</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">C</span>.</td>
+<td class="comment-1" rowspan="1">Back to the start of the line.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -151,8 +186,8 @@ Next: <a href="39210.html">39210</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="39205"></span>39205</td>
-<td class="instruction">DJNZ <a href="39171.html#39192">ControlCode_02_0</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="39171.html#39192">ControlCode_02_0</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="39171.html#39192">BlankPixelLine_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="39171.html#39192">BlankPixelLine_Loop</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
