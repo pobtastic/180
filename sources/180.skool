@@ -2518,9 +2518,10 @@ c$9569 CALL $9688    ; Call #R$9688.
  $95A7 INC (HL)      ; }
  $95A8 RET           ; Return.
 
-; Routine at 95A9
+; Initialise Game
 ;
 ; Used by the routine at #R$9183.
+@label=InitialiseGame
 c$95A9 DI             ; Disable interrupts.
  $95AA LD IY,$F800    ; #REGiy=#R$F800.
  $95AE RES 7,(IY+$25) ; Reset bit 7 of *#REGiy+#N$25.
@@ -2983,45 +2984,54 @@ c$9818 INC (HL)      ; Increment *#REGhl by one.
  $981C JP C,$995D    ; }
  $981F JR $97F7      ; Jump to #R$97F7.
 
-; Routine at 9821
-c$9821 LD HL,$F81E   ; #REGhl=#R$F81E.
- $9824 LD A,(HL)     ; #REGa=*#REGhl.
- $9825 AND %10111111 ; Keep only bits 0-5, 7.
- $9827 LD (HL),A     ; Write #REGa to *#REGhl.
- $9828 LD A,($F80C)  ; {Jump to #R$9957 if *#R$F80C is greater than #N$02.
- $982B CP $02        ;
- $982D JP NC,$9957   ; }
- $9830 RRCA          ; {RRCA.
+; Control Code #N$12: Set Bright Bit
+@label=ControlCode_SetBrightBit
+c$9821 LD HL,$F81E   ; Set a pointer to #R$F81E in #REGhl.
+ $9824 LD A,(HL)     ; Fetch the current print attribute colour and store it in
+                     ; #REGa.
+ $9825 AND %10111111 ; Mask off the current BRIGHT bit.
+ $9827 LD (HL),A     ; Write the value back to *#R$F81E.
+ $9828 LD A,($F80C)  ; Fetch the new BRIGHT value from *#R$F80C.
+ $982B CP $02        ; {Jump to #R$9957 if the new BRIGHT value is invalid (#N$02 or
+ $982D JP NC,$9957   ; higher), valid values are either #N$00 or #N$01.}
+ $9830 RRCA          ; {Shift the value into bit 6 so it applies for BRIGHT.
  $9831 RRCA          ; }
- $9832 OR (HL)       ; Set the bits from *#REGhl.
- $9833 LD (HL),A     ; Write #REGa to *#REGhl.
+ $9832 OR (HL)       ; Set the new BRIGHT value with the current print attribute colour
+                     ; held by *#REGhl.
+ $9833 LD (HL),A     ; Write the updated value back to *#R$F81E.
  $9834 JP $995D      ; Jump to #R$995D.
 
-; Routine at 9837
-c$9837 LD HL,$F81E   ; #REGhl=#R$F81E.
- $983A LD A,(HL)     ; #REGa=*#REGhl.
- $983B AND %11111000 ; Keep only bits 3-7.
- $983D LD (HL),A     ; Write #REGa to *#REGhl.
- $983E LD A,($F80C)  ; {Jump to #R$9957 if *#R$F80C is greater than #N$08.
- $9841 CP $08        ;
- $9843 JP NC,$9957   ; }
- $9846 OR (HL)       ; Set the bits from *#REGhl.
- $9847 LD (HL),A     ; Write #REGa to *#REGhl.
+; Control Code #N$10: Set Ink Colour
+@label=ControlCode_SetInkColour
+c$9837 LD HL,$F81E   ; Set a pointer to #R$F81E in #REGhl.
+ $983A LD A,(HL)     ; Fetch the current print attribute colour and store it in
+                     ; #REGa.
+ $983B AND %11111000 ; Mask off the current INK bits.
+ $983D LD (HL),A     ; Write the value back to *#R$F81E.
+ $983E LD A,($F80C)  ; Fetch the new INK colour from *#R$F80C.
+ $9841 CP $08        ; {Jump to #R$9957 if the new INK colour is invalid (#N$08 or higher),
+ $9843 JP NC,$9957   ; valid ink values are between #N$00-#N$07.}
+ $9846 OR (HL)       ; Set the new INK value with the current print attribute colour held
+                     ; by *#REGhl.
+ $9847 LD (HL),A     ; Write the updated value back to *#R$F81E.
  $9848 JP $995D      ; Jump to #R$995D.
 
-; Routine at 984B
-c$984B LD HL,$F81E   ; #REGhl=#R$F81E.
- $984E LD A,(HL)     ; #REGa=*#REGhl.
- $984F AND %11000111 ; Keep only bits 0-2, 6-7.
- $9851 LD (HL),A     ; Write #REGa to *#REGhl.
- $9852 LD A,($F80C)  ; #REGa=*#R$F80C.
- $9855 CP $08        ; {Jump to #R$9957 if #REGa is greater than #N$08.
- $9857 JP NC,$9957   ; }
- $985A ADD A,A       ; {Multiply #REGa by #N$08.
- $985B ADD A,A       ;
+; Control Code #N$11: Set Paper Colour
+@label=ControlCode_SetPaperColour
+c$984B LD HL,$F81E   ; Set a pointer to #R$F81E in #REGhl.
+ $984E LD A,(HL)     ; Fetch the current print attribute colour and store it in
+                     ; #REGa.
+ $984F AND %11000111 ; Mask off the current PAPER bits.
+ $9851 LD (HL),A     ; Write the value back to *#R$F81E.
+ $9852 LD A,($F80C)  ; Fetch the new PAPER colour from *#R$F80C.
+ $9855 CP $08        ; {Jump to #R$9957 if the new PAPER colour is invalid (#N$08 or
+ $9857 JP NC,$9957   ; higher), valid ink values are between #N$00-#N$07.}
+ $985A ADD A,A       ; {Shift the colour value into bits 3-5 so it applies for
+ $985B ADD A,A       ; PAPER.
  $985C ADD A,A       ; }
- $985D OR (HL)       ; Set the bits from *#REGhl.
- $985E LD (HL),A     ; Write #REGa to *#REGhl.
+ $985D OR (HL)       ; Set the new PAPER value with the current print attribute colour
+                     ; held by *#REGhl.
+ $985E LD (HL),A     ; Write the updated value back to *#R$F81E.
  $985F JP $995D      ; Jump to #R$995D.
 
 ; Routine at 9862
@@ -3113,25 +3123,38 @@ c$98CC LD A,$10      ; {INK: #INK$07.
  $98FD LD ($F81C),HL ; }
  $9900 JP $995D      ; Jump to #R$995D.
 
-; Control Code #N$02:
-@label=ControlCode_02
+; Control Code #N$02: Blank Screen
+;
+; .
+;
+; .
+;
+; Preserve the current registers.
+@label=ControlCode_BlankScreen
 c$9903 PUSH DE       ; {Stash #REGde and #REGbc on the stack.
  $9904 PUSH BC       ; }
+; First blank the attribute buffer.
  $9905 LD HL,$5800   ; #REGhl=#N$5800 (attribute buffer location).
  $9908 LD DE,$5801   ; #REGde=#N$5801.
  $990B LD BC,$02FF   ; #REGbc=#N$02FF.
  $990E HALT          ; Halt operation (suspend CPU until the next interrupt).
- $990F LD (HL),$00   ; Write #N$00 to *#REGhl.
- $9911 LDIR          ; LDIR.
- $9913 LD B,$C0      ; #REGb=#N$C0.
- $9915 LD HL,$4000   ; #REGhl=#N($4000,$04,$04).
-*$9918 LD C,L        ; #REGc=#REGl.
- $9919 LD A,$20      ; #REGa=#N$20.
+ $990F LD (HL),$00   ; Write #COLOUR$00 to *#REGhl.
+ $9911 LDIR          ; Copy the #N$00 to the rest of the attribute buffer.
+; Next blank the screen buffer.
+ $9913 LD B,$C0      ; Set a counter in #REGb of #N$C0; which is 24 rows x 8 pixels in
+                     ; each.
+ $9915 LD HL,$4000   ; #REGhl=#N$4000 (screen buffer location).
+@label=BlankPixelLine_Loop
+*$9918 LD C,L        ; Save the row start in #REGc.
+ $9919 LD A,$20      ; Set a counter in #REGa of #N$20 for the number of bytes
+                     ; in a row.
+@label=BlankByte_Loop
 *$991B LD (HL),$00   ; Write #N$00 to *#REGhl.
- $991D INC L         ; Increment #REGl by one.
- $991E DEC A         ; Decrease #REGa by one.
- $991F JR NZ,$991B   ; Jump to #R$991B if #REGa is not equal to #N$20.
- $9921 LD L,C        ; #REGl=#REGc.
+ $991D INC L         ; Move to the next byte in this line.
+ $991E DEC A         ; Decrease the byte counter by one.
+ $991F JR NZ,$991B   ; Jump back to #R$991B until the byte clearing is done for this pixel
+                     ; row.
+ $9921 LD L,C        ; Back to the start of the line.
  $9922 CALL $A8CC    ; Call #R$A8CC.
  $9925 DJNZ $9918    ; Decrease counter by one and loop back to #R$9918 until
                      ; counter is zero.
@@ -7710,9 +7733,10 @@ c$B761 CALL $A8AE    ; Call #R$A8AE.
                      ; the whole image has been displayed.
  $B779 RET           ; Return.
 
-; Routine at B77A
+; Copy Floating Hand To Dartboard
 ;
 ; Used by the routine at #R$9D42.
+@label=CopyFloatingHandToDartboard
 c$B77A LD DE,($9AC3) ; #REGde=*#R$9AC3.
  $B77E LD B,$08      ; #REGb=#N$08.
 *$B780 LD A,D        ; {Jump to #R$B79C if #REGd is less than #N$00.
@@ -9397,34 +9421,40 @@ b$CA64 DEFB $00
  $CA7A DEFB $00
  $CA7B DEFB $00
 
-; Routine at CA7C
+; Sound: "180"
 ;
 ; Used by the routine at #R$A0D6.
-c$CA7C LD HL,$D500   ;
- $CA7F LD DE,$0800   ;
-*$CA82 LD B,$08      ;
-*$CA84 RLC (HL)      ;
- $CA86 LD A,$10      ;
- $CA88 JR C,$CA8B    ;
- $CA8A XOR A         ;
-*$CA8B OUT ($FE),A   ;
- $CA8D LD C,$12      ;
-*$CA8F DEC C         ;
- $CA90 JR NZ,$CA8F   ;
- $CA92 DJNZ $CA9C    ;
- $CA94 INC HL        ;
- $CA95 DEC DE        ;
- $CA96 LD A,D        ;
+;
+; .
+;
+; #HTML(#AUDIO(speech.wav)(#INCLUDE(Speech)))
+@label=Sound_180Speech
+c$CA7C LD HL,$D500   ; #REGhl=#R$D500.
+ $CA7F LD DE,$0800   ; #REGde=#N$0800.
+*$CA82 LD B,$08      ; #REGb=#N$08.
+*$CA84 RLC (HL)      ; Rotate *#REGhl left (with carry).
+ $CA86 LD A,$10      ; #REGa=#N$10.
+ $CA88 JR C,$CA8B    ; Jump to #R$CA8B if the carry bit is set.
+ $CA8A XOR A         ; #REGa=#N$00.
+*$CA8B OUT ($FE),A   ; Send #REGa to the speaker.
+ $CA8D LD C,$12      ; #REGc=#N$12.
+*$CA8F DEC C         ; Decrease #REGc by one.
+ $CA90 JR NZ,$CA8F   ; Jump to #R$CA8F until #REGc is zero.
+ $CA92 DJNZ $CA9C    ; Decrease counter by one and loop back to #R$CA9C until
+                     ; counter is zero.
+ $CA94 INC HL        ; Increment #REGhl by one.
+ $CA95 DEC DE        ; Decrease #REGde by one.
+ $CA96 LD A,D        ; {Jump to #R$CA82 until #REGde is zero.
  $CA97 OR E          ;
- $CA98 JR NZ,$CA82   ;
- $CA9A EI            ;
- $CA9B RET           ;
-*$CA9C NOP           ;
+ $CA98 JR NZ,$CA82   ; }
+ $CA9A EI            ; Enable interrupts.
+ $CA9B RET           ; Return.
+*$CA9C NOP           ; {No operation.
  $CA9D NOP           ;
  $CA9E NOP           ;
  $CA9F NOP           ;
- $CAA0 NOP           ;
- $CAA1 JR $CA84      ;
+ $CAA0 NOP           ; }
+ $CAA1 JR $CA84      ; Jump to #R$CA84.
 
 ; Data block at CAA3
 w$CAA3 DEFW $B46E
@@ -10470,262 +10500,73 @@ b$D330 DEFB $2D,$E1,$31,$E0,$2F,$E1,$2D,$E0
  $D4E8 DEFB $F3,$0D,$DB,$02,$4D,$00,$FF,$FF
  $D4F0 DEFB $0E,$01,$00,$00,$51,$00,$92,$09
  $D4F8 DEFB $3F,$05,$76,$1B,$03,$13,$00,$3E
- $D500 DEFB $00,$00,$07,$FE,$00,$07,$F8,$0E
- $D508 DEFB $07,$E0,$01,$FF,$00,$1F,$F0,$3F
- $D510 DEFB $07,$E0,$07,$FC,$00,$7F,$81,$FC
- $D518 DEFB $0F,$00,$7F,$C0,$0F,$E0,$3F,$C1
- $D520 DEFB $E0,$1F,$F8,$07,$F0,$3F,$81,$F0
- $D528 DEFB $0F,$C0,$03,$F0,$1F,$E0,$F8,$1F
- $D530 DEFB $80,$07,$E0,$7F,$81,$F0,$3E,$00
- $D538 DEFB $1F,$81,$FC,$07,$83,$E1,$E1,$F8
- $D540 DEFB $1F,$F0,$10,$7E,$24,$7F,$03,$FC
- $D548 DEFB $00,$0F,$0C,$0F,$81,$FE,$0E,$07
- $D550 DEFB $C2,$0F,$C0,$1F,$83,$03,$C3,$07
- $D558 DEFB $E0,$0F,$87,$03,$C7,$07,$C0,$1F
- $D560 DEFB $80,$0F,$BC,$1F,$F0,$3F,$E0,$3C
- $D568 DEFB $F0,$7F,$E0,$FF,$C0,$FF,$83,$BF
- $D570 DEFB $02,$1E,$2E,$FC,$00,$F8,$01,$F0
- $D578 DEFB $00,$7F,$F0,$FC,$00,$FC,$07,$F0
- $D580 DEFB $7F,$7E,$00,$38,$1F,$F8,$07,$F8
- $D588 DEFB $00,$00,$8F,$E0,$07,$80,$0F,$02
- $D590 DEFB $3F,$80,$7C,$1C,$00,$7F,$FF,$C0
- $D598 DEFB $07,$C0,$87,$C7,$87,$8E,$1C,$3F
- $D5A0 DEFB $F8,$79,$E0,$0F,$C3,$9F,$80,$1E
- $D5A8 DEFB $F0,$7E,$03,$F0,$03,$FF,$8F,$83
- $D5B0 DEFB $FE,$00,$7C,$03,$F1,$FF,$C1,$07
- $D5B8 DEFB $80,$3E,$2F,$F8,$5F,$E0,$0F,$83
- $D5C0 DEFB $BF,$06,$7C,$0F,$E0,$FF,$C1,$FF
- $D5C8 DEFB $01,$FC,$1F,$F0,$7B,$E0,$FB,$07
- $D5D0 DEFB $FC,$1F,$B0,$3E,$83,$FF,$03,$FD
- $D5D8 DEFB $0D,$20,$FD,$81,$F6,$03,$C0,$7F
- $D5E0 DEFB $E0,$FD,$01,$F0,$3E,$F0,$7E,$C0
- $D5E8 DEFB $F8,$1F,$F8,$3F,$E0,$3C,$07,$FC
- $D5F0 DEFB $1F,$BC,$1E,$07,$BC,$0F,$94,$0F
- $D5F8 DEFB $83,$DF,$07,$DE,$0F,$03,$CF,$03
- $D600 DEFB $CB,$0F,$83,$C7,$83,$FF,$03,$03
- $D608 DEFB $C3,$83,$F2,$03,$07,$87,$83,$FE
- $D610 DEFB $06,$0F,$DF,$07,$F8,$0C,$1F,$BE
- $D618 DEFB $0F,$F8,$7C,$3E,$3C,$1F,$F0,$F0
- $D620 DEFB $7C,$78,$7F,$E0,$E0,$F9,$E0,$FF
- $D628 DEFB $81,$C3,$C3,$C3,$9F,$03,$0F,$0F
- $D630 DEFB $07,$1F,$0C,$1F,$00,$1F,$F8,$78
- $D638 DEFB $7F,$F8,$37,$F0,$60,$FF,$E0,$0F
- $D640 DEFB $C0,$87,$87,$83,$0F,$DE,$1F,$FE
- $D648 DEFB $00,$3F,$50,$7F,$F8,$01,$F8,$03
- $D650 DEFB $E0,$FF,$E0,$7E,$00,$07,$FF,$C0
- $D658 DEFB $F8,$00,$FF,$FF,$C0,$E0,$21,$F9
- $D660 DEFB $FF,$C0,$00,$0F,$FC,$7F,$08,$00
- $D668 DEFB $3F,$3C,$FC,$00,$78,$3F,$F9,$FF
- $D670 DEFB $00,$00,$7F,$C7,$FF,$00,$0F,$DF
- $D678 DEFB $FF,$FF,$00,$0F,$E7,$FE,$1F,$80
- $D680 DEFB $1F,$C0,$FF,$03,$80,$07,$E0,$FE
- $D688 DEFB $07,$00,$07,$F0,$FE,$00,$00,$03
- $D690 DEFB $FE,$FE,$78,$00,$01,$FF,$FF,$E0
- $D698 DEFB $00,$00,$7F,$FF,$F8,$00,$00,$7F
- $D6A0 DEFB $FF,$F8,$00,$1C,$1F,$FF,$FC,$00
- $D6A8 DEFB $3F,$01,$FF,$80,$00,$00,$00,$7F
- $D6B0 DEFB $FF,$C0,$00,$00,$3F,$FF,$FC,$00
- $D6B8 DEFB $00,$3F,$F8,$3F,$E0,$00,$7F,$F0
- $D6C0 DEFB $7F,$C0,$00,$BF,$ED,$BF,$80,$01
- $D6C8 DEFB $BF,$C0,$7F,$00,$07,$FC,$49,$FF
- $D6D0 DEFB $20,$03,$FE,$01,$FE,$00,$03,$A2
- $D6D8 DEFB $D2,$FD,$87,$80,$27,$C0,$FF,$81
- $D6E0 DEFB $6F,$06,$BC,$1C,$D8,$00,$DD,$59
- $D6E8 DEFB $4F,$80,$49,$C1,$FF,$49,$EC,$01
- $D6F0 DEFB $F4,$9B,$CD,$8C,$04,$02,$FE,$87
- $D6F8 DEFB $FE,$00,$FF,$E0,$B6,$40,$E0,$FF
- $D700 DEFB $F0,$00,$79,$F1,$80,$1F,$0F,$FF
- $D708 DEFB $F0,$F0,$B0,$C3,$FF,$0E,$04,$1F
- $D710 DEFB $3E,$FB,$E0,$03,$EF,$9C,$3F,$E0
- $D718 DEFB $F9,$C3,$0F,$3E,$1C,$F0,$C3,$C7
- $D720 DEFB $0F,$3C,$71,$E1,$83,$9E,$18,$78
- $D728 DEFB $61,$CF,$84,$3C,$30,$E7,$C0,$1E
- $D730 DEFB $18,$73,$E1,$0F,$1C,$39,$F0,$07
- $D738 DEFB $8C,$1D,$F8,$07,$C4,$0F,$F8,$07
- $D740 DEFB $E0,$0F,$F8,$07,$F4,$0F,$F8,$07
- $D748 DEFB $E0,$0F,$F0,$0F,$C0,$1F,$F0,$0F
- $D750 DEFB $C0,$1F,$F0,$3F,$80,$3F,$E0,$7F
- $D758 DEFB $00,$7F,$C0,$FE,$00,$FF,$03,$FC
- $D760 DEFB $01,$FE,$0F,$F0,$07,$F8,$1F,$E0
- $D768 DEFB $1F,$E0,$7F,$80,$3F,$C1,$FE,$00
- $D770 DEFB $FE,$0F,$F8,$07,$38,$3F,$C0,$3C
- $D778 DEFB $60,$FF,$00,$F1,$83,$FC,$03,$C6
- $D780 DEFB $0F,$F0,$0F,$00,$3F,$C0,$3F,$C0
- $D788 DEFB $FF,$00,$EF,$03,$F8,$03,$B8,$1F
- $D790 DEFB $E0,$1D,$E0,$7F,$00,$77,$03,$FC
- $D798 DEFB $03,$DC,$1F,$E0,$0E,$F0,$7F,$80
- $D7A0 DEFB $7B,$83,$FE,$01,$EE,$07,$F0,$07
- $D7A8 DEFB $38,$3F,$C0,$1D,$E0,$BF,$20,$E7
- $D7B0 DEFB $05,$F8,$03,$B8,$27,$C0,$1D,$C0
- $D7B8 DEFB $3F,$00,$F7,$04,$F8,$03,$BC,$23
- $D7C0 DEFB $C0,$1D,$E0,$1F,$00,$FF,$00,$F8
- $D7C8 DEFB $03,$F8,$07,$C0,$1F,$E0,$3F,$80
- $D7D0 DEFB $FF,$01,$FF,$07,$F0,$0F,$F0,$1F
- $D7D8 DEFB $80,$7F,$80,$FE,$07,$F8,$07,$F0
- $D7E0 DEFB $3F,$C0,$3F,$80,$7C,$01,$FC,$03
- $D7E8 DEFB $EE,$1F,$E0,$1E,$E1,$CF,$30,$03
- $D7F0 DEFB $00,$FF,$10,$31,$0F,$FC,$01,$E8
- $D7F8 DEFB $1F,$80,$3F,$C0,$7F,$00,$FF,$00
- $D800 DEFB $F8,$07,$FC,$01,$E0,$1B,$F8,$00
- $D808 DEFB $00,$4F,$E1,$C0,$00,$7F,$0F,$E0
- $D810 DEFB $0F,$F8,$3F,$E0,$3F,$E0,$1F,$80
- $D818 DEFB $7F,$00,$7F,$00,$FE,$01,$FE,$01
- $D820 DEFB $E0,$0F,$F0,$87,$08,$7B,$83,$38
- $D828 DEFB $03,$FC,$0F,$E0,$1F,$E0,$1F,$80
- $D830 DEFB $7F,$80,$FE,$01,$FE,$03,$F8,$0F
- $D838 DEFB $F8,$1F,$C0,$3F,$C0,$FF,$01,$FE
- $D840 DEFB $07,$F8,$07,$F0,$1F,$E0,$3F,$80
- $D848 DEFB $7F,$01,$FC,$03,$F8,$0F,$F0,$0F
- $D850 DEFB $E0,$1F,$C0,$3F,$80,$7F,$80,$7F
- $D858 DEFB $80,$7F,$01,$FC,$01,$FC,$0F,$F0
- $D860 DEFB $0F,$E0,$3F,$80,$7F,$81,$FE,$01
- $D868 DEFB $F8,$0F,$F0,$0F,$C0,$7F,$80,$7F
- $D870 DEFB $00,$FE,$01,$FC,$03,$F8,$07,$E0
- $D878 DEFB $1F,$C0,$3F,$00,$FE,$01,$FC,$07
- $D880 DEFB $F0,$0F,$F0,$1F,$C0,$7F,$C0,$7F
- $D888 DEFB $00,$FE,$01,$FE,$07,$F8,$0F,$F0
- $D890 DEFB $0F,$C0,$3F,$C0,$FE,$03,$FE,$0F
- $D898 DEFB $F0,$0F,$C0,$7F,$80,$FE,$01,$FE
- $D8A0 DEFB $03,$FC,$0F,$F0,$0F,$F0,$1F,$E0
- $D8A8 DEFB $3F,$80,$7F,$81,$FE,$03,$FC,$07
- $D8B0 DEFB $F0,$1F,$C0,$3F,$80,$FF,$80,$7E
- $D8B8 DEFB $01,$FE,$01,$FC,$07,$F8,$07,$FC
- $D8C0 DEFB $03,$FC,$03,$F8,$0F,$F0,$07,$E0
- $D8C8 DEFB $3F,$E0,$1F,$C0,$F8,$3F,$E0,$FF
- $D8D0 DEFB $00,$FF,$81,$FE,$03,$FC,$03,$FC
- $D8D8 DEFB $07,$F8,$0F,$E0,$1F,$F0,$1F,$C0
- $D8E0 DEFB $3F,$C0,$1F,$F0,$FF,$FE,$3F,$FF
- $D8E8 DEFB $0F,$FC,$0F,$FC,$1F,$F0,$3F,$E0
- $D8F0 DEFB $3F,$C0,$7F,$80,$FF,$01,$FC,$07
- $D8F8 DEFB $FC,$07,$F0,$1F,$C0,$3F,$C0,$7E
- $D900 DEFB $01,$F9,$4F,$5C,$07,$01,$FF,$01
- $D908 DEFB $F8,$03,$F8,$07,$F8,$07,$C0,$3F
- $D910 DEFB $F0,$01,$E1,$7F,$C0,$0F,$F9,$FF
- $D918 DEFB $80,$3F,$F0,$FF,$00,$7F,$C1,$FC
- $D920 DEFB $01,$FF,$00,$F1,$07,$FE,$03,$C4
- $D928 DEFB $3F,$F0,$8F,$00,$FF,$C0,$7C,$03
- $D930 DEFB $FF,$01,$F1,$0F,$FC,$0F,$C0,$3F
- $D938 DEFB $F0,$3E,$00,$7B,$80,$F8,$03,$FE
- $D940 DEFB $07,$E2,$1F,$F8,$1F,$00,$7F,$C0
- $D948 DEFB $FC,$03,$EC,$0F,$E0,$1F,$A0,$7F
- $D950 DEFB $00,$FD,$03,$FC,$03,$F4,$1F,$C0
- $D958 DEFB $1F,$60,$FE,$05,$FA,$07,$F0,$4F
- $D960 DEFB $90,$7F,$00,$FD,$03,$F8,$07,$FE
- $D968 DEFB $0F,$98,$0F,$F8,$0F,$C0,$1F,$E0
- $D970 DEFB $FE,$00,$FF,$07,$F0,$07,$F8,$3F
- $D978 DEFB $C0,$1F,$F3,$FC,$01,$FF,$F3,$C0
- $D980 DEFB $1F,$FF,$0E,$38,$FF,$E0,$0F,$90
- $D988 DEFB $FE,$01,$FB,$07,$C0,$1F,$E0,$FC
- $D990 DEFB $03,$F6,$1F,$80,$3E,$C7,$F8,$E7
- $D998 DEFB $08,$FF,$0E,$E1,$1F,$E1,$DE,$23
- $D9A0 DEFB $FC,$2B,$C0,$3F,$87,$78,$07,$F0
- $D9A8 DEFB $AF,$00,$EE,$18,$E1,$1C,$C3,$9C
- $D9B0 DEFB $23,$98,$63,$84,$63,$0C,$E1,$1C
- $D9B8 DEFB $61,$9C,$23,$9C,$73,$84,$63,$8C
- $D9C0 DEFB $71,$9C,$61,$9C,$23,$8C,$33,$80
- $D9C8 DEFB $73,$84,$F0,$0E,$E1,$9E,$03,$9C
- $D9D0 DEFB $27,$80,$77,$0C,$F0,$1F,$E1,$3C
- $D9D8 DEFB $03,$FC,$27,$00,$7F,$00,$FA,$0F
- $D9E0 DEFB $E0,$3F,$81,$FC,$0F,$F0,$1F,$81
- $D9E8 DEFB $FE,$03,$E0,$3F,$C0,$7C,$46,$F8
- $D9F0 DEFB $0F,$98,$CF,$31,$FA,$01,$F6,$3F
- $D9F8 DEFB $50,$3F,$C6,$77,$03,$FC,$0E,$61
- $DA00 DEFB $3F,$C0,$F6,$73,$F8,$0E,$64,$7F
- $DA08 DEFB $80,$F7,$33,$FF,$0F,$23,$1D,$F1
- $DA10 DEFB $F8,$11,$DC,$CF,$E4,$77,$37,$F9
- $DA18 DEFB $99,$DC,$CE,$23,$73,$3B,$FE,$1E
- $DA20 DEFB $C4,$27,$E0,$BE,$00,$7E,$37,$C6
- $DA28 DEFB $67,$03,$FE,$07,$F0,$0F,$F8,$7F
- $DA30 DEFB $00,$FC,$07,$F0,$1C,$C0,$7C,$07
- $DA38 DEFB $F0,$6F,$00,$7F,$03,$F0,$1F,$C0
- $DA40 DEFB $3E,$03,$FC,$0F,$80,$7F,$80,$FC
- $DA48 DEFB $07,$E0,$0F,$E0,$FC,$03,$D8,$3F
- $DA50 DEFB $80,$F0,$0F,$F0,$1F,$01,$FC,$03
- $DA58 DEFB $E0,$3F,$80,$38,$07,$F0,$0E,$01
- $DA60 DEFB $FE,$1F,$C0,$1F,$C3,$FE,$03,$F8
- $DA68 DEFB $7F,$00,$FF,$07,$E0,$1F,$81,$FE
- $DA70 DEFB $01,$F8,$0F,$E0,$3F,$01,$FE,$07
- $DA78 DEFB $F0,$1F,$C0,$7F,$03,$F8,$03,$F0
- $DA80 DEFB $7F,$80,$3F,$9F,$FE,$00,$FF,$1F
- $DA88 DEFB $F0,$0F,$F3,$FE,$01,$FE,$7F,$F8
- $DA90 DEFB $07,$CC,$FF,$00,$F9,$0F,$F0,$1F
- $DA98 DEFB $71,$FE,$13,$C0,$7F,$80,$FC,$07
- $DAA0 DEFB $F0,$0F,$E0,$FF,$01,$FE,$03,$E0
- $DAA8 DEFB $1F,$C0,$7E,$01,$FC,$0F,$C0,$1F
- $DAB0 DEFB $80,$F8,$07,$F0,$3F,$00,$FE,$07
- $DAB8 DEFB $E0,$1F,$C0,$FE,$03,$F8,$1F,$C0
- $DAC0 DEFB $3F,$80,$F8,$03,$F8,$07,$00,$7E
- $DAC8 DEFB $0F,$C0,$1F,$01,$F0,$0F,$E0,$3F
- $DAD0 DEFB $01,$FC,$07,$F0,$0F,$C0,$FF,$01
- $DAD8 DEFB $F8,$1F,$C0,$3F,$03,$F8,$0F,$E0
- $DAE0 DEFB $7F,$01,$F8,$0F,$E0,$3F,$81,$FC
- $DAE8 DEFB $07,$F0,$7F,$00,$FA,$0F,$E0,$3F
- $DAF0 DEFB $C1,$FC,$03,$F0,$3F,$80,$7F,$07
- $DAF8 DEFB $F0,$1F,$E0,$FE,$01,$F8,$1F,$C0
- $DB00 DEFB $3F,$87,$F8,$0F,$A0,$FF,$01,$F0
- $DB08 DEFB $1F,$C0,$3F,$01,$F8,$07,$F0,$3F
- $DB10 DEFB $80,$FC,$0F,$F0,$1F,$00,$7C,$07
- $DB18 DEFB $F0,$1F,$80,$7F,$07,$F0,$1F,$C0
- $DB20 DEFB $7E,$03,$FC,$0F,$E0,$3F,$C0,$FE
- $DB28 DEFB $01,$FF,$FF,$80,$00,$0F,$FC,$00
- $DB30 DEFB $11,$E0,$07,$FC,$C0,$1F,$FC,$01
- $DB38 DEFB $FF,$10,$27,$FF,$00,$FF,$80,$19
- $DB40 DEFB $FF,$8C,$3F,$C0,$1C,$FB,$CE,$3C
- $DB48 DEFB $E1,$0E,$F9,$87,$1A,$F0,$07,$78
- $DB50 DEFB $C7,$1C,$70,$87,$78,$C7,$1C,$F0
- $DB58 DEFB $07,$78,$47,$9C,$71,$0E,$70,$87
- $DB60 DEFB $1C,$61,$0E,$70,$87,$3C,$E1,$1E
- $DB68 DEFB $E1,$87,$38,$C3,$1D,$E1,$0F,$79
- $DB70 DEFB $C2,$3D,$C3,$8E,$7B,$C2,$3F,$C5
- $DB78 DEFB $CF,$73,$84,$3F,$84,$0E,$F3,$84
- $DB80 DEFB $3F,$88,$CE,$F3,$80,$3F,$A0,$CF
- $DB88 DEFB $79,$C0,$3B,$84,$67,$19,$C2,$19
- $DB90 DEFB $C0,$33,$9C,$E1,$0C,$E3,$19,$8F
- $DB98 DEFB $78,$06,$70,$8C,$63,$CE,$51,$9C
- $DBA0 DEFB $21,$0C,$73,$10,$F7,$B8,$01,$0E
- $DBA8 DEFB $70,$0F,$FC,$01,$3D,$EC,$01,$DE
- $DBB0 DEFB $02,$F9,$1E,$F2,$9C,$B5,$2F,$D8
- $DBB8 DEFB $77,$90,$07,$F9,$0C,$47,$B8,$86
- $DBC0 DEFB $39,$08,$63,$1E,$C2,$18,$A4,$21
- $DBC8 DEFB $26,$37,$BC,$03,$7B,$C6,$04,$3F
- $DBD0 DEFB $00,$43,$FE,$80,$66,$39,$08,$43
- $DBD8 DEFB $D8,$86,$F6,$1D,$84,$21,$78,$4A
- $DBE0 DEFB $78,$8C,$E7,$08,$42,$3F,$FC,$23
- $DBE8 DEFB $F8,$00,$13,$FC,$07,$44,$3F,$BD
- $DBF0 DEFB $C0,$33,$FC,$C0,$87,$F7,$00,$46
- $DBF8 DEFB $33,$9C,$C6,$3F,$F8,$00,$7F,$F8
- $DC00 DEFB $07,$31,$9F,$E0,$21,$9C,$E6,$20
- $DC08 DEFB $03,$FF,$F4,$00,$3F,$FC,$00,$77
- $DC10 DEFB $FE,$80,$01,$FF,$18,$C2,$18,$D6
- $DC18 DEFB $F7,$18,$00,$0F,$F0,$01,$09,$FF
- $DC20 DEFB $00,$00,$CF,$FA,$00,$04,$FF,$79
- $DC28 DEFB $08,$C7,$33,$00,$0F,$C8,$03,$FF
- $DC30 DEFB $80,$07,$FF,$80,$1F,$C4,$3F,$F9
- $DC38 DEFB $00,$07,$FB,$00,$FF,$C0,$0B,$FF
- $DC40 DEFB $00,$00,$FF,$FC,$00,$09,$99,$FE
- $DC48 DEFB $40,$11,$DC,$C6,$7F,$90,$0E,$01
- $DC50 DEFB $FF,$FC,$00,$3F,$F0,$07,$FF,$00
- $DC58 DEFB $0D,$FF,$E1,$18,$00,$0F,$FF,$FE
- $DC60 DEFB $01,$F0,$1F,$EC,$03,$00,$0F,$F8
- $DC68 DEFB $00,$FF,$F8,$00,$7F,$F8,$00,$FF
- $DC70 DEFB $E0,$0F,$C0,$07,$FF,$00,$3F,$F8
- $DC78 DEFB $00,$3F,$F8,$00,$01,$80,$FF,$80
- $DC80 DEFB $1F,$F0,$03,$FE,$00,$0F,$F8,$03
- $DC88 DEFB $FF,$80,$01,$FF,$C0,$3E,$80,$03
- $DC90 DEFB $FF,$C0,$07,$FF,$E6,$3B,$80,$3F
- $DC98 DEFB $C0,$00,$19,$FF,$FC,$03,$FF,$F0
- $DCA0 DEFB $00,$FF,$E0,$03,$FF,$C0,$07,$FC
- $DCA8 DEFB $07,$F0,$00,$FF,$C0,$18,$EF,$E0
- $DCB0 DEFB $1F,$F8,$00,$FF,$31,$FF,$E3,$70
- $DCB8 DEFB $1F,$E0,$1F,$F0,$00,$0F,$F8,$00
- $DCC0 DEFB $07,$FC,$01,$F8,$00,$FF,$80,$07
- $DCC8 DEFB $FC,$00,$7F,$F8,$00,$FF,$00,$1F
- $DCD0 DEFB $FC,$00,$3F,$FF,$FF,$FF,$00,$FF
- $DCD8 DEFB $80,$3F,$FF,$E0,$1F,$FF,$FF,$FF
- $DCE0 DEFB $FC,$FF,$FF,$FF,$FF,$FC,$07,$FF
- $DCE8 DEFB $FF,$9F,$FF,$FF,$FC,$0F,$FF,$FF
- $DCF0 DEFB $FF,$FF,$FF,$FF,$FC,$FF,$FF,$FF
- $DCF8 DEFB $FF,$F8,$1F,$FF,$FF,$FF,$FF,$E7
+
+; Speech Data
+@label=Data_Speech
+b$D500 DEFB $00,$00,$07,$FE,$00,$07,$F8,$0E,$07,$E0,$01,$FF,$00,$1F,$F0,$3F,$07,$E0,$07,$FC,$00,$7F,$81,$FC,$0F,$00,$7F,$C0,$0F,$E0,$3F,$C1
+ $D520 DEFB $E0,$1F,$F8,$07,$F0,$3F,$81,$F0,$0F,$C0,$03,$F0,$1F,$E0,$F8,$1F,$80,$07,$E0,$7F,$81,$F0,$3E,$00,$1F,$81,$FC,$07,$83,$E1,$E1,$F8
+ $D540 DEFB $1F,$F0,$10,$7E,$24,$7F,$03,$FC,$00,$0F,$0C,$0F,$81,$FE,$0E,$07,$C2,$0F,$C0,$1F,$83,$03,$C3,$07,$E0,$0F,$87,$03,$C7,$07,$C0,$1F
+ $D560 DEFB $80,$0F,$BC,$1F,$F0,$3F,$E0,$3C,$F0,$7F,$E0,$FF,$C0,$FF,$83,$BF,$02,$1E,$2E,$FC,$00,$F8,$01,$F0,$00,$7F,$F0,$FC,$00,$FC,$07,$F0
+ $D580 DEFB $7F,$7E,$00,$38,$1F,$F8,$07,$F8,$00,$00,$8F,$E0,$07,$80,$0F,$02,$3F,$80,$7C,$1C,$00,$7F,$FF,$C0,$07,$C0,$87,$C7,$87,$8E,$1C,$3F
+ $D5A0 DEFB $F8,$79,$E0,$0F,$C3,$9F,$80,$1E,$F0,$7E,$03,$F0,$03,$FF,$8F,$83,$FE,$00,$7C,$03,$F1,$FF,$C1,$07,$80,$3E,$2F,$F8,$5F,$E0,$0F,$83
+ $D5C0 DEFB $BF,$06,$7C,$0F,$E0,$FF,$C1,$FF,$01,$FC,$1F,$F0,$7B,$E0,$FB,$07,$FC,$1F,$B0,$3E,$83,$FF,$03,$FD,$0D,$20,$FD,$81,$F6,$03,$C0,$7F
+ $D5E0 DEFB $E0,$FD,$01,$F0,$3E,$F0,$7E,$C0,$F8,$1F,$F8,$3F,$E0,$3C,$07,$FC,$1F,$BC,$1E,$07,$BC,$0F,$94,$0F,$83,$DF,$07,$DE,$0F,$03,$CF,$03
+ $D600 DEFB $CB,$0F,$83,$C7,$83,$FF,$03,$03,$C3,$83,$F2,$03,$07,$87,$83,$FE,$06,$0F,$DF,$07,$F8,$0C,$1F,$BE,$0F,$F8,$7C,$3E,$3C,$1F,$F0,$F0
+ $D620 DEFB $7C,$78,$7F,$E0,$E0,$F9,$E0,$FF,$81,$C3,$C3,$C3,$9F,$03,$0F,$0F,$07,$1F,$0C,$1F,$00,$1F,$F8,$78,$7F,$F8,$37,$F0,$60,$FF,$E0,$0F
+ $D640 DEFB $C0,$87,$87,$83,$0F,$DE,$1F,$FE,$00,$3F,$50,$7F,$F8,$01,$F8,$03,$E0,$FF,$E0,$7E,$00,$07,$FF,$C0,$F8,$00,$FF,$FF,$C0,$E0,$21,$F9
+ $D660 DEFB $FF,$C0,$00,$0F,$FC,$7F,$08,$00,$3F,$3C,$FC,$00,$78,$3F,$F9,$FF,$00,$00,$7F,$C7,$FF,$00,$0F,$DF,$FF,$FF,$00,$0F,$E7,$FE,$1F,$80
+ $D680 DEFB $1F,$C0,$FF,$03,$80,$07,$E0,$FE,$07,$00,$07,$F0,$FE,$00,$00,$03,$FE,$FE,$78,$00,$01,$FF,$FF,$E0,$00,$00,$7F,$FF,$F8,$00,$00,$7F
+ $D6A0 DEFB $FF,$F8,$00,$1C,$1F,$FF,$FC,$00,$3F,$01,$FF,$80,$00,$00,$00,$7F,$FF,$C0,$00,$00,$3F,$FF,$FC,$00,$00,$3F,$F8,$3F,$E0,$00,$7F,$F0
+ $D6C0 DEFB $7F,$C0,$00,$BF,$ED,$BF,$80,$01,$BF,$C0,$7F,$00,$07,$FC,$49,$FF,$20,$03,$FE,$01,$FE,$00,$03,$A2,$D2,$FD,$87,$80,$27,$C0,$FF,$81
+ $D6E0 DEFB $6F,$06,$BC,$1C,$D8,$00,$DD,$59,$4F,$80,$49,$C1,$FF,$49,$EC,$01,$F4,$9B,$CD,$8C,$04,$02,$FE,$87,$FE,$00,$FF,$E0,$B6,$40,$E0,$FF
+ $D700 DEFB $F0,$00,$79,$F1,$80,$1F,$0F,$FF,$F0,$F0,$B0,$C3,$FF,$0E,$04,$1F,$3E,$FB,$E0,$03,$EF,$9C,$3F,$E0,$F9,$C3,$0F,$3E,$1C,$F0,$C3,$C7
+ $D720 DEFB $0F,$3C,$71,$E1,$83,$9E,$18,$78,$61,$CF,$84,$3C,$30,$E7,$C0,$1E,$18,$73,$E1,$0F,$1C,$39,$F0,$07,$8C,$1D,$F8,$07,$C4,$0F,$F8,$07
+ $D740 DEFB $E0,$0F,$F8,$07,$F4,$0F,$F8,$07,$E0,$0F,$F0,$0F,$C0,$1F,$F0,$0F,$C0,$1F,$F0,$3F,$80,$3F,$E0,$7F,$00,$7F,$C0,$FE,$00,$FF,$03,$FC
+ $D760 DEFB $01,$FE,$0F,$F0,$07,$F8,$1F,$E0,$1F,$E0,$7F,$80,$3F,$C1,$FE,$00,$FE,$0F,$F8,$07,$38,$3F,$C0,$3C,$60,$FF,$00,$F1,$83,$FC,$03,$C6
+ $D780 DEFB $0F,$F0,$0F,$00,$3F,$C0,$3F,$C0,$FF,$00,$EF,$03,$F8,$03,$B8,$1F,$E0,$1D,$E0,$7F,$00,$77,$03,$FC,$03,$DC,$1F,$E0,$0E,$F0,$7F,$80
+ $D7A0 DEFB $7B,$83,$FE,$01,$EE,$07,$F0,$07,$38,$3F,$C0,$1D,$E0,$BF,$20,$E7,$05,$F8,$03,$B8,$27,$C0,$1D,$C0,$3F,$00,$F7,$04,$F8,$03,$BC,$23
+ $D7C0 DEFB $C0,$1D,$E0,$1F,$00,$FF,$00,$F8,$03,$F8,$07,$C0,$1F,$E0,$3F,$80,$FF,$01,$FF,$07,$F0,$0F,$F0,$1F,$80,$7F,$80,$FE,$07,$F8,$07,$F0
+ $D7E0 DEFB $3F,$C0,$3F,$80,$7C,$01,$FC,$03,$EE,$1F,$E0,$1E,$E1,$CF,$30,$03,$00,$FF,$10,$31,$0F,$FC,$01,$E8,$1F,$80,$3F,$C0,$7F,$00,$FF,$00
+ $D800 DEFB $F8,$07,$FC,$01,$E0,$1B,$F8,$00,$00,$4F,$E1,$C0,$00,$7F,$0F,$E0,$0F,$F8,$3F,$E0,$3F,$E0,$1F,$80,$7F,$00,$7F,$00,$FE,$01,$FE,$01
+ $D820 DEFB $E0,$0F,$F0,$87,$08,$7B,$83,$38,$03,$FC,$0F,$E0,$1F,$E0,$1F,$80,$7F,$80,$FE,$01,$FE,$03,$F8,$0F,$F8,$1F,$C0,$3F,$C0,$FF,$01,$FE
+ $D840 DEFB $07,$F8,$07,$F0,$1F,$E0,$3F,$80,$7F,$01,$FC,$03,$F8,$0F,$F0,$0F,$E0,$1F,$C0,$3F,$80,$7F,$80,$7F,$80,$7F,$01,$FC,$01,$FC,$0F,$F0
+ $D860 DEFB $0F,$E0,$3F,$80,$7F,$81,$FE,$01,$F8,$0F,$F0,$0F,$C0,$7F,$80,$7F,$00,$FE,$01,$FC,$03,$F8,$07,$E0,$1F,$C0,$3F,$00,$FE,$01,$FC,$07
+ $D880 DEFB $F0,$0F,$F0,$1F,$C0,$7F,$C0,$7F,$00,$FE,$01,$FE,$07,$F8,$0F,$F0,$0F,$C0,$3F,$C0,$FE,$03,$FE,$0F,$F0,$0F,$C0,$7F,$80,$FE,$01,$FE
+ $D8A0 DEFB $03,$FC,$0F,$F0,$0F,$F0,$1F,$E0,$3F,$80,$7F,$81,$FE,$03,$FC,$07,$F0,$1F,$C0,$3F,$80,$FF,$80,$7E,$01,$FE,$01,$FC,$07,$F8,$07,$FC
+ $D8C0 DEFB $03,$FC,$03,$F8,$0F,$F0,$07,$E0,$3F,$E0,$1F,$C0,$F8,$3F,$E0,$FF,$00,$FF,$81,$FE,$03,$FC,$03,$FC,$07,$F8,$0F,$E0,$1F,$F0,$1F,$C0
+ $D8E0 DEFB $3F,$C0,$1F,$F0,$FF,$FE,$3F,$FF,$0F,$FC,$0F,$FC,$1F,$F0,$3F,$E0,$3F,$C0,$7F,$80,$FF,$01,$FC,$07,$FC,$07,$F0,$1F,$C0,$3F,$C0,$7E
+ $D900 DEFB $01,$F9,$4F,$5C,$07,$01,$FF,$01,$F8,$03,$F8,$07,$F8,$07,$C0,$3F,$F0,$01,$E1,$7F,$C0,$0F,$F9,$FF,$80,$3F,$F0,$FF,$00,$7F,$C1,$FC
+ $D920 DEFB $01,$FF,$00,$F1,$07,$FE,$03,$C4,$3F,$F0,$8F,$00,$FF,$C0,$7C,$03,$FF,$01,$F1,$0F,$FC,$0F,$C0,$3F,$F0,$3E,$00,$7B,$80,$F8,$03,$FE
+ $D940 DEFB $07,$E2,$1F,$F8,$1F,$00,$7F,$C0,$FC,$03,$EC,$0F,$E0,$1F,$A0,$7F,$00,$FD,$03,$FC,$03,$F4,$1F,$C0,$1F,$60,$FE,$05,$FA,$07,$F0,$4F
+ $D960 DEFB $90,$7F,$00,$FD,$03,$F8,$07,$FE,$0F,$98,$0F,$F8,$0F,$C0,$1F,$E0,$FE,$00,$FF,$07,$F0,$07,$F8,$3F,$C0,$1F,$F3,$FC,$01,$FF,$F3,$C0
+ $D980 DEFB $1F,$FF,$0E,$38,$FF,$E0,$0F,$90,$FE,$01,$FB,$07,$C0,$1F,$E0,$FC,$03,$F6,$1F,$80,$3E,$C7,$F8,$E7,$08,$FF,$0E,$E1,$1F,$E1,$DE,$23
+ $D9A0 DEFB $FC,$2B,$C0,$3F,$87,$78,$07,$F0,$AF,$00,$EE,$18,$E1,$1C,$C3,$9C,$23,$98,$63,$84,$63,$0C,$E1,$1C,$61,$9C,$23,$9C,$73,$84,$63,$8C
+ $D9C0 DEFB $71,$9C,$61,$9C,$23,$8C,$33,$80,$73,$84,$F0,$0E,$E1,$9E,$03,$9C,$27,$80,$77,$0C,$F0,$1F,$E1,$3C,$03,$FC,$27,$00,$7F,$00,$FA,$0F
+ $D9E0 DEFB $E0,$3F,$81,$FC,$0F,$F0,$1F,$81,$FE,$03,$E0,$3F,$C0,$7C,$46,$F8,$0F,$98,$CF,$31,$FA,$01,$F6,$3F,$50,$3F,$C6,$77,$03,$FC,$0E,$61
+ $DA00 DEFB $3F,$C0,$F6,$73,$F8,$0E,$64,$7F,$80,$F7,$33,$FF,$0F,$23,$1D,$F1,$F8,$11,$DC,$CF,$E4,$77,$37,$F9,$99,$DC,$CE,$23,$73,$3B,$FE,$1E
+ $DA20 DEFB $C4,$27,$E0,$BE,$00,$7E,$37,$C6,$67,$03,$FE,$07,$F0,$0F,$F8,$7F,$00,$FC,$07,$F0,$1C,$C0,$7C,$07,$F0,$6F,$00,$7F,$03,$F0,$1F,$C0
+ $DA40 DEFB $3E,$03,$FC,$0F,$80,$7F,$80,$FC,$07,$E0,$0F,$E0,$FC,$03,$D8,$3F,$80,$F0,$0F,$F0,$1F,$01,$FC,$03,$E0,$3F,$80,$38,$07,$F0,$0E,$01
+ $DA60 DEFB $FE,$1F,$C0,$1F,$C3,$FE,$03,$F8,$7F,$00,$FF,$07,$E0,$1F,$81,$FE,$01,$F8,$0F,$E0,$3F,$01,$FE,$07,$F0,$1F,$C0,$7F,$03,$F8,$03,$F0
+ $DA80 DEFB $7F,$80,$3F,$9F,$FE,$00,$FF,$1F,$F0,$0F,$F3,$FE,$01,$FE,$7F,$F8,$07,$CC,$FF,$00,$F9,$0F,$F0,$1F,$71,$FE,$13,$C0,$7F,$80,$FC,$07
+ $DAA0 DEFB $F0,$0F,$E0,$FF,$01,$FE,$03,$E0,$1F,$C0,$7E,$01,$FC,$0F,$C0,$1F,$80,$F8,$07,$F0,$3F,$00,$FE,$07,$E0,$1F,$C0,$FE,$03,$F8,$1F,$C0
+ $DAC0 DEFB $3F,$80,$F8,$03,$F8,$07,$00,$7E,$0F,$C0,$1F,$01,$F0,$0F,$E0,$3F,$01,$FC,$07,$F0,$0F,$C0,$FF,$01,$F8,$1F,$C0,$3F,$03,$F8,$0F,$E0
+ $DAE0 DEFB $7F,$01,$F8,$0F,$E0,$3F,$81,$FC,$07,$F0,$7F,$00,$FA,$0F,$E0,$3F,$C1,$FC,$03,$F0,$3F,$80,$7F,$07,$F0,$1F,$E0,$FE,$01,$F8,$1F,$C0
+ $DB00 DEFB $3F,$87,$F8,$0F,$A0,$FF,$01,$F0,$1F,$C0,$3F,$01,$F8,$07,$F0,$3F,$80,$FC,$0F,$F0,$1F,$00,$7C,$07,$F0,$1F,$80,$7F,$07,$F0,$1F,$C0
+ $DB20 DEFB $7E,$03,$FC,$0F,$E0,$3F,$C0,$FE,$01,$FF,$FF,$80,$00,$0F,$FC,$00,$11,$E0,$07,$FC,$C0,$1F,$FC,$01,$FF,$10,$27,$FF,$00,$FF,$80,$19
+ $DB40 DEFB $FF,$8C,$3F,$C0,$1C,$FB,$CE,$3C,$E1,$0E,$F9,$87,$1A,$F0,$07,$78,$C7,$1C,$70,$87,$78,$C7,$1C,$F0,$07,$78,$47,$9C,$71,$0E,$70,$87
+ $DB60 DEFB $1C,$61,$0E,$70,$87,$3C,$E1,$1E,$E1,$87,$38,$C3,$1D,$E1,$0F,$79,$C2,$3D,$C3,$8E,$7B,$C2,$3F,$C5,$CF,$73,$84,$3F,$84,$0E,$F3,$84
+ $DB80 DEFB $3F,$88,$CE,$F3,$80,$3F,$A0,$CF,$79,$C0,$3B,$84,$67,$19,$C2,$19,$C0,$33,$9C,$E1,$0C,$E3,$19,$8F,$78,$06,$70,$8C,$63,$CE,$51,$9C
+ $DBA0 DEFB $21,$0C,$73,$10,$F7,$B8,$01,$0E,$70,$0F,$FC,$01,$3D,$EC,$01,$DE,$02,$F9,$1E,$F2,$9C,$B5,$2F,$D8,$77,$90,$07,$F9,$0C,$47,$B8,$86
+ $DBC0 DEFB $39,$08,$63,$1E,$C2,$18,$A4,$21,$26,$37,$BC,$03,$7B,$C6,$04,$3F,$00,$43,$FE,$80,$66,$39,$08,$43,$D8,$86,$F6,$1D,$84,$21,$78,$4A
+ $DBE0 DEFB $78,$8C,$E7,$08,$42,$3F,$FC,$23,$F8,$00,$13,$FC,$07,$44,$3F,$BD,$C0,$33,$FC,$C0,$87,$F7,$00,$46,$33,$9C,$C6,$3F,$F8,$00,$7F,$F8
+ $DC00 DEFB $07,$31,$9F,$E0,$21,$9C,$E6,$20,$03,$FF,$F4,$00,$3F,$FC,$00,$77,$FE,$80,$01,$FF,$18,$C2,$18,$D6,$F7,$18,$00,$0F,$F0,$01,$09,$FF
+ $DC20 DEFB $00,$00,$CF,$FA,$00,$04,$FF,$79,$08,$C7,$33,$00,$0F,$C8,$03,$FF,$80,$07,$FF,$80,$1F,$C4,$3F,$F9,$00,$07,$FB,$00,$FF,$C0,$0B,$FF
+ $DC40 DEFB $00,$00,$FF,$FC,$00,$09,$99,$FE,$40,$11,$DC,$C6,$7F,$90,$0E,$01,$FF,$FC,$00,$3F,$F0,$07,$FF,$00,$0D,$FF,$E1,$18,$00,$0F,$FF,$FE
+ $DC60 DEFB $01,$F0,$1F,$EC,$03,$00,$0F,$F8,$00,$FF,$F8,$00,$7F,$F8,$00,$FF,$E0,$0F,$C0,$07,$FF,$00,$3F,$F8,$00,$3F,$F8,$00,$01,$80,$FF,$80
+ $DC80 DEFB $1F,$F0,$03,$FE,$00,$0F,$F8,$03,$FF,$80,$01,$FF,$C0,$3E,$80,$03,$FF,$C0,$07,$FF,$E6,$3B,$80,$3F,$C0,$00,$19,$FF,$FC,$03,$FF,$F0
+ $DCA0 DEFB $00,$FF,$E0,$03,$FF,$C0,$07,$FC,$07,$F0,$00,$FF,$C0,$18,$EF,$E0,$1F,$F8,$00,$FF,$31,$FF,$E3,$70,$1F,$E0,$1F,$F0,$00,$0F,$F8,$00
+ $DCC0 DEFB $07,$FC,$01,$F8,$00,$FF,$80,$07,$FC,$00,$7F,$F8,$00,$FF,$00,$1F,$FC,$00,$3F,$FF,$FF,$FF,$00,$FF,$80,$3F,$FF,$E0,$1F,$FF,$FF,$FF
+ $DCE0 DEFB $FC,$FF,$FF,$FF,$FF,$FC,$07,$FF,$FF,$9F,$FF,$FF,$FC,$0F,$FF,$FF,$FF,$FF,$FF,$FF,$FC,$FF,$FF,$FF,$FF,$F8,$1F,$FF,$FF,$FF,$FF,$E7
 
 ; Graphics: Pub Scene
 ;
@@ -10959,8 +10800,10 @@ b$F800 DEFB $00,$00,$00,$00,$00,$00,$00
 @label=Buffer_Pointer
 g$F80A DEFW $0000
 
-; Game status buffer entry at F80C
+; Print Variables
+@label=PrintVariable_01
 g$F80C DEFB $00
+@label=PrintVariable_02
  $F80D DEFB $00
 
 ; Data block at F80E

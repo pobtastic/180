@@ -787,7 +787,8 @@ c $9569 Redefine Key
   $95A5,$03 Increment *#R$F819 by two.
   $95A8,$01 Return.
 
-c $95A9
+c $95A9 Initialise Game
+@ $95A9 label=InitialiseGame
   $95A9,$01 Disable interrupts.
   $95AA,$04 #REGiy=#R$F800.
   $95AE,$04 Reset bit 7 of *#REGiy+#N$25.
@@ -1139,37 +1140,48 @@ c $9818
   $9819,$06 Jump to #R$995D if *#REGhl is less than #N$20.
   $981F,$02 Jump to #R$97F7.
 
-c $9821
-  $9821,$03 #REGhl=#R$F81E.
-  $9824,$01 #REGa=*#REGhl.
-  $9825,$02,b$01 Keep only bits 0-5, 7.
-  $9827,$01 Write #REGa to *#REGhl.
-  $9828,$08 Jump to #R$9957 if *#R$F80C is greater than #N$02.
-  $9830,$02 RRCA.
-  $9832,$01 Set the bits from *#REGhl.
-  $9833,$01 Write #REGa to *#REGhl.
+c $9821 Control Code #N$12: Set Bright Bit
+@ $9821 label=ControlCode_SetBrightBit
+  $9821,$03 Set a pointer to #R$F81E in #REGhl.
+  $9824,$01 Fetch the current print attribute colour and store it in #REGa.
+  $9825,$02,b$01 Mask off the current BRIGHT bit.
+  $9827,$01 Write the value back to *#R$F81E.
+  $9828,$03 Fetch the new BRIGHT value from *#R$F80C.
+  $982B,$05 Jump to #R$9957 if the new BRIGHT value is invalid (#N$02 or
+. higher), valid values are either #N$00 or #N$01.
+  $9830,$02 Shift the value into bit 6 so it applies for BRIGHT.
+  $9832,$01 Set the new BRIGHT value with the current print attribute colour
+. held by *#REGhl.
+  $9833,$01 Write the updated value back to *#R$F81E.
   $9834,$03 Jump to #R$995D.
 
-c $9837
-  $9837,$03 #REGhl=#R$F81E.
-  $983A,$01 #REGa=*#REGhl.
-  $983B,$02,b$01 Keep only bits 3-7.
-  $983D,$01 Write #REGa to *#REGhl.
-  $983E,$08 Jump to #R$9957 if *#R$F80C is greater than #N$08.
-  $9846,$01 Set the bits from *#REGhl.
-  $9847,$01 Write #REGa to *#REGhl.
+c $9837 Control Code #N$10: Set Ink Colour
+@ $9837 label=ControlCode_SetInkColour
+  $9837,$03 Set a pointer to #R$F81E in #REGhl.
+  $983A,$01 Fetch the current print attribute colour and store it in #REGa.
+  $983B,$02,b$01 Mask off the current INK bits.
+  $983D,$01 Write the value back to *#R$F81E.
+  $983E,$03 Fetch the new INK colour from *#R$F80C.
+  $9841,$05 Jump to #R$9957 if the new INK colour is invalid (#N$08 or higher),
+. valid ink values are between #N$00-#N$07.
+  $9846,$01 Set the new INK value with the current print attribute colour held
+. by *#REGhl.
+  $9847,$01 Write the updated value back to *#R$F81E.
   $9848,$03 Jump to #R$995D.
 
-c $984B
-  $984B,$03 #REGhl=#R$F81E.
-  $984E,$01 #REGa=*#REGhl.
-  $984F,$02,b$01 Keep only bits 0-2, 6-7.
-  $9851,$01 Write #REGa to *#REGhl.
-  $9852,$03 #REGa=*#R$F80C.
-  $9855,$05 Jump to #R$9957 if #REGa is greater than #N$08.
-  $985A,$03 Multiply #REGa by #N$08.
-  $985D,$01 Set the bits from *#REGhl.
-  $985E,$01 Write #REGa to *#REGhl.
+c $984B Control Code #N$11: Set Paper Colour
+@ $984B label=ControlCode_SetPaperColour
+  $984B,$03 Set a pointer to #R$F81E in #REGhl.
+  $984E,$01 Fetch the current print attribute colour and store it in #REGa.
+  $984F,$02,b$01 Mask off the current PAPER bits.
+  $9851,$01 Write the value back to *#R$F81E.
+  $9852,$03 Fetch the new PAPER colour from *#R$F80C.
+  $9855,$05 Jump to #R$9957 if the new PAPER colour is invalid (#N$08 or
+. higher), valid ink values are between #N$00-#N$07.
+  $985A,$03 Shift the colour value into bits 3-5 so it applies for PAPER.
+  $985D,$01 Set the new PAPER value with the current print attribute colour
+. held by *#REGhl.
+  $985E,$01 Write the updated value back to *#R$F81E.
   $985F,$03 Jump to #R$995D.
 
 c $9862
@@ -1242,24 +1254,31 @@ c $98CC Control Code #N$01:
   $98FA,$06 Write #N$5800 to *#R$F81C.
   $9900,$03 Jump to #R$995D.
 
-c $9903 Control Code #N$02:
-@ $9903 label=ControlCode_02
+c $9903 Control Code #N$02: Blank Screen
+@ $9903 label=ControlCode_BlankScreen
+N $9903 Preserve the current registers.
   $9903,$02 Stash #REGde and #REGbc on the stack.
+N $9905 First blank the attribute buffer.
   $9905,$03 #REGhl=#N$5800 (attribute buffer location).
   $9908,$03 #REGde=#N$5801.
   $990B,$03 #REGbc=#N$02FF.
   $990E,$01 Halt operation (suspend CPU until the next interrupt).
-  $990F,$02 Write #N$00 to *#REGhl.
-  $9911,$02 LDIR.
-  $9913,$02 #REGb=#N$C0.
-  $9915,$03 #REGhl=#N($4000,$04,$04).
-  $9918,$01 #REGc=#REGl.
-  $9919,$02 #REGa=#N$20.
+  $990F,$02 Write #COLOUR$00 to *#REGhl.
+  $9911,$02 Copy the #N$00 to the rest of the attribute buffer.
+N $9913 Next blank the screen buffer.
+  $9913,$02 Set a counter in #REGb of #N$C0; which is 24 rows x 8 pixels in
+. each.
+  $9915,$03 #REGhl=#N$4000 (screen buffer location).
+@ $9918 label=BlankPixelLine_Loop
+  $9918,$01 Save the row start in #REGc.
+  $9919,$02 Set a counter in #REGa of #N$20 for the number of bytes in a row.
+@ $991B label=BlankByte_Loop
   $991B,$02 Write #N$00 to *#REGhl.
-  $991D,$01 Increment #REGl by one.
-  $991E,$01 Decrease #REGa by one.
-  $991F,$02 Jump to #R$991B if #REGa is not equal to #N$20.
-  $9921,$01 #REGl=#REGc.
+  $991D,$01 Move to the next byte in this line.
+  $991E,$01 Decrease the byte counter by one.
+  $991F,$02 Jump back to #R$991B until the byte clearing is done for this pixel
+. row.
+  $9921,$01 Back to the start of the line.
   $9922,$03 Call #R$A8CC.
   $9925,$02 Decrease counter by one and loop back to #R$9918 until counter is zero.
   $9927,$03 Jump to #R$995B.
@@ -4644,7 +4663,8 @@ N $B761 On return from #R$A8AE #REGhl will contain the screen buffer destination
 . the whole image has been displayed.
   $B779,$01 Return.
 
-c $B77A
+c $B77A Copy Floating Hand To Dartboard
+@ $B77A label=CopyFloatingHandToDartboard
   $B77A,$04 #REGde=*#R$9AC3.
   $B77E,$02 #REGb=#N$08.
   $B780,$05 Jump to #R$B79C if #REGd is less than #N$00.
@@ -5180,7 +5200,28 @@ N $CA64 #UDGTABLE(default)
 . UDGTABLE#
   $CA64,$18,$01
 
-c $CA7C
+c $CA7C Sound: "180"
+@ $CA7C label=Sound_180Speech
+N $CA7C #HTML(#AUDIO(speech.wav)(#INCLUDE(Speech)))
+  $CA7C,$03 #REGhl=#R$D500.
+  $CA7F,$03 #REGde=#N$0800.
+  $CA82,$02 #REGb=#N$08.
+  $CA84,$02 Rotate *#REGhl left (with carry).
+  $CA86,$02 #REGa=#N$10.
+  $CA88,$02 Jump to #R$CA8B if the carry bit is set.
+  $CA8A,$01 #REGa=#N$00.
+  $CA8B,$02 Send #REGa to the speaker.
+  $CA8D,$02 #REGc=#N$12.
+  $CA8F,$01 Decrease #REGc by one.
+  $CA90,$02 Jump to #R$CA8F until #REGc is zero.
+  $CA92,$02 Decrease counter by one and loop back to #R$CA9C until counter is zero.
+  $CA94,$01 Increment #REGhl by one.
+  $CA95,$01 Decrease #REGde by one.
+  $CA96,$04 Jump to #R$CA82 until #REGde is zero.
+  $CA9A,$01 Enable interrupts.
+  $CA9B,$01 Return.
+  $CA9C,$05 No operation.
+  $CAA1,$02 Jump to #R$CA84.
 
 w $CAA3
 
@@ -5377,6 +5418,10 @@ b $D2A0
 
 b $D330
 
+b $D500 Speech Data
+@ $D500 label=Data_Speech
+  $D500,$0800,$20
+
 b $DD00 Graphics: Pub Scene
 D $DD00 #UDGTABLE { =h Pub Scene } { #SCR$02,$00,$00,$20,$18,$DD00,$F500(pub-scene) } UDGTABLE#
 @ $DD00 label=PubScene
@@ -5390,7 +5435,9 @@ g $F80A Buffer Pointer
 @ $F80A label=Buffer_Pointer
 W $F80A,$02
 
-g $F80C
+g $F80C Print Variables
+@ $F80C label=PrintVariable_01
+@ $F80D label=PrintVariable_02
 B $F80C,$02,$01
 
 b $F80E

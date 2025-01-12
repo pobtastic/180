@@ -1,5 +1,9 @@
 ; Copyright 2025 Paul Maddern (paul@arcadegeek.co.uk)
 
+[Audio:"180"]
+
+#AUDIO(speech.wav)(#INCLUDE(Speech))
+
 [Audio:opponent-dart:Opponent Dart]
 
 #AUDIO(opponent-dart.wav)(#INCLUDE(OpponentDart))
