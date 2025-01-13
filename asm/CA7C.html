@@ -84,6 +84,16 @@ Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
 <td class="comment-1" rowspan="1">Rotate *<span class="register">HL</span> left one position to set the next bit to the carry flag.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ca86"></span>
+<div class="comments">
+<div class="paragraph">
+Set the speaker bit ON or OFF based on if the currently processed bit is set or not.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca86"></span>CA86</td>
 <td class="instruction">LD A,%00010000</td>
@@ -102,10 +112,30 @@ Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
 <td class="comment-1" rowspan="1">Set the speaker bit to OFF.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ca8b"></span>
+<div class="comments">
+<div class="paragraph">
+Output the sample.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">SpeechOutputSample</td>
 <td class="address-2"><span id="ca8b"></span>CA8B</td>
 <td class="instruction">OUT ($FE),A</td>
 <td class="comment-1" rowspan="1">Send <span class="register">A</span> to the speaker.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ca8d"></span>
+<div class="comments">
+<div class="paragraph">
+Introduce a tiny delay.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -130,6 +160,16 @@ Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
 <td class="address-1"><span id="ca92"></span>CA92</td>
 <td class="instruction">DJNZ <a href="CA7C.html#ca9c">SpeechWasteCycles</a></td>
 <td class="comment-1" rowspan="1">Decrease the bit counter by one and loop back to <a href="CA7C.html#ca9c">SpeechWasteCycles</a> until all bits in the current byte have been processed.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ca94"></span>
+<div class="comments">
+<div class="paragraph">
+Finished with this byte, move onto the next.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -160,6 +200,16 @@ Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
 <td class="instruction">JR NZ,<a href="CA7C.html#ca82">SpeechProcessByte</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ca9a"></span>
+<div class="comments">
+<div class="paragraph">
+All done, re-enable the interrupts and return.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca9a"></span>CA9A</td>
 <td class="instruction">EI</td>
@@ -170,6 +220,16 @@ Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
 <td class="address-1"><span id="ca9b"></span>CA9B</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ca9c"></span>
+<div class="comments">
+<div class="paragraph">
+Minor timing tweaks (probably).
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label">SpeechWasteCycles</td>
