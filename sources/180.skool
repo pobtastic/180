@@ -9438,24 +9438,31 @@ c$CA7C LD HL,$D500    ; Set a pointer to the speech data in #REGhl to #R$D500.
 @label=SpeechProcessBit
 *$CA84 RLC (HL)       ; Rotate *#REGhl left one position to set the next bit to the carry
                       ; flag.
+; Set the speaker bit ON or OFF based on if the currently processed bit
+; is set or not.
  $CA86 LD A,%00010000 ; Set the speaker bit to ON.
  $CA88 JR C,$CA8B     ; Jump to #R$CA8B if the carry bit is set.
  $CA8A XOR A          ; Set the speaker bit to OFF.
+; Output the sample.
 @label=SpeechOutputSample
 *$CA8B OUT ($FE),A    ; Send #REGa to the speaker.
+; Introduce a tiny delay.
  $CA8D LD C,$12       ; Set a delay counter in #REGc.
 @label=SpeechDelay_Loop
 *$CA8F DEC C          ; Decrease the delay counter by one.
  $CA90 JR NZ,$CA8F    ; Jump to #R$CA8F until the delay counter is zero.
  $CA92 DJNZ $CA9C     ; Decrease the bit counter by one and loop back to #R$CA9C until all
                       ; bits in the current byte have been processed.
+; Finished with this byte, move onto the next.
  $CA94 INC HL         ; Move to the next byte of speech data.
  $CA95 DEC DE         ; Decrease the data length counter by one.
  $CA96 LD A,D         ; {Jump to #R$CA82 until all the bytes have been
  $CA97 OR E           ; processed.
  $CA98 JR NZ,$CA82    ; }
+; All done, re-enable the interrupts and return.
  $CA9A EI             ; Enable interrupts.
  $CA9B RET            ; Return.
+; Minor timing tweaks (probably).
 @label=SpeechWasteCycles
 *$CA9C NOP            ; {No operation.
  $CA9D NOP            ;

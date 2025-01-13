@@ -5211,22 +5211,29 @@ N $CA7C #HTML(#AUDIO(speech.wav)(#INCLUDE(Speech)))
 @ $CA84 label=SpeechProcessBit
   $CA84,$02 Rotate *#REGhl left one position to set the next bit to the carry
 . flag.
+N $CA86 Set the speaker bit ON or OFF based on if the currently processed bit
+. is set or not.
   $CA86,$02,b$01 Set the speaker bit to ON.
   $CA88,$02 Jump to #R$CA8B if the carry bit is set.
   $CA8A,$01 Set the speaker bit to OFF.
+N $CA8B Output the sample.
 @ $CA8B label=SpeechOutputSample
   $CA8B,$02 Send #REGa to the speaker.
+N $CA8D Introduce a tiny delay.
   $CA8D,$02 Set a delay counter in #REGc.
 @ $CA8F label=SpeechDelay_Loop
   $CA8F,$01 Decrease the delay counter by one.
   $CA90,$02 Jump to #R$CA8F until the delay counter is zero.
   $CA92,$02 Decrease the bit counter by one and loop back to #R$CA9C until all
 . bits in the current byte have been processed.
+N $CA94 Finished with this byte, move onto the next.
   $CA94,$01 Move to the next byte of speech data.
   $CA95,$01 Decrease the data length counter by one.
   $CA96,$04 Jump to #R$CA82 until all the bytes have been processed.
+N $CA9A All done, re-enable the interrupts and return.
   $CA9A,$01 Enable interrupts.
   $CA9B,$01 Return.
+N $CA9C Minor timing tweaks (probably).
 @ $CA9C label=SpeechWasteCycles
   $CA9C,$05 No operation.
   $CAA1,$02 Jump to #R$CA84.
