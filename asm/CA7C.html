@@ -49,6 +49,9 @@ Used by the routine at <a href="A0D6.html">Handler_Bust</a>.
 <span id="ca7c"></span>
 <div class="comments">
 <div class="paragraph">
+Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
+</div>
+<div class="paragraph">
 <audio controls="" src="../audio/speech.wav">
 <p>Your browser doesn't support HTML5 audio. Here is a <a href="../audio/speech.wav">link to the audio</a> instead.</p>
 </audio>
@@ -60,46 +63,46 @@ Used by the routine at <a href="A0D6.html">Handler_Bust</a>.
 <td class="asm-label">Sound_180Speech</td>
 <td class="address-2"><span id="ca7c"></span>CA7C</td>
 <td class="instruction">LD HL,$D500</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D500.html">Data_Speech</a>.</td>
+<td class="comment-1" rowspan="1">Set a pointer to the speech data in <span class="register">HL</span> to <a href="D500.html">Data_Speech</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca7f"></span>CA7F</td>
 <td class="instruction">LD DE,$0800</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=0800.</td>
+<td class="comment-1" rowspan="1">Set the data length counter in <span class="register">DE</span> to 0800 bytes.</td>
 </tr>
 <tr>
-<td class="asm-label">Sound_180Speech_0</td>
+<td class="asm-label">SpeechProcessByte</td>
 <td class="address-2"><span id="ca82"></span>CA82</td>
 <td class="instruction">LD B,$08</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
+<td class="comment-1" rowspan="1">Set a counter in <span class="register">B</span> for 08 bits per byte.</td>
 </tr>
 <tr>
-<td class="asm-label">Sound_180Speech_1</td>
+<td class="asm-label">SpeechProcessBit</td>
 <td class="address-2"><span id="ca84"></span>CA84</td>
 <td class="instruction">RLC (HL)</td>
-<td class="comment-1" rowspan="1">Rotate *<span class="register">HL</span> left (with carry).</td>
+<td class="comment-1" rowspan="1">Rotate *<span class="register">HL</span> left one position to set the next bit to the carry flag.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca86"></span>CA86</td>
-<td class="instruction">LD A,$10</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=10.</td>
+<td class="instruction">LD A,%00010000</td>
+<td class="comment-1" rowspan="1">Set the speaker bit to ON.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca88"></span>CA88</td>
-<td class="instruction">JR C,<a href="CA7C.html#ca8b">Sound_180Speech_2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="CA7C.html#ca8b">Sound_180Speech_2</a> if the carry bit is set.</td>
+<td class="instruction">JR C,<a href="CA7C.html#ca8b">SpeechOutputSample</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="CA7C.html#ca8b">SpeechOutputSample</a> if the carry bit is set.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca8a"></span>CA8A</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
+<td class="comment-1" rowspan="1">Set the speaker bit to OFF.</td>
 </tr>
 <tr>
-<td class="asm-label">Sound_180Speech_2</td>
+<td class="asm-label">SpeechOutputSample</td>
 <td class="address-2"><span id="ca8b"></span>CA8B</td>
 <td class="instruction">OUT ($FE),A</td>
 <td class="comment-1" rowspan="1">Send <span class="register">A</span> to the speaker.</td>
@@ -108,43 +111,43 @@ Used by the routine at <a href="A0D6.html">Handler_Bust</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca8d"></span>CA8D</td>
 <td class="instruction">LD C,$12</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=12.</td>
+<td class="comment-1" rowspan="1">Set a delay counter in <span class="register">C</span>.</td>
 </tr>
 <tr>
-<td class="asm-label">Sound_180Speech_3</td>
+<td class="asm-label">SpeechDelay_Loop</td>
 <td class="address-2"><span id="ca8f"></span>CA8F</td>
 <td class="instruction">DEC C</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
+<td class="comment-1" rowspan="1">Decrease the delay counter by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca90"></span>CA90</td>
-<td class="instruction">JR NZ,<a href="CA7C.html#ca8f">Sound_180Speech_3</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="CA7C.html#ca8f">Sound_180Speech_3</a> until <span class="register">C</span> is zero.</td>
+<td class="instruction">JR NZ,<a href="CA7C.html#ca8f">SpeechDelay_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="CA7C.html#ca8f">SpeechDelay_Loop</a> until the delay counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca92"></span>CA92</td>
-<td class="instruction">DJNZ <a href="CA7C.html#ca9c">Sound_180Speech_4</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="CA7C.html#ca9c">Sound_180Speech_4</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="CA7C.html#ca9c">SpeechWasteCycles</a></td>
+<td class="comment-1" rowspan="1">Decrease the bit counter by one and loop back to <a href="CA7C.html#ca9c">SpeechWasteCycles</a> until all bits in the current byte have been processed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca94"></span>CA94</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Move to the next byte of speech data.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca95"></span>CA95</td>
 <td class="instruction">DEC DE</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">DE</span> by one.</td>
+<td class="comment-1" rowspan="1">Decrease the data length counter by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca96"></span>CA96</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="3">Jump to <a href="CA7C.html#ca82">Sound_180Speech_0</a> until <span class="register">DE</span> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="CA7C.html#ca82">SpeechProcessByte</a> until all the bytes have been processed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -154,7 +157,7 @@ Used by the routine at <a href="A0D6.html">Handler_Bust</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ca98"></span>CA98</td>
-<td class="instruction">JR NZ,<a href="CA7C.html#ca82">Sound_180Speech_0</a></td>
+<td class="instruction">JR NZ,<a href="CA7C.html#ca82">SpeechProcessByte</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -169,7 +172,7 @@ Used by the routine at <a href="A0D6.html">Handler_Bust</a>.
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">Sound_180Speech_4</td>
+<td class="asm-label">SpeechWasteCycles</td>
 <td class="address-2"><span id="ca9c"></span>CA9C</td>
 <td class="instruction">NOP</td>
 <td class="comment-1" rowspan="5">No operation.</td>
@@ -197,8 +200,8 @@ Used by the routine at <a href="A0D6.html">Handler_Bust</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="caa1"></span>CAA1</td>
-<td class="instruction">JR <a href="CA7C.html#ca84">Sound_180Speech_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="CA7C.html#ca84">Sound_180Speech_1</a>.</td>
+<td class="instruction">JR <a href="CA7C.html#ca84">SpeechProcessBit</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="CA7C.html#ca84">SpeechProcessBit</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
