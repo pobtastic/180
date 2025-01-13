@@ -9427,34 +9427,42 @@ b$CA64 DEFB $00
 ;
 ; .
 ;
+; Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
+; .
 ; #HTML(#AUDIO(speech.wav)(#INCLUDE(Speech)))
 @label=Sound_180Speech
-c$CA7C LD HL,$D500   ; #REGhl=#R$D500.
- $CA7F LD DE,$0800   ; #REGde=#N$0800.
-*$CA82 LD B,$08      ; #REGb=#N$08.
-*$CA84 RLC (HL)      ; Rotate *#REGhl left (with carry).
- $CA86 LD A,$10      ; #REGa=#N$10.
- $CA88 JR C,$CA8B    ; Jump to #R$CA8B if the carry bit is set.
- $CA8A XOR A         ; #REGa=#N$00.
-*$CA8B OUT ($FE),A   ; Send #REGa to the speaker.
- $CA8D LD C,$12      ; #REGc=#N$12.
-*$CA8F DEC C         ; Decrease #REGc by one.
- $CA90 JR NZ,$CA8F   ; Jump to #R$CA8F until #REGc is zero.
- $CA92 DJNZ $CA9C    ; Decrease counter by one and loop back to #R$CA9C until
-                     ; counter is zero.
- $CA94 INC HL        ; Increment #REGhl by one.
- $CA95 DEC DE        ; Decrease #REGde by one.
- $CA96 LD A,D        ; {Jump to #R$CA82 until #REGde is zero.
- $CA97 OR E          ;
- $CA98 JR NZ,$CA82   ; }
- $CA9A EI            ; Enable interrupts.
- $CA9B RET           ; Return.
-*$CA9C NOP           ; {No operation.
- $CA9D NOP           ;
- $CA9E NOP           ;
- $CA9F NOP           ;
- $CAA0 NOP           ; }
- $CAA1 JR $CA84      ; Jump to #R$CA84.
+c$CA7C LD HL,$D500    ; Set a pointer to the speech data in #REGhl to #R$D500.
+ $CA7F LD DE,$0800    ; Set the data length counter in #REGde to #N$0800 bytes.
+@label=SpeechProcessByte
+*$CA82 LD B,$08       ; Set a counter in #REGb for #N$08 bits per byte.
+@label=SpeechProcessBit
+*$CA84 RLC (HL)       ; Rotate *#REGhl left one position to set the next bit to the carry
+                      ; flag.
+ $CA86 LD A,%00010000 ; Set the speaker bit to ON.
+ $CA88 JR C,$CA8B     ; Jump to #R$CA8B if the carry bit is set.
+ $CA8A XOR A          ; Set the speaker bit to OFF.
+@label=SpeechOutputSample
+*$CA8B OUT ($FE),A    ; Send #REGa to the speaker.
+ $CA8D LD C,$12       ; Set a delay counter in #REGc.
+@label=SpeechDelay_Loop
+*$CA8F DEC C          ; Decrease the delay counter by one.
+ $CA90 JR NZ,$CA8F    ; Jump to #R$CA8F until the delay counter is zero.
+ $CA92 DJNZ $CA9C     ; Decrease the bit counter by one and loop back to #R$CA9C until all
+                      ; bits in the current byte have been processed.
+ $CA94 INC HL         ; Move to the next byte of speech data.
+ $CA95 DEC DE         ; Decrease the data length counter by one.
+ $CA96 LD A,D         ; {Jump to #R$CA82 until all the bytes have been
+ $CA97 OR E           ; processed.
+ $CA98 JR NZ,$CA82    ; }
+ $CA9A EI             ; Enable interrupts.
+ $CA9B RET            ; Return.
+@label=SpeechWasteCycles
+*$CA9C NOP            ; {No operation.
+ $CA9D NOP            ;
+ $CA9E NOP            ;
+ $CA9F NOP            ;
+ $CAA0 NOP            ; }
+ $CAA1 JR $CA84       ; Jump to #R$CA84.
 
 ; Data block at CAA3
 w$CAA3 DEFW $B46E
@@ -10502,6 +10510,8 @@ b$D330 DEFB $2D,$E1,$31,$E0,$2F,$E1,$2D,$E0
  $D4F8 DEFB $3F,$05,$76,$1B,$03,$13,$00,$3E
 
 ; Speech Data
+;
+; Used by the routine at #R$CA7C.
 @label=Data_Speech
 b$D500 DEFB $00,$00,$07,$FE,$00,$07,$F8,$0E,$07,$E0,$01,$FF,$00,$1F,$F0,$3F,$07,$E0,$07,$FC,$00,$7F,$81,$FC,$0F,$00,$7F,$C0,$0F,$E0,$3F,$C1
  $D520 DEFB $E0,$1F,$F8,$07,$F0,$3F,$81,$F0,$0F,$C0,$03,$F0,$1F,$E0,$F8,$1F,$80,$07,$E0,$7F,$81,$F0,$3E,$00,$1F,$81,$FC,$07,$83,$E1,$E1,$F8

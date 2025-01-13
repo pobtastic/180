@@ -5202,24 +5202,32 @@ N $CA64 #UDGTABLE(default)
 
 c $CA7C Sound: "180"
 @ $CA7C label=Sound_180Speech
+N $CA7C Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
 N $CA7C #HTML(#AUDIO(speech.wav)(#INCLUDE(Speech)))
-  $CA7C,$03 #REGhl=#R$D500.
-  $CA7F,$03 #REGde=#N$0800.
-  $CA82,$02 #REGb=#N$08.
-  $CA84,$02 Rotate *#REGhl left (with carry).
-  $CA86,$02 #REGa=#N$10.
+  $CA7C,$03 Set a pointer to the speech data in #REGhl to #R$D500.
+  $CA7F,$03 Set the data length counter in #REGde to #N$0800 bytes.
+@ $CA82 label=SpeechProcessByte
+  $CA82,$02 Set a counter in #REGb for #N$08 bits per byte.
+@ $CA84 label=SpeechProcessBit
+  $CA84,$02 Rotate *#REGhl left one position to set the next bit to the carry
+. flag.
+  $CA86,$02,b$01 Set the speaker bit to ON.
   $CA88,$02 Jump to #R$CA8B if the carry bit is set.
-  $CA8A,$01 #REGa=#N$00.
+  $CA8A,$01 Set the speaker bit to OFF.
+@ $CA8B label=SpeechOutputSample
   $CA8B,$02 Send #REGa to the speaker.
-  $CA8D,$02 #REGc=#N$12.
-  $CA8F,$01 Decrease #REGc by one.
-  $CA90,$02 Jump to #R$CA8F until #REGc is zero.
-  $CA92,$02 Decrease counter by one and loop back to #R$CA9C until counter is zero.
-  $CA94,$01 Increment #REGhl by one.
-  $CA95,$01 Decrease #REGde by one.
-  $CA96,$04 Jump to #R$CA82 until #REGde is zero.
+  $CA8D,$02 Set a delay counter in #REGc.
+@ $CA8F label=SpeechDelay_Loop
+  $CA8F,$01 Decrease the delay counter by one.
+  $CA90,$02 Jump to #R$CA8F until the delay counter is zero.
+  $CA92,$02 Decrease the bit counter by one and loop back to #R$CA9C until all
+. bits in the current byte have been processed.
+  $CA94,$01 Move to the next byte of speech data.
+  $CA95,$01 Decrease the data length counter by one.
+  $CA96,$04 Jump to #R$CA82 until all the bytes have been processed.
   $CA9A,$01 Enable interrupts.
   $CA9B,$01 Return.
+@ $CA9C label=SpeechWasteCycles
   $CA9C,$05 No operation.
   $CAA1,$02 Jump to #R$CA84.
 
@@ -5420,6 +5428,7 @@ b $D330
 
 b $D500 Speech Data
 @ $D500 label=Data_Speech
+D $D500 Used by the routine at #R$CA7C.
   $D500,$0800,$20
 
 b $DD00 Graphics: Pub Scene
