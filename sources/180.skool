@@ -3863,8 +3863,8 @@ c$9D33 CALL $A7A5    ; Call #R$A7A5.
 ;
 ; Used by the routines at #R$A97A and #R$AADC.
 c$9D42 CALL $CC62       ; Call #R$CC62.
- $9D45 LD A,($9B2C)     ; #REGa=*#R$9B2C.
- $9D48 AND A            ; {Jump to #R$9D53 if *#R$9B2C is zero.
+ $9D45 LD A,($9B2C)     ; {Jump to #R$9D53 if *#R$9B2C is zero.
+ $9D48 AND A            ;
  $9D49 JR Z,$9D53       ; }
  $9D4B CALL $A41E       ; Call #R$A41E.
  $9D4E LD A,$02         ; {Write #N$02 to *#R$9B0F.
@@ -9450,13 +9450,13 @@ c$CA7C LD HL,$D500    ; Set a pointer to the speech data in #REGhl to #R$D500.
  $CA8D LD C,$12       ; Set a delay counter in #REGc.
 @label=SpeechDelay_Loop
 *$CA8F DEC C          ; Decrease the delay counter by one.
- $CA90 JR NZ,$CA8F    ; Jump to #R$CA8F until the delay counter is zero.
- $CA92 DJNZ $CA9C     ; Decrease the bit counter by one and loop back to #R$CA9C until all
+ $CA90 JR NZ,$CA8F    ; Jump back to #R$CA8F until the delay counter is zero.
+ $CA92 DJNZ $CA9C     ; Decrease the bit counter by one and jump to #R$CA9C until all
                       ; bits in the current byte have been processed.
 ; Finished with this byte, move onto the next.
  $CA94 INC HL         ; Move to the next byte of speech data.
  $CA95 DEC DE         ; Decrease the data length counter by one.
- $CA96 LD A,D         ; {Jump to #R$CA82 until all the bytes have been
+ $CA96 LD A,D         ; {Jump back to #R$CA82 until all the bytes have been
  $CA97 OR E           ; processed.
  $CA98 JR NZ,$CA82    ; }
 ; All done, re-enable the interrupts and return.

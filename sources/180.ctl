@@ -1720,8 +1720,7 @@ c $9D33 Initialise New Game
 
 c $9D42
   $9D42,$03 Call #R$CC62.
-  $9D45,$03 #REGa=*#R$9B2C.
-  $9D48,$03 Jump to #R$9D53 if *#R$9B2C is zero.
+  $9D45,$06 Jump to #R$9D53 if *#R$9B2C is zero.
   $9D4B,$03 Call #R$A41E.
   $9D4E,$05 Write #N$02 to *#R$9B0F.
   $9D53,$03 Call #R$CC62.
@@ -5223,13 +5222,13 @@ N $CA8D Introduce a tiny delay.
   $CA8D,$02 Set a delay counter in #REGc.
 @ $CA8F label=SpeechDelay_Loop
   $CA8F,$01 Decrease the delay counter by one.
-  $CA90,$02 Jump to #R$CA8F until the delay counter is zero.
-  $CA92,$02 Decrease the bit counter by one and loop back to #R$CA9C until all
+  $CA90,$02 Jump back to #R$CA8F until the delay counter is zero.
+  $CA92,$02 Decrease the bit counter by one and jump to #R$CA9C until all
 . bits in the current byte have been processed.
 N $CA94 Finished with this byte, move onto the next.
   $CA94,$01 Move to the next byte of speech data.
   $CA95,$01 Decrease the data length counter by one.
-  $CA96,$04 Jump to #R$CA82 until all the bytes have been processed.
+  $CA96,$04 Jump back to #R$CA82 until all the bytes have been processed.
 N $CA9A All done, re-enable the interrupts and return.
   $CA9A,$01 Enable interrupts.
   $CA9B,$01 Return.
