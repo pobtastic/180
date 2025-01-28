@@ -153,13 +153,13 @@ Introduce a tiny delay.
 <td class="asm-label"></td>
 <td class="address-1"><span id="51856"></span>51856</td>
 <td class="instruction">JR NZ,<a href="51836.html#51855">SpeechDelay_Loop</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="51836.html#51855">SpeechDelay_Loop</a> until the delay counter is zero.</td>
+<td class="comment-1" rowspan="1">Jump back to <a href="51836.html#51855">SpeechDelay_Loop</a> until the delay counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="51858"></span>51858</td>
 <td class="instruction">DJNZ <a href="51836.html#51868">SpeechWasteCycles</a></td>
-<td class="comment-1" rowspan="1">Decrease the bit counter by one and loop back to <a href="51836.html#51868">SpeechWasteCycles</a> until all bits in the current byte have been processed.</td>
+<td class="comment-1" rowspan="1">Decrease the bit counter by one and jump to <a href="51836.html#51868">SpeechWasteCycles</a> until all bits in the current byte have been processed.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -187,7 +187,7 @@ Finished with this byte, move onto the next.
 <td class="asm-label"></td>
 <td class="address-1"><span id="51862"></span>51862</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="3">Jump to <a href="51836.html#51842">SpeechProcessByte</a> until all the bytes have been processed.</td>
+<td class="comment-1" rowspan="3">Jump back to <a href="51836.html#51842">SpeechProcessByte</a> until all the bytes have been processed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
