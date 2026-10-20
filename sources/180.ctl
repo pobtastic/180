@@ -4,8 +4,8 @@
 
 > $4000 @org=$4000
 > $4000 @start
-> $4000 @expand=#DEF(#POKE #LINK:Pokes)
-> $4000 @expand=#DEF(#ANIMATE(delay,count=$50)(name=$a)*$name-1,$delay;#FOR$02,$count||x|$name-x|;||($name-animation))
+> $4000 @expand=#DEF(#POKE()(anchor,text) #LINK(Pokes#$anchor)($text))
+> $4000 @expand=#DEF(#ANIMATE(delay,count=$50)(name=$a)#FRAMES#(($name-1,$delay;#FOR$02,$count||x|$name-x|;||))($name-animation))
 > $4000 @set-handle-unsupported-macros=1
 b $4000 Loading Screen
 D $4000 #UDGTABLE { =h 180 Loading Screen. } { #SCR$02(loading) } UDGTABLE#
@@ -31,7 +31,7 @@ b $7C87
 
 b $7D00 Graphics: Hand
 @ $7D00 label=Graphics_Hand_01
-D $7D00 Graphic data, arranged as.
+D $7D00 Graphic data, arranged as:
 N $7D00 Frame #N$01:
 . #UDGTABLE(default)
 . { #UDGARRAY$07,attr=$70,scale=$04,step=$07($7D00-$7E81-$01-$38)(hand-1) }
@@ -58,7 +58,7 @@ N $8198 Frame #N$03:
 
 b $8320 Graphics: Hand Mask
 @ $8320 label=Graphics_HandMask_01
-D $8320 Graphic data, arranged as.
+D $8320 Graphic data, arranged as:
 N $8320 Mask #N$01:
 . #UDGTABLE(default)
 . { #UDGARRAY$07,attr=$70,scale=$04,step=$07($8320-$84A1-$01-$38)(hand-mask-1) }
@@ -85,7 +85,7 @@ N $87B8 Mask #N$04:
 
 b $8940 Graphics: Hand (No Dart)
 @ $8940 label=Graphics_HandNoDart
-D $7D00 Graphic data, arranged as:
+D $8940 Graphic data, arranged as:
 N $8940 #UDGTABLE(default)
 . { #UDGARRAY$07,attr=$70,scale=$04,step=$07($8940-$8AC1-$01-$38)(hand-no-dart) }
 . UDGTABLE#
@@ -171,7 +171,7 @@ B $91A4,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $91A7,$02 INK: #INK(#PEEK(#PC+$01)).
 B $91A9,$02 PAPER: #INK(#PEEK(#PC+$01)).
 @ $91AB label=Messaging_Score
-T $91AB,$09 #FONT#(:(#STR(#PC,$04,$09)))$8D75,attr=$47(score)
+T $91AB,$09 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$09)))(score)
 B $91B4,$01 Terminator.
   $91B5,$01 Return.
 
@@ -203,28 +203,28 @@ B $91CA,$01 Terminator.
 c $91DD Print "Symbol Shift"
 @ $91DD label=Print_SymbolShift
   $91DD,$03 Call #R$964C.
-T $91E0,$07 #FONT#(:(#STR#(#PC),$0B($b==$FF)))$8D75,attr=$47(symbol-shift).
+T $91E0,$07 #FONT#($8D75,attr=$47,chars=0(#STR#(#PC),$0B($b==$FF)))(symbol-shift).
 B $91E7,$01 Terminator.
   $91E8,$01 Return.
 
 c $91E9 Print "Caps Lock"
 @ $91E9 label=Print_CapsLock
   $91E9,$03 Call #R$964C.
-T $91EC,$05 #FONT#(:(#STR#(#PC),$0B($b==$FF)))$8D75,attr=$47(caps-lock).
+T $91EC,$05 #FONT#($8D75,attr=$47,chars=0(#STR#(#PC),$0B($b==$FF)))(caps-lock).
 B $91F1,$01 Terminator.
   $91F2,$01 Return.
 
 c $91F3 Print "Enter"
 @ $91F3 label=Print_Enter
   $91F3,$03 Call #R$964C.
-T $91F6,$06 #FONT#(:(#STR#(#PC),$0B($b==$FF)))$8D75,attr=$47(enter).
+T $91F6,$06 #FONT#($8D75,attr=$47,chars=0(#STR#(#PC),$0B($b==$FF)))(enter).
 B $91FC,$01 Terminator.
   $91FD,$01 Return.
 
 c $91FE Print "Space"
 @ $91FE label=Print_Space
   $91FE,$03 Call #R$964C.
-T $9201,$06 #FONT#(:(#STR#(#PC),$0B($b==$FF)))$8D75,attr=$47(space).
+T $9201,$06 #FONT#($8D75,attr=$47,chars=0(#STR#(#PC),$0B($b==$FF)))(space).
 B $9207,$01 Terminator.
   $9208,$01 Return.
 
@@ -247,11 +247,11 @@ N $9218 #PUSHS #SIM(start=$9218,stop=$9252)
 . UDGTABLE# #POPS
   $9218,$03 Call #R$9736.
 B $921B,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $921E,$16 #FONT#(:(#STR(#PC,$04,$16)))$8D75,attr=$47(one-hundred-and-eighty).
+T $921E,$16 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$16)))(one-hundred-and-eighty).
 B $9234,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $9237,$01 #FONT#(:(#STR#(#PC,$02,$01)))$8D75,attr=$47(copyright).
+T $9237,$01 #FONT#($8D75,attr=$47,chars=0(#STR#(#PC,$02,$01)))(copyright).
 B $9238,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $923B,$16 #FONT#(:(#STR#(#PC),$0B($b==$FF)))$8D75,attr=$47(mastertronic).
+T $923B,$16 #FONT#($8D75,attr=$47,chars=0(#STR#(#PC),$0B($b==$FF)))(mastertronic).
 B $9251,$01 Terminator.
   $9252,$01 Return.
 
@@ -470,17 +470,17 @@ B $9359,$01 #R$97D5(CLEAR SCREEN).
 B $935A,$02 INK: #INK(#PEEK(#PC+$01)).
 B $935C,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $935E,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $9361,$0A #FONT#(:(#STR(#PC,$04,$0A)))$8D75,attr=$47(1-keyboard)
+T $9361,$0A #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$0A)))(1-keyboard)
 B $936B,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $936E,$13 #FONT#(:(#STR(#PC,$04,$13)))$8D75,attr=$47(2-kempston-joystick)
+T $936E,$13 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$13)))(2-kempston-joystick)
 B $9381,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $9384,$10 #FONT#(:(#STR(#PC,$04,$10)))$8D75,attr=$47(3-interface-two)
+T $9384,$10 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$10)))(3-interface-two)
 B $9394,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $9397,$12 #FONT#(:(#STR(#PC,$04,$12)))$8D75,attr=$47(4-cursor-joystick)
+T $9397,$12 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$12)))(4-cursor-joystick)
 B $93A9,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $93AC,$0F #FONT#(:(#STR(#PC,$04,$0F)))$8D75,attr=$47(5-redefine-keys)
+T $93AC,$0F #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$0F)))(5-redefine-keys)
 B $93BB,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $93BE,$0C #FONT#(:(#STR(#PC,$04,$0C)))$8D75,attr=$47(0-start-game)
+T $93BE,$0C #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$0C)))(0-start-game)
 B $93CA,$01 Terminator.
 N $93CB Display the header and footer messaging.
 N $93CB #PUSHS #POKES$91C1,$00#SIM(start=$9356,stop=$93CE)
@@ -534,7 +534,7 @@ N $9408 Then play an absolutely stunning reveal animation!
 . #FOR$00,$3E||x|
 .   #SIM(start=$9410,stop=$9424)#SCR$02(*reveal-dartboard-x)
 . ||
-. #UDGTABLE { #UDGARRAY#(#ANIMATE$03,$3E(reveal-dartboard)) }
+. #UDGTABLE { #ANIMATE$03,$3E(reveal-dartboard) }
 . UDGTABLE# #POPS
 N $9408 First calculate the co-ordinates of the selected menu item.
   $9408,$04 The menu items are spaced two rows apart, so double the value in
@@ -729,17 +729,17 @@ B $94FF,$01 #R$97D5(CLEAR SCREEN).
 B $9500,$02 INK: #INK(#PEEK(#PC+$01)).
 B $9502,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $9504,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $9507,$0D #FONT#(:(#STR(#PC,$04,$0D)))$8D75,attr=$47(redefine-keys)
+T $9507,$0D #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$0D)))(redefine-keys)
 B $9514,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $9517,$02 #FONT#(:(#STR(#PC,$04,$02)))$8D75,attr=$47(up)
+T $9517,$02 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$02)))(up)
 B $9519,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $951C,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(down)
+T $951C,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(down)
 B $9520,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $9523,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(left)
+T $9523,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(left)
 B $9527,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $952A,$05 #FONT#(:(#STR(#PC,$04,$05)))$8D75,attr=$47(right)
+T $952A,$05 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$05)))(right)
 B $952F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $9532,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(fire)
+T $9532,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(fire)
 B $9536,$01 Terminator.
   $9537,$03 Call #R$9218.
   $953A,$03 Call #R$91B6.
@@ -1285,7 +1285,7 @@ N $9913 Next blank the screen buffer.
 
 c $992A Control Code #N$07:
 @ $992A label=ControlCode_07
-N $992A #HTML(#AUDIO(tick.wav)(#INCLUDE(Tick)))
+N $992A #HTML(#AUDIO0(tick.wav)(#INCLUDE(Tick)))
   $992A,$01 Stash #REGbc on the stack.
   $992B,$02 Set initial speaker state in #REGc to OFF.
   $992D,$02 Set the repeat loop counter in #REGb to #N$14.
@@ -1305,7 +1305,7 @@ M $9937,$04 Flip the current speaker state.
 
 c $9942 Sound: Menu Tick
 @ $9942 label=Sound_MenuTick
-N $9942 #HTML(#AUDIO(menu.wav)(#INCLUDE(Menu)))
+N $9942 #HTML(#AUDIO0(menu.wav)(#INCLUDE(Menu)))
   $9942,$02 Set initial speaker state in #REGc to OFF.
   $9944,$02 Set the repeat loop counter in #REGb to #N$3C.
 @ $9946 label=MenuTick_OuterLoop
@@ -2097,7 +2097,7 @@ c $A0D6 Handler: Bust
 @ $A0D6 label=Handler_Bust
   $A0D6,$03 Call #R$964C.
 B $A0D9,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A0DC,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(bust)
+T $A0DC,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(bust)
 B $A0E2,$01 Terminator.
   $A0E3,$03 #REGhl=#R$9AA8.
   $A0E6,$01 Increment *#REGhl by one.
@@ -2157,15 +2157,15 @@ c $A15C Messaging: You Win!
   $A179,$05 Call #R$B5A6. with #COLOUR$00
   $A17E,$03 Call #R$964C.
 B $A181,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A184,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(great)
+T $A184,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(great)
 B $A18A,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A18D,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(shot)
+T $A18D,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(shot)
 B $A193,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $A196,$06 "#STR#(#PC,$04,$06)".
 B $A19C,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A19F,$06 #FONT#(:(#STR(#PC,$04,$05)))$8D75,attr=$47(you)
+T $A19F,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$05)))(you)
 B $A1A5,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A1A8,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(win)
+T $A1A8,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(win)
 B $A1AE,$01 Terminator.
   $A1AF,$02 #REGa=#N$01.
   $A1B1,$03 Call #R$CB1E.
@@ -2174,18 +2174,18 @@ B $A1AE,$01 Terminator.
 B $A1BD,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $A1C0,$01 "#STR#(#PC,$04,$01)".
 B $A1C1,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A1C4,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(player)
+T $A1C4,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(player)
 B $A1CA,$01 Terminator.
   $A1CB,$06 Jump to #R$A1DE if *#R$9AB8 is zero.
   $A1D1,$03 Call #R$964C.
 B $A1D4,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A1D7,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(two!)
+T $A1D7,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(two!)
 B $A1DB,$01 Terminator.
   $A1DC,$02 Jump to #R$A1E9.
 
   $A1DE,$03 Call #R$964C.
 B $A1E1,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A1E4,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(one!)
+T $A1E4,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(one!)
 B $A1E8,$01 Terminator.
   $A1E9,$03 Call #R$AE04.
   $A1EC,$03 Call #R$AE04.
@@ -2202,13 +2202,13 @@ B $A20A,$02 INK: #INK(#PEEK(#PC+$01)).
 B $A20C,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $A20E,$01
 B $A20F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A212,$12 #FONT#(:(#STR(#PC,$04,$12)))$8D75,attr=$47(beat-jammy-jim)
+T $A212,$12 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$12)))(beat-jammy-jim)
 B $A224,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A227,$0E #FONT#(:(#STR(#PC,$04,$0E)))$8D75,attr=$47(in-the-final)
+T $A227,$0E #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$0E)))(in-the-final)
 B $A235,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A238,$13 #FONT#(:(#STR(#PC,$04,$13)))$8D75,attr=$47(should-take-up)
+T $A238,$13 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$13)))(should-take-up)
 B $A24B,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A24E,$17 #FONT#(:(#STR(#PC,$04,$17)))$8D75,attr=$47(professionally)
+T $A24E,$17 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$17)))(professionally)
 B $A265,$01 Terminator.
   $A266,$03 Call #R$AE04.
   $A269,$03 Call #R$AE04.
@@ -2319,7 +2319,7 @@ B $A389,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 @ $A38C label=AroundTheClock_Timer
 T $A38C,$02 "#STR#(#PC,$04,$02)".
 B $A38E,$01 Terminator.
-N $A38F #HTML(#AUDIO(menu.wav)(#INCLUDE(Menu)))
+N $A38F #HTML(#AUDIO0(menu.wav)(#INCLUDE(Menu)))
 N $A38F Note; this is identical to #R$9942.
   $A38F,$02 Set initial speaker state in #REGc to OFF.
   $A391,$02 Set the repeat loop counter in #REGb to #N$3C.
@@ -2362,14 +2362,14 @@ c $A3C3 Messaging: Print Player Current Total
 @ $A3C3 label=Messaging_PrintPlayerCurrentTotal
   $A3C3,$03 Call #R$964C.
 B $A3C6,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A3C9,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(player)
+T $A3C9,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(player)
 B $A3CF,$01 Terminator.
 N $A3D0 Who is currently playing?
   $A3D0,$06 Jump to #R$A3F3 if *#R$9AB8 is player two.
 N $A3D6 Handle 1UP:
   $A3D6,$03 Call #R$964C.
 B $A3D9,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A3DC,$03 #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(one)
+T $A3DC,$03 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$03)))(one)
 B $A3DF,$01 Terminator.
   $A3E0,$03 #REGhl=*#R$9AB2.
   $A3E3,$03 #REGde=#R$ACF6.
@@ -2382,7 +2382,7 @@ N $A3F3 Handle 2UP:
 @ $A3F3 label=PrintPlayerTwo_CurrentTotal
   $A3F3,$03 Call #R$964C.
 B $A3F6,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A3F9,$03 #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(two)
+T $A3F9,$03 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$03)))(two)
 B $A3FC,$01 Terminator.
   $A3FD,$03 #REGhl=*#R$9AB0.
   $A400,$03 #REGde=#R$ACF6.
@@ -3199,7 +3199,7 @@ c $A8DB
 
 c $A8EA Sounds: Opponent Dart
 @ $A8EA label=Sounds_OpponentDart
-N $A8EA #AUDIO(opponent-dart.wav)(#INCLUDE(OpponentDart))
+N $A8EA #AUDIO0(opponent-dart.wav)(#INCLUDE(OpponentDart))
   $A8EA,$01 #REGa=#N$00.
   $A8EB,$02 #REGc=#N$96.
 @ $A8ED label=Sounds_OpponentDart_OuterLoop
@@ -3233,27 +3233,27 @@ B $A919,$02 INK: #INK(#PEEK(#PC+$01)).
 B $A91B,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $A91D,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $A91F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A922,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(1)
+T $A922,$01 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$01)))(1)
 B $A923,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A926,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(tune)
+T $A926,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(tune)
 B $A92A,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A92D,$02 #FONT#(:(#STR(#PC,$04,$02)))$8D75,attr=$47(up)
+T $A92D,$02 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$02)))(up)
 B $A92F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A932,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(2)
+T $A932,$01 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$01)))(2)
 B $A933,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A936,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(game)
+T $A936,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(game)
 B $A93A,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A93D,$02 #FONT#(:(#STR(#PC,$04,$02)))$8D75,attr=$47(on)
+T $A93D,$02 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$02)))(on)
 B $A93F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A942,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(3)
+T $A942,$01 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$01)))(3)
 B $A943,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A946,$03 #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(two)
+T $A946,$03 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$03)))(two)
 B $A949,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A94C,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(player)
+T $A94C,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(player)
 B $A952,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A955,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(4)
+T $A955,$01 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$01)))(4)
 B $A956,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A959,$05 #FONT#(:(#STR(#PC,$04,$05)))$8D75,attr=$47(oops)
+T $A959,$05 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$05)))(oops)
 B $A95E,$01 Terminator.
   $A95F,$03 Call #R$AE04.
 @ $A962 label=StartMenu_InputLoop
@@ -3277,13 +3277,13 @@ B $A983,$02 INK: #INK(#PEEK(#PC+$01)).
 B $A985,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $A987,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $A989,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A98C,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(around)
+T $A98C,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(around)
 B $A992,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A995,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(the)
+T $A995,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(the)
 B $A999,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A99C,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(clock)
+T $A99C,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(clock)
 B $A9A2,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A9A5,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(time)
+T $A9A5,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(time)
 B $A9A9,$01 Terminator.
 N $A9AA Set the countdown timer.
   $A9AA,$08 Write "#CHR$39#CHR$39" to *#R$A38C.
@@ -3321,11 +3321,11 @@ B $A9E8,$02 INK: #INK(#PEEK(#PC+$01)).
 B $A9EA,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $A9EC,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $A9EE,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A9F1,$03 #FONT#(:(#STR(#PC,$00,$03)))$8D75,attr=$47(up)
+T $A9F1,$03 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$03)))(up)
 B $A9F4,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A9F7,$04  #FONT#(:(#STR(#PC,$00,$04)))$8D75,attr=$47(hard)
+T $A9F7,$04  #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$04)))(hard)
 B $A9FB,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $A9FE,$05  #FONT#(:(#STR(#PC,$00,$05)))$8D75,attr=$47(luck)
+T $A9FE,$05  #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$05)))(luck)
 B $AA03,$01 Terminator.
   $AA04,$03 Call #R$AE04.
   $AA07,$03 Jump to #R$A8F8.
@@ -3340,13 +3340,13 @@ B $AA14,$02 INK: #INK(#PEEK(#PC+$01)).
 B $AA16,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $AA18,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $AA1A,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AA1D,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(good)
+T $AA1D,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(good)
 B $AA21,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AA24,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(arrows)
+T $AA24,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(arrows)
 B $AA2A,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AA2D,$04 #FONT#(:(#STR(#PC,$04,$04)))$8D75,attr=$47(game)
+T $AA2D,$04 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$04)))(game)
 B $AA31,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AA34,$03 #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(on!)
+T $AA34,$03 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$03)))(on!)
 B $AA37,$01 Terminator.
   $AA38,$03 Call #R$AE04.
 N $AA3B The entrypoint for a one-player game.
@@ -3401,7 +3401,7 @@ B $AAAB,$02 INK: #INK(#PEEK(#PC+$01)).
 B $AAAD,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $AAAF,$01
 B $AAB0,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AAB3,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(player)
+T $AAB3,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(player)
 B $AAB9,$01 Terminator.
 N $AABA Flip the current player ID.
   $AABA,$08 Toggle *#R$9AB8 to switch from 1UP to 2UP/ 2UP to 1UP.
@@ -3409,7 +3409,7 @@ N $AABA Flip the current player ID.
 N $AAC4 Print "2" (For Player 2).
   $AAC4,$03 Call #R$964C.
 B $AAC7,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AACA,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(2)
+T $AACA,$01 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$01)))(2)
 B $AACB,$01 Terminator.
   $AACC,$03 Call #R$AE04.
   $AACF,$01 Return.
@@ -3417,7 +3417,7 @@ N $AAD0 Print "1" (For Player 1).
 @ $AAD0 label=Print_1
   $AAD0,$03 Call #R$964C.
 B $AAD3,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AAD6,$01 #FONT#(:(#STR(#PC,$04,$01)))$8D75,attr=$47(1)
+T $AAD6,$01 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$01)))(1)
 B $AAD7,$01 Terminator.
   $AAD8,$03 Call #R$AE04.
   $AADB,$01 Return.
@@ -3476,7 +3476,7 @@ B $AB7B,$02 INK: #INK(#PEEK(#PC+$01)).
 B $AB7D,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $AB7F,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $AB81,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AB84,$08 #FONT#(:(#STR(#PC,$00,$08)))$8D75,attr=$47(1st-dart)
+T $AB84,$08 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$08)))(1st-dart)
 B $AB8C,$01 Terminator.
   $AB8D,$03 Call #R$AC3D.
   $AB90,$03 Call #R$AFB5.
@@ -3494,7 +3494,7 @@ B $ABB6,$02 INK: #INK(#PEEK(#PC+$01)).
 B $ABB8,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $ABBA,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $ABBC,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ABBF,$08 #FONT#(:(#STR(#PC,$00,$08)))$8D75,attr=$47(2nd-dart)
+T $ABBF,$08 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$08)))(2nd-dart)
 B $ABC7,$01 Terminator.
   $ABC8,$03 Call #R$AC3D.
   $ABCB,$03 Call #R$ACFB.
@@ -3510,7 +3510,7 @@ B $ABEE,$02 INK: #INK(#PEEK(#PC+$01)).
 B $ABF0,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $ABF2,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $ABF4,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ABF7,$08 #FONT#(:(#STR(#PC,$00,$08)))$8D75,attr=$47(3rd-dart)
+T $ABF7,$08 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$08)))(3rd-dart)
 B $ABFF,$01 Terminator.
   $AC00,$03 Call #R$AC3D.
   $AC03,$03 Call #R$ACFB.
@@ -3533,7 +3533,7 @@ c $AC3D Messaging: Aiming At
 B $AC40,$02 INK: #INK(#PEEK(#PC+$01)).
 B $AC42,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $AC44,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AC47,$09 #FONT#(:(#STR(#PC,$00,$09)))$8D75,attr=$47(aiming-at)
+T $AC47,$09 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$09)))(aiming-at)
 B $AC50,$01 Terminator.
   $AC51,$01 Return.
 
@@ -3567,7 +3567,7 @@ B $ACBC,$02 INK: #INK(#PEEK(#PC+$01)).
 B $ACBE,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $ACC0,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $ACC2,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ACC5,$0C #FONT#(:(#STR(#PC,$00,$0C)))$8D75,attr=$47(final-total)
+T $ACC5,$0C #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$0C)))(final-total)
 B $ACD1,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 @ $ACD4 label=FinalTotal
 T $ACD4,$03 "#STR#(#PC,$04,$03)".
@@ -3581,7 +3581,7 @@ B $ACDC,$02 INK: #INK(#PEEK(#PC+$01)).
 B $ACDE,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $ACE0,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $ACE2,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ACE5,$0E #FONT#(:(#STR(#PC,$00,$0E)))$8D75,attr=$47(current-total)
+T $ACE5,$0E #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$0E)))(current-total)
 B $ACF3,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 @ $ACF6 label=Current_Total
 T $ACF6,$03 "#STR#(#PC,$04,$03)".
@@ -3613,7 +3613,7 @@ B $AD27,$02 INK: #INK(#PEEK(#PC+$01)).
 B $AD29,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $AD2B,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $AD2D,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AD30,$03 #FONT#(:(#STR(#PC,$00,$03)))$8D75,attr=$47(got)
+T $AD30,$03 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$03)))(got)
 B $AD33,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $AD36,$03 "#STR#(#PC,$04,$03)".
 B $AD39,$01 Terminator.
@@ -3624,7 +3624,7 @@ c $AD3B Messaging: Bust
   $AD3B,$03 Call #R$AC52.
   $AD3E,$03 Call #R$964C.
 B $AD41,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AD44,$06 #FONT#(:(#STR(#PC,$04,$06)))$8D75,attr=$47(bust)
+T $AD44,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$06)))(bust)
 B $AD4A,$01 Terminator.
   $AD4B,$03 Call #R$AE04.
   $AD4E,$0B Copy #N($0003,$04,$04) bytes of data from *#R$9B2F to *#R$ACF6.
@@ -3641,7 +3641,7 @@ B $AD66,$02 INK: #INK(#PEEK(#PC+$01)).
 B $AD68,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $AD6A,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $AD6C,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $AD6F,$03 #FONT#(:(#STR(#PC,$04,$03)))$8D75,attr=$47(got)
+T $AD6F,$03 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$03)))(got)
 B $AD72,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 T $AD75,$03 "#STR#(#PC,$04,$03)".
 B $AD78,$01 Terminator.
@@ -3664,7 +3664,7 @@ N $AD97 Report score is a "#STR#($ADA5,$04,$06)".
   $AD9F,$03 Call #R$964C.
 @ $ADA2 label=Report_Single_PrintAt
 B $ADA2,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ADA5,$06 #FONT#(:(#STR(#PC,$00,$06)))$8D75,attr=$47(single)
+T $ADA5,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$06)))(single)
 B $ADAB,$01 Terminator.
   $ADAC,$01 Return.
 N $ADAD Report score is a "#STR#($ADBB,$04,$06)".
@@ -3673,7 +3673,7 @@ N $ADAD Report score is a "#STR#($ADBB,$04,$06)".
   $ADB5,$03 Call #R$964C.
 @ $ADB8 label=Report_Double_PrintAt
 B $ADB8,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ADBB,$06 #FONT#(:(#STR(#PC,$00,$06)))$8D75,attr=$47(double)
+T $ADBB,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$06)))(double)
 B $ADC1,$01 Terminator.
   $ADC2,$01 Return.
 N $ADC3 Report score is a "#STR#($ADD1,$04,$06)".
@@ -3682,7 +3682,7 @@ N $ADC3 Report score is a "#STR#($ADD1,$04,$06)".
   $ADCB,$03 Call #R$964C.
 @ $ADCE label=Report_Treble_PrintAt
 B $ADCE,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ADD1,$06 #FONT#(:(#STR(#PC,$00,$06)))$8D75,attr=$47(treble)
+T $ADD1,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$06)))(treble)
 B $ADD7,$01 Terminator.
   $ADD8,$01 Return.
 N $ADD9 Report score is a "#STR#($ADDF,$02,$0D)".
@@ -3690,7 +3690,7 @@ N $ADD9 Report score is a "#STR#($ADDF,$02,$0D)".
   $ADD9,$03 Call #R$964C.
 @ $ADDC label=Report_MissedBoard_PrintAt
 B $ADDC,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ADDF,$0D #FONT#(:(#STR(#PC,$00,$0D)))$8D75,attr=$47(missed-board)
+T $ADDF,$0D #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$0D)))(missed-board)
 B $ADEC,$01 Terminator.
   $ADED,$01 Return.
 N $ADEE Report score is a "#STR#($ADFC,$01,$06)".
@@ -3699,7 +3699,7 @@ N $ADEE Report score is a "#STR#($ADFC,$01,$06)".
   $ADF6,$03 Call #R$964C.
 @ $ADF9 label=Report_Bullseye_PrintAt
 B $ADF9,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $ADFC,$06 #FONT#(:(#STR(#PC,$00,$06)))$8D75,attr=$47(bull)
+T $ADFC,$06 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$06)))(bull)
 B $AE02,$01 Terminator.
   $AE03,$01 Return.
 
@@ -4101,9 +4101,9 @@ c $B16B Handler: Opponent Wins
   $B173,$03 Call #R$964C.
 B $B176,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 @ $B179 label=Messaging_OpponentName_Wins
-T $B179,$16 #FONT#(:(#STR(#PC,$00,$16)))$8D75,attr=$47(wins)
+T $B179,$16 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$16)))(wins)
 B $B18F,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $B192,$10 #FONT#(:(#STR(#PC,$00,$10)))$8D75,attr=$47(hard-luck)
+T $B192,$10 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$10)))(hard-luck)
 B $B1A2,$01 Terminator.
   $B1A3,$03 Call #R$AE04.
   $B1A6,$03 #REGhl=#R$9AA7.
@@ -4155,7 +4155,7 @@ B $B200,$02 INK: #INK(#PEEK(#PC+$01)).
 B $B202,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $B204,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $B206,$01
-T $B207,$0D #FONT#(:(#STR(#PC,$04,$0D)))$8D75,attr=$47(you-are-rated)
+T $B207,$0D #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$0D)))(you-are-rated)
 B $B214,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 N $B217 See #R$B230 for the ratings.
 @ $B217 label=Messaging_Rating
@@ -4166,17 +4166,17 @@ B $B229,$01 Terminator.
 
 t $B230 Messaging: Ratings
 @ $B230 label=Messaging_AsAWally
-  $B230,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-wally)
+  $B230,$12 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$02,$12)))(as-a-wally)
 @ $B242 label=Messaging_AsADipstick
-  $B242,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-dipstick)
+  $B242,$12 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$02,$12)))(as-a-dipstick)
 @ $B254 label=Messaging_AsAnAmateur
-  $B254,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-an-amateur)
+  $B254,$12 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$02,$12)))(as-an-amateur)
 @ $B266 label=Messaging_AsANovice
-  $B266,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-novice)
+  $B266,$12 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$02,$12)))(as-a-novice)
 @ $B278 label=Messaging_AsAMegaPlayer
-  $B278,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-a-mega-player)
+  $B278,$12 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$02,$12)))(as-a-mega-player)
 @ $B28A label=Messaging_AsRedHot
-  $B28A,$12 #FONT#(:(#STR(#PC,$02,$12)))$8D75,attr=$47(as-red-hot)
+  $B28A,$12 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$02,$12)))(as-red-hot)
 
 c $B29C
   $B29C,$01 Stash #REGhl on the stack.
@@ -4527,10 +4527,10 @@ B $B5D6,$02 INK: #INK(#PEEK(#PC+$01)).
 B $B5D8,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $B5DA,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $B5DC,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $B5DF,$0F #FONT#(:(#STR(#PC,$00,$0F)))$8D75,attr=$47(quarter-finals)
+T $B5DF,$0F #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$0F)))(quarter-finals)
 B $B5EE,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B5F1,$02 INK: #INK(#PEEK(#PC+$01)).
-T $B5F3,$0D #FONT#(:(#STR(#PC,$00,$0D)))$8D75,attr=$47(your-opponent)
+T $B5F3,$0D #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$00,$0D)))(your-opponent)
 B $B600,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B603,$02 INK: #INK(#PEEK(#PC+$01)).
 @ $B605 label=QuarterFinals_OpponentName
@@ -4595,10 +4595,10 @@ B $B6DE,$02 INK: #INK(#PEEK(#PC+$01)).
 B $B6E0,$02 PAPER: #INK(#PEEK(#PC+$01)).
 B $B6E2,$02 FLASH: #MAP(#PEEK(#PC+$01))(?,0:OFF,1:ON).
 B $B6E4,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
-T $B6E7,$09 #FONT#(:(#STR(#PC,$04,$09)))$8D75,attr=$47(the-final)
+T $B6E7,$09 #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$09)))(the-final)
 B $B6F0,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B6F3,$02 INK: #INK(#PEEK(#PC+$01)).
-T $B6F5,$0D #FONT#(:(#STR(#PC,$04,$0D)))$8D75,attr=$47(your-opponent)
+T $B6F5,$0D #FONT#($8D75,attr=$47,chars=0(#STR(#PC,$04,$0D)))(your-opponent)
 B $B702,$03 PRINT AT: #N(#PEEK(#PC+$01)), #N(#PEEK(#PC+$02)).
 B $B705,$02 INK: #INK(#PEEK(#PC+$01)).
 @ $B707 label=TheFinal_OpponentName
@@ -4791,7 +4791,7 @@ N $B83D #PUSHS #SIM(start=$AB2E,stop=$AB39)
 . ||
 . #SIM(start=$B861,stop=$B866)
 . #FOR$06,$10||x|#SIM(start=$B866,stop=$B86E)#SCR$02(*bar-maid-x)||
-. #UDGTABLE { #UDGARRAY#(#ANIMATE$10,$10(bar-maid)) } UDGTABLE# #POPS
+. #UDGTABLE { #ANIMATE$10,$10(bar-maid) } UDGTABLE# #POPS
   $B83D,$06 Call #R$B8F5 with #REGde=#R$C724.
   $B843,$06 Call #R$B8F5 with #REGde=#R$C784.
   $B849,$06 Call #R$B8F5 with #REGde=#R$C7E4.
@@ -5202,7 +5202,7 @@ N $CA64 #UDGTABLE(default)
 c $CA7C Sound: "180"
 @ $CA7C label=Sound_180Speech
 N $CA7C Plays 1-bit PCM speech for the "ONE HUNDRED AND EIGHTY!" announcement.
-N $CA7C #HTML(#AUDIO(speech.wav)(#INCLUDE(Speech)))
+N $CA7C #HTML(#AUDIO0(speech.wav)(#INCLUDE(Speech)))
   $CA7C,$03 Set a pointer to the speech data in #REGhl to #R$D500.
   $CA7F,$03 Set the data length counter in #REGde to #N$0800 bytes.
 @ $CA82 label=SpeechProcessByte

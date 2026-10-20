@@ -2,16 +2,16 @@
 
 [Audio:"180"]
 
-#AUDIO(speech.wav)(#INCLUDE(Speech))
+#AUDIO0(speech.wav)(#INCLUDE(Speech))
 
 [Audio:opponent-dart:Opponent Dart]
 
-#AUDIO(opponent-dart.wav)(#INCLUDE(OpponentDart))
+#AUDIO0(opponent-dart.wav)(#INCLUDE(OpponentDart))
 
 [Audio:tick:Tick]
 
-#AUDIO(tick.wav)(#INCLUDE(Tick))
+#AUDIO0(tick.wav)(#INCLUDE(Tick))
 
 [Audio:menu:Menu]
 
-#AUDIO(menu.wav)(#INCLUDE(Menu))
+#AUDIO0(menu.wav)(#INCLUDE(Menu))
