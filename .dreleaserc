@@ -1,3 +1,4 @@
+# Copyright 2026 Paul Maddern (paul@arcadegeek.co.uk)
 GAME=180
 SRCFILES=$(echo 180.skool {180,analytics,bases,changelog,data,opponents,pokes,sound}.ref {dark,wide}.css)
 SKOOL2BINOPTS="-i 36210"

@@ -1,4 +1,4 @@
-; Copyright Mastertronic 1986, 2025 ArcadeGeek LTD.
+; Copyright Mastertronic 1986, 2026 ArcadeGeek LTD.
 ; NOTE: Disassembly is Work-In-Progress.
 ; Label naming is loosely based on Action_ActionName_SubAction e.g. Print_HighScore_Loop.
 
